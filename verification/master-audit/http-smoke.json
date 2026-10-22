@@ -1,0 +1,415 @@
+{
+  "scope": "Guest HTTP availability of compiled Next.js output only; backend absent; no JS interaction/auth/visual acceptance. Full release package gate still FAIL.",
+  "results": [
+    {
+      "route": "/",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/academy",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/academy/[slug]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/admin",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/access",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/articles",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/audit",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/authority",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/books",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/community",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/finance",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/forum",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/huong-dan",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/huyen-giai",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/members",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/messages",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/profile",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/team",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/tinh-canh",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/tro-ly",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/admin/van-kho",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/articles",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/bazi",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/birth-profiles",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/books",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/books/[slug]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/books/[slug]/read",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/books/contribute",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/calendar",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/chart",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/chinh-sach-thanh-toan",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/collection",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/consultation",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/dai-luc-nham",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/forum",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/forum/[id]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/forum/me",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/forum/members/[id]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/forum/new",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/good-days",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/ha-lac",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/ho-tro",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/huong-dan",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/huong-dan/[slug]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/huyen-giai",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/huyen-hoc",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/iching",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/ky-mon",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/ky-mon/depth",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/library",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/login",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/luc-hao",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/mai-hoa",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/membership",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/messages",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/ngu-hanh",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/numerology",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/phap-ly",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/phap-ly/[slug]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/phong-thuy",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/pro/research",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/research",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/research/advanced",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/research/development",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/research/examples",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/research/luu-nien-van-tinh",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/research/schools",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/research/star-audit",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/research/star-system",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/star-atlas",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/study",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/study/compare",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/tarot",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/thai-at",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/thiet-ban",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/tinh-canh",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/van-kho",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/van-kho/[slug]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/van-kho/authors/[id]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/western-astrology",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/western-astrology/relationship",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    },
+    {
+      "route": "/western-symbols",
+      "status": "BLOCKED",
+      "reason": "fetch failed"
+    }
+  ]
+}

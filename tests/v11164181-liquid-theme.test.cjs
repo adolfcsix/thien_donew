@@ -67,13 +67,14 @@ test('AI and study heroes use a light pseudo-layer and preserve their dark artwo
     assert.match(source, /@media print[^}]*\.hero::before/);
   }
 });
-test('photos, pre-A43 API registration after exact A43 additions, original artwork/lockfile and first 30 migrations match snapshots', () => {
+test('photos, pre-A43 API registration after exact A43 additions, original artwork and security-reviewed lockfile and first 30 migrations match snapshots', () => {
+  // Lockfile snapshot refreshed for SEC-01 only; audited Next 16.4.0 -> 16.4.2.
   const expected = {
     'apps/web/public/theme/cuon-thu-ngoc.jpeg':'b7311174c96458a75e64d7bd1e975e4fe27ca3f8503cb82a8ecc1803d4f3c587',
     'apps/web/public/theme/thap-nhi-dia-chi.jpeg':'3c4fe94ff4035e80da79d13ddee7190f0b91c875555039663134851f3a0b4fc2',
     'apps/web/public/theme/van-may-thien-do.svg':'a7077071c6e48efa13c158c37f2e002c48cc2acafd53caee2a0c86cb0acdf366',
     'apps/api/src/app.module.ts':'7cd6730534b2f4839d2386f3b6e0f8f443def5d613e2e87068475e0ad95dc4f5',
-    'package-lock.json':'28f4c31fe1e05ec66ef47994cc8346a0212749e2403aeec5e4e694da6146b3d8'
+    'package-lock.json':'553a9b4328e2f37e965573913996f7760e133e9ba0e0678dacd80a2c5c9705ff'
   };
   for (const [f, hash] of Object.entries(expected)) assert.equal(sha(baselineBytes(root,f)),hash,f);
   const migrationDir=path.join(root,'infrastructure/db');

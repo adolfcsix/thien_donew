@@ -4,7 +4,7 @@ import {
   Fragment, createContext, useCallback, useContext, useEffect, useRef, useState,
   type FormEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode,
 } from 'react';
-import { accountApi,api } from '@/lib/api';
+import { accountApi,api,SESSION_EXPIRED_EVENT } from '@/lib/api';
 import {LOGOUT_REVISION_KEY,logoutRevision,publishLogout,concealSession,replaceWithOpening} from '@/lib/session-exit';
 import {useRouter,usePathname} from 'next/navigation';
 import {loginDestination} from '@/lib/login-destination';
@@ -140,6 +140,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     sessionChannel.current?.postMessage({ type: 'signed-out' } satisfies AuthEvent);
     returnToOpening();
   }, [dropLocalIdentity,returnToOpening]);
+
+  useEffect(() => {
+    const expired = () => {
+      if (!knownUser.current || ending.current) return;
+      clearUser();
+    };
+    window.addEventListener(SESSION_EXPIRED_EVENT, expired);
+    return () => window.removeEventListener(SESSION_EXPIRED_EVENT, expired);
+  }, [clearUser]);
 
   // A POST may have committed the login even if the subsequent /me is offline.
   // Trust only the successful authenticated POST response; rehydrate richer profile

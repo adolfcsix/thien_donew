@@ -1,0 +1,103 @@
+{
+  "verdict": "PASS",
+  "scope": "Real Next/Nest/PGlite, controlled Gemini fetch responses, captured email; NOT native PostgreSQL or actual provider acceptance",
+  "results": [
+    {
+      "case": "admin reports reject anonymous, member and missing MFA",
+      "verdict": "PASS"
+    },
+    {
+      "case": "Vietnam-day boundaries and forum all-state/public counts match real SQL including private/hidden records without exposing bodies",
+      "verdict": "PASS"
+    },
+    {
+      "case": "unsupported command cannot execute mutations or arbitrary SQL",
+      "verdict": "PASS"
+    },
+    {
+      "case": "traffic disabled is unknown, enabled counter is idempotent and explicitly page views rather than people",
+      "verdict": "PASS"
+    },
+    {
+      "case": "rank report reuses engine gates/manual grants without inventing points and respects private rank preference",
+      "verdict": "PASS"
+    },
+    {
+      "case": "admin question UI reaches real SQL and renders explicit fact sources",
+      "verdict": "PASS"
+    },
+    {
+      "case": "optional admin Gemini consumes shared budget and receives only anonymous aggregate facts, never identities/private content/raw question",
+      "verdict": "PASS"
+    },
+    {
+      "case": "invalid AI citation is rejected while SQL report remains available",
+      "verdict": "PASS"
+    },
+    {
+      "case": "new user conversation accepts null ID; suggested question generates, stores SQL answer and resolves matching palace citation",
+      "verdict": "PASS"
+    },
+    {
+      "case": "user can export actual answer and evidence as Markdown",
+      "verdict": "PASS"
+    },
+    {
+      "case": "follow-up sends recent same-owner same-snapshot context; another account cannot use private chart/conversation",
+      "verdict": "PASS"
+    },
+    {
+      "case": "user usage/remaining count agrees with persisted daily reservations",
+      "verdict": "PASS"
+    },
+    {
+      "case": "167-message history opens latest 80, paired older clicks make one read, all 167 answers remain accessible with no duplicate rendering",
+      "verdict": "PASS"
+    },
+    {
+      "case": "provider outage preserves grounded admin facts and reports interpretation failure",
+      "verdict": "PASS"
+    },
+    {
+      "case": "budget exhaustion blocks external provider call without blocking SQL report",
+      "verdict": "PASS"
+    },
+    {
+      "case": "persistent admin report rate limit rejects excess read attempts",
+      "verdict": "PASS"
+    },
+    {
+      "case": "AI workspace geometry",
+      "route": "/admin/tro-ly",
+      "width": 390,
+      "verdict": "PASS"
+    },
+    {
+      "case": "AI workspace geometry",
+      "route": "/huyen-giai",
+      "width": 390,
+      "verdict": "PASS"
+    },
+    {
+      "case": "AI workspace geometry",
+      "route": "/admin/tro-ly",
+      "width": 1440,
+      "verdict": "PASS"
+    },
+    {
+      "case": "AI workspace geometry",
+      "route": "/huyen-giai",
+      "width": 1440,
+      "verdict": "PASS"
+    },
+    {
+      "case": "logout during Gemini wait rejects stale completion, writes no message and removes private browser UI before returning home",
+      "verdict": "PASS"
+    },
+    {
+      "case": "revoked admin cannot receive result after provider wait",
+      "verdict": "PASS"
+    }
+  ],
+  "pageErrors": []
+}

@@ -31,7 +31,9 @@ export function historyResponse(value:unknown,expectedId:string):value is Histor
   const row=value.conversation;
   return row.id===expectedId&&(row.chartId===null||id(row.chartId))&&mode(row.mode)&&text(row.topic)&&
     Array.isArray(value.messages)&&value.messages.length<=80&&value.messages.every(message => object(message)&&id(message.id)&&
-      fingerprint(message.factsSha256)&&text(message.question)&&answer(message.response)&&text(message.engineRevision)&&date(message.createdAt));
+      fingerprint(message.factsSha256)&&text(message.question)&&answer(message.response)&&text(message.engineRevision)&&date(message.createdAt))&&
+    new Set(value.messages.map(message=>message.id)).size===value.messages.length&&
+    (value.nextBefore===undefined||value.nextBefore===null||id(value.nextBefore)&&value.messages.length>0&&value.nextBefore===value.messages[0].id);
 }
 export function disclosureResponse(value:unknown):value is Disclosure {
   if (!object(value)||!text(value.hash)||!/^[a-f0-9]{64}$/i.test(value.hash)||!object(value.factPack)) return false;

@@ -1,3 +1,5 @@
+> Kiểm toán mới ngày 23/10/2026: xem [PROJECT_AUDIT.md](../PROJECT_AUDIT.md) và [TEST_MATRIX.md](../TEST_MATRIX.md). Nội dung dưới đây được giữ làm lịch sử A83; kết quả hiện tại ưu tiên bộ báo cáo gốc này.
+
 # THIÊN ĐỒ — V11.164.103 / A83 — ĐỒNG BỘ XUẤT TỆP TỪ NHIỀU PHÂN HỆ
 
 **A83 (phạm vi có kiểm chứng):** đã thay 18 vị trí xuất tệp dùng blob URL riêng lẻ bằng `downloadBlobFile()`, gồm Tarot, Tử Vi, Kỳ Môn, Mai Hoa, Lục Hào, Đại Lục Nhâm, Thái Ất, Thiết Bản, chiêm tinh quan hệ, báo cáo Tây phương, Markdown nghiên cứu và SVG. Giữ nguyên dữ liệu, tên tệp, định dạng MIME. Các phép thử tĩnh và helper đạt; chưa có bằng chứng tải xuống trên Safari/Chrome thật hoặc full build. Giữ 11 cổng OPEN, NO-GO và chưa push GitHub.

@@ -1,0 +1,105 @@
+[
+  {
+    "name": "suite-verified",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exitCode": 1,
+    "status": "FAIL",
+    "startedUTC": "2026-10-22T17:53:27.964923+00:00",
+    "endedUTC": "2026-10-22T17:54:40.175847+00:00",
+    "log": "verification/master-audit/suite-verified.log"
+  },
+  {
+    "name": "lockfile-final",
+    "command": [
+      "npm",
+      "run",
+      "check:lockfile"
+    ],
+    "exitCode": 0,
+    "status": "PASS",
+    "startedUTC": "2026-10-22T17:54:40.176678+00:00",
+    "endedUTC": "2026-10-22T17:54:40.391269+00:00",
+    "log": "verification/master-audit/lockfile-final.log"
+  },
+  {
+    "name": "migrations-final",
+    "command": [
+      "npm",
+      "run",
+      "audit:migration-chain"
+    ],
+    "exitCode": 0,
+    "status": "PASS",
+    "startedUTC": "2026-10-22T17:54:40.391752+00:00",
+    "endedUTC": "2026-10-22T17:54:40.606470+00:00",
+    "log": "verification/master-audit/migrations-final.log"
+  },
+  {
+    "name": "typecheck-final",
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "status": "PASS",
+    "startedUTC": "2026-10-22T17:54:40.606849+00:00",
+    "endedUTC": "2026-10-22T17:54:57.460803+00:00",
+    "log": "verification/master-audit/typecheck-final.log"
+  },
+  {
+    "name": "source-final",
+    "command": [
+      "npm",
+      "run",
+      "check:source"
+    ],
+    "exitCode": 0,
+    "status": "PASS",
+    "startedUTC": "2026-10-22T17:54:57.461131+00:00",
+    "endedUTC": "2026-10-22T17:55:13.913284+00:00",
+    "log": "verification/master-audit/source-final.log"
+  },
+  {
+    "name": "architecture-final",
+    "command": [
+      "npm",
+      "run",
+      "audit:architecture"
+    ],
+    "exitCode": 0,
+    "status": "PASS",
+    "startedUTC": "2026-10-22T17:55:13.913611+00:00",
+    "endedUTC": "2026-10-22T17:55:14.128771+00:00",
+    "log": "verification/master-audit/architecture-final.log"
+  },
+  {
+    "name": "handover-final",
+    "command": [
+      "npm",
+      "run",
+      "audit:handover"
+    ],
+    "exitCode": 1,
+    "status": "FAIL",
+    "startedUTC": "2026-10-22T17:55:14.129106+00:00",
+    "endedUTC": "2026-10-22T17:55:14.351717+00:00",
+    "log": "verification/master-audit/handover-final.log"
+  },
+  {
+    "name": "build-final",
+    "command": [
+      "npm",
+      "run",
+      "build:services"
+    ],
+    "exitCode": 1,
+    "status": "FAIL",
+    "startedUTC": "2026-10-22T17:55:14.352197+00:00",
+    "endedUTC": "2026-10-22T17:55:29.018209+00:00",
+    "log": "verification/master-audit/build-final.log"
+  }
+]

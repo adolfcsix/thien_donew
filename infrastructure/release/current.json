@@ -10,28 +10,28 @@
       "status": "OPEN",
       "evidenceRequired": "npm ci from immutable lockfile on Windows and Linux; logs",
       "localResult": "PARTIAL",
-      "remaining": "A72: npm registry DNS không phân giải; npm cache trống, dependency không được cài. Giữ OPEN cho đến khi npm ci với package-lock thật PASS."
+      "remaining": "Audit 2026-10-23: npm ci thực tế trên Linux PASS với dependency vá Next 16.4.2; Windows chưa kiểm tra."
     },
     {
       "id": "P0_TYPECHECK_BUILD",
       "status": "OPEN",
       "evidenceRequired": "NestJS/Next.js typecheck + build with installed dependency tree",
-      "localResult": "PARTIAL",
-      "remaining": "A72: Next/Nest typecheck/build còn BLOCKED vì thiếu dependency; chưa kiểm nghiệm build thực tế."
+      "localResult": "PASS_LOCAL",
+      "remaining": "Vòng 2: typecheck API/web và npm run build/full packaging Linux PASS; Windows/môi trường triển khai chưa nghiệm thu."
     },
     {
       "id": "P0_NODE_TESTS",
       "status": "OPEN",
       "evidenceRequired": "Current full Node.js suite and relevant integration evidence for the exact source bundle",
-      "localResult": "FAIL",
-      "remaining": "A72: 63/63 hồi quy trọng tâm PASS, 11/11 mới PASS; phép chạy gộp khác A71 đạt 2418/2471 với 53 lỗi MODULE_NOT_FOUND; npm test runner chuẩn dừng sau 111/359 tệp do giới hạn thời gian, KHÔNG đủ bằng chứng. A71 còn 44 lỗi import chưa được tái nghiệm thu với dependencies thật."
+      "localResult": "PASS_3179_NODE_60_SQL_26_DOM_5_HTTP_111_BROWSER_GROUPS",
+      "remaining": "Round 2 local suites PASS; native PostgreSQL concurrency, actual providers and target-environment integration acceptance remain unverified."
     },
     {
       "id": "P0_AUTH_DB_E2E",
       "status": "OPEN",
       "evidenceRequired": "isolated PostgreSQL test DB; register/login/MFA/Admin/chart/study/CMS migration coverage",
-      "localResult": "PARTIAL",
-      "remaining": "A64 118 SQL/service/upgrade tests on PGlite PASS; native PostgreSQL clean/upgrade/concurrency/backup not verified."
+      "localResult": "PASS_PGLITE_HTTP_BROWSER_ONLY",
+      "remaining": "Vòng 2: 60 SQL, 5 Next/Nest HTTP và các luồng MFA/Owner/IDOR Chromium PASS trên PGlite; PostgreSQL native/locking concurrency/backup chưa kiểm chứng."
     },
     {
       "id": "P0_PAYMENT_AI",
@@ -65,8 +65,8 @@
       "id": "P1_BROWSER_VISUAL",
       "status": "OPEN",
       "evidenceRequired": "production build browser E2E desktop/mobile, PDF fonts and 18 badges/5 Western themes",
-      "localResult": "PARTIAL",
-      "remaining": "A72: chưa có Next production build; E2E auth thay đổi phiên, Chrome/Edge/Safari iPhone, avatar, theme và 3D motion đều NOT VERIFIED."
+      "localResult": "PARTIAL_CHROMIUM_PASS",
+      "remaining": "Vòng 2: 89 nhóm account + 22 AI Chromium Linux PASS; 320/390/768/1024/1440/1920 có chọn lọc. Chưa Safari/iPhone/Edge/Firefox/thiết bị thật/WCAG toàn site."
     },
     {
       "id": "P1_PERFORMANCE",
@@ -80,7 +80,7 @@
       "status": "OPEN",
       "evidenceRequired": "verify all 78 images and attributions plus network/offline fallback in shipped artifact",
       "localResult": "PASS_LOCAL_NOT_ACCEPTED",
-      "remaining": "A59 offline browser evidence retained as history;648 protected files unchanged. No new asset/device/legal acceptance A60."
+      "remaining": "Audit 2026-10-23: đã đối chiếu 78 ảnh gốc khớp manifest cũ và ảnh nén từng ID; hiệu chỉnh bytes/hash có hồ sơ. Chưa nghiệm thu quyền xuất bản/visual/offline browser."
     }
   ],
   "legalDraftsApproved": false,
@@ -807,21 +807,149 @@
     }
   },
   "currentIterationVerification": {
-    "label": "A83 export download lifecycle consistency; NO-GO; source checks and focused regressions",
-    "sourceBase": "THIEN_DO_V11_164_102_A82_EXPORT_NATAL_RELIABILITY_NO_GO.zip",
+    "label": "A83 deep audit round 2; NO_GO; account/AI/session/history and layered verification",
+    "sourceBase": "THIEN_DO_A83_AUDITED_NO_GO.zip",
     "scope": [
-      "18 export flows migrated to shared downloadBlobFile helper without payload/schema changes",
-      "Legacy A82 export regression and new A83 retention tests",
-      "GitHub source-integrity checks and protected asset preservation"
+      "Transactional active-session and owned-context revalidation before AI reservation/completion",
+      "Authoritative private 401 clears sensitive UI; credential/403 errors keep valid session",
+      "Latest 80 AI answers plus owner-scoped precise cursor pagination and older-history UI",
+      "Current DOM fixtures/admin providers; browser QA isolation guard"
     ],
-    "focusedTests": "A83 new focused tests PASS; browser download E2E not performed",
-    "npmCi": "BLOCKED in prior rounds: registry unavailable; not rerun in this package",
-    "productionBuild": "NOT RUN: dependency environment unavailable",
-    "browserE2E": "NOT RUN",
-    "nativePostgres": "NOT RUN",
-    "realProviders": "NOT RUN",
+    "typecheck": "PASS API/web",
+    "productionBuild": "PASS full Linux compile and standalone packaging; not deployment acceptance",
+    "sql": "PASS 60/60; PGlite WASM, not native PostgreSQL",
+    "http": "PASS 5 scenarios, 30 requests/16 endpoints through real Next/Nest/PGlite; controlled mail/Gemini",
+    "dom": "PASS 26/26 actual React DOM tests",
+    "browser": "PASS 89 account groups + 22 AI groups; Chromium Linux only; no page errors",
+    "nodeTests": "PASS 3179/3179 across 365 CJS files; 0 skipped",
+    "nativePostgres": "NOT TESTED",
+    "realProviders": "NOT TESTED",
     "productionDecision": "NO_GO; all 11 blocking gates remain OPEN",
-    "sourceCheck": "PASS: source TS/TSX parse and relative-import checks; does not replace full build",
-    "staticAudits": "PASS handover, architecture, lockfile, migration, GitHub source preflight"
+    "evidence": "verification/deep-audit; TEST_MATRIX.md"
+  },
+  "masterAuditRound1": {
+    "dateLocal": "2026-10-23",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "source": "THIEN_DO_A83_OPT_GITHUB_SOURCE(1).zip",
+    "sourceSHA256": "db9003b7dc3bed7fb9b2436fb4853fd4ad3eb6205ddef81407be84c312d14c3a",
+    "status": "NO_GO",
+    "scope": "Static inventory, reproducible local baseline and first foundation/security corrections; NOT full product acceptance",
+    "inventory": {
+      "pageRoutes": 82,
+      "apiEndpoints": 231,
+      "controllerFiles": 17,
+      "jsxModules": 220,
+      "interactionCandidates": 2005,
+      "runtimeInteractionsVerified": 0
+    },
+    "security": {
+      "nextBefore": "16.4.0",
+      "nextAfter": "16.4.2",
+      "npmAuditAfter": 0,
+      "exploitability": "NOT VERIFIED"
+    },
+    "baseline": {
+      "tests": 3161,
+      "passed": 3156,
+      "failed": 5,
+      "skipped": 0,
+      "files": 363
+    },
+    "tarot": {
+      "decoded": 156,
+      "baselineHashMismatches": 78,
+      "sourceOriginalsMatched": 78,
+      "optimizedPairsCompared": 78,
+      "minPSNRdB": 34.15582615843579,
+      "maxPSNRdB": 36.807610373282046,
+      "status": "PASS_LOCAL_NOT_ACCEPTED",
+      "evidence": "verification/master-audit/tarot-optimization-review.json"
+    },
+    "currentEvidence": "TEST_MATRIX.md; verification/master-audit/final-commands.json",
+    "notTested": [
+      "native PostgreSQL",
+      "Windows",
+      "Safari/iPhone",
+      "browser interactions",
+      "PayOS/Gemini/mail/OAuth providers",
+      "backup/restore",
+      "field performance"
+    ],
+    "verified": {
+      "nodeTests": 3161,
+      "nodePass": 3161,
+      "nodeFail": 0,
+      "nodeSkipped": 0,
+      "nodeFiles": 363,
+      "apiWebTypecheck": "PASS",
+      "fullBuildPackaging": "PASS",
+      "staticSource": "PASS",
+      "standaloneGuestHttpRoutes": 73,
+      "dynamicPageRoutesNotTested": 9,
+      "scope": "Local Linux evidence only; no browser/DB/provider certification"
+    }
+  },
+  "masterAuditRound2": {
+    "dateLocal": "2026-10-23",
+    "sourceBaseCheckpoint": "17577a530c1a42682a2ec2f9e3e0c8c22c801dd8",
+    "status": "NO_GO",
+    "scope": "Account/session AI completion, bounded history pagination, admin capability tests, SQL/HTTP/DOM/Chromium verification",
+    "verified": {
+      "sqlPGlite": {
+        "pass": 60,
+        "tests": 60,
+        "files": 12
+      },
+      "reactDOM": {
+        "pass": 26,
+        "tests": 26
+      },
+      "http": {
+        "pass": 5,
+        "tests": 5,
+        "requests": 30,
+        "endpointSignatures": 16,
+        "stack": "Next standalone -> Nest -> isolated PGlite"
+      },
+      "browser": {
+        "accountGroups": 89,
+        "aiGroups": 22,
+        "pageErrors": 0,
+        "engine": "Chromium 153.0.8010.0 Linux headless; multiprocess; SwiftShader",
+        "viewports": [
+          320,
+          390,
+          768,
+          1024,
+          1440,
+          1920
+        ]
+      },
+      "typecheck": "PASS",
+      "fullBuildPackaging": "PASS",
+      "nodeFinal": {
+        "pass": 3179,
+        "tests": 3179,
+        "files": 365,
+        "skipped": 0,
+        "evidence": "verification/deep-audit/node-final-results.json"
+      }
+    },
+    "inventory": {
+      "pageRoutes": 82,
+      "apiEndpoints": 231,
+      "interactionCandidates": 2006
+    },
+    "noProductionAcceptance": [
+      "PostgreSQL native",
+      "Windows",
+      "Safari/iPhone",
+      "actual provider delivery",
+      "PayOS sandbox/production",
+      "backup/restore",
+      "field performance",
+      "legal approval"
+    ],
+    "evidence": "TEST_MATRIX.md; docs/current/runtime-coverage.json"
   }
 }

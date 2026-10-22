@@ -33,7 +33,7 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
   class BrowserSqlModule{};Module({controllers:Reflect.getMetadata('controllers',AppModule),providers:Reflect.getMetadata('providers',AppModule).map(p=>p===DatabaseService?{provide:DatabaseService,useValue:db}:p)})(BrowserSqlModule);
   api=await NestFactory.create(BrowserSqlModule,{logger:false});await api.listen(8080,'127.0.0.1');
   app=require('next')({dev:false,dir:path.join(root,'apps/web'),hostname:'127.0.0.1',port:3614});await app.prepare();web=require('node:http').createServer(app.getRequestHandler());await new Promise(r=>web.listen(3614,'127.0.0.1',r));
-  browser=await chromium.launch({headless:true,...(process.env.THIENDO_CHROMIUM_PATH?{executablePath:process.env.THIENDO_CHROMIUM_PATH}:{}),args:['--no-sandbox','--disable-dev-shm-usage','--disable-gpu']});
+  browser=await chromium.launch(require('./helpers-browser-launch.cjs').browserLaunchOptions());
   // Next prepares a production build in this process; keep the isolated HTTP API in test mode.
   process.env.NODE_ENV='test';
   const origin='http://127.0.0.1:3614',password='Browser!'+randomBytes(16).toString('hex');
@@ -105,6 +105,22 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
   record({case:'follow-up sends recent same-owner same-snapshot context; another account cannot use private chart/conversation',verdict:'PASS'});
   const usage=await(await member.context.request.get(origin+'/api/huyen-giai/status')).json();assert.equal(usage.limits.usedToday,2);assert.equal(usage.limits.remainingToday,3);
   record({case:'user usage/remaining count agrees with persisted daily reservations',verdict:'PASS'});
+  // A long history must open its latest answers, then reach all earlier answers.
+  const prior=(await pg.query('SELECT engine_revision,facts_sha256 FROM ai_messages WHERE conversation_id=$1 LIMIT 1',[conversation])).rows[0];
+  const olderAnswer={summary:'Bản luận giải cũ trong dữ liệu QA.',findings:[{kind:'uncertain',text:'Chỉ dùng kiểm tra tải lịch sử trước.',evidenceIds:['P1']}],missingData:[]};
+  for(let n=1;n<=165;n++){
+   const usageId=require('node:crypto').randomUUID();
+   await pg.query("INSERT INTO ai_usage(id,user_id,conversation_id,model,status,reserved_microusd,created_at) VALUES($1,$2,$3,'controlled','completed',0,clock_timestamp()-INTERVAL '1 day')",[usageId,member.user.id,conversation]);
+   await pg.query("INSERT INTO ai_messages(id,conversation_id,user_id,usage_id,question,response,engine_revision,facts_sha256,created_at) VALUES(gen_random_uuid(),$1,$2,$3,$4,$5,$6,$7,'2026-01-01T00:00:00.123456Z')",[conversation,member.user.id,usageId,'Older fixture '+n,JSON.stringify(olderAnswer),prior.engine_revision,prior.facts_sha256]);
+  }
+  await memberPage.reload({waitUntil:'networkidle'});await memberPage.getByRole('button').filter({hasText:'167 lượt'}).click();
+  const articles=memberPage.locator('article').filter({hasText:'Câu hỏi:'});await memberPage.waitForFunction(()=>document.querySelectorAll('article').length===80);
+  assert.equal(await memberPage.getByText('Luận giải kiểm thử có kiểm soát.',{exact:true}).count(),2);
+  let earlierRequests=0;memberPage.on('request',request=>{if(request.url().includes('/api/huyen-giai/conversations/')&&request.url().includes('?before='))earlierRequests++;});
+  await memberPage.getByRole('button',{name:'Xem các lượt trước',exact:true}).evaluate(button=>{button.click();button.click()});
+  await memberPage.waitForFunction(()=>document.querySelectorAll('article').length===160);assert.equal(earlierRequests,1);
+  await memberPage.getByRole('button',{name:'Xem các lượt trước',exact:true}).click();await memberPage.waitForFunction(()=>document.querySelectorAll('article').length===167);assert.equal(await articles.count(),167);assert.equal(await memberPage.getByRole('button',{name:'Xem các lượt trước',exact:true}).count(),0);
+  record({case:'167-message history opens latest 80, paired older clicks make one read, all 167 answers remain accessible with no duplicate rendering',verdict:'PASS'});
   // Gemini outage does not substitute fabricated output and still keeps the SQL facts.
   providerMode='fail';report=await ask(owner.context,{...reportQuery,explain:true});assert.equal(report.body.interpretation,null);assert.ok(report.body.aiError);assert.equal(report.body.facts[0].value,3);providerMode='ok';
   record({case:'provider outage preserves grounded admin facts and reports interpretation failure',verdict:'PASS'});
@@ -115,6 +131,16 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
   assert.equal((await ask(owner.context,reportQuery)).response.status(),429);await pg.query("UPDATE admin_audit SET created_at=clock_timestamp()-INTERVAL '2 minutes' WHERE action='insights.read'");
   record({case:'persistent admin report rate limit rejects excess read attempts',verdict:'PASS'});
   for(const width of [390,1440])for(const [p,route] of [[page,'/admin/tro-ly'],[memberPage,'/huyen-giai']]){await p.setViewportSize({width,height:1000});await p.goto(origin+route,{waitUntil:'networkidle'});assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);record({case:'AI workspace geometry',route,width,verdict:'PASS'})}
+  // Browser private state must disappear after a session is revoked during generation.
+  await pg.query('UPDATE ai_runtime_config SET daily_budget_microusd=100000000 WHERE id=1');
+  await memberPage.goto(origin+'/huyen-giai',{waitUntil:'networkidle'});await memberPage.getByRole('button').filter({hasText:'167 lượt'}).click();
+  await memberPage.getByLabel('Câu hỏi hoặc nội dung cần giải thích',{exact:true}).fill('Giải thích thêm khi phiên còn hợp lệ.');await memberPage.getByRole('checkbox').check();
+  providerMode='delay';let userStarted;const userReady=new Promise(resolve=>userStarted=resolve);providerStarted=userStarted;
+  await memberPage.getByRole('button',{name:'Hỏi tiếp',exact:true}).click();await userReady;
+  const logout=await member.context.request.post(origin+'/api/auth/logout',{data:{}});assert.equal(logout.status(),200);providerRelease();
+  await memberPage.waitForURL(origin+'/',{timeout:15000});assert.equal(await memberPage.getByText('Luận giải kiểm thử có kiểm soát.',{exact:true}).count(),0);
+  assert.equal((await pg.query('SELECT COUNT(*)::int AS n FROM ai_messages WHERE conversation_id=$1',[conversation])).rows[0].n,167);
+  record({case:'logout during Gemini wait rejects stale completion, writes no message and removes private browser UI before returning home',verdict:'PASS'});
   // A role revoked while waiting on Gemini must not receive a finished report.
   await pg.query('UPDATE ai_runtime_config SET daily_budget_microusd=100000000 WHERE id=1');providerMode='delay';let started;const providerReady=new Promise(resolve=>started=resolve);providerStarted=started;
   const pendingAsk=ask(owner.context,{...reportQuery,explain:true});await providerReady;await pg.query('DELETE FROM admin_memberships WHERE user_id=$1',[owner.user.id]);providerRelease();assert.equal((await pendingAsk).response.status(),403);

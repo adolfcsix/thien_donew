@@ -70,7 +70,9 @@ test('V11.53 release gate checks workspace and metadata contracts before reporti
 });
 test('V11.53 a future committed lockfile is validated instead of causing test failure',async()=>{
  const flow=fs.readFileSync(path.join(root,'.github/workflows/bootstrap-lockfile.yml'),'utf8');
- assert.match(flow,/npm install --package-lock-only/);assert.match(flow,/npm ci --no-audit/);
+ assert.match(flow,/node infrastructure\/scripts\/validate-lockfile\.mjs/);
+ assert.doesNotMatch(flow,/npm install --package-lock-only/);
+ assert.match(flow,/npm ci --no-audit/);
  if(fs.existsSync(path.join(root,'package-lock.json'))){
    const {validateRepositoryLock}=await import('../infrastructure/scripts/validate-lockfile.mjs');
    assert.deepEqual(validateRepositoryLock(root),[], 'A committed lockfile must pass structural validation');

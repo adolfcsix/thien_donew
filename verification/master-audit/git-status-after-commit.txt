@@ -1,0 +1,4 @@
+?? verification/master-audit/change-stat.txt
+?? verification/master-audit/changes.patch
+?? verification/master-audit/git-history.txt
+?? verification/master-audit/git-status-after-commit.txt

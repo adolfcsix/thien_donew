@@ -1,0 +1,53 @@
+[
+  {
+    "name": "suite-complete",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exitCode": 0,
+    "status": "PASS",
+    "startedUTC": "2026-10-22T17:57:23.922173+00:00",
+    "endedUTC": "2026-10-22T17:58:30.768975+00:00",
+    "log": "verification/master-audit/suite-complete.log"
+  },
+  {
+    "name": "source-complete",
+    "command": [
+      "npm",
+      "run",
+      "check:source"
+    ],
+    "exitCode": 0,
+    "status": "PASS",
+    "startedUTC": "2026-10-22T17:58:30.769597+00:00",
+    "endedUTC": "2026-10-22T17:58:46.526499+00:00",
+    "log": "verification/master-audit/source-complete.log"
+  },
+  {
+    "name": "handover-complete",
+    "command": [
+      "npm",
+      "run",
+      "audit:handover"
+    ],
+    "exitCode": 0,
+    "status": "PASS",
+    "startedUTC": "2026-10-22T17:58:46.526880+00:00",
+    "endedUTC": "2026-10-22T17:58:46.743661+00:00",
+    "log": "verification/master-audit/handover-complete.log"
+  },
+  {
+    "name": "build-complete",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "exitCode": 0,
+    "status": "PASS",
+    "startedUTC": "2026-10-22T17:58:46.744107+00:00",
+    "endedUTC": "2026-10-22T17:59:01.408065+00:00",
+    "log": "verification/master-audit/build-complete.log"
+  }
+]

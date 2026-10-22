@@ -21,6 +21,7 @@ export function useHuyenGiai() {
   const [disclosureRetry,setDisclosureRetry] = useState(0), [consent,setConsent] = useState(false);
   const [busy,setBusy] = useState(false), [historyLoading,setHistoryLoading] = useState(false);
   const [error,setError] = useState(''), [notice,setNotice] = useState('');
+  const [nextBefore,setNextBefore] = useState<string|null>(null),[loadingEarlier,setLoadingEarlier] = useState(false);
 
   const refresh = useCallback(async () => {
     if (scopes.mutation.pending) return;
@@ -60,18 +61,18 @@ export function useHuyenGiai() {
 
   function chooseChart(id:string) {
     if (scopes.mutation.pending || scopes.history.pending) return;
-    setDisclosure(null); setConsent(false); setSelection(current=>({...current,chartId:id})); setMessages([]); setError('');
+    setDisclosure(null); setConsent(false); setSelection(current=>({...current,chartId:id})); setMessages([]); setNextBefore(null); setError('');
   }
 
   async function openConversation(id:string) {
     if (scopes.mutation.pending) return;
     const signal = scopes.history.replace();
-    setHistoryLoading(true); setError(''); setNotice(''); setMessages([]); setConsent(false);
+    setHistoryLoading(true); setLoadingEarlier(false); setNextBefore(null); setError(''); setNotice(''); setMessages([]); setConsent(false);
     try {
       const history = checked<History>(await api<unknown>('/api/huyen-giai/conversations/'+encodeURIComponent(id),{signal,timeoutMs:15000}),value=>historyResponse(value,id));
       if (!scopes.history.owns(signal)) return;
       setSelection({conversationId:history.conversation.id,chartId:history.conversation.chartId || ''});
-      setMode(history.conversation.mode); setTopic(history.conversation.topic); setMessages(history.messages); setQuestion('');
+      setMode(history.conversation.mode); setTopic(history.conversation.topic); setMessages(history.messages); setNextBefore(history.nextBefore??null); setQuestion('');
     } catch (reason) {
       if (scopes.history.owns(signal)) setError((reason as Error).message);
     } finally {
@@ -79,9 +80,27 @@ export function useHuyenGiai() {
     }
   }
 
+  async function loadEarlier() {
+    if (!conversationId || !nextBefore || scopes.mutation.pending) return;
+    const signal=scopes.history.tryStart();
+    if(!signal)return;
+    setHistoryLoading(true);setLoadingEarlier(true);setError('');
+    try {
+      const page=checked<History>(await api<unknown>('/api/huyen-giai/conversations/'+encodeURIComponent(conversationId)+'?before='+encodeURIComponent(nextBefore),{signal,timeoutMs:15000}),value=>historyResponse(value,conversationId));
+      if(!scopes.history.owns(signal))return;
+      if(page.nextBefore===nextBefore)throw new Error('Mốc lịch sử chưa tiến lên. Hãy mở lại cuộc luận giải.');
+      setMessages(current=>{const ids=new Set(current.map(message=>message.id));return [...page.messages.filter(message=>!ids.has(message.id)),...current];});
+      setNextBefore(page.nextBefore??null);
+    } catch(reason) {
+      if(scopes.history.owns(signal))setError((reason as Error).message);
+    } finally {
+      if(scopes.history.owns(signal)){scopes.history.finish(signal);setHistoryLoading(false);setLoadingEarlier(false);}
+    }
+  }
+
   function reset() {
     if (scopes.mutation.pending) return;
-    scopes.history.cancel(); setHistoryLoading(false); setMessages([]);
+    scopes.history.cancel(); setHistoryLoading(false); setLoadingEarlier(false); setNextBefore(null); setMessages([]);
     setSelection({conversationId:null,chartId:charts.some(chart => chart.id === chartId) ? chartId : charts[0]?.id || ''});
     setConsent(false); setQuestion(''); setTopic('overview'); setError(''); setNotice('Bắt đầu cuộc luận giải mới.');
   }
@@ -138,7 +157,7 @@ export function useHuyenGiai() {
       if(receipt.deleted!==true) throw new Error('Chưa xác nhận được việc xóa. Hãy làm mới lịch sử để kiểm tra.');
       if (!scopes.mutation.owns(signal)) return;
       setConversations(items => items.filter(item => item.id !== id));
-      if (id === conversationId) { setSelection(current=>({...current,conversationId:null})); setMessages([]); setConsent(false); setQuestion(''); }
+      if (id === conversationId) { setSelection(current=>({...current,conversationId:null})); setMessages([]); setNextBefore(null); setConsent(false); setQuestion(''); }
       setNotice('Đã xóa cuộc luận giải.');
     } catch (reason) {
       if (scopes.mutation.owns(signal)) setError((reason as Error).message);
@@ -147,7 +166,7 @@ export function useHuyenGiai() {
     }
   }
 
-  return {charts,conversations,status,catalogLoading,catalogError,refresh,chartId,chooseChart,conversationId,
+  return {charts,conversations,status,catalogLoading,catalogError,refresh,chartId,chooseChart,conversationId,nextBefore,loadEarlier,loadingEarlier,
     mode,setMode,topic,setTopic,question,setQuestion,messages,disclosure,disclosureError,
     retryDisclosure:() => { setConsent(false); setDisclosure(null); setDisclosureRetry(value => value+1); },
     consent,setConsent,busy,historyLoading,error,notice,openConversation,reset,generate,rate,removeConversation};

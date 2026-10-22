@@ -1,0 +1,206 @@
+{
+  "scope": "Selected runtime evidence; not full acceptance of every route/control/state. DOM, Chromium, HTTP and SQL counts are distinct.",
+  "browser": {
+    "version": "153.0.8010.0",
+    "platform": "Linux headless; multiprocess; SwiftShader",
+    "nativeSafariIPhone": false
+  },
+  "suites": {
+    "account": {
+      "groups": 89,
+      "pageErrors": [],
+      "evidence": "verification/deep-audit/account-browser-results.json"
+    },
+    "ai": {
+      "groups": 22,
+      "pageErrors": [],
+      "evidence": "verification/deep-audit/ai-browser-results.json"
+    }
+  },
+  "viewports": [
+    320,
+    390,
+    768,
+    1024,
+    1440,
+    1920
+  ],
+  "http": {
+    "scope": "Next standalone -> Nest -> PGlite; controlled Gemini and captured mail; not browser/native PostgreSQL/provider acceptance",
+    "requests": 30,
+    "endpoints": 16,
+    "observations": [
+      {
+        "method": "POST",
+        "route": "/api/auth/register",
+        "status": 403
+      },
+      {
+        "method": "POST",
+        "route": "/api/auth/register",
+        "status": 201
+      },
+      {
+        "method": "POST",
+        "route": "/api/auth/register",
+        "status": 201
+      },
+      {
+        "method": "GET",
+        "route": "/api/auth/me",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "route": "/api/charts",
+        "status": 201
+      },
+      {
+        "method": "GET",
+        "route": "/api/charts/:id",
+        "status": 404
+      },
+      {
+        "method": "GET",
+        "route": "/api/charts",
+        "status": 401
+      },
+      {
+        "method": "POST",
+        "route": "/api/huyen-giai/generate",
+        "status": 201
+      },
+      {
+        "method": "GET",
+        "route": "/api/huyen-giai/conversations/:id",
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "route": "/api/huyen-giai/conversations/:id",
+        "status": 404
+      },
+      {
+        "method": "GET",
+        "route": "/api/admin/console/session",
+        "status": 403
+      },
+      {
+        "method": "POST",
+        "route": "/api/auth/email/send",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "route": "/api/auth/email/verify",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "route": "/api/auth/mfa/setup",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "route": "/api/auth/mfa/confirm",
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "route": "/api/admin/console/session",
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "route": "/api/admin/insights/dashboard",
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "route": "/api/admin/console/session",
+        "status": 403
+      },
+      {
+        "method": "POST",
+        "route": "/api/auth/register",
+        "status": 201
+      },
+      {
+        "method": "GET",
+        "route": "/api/admin/console/session",
+        "status": 403
+      },
+      {
+        "method": "POST",
+        "route": "/api/auth/email/send",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "route": "/api/auth/email/verify",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "route": "/api/auth/mfa/setup",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "route": "/api/auth/mfa/confirm",
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "route": "/api/admin/insights/dashboard",
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "route": "/api/admin/console/members",
+        "status": 403
+      },
+      {
+        "method": "POST",
+        "route": "/api/admin/insights/ask",
+        "status": 403
+      },
+      {
+        "method": "POST",
+        "route": "/api/auth/logout",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "route": "/api/huyen-giai/generate",
+        "status": 401
+      },
+      {
+        "method": "GET",
+        "route": "/api/auth/me",
+        "status": 200
+      }
+    ]
+  },
+  "controls": [
+    {
+      "id": "apps/web/src/app/huyen-giai/page.tsx:189:23",
+      "component": "apps/web/src/app/huyen-giai/page.tsx",
+      "label": "Xem các lượt trước",
+      "tested": [
+        "recognizable accessible name: Chromium PASS",
+        "physical click and final database-backed result: Chromium PASS",
+        "paired click makes one read: Chromium PASS",
+        "late response cannot replace another conversation: React DOM PASS",
+        "offline retry retains messages/cursor: React DOM PASS"
+      ],
+      "notFullyTested": [
+        "hover/focus appearance",
+        "touch on native device",
+        "all zoom/contrast/screen readers",
+        "every theme and every required state"
+      ],
+      "evidenceCase": "167-message history opens latest 80, paired older clicks make one read, all 167 answers remain accessible with no duplicate rendering"
+    }
+  ]
+}

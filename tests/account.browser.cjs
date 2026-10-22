@@ -25,7 +25,7 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
   class BrowserSqlModule{};Module({controllers:Reflect.getMetadata('controllers',AppModule),providers:Reflect.getMetadata('providers',AppModule).map(p=>p===DatabaseService?{provide:DatabaseService,useValue:db}:p)})(BrowserSqlModule);
   api=await NestFactory.create(BrowserSqlModule,{logger:false,bodyParser:false});const express=require('express');api.use('/api/auth/avatar',express.raw({type:['image/jpeg','image/png','image/webp'],limit:'300kb'}));api.use(express.json({limit:'80kb'}));await api.listen(8080,'127.0.0.1');
   app=require('next')({dev:false,dir:webWork,hostname:'127.0.0.1',port:3614});await app.prepare();web=require('node:http').createServer(app.getRequestHandler());await new Promise(r=>web.listen(3614,'127.0.0.1',r));
-  browser=await chromium.launch({headless:true,...(process.env.THIENDO_CHROMIUM_PATH?{executablePath:process.env.THIENDO_CHROMIUM_PATH}:{}),args:['--no-sandbox','--disable-dev-shm-usage','--disable-gpu']});
+  browser=await chromium.launch(require('./helpers-browser-launch.cjs').browserLaunchOptions());
   // Next prepares a production build in this process; keep the isolated HTTP API in test mode.
   process.env.NODE_ENV='test';
   const origin='http://127.0.0.1:3614',password='Browser!'+randomBytes(16).toString('hex');
@@ -75,7 +75,13 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  await page.goto(origin+'/admin/books',{waitUntil:'networkidle'});await page.getByRole('heading',{name:'Quản trị sách',exact:true}).waitFor();await page.reload({waitUntil:'networkidle'});await page.getByRole('heading',{name:'Quản trị sách',exact:true}).waitFor();
  for(const width of [390,768,1024,1440]){await page.setViewportSize({width,height:1000});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,'Admin books overflow '+width)}
  record({case:'direct admin subsection, reload and four viewport sizes remain functional',verdict:'PASS'});
- const regular=await member.context.newPage();await regular.goto(origin+'/admin',{waitUntil:'networkidle'});await regular.getByRole('alert').filter({hasText:'không có quyền quản trị'}).waitFor();assert.equal((await member.context.request.get(origin+'/api/admin/overview')).status(),403);await regular.close();
+ const regular=await member.context.newPage();await regular.goto(origin+'/admin',{waitUntil:'networkidle'});
+ const memberApi=await(await member.context.request.get(origin+'/api/auth/me')).json();
+ const memberBrowser=await regular.evaluate(async()=>await(await fetch('/api/auth/me',{cache:'no-store',credentials:'include'})).json());
+ console.log('QA_MEMBER_IDENTITY',JSON.stringify({expected:member.user.id,api:memberApi.user?.id,browser:memberBrowser.user?.id,owner:owner.user.id}));
+ assert.equal(memberApi.user?.id,member.user.id,'API request context must retain member identity');
+ assert.equal(memberBrowser.user?.id,member.user.id,'Browser must retain member identity');
+ await regular.getByRole('alert').filter({hasText:'không có quyền quản trị'}).waitFor();assert.equal((await member.context.request.get(origin+'/api/admin/overview')).status(),403);await regular.close();
  // Expiring assurance requires MFA again, even though the login session is still alive.
  await pg.query("UPDATE admin_session_assurance SET verified_at=clock_timestamp()-interval '13 hours' WHERE user_id=$1",[owner.user.id]);await page.waitForTimeout(300);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));await page.getByRole('heading',{name:'Bảo vệ khu vực quản trị',exact:true}).waitFor();assert.equal((await fresh.request.get(origin+'/api/admin/overview')).status(),403);
  record({case:'ordinary member denied and expired MFA assurance cannot retain admin access',verdict:'PASS'});
@@ -175,9 +181,13 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  await authPage.goto(origin+'/admin',{waitUntil:'networkidle'});await authPage.getByRole('button',{name:'Đăng nhập quản trị',exact:true}).click();
  await authPage.route('**/api/billing/access',route=>route.fulfill({status:503,contentType:'application/json',body:JSON.stringify({message:'Controlled role outage'})}));
  const retryDialog=authPage.getByRole('dialog');await retryDialog.getByLabel('Username hoặc email',{exact:true}).fill('qa_member');await retryDialog.getByLabel('Mật khẩu',{exact:true}).fill(password);await retryDialog.getByRole('button',{name:'Đăng nhập',exact:true}).click();
- await retryDialog.getByRole('alert').waitFor();assert.equal(new URL(authPage.url()).pathname,'/admin');assert.equal(await authPage.getByRole('navigation',{name:'Điều hướng quản trị'}).count(),0);
- await authPage.unroute('**/api/billing/access');await retryDialog.getByRole('button',{name:'Tiếp tục vào không gian tài khoản',exact:true}).click();await authPage.waitForURL('**/chart');
- record({case:'post-login permission outage offers retry and never guesses a role; retry routes member to /chart',verdict:'PASS'});
+ // A67 already made a confirmed login independent of a transient access outage.
+ // Keep the actual security invariant: unknown admin rights never become admission.
+ await authPage.waitForURL('**/chart');assert.equal(await authPage.getByRole('navigation',{name:'Điều hướng quản trị'}).count(),0);
+ assert.equal((await(await anonymous.request.get(origin+'/api/auth/me')).json()).user.id,member.user.id);
+ assert.equal((await anonymous.request.get(origin+'/api/admin/overview')).status(),403);
+ await authPage.unroute('**/api/billing/access');
+ record({case:'confirmed login survives a permission-service outage, defaults to /chart and never assumes administrative access',verdict:'PASS'});
  await anonymous.close();
 
  await fresh.close(); const shortcutPage=await member.context.newPage();await shortcutPage.goto(origin+'/',{waitUntil:'networkidle'});await shortcutPage.keyboard.press('Control+k');await shortcutPage.getByRole('dialog',{name:'Tìm nhanh trang và công cụ',exact:true}).waitFor();await shortcutPage.keyboard.press('Escape');await shortcutPage.waitForFunction(()=>document.body.style.overflow!=='hidden');assert.equal(await shortcutPage.locator('.command-backdrop').count(),0);

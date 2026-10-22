@@ -1,6 +1,8 @@
 import type { AuthUser, ChartInput, AstrologyResult, SavedChart } from '@thiendo/shared-types';
 // First-party API routes are proxied by Next.js; no public backend URL or cross-origin cookie.
 const ROOT = '';
+/** Signals only a server-confirmed private-session rejection; never includes account data. */
+export const SESSION_EXPIRED_EVENT = 'thiendo:session-expired';
 // Authentication requests should never leave the account form spinning forever.
 // Keep long-running calculation/export routes outside this timeout policy.
 const ACCOUNT_TIMEOUT_MS = 20_000;
@@ -195,6 +197,15 @@ export async function api<T>(path: string, options: { method?: string; body?: un
       body: options.body ? JSON.stringify(options.body) : undefined,
       credentials: 'include', cache: 'no-store', signal: timeout?.signal ?? options.signal,
     });
+    // Revoke displayed private state as soon as the HTTP status is known, even
+    // if the error body is slow. A wrong login/password/OTP must not log out a
+    // valid existing session, so credential-check endpoints are excluded.
+    const protectedAuthRead = (options.method || 'GET').toUpperCase() === 'GET' &&
+      /^\/api\/auth\/(?:me|sessions|security\/events|mfa\/status|email\/status)(?:\?|$)/.test(path);
+    if (response.status === 401 && path.startsWith('/api/') &&
+        (!/^\/api\/auth(?:\/|\?|$)/.test(path) || protectedAuthRead) && typeof window !== 'undefined') {
+      window.dispatchEvent(new Event(SESSION_EXPIRED_EVENT));
+    }
     const raw: unknown = await response.json().catch(error => {
       // A timed-out response body is not an empty JSON payload.
       if (timeout?.signal.aborted || options.signal?.aborted) throw error;

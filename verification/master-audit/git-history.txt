@@ -1,0 +1,2 @@
+17577a5 Audit A83 foundation: patch Next, reconcile verified Tarot assets, repair CI contracts and inventory
+4d2a570 Baseline supplied A83 source archive; no upstream history available

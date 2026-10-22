@@ -31,7 +31,7 @@ Write-Host "Latest run: https://github.com/$remote/actions/runs/$runId"
 $reportDir = Join-Path $root 'docs/reports/github-actions'
 $artifactDir = Join-Path $reportDir "run-$runId"
 New-Item -ItemType Directory -Force -Path $artifactDir | Out-Null
-& gh run download $runId -R $remote -n thien-do-npm-lockfile -D $artifactDir
+& gh run download $runId -R $remote -n thien-do-verified-npm-lockfile -D $artifactDir
 if ($LASTEXITCODE -eq 0) {
   $candidate = Join-Path $artifactDir 'package-lock.json'
   if (-not (Test-Path $candidate)) { throw 'Artifact download succeeded, but package-lock.json is missing.' }

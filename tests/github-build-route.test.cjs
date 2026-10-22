@@ -20,10 +20,11 @@ test('Upload blocks secret filenames and existing repository checkout',()=>{
  const ign=read('.gitignore');
  for(const pattern of ['.env.*','!.env.example','.npmrc','*.pem','docs/reports/'])assert.ok(ign.includes(pattern),pattern);
 });
-test('GitHub workflow boots a real lockfile then installs and builds with test PostgreSQL',()=>{
+test('GitHub workflow validates the committed lockfile then installs and builds with test PostgreSQL',()=>{
  const yml=read('.github/workflows/bootstrap-lockfile.yml');
  assert.match(yml,/workflow_dispatch:/);
- assert.match(yml,/npm install --package-lock-only/);
+ assert.match(yml,/node infrastructure\/scripts\/validate-lockfile\.mjs/);
+ assert.doesNotMatch(yml,/npm install --package-lock-only/);
  assert.match(yml,/npm ci/);
  assert.match(yml,/npm run typecheck && npm run build/);
  assert.match(yml,/postgres:16-alpine/);
@@ -33,7 +34,10 @@ test('GitHub workflow boots a real lockfile then installs and builds with test P
 });
 test('Result tool downloads selected artifact and validates lockfile',()=>{
  const s=read('infrastructure/scripts/get-github-build-results.ps1');
- assert.match(s,/thien-do-npm-lockfile/);
+ const workflow=read('.github/workflows/bootstrap-lockfile.yml');
+ const artifact=workflow.match(/name: (thien-do-verified-npm-lockfile)/)?.[1];
+ assert.ok(artifact,'Workflow must publish a verified lockfile');
+ assert.ok(s.includes('-n '+artifact+' -D $artifactDir'),'Downloader must request the exact workflow artifact');
  assert.match(s,/import-lockfile\.mjs --candidate \$candidate --apply/);
  assert.match(read('infrastructure/scripts/import-lockfile.mjs'),/validateLockFile/);
  assert.match(s,/--log-failed/);

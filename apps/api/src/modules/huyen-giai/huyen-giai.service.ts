@@ -1,4 +1,4 @@
-import {BadRequestException, ConflictException, HttpException, HttpStatus, Injectable, NotFoundException, ServiceUnavailableException} from '@nestjs/common';
+import {BadRequestException, ConflictException, HttpException, HttpStatus, Injectable, NotFoundException, ServiceUnavailableException, UnauthorizedException} from '@nestjs/common';
 import {randomUUID} from 'node:crypto';
 import type {Request} from 'express';
 import {DatabaseService} from '../../common/database.service';
@@ -37,7 +37,25 @@ export class HuyenGiaiService {
   return {ai:{enabled:conf.enabled&&!!process.env.GEMINI_API_KEY,model:conf.model,disclaimer:DISCLAIMER,provider:'Google Gemini'},limits:{dailyUserCalls:effectiveLimit,usedToday:Number(used.calls),remainingToday:Math.max(0,effectiveLimit-Number(used.calls)),resetTimeZone:'UTC',plan:tier.isPro?'pro':'free',maxOutputTokens:conf.max_output_tokens},disclosure:['Phương pháp và phiên bản quy tắc','Tên 12 cung và địa chi','Danh mục sao chính/phụ trong từng cung','Tứ Hóa từ engine Thiên Đồ','Câu hỏi bạn chủ động nhập','Tóm tắt câu trả lời trước (nếu hỏi tiếp)'],excluded:['Email và mật khẩu','Tên hiển thị và avatar','Ngày, giờ, nơi sinh gốc','Hồ sơ cá nhân khác','Cookie hoặc mã phiên đăng nhập']};}
  async disclosure(req:Request,chartId:string){await this.auth.required(req);assertChartId(chartId);const chart=await this.charts.get(req,chartId);const pack=contract.factualPack(chart.result);return {factPack:pack.facts,hash:pack.digest,disclaimer:DISCLAIMER};}
  async conversations(req:Request){const user=await this.auth.required(req);const rows=await this.db.query(`SELECT c.id,c.chart_id AS "chartId",c.mode,c.topic,c.created_at AS "createdAt",c.updated_at AS "updatedAt",(SELECT count(*) FROM ai_messages m WHERE m.conversation_id=c.id)::int AS "turns" FROM ai_conversations c WHERE c.user_id=$1 ORDER BY c.updated_at DESC LIMIT 50`,[user.id]);return {conversations:rows.rows};}
- async history(req:Request,id:string){const user=await this.auth.required(req);assertChartId(id);const c=(await this.db.query('SELECT id,chart_id AS "chartId",mode,topic FROM ai_conversations WHERE id=$1 AND user_id=$2',[id,user.id])).rows[0];if(!c)throw new NotFoundException('Không tìm thấy cuộc luận giải');const rows=await this.db.query(`SELECT id,question,response,facts_sha256 AS "factsSha256",engine_revision AS "engineRevision",created_at AS "createdAt" FROM ai_messages WHERE conversation_id=$1 AND user_id=$2 ORDER BY created_at,id LIMIT 80`,[id,user.id]);return {conversation:c,messages:rows.rows,disclaimer:DISCLAIMER};}
+ async history(req:Request,id:string,before:unknown=undefined){
+  const user=await this.auth.required(req);assertChartId(id);
+  if(before!==undefined)assertChartId(before);
+  const c=(await this.db.query('SELECT id,chart_id AS "chartId",mode,topic FROM ai_conversations WHERE id=$1 AND user_id=$2',[id,user.id])).rows[0];
+  if(!c)throw new NotFoundException('Không tìm thấy cuộc luận giải');
+  if(before!==undefined){
+   const cursor=await this.db.query('SELECT id FROM ai_messages WHERE id=$3 AND conversation_id=$1 AND user_id=$2',[id,user.id,before]);
+   if(!cursor.rows[0])throw new NotFoundException('Mốc lịch sử không còn khả dụng. Hãy mở lại cuộc luận giải');
+  }
+  // Keep timestamp precision inside SQL. JS Date would lose PostgreSQL microseconds.
+  // The UUID tie-breaker prevents gaps/duplicates when several answers share a timestamp.
+  const rows=await this.db.query<{id:string;question:string;response:unknown;factsSha256:string;engineRevision:string;createdAt:Date}>(`
+   SELECT id,question,response,facts_sha256 AS "factsSha256",engine_revision AS "engineRevision",created_at AS "createdAt"
+   FROM ai_messages WHERE conversation_id=$1 AND user_id=$2
+   ${before===undefined?'':`AND (created_at,id)<(SELECT created_at,id FROM ai_messages WHERE id=$3 AND conversation_id=$1 AND user_id=$2)`}
+   ORDER BY created_at DESC,id DESC LIMIT 81`,before===undefined?[id,user.id]:[id,user.id,before]);
+  const messages=rows.rows.slice(0,80).reverse();
+  return {conversation:c,messages,nextBefore:rows.rows.length>80?messages[0].id:null,disclaimer:DISCLAIMER};
+ }
  async remove(req:Request,id:string){const user=await this.auth.required(req);assertChartId(id);const result=await this.db.query('DELETE FROM ai_conversations WHERE id=$1 AND user_id=$2',[id,user.id]);if(!result.rowCount)throw new NotFoundException();return {deleted:true};}
  async feedback(req:Request,messageId:string,raw:unknown){
   const user=await this.auth.required(req);assertChartId(messageId);
@@ -76,6 +94,10 @@ export class HuyenGiaiService {
  const usageId=randomUUID();const start=Date.now();let conversationId:string;
  try{
   conversationId=await this.db.transaction(async client=>{
+   // Recheck before reserving budget or sending a snapshot to the provider.
+   await this.auth.assertSessionInTransaction(client,req,user.id);
+   const ownedChart=await client.query('SELECT id FROM charts WHERE id=$1 AND user_id=$2 FOR SHARE',[input.chartId,user.id]);
+   if(!ownedChart.rows[0])throw new NotFoundException('Lá số không còn khả dụng. Hãy tải lại dữ liệu');
    const locked=(await client.query<AiConfig>('SELECT * FROM ai_runtime_config WHERE id=1 FOR UPDATE')).rows[0];
    // A runner may die after reserving. Count this as spent but release the inflight guard.
    await client.query("UPDATE ai_usage SET status='failed',billed_microusd=reserved_microusd,reserved_microusd=0,error_code='STALE_RESERVATION',finished_at=clock_timestamp() WHERE user_id=$1 AND status='reserved' AND created_at<clock_timestamp()-INTERVAL '3 minutes'",[user.id]);
@@ -106,6 +128,13 @@ export class HuyenGiaiService {
   const billed=promptTokens&&outputTokens?Math.max(reserved,contract.costMicro(promptTokens,outputTokens,{input_price_microusd_per_million:Number(conf.input_price_microusd_per_million),output_price_microusd_per_million:Number(conf.output_price_microusd_per_million)})):reserved;
   const answerId=randomUUID();
   await this.db.transaction(async client=>{
+   // Provider latency can outlive logout, session expiry, blocking or deletion.
+   // Verify the original session and owned context again before acknowledging output.
+   await this.auth.assertSessionInTransaction(client,req,user.id);
+   const context=await client.query(`SELECT c.id FROM ai_conversations c JOIN charts ch ON ch.id=c.chart_id
+     WHERE c.id=$1 AND c.user_id=$2 AND c.chart_id=$3 AND ch.user_id=$2
+     FOR SHARE OF c,ch`,[conversationId,user.id,input.chartId]);
+   if(!context.rows[0])throw new NotFoundException('Lá số hoặc cuộc luận giải không còn khả dụng. Hãy tải lại dữ liệu');
    const finalized=await client.query(`UPDATE ai_usage SET status='completed',reserved_microusd=0,billed_microusd=$2,prompt_tokens=$3,response_tokens=$4,duration_ms=$5,finished_at=clock_timestamp() WHERE id=$1 AND user_id=$6 AND status='reserved'`,[usageId,billed,promptTokens,outputTokens,Date.now()-start,user.id]);
    assertAiUsageTransition(finalized);
    await client.query(`INSERT INTO ai_messages(id,conversation_id,user_id,usage_id,question,response,engine_revision,facts_sha256) VALUES($1,$2,$3,$4,$5,$6,$7,$8)`,[answerId,conversationId,user.id,usageId,input.question,JSON.stringify(output),String(selected.chart.ruleSet||pack.facts.ruleSet).slice(0,160),pack.digest]);
@@ -113,8 +142,9 @@ export class HuyenGiaiService {
   });
   return {conversationId,answerId,answer:output,disclaimer:DISCLAIMER,factsSha256:pack.digest,usage:{promptTokens,outputTokens,billedMicroUsd:billed},model:conf.model};
  }catch(error){
-  const code=normalizeCode(error);
+  const code=error instanceof UnauthorizedException?'SESSION_REVOKED':error instanceof NotFoundException?'CONTEXT_REMOVED':normalizeCode(error);
   try{await this.db.query(`UPDATE ai_usage SET status='failed',reserved_microusd=0,billed_microusd=$2,error_code=$3,duration_ms=$4,finished_at=clock_timestamp() WHERE id=$1 AND user_id=$5 AND status='reserved'`,[usageId,reserved,code,Date.now()-start,user.id]);}catch{ /* preserve upstream failure: next request's unique inflight guard remains fail-closed */ }
+  if(error instanceof UnauthorizedException||error instanceof NotFoundException)throw error;
   throw new ServiceUnavailableException('Gemini chưa trả được bản luận giải đã kiểm chứng. Không tự tạo nội dung thay thế; hãy thử lại sau.');
  }
  }

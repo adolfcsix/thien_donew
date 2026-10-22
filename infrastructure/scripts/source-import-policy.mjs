@@ -1,3 +1,5 @@
+import {existsSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
 // Next writes these declarations during build/type generation; source ZIPs
 // intentionally exclude .next. Keep the exception limited to its generated stub.
 const generatedTypes = new Set(['./.next/types/routes.d.ts', './.next/types/root-params.d.ts']);
@@ -26,5 +28,6 @@ export function deferredSqlTestSource(sourcePath, specifier) {
   if (!/^tests\/[a-zA-Z0-9_-]+\.test\.mjs$/.test(source)) return null;
   const match = /^\.\.\/apps\/api\/dist\/modules\/([a-zA-Z0-9_-]+(?:\.[a-zA-Z0-9_-]+)*(?:\/[a-zA-Z0-9_-]+(?:\.[a-zA-Z0-9_-]+)*)*)\.js$/.exec(specifier);
   if (!match) return null;
-  return `apps/api/src/modules/${match[1]}.ts`;
+  const target = `apps/api/src/modules/${match[1]}.ts`;
+  return existsSync(fileURLToPath(new URL('../../'+target, import.meta.url))) ? target : null;
 }

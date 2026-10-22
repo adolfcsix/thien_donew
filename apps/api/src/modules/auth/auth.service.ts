@@ -225,6 +225,17 @@ export class AuthService {
     return user;
   }
 
+  /** Revalidate an in-flight private result at its commit boundary, not only at request entry. */
+  async assertSessionInTransaction(client: PoolClient, req: Request, userId: string): Promise<void> {
+    const token = this.getToken(req);
+    if (!token) throw new UnauthorizedException('Phiên đăng nhập đã hết hiệu lực. Vui lòng đăng nhập lại');
+    const active = await client.query(`SELECT u.id FROM sessions s JOIN users u ON u.id=s.user_id
+      WHERE s.token_hash=$1 AND u.id=$2 AND s.expires_at>clock_timestamp()
+      AND NOT EXISTS(SELECT 1 FROM account_blocks b WHERE b.user_id=u.id)
+      FOR SHARE OF s,u`, [digest(token), userId]);
+    if (!active.rows[0]) throw new UnauthorizedException('Phiên đăng nhập đã hết hiệu lực. Vui lòng đăng nhập lại');
+  }
+
   private async establishSession(id: string, email: string, res: Response, req: Request, passwordHash: string, remember = true) {
     const token = randomBytes(32).toString('hex');
     // A new login rotates the browser's previous token, even if it belonged to

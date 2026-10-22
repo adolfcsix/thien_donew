@@ -1,0 +1,579 @@
+{
+  "sqlEngine": "PGlite WASM, not native PostgreSQL",
+  "provider": "No live email/Gemini/payOS calls",
+  "results": [
+    {
+      "case": "paired login submit creates exactly one new session and one POST",
+      "verdict": "PASS"
+    },
+    {
+      "case": "Owner login from public login page routes to /admin and remains locked before MFA",
+      "verdict": "PASS"
+    },
+    {
+      "case": "real MFA enrollment from UI; paired synchronous submits issue exactly one setup request",
+      "verdict": "PASS"
+    },
+    {
+      "case": "real TOTP confirmation admits Owner dashboard, prevents duplicate code consumption",
+      "verdict": "PASS"
+    },
+    {
+      "case": "paired focus/visibility events perform only one MFA status read and retain verified dashboard",
+      "verdict": "PASS"
+    },
+    {
+      "case": "permission 503 closes privileged content; retry restores real verified state",
+      "verdict": "PASS"
+    },
+    {
+      "case": "missing MFA server configuration closes privileged UI despite stale verified=true receipt (controlled response)",
+      "verdict": "PASS"
+    },
+    {
+      "case": "direct admin subsection, reload and four viewport sizes remain functional",
+      "verdict": "PASS"
+    },
+    {
+      "case": "ordinary member denied and expired MFA assurance cannot retain admin access",
+      "verdict": "PASS"
+    },
+    {
+      "case": "confirmed logout removes privileged UI and protected HTTP access",
+      "verdict": "PASS"
+    },
+    {
+      "case": "ordinary username/password login from admin entry routes to /chart; protected HTTP still 403",
+      "verdict": "PASS"
+    },
+    {
+      "case": "uploaded avatar remains clipped in circular topbar and profile controls",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/research/star-audit",
+      "width": 320,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/research/star-audit",
+      "width": 390,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/research/star-audit",
+      "width": 768,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/research/star-audit",
+      "width": 1024,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/research/star-audit",
+      "width": 1440,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/research/star-audit",
+      "width": 1920,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/study/compare",
+      "width": 320,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/study/compare",
+      "width": 390,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/study/compare",
+      "width": 768,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/study/compare",
+      "width": 1024,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/study/compare",
+      "width": 1440,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/study/compare",
+      "width": 1920,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/library",
+      "width": 320,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/library",
+      "width": 390,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/library",
+      "width": 768,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/library",
+      "width": 1024,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/library",
+      "width": 1440,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/library",
+      "width": 1920,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/articles",
+      "width": 320,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/articles",
+      "width": 390,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/articles",
+      "width": 768,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/articles",
+      "width": 1024,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/articles",
+      "width": 1440,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/articles",
+      "width": 1920,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/tinh-canh",
+      "width": 320,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/tinh-canh",
+      "width": 390,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/tinh-canh",
+      "width": 768,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/tinh-canh",
+      "width": 1024,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/tinh-canh",
+      "width": 1440,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/tinh-canh",
+      "width": 1920,
+      "theme": "dark",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/research/star-audit",
+      "width": 320,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/research/star-audit",
+      "width": 390,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/research/star-audit",
+      "width": 768,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/research/star-audit",
+      "width": 1024,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/research/star-audit",
+      "width": 1440,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/research/star-audit",
+      "width": 1920,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/study/compare",
+      "width": 320,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/study/compare",
+      "width": 390,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/study/compare",
+      "width": 768,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/study/compare",
+      "width": 1024,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/study/compare",
+      "width": 1440,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/study/compare",
+      "width": 1920,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/library",
+      "width": 320,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/library",
+      "width": 390,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/library",
+      "width": 768,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/library",
+      "width": 1024,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/library",
+      "width": 1440,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/library",
+      "width": 1920,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/articles",
+      "width": 320,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/articles",
+      "width": 390,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/articles",
+      "width": 768,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/articles",
+      "width": 1024,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/articles",
+      "width": 1440,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/articles",
+      "width": 1920,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/tinh-canh",
+      "width": 320,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/tinh-canh",
+      "width": 390,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/tinh-canh",
+      "width": 768,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/tinh-canh",
+      "width": 1024,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/tinh-canh",
+      "width": 1440,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "route fits viewport and uses shared theme",
+      "route": "/tinh-canh",
+      "width": 1920,
+      "theme": "light",
+      "verdict": "PASS"
+    },
+    {
+      "case": "nine high-level medal motion signatures differ; reduced-motion disables every decorative animation",
+      "verdict": "PASS"
+    },
+    {
+      "case": "real mobile registration opens member workspace even when next requests admin; new account has no administrative API access",
+      "verdict": "PASS"
+    },
+    {
+      "case": "paired recovery request/reset each sends once, consumes one OTP and new password authenticates",
+      "verdict": "PASS"
+    },
+    {
+      "case": "auth form has usable scroll region on short viewport",
+      "width": 320,
+      "height": 480,
+      "mode": "login",
+      "verdict": "PASS"
+    },
+    {
+      "case": "auth form has usable scroll region on short viewport",
+      "width": 320,
+      "height": 480,
+      "mode": "register",
+      "verdict": "PASS"
+    },
+    {
+      "case": "auth form has usable scroll region on short viewport",
+      "width": 390,
+      "height": 480,
+      "mode": "login",
+      "verdict": "PASS"
+    },
+    {
+      "case": "auth form has usable scroll region on short viewport",
+      "width": 390,
+      "height": 480,
+      "mode": "register",
+      "verdict": "PASS"
+    },
+    {
+      "case": "auth form has usable scroll region on short viewport",
+      "width": 768,
+      "height": 480,
+      "mode": "login",
+      "verdict": "PASS"
+    },
+    {
+      "case": "auth form has usable scroll region on short viewport",
+      "width": 768,
+      "height": 480,
+      "mode": "register",
+      "verdict": "PASS"
+    },
+    {
+      "case": "auth form has usable scroll region on short viewport",
+      "width": 1024,
+      "height": 480,
+      "mode": "login",
+      "verdict": "PASS"
+    },
+    {
+      "case": "auth form has usable scroll region on short viewport",
+      "width": 1024,
+      "height": 480,
+      "mode": "register",
+      "verdict": "PASS"
+    },
+    {
+      "case": "auth form has usable scroll region on short viewport",
+      "width": 1440,
+      "height": 480,
+      "mode": "login",
+      "verdict": "PASS"
+    },
+    {
+      "case": "auth form has usable scroll region on short viewport",
+      "width": 1440,
+      "height": 480,
+      "mode": "register",
+      "verdict": "PASS"
+    },
+    {
+      "case": "auth form has usable scroll region on short viewport",
+      "width": 1920,
+      "height": 480,
+      "mode": "login",
+      "verdict": "PASS"
+    },
+    {
+      "case": "auth form has usable scroll region on short viewport",
+      "width": 1920,
+      "height": 480,
+      "mode": "register",
+      "verdict": "PASS"
+    },
+    {
+      "case": "confirmed login survives a permission-service outage, defaults to /chart and never assumes administrative access",
+      "verdict": "PASS"
+    },
+    {
+      "case": "public Ctrl+K remains functional; non-admin admin gate cannot open invisible user search or lock scrolling",
+      "verdict": "PASS"
+    }
+  ],
+  "pageErrors": []
+}

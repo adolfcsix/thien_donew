@@ -73,6 +73,9 @@ function HuyenGiaiWorkspace() {
     setConsent,
     busy,
     historyLoading,
+    nextBefore,
+    loadEarlier,
+    loadingEarlier,
     error,
     notice,
     openConversation,
@@ -183,7 +186,10 @@ function HuyenGiaiWorkspace() {
           {notice}
         </p>}
         <div className={styles.responses} aria-live="polite">
-          {historyLoading && <p role="status">Đang mở cuộc luận giải…</p>}
+          {nextBefore && <div className={styles.actions}><button type="button" disabled={busy || historyLoading} onClick={() => void loadEarlier()}>
+            {loadingEarlier ? 'Đang tải các lượt trước…' : 'Xem các lượt trước'}
+          </button></div>}
+          {historyLoading && <p role="status">{loadingEarlier ? 'Đang tải các lượt trước…' : 'Đang mở cuộc luận giải…'}</p>}
           {messages.map(m => <article className={styles.answer} key={m.id}>
             <p className={styles.question}>Câu hỏi: {m.question}</p>
             <h2>Luận giải</h2>

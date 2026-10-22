@@ -1,0 +1,639 @@
+{
+  "createdUTC": "2026-10-22T17:59:58.012Z",
+  "scope": "Packaged standalone guest HTTP availability only; no backend/database or browser JS execution. Not proof of authorization, final content, interactions, accessibility or visual quality.",
+  "counts": {
+    "PASS": 73,
+    "NOT TESTED": 9
+  },
+  "results": [
+    {
+      "route": "/",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 52945
+    },
+    {
+      "route": "/academy",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 72231
+    },
+    {
+      "route": "/academy/[slug]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/admin",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13596
+    },
+    {
+      "route": "/admin/access",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13543
+    },
+    {
+      "route": "/admin/articles",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13553
+    },
+    {
+      "route": "/admin/audit",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13544
+    },
+    {
+      "route": "/admin/authority",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13301
+    },
+    {
+      "route": "/admin/books",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13858
+    },
+    {
+      "route": "/admin/community",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13549
+    },
+    {
+      "route": "/admin/finance",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13545
+    },
+    {
+      "route": "/admin/forum",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13858
+    },
+    {
+      "route": "/admin/huong-dan",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 14114
+    },
+    {
+      "route": "/admin/huyen-giai",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13551
+    },
+    {
+      "route": "/admin/members",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13550
+    },
+    {
+      "route": "/admin/messages",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13316
+    },
+    {
+      "route": "/admin/profile",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13550
+    },
+    {
+      "route": "/admin/team",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13302
+    },
+    {
+      "route": "/admin/tinh-canh",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13549
+    },
+    {
+      "route": "/admin/tro-ly",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13106
+    },
+    {
+      "route": "/admin/van-kho",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 13861
+    },
+    {
+      "route": "/articles",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 36289
+    },
+    {
+      "route": "/bazi",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35020
+    },
+    {
+      "route": "/birth-profiles",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 34544
+    },
+    {
+      "route": "/books",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 37734
+    },
+    {
+      "route": "/books/[slug]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/books/[slug]/read",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/books/contribute",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 34998
+    },
+    {
+      "route": "/calendar",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35764
+    },
+    {
+      "route": "/chart",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35016
+    },
+    {
+      "route": "/chinh-sach-thanh-toan",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 40430
+    },
+    {
+      "route": "/collection",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 34539
+    },
+    {
+      "route": "/consultation",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35149
+    },
+    {
+      "route": "/dai-luc-nham",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35809
+    },
+    {
+      "route": "/forum",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 37401
+    },
+    {
+      "route": "/forum/[id]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/forum/me",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35326
+    },
+    {
+      "route": "/forum/members/[id]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/forum/new",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35328
+    },
+    {
+      "route": "/good-days",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 34772
+    },
+    {
+      "route": "/ha-lac",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35519
+    },
+    {
+      "route": "/ho-tro",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 38615
+    },
+    {
+      "route": "/huong-dan",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 43730
+    },
+    {
+      "route": "/huong-dan/[slug]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/huyen-giai",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 34677
+    },
+    {
+      "route": "/huyen-hoc",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 61351
+    },
+    {
+      "route": "/iching",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 34524
+    },
+    {
+      "route": "/ky-mon",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 36573
+    },
+    {
+      "route": "/ky-mon/depth",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35465
+    },
+    {
+      "route": "/library",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 72210
+    },
+    {
+      "route": "/login",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 36966
+    },
+    {
+      "route": "/luc-hao",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 36566
+    },
+    {
+      "route": "/mai-hoa",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 36009
+    },
+    {
+      "route": "/membership",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 34836
+    },
+    {
+      "route": "/messages",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35920
+    },
+    {
+      "route": "/ngu-hanh",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 34539
+    },
+    {
+      "route": "/numerology",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 34570
+    },
+    {
+      "route": "/phap-ly",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 40597
+    },
+    {
+      "route": "/phap-ly/[slug]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/phong-thuy",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35793
+    },
+    {
+      "route": "/pro/research",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35324
+    },
+    {
+      "route": "/research",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 122914
+    },
+    {
+      "route": "/research/advanced",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 34982
+    },
+    {
+      "route": "/research/development",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 57955
+    },
+    {
+      "route": "/research/examples",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 60757
+    },
+    {
+      "route": "/research/luu-nien-van-tinh",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 47255
+    },
+    {
+      "route": "/research/schools",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 59996
+    },
+    {
+      "route": "/research/star-audit",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 69240
+    },
+    {
+      "route": "/research/star-system",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 71257
+    },
+    {
+      "route": "/star-atlas",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 85528
+    },
+    {
+      "route": "/study",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35572
+    },
+    {
+      "route": "/study/compare",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35072
+    },
+    {
+      "route": "/tarot",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35616
+    },
+    {
+      "route": "/thai-at",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 36137
+    },
+    {
+      "route": "/thiet-ban",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35532
+    },
+    {
+      "route": "/tinh-canh",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 38723
+    },
+    {
+      "route": "/van-kho",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 37594
+    },
+    {
+      "route": "/van-kho/[slug]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/van-kho/authors/[id]",
+      "status": "NOT TESTED",
+      "reason": "Dynamic fixture needed"
+    },
+    {
+      "route": "/western-astrology",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35399
+    },
+    {
+      "route": "/western-astrology/relationship",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 35885
+    },
+    {
+      "route": "/western-symbols",
+      "status": "PASS",
+      "httpStatus": 200,
+      "location": null,
+      "html": true,
+      "bytes": 53147
+    }
+  ]
+}

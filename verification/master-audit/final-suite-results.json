@@ -1,0 +1,26 @@
+{
+  "startedAt": "2026-10-22T17:53:28.155Z",
+  "completedAt": "2026-10-22T17:54:40.107Z",
+  "verdict": "FAIL",
+  "tests": 3161,
+  "passed": 3159,
+  "note": "Compact historical intermediate run; full raw report remains in delivered audit ZIP. Current passing run: verification/deep-audit/node-final-results.json",
+  "failures": [
+    {
+      "file": "tests/a44-assets.test.cjs",
+      "status": "FAIL",
+      "tests": 2,
+      "pass": 1,
+      "fail": 1,
+      "skipped": 0
+    },
+    {
+      "file": "tests/handover.test.cjs",
+      "status": "FAIL",
+      "tests": 5,
+      "pass": 4,
+      "fail": 1,
+      "skipped": 0
+    }
+  ]
+}

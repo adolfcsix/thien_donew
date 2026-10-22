@@ -2,8 +2,8 @@
  * This verifies effects/mounting, not Chromium, OAuth or SQL delivery. */
 import {test,before,beforeEach,afterEach,after} from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
-import {resolve,dirname} from 'node:path';
+import {readFileSync,existsSync} from 'node:fs';
+import {resolve,dirname,relative} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createRequire} from 'node:module';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),require=createRequire(resolve(root,'package.json'));
@@ -12,18 +12,33 @@ const {JSDOM}=require(resolve(process.env.THIENDO_DOM_TEST_MODULE));
 const React=require('react'),ts=require('typescript'),{act}=React;
 let dom,createRoot,view,container,state,navigations,opened,closed,mounts;
 const savedGlobals=new Map(),router={replace:path=>navigations.push(path)};
+const loadedComponents=new Map();
 function component(file){
+ file=relative(root,resolve(root,file));
+ const cacheKey=resolve(root,file);
+ if(loadedComponents.has(cacheKey))return loadedComponents.get(cacheKey).exports;
  const source=readFileSync(resolve(root,file),'utf8'),mod={exports:{}};
- const code=ts.transpileModule(source,{fileName:file,compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true}}).outputText;
+ loadedComponents.set(cacheKey,mod);
+ let code;
+ try{code=ts.transpileModule(source,{fileName:file,compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true}}).outputText;}
+ catch(error){throw new Error('DOM module compilation failed: '+file,{cause:error});}
  const localRequire=id=>{
   if(id==='@/features/membership/use-visible-polling')return component('apps/web/src/features/membership/use-visible-polling.ts');
   if(id==='@/features/membership/admin-consultations')return component('apps/web/src/features/membership/admin-consultations.tsx');
-  if(id==='@/lib/api')return {api:(...args)=>uiApi(...args),chartApi:{list:()=>Promise.resolve({charts:[{id:'test-chart',label:'Test chart'}]})}};
+  if(id==='@/lib/api'||id==='./api'&&file==='apps/web/src/lib/login-destination.ts')return {api:(...args)=>uiApi(...args),chartApi:{list:()=>Promise.resolve({charts:[{id:'test-chart',label:'Test chart'}]})}};
   if((id.endsWith('membership.module.css')||id.endsWith('reading.module.css')))return {__esModule:true,default:{page:'page',hero:'hero',card:'card',grid:'grid',tabs:'tabs',table:'table',form:'form',row:'row',actions:'actions',button:'button',primary:'primary'}};
-  if(id==='next/navigation')return {usePathname:()=>window.location.pathname,useRouter:()=>router};
+  if(id==='next/navigation')return {usePathname:()=>window.location.pathname,useRouter:()=>router,useSearchParams:()=>new URLSearchParams(window.location.search)};
   if(id==='next/link')return ({href,children})=>React.createElement('a',{href},children);
   if(id==='./auth-provider'||id==='@/components/auth-provider')return {useAuth:()=>state};
   if(id==='@/lib/tool-access.cjs')return require(resolve(root,'apps/web/src/lib/tool-access.cjs'));
+  if(id.endsWith('.css'))return {__esModule:true,default:new Proxy({},{get:(_target,key)=>String(key)})};
+  const local=id.startsWith('@/')?resolve(root,'apps/web/src',id.slice(2)):id.startsWith('.')?resolve(root,dirname(file),id):null;
+  if(local){
+   const target=[local,local+'.ts',local+'.tsx',local+'.cjs'].find(existsSync);
+   if(!target)throw Error('Missing DOM fixture module '+id+' from '+file);
+   if(target.endsWith('.json'))return JSON.parse(readFileSync(target,'utf8'));
+   return /\.cjs$/.test(target)?require(target):component(target);
+  }
   return require(id);
  };
  new Function('module','exports','require',code)(mod,mod.exports,localRequire);return mod.exports;
@@ -35,13 +50,16 @@ async function renderGate(){await act(async()=>view.render(React.createElement(G
 async function renderLogin(){await act(async()=>view.render(React.createElement(Login)));}
 before(()=>{
  dom=new JSDOM('<!doctype html><html><body></body></html>',{url:'https://thiendo.invalid/'});
- for(const [key,value] of Object.entries({window:dom.window,document:dom.window.document,navigator:dom.window.navigator,HTMLElement:dom.window.HTMLElement,IS_REACT_ACT_ENVIRONMENT:true})){
+ // jsdom has no media-query engine; provide an explicit desktop/no-motion-policy fixture.
+ dom.window.matchMedia=query=>({media:query,matches:false,addEventListener(){},removeEventListener(){},addListener(){},removeListener(){}});
+ for(const [key,value] of Object.entries({window:dom.window,document:dom.window.document,navigator:dom.window.navigator,HTMLElement:dom.window.HTMLElement,Event:dom.window.Event,CustomEvent:dom.window.CustomEvent,IS_REACT_ACT_ENVIRONMENT:true})){
   savedGlobals.set(key,Object.getOwnPropertyDescriptor(globalThis,key));Object.defineProperty(globalThis,key,{value,writable:true,configurable:true});
  }
  ({createRoot}=require('react-dom/client'));
 });
 beforeEach(()=>{
  navigations=[];opened=0;closed=0;mounts=0;
+ uiApi=async()=>({isAdmin:false,isOwner:false});
  state={user:null,loading:false,open:()=>opened++,close:()=>closed++};
  container=document.createElement('div');document.body.appendChild(container);view=createRoot(container);
 });
@@ -77,11 +95,17 @@ test('Login waits for session and rejects external return URLs after sign-in',as
 });
 let uiApi=async()=>({});
 const AdminPage=component('apps/web/src/app/admin/page.tsx').default;
+const AdminSession=component('apps/web/src/features/membership/admin-session.tsx').AdminSession;
+async function renderAdmin(){state={...state,user:{id:'test-admin'}};window.history.replaceState(null,'','/admin');await act(async()=>view.render(React.createElement(AdminSession,null,React.createElement(AdminPage))));}
 const MemberPage=component('apps/web/src/app/membership/page.tsx').default;
 const ResearchPage=component('apps/web/src/app/pro/research/page.tsx').default;
 const plan={id:'pro30',name:'Pro',priceVnd:0,days:30,features:['premium-report','multi-chart-report'],enabled:false};
 function adminFixture(owner){return async path=>{
  if(path==='/api/billing/access')return {isAdmin:true,isOwner:owner,features:[]};
+ if(path==='/api/auth/mfa/status')return {configured:true,enabled:true,verified:true,stepUp:true,role:owner?'owner':'admin',handle:null};
+ if(path==='/api/admin/console/session')return {identity:{role:owner?'owner':'admin',badgeStyle:'gate',badgeTone:'gold',motto:''},capabilities:['overview.read','members.read','finance.read','finance.write','content.read','content.write','audit.read']};
+ if(path.startsWith('/api/admin/insights/dashboard'))return {metrics:[],daily:[],orders:[],warnings:[],start:'2026-10-01T00:00:00Z',end:'2026-10-07T00:00:00Z',generatedAt:'2026-10-07T00:00:00Z'};
+ if(path.startsWith('/api/admin/console/members?'))return {users:[],total:0};
  if(path==='/api/admin/overview')return {users:2,orders:[]};
  if(path.startsWith('/api/admin/users'))return {users:[]};
  if(path==='/api/billing/plans')return {plans:[plan],checkoutEnabled:false};
@@ -92,25 +116,28 @@ function adminFixture(owner){return async path=>{
 };}
 test('Admin DOM denies member before issuing any privileged API read',async()=>{
  const calls=[];uiApi=async path=>{calls.push(path);return {isAdmin:false,isOwner:false};};
- await act(async()=>view.render(React.createElement(AdminPage)));
+ await renderAdmin();
  assert.ok(container.textContent.includes('không có quyền quản trị'));assert.deepEqual(calls,['/api/billing/access']);
 });
 test('Admin DOM exposes owner-only price controls but disables them for staff',async()=>{
- uiApi=adminFixture(false);await act(async()=>view.render(React.createElement(AdminPage)));
+ uiApi=adminFixture(false);await renderAdmin();
  const tab=[...container.querySelectorAll('button')].find(b=>b.textContent==='Gói Pro');assert.ok(tab);await act(async()=>tab.click());
- const inputs=[...container.querySelectorAll('input')];assert.ok(inputs.length>=4);assert.ok(inputs.every(i=>i.disabled));
- assert.equal([...container.querySelectorAll('button')].find(b=>b.textContent==='Lưu gói').disabled,true);
+ const save=[...container.querySelectorAll('button')].find(b=>b.textContent==='Lưu gói');assert.ok(save);
+ const inputs=[...save.closest('form').querySelectorAll('input')];assert.ok(inputs.length>=4);assert.ok(inputs.every(i=>i.disabled));
+ assert.equal(save.disabled,true);
 });
 test('Membership DOM disables checkout until merchant and plan are enabled; free entry remains',async()=>{
  uiApi=adminFixture(false);await act(async()=>view.render(React.createElement(MemberPage)));
  assert.ok(container.textContent.includes('Thành viên miễn phí'));
  const checkout=[...container.querySelectorAll('button')].find(b=>b.textContent==='Thanh toán qua payOS');assert.ok(checkout);assert.equal(checkout.disabled,true);
 });
-test('Research DOM keeps paid report action disabled without server entitlement',async()=>{
- uiApi=async()=>({features:[]});await act(async()=>view.render(React.createElement(ResearchPage)));
- assert.ok(container.textContent.includes('cần Pro'));
- const box=container.querySelector('input[type=checkbox]');assert.ok(box);await act(async()=>box.click());
- assert.equal([...container.querySelectorAll('button')].find(b=>b.textContent==='Tạo báo cáo nghiên cứu').disabled,true);
+test('Research DOM denies private paid content before mounting it without server entitlement',async()=>{
+ state={...state,user:{id:'test-member'}};const calls=[];
+ uiApi=async path=>{calls.push(path);return {allowed:false};};await act(async()=>view.render(React.createElement(ResearchPage)));
+ assert.ok(container.textContent.includes('Không gian nghiên cứu Pro'));
+ assert.equal(container.querySelector('input[type=checkbox]'),null);
+ assert.equal([...container.querySelectorAll('button')].find(b=>b.textContent==='Tạo báo cáo nghiên cứu'),undefined);
+ assert.deepEqual(calls,['/api/community/premium-access?path=%2Fpro%2Fresearch']);
 });
 test('Changing account remounts protected view so prior account state is not retained',async()=>{
  window.history.replaceState(null,'','/membership');state.user={id:'owner-a'};await renderGate();const previous=container.querySelector('button');
@@ -146,10 +173,10 @@ test('Consultation admin DOM allows staff to see requests but disables settings'
 
 test('Admin initial view reads only overview and catalog; tab reads are lazy',async()=>{
  const calls=[],fixture=adminFixture(true);uiApi=async(...args)=>{calls.push(args[0]);return fixture(...args);};
- await act(async()=>view.render(React.createElement(AdminPage)));
- assert.deepEqual(calls.sort(),['/api/admin/overview','/api/billing/access','/api/billing/plans'].sort());
+ await renderAdmin();
+ assert.deepEqual(calls.sort(),['/api/billing/access','/api/auth/mfa/status','/api/admin/console/session','/api/admin/insights/dashboard?days=7','/api/billing/plans'].sort());
  calls.length=0;await act(async()=>[...container.querySelectorAll('button')].find(b=>b.textContent==='Tài khoản').click());
- assert.deepEqual(calls,['/api/admin/users?q=']);assert.ok(!calls.includes('/api/admin/posts'));
+ assert.deepEqual(calls,['/api/admin/console/members?page=1&q=&status=all']);assert.ok(!calls.includes('/api/admin/posts'));
 });
 const {useVisiblePolling}=component('apps/web/src/features/membership/use-visible-polling.ts');
 test('Polling serializes slow requests, pauses hidden tabs and cancels on unmount',async()=>{

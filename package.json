@@ -200,7 +200,11 @@
     "start:local": "node infrastructure/scripts/start-local-built.mjs",
     "build:isolated": "node infrastructure/scripts/with-env.mjs npm run build:isolated:run",
     "build:isolated:run": "node infrastructure/scripts/build-isolated.mjs",
-    "check:github:source": "node infrastructure/scripts/check-github-readiness.mjs"
+    "check:github:source": "node infrastructure/scripts/check-github-readiness.mjs",
+    "test:sql:isolated": "node infrastructure/scripts/test-isolated-sql.mjs",
+    "test:ai:sql": "node --test tests/deep-ai-session-sql.test.mjs",
+    "test:session:dom": "node --test tests/private-session-dom.test.mjs tests/ai-history-dom.test.mjs tests/tool-login-dom.test.mjs",
+    "test:stack:isolated": "node --test tests/deep-stack-http.test.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

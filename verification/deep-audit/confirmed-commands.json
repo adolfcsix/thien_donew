@@ -1,0 +1,67 @@
+[
+  {
+    "name": "root-build-confirmed",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "exitCode": 0,
+    "status": "PASS",
+    "startUTC": "2026-10-22T19:00:13.590951+00:00",
+    "endUTC": "2026-10-22T19:00:28.908387+00:00",
+    "log": "verification/deep-audit/root-build-confirmed.log"
+  },
+  {
+    "name": "typecheck-confirmed",
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "status": "PASS",
+    "startUTC": "2026-10-22T19:00:28.908739+00:00",
+    "endUTC": "2026-10-22T19:00:33.099035+00:00",
+    "log": "verification/deep-audit/typecheck-confirmed.log"
+  },
+  {
+    "name": "source-confirmed",
+    "command": [
+      "npm",
+      "run",
+      "check:source"
+    ],
+    "exitCode": 0,
+    "status": "PASS",
+    "startUTC": "2026-10-22T19:00:33.099344+00:00",
+    "endUTC": "2026-10-22T19:00:49.687958+00:00",
+    "log": "verification/deep-audit/source-confirmed.log"
+  },
+  {
+    "name": "lockfile-confirmed",
+    "command": [
+      "npm",
+      "run",
+      "check:lockfile"
+    ],
+    "exitCode": 0,
+    "status": "PASS",
+    "startUTC": "2026-10-22T19:00:49.688320+00:00",
+    "endUTC": "2026-10-22T19:00:49.902957+00:00",
+    "log": "verification/deep-audit/lockfile-confirmed.log"
+  },
+  {
+    "name": "migration-confirmed",
+    "command": [
+      "npm",
+      "run",
+      "audit:migration-chain"
+    ],
+    "exitCode": 0,
+    "status": "PASS",
+    "startUTC": "2026-10-22T19:00:49.903275+00:00",
+    "endUTC": "2026-10-22T19:00:50.117808+00:00",
+    "log": "verification/deep-audit/migration-confirmed.log"
+  }
+]

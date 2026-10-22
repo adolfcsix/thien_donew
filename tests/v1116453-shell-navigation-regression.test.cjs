@@ -41,7 +41,15 @@ test('compact icon boxes are square, centered and do not rotate on hover',()=>{
   assert.match(css,/grid-template-columns:minmax\(0,1fr\);place-items:center/);
   assert.match(css,/width:26px;height:26px;min-width:26px;min-height:26px/);
   assert.match(css,/width:21px;height:21px/);
-  assert.match(css,/\/\* no slanted icons \*\//);
+  // Test the live declarations rather than wording of an obsolete comment.
+  const compactStart=css.indexOf('.site[data-navigation="compact"] > #thiendo-sidebar');
+  assert.ok(compactStart>=0,'missing compact rail selector');
+  const compactCss=css.slice(compactStart);
+  for(const state of ['hover','focus-visible','active']) {
+    const rule=compactCss.match(new RegExp(':is\\(\\.nav-item,\\[class\\*="groupToggle"\\]\\):'+state+'\\s*\\{([^}]+)\\}'));
+    assert.ok(rule, 'missing compact '+state+' rule');
+    assert.match(rule[1],/transform:\s*none\s*;/);
+  }
   assert.match(css,/transform:none;\s*\}/);
   assert.match(nav,/\.groupSymbol \{width:24px;height:24px/);
   assert.match(mark,/return <TianMonMark size=\{size\} compact/);

@@ -1,0 +1,6 @@
+{
+  "@electric-sql/pglite": "0.5.11",
+  "jsdom": "30.1.3",
+  "@sparticuz/chromium": "153.0.0",
+  "playwright": "1.62.1"
+}
