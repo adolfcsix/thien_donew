@@ -1,0 +1,12 @@
+const test=require('node:test');const assert=require('node:assert/strict');
+const {draft,shouldPublish}=require('../apps/api/src/modules/van-kho/van-kho-contract.cjs');
+const base={slug:'tu-vi-can-ban',title:'Tử Vi nhập môn',subject:'tu-vi',body:'# Giải thích\nMột văn bản',tags:['nhap mon']};
+test('Valid edited draft has normalized tags',()=>assert.deepEqual(draft(base).tags,['nhap mon']));
+test('Rejects unknown subjects',()=>assert.throws(()=>draft({...base,subject:'unverified'})));
+test('Rejects traversal slugs',()=>assert.throws(()=>draft({...base,slug:'../admin'})));
+test('Rejects binary NUL content',()=>assert.throws(()=>draft({...base,body:'a\0b'})));
+test('Rejects huge bodies',()=>assert.throws(()=>draft({...base,body:'A'.repeat(100001)})));
+test('Rejects invalid author identifier',()=>assert.throws(()=>draft({...base,authorId:'stranger'})));
+test('Scheduling is not public early',()=>assert.equal(shouldPublish('scheduled','2030-01-01T00:00:00Z',Date.parse('2029-01-01T00:00:00Z')),false));
+test('Scheduled publications become public on time',()=>assert.equal(shouldPublish('scheduled','2030-01-01T00:00:00Z',Date.parse('2030-01-01T00:00:00Z')),true));
+test('Unapproved drafts remain hidden',()=>assert.equal(shouldPublish('pending',null,Date.now()),false));

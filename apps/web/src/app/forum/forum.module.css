@@ -1,0 +1,49 @@
+.page{width:min(1080px,calc(100% - 32px));margin:28px auto 90px;color:var(--foreground,#25221d)}.hero{padding:24px 0 26px;border-bottom:1px solid #b4a99a;margin-bottom:22px}.eyebrow{font-size:.78rem;letter-spacing:.12em;font-weight:700;color:var(--muted-foreground,#746b5c)}.hero h1{font-size:clamp(2rem,6vw,3.2rem);margin:.3rem 0}.hero p{max-width:760px;line-height:1.7}.links,.toolbar,.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.links{margin:18px 0}.link{color:inherit;text-decoration:underline;text-underline-offset:3px}.button,.primary{border:1px solid currentColor;color:inherit;background:transparent;border-radius:8px;padding:10px 15px;cursor:pointer;text-decoration:none;display:inline-block;font:inherit}.primary{background:#25473e;color:#fff;border-color:#25473e}.button:disabled,.primary:disabled{opacity:.55;cursor:not-allowed}.filters{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}.filters label,.form label{display:grid;gap:5px;min-width:0;flex:1 1 200px}.filters input,.filters select,.form input,.form select,.form textarea{width:100%;min-width:0;background:var(--background,#fff);color:inherit;border:1px solid #aaa097;border-radius:8px;padding:11px;font:inherit}.form textarea{resize:vertical;min-height:140px}.form{display:grid;gap:15px}.grid{display:grid;gap:14px}.card{padding:18px 21px;border:1px solid #c8bfb3;border-radius:12px;background:var(--background,#fff);overflow-wrap:anywhere;min-width:0}.card h2{font-size:clamp(1.1rem,3vw,1.45rem);margin:8px 0;line-height:1.35}.card h3{font-size:1rem;margin:6px 0}.card p{line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}.meta,.muted{font-size:.87rem;color:var(--muted-foreground,#746b5c)}.post{white-space:pre-wrap;line-height:1.85;overflow-wrap:anywhere;font-size:1.04rem}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{background:#e8e2d7;color:#29362f;padding:5px 9px;border-radius:100px;font-size:.79rem}.error{color:#a52b27;overflow-wrap:anywhere}.notice{border-left:3px solid #9b825b;padding:10px 14px;background:rgba(144,116,72,.07);line-height:1.6}.split{display:grid;grid-template-columns:minmax(0,2fr) minmax(240px,1fr);gap:18px}.panel{border:1px solid #c5bcb2;border-radius:10px;padding:18px;min-width:0}.reply{margin:8px 0 8px 16px;padding:14px 16px;border-left:3px solid #cbb89a;background:rgba(107,94,69,.05);border-radius:0 8px 8px 0}.label{font-weight:700;display:block;margin:12px 0}.status{line-height:1.6}.preview{border:1px dashed #9c937f;border-radius:10px;padding:14px;line-height:1.6}.modgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:15px}.danger{border-color:#a63c32;color:#a63c32}.small{font-size:.86rem}.figure{font-style:italic;color:var(--muted-foreground,#746b5c)}@media(max-width:740px){.split{grid-template-columns:minmax(0,1fr)}.page{width:calc(100% - 24px)}.card{padding:14px}.reply{margin-left:8px;padding:12px}.primary,.button{min-height:44px}}
+/* V11.162 · Community prioritizes writing, authorship and moderation status. */
+.page{color:var(--text);max-width:100%;}
+.hero{border-bottom-color:var(--line-strong)}
+.eyebrow,.meta,.muted,.figure{color:var(--muted)}
+.card,.panel,.preview{border-color:var(--line-strong);background:var(--panel);color:var(--text)}
+.card{transition:border-color .18s ease,box-shadow .18s ease}
+.card:focus-within{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.chip{background:var(--panel-alt);border:1px solid var(--line-strong);color:var(--text)}
+.filters :is(input,select),.form :is(input,select,textarea){background:var(--panel-alt);border-color:var(--line-strong);color:var(--text);min-height:44px}
+.primary{background:#28584d;color:#fff;border-color:#519783}
+.button{border-color:var(--line-strong)}
+.reply{border-left-color:var(--gold);background:var(--glow)}
+.notice{border-inline-start-color:var(--gold);background:var(--glow)}
+.danger{color:#ffb4a9;border-color:#bb6a60}
+.error{color:#f3b9b1}
+:global(.site.light) .error,:global(.site.light) .danger{color:#a12d26}
+@media(max-width:680px){.page{width:calc(100% - 16px);margin:14px auto 84px}.card{padding:16px}.post{line-height:1.8}}
+@media(prefers-reduced-motion:reduce){.card{transition:none}}
+
+.memberIdentity{display:inline-flex;gap:10px;align-items:center;vertical-align:middle;color:var(--text);text-decoration:none;max-width:100%;margin-block:6px;overflow-wrap:anywhere}
+.memberIdentity strong{display:block;font-size:.95rem;line-height:1.4;text-decoration:underline;text-underline-offset:3px}
+.memberIdentity small{display:block;color:var(--muted);font-size:.75rem;line-height:1.5}
+.memberInitial{display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;border-radius:50%;background:var(--panel-alt);border:1px solid var(--line-strong);color:var(--text);font-weight:700}
+.memberIdentity:focus-visible{outline:3px solid var(--gold);outline-offset:4px;border-radius:6px}
+
+/* A30 · accessible optional media composer */
+.composePanel{width:min(100%,840px);background:var(--panel);border:1px solid var(--line-strong);border-radius:18px;padding:clamp(16px,3vw,28px)}
+.imagePicker{display:grid;gap:10px;min-width:0}
+.imagePicker input[type=file]{max-width:100%;height:auto}
+.previewPicture{display:grid;justify-items:start;gap:10px}
+.previewPicture img,.threadImage,.threadImageThumb{display:block;max-width:100%;width:auto;height:auto;object-fit:contain;border:1px solid var(--line-strong);border-radius:12px;background:var(--panel-alt)}
+.previewPicture img{max-height:300px}
+.threadImage{margin-block:16px;max-height:560px}
+.threadImageThumb{max-height:240px;margin-block:12px}
+.optionLine{display:flex!important;align-items:center;gap:10px;flex:0 1 auto!important}
+.optionLine input[type=checkbox]{width:18px!important;min-height:18px!important;flex:none}
+.composePanel :is(button,input,textarea,select):focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(max-width:680px){.composePanel{padding:14px}.previewPicture img{max-height:240px}.threadImage{max-height:420px}}
+@media(prefers-reduced-motion:reduce){.composePanel *{scroll-behavior:auto}}
+
+/* Motion only for pointer devices: avoid shifting content on touch or reduced-motion devices. */
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .card{transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+ .card:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(10,30,25,.12)}
+ .primary,.button{transition:filter .18s ease,box-shadow .18s ease,transform .18s ease}
+ .primary:hover:not(:disabled),.button:hover:not(:disabled){filter:brightness(1.08);transform:translateY(-1px)}
+}
+@media(prefers-reduced-motion:reduce){.card,.primary,.button{transition:none!important;transform:none!important}}

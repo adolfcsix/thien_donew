@@ -1,0 +1,39 @@
+{
+  "id": "tieban-v11146-reference-leads",
+  "status": "bibliographic-leads-not-edition-verified",
+  "scope": "Thư mục nguồn để người nghiên cứu tìm và đối chiếu; không cung cấp điều văn, không chứng thực quy tắc định số hoặc quyền trích lục.",
+  "references": [
+    {
+      "title": "改良鐵版神數",
+      "publisherRecord": "國家圖書館中文古籍聯合目錄 (mục thư mục; hiện lưu giữ: 中國國家圖書館)",
+      "locator": "https://rbook.ncl.edu.tw/NCLSearch/",
+      "evidence": "Metadata thư mục: bản thạch in, 12 tập, Shanghai, thời Dân quốc; cần kiểm ảnh thật và số quyển trên sách.",
+      "witnessType": "library-catalogue-only",
+      "rights": "Không suy ra quyền trích lục từ việc có bản ghi thư mục",
+      "searchTitle": "改良鐵版神數 (tra cứu thư mục; không mặc định có toàn văn hay ảnh)"
+    },
+    {
+      "title": "鐵板神數 — lịch sử truyền bản (khảo luận thứ cấp)",
+      "publisherRecord": "Laing Z Matthews — Version Genealogy of Tieban Shenshu",
+      "locator": "https://laingzmatthews.com/blog/-version-genealogy-of-tieban-shenshu",
+      "evidence": "Gợi ý phân biệt bản đạo quang/đời Thanh và các bản thạch in cuối Thanh - Dân quốc; không dùng làm chứng bản điều văn hay thuật toán định điều.",
+      "witnessType": "secondary-source",
+      "rights": "Đọc và lập thư mục tham khảo; chưa xác nhận giấy phép chép toàn văn"
+    },
+    {
+      "title": "鐵版神數 — nghiên cứu trao đổi thuật số",
+      "publisherRecord": "術圓方 forum, 2006",
+      "locator": "https://www.shusquare.com/forum/discussion/topic-40362/",
+      "evidence": "Ý kiến cộng đồng về niên đại và dị bản; chỉ dùng để nêu câu hỏi khảo chứng, không coi là chứng cứ gốc.",
+      "witnessType": "community-commentary",
+      "rights": "Không xác nhận bản quyền trích lục"
+    }
+  ],
+  "methodologyGates": [
+    "Xác định bản khắc, thư viện sở hữu, số trang, ảnh trang thực.",
+    "Xác định bảng phép định số và phép gắn số điều trong đúng bản, không pha dị bản.",
+    "Đối chiếu ít nhất hai dòng chứng bản thật sự độc lập nếu có; không coi hai bản sao trên mạng là độc lập.",
+    "Dùng ca mẫu từ ảnh nguồn, gồm phản ví dụ, trước khi viết công thức tự động.",
+    "Không dùng điều văn dự báo làm khẳng định về sức khỏe, tài chính hoặc cá nhân."
+  ]
+}

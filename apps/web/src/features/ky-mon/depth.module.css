@@ -1,0 +1,16 @@
+.root{color:#ece4d3;overflow-wrap:anywhere}.root header{padding:24px 0}.root header>span{color:#b99a65;font-size:.75rem;letter-spacing:.12em}.root h2{font-size:clamp(1.4rem,3vw,2.3rem);margin:12px 0}.root h3{margin:0 0 16px}.root p,.root li{line-height:1.7;color:#c9c2b6}.columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{padding:20px;background:#151b26;border:1px solid #38404b;border-radius:16px;margin-bottom:16px;min-width:0}.card label{display:grid;gap:7px;margin-bottom:14px;font-size:.88rem}.root input,.root select,.root textarea{width:100%;max-width:100%;min-width:0;padding:10px;background:#0c121b;color:#f0e8d9;border:1px solid #4b5360;border-radius:8px;font:inherit}.root button{padding:11px 15px;background:#342b20;color:#f5dfb6;border:1px solid #997b4c;border-radius:8px;cursor:pointer;margin:6px 8px 12px 0}.root button:disabled{opacity:.5}.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.palace{padding:14px;background:#0c1420;border:1px solid #48505c;border-radius:10px;display:flex;flex-direction:column;gap:9px;min-width:0}.palace h4{color:#d9bb80;margin:0}.palace strong{color:#e8d2a7;font-size:.96rem}.palace span,.palace small{font-size:.82rem;line-height:1.4}.scroll{overflow:auto;max-width:100%}.root table{border-collapse:collapse;min-width:660px;width:100%;font-size:.86rem}.root th,.root td{text-align:left;border-bottom:1px solid #39424f;padding:12px;vertical-align:top}.root td small{display:block;margin:5px 0;line-height:1.55}.root summary{cursor:pointer;font-weight:600}.root a{color:#e1bd78}@media(max-width:700px){.columns{grid-template-columns:1fr}.card{padding:14px}.board{gap:4px}.palace{padding:8px 6px;gap:6px}.palace strong{font-size:.74rem}.palace span,.palace small{font-size:.69rem}.palace h4{font-size:.88rem}.two{gap:8px}}
+
+.root h2,.root h3,.root label{color:#ece4d3}.palace span{color:#dfd9ca}.palace small{color:#b9c7dc}.root input[type=file]{color:#ece4d3}
+
+/* A65: specialist reading surfaces follow the selected light palette. */
+:global(.site.light) .root{color:var(--text);background:var(--panel);border-color:var(--line-strong)}
+:global(.site.light) .root .card,:global(.site.light) .root .palace{background:var(--panel-alt);border-color:var(--line-strong)}
+:global(.site.light) .root :is(h1,h2,h3,h4,label,p,li,strong,span,small,em){color:var(--text)}
+:global(.site.light) .root :is(input,select,textarea){color:var(--text);background:var(--body);border-color:var(--line-strong)}
+:global(.site.light) .root :is(a,summary,th){color:var(--td-accent-text,var(--gold))}
+:global(.site.light) .root button,:global(.site.light) .root .file{background:var(--panel-alt);color:var(--text);border-color:var(--line-strong)}
+:global(.site.light) .root button[aria-pressed="true"],:global(.site.light) .root button.primary{background:var(--gold);color:var(--panel);border-color:var(--gold)}
+:global(.site.light) .root :is(.help,.hint,.muted,.footer,.trace){color:var(--muted)}
+:global(.site.light) .root :is(.warning,.message,.status){color:var(--td-accent-text,var(--gold));border-color:var(--line-strong)}
+:global(.site.light) .root .warning{background:var(--panel-alt)}
+:global(.site.light) .root :is(button.primary,button[aria-pressed="true"]) *{color:inherit}

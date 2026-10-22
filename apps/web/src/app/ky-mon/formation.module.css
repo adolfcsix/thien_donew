@@ -1,0 +1,13 @@
+/* Thiên Đồ V11.76 · các kiểu giao diện bổ sung có phạm vi riêng cho Kỳ Môn */
+.inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.inlineControls{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:15px}
+.toggle{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:12px;line-height:1.6;cursor:pointer}
+.toggle input{accent-color:var(--accent);width:17px;height:17px}
+.formationPalace{position:relative;min-height:106px;aspect-ratio:auto;gap:4px;padding:8px 3px}
+.stem{font-family:var(--font-display),serif;font-size:19px;color:var(--accent)}
+.flag{font-size:9px;font-style:normal;color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:2px 6px;line-height:1.3}
+.smallTitle{font-size:16px!important;line-height:1.5}
+.missing{margin:0 0 0 16px;padding:0;color:var(--muted);font-size:12px;line-height:1.8}
+.caution{border-left:3px solid var(--accent);padding-left:10px}
+@media(max-width:960px){.inputs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:570px){.inputs{grid-template-columns:1fr}.formationPalace{min-height:110px}.flag{font-size:8px}}

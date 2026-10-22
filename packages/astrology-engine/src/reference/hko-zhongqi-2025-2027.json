@@ -1,0 +1,252 @@
+{
+  "schemaVersion": "1.0.0",
+  "tableVersion": "HKO-major-solar-terms-2025-2027-v1",
+  "referenceTimezone": "Asia/Hong_Kong",
+  "referenceUtcOffsetMinutes": 480,
+  "publishedPrecision": "minute",
+  "boundaryGuardSeconds": 60,
+  "validFromInclusive": "2025-01-19T20:00:00.000Z",
+  "validUntilExclusive": "2028-01-01T00:00:00.000Z",
+  "confidenceNote": "HKO time reported to whole minute; 60-second guard on BOTH sides of each term. Not an astronomical engine or a verification of auspicious predictions.",
+  "sources": [
+    {
+      "year": 2025,
+      "organization": "Hong Kong Observatory",
+      "url": "https://www.hko.gov.hk/tc/gts/astron2025/files/2025SolarTerms24.pdf",
+      "document": "24 Solar Terms (major solar terms table)",
+      "timeZone": "HKT (UTC+08:00)"
+    },
+    {
+      "year": 2026,
+      "organization": "Hong Kong Observatory",
+      "url": "https://www.hko.gov.hk/en/gts/astron2026/files/2026SolarTerms24.pdf",
+      "document": "24 Solar Terms (major solar terms table)",
+      "timeZone": "HKT (UTC+08:00)"
+    },
+    {
+      "year": 2027,
+      "organization": "Hong Kong Observatory",
+      "url": "https://www.hko.gov.hk/tc/gts/astron2027/files/2027SolarTerms24.pdf",
+      "document": "24 Solar Terms (major solar terms table)",
+      "timeZone": "HKT (UTC+08:00)"
+    }
+  ],
+  "records": [
+    {
+      "year": 2025,
+      "term": "Đại Hàn",
+      "solarLongitudeDegrees": 300,
+      "localHkt": "2025-01-20T04:00:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Vũ Thủy",
+      "solarLongitudeDegrees": 330,
+      "localHkt": "2025-02-18T18:07:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Xuân Phân",
+      "solarLongitudeDegrees": 0,
+      "localHkt": "2025-03-20T17:01:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Cốc Vũ",
+      "solarLongitudeDegrees": 30,
+      "localHkt": "2025-04-20T03:56:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Tiểu Mãn",
+      "solarLongitudeDegrees": 60,
+      "localHkt": "2025-05-21T02:55:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Hạ Chí",
+      "solarLongitudeDegrees": 90,
+      "localHkt": "2025-06-21T10:42:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Đại Thử",
+      "solarLongitudeDegrees": 120,
+      "localHkt": "2025-07-22T21:29:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Xử Thử",
+      "solarLongitudeDegrees": 150,
+      "localHkt": "2025-08-23T04:34:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Thu Phân",
+      "solarLongitudeDegrees": 180,
+      "localHkt": "2025-09-23T02:19:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Sương Giáng",
+      "solarLongitudeDegrees": 210,
+      "localHkt": "2025-10-23T11:51:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Tiểu Tuyết",
+      "solarLongitudeDegrees": 240,
+      "localHkt": "2025-11-22T09:36:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Đông Chí",
+      "solarLongitudeDegrees": 270,
+      "localHkt": "2025-12-21T23:03:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Đại Hàn",
+      "solarLongitudeDegrees": 300,
+      "localHkt": "2026-01-20T09:45:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Vũ Thủy",
+      "solarLongitudeDegrees": 330,
+      "localHkt": "2026-02-18T23:52:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Xuân Phân",
+      "solarLongitudeDegrees": 0,
+      "localHkt": "2026-03-20T22:46:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Cốc Vũ",
+      "solarLongitudeDegrees": 30,
+      "localHkt": "2026-04-20T09:39:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Tiểu Mãn",
+      "solarLongitudeDegrees": 60,
+      "localHkt": "2026-05-21T08:37:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Hạ Chí",
+      "solarLongitudeDegrees": 90,
+      "localHkt": "2026-06-21T16:25:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Đại Thử",
+      "solarLongitudeDegrees": 120,
+      "localHkt": "2026-07-23T03:13:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Xử Thử",
+      "solarLongitudeDegrees": 150,
+      "localHkt": "2026-08-23T10:19:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Thu Phân",
+      "solarLongitudeDegrees": 180,
+      "localHkt": "2026-09-23T08:05:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Sương Giáng",
+      "solarLongitudeDegrees": 210,
+      "localHkt": "2026-10-23T17:38:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Tiểu Tuyết",
+      "solarLongitudeDegrees": 240,
+      "localHkt": "2026-11-22T15:23:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Đông Chí",
+      "solarLongitudeDegrees": 270,
+      "localHkt": "2026-12-22T04:50:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Đại Hàn",
+      "solarLongitudeDegrees": 300,
+      "localHkt": "2027-01-20T15:30:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Vũ Thủy",
+      "solarLongitudeDegrees": 330,
+      "localHkt": "2027-02-19T05:33:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Xuân Phân",
+      "solarLongitudeDegrees": 0,
+      "localHkt": "2027-03-21T04:25:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Cốc Vũ",
+      "solarLongitudeDegrees": 30,
+      "localHkt": "2027-04-20T15:18:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Tiểu Mãn",
+      "solarLongitudeDegrees": 60,
+      "localHkt": "2027-05-21T14:18:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Hạ Chí",
+      "solarLongitudeDegrees": 90,
+      "localHkt": "2027-06-21T22:11:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Đại Thử",
+      "solarLongitudeDegrees": 120,
+      "localHkt": "2027-07-23T09:05:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Xử Thử",
+      "solarLongitudeDegrees": 150,
+      "localHkt": "2027-08-23T16:14:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Thu Phân",
+      "solarLongitudeDegrees": 180,
+      "localHkt": "2027-09-23T14:02:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Sương Giáng",
+      "solarLongitudeDegrees": 210,
+      "localHkt": "2027-10-23T23:33:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Tiểu Tuyết",
+      "solarLongitudeDegrees": 240,
+      "localHkt": "2027-11-22T21:16:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Đông Chí",
+      "solarLongitudeDegrees": 270,
+      "localHkt": "2027-12-22T10:42:00+08:00"
+    }
+  ]
+}

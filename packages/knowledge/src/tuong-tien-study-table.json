@@ -1,0 +1,866 @@
+{
+  "schemaVersion": "1.0.0",
+  "edition": "V11.38",
+  "scope": "reference-only-research",
+  "applicableInputs": [
+    "birth-year-branch",
+    "study-of-transit-year-branch"
+  ],
+  "automaticNatalPlacement": false,
+  "automaticAnnualPlacement": false,
+  "expertReviewed": false,
+  "methodStatus": "cross-checked-with-multiple-editorial-references-not-expert-validated",
+  "branches": [
+    "Tý",
+    "Sửu",
+    "Dần",
+    "Mão",
+    "Thìn",
+    "Tỵ",
+    "Ngọ",
+    "Mùi",
+    "Thân",
+    "Dậu",
+    "Tuất",
+    "Hợi"
+  ],
+  "orderedNames": [
+    "Tướng Tinh",
+    "Phan An",
+    "Tuế Dịch",
+    "Tức Thần",
+    "Hoa Cái",
+    "Kiếp Sát",
+    "Tai Sát",
+    "Thiên Sát",
+    "Chỉ Bối",
+    "Hàm Trì",
+    "Nguyệt Sát",
+    "Vong Thần"
+  ],
+  "groupStartByYearBranch": [
+    0,
+    9,
+    6,
+    3,
+    0,
+    9,
+    6,
+    3,
+    0,
+    9,
+    6,
+    3
+  ],
+  "rows": [
+    {
+      "yearBranch": "Tý",
+      "yearBranchIndex": 0,
+      "groupStart": "Tý",
+      "placements": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Tý",
+          "branchIndex": 0
+        },
+        {
+          "name": "Phan An",
+          "branch": "Sửu",
+          "branchIndex": 1
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Dần",
+          "branchIndex": 2
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Mão",
+          "branchIndex": 3
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Thìn",
+          "branchIndex": 4
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Tỵ",
+          "branchIndex": 5
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Ngọ",
+          "branchIndex": 6
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Mùi",
+          "branchIndex": 7
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Thân",
+          "branchIndex": 8
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Dậu",
+          "branchIndex": 9
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Tuất",
+          "branchIndex": 10
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Hợi",
+          "branchIndex": 11
+        }
+      ]
+    },
+    {
+      "yearBranch": "Sửu",
+      "yearBranchIndex": 1,
+      "groupStart": "Dậu",
+      "placements": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Dậu",
+          "branchIndex": 9
+        },
+        {
+          "name": "Phan An",
+          "branch": "Tuất",
+          "branchIndex": 10
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Hợi",
+          "branchIndex": 11
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Tý",
+          "branchIndex": 0
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Sửu",
+          "branchIndex": 1
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Dần",
+          "branchIndex": 2
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Mão",
+          "branchIndex": 3
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Thìn",
+          "branchIndex": 4
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Tỵ",
+          "branchIndex": 5
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Ngọ",
+          "branchIndex": 6
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Mùi",
+          "branchIndex": 7
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Thân",
+          "branchIndex": 8
+        }
+      ]
+    },
+    {
+      "yearBranch": "Dần",
+      "yearBranchIndex": 2,
+      "groupStart": "Ngọ",
+      "placements": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Ngọ",
+          "branchIndex": 6
+        },
+        {
+          "name": "Phan An",
+          "branch": "Mùi",
+          "branchIndex": 7
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Thân",
+          "branchIndex": 8
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Dậu",
+          "branchIndex": 9
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Tuất",
+          "branchIndex": 10
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Hợi",
+          "branchIndex": 11
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Tý",
+          "branchIndex": 0
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Sửu",
+          "branchIndex": 1
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Dần",
+          "branchIndex": 2
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Mão",
+          "branchIndex": 3
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Thìn",
+          "branchIndex": 4
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Tỵ",
+          "branchIndex": 5
+        }
+      ]
+    },
+    {
+      "yearBranch": "Mão",
+      "yearBranchIndex": 3,
+      "groupStart": "Mão",
+      "placements": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Mão",
+          "branchIndex": 3
+        },
+        {
+          "name": "Phan An",
+          "branch": "Thìn",
+          "branchIndex": 4
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Tỵ",
+          "branchIndex": 5
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Ngọ",
+          "branchIndex": 6
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Mùi",
+          "branchIndex": 7
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Thân",
+          "branchIndex": 8
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Dậu",
+          "branchIndex": 9
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Tuất",
+          "branchIndex": 10
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Hợi",
+          "branchIndex": 11
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Tý",
+          "branchIndex": 0
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Sửu",
+          "branchIndex": 1
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Dần",
+          "branchIndex": 2
+        }
+      ]
+    },
+    {
+      "yearBranch": "Thìn",
+      "yearBranchIndex": 4,
+      "groupStart": "Tý",
+      "placements": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Tý",
+          "branchIndex": 0
+        },
+        {
+          "name": "Phan An",
+          "branch": "Sửu",
+          "branchIndex": 1
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Dần",
+          "branchIndex": 2
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Mão",
+          "branchIndex": 3
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Thìn",
+          "branchIndex": 4
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Tỵ",
+          "branchIndex": 5
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Ngọ",
+          "branchIndex": 6
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Mùi",
+          "branchIndex": 7
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Thân",
+          "branchIndex": 8
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Dậu",
+          "branchIndex": 9
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Tuất",
+          "branchIndex": 10
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Hợi",
+          "branchIndex": 11
+        }
+      ]
+    },
+    {
+      "yearBranch": "Tỵ",
+      "yearBranchIndex": 5,
+      "groupStart": "Dậu",
+      "placements": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Dậu",
+          "branchIndex": 9
+        },
+        {
+          "name": "Phan An",
+          "branch": "Tuất",
+          "branchIndex": 10
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Hợi",
+          "branchIndex": 11
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Tý",
+          "branchIndex": 0
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Sửu",
+          "branchIndex": 1
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Dần",
+          "branchIndex": 2
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Mão",
+          "branchIndex": 3
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Thìn",
+          "branchIndex": 4
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Tỵ",
+          "branchIndex": 5
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Ngọ",
+          "branchIndex": 6
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Mùi",
+          "branchIndex": 7
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Thân",
+          "branchIndex": 8
+        }
+      ]
+    },
+    {
+      "yearBranch": "Ngọ",
+      "yearBranchIndex": 6,
+      "groupStart": "Ngọ",
+      "placements": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Ngọ",
+          "branchIndex": 6
+        },
+        {
+          "name": "Phan An",
+          "branch": "Mùi",
+          "branchIndex": 7
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Thân",
+          "branchIndex": 8
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Dậu",
+          "branchIndex": 9
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Tuất",
+          "branchIndex": 10
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Hợi",
+          "branchIndex": 11
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Tý",
+          "branchIndex": 0
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Sửu",
+          "branchIndex": 1
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Dần",
+          "branchIndex": 2
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Mão",
+          "branchIndex": 3
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Thìn",
+          "branchIndex": 4
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Tỵ",
+          "branchIndex": 5
+        }
+      ]
+    },
+    {
+      "yearBranch": "Mùi",
+      "yearBranchIndex": 7,
+      "groupStart": "Mão",
+      "placements": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Mão",
+          "branchIndex": 3
+        },
+        {
+          "name": "Phan An",
+          "branch": "Thìn",
+          "branchIndex": 4
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Tỵ",
+          "branchIndex": 5
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Ngọ",
+          "branchIndex": 6
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Mùi",
+          "branchIndex": 7
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Thân",
+          "branchIndex": 8
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Dậu",
+          "branchIndex": 9
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Tuất",
+          "branchIndex": 10
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Hợi",
+          "branchIndex": 11
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Tý",
+          "branchIndex": 0
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Sửu",
+          "branchIndex": 1
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Dần",
+          "branchIndex": 2
+        }
+      ]
+    },
+    {
+      "yearBranch": "Thân",
+      "yearBranchIndex": 8,
+      "groupStart": "Tý",
+      "placements": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Tý",
+          "branchIndex": 0
+        },
+        {
+          "name": "Phan An",
+          "branch": "Sửu",
+          "branchIndex": 1
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Dần",
+          "branchIndex": 2
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Mão",
+          "branchIndex": 3
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Thìn",
+          "branchIndex": 4
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Tỵ",
+          "branchIndex": 5
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Ngọ",
+          "branchIndex": 6
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Mùi",
+          "branchIndex": 7
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Thân",
+          "branchIndex": 8
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Dậu",
+          "branchIndex": 9
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Tuất",
+          "branchIndex": 10
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Hợi",
+          "branchIndex": 11
+        }
+      ]
+    },
+    {
+      "yearBranch": "Dậu",
+      "yearBranchIndex": 9,
+      "groupStart": "Dậu",
+      "placements": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Dậu",
+          "branchIndex": 9
+        },
+        {
+          "name": "Phan An",
+          "branch": "Tuất",
+          "branchIndex": 10
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Hợi",
+          "branchIndex": 11
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Tý",
+          "branchIndex": 0
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Sửu",
+          "branchIndex": 1
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Dần",
+          "branchIndex": 2
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Mão",
+          "branchIndex": 3
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Thìn",
+          "branchIndex": 4
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Tỵ",
+          "branchIndex": 5
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Ngọ",
+          "branchIndex": 6
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Mùi",
+          "branchIndex": 7
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Thân",
+          "branchIndex": 8
+        }
+      ]
+    },
+    {
+      "yearBranch": "Tuất",
+      "yearBranchIndex": 10,
+      "groupStart": "Ngọ",
+      "placements": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Ngọ",
+          "branchIndex": 6
+        },
+        {
+          "name": "Phan An",
+          "branch": "Mùi",
+          "branchIndex": 7
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Thân",
+          "branchIndex": 8
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Dậu",
+          "branchIndex": 9
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Tuất",
+          "branchIndex": 10
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Hợi",
+          "branchIndex": 11
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Tý",
+          "branchIndex": 0
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Sửu",
+          "branchIndex": 1
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Dần",
+          "branchIndex": 2
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Mão",
+          "branchIndex": 3
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Thìn",
+          "branchIndex": 4
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Tỵ",
+          "branchIndex": 5
+        }
+      ]
+    },
+    {
+      "yearBranch": "Hợi",
+      "yearBranchIndex": 11,
+      "groupStart": "Mão",
+      "placements": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Mão",
+          "branchIndex": 3
+        },
+        {
+          "name": "Phan An",
+          "branch": "Thìn",
+          "branchIndex": 4
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Tỵ",
+          "branchIndex": 5
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Ngọ",
+          "branchIndex": 6
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Mùi",
+          "branchIndex": 7
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Thân",
+          "branchIndex": 8
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Dậu",
+          "branchIndex": 9
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Tuất",
+          "branchIndex": 10
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Hợi",
+          "branchIndex": 11
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Tý",
+          "branchIndex": 0
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Sửu",
+          "branchIndex": 1
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Dần",
+          "branchIndex": 2
+        }
+      ]
+    }
+  ],
+  "overlapEngineNames": [
+    "Hoa Cái",
+    "Kiếp Sát"
+  ],
+  "caution": "Bảng khảo cứu cách an truyền thống; chưa kích hoạt trên lá số và không phải dữ liệu dự đoán đã được xác nhận."
+}

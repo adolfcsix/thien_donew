@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {"@thiendo/shared-types": ["packages/shared-types/index.d.ts"]}
+  },
+  "files": [
+    "apps/web/src/features/chart/lib/twelve-palace-ledger.ts",
+    "apps/web/src/features/chart/lib/palace-study-workbench.ts"
+  ]
+}

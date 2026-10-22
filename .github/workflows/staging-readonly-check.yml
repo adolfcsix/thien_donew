@@ -1,0 +1,30 @@
+# Manual-only, non-mutating HTTPS acceptance. No publish, deployment, DB or login.
+name: Staging read-only HTTPS review
+on:
+  workflow_dispatch:
+    inputs:
+      origin:
+        description: Staging HTTPS origin, e.g. https://staging.example.com (no path)
+        required: true
+        type: string
+permissions: {contents: read}
+jobs:
+  staging-http:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Probe read-only paths (no credentials, no cookies, no writes)
+        env:
+          STAGING_ORIGIN: ${{ inputs.origin }}
+        run: node infrastructure/scripts/staging-http-readiness.mjs --origin "$STAGING_ORIGIN"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: staging-http-${{ github.sha }}
+          path: docs/reports/V11_149_STAGING_HTTP.json
+          if-no-files-found: error
+          retention-days: 14

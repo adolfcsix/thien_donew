@@ -1,0 +1,9 @@
+'use client';
+import Link from 'next/link';
+import {useAdminSession} from '@/features/membership/admin-session';
+import {useConsoleData,Feedback,ConsoleHero} from '@/features/admin-console/shared';
+import {useAdminTask} from '@/features/admin/use-admin-task';
+import {api} from '@/lib/api';
+import css from '@/features/admin-console/console.module.css';
+type Report={id:string;body:string;reason:string;status:string;senderId:string;reporterId:string;createdAt:string};
+export default function CommunityReview(){const {capabilities}=useAdminSession(),task=useAdminTask(),list=useConsoleData<{reports:Report[]}>('/api/admin/console/message-reports');return <div className={css.page}><ConsoleHero eyebrow="CỘNG ĐỒNG · RIÊNG TƯ" title="Báo cáo tin nhắn" description="Chỉ hiển thị tin nhắn đã được người tham gia báo cáo. Quản trị không có hộp thư để đọc toàn bộ trò chuyện của người khác."/><Feedback error={list.error||task.error} notice={task.notice}/><Link href="/messages">Mở hộp thư quản trị của tôi ↗</Link>{list.loading?<p role="status">Đang tải báo cáo…</p>:list.data?.reports.map(r=><section className={css.card} key={r.id}><h2>Báo cáo #{r.id} · {r.status==='pending'?'Chờ xử lý':'Đã xử lý'}</h2><p>{r.reason}</p><blockquote style={{whiteSpace:'pre-wrap'}}>{r.body}</blockquote><div className={css.actions}><Link href={'/forum/members/'+r.senderId}>Người gửi</Link><Link href={'/forum/members/'+r.reporterId}>Người báo cáo</Link></div>{r.status==='pending'&&capabilities.includes('community.write')&&<button disabled={task.pending} onClick={()=>{const reason=window.prompt('Ghi kết quả xử lý, ít nhất 8 ký tự:');if(reason)void task.run(async signal=>{await api('/api/admin/console/message-reports/'+r.id+'/resolve',{method:'POST',body:{reason},signal});list.reload();return 'Đã ghi kết quả xử lý và nhật ký';})}}>Đánh dấu đã xử lý</button>}</section>)}{!list.loading&&!list.data?.reports.length&&<p>Chưa có báo cáo tin nhắn.</p>}</div>;}

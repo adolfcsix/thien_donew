@@ -1,0 +1,13 @@
+/* V11.70 standalone UI: preserved historical 28-file CSS baseline. */
+.panel{grid-column:1 / -1}
+.head{display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:12px}
+.head h4{margin-bottom:7px}
+.filters{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.filters button{min-height:36px;cursor:pointer;padding:6px 12px;font-size:12px;font-weight:600;font-family:inherit;background:var(--panel);color:var(--text);border:1px solid var(--line-strong);border-radius:4px}
+.filters button[aria-pressed=true]{color:#1b3028;background:var(--gold);border-color:var(--gold)}
+.filters button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.record>p,.record>ul,.record>div{max-width:100%;overflow-wrap:anywhere}
+.checks{display:flex;flex-wrap:wrap;gap:7px 10px;padding:0;list-style:none}
+.checks li{font-size:12px!important;border:1px solid var(--line);border-radius:4px;padding:5px 9px;background:var(--panel);line-height:1.5!important}
+.checks li[data-met=true]{border-color:var(--gold);color:var(--text)}
+@media(max-width:730px){.filters{width:100%}.filters button{flex:1}.record summary{align-items:flex-start}}

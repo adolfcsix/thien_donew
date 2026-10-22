@@ -1,0 +1,8 @@
+{
+  "name":"thien-do-v7-fullstack-foundation",
+  "version":"7.0.0",
+  "private":true,
+  "description":"THIÊN ĐỒ V7 — Jade full-stack MVP, Node API SQLite and retained astrology engine",
+  "engines":{"node":">=22.13"},
+  "scripts":{"dev":"node apps/api/src/server.cjs","start":"node apps/api/src/server.cjs","test":"node --test tests/*.test.cjs"}
+}

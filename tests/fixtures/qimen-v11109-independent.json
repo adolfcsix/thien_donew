@@ -1,0 +1,93 @@
+{
+  "authorship": "Manual transcription/cross-comparison before algorithm implementation, 2026-10-12",
+  "independence": "Does not import production rule profile, placement engine or generated algorithm outputs. This is an independent expected table, not independent human peer review.",
+  "palaces": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9
+  ],
+  "doorOrder": [
+    "Hưu",
+    "Sinh",
+    "Thương",
+    "Đỗ",
+    "Cảnh",
+    "Tử",
+    "Kinh",
+    "Khai"
+  ],
+  "doorControlsPalaceRows": [
+    "00000001",
+    "10000000",
+    "01000010",
+    "01000010",
+    "00001100",
+    "10000000",
+    "00110000",
+    "00110000"
+  ],
+  "explicitPositivePalaces": {
+    "Hưu": [
+      9
+    ],
+    "Sinh": [
+      1
+    ],
+    "Thương": [
+      2,
+      8
+    ],
+    "Đỗ": [
+      2,
+      8
+    ],
+    "Cảnh": [
+      6,
+      7
+    ],
+    "Tử": [
+      1
+    ],
+    "Kinh": [
+      3,
+      4
+    ],
+    "Khai": [
+      3,
+      4
+    ]
+  },
+  "doorSources": [
+    "dunjia-yanyi: 門迫宮迫 (Cảnh 7 explicit; opening verse defines direction)",
+    "baojian: 釋迫 (complete list including Cảnh 6 and 7)"
+  ],
+  "threeWonderOrder": [
+    "Ất",
+    "Bính",
+    "Đinh"
+  ],
+  "selectedGraveRows": [
+    "01000000",
+    "00001000",
+    "00000010"
+  ],
+  "baojianComparisonGraveRows": [
+    "01000000",
+    "00001000",
+    "00001000"
+  ],
+  "graveSources": [
+    "dunjia-yanyi: 三奇入墓, 王璋曰 passage explicitly 2/6/8",
+    "baojian: 釋奇墓奇制與日時干墓同凶 explicitly 2/6/6"
+  ],
+  "sourceUrls": {
+    "dunjia-yanyi": "https://zh.wikisource.org/zh-hant/遁甲演義",
+    "baojian": "https://zh.wikisource.org/zh-hant/奇门宝鉴御定",
+    "miji-different-name": "https://www.shidianguji.com/zh/book/SDZJ0630/chapter/1lx9g2ky1kugj"
+  }
+}

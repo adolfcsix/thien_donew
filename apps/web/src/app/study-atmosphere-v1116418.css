@@ -1,0 +1,126 @@
+/* THIÊN ĐỒ V11.164.18 — image-led workspaces, not blanket wallpaper.
+ * Only AI / personal study / research routes receive photographic atmospheres.
+ * Pictures are decorative, local, noninteractive, never sources of text.
+ */
+.site {
+  --td-study-photo: url('/theme/thap-nhi-dia-chi.jpeg');
+  --td-study-veil: linear-gradient(180deg,
+    rgba(9,24,21,.45) 0%, rgba(10,26,23,.66) 37%,
+    rgba(17,28,25,.89) 74%, var(--body) 100%);
+  --td-study-surface: rgba(20,35,29,.94);
+  --td-study-surface-soft: rgba(26,43,35,.92);
+  --td-study-edge: rgba(215,190,144,.28);
+  --td-study-text: #f0e9db;
+  --td-study-muted: #b9c6b8;
+}
+.site.light {
+  --td-study-photo: url('/theme/cuon-thu-ngoc.jpeg');
+  --td-study-veil: linear-gradient(180deg,
+    rgba(244,239,225,.37) 0%, rgba(239,237,225,.66) 34%,
+    rgba(238,232,218,.89) 75%, var(--body) 100%);
+  --td-study-surface: rgba(255,252,244,.96);
+  --td-study-surface-soft: rgba(246,243,232,.96);
+  --td-study-edge: rgba(75,94,73,.22);
+  --td-study-text: #213c32;
+  --td-study-muted: #566b60;
+}
+.site[data-visual-space] .main-content {
+  width: min(1524px, 100%);
+  position: relative;
+  isolation: isolate;
+}
+.site[data-visual-space] .main-content::before {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  inset: 0 0 auto;
+  height: clamp(540px, 72vw, 820px);
+  z-index: -1;
+  background-image: var(--td-study-veil), var(--td-study-photo);
+  background-repeat: no-repeat;
+  background-position: center top, center 39%;
+  background-size: cover, cover;
+  -webkit-mask-image: linear-gradient(#000 0%,#000 68%, transparent 100%);
+  mask-image: linear-gradient(#000 0%,#000 68%, transparent 100%);
+}
+/* The archive and workspace remain readable even if the photograph is busy. */
+.site[data-visual-space="research"] .main-content > .page-heading,
+.site[data-visual-space="research"] .research-heading {
+  padding: clamp(20px,3.5vw,38px);
+  border: 1px solid var(--td-study-edge);
+  border-radius: var(--td-radius-card);
+  background: var(--td-study-surface);
+  box-shadow: var(--td-card-elevation);
+}
+.site[data-visual-space="research"] :is(.research-star,.research-domain,.research-context,.research-method-comparison,.research-method,.research-study-circle) {
+  border-color: var(--td-study-edge);
+  border-radius: var(--td-radius-card);
+  box-shadow: var(--td-card-elevation);
+}
+.site[data-visual-space="research"] .research-tabs button,
+.site[data-visual-space="research"] .research-filters :is(input,select) {
+  border-radius: var(--td-radius-control);
+}
+/* Static silk/gold/cloud engraving: behind navigation controls, not text. */
+.site > #thiendo-sidebar {
+  background-color: #102820;
+  background-image:
+    linear-gradient(180deg, rgba(12,32,25,.90),rgba(15,29,24,.93) 61%,rgba(13,29,24,.96)),
+    url('/theme/van-may-thien-do.svg');
+  background-size: cover, 320px 384px;
+  background-repeat: no-repeat, repeat;
+  border-right: 1px solid rgba(209,176,116,.32);
+  box-shadow: inset -1px 0 rgba(248,225,171,.05), 8px 0 28px rgba(0,0,0,.075);
+}
+.site > #thiendo-sidebar::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 155px;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 12% 15%,rgba(197,161,106,.11),transparent 66%);
+}
+.site > #thiendo-sidebar .brand {
+  position: relative;
+  border-bottom: 1px solid rgba(204,181,132,.12);
+  margin-bottom: 17px;
+  padding-bottom: 27px;
+}
+.site > #thiendo-sidebar .nav-heading {
+  color: #c9bc9f;
+}
+.site > #thiendo-sidebar .nav-item {
+  transition: background-color .2s ease,border-color .2s ease,box-shadow .22s ease,color .2s ease;
+}
+.site > #thiendo-sidebar :is(.nav-item.active,.nav-item[aria-current="page"]) {
+  background: linear-gradient(90deg,rgba(202,169,109,.18),rgba(202,169,109,.035));
+  border-color: rgba(211,180,121,.24);
+  box-shadow: inset 3px 0 0 #c7a773;
+  color: #fff4db;
+}
+.site > #thiendo-sidebar .nav-item:hover {
+  background: rgba(212,176,111,.12);
+  border-color: rgba(211,180,121,.18);
+  color: #f9f0dc;
+}
+.site .topbar {
+  background-image:
+    linear-gradient(90deg,color-mix(in srgb,var(--body) 96%,var(--jade)),color-mix(in srgb,var(--body) 91%,var(--jade))),
+    url('/theme/van-may-thien-do.svg');
+  background-size: cover, 320px 384px;
+  background-repeat: no-repeat, repeat;
+  border-bottom: 1px solid var(--td-card-edge);
+}
+/* Decorative surfaces must not introduce navigation or print artifacts. */
+@media(max-width:680px) {
+  .site[data-visual-space] .main-content::before {height: 560px;background-position: center,center 24%;}
+  .site[data-visual-space="research"] .research-heading {padding: 18px;}
+  .site > #thiendo-sidebar .brand {padding-bottom: 18px;margin-bottom: 10px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .site > #thiendo-sidebar .nav-item {transition:none;}
+}
+@media print {
+  .site[data-visual-space] .main-content::before {display:none!important;}
+  .site[data-visual-space="research"] .research-heading {box-shadow:none;background:#fff;color:#000;}
+}

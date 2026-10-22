@@ -1,0 +1,394 @@
+{
+  "schemaVersion": 1,
+  "release": "11.147.0",
+  "definitions": {
+    "partial": "Đã có một phần",
+    "available": "Công cụ theo phạm vi đã nêu",
+    "research": "Module nghiên cứu, chưa là công cụ sản phẩm",
+    "planned": "Chưa triển khai",
+    "research-only": "Chỉ nghiên cứu, chưa là công cụ sản phẩm đã được thẩm định"
+  },
+  "deepRequirements": [
+    "Dữ liệu đủ rộng và có nguồn/ấn bản",
+    "Phép tính có kiểm thử và đối chứng",
+    "Phương pháp/trường phái xác định",
+    "Giao diện thao tác và lưu/mở kết quả",
+    "Giải thích truy về dữ liệu/quy tắc, nêu giới hạn"
+  ],
+  "records": [
+    {
+      "id": "tu-vi",
+      "name": "Tử Vi Đẩu Số",
+      "family": "east",
+      "library": "partial",
+      "calculator": "available",
+      "analysis": "partial",
+      "route": "/chart",
+      "evidencePaths": [
+        "packages/astrology-engine/src/tuvi.js",
+        "packages/star-audit/src/index.cjs",
+        "packages/knowledge/src/star-source-docket.json",
+        "packages/knowledge/src/star-system-matrix.cjs",
+        "packages/interpretation/src/deep-chart-reading.cjs",
+        "packages/knowledge/src/deep-reading-v11123.json",
+        "apps/web/src/features/chart/components/deep-chart-reading.tsx"
+      ],
+      "gap": "V11.123 tổng hợp 12 cung, tứ chính, diễn nghĩa chính tinh theo cung, 6 cặp/6 nhóm sao, Tứ Hóa năm sinh và lưu, Đại hạn/Tiểu hạn/Lưu Thái Tuế theo năm âm lịch. Nội dung biên soạn chưa thẩm định độc lập; không luận lưu niên đầy đủ, Phi Hóa/tự hóa hay Đại hạn Tứ Hóa. Giữ 104 tên hiện hành; 11 tên thiếu và dị danh tiếp tục nghiên cứu.",
+      "next": "Đối chứng độc lập các bài luận theo trường phái, bổ sung fixture cho 11 sao chưa an; duyệt nguồn trước mở rộng quy tắc vận hạn."
+    },
+    {
+      "id": "mai-hoa",
+      "name": "Mai Hoa Dịch Số",
+      "family": "east",
+      "library": "partial",
+      "calculator": "available",
+      "analysis": "partial",
+      "route": "/mai-hoa",
+      "evidencePaths": [
+        "apps/web/src/features/mai-hoa",
+        "packages/astrology-engine/src/mai-hoa-profile.cjs",
+        "packages/knowledge/src/mai-hoa-depth-v11129.json",
+        "apps/web/src/features/mai-hoa/evidence-reading.cjs",
+        "apps/web/src/features/mai-hoa/evidence-panel.tsx",
+        "tests/v11129-mai-hoa-depth.test.cjs"
+      ],
+      "gap": "V11.129: 5 profile, Thể/Dụng/hỗ/biến, dị bản hỗ Càn/Khôn, 10 quan hệ, chi thời lệnh thủ công, thời ứng tổng số quái chủ và nhóm chi hành, 5 chứng cứ lưu theo phiên bản. Chưa thẩm định chuyên gia; chưa lịch thời ứng thực, tự nhận vật/chữ/âm, hoặc tổng hợp vượng tướng hưu tù tử.",
+      "next": "Đối chứng dị bản và luận giải chuyên gia, bổ sung lịch thời lệnh và mẫu ứng kỳ độc lập trước mở dự báo."
+    },
+    {
+      "id": "luc-hao",
+      "name": "Lục Hào",
+      "family": "east",
+      "library": "partial",
+      "calculator": "available",
+      "analysis": "partial",
+      "route": "/luc-hao",
+      "evidencePaths": [
+        "apps/web/src/features/luc-hao",
+        "packages/astrology-engine/src/luc-hao-profile.cjs",
+        "apps/web/src/features/luc-hao/depth-reading.cjs",
+        "packages/knowledge/src/luc-hao-depth-v11130.json"
+      ],
+      "gap": "V11.130 chọn Dụng hiện/Phục có lý do, Nguyên/Kỵ tiềm năng, Phi/Phục, Lục Thân/Lục Thú, động biến theo cung gốc, Nhật/Nguyệt thủ công và nguồn dân dụng có cổng tháng. Chưa kết luận có lực/vượng suy, xuất phục, ám động hay ứng kỳ tổng hợp.",
+      "next": "Thẩm định chuyên gia, bổ sung lịch Nguyệt kiến chính xác và điều kiện tổng hợp có lực/ứng kỳ với đối chứng độc lập."
+    },
+    {
+      "id": "luc-nham",
+      "name": "Lục Nhâm Đại Độn",
+      "family": "east",
+      "library": "partial",
+      "calculator": "research",
+      "analysis": "research",
+      "route": "/dai-luc-nham",
+      "evidencePaths": [
+        "packages/astrology-engine/src/da-liu-ren-three-transmissions.cjs",
+        "packages/astrology-engine/src/da-liu-ren-depth.cjs",
+        "packages/astrology-engine/src/da-liu-ren-zhongqi.cjs",
+        "apps/web/src/app/dai-luc-nham/page.tsx",
+        "tests/v11132-da-liu-ren-depth.test.cjs"
+      ],
+      "gap": "Có trang nghiên cứu Thiên–Địa bàn, Tứ Khóa, Tam Truyền/Cửu Tông Môn, 12 Thiên Tướng và nguyệt tướng Trung khí theo phạm vi nguồn. Không coi Thiệp Hại còn thiếu đối chứng hoặc mọi khóa/phái là đã được thẩm định.",
+      "next": "Đối chứng độc lập Thiệp Hại và các khóa đặc biệt; hoàn thiện corpus nguyệt tướng/giờ chiếm, luận theo câu hỏi và ranh giới từng phái."
+    },
+    {
+      "id": "thai-at",
+      "name": "Thái Ất Thần Số",
+      "family": "east",
+      "library": "partial",
+      "calculator": "research",
+      "analysis": "planned",
+      "route": "/thai-at",
+      "evidencePaths": [
+        "packages/astrology-engine/src/taiyi-annual-research.cjs",
+        "packages/astrology-engine/src/taiyi-depth.cjs",
+        "packages/astrology-engine/data/taiyi-jinjing-72.json",
+        "apps/web/src/app/thai-at/page.tsx"
+      ],
+      "gap": "Đã có niên bàn nghiên cứu và từng phần nguyệt/nhật; còn thiếu thời kế và các hệ thần độc lập.",
+      "next": "Thẩm định bảng 72 với bản in độc lập, triển khai thuật toán đếm Chủ–Khách từ 16 thần, kiểm chứng lịch pháp.",
+      "implementation": "v11.133-jinjing-annual-72-yang-yin-research",
+      "boundary": "Có Tuế kế Âm/Dương, bảng lập thành 72 cục, chủ/khách, bàn cung và nhật ký; Nguyệt/Nhật chỉ có phép cung theo tích kỳ thủ công, Thời kế cần kiểm chứng và chưa lập toàn bàn."
+    },
+    {
+      "id": "tu-binh",
+      "name": "Tử Bình / Bát Tự chuyên sâu",
+      "family": "east",
+      "library": "partial",
+      "calculator": "available",
+      "analysis": "partial",
+      "route": "/bazi",
+      "evidencePaths": [
+        "packages/astrology-engine/src/bazi.js"
+      ],
+      "gap": "Có Tứ Trụ và các lớp nghiên cứu; chưa đủ cách cục, tòng hóa, dụng thần được thẩm định.",
+      "next": "Múi giờ lịch sử và tiết khí độc lập; chọn phái, kiểm chứng nguyệt lệnh, dụng thần và đại vận."
+    },
+    {
+      "id": "don-giap",
+      "name": "Độn Giáp nâng cao",
+      "family": "east",
+      "library": "partial",
+      "calculator": "available",
+      "analysis": "partial",
+      "route": "/ky-mon",
+      "evidencePaths": [
+        "apps/web/src/features/ky-mon"
+      ],
+      "gap": "Đang có Chai Bổ–Chuyển Bàn; chưa đồng nhất Phi Bàn, chủ/khách, ứng kỳ.",
+      "next": "Tách từng phái; lập bảng nguồn độc lập và phép tổng hợp Dụng thần có phản chứng."
+    },
+    {
+      "id": "trach-nhat",
+      "name": "Trạch Nhật",
+      "family": "east",
+      "library": "partial",
+      "calculator": "available",
+      "analysis": "partial",
+      "route": "/good-days",
+      "evidencePaths": [
+        "packages/astrology-engine/src/good-days.js"
+      ],
+      "gap": "Công cụ ngày dân gian không đại diện toàn bộ Trạch Nhật chuyên sâu.",
+      "next": "Chốt hệ quy tắc theo mục đích, ngày/giờ, xung đột và điều kiện áp dụng; không cho điểm tuyệt đối."
+    },
+    {
+      "id": "phong-thuy",
+      "name": "Phong thủy hiện có",
+      "family": "east",
+      "library": "partial",
+      "calculator": "available",
+      "analysis": "partial",
+      "route": "/phong-thuy",
+      "evidencePaths": [
+        "apps/web/src/features/feng-shui"
+      ],
+      "gap": "Có 24 sơn/Bát Trạch/Phi tinh hạ quái; thiếu khảo sát, Thế quái và nghiệm thu bố trí thực địa.",
+      "next": "Đối chứng tọa/hướng và biên sơn, vận nhà; tách hình thế khỏi lý khí."
+    },
+    {
+      "id": "huyen-khong-dai-quai",
+      "name": "Huyền Không Đại Quái",
+      "family": "east",
+      "library": "partial",
+      "calculator": "partial",
+      "analysis": "research",
+      "route": "/phong-thuy",
+      "evidencePaths": [
+        "apps/web/src/features/feng-shui/great-hexagrams.cjs",
+        "apps/web/src/features/feng-shui/study.tsx",
+        "apps/web/src/app/phong-thuy/page.tsx",
+        "tests/v1135-feng-shui-depth.test.cjs"
+      ],
+      "gap": "Có atlas vòng 64 quẻ, Quái khí/Quái vận và 384 phân đoạn hình học, kiểm tra sai số và biên hướng. Phân đoạn góc chưa phải phép lấy/đổi hào truyền thống; chưa trừu hào hoán tượng hoặc hòa các dị bản.",
+      "next": "Đối chứng độc lập vòng quẻ và quái khí/quái vận; xác định phương pháp trừu hào hoán tượng, nguồn/phái trước mở rộng luận hào."
+    },
+    {
+      "id": "ha-lac",
+      "name": "Hà Lạc Lý Số",
+      "family": "east",
+      "library": "partial",
+      "calculator": "partial",
+      "analysis": "research-only",
+      "route": "/ha-lac",
+      "evidencePaths": [
+        "packages/astrology-engine/src/ha-lac-source.cjs",
+        "apps/web/src/app/ha-lac/page.tsx",
+        "tests/v1136-heluo-tieban-calendar.test.cjs",
+        "packages/astrology-engine/src/ha-lac-minggua-v11145.cjs",
+        "tests/v11145-heluo-minggua.test.cjs"
+      ],
+      "gap": "V11.145 đã dựng ứng viên Tiên Thiên/Nguyên Đường/Hậu Thiên theo tài liệu và có hồ sơ lưu; quẻ thuần cần ngoại lệ chí tiết, Tam Nguyên cần chứng bản, vận hạn chưa đối chứng độc lập.",
+      "next": "Xác minh Tam Nguyên theo chu kỳ lịch sử và chí tiết; đối chiếu thêm ca nguồn cho mệnh quẻ, rồi mới lập đại vận."
+    },
+    {
+      "id": "thiet-ban",
+      "name": "Thiết Bản Thần Số",
+      "family": "east",
+      "library": "partial",
+      "calculator": "research-only",
+      "analysis": "research-only",
+      "route": "/thiet-ban",
+      "evidencePaths": [
+        "packages/astrology-engine/src/tieban-source.cjs",
+        "apps/web/src/app/thiet-ban/page.tsx",
+        "packages/astrology-engine/src/tieban-critical-ledger-v11146.cjs",
+        "packages/knowledge/src/tieban-v11146-references.json",
+        "tests/v11146-tieban-critical-ledger.test.cjs"
+      ],
+      "gap": "V11.146 có sổ khảo chứng nguồn, dòng truyền bản và liên kết chứng bản với phần giờ (8/12), không có bảng phép định điều/định số chứng thực, không có kho điều văn được cấp quyền.",
+      "next": "Khảo sát ảnh trang sách và giấy phép, kiểm tra chứng bản độc lập và ca phản ví dụ trước khi xây phép định điều riêng từng truyền bản."
+    },
+    {
+      "id": "lich-phap",
+      "name": "Hệ thống lịch pháp truyền thống",
+      "family": "east",
+      "library": "partial",
+      "calculator": "available",
+      "analysis": "partial",
+      "route": "/calendar",
+      "evidencePaths": [
+        "packages/astrology-engine/src/almanac.js",
+        "packages/astrology-engine/src/traditional-calendar-audit.cjs",
+        "packages/astrology-engine/src/calendar-history-research.cjs",
+        "apps/web/src/features/traditional-calendar/calendar-audit-panel.tsx"
+      ],
+      "gap": "Có vòng Can Chi 60, đổi ngày Tý sơ/dân dụng, so lịch Julius/Gregory; chưa có bảng tiết khí thiên văn đủ giai đoạn hay cải lịch theo từng địa phương.",
+      "next": "Khảo đính giờ chuyển tiết chính xác, hiệu chỉnh thời gian địa phương lịch sử, nguồn đại vận và lịch triều đại."
+    },
+    {
+      "id": "western",
+      "name": "Chiêm tinh học phương Tây",
+      "family": "west",
+      "library": "partial",
+      "calculator": "available",
+      "analysis": "partial",
+      "route": "/western-astrology",
+      "evidencePaths": [
+        "apps/web/src/app/western-astrology/page.tsx",
+        "packages/astrology-engine/src/western-natal.cjs",
+        "packages/interpretation/src/western-depth.cjs",
+        "packages/knowledge/src/western-depth-v11127.json",
+        "packages/astrology-engine/src/western-relationship.cjs",
+        "packages/interpretation/src/relationship-reading.cjs",
+        "docs/reference/relationship-audit.json"
+      ],
+      "gap": "V11.128 bổ sung Synastry 10 thiên thể + ASC/MC tùy chọn, chồng nhà hai chiều và Composite trung điểm với hai quy tắc nhà, đối điểm giữ chưa xác định. Có lưu hai đầu vào, phiên bản tri thức, đồ họa hai vòng/Composite, bộ đọc phản tư và tối đa 9 mẫu sai số giờ sinh. Natal chuyên sâu V11.127 giữ nguyên. Chưa Davison, Placidus/sidereal, Transit/Progression, dignity đầy đủ/applying-separating và đối chứng chuyên gia cho diễn giải.",
+      "next": "Đối chứng lịch sử địa phương trước 1970, mở rộng độ nhạy liên tục; các hệ nhà và kỹ thuật thời gian/đôi tách rõ phương pháp."
+    },
+    {
+      "id": "numerology",
+      "name": "Thần số học Pythagoras",
+      "family": "numbers",
+      "library": "partial",
+      "calculator": "available",
+      "analysis": "partial",
+      "route": "/numerology",
+      "evidencePaths": [
+        "packages/astrology-engine/src/numerology-pythagorean.cjs",
+        "apps/web/src/app/numerology/page.tsx",
+        "packages/astrology-engine/src/numerology-advanced.cjs"
+      ],
+      "gap": "V11.137 có phép đối chiếu hai cách rút đường đời, số trưởng thành, tần suất bảng tên và 12 tháng cá nhân. Chaldean, đối chứng dữ liệu liên văn hóa và thẩm định ý nghĩa chưa có.",
+      "next": "Bổ sung bảng Chaldean độc lập có nguồn; kiểm thử tên nhiều ngôn ngữ, ngày sinh biên và tùy chọn văn bản chuyển tự."
+    },
+    {
+      "id": "tarot",
+      "name": "Tarot 78 lá",
+      "family": "symbols",
+      "library": "available",
+      "calculator": "available",
+      "analysis": "partial",
+      "route": "/tarot",
+      "evidencePaths": [
+        "apps/web/src/app/tarot/page.tsx",
+        "packages/astrology-engine/src/tarot-rws.cjs",
+        "packages/knowledge/src/tarot-rws-78.json",
+        "packages/knowledge/src/tarot-depth-78.json",
+        "packages/interpretation/src/tarot-depth.cjs",
+        "apps/web/src/features/tarot/tarot-depth.tsx",
+        "packages/astrology-engine/src/tarot-spreads.cjs",
+        "packages/knowledge/src/tarot-spread-methods-v11125.json",
+        "apps/web/src/features/tarot/tarot-history.tsx",
+        "packages/astrology-engine/src/western-symbols.cjs",
+        "apps/web/src/app/western-symbols/page.tsx"
+      ],
+      "gap": "Atlas so sánh RWS, Marseille, Thoth có 78 mã và phân biệt VIII–XI/court; engine chỉ trải RWS. Đã tích hợp đường dẫn ảnh 78 lá RWS, nhưng ảnh nội bộ chỉ có sau khi chạy công cụ tải đủ bộ; vẫn không phân phối tranh Thoth.",
+      "next": "Khảo cứu theo từng ấn bản và nguồn có bản quyền hợp lệ trước khi phát triển engine/ảnh cho bộ mới.",
+      "status": "source-implemented"
+    },
+    {
+      "id": "kabbalah",
+      "name": "Kabbalah",
+      "family": "symbols",
+      "library": "available",
+      "calculator": "planned",
+      "analysis": "research",
+      "route": "/western-symbols",
+      "evidencePaths": [
+        "packages/astrology-engine/src/western-symbols.cjs",
+        "apps/web/src/app/western-symbols/page.tsx"
+      ],
+      "gap": "V11.137 có atlas Sephirot 10, 22 chữ Hebrew và tuyến Kircher/Golden Dawn; lớp đối chiếu Tarot chỉ dành cho Hermetic Qabalah. Chưa làm gematria chữ văn bản Hebrew, nghiên cứu sơ đồ không-Kircher hoặc thuật toán tiên đoán.",
+      "next": "Đối chứng nguồn Sefer Yetzirah, các sơ đồ truyền thống và học giả; không lẫn diễn giải Hermetic với Kabbalah Do Thái."
+    },
+    {
+      "id": "rune",
+      "name": "Rune Bắc Âu",
+      "family": "symbols",
+      "library": "planned",
+      "calculator": "planned",
+      "analysis": "planned",
+      "route": null,
+      "evidencePaths": [],
+      "gap": "Chưa triển khai; không trộn Elder/Younger Futhark.",
+      "next": "Học lịch sử chữ viết và chứng tích trước thư viện biểu tượng hiện đại; chốt bộ ký tự riêng."
+    },
+    {
+      "id": "comparison",
+      "name": "Đối chiếu đa bộ môn",
+      "family": "shared",
+      "library": "partial",
+      "calculator": "partial",
+      "analysis": "research",
+      "route": "/study/compare",
+      "evidencePaths": [
+        "apps/web/src/app/study/compare/page.tsx",
+        "apps/web/src/features/unified-room/study-comparison.cjs",
+        "apps/web/src/app/birth-profiles/page.tsx",
+        "tests/v11138-unified-workspace.test.cjs"
+      ],
+      "gap": "Có hồ sơ sinh chung và đối chiếu 2–3 bản nghiên cứu theo dữ liệu/quy ước riêng. Chưa có tổng hợp luận đa môn được thẩm định hoặc đối chiếu mọi trường phái; không quy thành điểm vận mệnh chung.",
+      "next": "Bổ sung ca đối chứng đầu vào/method/version giữa các môn và UI browser; mở rộng luận đa môn chỉ khi có phương pháp và phản chứng rõ ràng."
+    },
+    {
+      "id": "account",
+      "name": "Tài khoản và lưu kết quả",
+      "family": "shared",
+      "library": "partial",
+      "calculator": "available",
+      "analysis": "partial",
+      "route": "/study",
+      "evidencePaths": [
+        "apps/api/src/modules/study/study.service.ts",
+        "apps/api/src/modules/birth-profiles/birth-profiles.service.ts",
+        "apps/api/src/modules/auth/google-auth.service.ts",
+        "infrastructure/db/013_google_nonce_replay.sql",
+        "tests/account-sql-integration.test.mjs"
+      ],
+      "gap": "Có hồ sơ sinh chung, liên kết theo quyền sở hữu và snapshot Bát Tự typed V11.142 theo phương pháp lịch dân sự UTC+7; migration 014 chưa qua native PostgreSQL E2E, Google/email thật chưa nghiệm thu.",
+      "next": "Nghiệm thu migration001–014, role và HTTP trên PostgreSQL native; kiểm thử thực tế Bát Tự save–reopen–import/export, OAuth/email/session và giới hạn đối chứng tiết khí."
+    },
+    {
+      "id": "search-library",
+      "name": "Tìm kiếm và thư viện chung",
+      "family": "shared",
+      "library": "partial",
+      "calculator": "available",
+      "analysis": "partial",
+      "route": "/library",
+      "evidencePaths": [
+        "apps/web/src/lib/navigation.ts",
+        "apps/web/src/app/library/page.tsx"
+      ],
+      "gap": "Tìm nhanh điều hướng/từ điển; chưa full-text liên tài liệu/kết quả riêng hoặc thư mục sách hoàn chỉnh.",
+      "next": "Phân loại theo văn hóa/phái; nguồn/ấn bản; phân quyền kết quả cá nhân và chỉ mục full-text."
+    },
+    {
+      "id": "runtime",
+      "name": "Vận hành và triển khai",
+      "family": "shared",
+      "library": "partial",
+      "calculator": "available",
+      "analysis": "partial",
+      "route": null,
+      "evidencePaths": [
+        "infrastructure/scripts/verify-system-local.mjs",
+        "infrastructure/production/compose.production.yaml",
+        ".github/workflows/production-acceptance.yml"
+      ],
+      "gap": "Cổng phần mềm cục bộ, build, toàn bộ hồi quy, SQL WASM, smoke và SSR có bằng chứng. Native pool/TCP, Docker, browser, domain/TLS, backup vận hành, cảnh báo, rollback và tải còn chờ môi trường thật.",
+      "next": "Chạy các cổng native PostgreSQL, browser và diễn tập production/staging; đo tải và RPO/RTO trước khi ký GO."
+    }
+  ],
+  "edition": "11.122.0"
+}

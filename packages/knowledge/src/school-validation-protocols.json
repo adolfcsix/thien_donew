@@ -1,0 +1,321 @@
+{
+  "schemaVersion": "1.0.0",
+  "edition": "11.164.0",
+  "researchOnly": true,
+  "engineIntegrationsAllowed": false,
+  "notice": "Kịch bản kiểm chứng thủ công, chưa chạy thẩm định học thuật. Phải thu thập nguồn độc lập và ký duyệt trước khi dùng quy tắc.",
+  "protocols": [
+    {
+      "ruleId": "rule-luu-nien-van-tinh-natal-stem",
+      "category": "an-sao",
+      "scopeAxis": "can-nam-sinh",
+      "inputDimensions": [
+        "can năm sinh",
+        "năm xem",
+        "địa chi kết quả"
+      ],
+      "positiveControl": {
+        "goal": "Quan sát trường hợp hợp lệ về cấu trúc, chưa phải đúng học thuật.",
+        "procedure": "Giữ nguyên can năm sinh và đổi năm xem; ghi vị trí sao ở hai lần tra."
+      },
+      "negativeControl": {
+        "goal": "Chứng minh quy tắc không được nhận bằng chứng thiếu hoặc sai.",
+        "procedure": "Giữ nguyên năm xem, đổi can năm sinh qua hai nhóm khác nhau; ghi chênh lệch bảng tra."
+      },
+      "prohibitedShortcut": "Lấy can năm đang xem thay cho can năm sinh chỉ vì tên sao có chữ Lưu Niên.",
+      "sourceComparisonPrompt": "Tìm hai bản đối chiếu cùng dùng can năm sinh, ghi phiên bản bảng và ngoại lệ; so nguồn có thực sự độc lập không?",
+      "interpretationLimit": "Chữ “Lưu Niên” không tự chứng minh sao dịch chuyển theo năm xem.",
+      "expectedIndependentSources": 2,
+      "expectedIndependentFixtures": 2,
+      "reviewStatus": "unverified",
+      "engineEnabled": false
+    },
+    {
+      "ruleId": "rule-hong-diem-bazi-day-stem",
+      "category": "an-sao",
+      "scopeAxis": "can-ngay-bat-tu",
+      "inputDimensions": [
+        "can ngày",
+        "can năm",
+        "hệ Bát Tự"
+      ],
+      "positiveControl": {
+        "goal": "Quan sát trường hợp hợp lệ về cấu trúc, chưa phải đúng học thuật.",
+        "procedure": "Đổi can ngày trong khi giữ can năm, đối chiếu kết quả riêng ở bảng Bát Tự."
+      },
+      "negativeControl": {
+        "goal": "Chứng minh quy tắc không được nhận bằng chứng thiếu hoặc sai.",
+        "procedure": "Giữ can ngày, thay can năm sinh, thử bảng có bất biến hay không."
+      },
+      "prohibitedShortcut": "Dùng bảng Bát Tự có trục can ngày để an Hồng Diễm Tử Vi theo can năm.",
+      "sourceComparisonPrompt": "Tài liệu có ghi rõ đầu vào là nhật can, phân biệt hệ Bát Tự với các bản dùng can năm không?",
+      "interpretationLimit": "Không thể suy ra một bảng Hồng Diễm thống nhất cho mọi bộ môn.",
+      "expectedIndependentSources": 2,
+      "expectedIndependentFixtures": 2,
+      "reviewStatus": "unverified",
+      "engineEnabled": false
+    },
+    {
+      "ruleId": "rule-quan-sach-sui-qian-branch",
+      "category": "an-sao",
+      "scopeAxis": "chi-nam-tham-chieu",
+      "inputDimensions": [
+        "địa chi năm sinh",
+        "địa chi năm xem",
+        "vòng Tuế Tiền"
+      ],
+      "positiveControl": {
+        "goal": "Quan sát trường hợp hợp lệ về cấu trúc, chưa phải đúng học thuật.",
+        "procedure": "Chọn rõ năm tham chiếu và đối chiếu Quán Sách trong đủ 12 địa chi."
+      },
+      "negativeControl": {
+        "goal": "Chứng minh quy tắc không được nhận bằng chứng thiếu hoặc sai.",
+        "procedure": "Đổi năm tham chiếu rồi kiểm tra một chu kỳ 12 năm khép kín."
+      },
+      "prohibitedShortcut": "Lấy vị trí Quan Phù, Quan Phủ hoặc Tướng Tiền thay Quán Sách vì tên gần giống.",
+      "sourceComparisonPrompt": "Nguồn nào quy định thuận/nghịch, tên vòng và mốc khởi; có dị bản năm sinh/năm xem không?",
+      "interpretationLimit": "Không gọi đây là công thức Tuế Tiền chính thức khi thiếu bản cổ đối chứng.",
+      "expectedIndependentSources": 2,
+      "expectedIndependentFixtures": 2,
+      "reviewStatus": "unverified",
+      "engineEnabled": false
+    },
+    {
+      "ruleId": "family-tu-phu-vu-tuong",
+      "category": "luan-giai",
+      "scopeAxis": "tu-chinh-menh",
+      "inputDimensions": [
+        "Tử Vi",
+        "Thiên Phủ",
+        "Vũ Khúc",
+        "Thiên Tướng",
+        "Mệnh–Tài–Quan–Di"
+      ],
+      "positiveControl": {
+        "goal": "Quan sát trường hợp hợp lệ về cấu trúc, chưa phải đúng học thuật.",
+        "procedure": "Ghi bốn vị trí sao ở Tứ chính cùng độ sáng có nguồn; phân biệt tọa/hội."
+      },
+      "negativeControl": {
+        "goal": "Chứng minh quy tắc không được nhận bằng chứng thiếu hoặc sai.",
+        "procedure": "Bỏ một sao khỏi Tứ chính hoặc tạo vị trí trùng, bảo đảm không được khẳng định đủ bộ."
+      },
+      "prohibitedShortcut": "Gộp cả bốn sao thành một mô tả tính cách hoặc dùng câu phú làm quy tắc tất định.",
+      "sourceComparisonPrompt": "Đối chiếu hai cách định nghĩa “hội” và vị trí cần có; ghi trường hợp bị loại.",
+      "interpretationLimit": "Có đủ tên sao trong Tứ chính chưa chứng minh cách cục cát hay hung.",
+      "expectedIndependentSources": 2,
+      "expectedIndependentFixtures": 2,
+      "reviewStatus": "unverified",
+      "engineEnabled": false
+    },
+    {
+      "ruleId": "family-co-nguyet-dong-luong",
+      "category": "luan-giai",
+      "scopeAxis": "tu-chinh-menh",
+      "inputDimensions": [
+        "Thiên Cơ",
+        "Thái Âm",
+        "Thiên Đồng",
+        "Thiên Lương",
+        "cung đối"
+      ],
+      "positiveControl": {
+        "goal": "Quan sát trường hợp hợp lệ về cấu trúc, chưa phải đúng học thuật.",
+        "procedure": "So sự phân bố bốn chính tinh trong Tứ chính, ghi vị trí và trạng thái từng sao."
+      },
+      "negativeControl": {
+        "goal": "Chứng minh quy tắc không được nhận bằng chứng thiếu hoặc sai.",
+        "procedure": "Cho một sao chỉ tồn tại ở lớp lưu niên; bộ xét bản mệnh phải đánh dấu chưa đủ."
+      },
+      "prohibitedShortcut": "Suy ra học lực, nghề nghiệp hoặc kết quả thi cử chỉ từ tên bộ Cơ Nguyệt Đồng Lương.",
+      "sourceComparisonPrompt": "Nguồn mô tả điều kiện thêm về miếu vượng, Lộc/Quyền/Khoa hay sát tinh ra sao?",
+      "interpretationLimit": "Đủ bốn tên chính tinh không suy ra kết quả học tập hoặc nghề nghiệp.",
+      "expectedIndependentSources": 2,
+      "expectedIndependentFixtures": 2,
+      "reviewStatus": "unverified",
+      "engineEnabled": false
+    },
+    {
+      "ruleId": "family-sat-pha-tham",
+      "category": "luan-giai",
+      "scopeAxis": "tu-chinh-menh",
+      "inputDimensions": [
+        "Thất Sát",
+        "Phá Quân",
+        "Tham Lang",
+        "Tứ chính"
+      ],
+      "positiveControl": {
+        "goal": "Quan sát trường hợp hợp lệ về cấu trúc, chưa phải đúng học thuật.",
+        "procedure": "Liệt kê đúng ba vị trí và quan hệ ở Tứ chính, tách ý nghĩa sao khỏi kết luận cuộc sống."
+      },
+      "negativeControl": {
+        "goal": "Chứng minh quy tắc không được nhận bằng chứng thiếu hoặc sai.",
+        "procedure": "Đưa Phá Quân chỉ xuất hiện trong cung ngoài Tứ chính; đánh dấu thiếu điều kiện."
+      },
+      "prohibitedShortcut": "Gán hành vi tiêu cực hoặc biến cố chắc chắn cho người có Sát Phá Tham.",
+      "sourceComparisonPrompt": "Phái nào yêu cầu đồng/hội; dữ liệu về tứ sát và Tứ Hóa được xem là bổ sung thế nào?",
+      "interpretationLimit": "Không được suy từ tên bộ sao sang định kiến nhân thân.",
+      "expectedIndependentSources": 2,
+      "expectedIndependentFixtures": 2,
+      "reviewStatus": "unverified",
+      "engineEnabled": false
+    },
+    {
+      "ruleId": "family-cu-nhat",
+      "category": "luan-giai",
+      "scopeAxis": "tu-chinh-menh",
+      "inputDimensions": [
+        "Cự Môn",
+        "Thái Dương",
+        "độ sáng",
+        "cung tọa"
+      ],
+      "positiveControl": {
+        "goal": "Quan sát trường hợp hợp lệ về cấu trúc, chưa phải đúng học thuật.",
+        "procedure": "Phân biệt cùng cung với hội chiếu và kiểm tra riêng độ sáng của Cự Môn, Thái Dương."
+      },
+      "negativeControl": {
+        "goal": "Chứng minh quy tắc không được nhận bằng chứng thiếu hoặc sai.",
+        "procedure": "Để độ sáng không xác định nhưng vẫn đủ hai sao; chỉ coi đây là chứng cứ vị trí."
+      },
+      "prohibitedShortcut": "Lấy hiện diện sao để khẳng định danh tiếng, tranh chấp hoặc bệnh tật.",
+      "sourceComparisonPrompt": "Nguồn so sánh nói gì về các biến thể Cự Nhật ở từng cung và điều kiện phải loại trừ?",
+      "interpretationLimit": "Không có cơ sở dự báo sức khỏe và danh tiếng bằng chỉ báo vị trí.",
+      "expectedIndependentSources": 2,
+      "expectedIndependentFixtures": 2,
+      "reviewStatus": "unverified",
+      "engineEnabled": false
+    },
+    {
+      "ruleId": "pair-ta-huu",
+      "category": "cap-sao",
+      "scopeAxis": "quan-he-cung",
+      "inputDimensions": [
+        "Tả Phụ",
+        "Hữu Bật",
+        "đồng cung",
+        "giáp cung"
+      ],
+      "positiveControl": {
+        "goal": "Quan sát trường hợp hợp lệ về cấu trúc, chưa phải đúng học thuật.",
+        "procedure": "Kiểm tra đồng cung, tam hợp, đối cung, giáp hai bên trên cùng lá số."
+      },
+      "negativeControl": {
+        "goal": "Chứng minh quy tắc không được nhận bằng chứng thiếu hoặc sai.",
+        "procedure": "Đặt cả hai sao ở một cung kề; phải từ chối gán nhãn giáp cung."
+      },
+      "prohibitedShortcut": "Gộp sao lưu niên hoặc hai sao đứng cùng một phía thành cặp giáp.",
+      "sourceComparisonPrompt": "Nguồn dùng phạm vi hội chiếu hay giáp cung nào; phân biệt quan hệ cung với luận đoán quý nhân?",
+      "interpretationLimit": "Hai sao trợ lực không đồng nghĩa có người giúp đỡ ngoài đời.",
+      "expectedIndependentSources": 2,
+      "expectedIndependentFixtures": 2,
+      "reviewStatus": "unverified",
+      "engineEnabled": false
+    },
+    {
+      "ruleId": "pair-xuong-khuc",
+      "category": "cap-sao",
+      "scopeAxis": "quan-he-cung",
+      "inputDimensions": [
+        "Văn Xương",
+        "Văn Khúc",
+        "cung xét",
+        "sao đích"
+      ],
+      "positiveControl": {
+        "goal": "Quan sát trường hợp hợp lệ về cấu trúc, chưa phải đúng học thuật.",
+        "procedure": "Ghi cung từng sao và chính tinh tương quan, phân biệt đồng cung với hội chiếu."
+      },
+      "negativeControl": {
+        "goal": "Chứng minh quy tắc không được nhận bằng chứng thiếu hoặc sai.",
+        "procedure": "Cho một sao xuất hiện trùng ở hai cung; phải đánh dấu không đủ chứng cứ sạch."
+      },
+      "prohibitedShortcut": "Diễn giải thành tích học tập như kết quả chắc chắn chỉ từ Xương Khúc.",
+      "sourceComparisonPrompt": "Các bản phú yêu cầu trạng thái miếu vượng, Tứ Hóa hay tuổi vận thế nào?",
+      "interpretationLimit": "Ý nghĩa biểu tượng văn tinh không chứng minh năng lực hoặc bằng cấp.",
+      "expectedIndependentSources": 2,
+      "expectedIndependentFixtures": 2,
+      "reviewStatus": "unverified",
+      "engineEnabled": false
+    },
+    {
+      "ruleId": "pair-khoi-viet",
+      "category": "cap-sao",
+      "scopeAxis": "quan-he-cung",
+      "inputDimensions": [
+        "Thiên Khôi",
+        "Thiên Việt",
+        "cung",
+        "lớp bản mệnh"
+      ],
+      "positiveControl": {
+        "goal": "Quan sát trường hợp hợp lệ về cấu trúc, chưa phải đúng học thuật.",
+        "procedure": "Đối chiếu vị trí Khôi Việt quanh cung Mệnh và các cung liên hệ bằng tọa/hội."
+      },
+      "negativeControl": {
+        "goal": "Chứng minh quy tắc không được nhận bằng chứng thiếu hoặc sai.",
+        "procedure": "Thay một sao Khôi Việt bản mệnh bằng sao lưu cùng tên; phải báo thiếu."
+      },
+      "prohibitedShortcut": "Suy ra chức vụ, bằng cấp hoặc quý nhân thực tế từ vị trí Khôi Việt.",
+      "sourceComparisonPrompt": "Đối chiếu quy tắc giáp/hội Khôi Việt giữa các bản và danh xưng tương ứng.",
+      "interpretationLimit": "Không có công thức định lượng sự trợ giúp hoặc danh vị.",
+      "expectedIndependentSources": 2,
+      "expectedIndependentFixtures": 2,
+      "reviewStatus": "unverified",
+      "engineEnabled": false
+    },
+    {
+      "ruleId": "exercise-menh-hoa",
+      "category": "bai-tap",
+      "scopeAxis": "tu-hoa-bon-menh",
+      "inputDimensions": [
+        "cung Mệnh",
+        "chính tinh",
+        "Hóa Lộc",
+        "Hóa Kỵ",
+        "sao đích"
+      ],
+      "positiveControl": {
+        "goal": "Quan sát trường hợp hợp lệ về cấu trúc, chưa phải đúng học thuật.",
+        "procedure": "Trên fixture Mệnh, ghi đúng sao đích của từng Hóa và độ sáng được xác minh."
+      },
+      "negativeControl": {
+        "goal": "Chứng minh quy tắc không được nhận bằng chứng thiếu hoặc sai.",
+        "procedure": "Gán Hóa Kỵ sang sao đích không có tại cung; phải loại bằng chứng sai."
+      },
+      "prohibitedShortcut": "Coi Hóa cùng cung là tác động lên mọi chính tinh mà không xác nhận sao đích.",
+      "sourceComparisonPrompt": "Đối chiếu quy tắc Tứ Hóa theo can năm sinh và ca đảo nhãn Hóa; kiểm tra khác biệt trường phái.",
+      "interpretationLimit": "Độ đúng vị trí trong fixture không đồng nghĩa thẩm định bảng Tứ Hóa.",
+      "expectedIndependentSources": 2,
+      "expectedIndependentFixtures": 2,
+      "reviewStatus": "unverified",
+      "engineEnabled": false
+    },
+    {
+      "ruleId": "exercise-phu-mau-doi",
+      "category": "bai-tap",
+      "scopeAxis": "doi-cung-phu-mau",
+      "inputDimensions": [
+        "Phụ Mẫu",
+        "đối cung",
+        "chính tinh",
+        "độ sáng"
+      ],
+      "positiveControl": {
+        "goal": "Quan sát trường hợp hợp lệ về cấu trúc, chưa phải đúng học thuật.",
+        "procedure": "Mở cung Phụ Mẫu, xác định địa chi đối xung và danh sách chính tinh đã kiểm tra."
+      },
+      "negativeControl": {
+        "goal": "Chứng minh quy tắc không được nhận bằng chứng thiếu hoặc sai.",
+        "procedure": "Xóa bản ghi độ sáng của chính tinh đối cung; phải hiện thiếu bằng chứng thay vì đủ."
+      },
+      "prohibitedShortcut": "Suy diễn quan hệ gia đình tốt/xấu từ một cung đối hoặc không có chính tinh.",
+      "sourceComparisonPrompt": "Bản luận giải đối cung nào yêu cầu thêm Tứ Hóa và vận hạn; đâu là điều kiện tối thiểu?",
+      "interpretationLimit": "Ví dụ chỉ xác nhận đường đi của dữ liệu, không đánh giá mối quan hệ thực tế.",
+      "expectedIndependentSources": 2,
+      "expectedIndependentFixtures": 2,
+      "reviewStatus": "unverified",
+      "engineEnabled": false
+    }
+  ]
+}

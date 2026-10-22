@@ -1,0 +1,894 @@
+{
+  "edition": "11.50.0",
+  "scope": "synthetic-replayable-chart-exercises",
+  "school": "Khung thực hành đối chiếu vị trí Tử Vi; chưa gán một trường phái được chuyên gia chứng nhận",
+  "expertReviewed": false,
+  "notice": "Đây là tình huống học tập sinh từ bộ lá số đối chứng trong mã nguồn, không phải thông tin của người thật, không phải phép thẩm định công thức an sao hoặc lời tiên đoán.",
+  "source": "packages/star-audit/fixtures/chart-baselines.json",
+  "cases": [
+    {
+      "id": "menh-hoa",
+      "palace": "Mệnh",
+      "family": "conditional",
+      "recordId": "main-transformation",
+      "question": "Phân biệt Tứ Hóa gắn vào chính tinh Mệnh với Hóa cùng cung nhưng sao đích không phải chính tinh.",
+      "exercise": "Chỉ ra chính tinh, trạng thái sáng và nhãn Hóa thực sự cùng sao đích; không suy diễn vận mệnh từ một chỉ báo.",
+      "title": "Chính tinh × Tứ Hóa",
+      "scope": "verified-local-natal-and-scoped-annual",
+      "fixtureId": "giap-than-nam",
+      "input": {
+        "date": "2004-08-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 8,
+        "minute": 30
+      },
+      "branchIndex": 3,
+      "branch": "Mão",
+      "status": "observed",
+      "checks": [
+        {
+          "label": "Có chính tinh bản mệnh với độ sáng hợp lệ tại cung",
+          "met": true
+        },
+        {
+          "label": "Có bằng chứng thuộc nhóm sao phối hợp, cùng cung hoặc cùng năm được kiểm toán",
+          "met": true
+        },
+        {
+          "label": "Không có dữ liệu mâu thuẫn trong nhóm đã đối chiếu",
+          "met": true
+        }
+      ],
+      "evidence": [
+        {
+          "star": "Thái Dương",
+          "kind": "chính tinh",
+          "palace": "Mệnh",
+          "branch": "Mão",
+          "branchIndex": 3,
+          "relation": null,
+          "side": null,
+          "strength": "V",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Thiên Lương",
+          "kind": "chính tinh",
+          "palace": "Mệnh",
+          "branch": "Mão",
+          "branchIndex": 3,
+          "relation": null,
+          "side": null,
+          "strength": "V",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Thái Dương",
+          "kind": "Tứ Hóa năm sinh",
+          "palace": "Mệnh",
+          "branch": "Mão",
+          "branchIndex": 3,
+          "relation": null,
+          "side": null,
+          "strength": null,
+          "transformation": "Hóa Kỵ",
+          "scope": "natal",
+          "year": null
+        }
+      ],
+      "missing": [],
+      "matchedPairs": [],
+      "relatedBranches": [],
+      "sha256": "d7932e16b9ec3d3ff61fb5161cf0680c1b21cdeb473ed68f32efaf5b77c61355"
+    },
+    {
+      "id": "phu-mau-doi",
+      "palace": "Phụ Mẫu",
+      "family": "relational",
+      "recordId": "doi-cung",
+      "question": "Vì sao một cung đối thiếu chính tinh đã xác minh không thể coi là bằng chứng phản chiếu đã đầy đủ?",
+      "exercise": "Chỉ rõ cung đối, chính tinh còn thiếu và tác động của dữ liệu độ sáng chưa xác minh.",
+      "title": "Xung chiếu: chính tinh đối cung",
+      "scope": "opposite-house",
+      "fixtureId": "ty-dau-som",
+      "input": {
+        "date": "2024-02-09",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 22,
+        "minute": 59
+      },
+      "branchIndex": 3,
+      "branch": "Mão",
+      "status": "partial",
+      "checks": [
+        {
+          "label": "Chính tinh tại cung đang xem đã xác minh (hoặc vô chính diệu)",
+          "met": true
+        },
+        {
+          "label": "Có chính tinh tại đối cung với độ sáng hợp lệ",
+          "met": false
+        }
+      ],
+      "evidence": [
+        {
+          "star": "Thiên Cơ",
+          "kind": "chính tinh",
+          "palace": "Phụ Mẫu",
+          "branch": "Mão",
+          "branchIndex": 3,
+          "relation": "tọa cung",
+          "side": null,
+          "strength": "M",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Cự Môn",
+          "kind": "chính tinh",
+          "palace": "Phụ Mẫu",
+          "branch": "Mão",
+          "branchIndex": 3,
+          "relation": "tọa cung",
+          "side": null,
+          "strength": "M",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        }
+      ],
+      "missing": [
+        "Không có chính tinh đã xác minh ở đối cung."
+      ],
+      "matchedPairs": [],
+      "relatedBranches": [
+        9
+      ],
+      "sha256": "21107e874eac4455c9c0b87b1bc27a4b9abea78f88b4619163814f06fd1ceae5"
+    },
+    {
+      "id": "phuc-duc-giap",
+      "palace": "Phúc Đức",
+      "family": "relational",
+      "recordId": "giap-cung",
+      "question": "Một cặp sao ở hai bên giáp cung khác gì hai sao cùng nằm ở một cung kề?",
+      "exercise": "Chỉ ra hai cung kề và tên sao ở từng phía; loại trường hợp cặp bị dồn vào cùng một phía.",
+      "title": "Giáp cung: cặp sao ở hai phía",
+      "scope": "immediate-neighbor-houses",
+      "fixtureId": "ty-dau-som",
+      "input": {
+        "date": "2024-02-09",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 22,
+        "minute": 59
+      },
+      "branchIndex": 4,
+      "branch": "Thìn",
+      "status": "observed",
+      "checks": [
+        {
+          "label": "Có sao thuộc các cặp đã khai báo ở cung giáp phía trước",
+          "met": true
+        },
+        {
+          "label": "Có sao thuộc các cặp đã khai báo ở cung giáp phía sau",
+          "met": true
+        },
+        {
+          "label": "Ít nhất một cặp có đúng mỗi sao ở một cung giáp khác nhau",
+          "met": true
+        }
+      ],
+      "evidence": [
+        {
+          "star": "Tả Phụ",
+          "kind": "sao trợ lực",
+          "palace": "Phụ Mẫu",
+          "branch": "Mão",
+          "branchIndex": 3,
+          "relation": "giáp cung",
+          "side": "trước",
+          "strength": null,
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Văn Khúc",
+          "kind": "sao trợ lực",
+          "palace": "Phụ Mẫu",
+          "branch": "Mão",
+          "branchIndex": 3,
+          "relation": "giáp cung",
+          "side": "trước",
+          "strength": null,
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Thiên Khôi",
+          "kind": "sao trợ lực",
+          "palace": "Phụ Mẫu",
+          "branch": "Mão",
+          "branchIndex": 3,
+          "relation": "giáp cung",
+          "side": "trước",
+          "strength": null,
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Thiên Việt",
+          "kind": "sao trợ lực",
+          "palace": "Điền Trạch",
+          "branch": "Tỵ",
+          "branchIndex": 5,
+          "relation": "giáp cung",
+          "side": "sau",
+          "strength": null,
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        }
+      ],
+      "missing": [],
+      "matchedPairs": [
+        [
+          "Thiên Khôi",
+          "Thiên Việt"
+        ]
+      ],
+      "relatedBranches": [
+        3,
+        5
+      ],
+      "sha256": "417dec6c908e83a48c9d630fa284264c06f48487ff4b862059ae38a59e15ef43"
+    },
+    {
+      "id": "dien-trach-tro",
+      "palace": "Điền Trạch",
+      "family": "conditional",
+      "recordId": "main-support",
+      "question": "Sao trợ lực đồng cung được ghi nhận bằng chứng nào trước khi nghiên cứu chủ đề không gian sống?",
+      "exercise": "Đối chiếu tên chính tinh, độ sáng và sao trợ lực; không biến bằng chứng thành lời khuyên mua bán nhà.",
+      "title": "Chính tinh × sao trợ lực",
+      "scope": "verified-local-natal-and-scoped-annual",
+      "fixtureId": "giap-than-nu",
+      "input": {
+        "date": "2004-08-15",
+        "calendar": "solar",
+        "gender": "Nữ",
+        "hour": 8,
+        "minute": 30
+      },
+      "branchIndex": 6,
+      "branch": "Ngọ",
+      "status": "observed",
+      "checks": [
+        {
+          "label": "Có chính tinh bản mệnh với độ sáng hợp lệ tại cung",
+          "met": true
+        },
+        {
+          "label": "Có bằng chứng thuộc nhóm sao phối hợp, cùng cung hoặc cùng năm được kiểm toán",
+          "met": true
+        },
+        {
+          "label": "Không có dữ liệu mâu thuẫn trong nhóm đã đối chiếu",
+          "met": true
+        }
+      ],
+      "evidence": [
+        {
+          "star": "Tử Vi",
+          "kind": "chính tinh",
+          "palace": "Điền Trạch",
+          "branch": "Ngọ",
+          "branchIndex": 6,
+          "relation": null,
+          "side": null,
+          "strength": "M",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Văn Xương",
+          "kind": "sao trợ lực",
+          "palace": "Điền Trạch",
+          "branch": "Ngọ",
+          "branchIndex": 6,
+          "relation": null,
+          "side": null,
+          "strength": null,
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        }
+      ],
+      "missing": [],
+      "matchedPairs": [],
+      "relatedBranches": [],
+      "sha256": "a9cc432262a7999e576a8b525a8d0d0c496de601e5bca7eb67d264339b83daa6"
+    },
+    {
+      "id": "quan-loc-tam",
+      "palace": "Quan Lộc",
+      "family": "relational",
+      "recordId": "tam-hop",
+      "question": "Phân biệt sao tọa thủ với sao hội từ hai cung tam hợp khi nghiên cứu công việc.",
+      "exercise": "Tìm đủ ba địa chi liên quan và kiểm chứng sao nào thật sự ở cung hội, không phải cung chính.",
+      "title": "Tam hợp: sao hội chiếu",
+      "scope": "two-trinal-houses",
+      "fixtureId": "ty-dau-muon",
+      "input": {
+        "date": "2024-02-09",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 23,
+        "minute": 0
+      },
+      "branchIndex": 5,
+      "branch": "Tỵ",
+      "status": "observed",
+      "checks": [
+        {
+          "label": "Chính tinh tọa cung có bản ghi hợp lệ hoặc cung vô chính diệu",
+          "met": true
+        },
+        {
+          "label": "Có sao bản mệnh thuộc nhóm nghiên cứu ở ít nhất một cung tam hợp",
+          "met": true
+        }
+      ],
+      "evidence": [
+        {
+          "star": "Thiên Phủ",
+          "kind": "chính tinh",
+          "palace": "Quan Lộc",
+          "branch": "Tỵ",
+          "branchIndex": 5,
+          "relation": "tọa cung",
+          "side": null,
+          "strength": "D",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Hỏa Tinh",
+          "kind": "sát tinh",
+          "palace": "Tài Bạch",
+          "branch": "Dậu",
+          "branchIndex": 9,
+          "relation": "tam-hop",
+          "side": null,
+          "strength": null,
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Kình Dương",
+          "kind": "sát tinh",
+          "palace": "Mệnh",
+          "branch": "Sửu",
+          "branchIndex": 1,
+          "relation": "tam-hop",
+          "side": null,
+          "strength": null,
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        }
+      ],
+      "missing": [],
+      "matchedPairs": [],
+      "relatedBranches": [
+        9,
+        1
+      ],
+      "sha256": "110fee0db058ff3c19da4d57f8492309dc8f0edaf904120ba8df3c349a83c49d"
+    },
+    {
+      "id": "no-boc-sat",
+      "palace": "Nô Bộc",
+      "family": "conditional",
+      "recordId": "main-challenge",
+      "question": "Nếu chưa thấy sát tinh ở cung này, điều đó có chứng minh không có khó khăn trong quan hệ xã hội không?",
+      "exercise": "Xem lại tình trạng thiếu dữ liệu và phân biệt 'không quan sát' với 'khẳng định không tồn tại'.",
+      "title": "Chính tinh × sát tinh",
+      "scope": "verified-local-natal-and-scoped-annual",
+      "fixtureId": "tet-2024",
+      "input": {
+        "date": "2024-02-10",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 0,
+        "minute": 0
+      },
+      "branchIndex": 7,
+      "branch": "Mùi",
+      "status": "partial",
+      "checks": [
+        {
+          "label": "Có chính tinh bản mệnh với độ sáng hợp lệ tại cung",
+          "met": true
+        },
+        {
+          "label": "Có bằng chứng thuộc nhóm sao phối hợp, cùng cung hoặc cùng năm được kiểm toán",
+          "met": false
+        },
+        {
+          "label": "Không có dữ liệu mâu thuẫn trong nhóm đã đối chiếu",
+          "met": true
+        }
+      ],
+      "evidence": [
+        {
+          "star": "Thiên Phủ",
+          "kind": "chính tinh",
+          "palace": "Nô Bộc",
+          "branch": "Mùi",
+          "branchIndex": 7,
+          "relation": null,
+          "side": null,
+          "strength": "D",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        }
+      ],
+      "missing": [
+        "Không có sao cùng nhóm tại cung."
+      ],
+      "matchedPairs": [],
+      "relatedBranches": [],
+      "sha256": "7571e36a17d4870ad5b6618d1aa45478ad1bb0d40c68a3bdc8f3bdeaeebacc32"
+    },
+    {
+      "id": "thien-di-doi",
+      "palace": "Thiên Di",
+      "family": "relational",
+      "recordId": "doi-cung",
+      "question": "Vị trí chính tinh ở đối cung Mệnh khác sao tọa tại Thiên Di như thế nào?",
+      "exercise": "Tìm địa chi đối cung và kiểm tra độ sáng của sao được viện dẫn.",
+      "title": "Xung chiếu: chính tinh đối cung",
+      "scope": "opposite-house",
+      "fixtureId": "truoctet-2026",
+      "input": {
+        "date": "2026-02-16",
+        "calendar": "solar",
+        "gender": "Nữ",
+        "hour": 22,
+        "minute": 30
+      },
+      "branchIndex": 8,
+      "branch": "Thân",
+      "status": "observed",
+      "checks": [
+        {
+          "label": "Chính tinh tại cung đang xem đã xác minh (hoặc vô chính diệu)",
+          "met": true
+        },
+        {
+          "label": "Có chính tinh tại đối cung với độ sáng hợp lệ",
+          "met": true
+        }
+      ],
+      "evidence": [
+        {
+          "star": "Phá Quân",
+          "kind": "chính tinh",
+          "palace": "Thiên Di",
+          "branch": "Thân",
+          "branchIndex": 8,
+          "relation": "tọa cung",
+          "side": null,
+          "strength": "H",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Vũ Khúc",
+          "kind": "chính tinh",
+          "palace": "Mệnh",
+          "branch": "Dần",
+          "branchIndex": 2,
+          "relation": "đối cung",
+          "side": null,
+          "strength": "V",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Thiên Tướng",
+          "kind": "chính tinh",
+          "palace": "Mệnh",
+          "branch": "Dần",
+          "branchIndex": 2,
+          "relation": "đối cung",
+          "side": null,
+          "strength": "M",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        }
+      ],
+      "missing": [],
+      "matchedPairs": [],
+      "relatedBranches": [
+        2
+      ],
+      "sha256": "dcc51f28e3cea71987642dd3cd621db0051439e98b55085946214783b28d5289"
+    },
+    {
+      "id": "tat-ach-sat",
+      "palace": "Tật Ách",
+      "family": "conditional",
+      "recordId": "main-challenge",
+      "question": "Cần xác minh những điều gì khi có chính tinh và sát tinh cùng cung Tật Ách?",
+      "exercise": "Kiểm tra vị trí từng sao mà không suy diễn chẩn đoán bệnh hoặc thay thế bác sĩ.",
+      "title": "Chính tinh × sát tinh",
+      "scope": "verified-local-natal-and-scoped-annual",
+      "fixtureId": "nhuan-2025-ty",
+      "input": {
+        "date": "2025-08-14",
+        "calendar": "solar",
+        "gender": "Nữ",
+        "hour": 23,
+        "minute": 55
+      },
+      "branchIndex": 2,
+      "branch": "Dần",
+      "status": "observed",
+      "checks": [
+        {
+          "label": "Có chính tinh bản mệnh với độ sáng hợp lệ tại cung",
+          "met": true
+        },
+        {
+          "label": "Có bằng chứng thuộc nhóm sao phối hợp, cùng cung hoặc cùng năm được kiểm toán",
+          "met": true
+        },
+        {
+          "label": "Không có dữ liệu mâu thuẫn trong nhóm đã đối chiếu",
+          "met": true
+        }
+      ],
+      "evidence": [
+        {
+          "star": "Thất Sát",
+          "kind": "chính tinh",
+          "palace": "Tật Ách",
+          "branch": "Dần",
+          "branchIndex": 2,
+          "relation": null,
+          "side": null,
+          "strength": "M",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Đà La",
+          "kind": "sát tinh",
+          "palace": "Tật Ách",
+          "branch": "Dần",
+          "branchIndex": 2,
+          "relation": null,
+          "side": null,
+          "strength": null,
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        }
+      ],
+      "missing": [],
+      "matchedPairs": [],
+      "relatedBranches": [],
+      "sha256": "65a717f30d9b274f67eb4c765711a2ac1998319c6462f4579663872fc39ecba3"
+    },
+    {
+      "id": "tai-bach-tro",
+      "palace": "Tài Bạch",
+      "family": "conditional",
+      "recordId": "main-support",
+      "question": "Thiếu sao trợ lực đồng cung có đồng nghĩa tài chính xấu?",
+      "exercise": "Đánh dấu điều kiện đã ghi nhận và điều kiện còn thiếu; không dùng làm khuyến nghị đầu tư.",
+      "title": "Chính tinh × sao trợ lực",
+      "scope": "verified-local-natal-and-scoped-annual",
+      "fixtureId": "nhuan-2025-nam",
+      "input": {
+        "date": "2025-07-27",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 10,
+        "minute": 15
+      },
+      "branchIndex": 10,
+      "branch": "Tuất",
+      "status": "partial",
+      "checks": [
+        {
+          "label": "Có chính tinh bản mệnh với độ sáng hợp lệ tại cung",
+          "met": true
+        },
+        {
+          "label": "Có bằng chứng thuộc nhóm sao phối hợp, cùng cung hoặc cùng năm được kiểm toán",
+          "met": false
+        },
+        {
+          "label": "Không có dữ liệu mâu thuẫn trong nhóm đã đối chiếu",
+          "met": true
+        }
+      ],
+      "evidence": [
+        {
+          "star": "Phá Quân",
+          "kind": "chính tinh",
+          "palace": "Tài Bạch",
+          "branch": "Tuất",
+          "branchIndex": 10,
+          "relation": null,
+          "side": null,
+          "strength": "D",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        }
+      ],
+      "missing": [
+        "Không có sao cùng nhóm tại cung."
+      ],
+      "matchedPairs": [],
+      "relatedBranches": [],
+      "sha256": "b7781254aeff7a38bf93ebc6642e300cc5105cc8179f9254cbca29ae32b0cb23"
+    },
+    {
+      "id": "tu-tuc-giap",
+      "palace": "Tử Tức",
+      "family": "relational",
+      "recordId": "giap-cung",
+      "question": "Khi chỉ có một phía của cặp giáp, giới hạn nghiên cứu là gì?",
+      "exercise": "Nêu cung giáp còn thiếu và vì sao không thể coi một sao đơn lẻ là cặp giáp.",
+      "title": "Giáp cung: cặp sao ở hai phía",
+      "scope": "immediate-neighbor-houses",
+      "fixtureId": "tet-2026",
+      "input": {
+        "date": "2026-02-17",
+        "calendar": "solar",
+        "gender": "Nữ",
+        "hour": 0,
+        "minute": 10
+      },
+      "branchIndex": 11,
+      "branch": "Hợi",
+      "status": "partial",
+      "checks": [
+        {
+          "label": "Có sao thuộc các cặp đã khai báo ở cung giáp phía trước",
+          "met": true
+        },
+        {
+          "label": "Có sao thuộc các cặp đã khai báo ở cung giáp phía sau",
+          "met": false
+        },
+        {
+          "label": "Ít nhất một cặp có đúng mỗi sao ở một cung giáp khác nhau",
+          "met": false
+        }
+      ],
+      "evidence": [
+        {
+          "star": "Hữu Bật",
+          "kind": "sao trợ lực",
+          "palace": "Tài Bạch",
+          "branch": "Tuất",
+          "branchIndex": 10,
+          "relation": "giáp cung",
+          "side": "trước",
+          "strength": null,
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Văn Xương",
+          "kind": "sao trợ lực",
+          "palace": "Tài Bạch",
+          "branch": "Tuất",
+          "branchIndex": 10,
+          "relation": "giáp cung",
+          "side": "trước",
+          "strength": null,
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        }
+      ],
+      "missing": [
+        "Chưa quan sát được một cặp sao bổ trợ hợp lệ đứng tại hai phía giáp cung."
+      ],
+      "matchedPairs": [],
+      "relatedBranches": [
+        10,
+        0
+      ],
+      "sha256": "a97afa7d4e536a839c15eb65bca263c63b8eadddb04d447450dd1092ad22f4a9"
+    },
+    {
+      "id": "phu-the-hoa",
+      "palace": "Phu Thê",
+      "family": "conditional",
+      "recordId": "main-transformation",
+      "question": "Có chính tinh nhưng không có Tứ Hóa trỏ đúng sao đích thì phải ghi nhận như thế nào?",
+      "exercise": "So sánh nhãn Hóa được kiểm toán với tên chính tinh, tránh suy đoán kết cục quan hệ.",
+      "title": "Chính tinh × Tứ Hóa",
+      "scope": "verified-local-natal-and-scoped-annual",
+      "fixtureId": "nhuan-2025-nu",
+      "input": {
+        "date": "2025-07-27",
+        "calendar": "solar",
+        "gender": "Nữ",
+        "hour": 10,
+        "minute": 15
+      },
+      "branchIndex": 0,
+      "branch": "Tý",
+      "status": "partial",
+      "checks": [
+        {
+          "label": "Có chính tinh bản mệnh với độ sáng hợp lệ tại cung",
+          "met": true
+        },
+        {
+          "label": "Có bằng chứng thuộc nhóm sao phối hợp, cùng cung hoặc cùng năm được kiểm toán",
+          "met": false
+        },
+        {
+          "label": "Không có dữ liệu mâu thuẫn trong nhóm đã đối chiếu",
+          "met": true
+        }
+      ],
+      "evidence": [
+        {
+          "star": "Vũ Khúc",
+          "kind": "chính tinh",
+          "palace": "Phu Thê",
+          "branch": "Tý",
+          "branchIndex": 0,
+          "relation": null,
+          "side": null,
+          "strength": "V",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Thiên Phủ",
+          "kind": "chính tinh",
+          "palace": "Phu Thê",
+          "branch": "Tý",
+          "branchIndex": 0,
+          "relation": null,
+          "side": null,
+          "strength": "M",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        }
+      ],
+      "missing": [
+        "Chưa quan sát được Tứ Hóa hợp lệ gắn trực tiếp với chính tinh đã xác minh ở cung."
+      ],
+      "matchedPairs": [],
+      "relatedBranches": [],
+      "sha256": "2ce2fd9d76483aed87aabb899c0325bb9739a70841507dd6d1f0f22d6c10a404"
+    },
+    {
+      "id": "huynh-de-hoi",
+      "palace": "Huynh Đệ",
+      "family": "relational",
+      "recordId": "tam-hop",
+      "question": "Những sao hội từ Tam hợp có thể kiểm chứng lại bằng vị trí nào?",
+      "exercise": "Phân loại bằng chứng sao tại cung gốc và hai cung tam hợp mà không suy luận về anh chị em thật.",
+      "title": "Tam hợp: sao hội chiếu",
+      "scope": "two-trinal-houses",
+      "fixtureId": "giap-ty",
+      "input": {
+        "date": "1984-04-01",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 4,
+        "minute": 30
+      },
+      "branchIndex": 1,
+      "branch": "Sửu",
+      "status": "observed",
+      "checks": [
+        {
+          "label": "Chính tinh tọa cung có bản ghi hợp lệ hoặc cung vô chính diệu",
+          "met": true
+        },
+        {
+          "label": "Có sao bản mệnh thuộc nhóm nghiên cứu ở ít nhất một cung tam hợp",
+          "met": true
+        }
+      ],
+      "evidence": [
+        {
+          "star": "Liêm Trinh",
+          "kind": "chính tinh",
+          "palace": "Huynh Đệ",
+          "branch": "Sửu",
+          "branchIndex": 1,
+          "relation": "tọa cung",
+          "side": null,
+          "strength": "D",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Thất Sát",
+          "kind": "chính tinh",
+          "palace": "Huynh Đệ",
+          "branch": "Sửu",
+          "branchIndex": 1,
+          "relation": "tọa cung",
+          "side": null,
+          "strength": "D",
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Thiên Phúc",
+          "kind": "sao trợ lực",
+          "palace": "Tật Ách",
+          "branch": "Dậu",
+          "branchIndex": 9,
+          "relation": "tam-hop",
+          "side": null,
+          "strength": null,
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        },
+        {
+          "star": "Địa Không",
+          "kind": "sát tinh",
+          "palace": "Tật Ách",
+          "branch": "Dậu",
+          "branchIndex": 9,
+          "relation": "tam-hop",
+          "side": null,
+          "strength": null,
+          "transformation": null,
+          "scope": "natal",
+          "year": null
+        }
+      ],
+      "missing": [],
+      "matchedPairs": [],
+      "relatedBranches": [
+        5,
+        9
+      ],
+      "sha256": "55a1c2947ef3bea42a2cae5c79b292a0930e5a2d22954454d7ba5d8f1ec89bc2"
+    }
+  ]
+}

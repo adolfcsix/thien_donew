@@ -1,0 +1,12 @@
+{
+  "scope": "selected research convention; hand-transcribed before detector",
+  "stemOrder": ["Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý", "Đinh", "Bính", "Ất"],
+  "rows": [
+    {"xun": "Giáp Tý", "hidden": "Mậu", "dragon": ["Mậu", "Bính"], "bird": ["Bính", "Mậu"]},
+    {"xun": "Giáp Tuất", "hidden": "Kỷ", "dragon": ["Kỷ", "Bính"], "bird": ["Bính", "Kỷ"]},
+    {"xun": "Giáp Thân", "hidden": "Canh", "dragon": ["Canh", "Bính"], "bird": ["Bính", "Canh"]},
+    {"xun": "Giáp Ngọ", "hidden": "Tân", "dragon": ["Tân", "Bính"], "bird": ["Bính", "Tân"]},
+    {"xun": "Giáp Thìn", "hidden": "Nhâm", "dragon": ["Nhâm", "Bính"], "bird": ["Bính", "Nhâm"]},
+    {"xun": "Giáp Dần", "hidden": "Quý", "dragon": ["Quý", "Bính"], "bird": ["Bính", "Quý"]}
+  ]
+}

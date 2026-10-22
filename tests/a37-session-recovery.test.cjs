@@ -1,0 +1,9 @@
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),ts=require('typescript');
+const code=ts.transpileModule(fs.readFileSync(path.join(__dirname,'../apps/web/src/lib/api.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+function client(responses){let calls=0;const exports={};const sandbox={exports,require,setTimeout,clearTimeout,AbortController,fetch:async()=>{const next=responses[calls++];if(next instanceof Error)throw next;return new Response(JSON.stringify(next.body),{status:next.status||200,headers:{'Content-Type':'application/json'}})}};vm.runInNewContext(code,sandbox);return {me:()=>exports.accountApi.me(),calls:()=>calls};}
+const user={id:'known-user',email:'test@example.invalid'};
+test('dropped session read recovers once using server identity',async()=>{const c=client([Error('socket reset'),{body:{user}}]);assert.equal((await c.me()).user.id,user.id);assert.equal(c.calls(),2)});
+test('temporary gateway failure recovers without a login mutation',async()=>{const c=client([{status:502,body:{}},{body:{user}}]);assert.equal((await c.me()).user.id,user.id);assert.equal(c.calls(),2)});
+test('authoritative signed-out session never retries or restores old identity',async()=>{const c=client([{body:{user:null}}]);assert.equal((await c.me()).user,null);assert.equal(c.calls(),1)});
+test('access denial and malformed identity do not retry',async()=>{for(const response of [{status:403,body:{}},{body:{user:{id:'forged'}}}]){const c=client([response]);await assert.rejects(c.me());assert.equal(c.calls(),1)}});
+test('persistent transport failure is bounded to two reads',async()=>{const c=client([Error('one'),Error('two')]);await assert.rejects(c.me());assert.equal(c.calls(),2)});

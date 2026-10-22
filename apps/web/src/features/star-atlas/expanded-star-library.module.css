@@ -1,0 +1,50 @@
+.shell{border:1px solid var(--line-strong);background:var(--panel);padding:clamp(16px,2.2vw,28px);margin:18px 0 30px;scroll-margin-top:24px}
+.head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px}
+.head h2{font-size:clamp(21px,3vw,31px);margin:10px 0}
+.head p{color:var(--muted);font-size:12px;line-height:1.85;max-width:790px}
+.count{flex-shrink:0;border:1px solid var(--line-strong);padding:9px 11px;color:var(--gold);font-size:13px}
+.filters{display:grid;grid-template-columns:minmax(0,2fr) repeat(2,minmax(0,1fr));gap:12px;margin:17px 0}
+.filters label{font-size:12px;color:var(--muted);display:grid;gap:7px}
+.filters input,.filters select{color:var(--text);background:var(--panel-alt);border:1px solid var(--line-strong);padding:11px;min-height:45px;max-width:100%;width:100%}
+.status{font-size:11px;color:var(--muted);margin:12px 0}
+.content{display:grid;grid-template-columns:minmax(180px,.8fr) minmax(0,1.7fr);gap:15px;align-items:start}
+.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;max-height:540px;overflow:auto;scrollbar-gutter:stable;padding-right:3px}
+.list button{background:var(--panel-alt);border:1px solid var(--line);color:var(--text);padding:10px;min-width:0;text-align:left;cursor:pointer;display:grid;gap:5px}
+.list button:hover,.list button:focus-visible,.list button.active{border-color:var(--gold)}
+.list button strong{font-size:12px;overflow-wrap:anywhere}
+.list button small{color:var(--muted);font-size:10px;line-height:1.4}
+.profile{background:var(--panel-alt);border:1px solid var(--line-strong);padding:clamp(14px,2vw,22px);min-width:0;min-height:310px}
+.profile>small{color:var(--gold);font-size:11px}
+.profile h3{margin:8px 0 18px;font-size:clamp(21px,2.5vw,28px)}
+.profile h4{font-size:12px;color:var(--gold);margin:17px 0 5px}
+.profile p{font-size:12px;line-height:1.9;margin:0;overflow-wrap:anywhere}
+.note{border-top:1px solid var(--line);margin-top:17px;padding-top:14px}
+.note strong{font-size:12px;color:var(--gold)}
+.note p{color:var(--muted);margin-top:7px}
+@media(max-width:960px){.content{grid-template-columns:1fr}.list{max-height:225px}.profile{min-height:unset}}
+@media(max-width:620px){.filters{grid-template-columns:1fr}.list{grid-template-columns:repeat(2,minmax(0,1fr))}.head{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){.list button{transition:none}}
+/* V11.56 — editorial deep dossiers; scoped to atlas so chart styling stays unchanged. */
+.deep{margin-top:22px;border-top:1px solid var(--line-strong);padding-top:17px}
+.deepHead{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:7px;border-bottom:1px solid var(--line);padding-bottom:11px}
+.deepHead strong{color:var(--gold);font-size:12px}
+.deepHead span{color:var(--muted);font-size:11px}
+.relatedStars{display:flex;gap:7px;flex-wrap:wrap;margin:9px 0 15px}
+.relatedStars button{padding:8px 10px;border:1px solid var(--line-strong);background:var(--panel);color:var(--text);cursor:pointer;font-size:12px}
+.relatedStars button:hover,.relatedStars button:focus-visible{border-color:var(--gold);color:var(--gold)}
+.boundary,.limited{border-left:3px solid var(--line-strong);padding:13px 15px;margin:20px 0 0;background:var(--panel)}
+.boundary strong,.limited strong{font-size:12px;color:var(--gold)}
+.boundary p,.limited p{margin-top:8px}
+@media(max-width:960px){.filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.filters{grid-template-columns:1fr}.head{flex-direction:column}.count{flex-shrink:1}}
+
+/* V11.57 — ordered cycle navigation. Editorial only; not branch placement. */
+.cycleStudy{background:var(--panel);border:1px solid var(--line-strong);padding:13px 15px;margin:16px 0}
+.cycleHeader{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--gold)}
+.cycleStudy p{margin:10px 0;color:var(--text)}
+.cycleStudy small{display:block;margin-top:10px;font-size:11px;line-height:1.6;color:var(--muted)}
+.cycleNavigation{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);align-items:center;gap:8px;margin-top:12px}
+.cycleNavigation button{background:var(--panel-alt);border:1px solid var(--line-strong);color:var(--text);min-height:42px;padding:8px;cursor:pointer;font-size:12px;overflow-wrap:anywhere}
+.cycleNavigation button:hover,.cycleNavigation button:focus-visible{border-color:var(--gold);color:var(--gold)}
+.cycleNavigation strong{font-size:12px;text-align:center;color:var(--gold);overflow-wrap:anywhere}
+@media(max-width:620px){.cycleNavigation{grid-template-columns:1fr 1fr}.cycleNavigation strong{grid-column:1/-1;grid-row:1}.cycleNavigation button{grid-row:2}}

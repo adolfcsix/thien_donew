@@ -1,0 +1,24 @@
+{
+  "tool": "image_gen built-in",
+  "assets": [
+    {
+      "path": "apps/web/public/brand/thien-mon-hero-dark.webp",
+      "mode": "compositing / outpainting",
+      "inputs": [
+        "approved thien-mon-scene-dark.webp",
+        "user-approved night brand board"
+      ],
+      "prompt": "Edit the approved THIEN DO artwork into one production website panoramic hero background, landscape approximately 2.5:1. Preserve recognizable jade twin gate pillars, luminous gold ring and Chinese character 天. Place complete gate in the right third, entirely visible. Extend original scenic environment across entire rectangle: layered jade mountains, winding gold river glints, calm lake and low mist. Left 48% dark, quiet, low detail for live ivory website copy; continuous landscape, not a blank panel. Original premium East Asian jade/bronze night illustration style. No card, square inset, frame, rounded corners, palette board, watermark, captions or typography. Only single 天 inside gate. Fine astronomical arcs near gate. Preserve brand identity."
+    },
+    {
+      "path": "apps/web/public/brand/thien-mon-hero-light.webp",
+      "mode": "lighting-weather edit",
+      "inputs": [
+        "generated panoramic night hero",
+        "approved thien-mon-scene-light.webp"
+      ],
+      "prompt": "Preserve the night hero panoramic framing, gate scale/position, twin pillars, ring, single 天, winding river, mountains, lake and astronomical arcs. Create a matching light day theme using approved warm ivory sky, pale sage mist, jade mountains, antique gold and dark jade 天. Left 48% quiet warm ivory atmosphere for dark live website text, landscape detail mainly below. Full rectangle, original East Asian jade/gold style. No card, frame, square inset, captions, labels, Latin letters, palette swatches or watermark. Only exact 天 character inside gate."
+    }
+  ],
+  "delivery": "Converted project copies to WebP quality 91; generated originals remain separate. Original icon/scene assets retained."
+}

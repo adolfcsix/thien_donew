@@ -1,0 +1,2 @@
+export type CoverageResult = Readonly<{level:'blocked'|'review'|'research';title:string;explanation:string;sourceAvailable:boolean;sourceStatus:string;methodStatus:string;luckStatus:string;yearMonthSourceVerified:false;verifiedUsefulGod:false;verifiedDayun:false;coreChartScope:string;luckNote:string}>;
+export function assessResearchCoverage(result:{calendar:{sourceStatus:string;nearClockBoundary:boolean};methods:{status:string};luck:{status:string}}):CoverageResult;

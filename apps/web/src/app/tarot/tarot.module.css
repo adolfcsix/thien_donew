@@ -1,0 +1,584 @@
+.root {
+  --plum:#332849;
+  --indigo:#282b54;
+  --gold:#bd9355;
+  --muted:#645b75;
+  --cream:#fffcf6;
+  color:var(--plum);
+  max-width:1230px;
+  margin:0 auto;
+  padding-bottom:40px
+}
+.hero {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 300px;
+  gap:36px;
+  align-items:center;
+  min-height:385px;
+  padding:clamp(26px,5vw,64px);
+  background:radial-gradient(circle at 72% 18%,#61567c 0,transparent 40%),linear-gradient(120deg,#231e3a,#34304f 72%,#45375b);
+  color:#f8eacf;
+  border-radius:24px;
+  position:relative;
+  overflow:hidden
+}
+.hero:before {
+  content:'✧   ·   ✦       ·     ✧       ·     ✦';
+  position:absolute;
+  top:12px;
+  right:30px;
+  color:#c5a981;
+  opacity:.5;
+  letter-spacing:22px;
+  max-width:38%;
+  line-height:3
+}
+.heroCopy {
+  position:relative;
+  z-index:1
+}
+.eyebrow {
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--gold)
+}
+.hero h1 {
+  font-family:var(--font-serif);
+  font-size:clamp(36px,5vw,66px);
+  line-height:1.13;
+  font-weight:400;
+  letter-spacing:-.04em;
+  margin:17px 0 21px
+}
+.hero h1 em {
+  color:#e9c894;
+  font-weight:400
+}
+.hero p {
+  max-width:670px;
+  color:#ddd6e9;
+  line-height:1.8;
+  font-size:15px
+}
+.stats {
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
+  margin-top:27px
+}
+.stats span {
+  display:grid;
+  gap:1px;
+  color:#dfd3e2;
+  font-size:12px
+}
+.stats strong {
+  font:32px var(--font-serif);
+  color:#e9c894
+}
+.heroSeal {
+  width:245px;
+  height:245px;
+  border:2px solid #9f876c;
+  border-radius:50%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  position:relative;
+  color:#e9c894;
+  background:radial-gradient(circle,#67507035,transparent 70%);
+  box-shadow:0 0 0 10px #f9dba30e,0 0 0 17px #c4a8773b
+}
+.heroSeal:after {
+  content:'';
+  position:absolute;
+  inset:16px;
+  border:1px dotted #d4b58b;
+  border-radius:50%
+}
+.heroSeal div {
+  font-size:77px
+}
+.heroSeal span {
+  letter-spacing:.28em;
+  font-size:12px
+}
+.heroSeal b {
+  font:40px var(--font-serif)
+}
+.panel {
+  background:var(--cream);
+  border:1px solid #ddd1bd;
+  border-radius:21px;
+  padding:clamp(20px,3vw,37px);
+  margin:21px 0
+}
+.sectionHead {
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px
+}
+.sectionHead h2,.sources h2 {
+  font:normal clamp(26px,3vw,34px) var(--font-serif);
+  margin:8px 0 22px
+}
+.methodLabel {
+  font-size:12px;
+  color:#756b7a;
+  background:#f1e9e4;
+  padding:7px 12px;
+  border-radius:20px
+}
+.form {
+  display:grid;
+  gap:16px
+}
+.questionLabel,.search {
+  display:grid;
+  gap:9px;
+  font-size:14px;
+  font-weight:700
+}
+.questionLabel span {
+  font-weight:400;
+  color:var(--muted)
+}
+.questionLabel textarea,.search input {
+  width:100%;
+  background:#fff;
+  border:1px solid #ccbdd4;
+  color:#332849;
+  border-radius:11px;
+  padding:12px 14px;
+  font:inherit;
+  min-width:0;
+  resize:vertical
+}
+.options {
+  display:flex;
+  gap:18px;
+  align-items:center;
+  flex-wrap:wrap
+}
+.options fieldset {
+  display:flex;
+  gap:13px;
+  align-items:center;
+  border:1px solid #ddd1bd;
+  border-radius:12px;
+  padding:11px 16px;
+  min-width:0
+}
+.options legend {
+  font-size:12px;
+  font-weight:700;
+  padding:0 6px
+}
+.options label {
+  font-size:13px;
+  display:flex;
+  gap:7px;
+  align-items:center;
+  cursor:pointer
+}
+.options input {
+  accent-color:#725289
+}
+.toggle {
+  margin-right:auto
+}
+.primary,.secondary {
+  min-height:43px;
+  padding:11px 20px;
+  border:0;
+  border-radius:11px;
+  cursor:pointer;
+  font:inherit;
+  font-weight:700;
+  background:var(--gold);
+  color:var(--panel)
+}
+.secondary {
+  background:transparent;
+  color:#523968;
+  border:1px solid #b8a7c1
+}
+.primary:disabled {
+  opacity:.55;
+  cursor:wait
+}
+.help {
+  font-size:13px;
+  line-height:1.7;
+  color:#6e6476
+}
+.notice {
+  background:#eee8f3;
+  color:#342844;
+  border-radius:11px;
+  padding:12px 16px
+}
+.readingGrid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  margin:27px 0
+}
+.readingCard {
+  border:1px solid #dfd3c6;
+  border-radius:17px;
+  padding:16px;
+  background:linear-gradient(160deg,#fbf8f3,#f2edf5)
+}
+.positionLabel {
+  display:block;
+  text-align:center;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.07em;
+  margin-bottom:15px;
+  color:#756283
+}
+.cardFace {
+  aspect-ratio:2/3;
+  width:min(100%,215px);
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 11px;
+  text-align:center;
+  border:8px solid #362f55;
+  outline:1px solid #9c7d4e;
+  outline-offset:-14px;
+  background:radial-gradient(ellipse at center,#493861 0,#2b294a 68%,#241e39 100%);
+  box-shadow:0 12px 25px #21182a29;
+  color:#e8d6aa;
+  position:relative;
+  transition:transform .3s
+}
+.cardFace:before {
+  content:'';
+  position:absolute;
+  inset:21px;
+  border:1px solid #a78d6f80;
+  pointer-events:none
+}
+.cardTop,.cardBottom {
+  font-size:10px;
+  letter-spacing:.15em;
+  position:relative;
+  z-index:1
+}
+.cardSigil {
+  font:clamp(60px,9vw,104px) var(--font-serif);
+  line-height:1;
+  position:relative;
+  z-index:1;
+  text-shadow:0 1px 24px #f0cb9950
+}
+.cardFace strong {
+  font:20px var(--font-serif);
+  position:relative;
+  z-index:1
+}
+.cardFace small {
+  position:relative;
+  z-index:1;
+  color:#c7b4dc;
+  font-size:11px
+}
+.reversed {
+  border-color:#6b4163;
+  background:radial-gradient(ellipse,#5e425f,#342443)
+}
+.reversed .cardSigil {
+  transform:rotate(180deg)
+}
+.readingCopy h3,.detail h3 {
+  font:23px var(--font-serif);
+  margin:17px 0 4px
+}
+.readingCopy p,.detail p {
+  line-height:1.7;
+  font-size:14px
+}
+.readingCopy h4,.detail h4 {
+  margin:16px 0 5px;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.09em;
+  color:#76618c
+}
+.orientation {
+  color:#76618c!important;
+  font-size:12px!important
+}
+.saveArea {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap
+}
+.libraryControls {
+  display:flex;
+  gap:16px;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap
+}
+.filters {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px
+}
+.filters button {
+  border:1px solid #d4c5d9;
+  background:#fff;
+  color:#534661;
+  border-radius:24px;
+  padding:7px 11px;
+  cursor:pointer;
+  font:inherit;
+  font-size:12px
+}
+.filters .activeFilter,.filters button[aria-pressed=true] {
+  background:#4a375e;
+  border-color:#4a375e;
+  color:white
+}
+.search {
+  min-width:min(100%,260px);
+  font-size:12px
+}
+.search input {
+  padding:9px 12px
+}
+.catalogLayout {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(235px,300px);
+  gap:22px;
+  align-items:start
+}
+.catalog {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(135px,1fr));
+  gap:10px
+}
+.catalogCard {
+  min-height:137px;
+  border:1px solid #ddd2d4;
+  background:#fff;
+  color:#40334c;
+  border-radius:12px;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  padding:10px;
+  text-align:center;
+  font:inherit
+}
+.catalogCard>span {
+  font-size:36px;
+  color:#926d50
+}
+.catalogCard strong {
+  font:16px var(--font-serif)
+}
+.catalogCard small {
+  font-size:11px;
+  color:#64536b
+}
+.catalogCard.isSelected,.catalogCard[aria-pressed=true] {
+  border-color:#835b9b;
+  background:#f0eaf4;
+  box-shadow:inset 0 0 0 1px #835b9b
+}
+.detail {
+  border:1px solid #ddd2d4;
+  border-radius:15px;
+  background:#f6f1f5;
+  padding:17px;
+  position:sticky;
+  top:16px
+}
+.detail .cardFace {
+  margin:15px auto
+}
+.sources {
+  border-top:1px solid #cfbdd5;
+  padding:22px clamp(10px,2vw,24px);
+  line-height:1.85
+}
+.sources p {
+  max-width:850px;
+  color:#5e5569
+}
+.sources a {
+  color:#654c88;
+  text-decoration:underline
+}
+.root :focus-visible {
+  outline:3px solid #af7918;
+  outline-offset:3px
+}
+@media(max-width:910px) {
+  .hero {
+    grid-template-columns:1fr
+  }
+  .heroSeal {
+    position:absolute;
+    right:-95px;
+    bottom:-75px;
+    opacity:.25;
+    pointer-events:none
+  }
+  .catalogLayout {
+    grid-template-columns:1fr
+  }
+  .detail {
+    position:static;
+    max-width:600px
+  }
+  .readingGrid {
+    gap:8px
+  }
+}
+@media(max-width:640px) {
+  .hero {
+    border-radius:14px
+  }
+  .readingGrid {
+    grid-template-columns:1fr
+  }
+  .readingCard {
+    display:grid;
+    grid-template-columns:145px minmax(0,1fr);
+    gap:8px 14px;
+    align-items:start
+  }
+  .readingCard .positionLabel {
+    grid-column:1/-1
+  }
+  .readingCard .cardFace {
+    width:140px
+  }
+  .readingCopy h3 {
+    margin-top:0
+  }
+  .cardSigil {
+    font-size:64px
+  }
+  .panel {
+    border-radius:14px
+  }
+  .options fieldset {
+    width:100%
+  }
+  .catalog {
+    grid-template-columns:repeat(2,minmax(0,1fr))
+  }
+  .methodLabel {
+    display:none
+  }
+}
+@media(max-width:340px) {
+  .readingCard {
+    display:block
+  }
+  .readingCard .cardFace {
+    width:min(100%,190px)
+  }
+  .stats {
+    gap:15px
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .cardFace {
+    transition:none
+  }
+}
+
+.emptyCatalog {
+  color:var(--muted);
+  padding:18px;
+  background:#f6f1f5;
+  border:1px dashed #d4c5d9;
+  border-radius:12px;
+  font-size:14px;
+}
+.secondary:disabled {
+  opacity:.55;
+  cursor:wait;
+}
+
+.root{color-scheme:light}.hero{min-height:0;padding:clamp(24px,3vw,40px)}@media(max-width:680px){.root input,.root select,.root textarea{font-size:16px}}
+
+/* Keep card artwork intact; use shared theme surfaces around the reading tools. */
+.root{color:var(--text);color-scheme:normal}
+.panel{background:var(--panel);border-color:var(--line-strong)}
+.questionLabel span{color:inherit;opacity:.85}
+.methodLabel{background:var(--panel-alt);color:var(--text)}
+.questionLabel textarea,.search input{background:var(--panel-alt);border-color:var(--line-strong);color:var(--text)}
+.detail{background:var(--panel-alt);color:var(--text);border-color:var(--line-strong)}
+.readingCopy h4,.detail h4,.orientation{color:var(--text)!important}
+.sources p,.sources a{color:var(--text)}
+/* Secondary copy follows the active Western world; card-face ink stays local. */
+.secondary{color:var(--text)}
+.help{color:var(--muted)}
+
+/* V11.164.24: complete Rider–Waite–Smith deck, no glyph placeholders. */
+.artFigure{margin:0 auto;width:min(100%,216px);min-width:0;display:grid;gap:8px;align-content:start;justify-items:center}
+.artCaption{font-size:12px;font-weight:700;color:var(--text);text-align:center;line-height:1.4;overflow-wrap:anywhere;max-width:100%}
+.artFigure .cardFace{display:grid;place-items:center;padding:8px;overflow:hidden;width:100%;aspect-ratio:3/5;border:1px solid #d2c2ab;outline:none;background:linear-gradient(180deg,#f5efe3,#e9dfcf);border-radius:12px;box-shadow:0 14px 26px #21182a2f;transform:rotate(0);transform-origin:center center;transition:transform .55s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease}
+.artFigure .cardFace::before{display:none}
+.artFigure .cardFace.reversed{transform:rotate(180deg)}
+.cardArtwork{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center center;background:#f8f2e8;color:#352b45;border-radius:8px;image-rendering:auto}
+.catalogCard{min-height:188px;gap:8px;padding:10px 8px;align-content:start;justify-content:flex-start}
+.catalogCard .catalogThumb{display:block;width:66px;height:110px;max-width:100%;object-fit:contain;object-position:center center;background:#f8f2e8;border:1px solid #d8c8b4;border-radius:6px;box-shadow:0 2px 7px #21182a24;flex-shrink:0}
+.catalogCard strong{font-size:14px;line-height:1.2}
+.catalogCard small{line-height:1.25}
+.catalogCard:focus-visible,.catalogCard:hover{border-color:#af8c54}
+@media(max-width:640px){.readingCard .artFigure{width:140px}.readingCard .cardFace{width:100%}}
+@media(max-width:340px){.readingCard .artFigure{width:min(100%,190px)}}
+@media(prefers-reduced-motion:reduce){.artFigure .cardFace{transition:none}}
+
+/* A13: Licensed deck selector stays legible across five Western light/dark themes. */
+.deckChooser{display:flex;align-items:center;flex-wrap:wrap;gap:16px 24px;justify-content:space-between}
+.deckChooser>div{flex:1 1 240px;min-width:0}.deckChooser h2{font:normal clamp(21px,3vw,28px) var(--font-serif);margin:6px 0}.deckChooser p{margin:0;line-height:1.6;font-size:13px;color:var(--text)}
+.deckSelect{display:grid;gap:7px;min-width:min(100%,290px);font-size:13px;font-weight:700;color:var(--text)}
+.deckSelect select{min-height:44px;width:100%;border-radius:11px;border:1px solid var(--line-strong);background:var(--panel-alt);color:var(--text);padding:9px 13px;font:inherit}
+.deckChooser .deckCredit{flex-basis:100%;font-size:12px;color:var(--text)}
+.deckCredit a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+
+/* Preserve the illustration's original paper; theme the cloth and reading mats. */
+.readingGrid{margin:0;position:relative}
+.readingCard{color:var(--text);background:color-mix(in srgb,var(--panel) 90%,transparent);border-color:var(--line-strong);box-shadow:0 10px 24px #090b1818;backdrop-filter:blur(4px)}
+.positionLabel{color:var(--td-accent-text,var(--gold))}
+.readingCopy :is(h3,h4,p){color:var(--text)}
+
+@media(max-width:760px){.readingGrid{grid-template-columns:minmax(0,1fr)}.readingCard{display:flex;flex-direction:column;min-width:0}.readingCopy{min-width:0;max-width:100%;overflow-wrap:anywhere}.readingCard .artFigure{width:min(100%,190px);align-self:center}.readingCard .cardFace{width:100%}.positionLabel{align-self:stretch}}
+
+/* Avoid intrinsic form/fieldset widths pushing a 320px viewport sideways. */
+.form{min-width:0;grid-template-columns:minmax(0,1fr)}
+.form>*,.options,.options label,.questionLabel{min-width:0;max-width:100%}
+.options fieldset{min-inline-size:0;max-width:100%;flex-wrap:wrap}
+.options select{min-width:0;max-width:100%}
+@media(max-width:640px){.options{align-items:stretch}.options>label{display:flex;flex-wrap:wrap}.options fieldset{width:100%;gap:10px}.options select{width:100%}.heroSeal{width:min(245px,100%);height:auto;aspect-ratio:1;justify-self:center}}
+/* A61 — Tarot-specific eye, hands and rotating three-card diorama. */
+.heroScene{position:relative;z-index:1;min-width:0;width:min(100%,330px);justify-self:center}
+@media(max-width:640px){.heroScene{width:min(100%,270px)}}
+/* Apply card lift to the whole figure so reversed artwork retains its exact 180° orientation. */
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .artFigure{transform-style:preserve-3d;transition:transform .26s ease,filter .26s ease;perspective:900px}
+ .artFigure:hover,.artFigure:focus-within{transform:perspective(900px) translateY(-4px) rotateX(3deg) rotateY(-3deg);filter:drop-shadow(0 8px 15px #1d15272a)}
+}

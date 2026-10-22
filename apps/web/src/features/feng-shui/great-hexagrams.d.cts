@@ -1,0 +1,12 @@
+export type GreatHexagramRecord=Readonly<{index:number;ordinal:number;kingWen:number;han:string;symbol:string;binary:string;qi:number;guaPeriod:number;from:number;to:number;sourceId:string}>;
+export type GreatHexagramReading=GreatHexagramRecord&Readonly<{degrees:number;slotLine:number;slotLineFrom:number;slotLineTo:number;distanceHexBoundary:number;distanceLineBoundary:number;accuracy:number;hexagramStable:boolean;lineStable:boolean;warnings:readonly string[]}>;
+export declare const WIDTH:number;
+export declare const LINE_WIDTH:number;
+export declare const SOURCE:Readonly<{id:string;url:string;license:string;scope:string}>;
+export declare const ATLAS:readonly GreatHexagramRecord[];
+export declare const ELEMENT_BY_QI:Readonly<Record<number,string>>;
+export declare function slotAtDegrees(degrees:number):number;
+export declare function distanceToCircularBoundary(degrees:number,width:number):number;
+export declare function validateAccuracy(accuracy:number):number;
+export declare function hexagramAt(degrees:number,accuracy?:number):GreatHexagramReading;
+export declare function greatHexagramPair(facingDegrees:number,accuracy?:number):Readonly<{method:string;source:typeof SOURCE;facing:GreatHexagramReading;sitting:GreatHexagramReading;accuracy:number;stable:boolean;sameGuaPeriod:boolean;complementaryQi:boolean;inverseLines:boolean;pairingVerified:boolean;status:string;note:string;limitation:string}>;

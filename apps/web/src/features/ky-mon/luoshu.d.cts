@@ -1,0 +1,10 @@
+export type Palace={number:number;direction:string;trigram:string;symbol:string;element:string;position:number[]};
+export declare const PALACES:readonly Palace[];
+export declare const EIGHT_GATES:readonly string[];
+export declare const THREE_WONDERS:readonly string[];
+export declare const SIX_INSTRUMENTS:readonly string[];
+export declare const NINE_STARS:readonly string[];
+export declare const EIGHT_DEITIES:readonly string[];
+export declare function getPalace(number:number):Palace|null;
+export declare function oppositePalace(number:number):Palace|null;
+export declare function verifyLuoShu():{grid:number[][];sums:number[];valid:boolean};

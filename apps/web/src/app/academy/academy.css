@@ -1,0 +1,83 @@
+/* Thiên Đồ Academy: dedicated teaching layout. Scoped selectors avoid changing chart pages. */
+.academy-head{max-width:1100px}
+.academy-head h1{max-width:790px;font-size:clamp(32px,3.3vw,51px);line-height:1.2}
+.academy-head>p{max-width:780px;line-height:1.9}
+.academy-totals{display:flex;gap:12px;flex-wrap:wrap;margin:25px 0}
+.academy-totals>span{border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:14px 18px;border-radius:7px;font-size:12px}
+.academy-totals strong{font-size:21px;font-weight:500;color:var(--gold);margin-right:6px}
+.academy-progress{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:18px;max-width:710px;color:var(--muted);font-size:12px}
+.academy-progress-row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.academy-progress-row strong{color:var(--text)}
+.academy-progress-track{height:5px;background:var(--line-strong);border-radius:99px;overflow:hidden;margin:13px 0}
+.academy-progress-track>span{height:100%;display:block;background:var(--gold);border-radius:99px;transition:width .2s}
+.academy-progress small{line-height:1.7;color:var(--muted)}
+.academy-roadmap{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:32px 0 23px}
+.academy-milestone{border-top:1px solid var(--line-strong);padding:13px 2px;display:flex;align-items:center;gap:11px;color:var(--muted);font-size:11px}
+.academy-milestone b{font:20px var(--font-display);color:var(--gold)}
+.academy-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.academy-lesson-card{min-width:0;display:grid;grid-template-columns:38px minmax(0,1fr) 36px;gap:13px;min-height:198px;padding:25px;border-radius:9px;border:1px solid var(--line);background:linear-gradient(145deg,var(--panel),var(--panel-alt));position:relative;overflow:hidden;transition:border-color .18s,transform .18s}
+.academy-lesson-card:hover{border-color:var(--line-strong);transform:translateY(-2px)}
+.academy-lesson-number{font:23px var(--font-display);color:var(--gold)}
+.academy-lesson-copy{min-width:0}
+.academy-overline{color:var(--gold);font-size:10px;letter-spacing:.11em;text-transform:uppercase;line-height:1.6}
+.academy-overline span{margin:0 5px}
+.academy-lesson-copy h2{font-size:clamp(20px,2vw,29px);margin:12px 0;line-height:1.25}
+.academy-lesson-copy h2 a:hover,.academy-lesson-link:hover{text-decoration:underline;text-underline-offset:4px}
+.academy-lesson-copy p{color:var(--muted);line-height:1.7;font-size:12px;margin:0 0 16px}
+.academy-lesson-link{font-size:12px;color:var(--gold);font-weight:600}
+.academy-lesson-mark{font-size:39px;color:var(--line-strong);font-family:var(--font-display);opacity:.75;align-self:center}
+.academy-bridge{display:flex;justify-content:space-between;align-items:center;gap:25px;background:var(--panel-alt);border:1px solid var(--line);border-radius:9px;padding:25px 30px;margin:28px 0 20px}
+.academy-bridge h2{font-size:30px;margin:7px 0 8px}
+.academy-bridge p{font-size:12px;color:var(--muted);line-height:1.9;max-width:620px;margin:0}
+.academy-bridge .btn{flex-shrink:0}
+.academy-reading{max-width:1200px;margin:0 auto}
+.academy-breadcrumb{display:flex;gap:10px;color:var(--muted);font-size:12px;margin:8px 0 30px}
+.academy-breadcrumb a:hover{color:var(--gold)}
+.academy-reading-head{background:radial-gradient(circle at 96% 40%,rgba(196,161,106,.12),transparent 44%),var(--panel);border:1px solid var(--line);border-radius:10px;padding:clamp(23px,4vw,53px);margin-bottom:24px}
+.academy-reading-head h1{font-size:clamp(36px,4vw,57px);line-height:1.16;max-width:850px;margin:13px 0 15px}
+.academy-reading-head>p{font-size:14px;line-height:1.95;color:var(--muted);max-width:810px}
+.academy-learning-tag{display:inline-flex;flex-wrap:wrap;gap:8px;border-radius:3px;border:1px solid var(--line);padding:9px 12px;font-size:11px;color:var(--muted)}
+.academy-reading-grid{display:grid;grid-template-columns:minmax(175px,235px) minmax(0,1fr);gap:27px;align-items:start}
+.academy-reading-toc{position:sticky;top:20px;border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:22px 18px}
+.academy-reading-toc h2{color:var(--gold);letter-spacing:.1em;text-transform:uppercase;font-size:11px}
+.academy-reading-toc ol{padding-left:21px;color:var(--muted);font-size:12px;line-height:1.75}
+.academy-reading-toc li{margin:13px 0;padding-left:3px}
+.academy-reading-toc a:hover{color:var(--gold)}
+.academy-toc-action{display:block;color:var(--gold);font-size:12px;margin-top:23px;border-top:1px solid var(--line);padding-top:17px}
+.academy-reading-main{min-width:0}
+.academy-chapter,.academy-example,.academy-pitfalls,.academy-check,.academy-source{border:1px solid var(--line);background:var(--panel);padding:clamp(21px,3vw,36px);border-radius:9px;margin-bottom:17px;scroll-margin-top:20px}
+.academy-chapter-num{display:block;color:var(--gold);letter-spacing:.16em;font-size:10px;margin-bottom:12px}
+.academy-chapter h2,.academy-example h2,.academy-pitfalls h2,.academy-check h2{font-size:clamp(24px,2.5vw,32px);line-height:1.25;margin:0 0 16px}
+.academy-chapter p,.academy-example p,.academy-pitfalls li,.academy-check>p{font-size:14px;line-height:2.02;color:var(--muted);margin:0}
+.academy-example{border-color:var(--line-strong);background:linear-gradient(145deg,var(--panel-alt),var(--panel))}
+.academy-example .eyebrow{display:block;margin-bottom:12px}
+.academy-example a{color:var(--gold);font-size:13px;display:inline-block;margin-top:19px;font-weight:600}
+.academy-pitfalls ul{margin:0;padding-left:21px}
+.academy-pitfalls li{padding-left:5px;margin:7px 0}
+.academy-check .eyebrow{margin-bottom:11px}
+.academy-question{border:0;min-width:0;padding:0;margin:25px 0 0}
+.academy-question legend{font-size:14px;font-weight:600;line-height:1.6;padding:0;color:var(--text)}
+.academy-question legend span{color:var(--gold)}
+.academy-choices{display:grid;gap:9px;margin-top:15px}
+.academy-choice{display:flex;gap:12px;align-items:start;padding:13px;border-radius:6px;border:1px solid var(--line);font-size:12px;line-height:1.7;cursor:pointer;color:var(--muted)}
+.academy-choice:hover{border-color:var(--line-strong)}
+.academy-choice input{accent-color:var(--gold);flex-shrink:0;margin-top:3px}
+.academy-choice.is-correct{border-color:#65977d;color:var(--text)}
+.academy-choice.is-incorrect{border-color:#bb7474;color:var(--text)}
+.academy-answer{margin:9px 0 0;color:var(--muted);font-size:12px;line-height:1.85}
+.academy-submit{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:25px}
+.academy-submit span{color:var(--muted);font-size:12px}
+.academy-result{margin-top:25px;padding:17px;border:1px solid var(--line-strong);border-radius:7px}
+.academy-result strong{font:22px var(--font-display);color:var(--gold)}
+.academy-result p{color:var(--muted);font-size:12px;line-height:1.7;margin:9px 0 13px}
+.academy-source{border-style:dashed}
+.academy-source h2{font-size:13px;margin:0 0 12px}
+.academy-source code{overflow-wrap:anywhere;line-height:1.8;color:var(--gold);font-size:11px}
+.academy-source p{font-size:11px;color:var(--muted);line-height:1.8;margin:12px 0 0}
+.academy-lesson-nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:13px;margin:25px 0 35px}
+.academy-lesson-nav a{display:grid;gap:7px;max-width:45%;font-size:12px;color:var(--muted);border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:14px 18px}
+.academy-lesson-nav a strong{font-size:13px;color:var(--text)}
+.academy-lesson-nav a:hover{border-color:var(--gold)}
+@media(max-width:900px){.academy-reading-grid{grid-template-columns:1fr}.academy-reading-toc{position:static}.academy-roadmap{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.academy-list{grid-template-columns:1fr}.academy-lesson-card{padding:19px;grid-template-columns:30px minmax(0,1fr) 20px;gap:11px;min-height:0}.academy-lesson-number{font-size:19px}.academy-lesson-mark{font-size:24px}.academy-roadmap{grid-template-columns:repeat(2,1fr)}.academy-totals{gap:7px}.academy-totals>span{padding:10px 12px}.academy-bridge{display:block;padding:21px}.academy-bridge h2{font-size:26px}.academy-bridge .btn{margin-top:17px}.academy-reading-head{margin-bottom:15px}.academy-lesson-nav a{max-width:100%;flex:1 1 165px}.academy-submit{flex-wrap:wrap}.academy-submit .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){.academy-progress-track>span,.academy-lesson-card{transition:none}.academy-lesson-card:hover{transform:none}}

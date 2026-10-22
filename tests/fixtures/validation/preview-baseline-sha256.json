@@ -1,0 +1,35 @@
+{
+  "sourceVersion": "11.32.0",
+  "files": {
+    "infrastructure/scripts/make-v1113-star-preview.cjs": {
+      "output": "previews/v1113-traditional-stars.html",
+      "sha256": "55a86a661919d34dfd99101264cab4b0be2f64ff46f9c4da1ea69ec44194613e",
+      "size": 73492
+    },
+    "infrastructure/scripts/make-v1114-star-preview.cjs": {
+      "output": "previews/v1114-natal-extension-stars.html",
+      "sha256": "262599d95bd665ebe846302333706fdbcc4c80c0cc30d3e6d8997a025de9867e",
+      "size": 67908
+    },
+    "infrastructure/scripts/make-v1116-star-preview.cjs": {
+      "output": "previews/v1116-duc-giai-annual.html",
+      "sha256": "33fd698f7c74a7cc04cfb66702406fbaf89b4d9240dce777fae704d28a75d430",
+      "size": 82159
+    },
+    "infrastructure/scripts/make-v1117-positional-preview.cjs": {
+      "output": "previews/v1117-positional-stars.html",
+      "sha256": "63884a49c61eed8761ee5792299431c3adf28fbaa8546a279d65c9ba56542749",
+      "size": 82803
+    },
+    "infrastructure/scripts/make-v1118-derived-preview.cjs": {
+      "output": "previews/v1118-derived-stars.html",
+      "sha256": "3cf7538989355203369c42d2ff8320dc4b27f00055d80b1269d3cc4191cb706b",
+      "size": 82076
+    },
+    "infrastructure/scripts/make-v1119-missing-preview.cjs": {
+      "output": "previews/v1119-new-star-library.html",
+      "sha256": "c97071a562597dc15d22a714a9c7540a0baaeff55346dbf8347427b3643ae78a",
+      "size": 82749
+    }
+  }
+}

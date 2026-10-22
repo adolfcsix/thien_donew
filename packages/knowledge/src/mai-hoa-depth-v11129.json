@@ -1,0 +1,72 @@
+{
+  "version": "11.129",
+  "method": "mai-hoa-evidence-v1",
+  "sources": [
+    {
+      "id": "casting",
+      "title": "Mai Hoa Dịch Số · quyển I",
+      "url": "https://zh.wikisource.org/wiki/梅花易數/卷一",
+      "sections": [
+        "年月日時起例",
+        "物數占例",
+        "鄰夜扣門借物占",
+        "互卦起例"
+      ],
+      "note": "Bản chép công khai; đối chiếu ngày 2026-10-14. Hỗ thuần Càn/Khôn có dị bản."
+    },
+    {
+      "id": "elements",
+      "title": "Mai Hoa Dịch Số · quyển II",
+      "url": "https://zh.wikisource.org/w/index.php?title=梅花易數/卷二&oldid=1441921",
+      "sections": [
+        "體用",
+        "複明時令之應",
+        "衰旺論"
+      ],
+      "note": "Biên soạn diễn giải mới; không sao chép các phán đoán bệnh, tai họa hoặc kết quả tất định."
+    },
+    {
+      "id": "timing",
+      "title": "Mai Hoa Dịch Số · quyển III",
+      "url": "https://zh.wikisource.org/wiki/梅花易數/卷三#占卜克應之訣",
+      "sections": [
+        "體用互變之訣",
+        "占卜克應之訣"
+      ],
+      "note": "Nguồn nêu nhiều cách định thời, phụ thuộc loại việc và nhanh/chậm. Tổng số quái chủ là profile thực hành Thiên Đồ, không quy tắc duy nhất."
+    }
+  ],
+  "relations": {
+    "same": {
+      "title": "Thể–Dụng tỷ hòa",
+      "reading": "Hai quái cùng hành: khảo sát điểm tương đồng và mức độ phối hợp. Đồng hành không bảo đảm có đủ nguồn lực hoặc cùng mục tiêu.",
+      "question": "Bằng chứng nào cho thấy các bên thực sự đồng thuận?"
+    },
+    "generated-by": {
+      "title": "Dụng sinh Thể",
+      "reading": "Theo tượng số, phía Dụng cấp dưỡng cho Thể. Cần kiểm tra nguồn hỗ trợ có tồn tại, có điều kiện và có duy trì được hay không.",
+      "question": "Nguồn hỗ trợ cụ thể nào đã được xác nhận?"
+    },
+    "generate": {
+      "title": "Thể sinh Dụng",
+      "reading": "Theo tượng số, nguồn lực đi từ Thể sang Dụng. Đối chiếu phần đầu tư, thời gian và khả năng hồi phục thay vì mặc định đây là thiệt hại.",
+      "question": "Chi phí và lợi ích thực tế của phần cho đi là gì?"
+    },
+    "control": {
+      "title": "Thể khắc Dụng",
+      "reading": "Theo tượng số, Thể đặt giới hạn lên Dụng. Cần phân biệt năng lực điều chỉnh với mong muốn kiểm soát khi chưa có điều kiện thực hiện.",
+      "question": "Giới hạn nào có thể thực hiện và ai chịu ảnh hưởng?"
+    },
+    "controlled-by": {
+      "title": "Dụng khắc Thể",
+      "reading": "Theo tượng số, Dụng tạo sức ép lên Thể. Kiểm tra nguồn áp lực và khả năng đáp ứng; không tự quy thành tai họa hoặc thất bại.",
+      "question": "Áp lực nào đã quan sát được, và có cách thích nghi nào?"
+    }
+  },
+  "limits": [
+    "Chứng cứ cấu trúc xác nhận phép tính; không xác nhận năng lực dự đoán.",
+    "Thời lệnh nhập thủ công theo chi đã xác minh; không tự lấy tháng âm làm Nguyệt kiến.",
+    "Thời ứng là giả thuyết tượng số; không tự sinh ngày giờ sự kiện hoặc xác suất.",
+    "Không tự quy đồ vật, hướng GPS, chữ Quốc ngữ hoặc số nét thành quái."
+  ]
+}

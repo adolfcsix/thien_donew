@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0.0",
+  "edition": "11.57.0",
+  "scope": "educational-cycle-order-not-placement",
+  "expertReviewed": false,
+  "notice": "Ba vòng sao theo thứ tự trong dữ liệu học tập. Chỉ là trật tự tên/nhịp, không dùng để tự an sao.",
+  "cycles": [
+    {
+      "name": "Vòng Thái Tuế",
+      "count": 12,
+      "orderedNames": [
+        "Thái Tuế",
+        "Thiếu Dương",
+        "Tang Môn",
+        "Thiếu Âm",
+        "Quan Phù",
+        "Tử Phù",
+        "Tuế Phá",
+        "Long Đức",
+        "Bạch Hổ",
+        "Phúc Đức",
+        "Điếu Khách",
+        "Trực Phù"
+      ],
+      "methodology": "Đọc theo Chi năm sinh trong hệ Tử Vi đã chọn; không đồng nhất với sao lưu Thái Tuế năm xem."
+    },
+    {
+      "name": "Vòng Bác Sĩ",
+      "count": 12,
+      "orderedNames": [
+        "Bác Sĩ",
+        "Lực Sĩ",
+        "Thanh Long",
+        "Tiểu Hao",
+        "Tướng Quân",
+        "Tấu Thư",
+        "Phi Liêm",
+        "Hỷ Thần",
+        "Bệnh Phù",
+        "Đại Hao",
+        "Phục Binh",
+        "Quan Phủ"
+      ],
+      "methodology": "Khởi từ Lộc Tồn; chiều an phụ thuộc âm dương và giới tính theo phép an hiện tại. Không suy kết luận chỉ vì cung có Bác Sĩ."
+    },
+    {
+      "name": "Vòng Tràng Sinh",
+      "count": 12,
+      "orderedNames": [
+        "Tràng Sinh",
+        "Mộc Dục",
+        "Quan Đới",
+        "Lâm Quan",
+        "Đế Vượng",
+        "Suy",
+        "Bệnh",
+        "Tử",
+        "Mộ",
+        "Tuyệt",
+        "Thai",
+        "Dưỡng"
+      ],
+      "methodology": "Một mô hình mười hai nhịp; phép an theo Cục và chiều âm dương giới tính của hệ đang dùng. Tên Bệnh, Tử, Thai chỉ là các nhịp biểu tượng."
+    }
+  ]
+}

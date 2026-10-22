@@ -1,0 +1,1 @@
+{"compilerOptions":{"target":"ES2022","module":"NodeNext","moduleResolution":"NodeNext","strict":true,"skipLibCheck":false,"noEmit":true,"baseUrl":".","types":[],"paths":{"@thiendo/shared-types":["packages/shared-types/index.d.ts"],"@thiendo/interpretation":["packages/interpretation/src/index.d.ts"]}},"files":["tests/types/v1121-temporal-contract.ts"]}

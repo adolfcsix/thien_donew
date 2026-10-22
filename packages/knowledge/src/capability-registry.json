@@ -1,0 +1,386 @@
+{
+  "schemaVersion": "1.0.0",
+  "release": "11.120.0",
+  "project": "Thiên Đồ",
+  "reference": {
+    "name": "Tử Vi Đẩu Số Toàn Thư",
+    "url": "https://tuvidausotoanthu.vn/",
+    "evidence": "Các nhãn menu từ ảnh do người dùng cung cấp ngày 2026-10-11; chỉ ghi nhận sự xuất hiện, không xác nhận tính năng hoạt động hoặc nội dung sau đăng nhập.",
+    "note": "Không sao chép nội dung. Đối chiếu phạm vi sản phẩm để lập kế hoạch độc lập."
+  },
+  "statusDefinitions": {
+    "source-implemented": "Có mã nguồn và trang thực; mức kiểm chứng runtime/chuyên môn ghi riêng, không mặc định production-ready.",
+    "internal-partial": "Có module dữ liệu/logic nhưng chưa có giao diện hoạt động riêng được xác nhận.",
+    "not-implemented": "Không có triển khai tính năng hiện hành được nhận diện; tuyệt đối không thêm link giả."
+  },
+  "modules": [
+    {
+      "id": "tu-vi",
+      "name": "Tử Vi Đẩu Số",
+      "area": "core",
+      "status": "source-implemented",
+      "route": "/chart",
+      "evidencePaths": [
+        "apps/web/src/app/chart/page.tsx",
+        "packages/astrology-engine/src/tuvi.js",
+        "apps/api/src/modules/charts/charts.service.ts"
+      ],
+      "referenceMenuObserved": true,
+      "nextGap": "Chưa đối chiếu độc lập từng lá số, an sao và dị bản trường phái."
+    },
+    {
+      "id": "bat-tu",
+      "name": "Bát Tự – Tứ Trụ",
+      "area": "core",
+      "status": "source-implemented",
+      "route": "/bazi",
+      "evidencePaths": [
+        "apps/web/src/app/bazi/page.tsx",
+        "packages/astrology-engine/src/bazi.js"
+      ],
+      "referenceMenuObserved": true,
+      "nextGap": "Cần kiểm chứng tiết khí, múi giờ, giờ Tý và quy tắc đại vận."
+    },
+    {
+      "id": "calendar",
+      "name": "Lịch âm – vạn niên",
+      "area": "support",
+      "status": "source-implemented",
+      "route": "/calendar",
+      "evidencePaths": [
+        "apps/web/src/app/calendar/page.tsx",
+        "packages/astrology-engine/src/almanac.js",
+        "packages/astrology-engine/src/traditional-calendar-audit.cjs",
+        "packages/astrology-engine/src/calendar-history-research.cjs"
+      ],
+      "referenceMenuObserved": true,
+      "nextGap": "Lịch lịch sử còn khác biệt địa phương; chưa kiểm toán giờ chuyển tiết thiên văn chính xác."
+    },
+    {
+      "id": "good-days",
+      "name": "Xem ngày theo quy tắc dân gian",
+      "area": "support",
+      "status": "source-implemented",
+      "route": "/good-days",
+      "evidencePaths": [
+        "apps/web/src/app/good-days/page.tsx",
+        "packages/astrology-engine/src/good-days.js"
+      ],
+      "referenceMenuObserved": false,
+      "nextGap": "Các đánh giá ngày chỉ theo bộ quy tắc truyền thống, không là dự báo khoa học."
+    },
+    {
+      "id": "star-atlas",
+      "name": "Tra cứu chính tinh và hồ sơ sao",
+      "area": "knowledge",
+      "status": "source-implemented",
+      "route": "/star-atlas",
+      "evidencePaths": [
+        "apps/web/src/app/star-atlas/page.tsx",
+        "packages/astrology-engine/src/star-strength.js",
+        "apps/web/src/features/star-atlas/expanded-star-library.tsx",
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "referenceMenuObserved": false,
+      "nextGap": "Bảng miếu vượng cần đối chiếu trường phái và nguồn độc lập."
+    },
+    {
+      "id": "academy",
+      "name": "Học viện Tử Vi",
+      "area": "knowledge",
+      "status": "source-implemented",
+      "route": "/academy",
+      "evidencePaths": [
+        "apps/web/src/app/academy/page.tsx",
+        "apps/web/src/features/academy/lessons.json"
+      ],
+      "referenceMenuObserved": true,
+      "nextGap": "Có 16 bài: 10 bài nền Tử Vi và 6 bài thực hành Mai Hoa/Kỳ Môn/Lục Hào; chưa phải chương trình đào tạo mọi môn hoặc phản biện chuyên gia."
+    },
+    {
+      "id": "glossary",
+      "name": "Từ điển huyền học",
+      "area": "knowledge",
+      "status": "source-implemented",
+      "route": "/library",
+      "evidencePaths": [
+        "apps/web/src/app/library/page.tsx",
+        "apps/web/src/features/academy/glossary.json"
+      ],
+      "referenceMenuObserved": true,
+      "nextGap": "Có 72 thuật ngữ hiện tại; chưa tương đương thư viện sách/biên mục hoặc chuyên khảo toàn bộ môn."
+    },
+    {
+      "id": "collection",
+      "name": "Lưu trữ lá số",
+      "area": "product",
+      "status": "source-implemented",
+      "route": "/collection",
+      "evidencePaths": [
+        "apps/web/src/app/collection/page.tsx",
+        "apps/api/src/modules/charts/charts.controller.ts"
+      ],
+      "referenceMenuObserved": false,
+      "nextGap": "Cần chạy E2E xác minh DB, xác thực và quyền riêng tư."
+    },
+    {
+      "id": "deep-interpretation",
+      "name": "Luận giải tổ hợp sao",
+      "area": "knowledge",
+      "status": "internal-partial",
+      "route": null,
+      "evidencePaths": [
+        "packages/interpretation/src/contextual-synthesis.cjs",
+        "packages/knowledge/src/combination-rules.json"
+      ],
+      "referenceMenuObserved": true,
+      "nextGap": "Lớp nghiên cứu nội bộ chưa kết nối đầy đủ vào giao diện và chưa được thẩm định chuyên môn."
+    },
+    {
+      "id": "temporal-layers",
+      "name": "Vận hạn nhiều tầng",
+      "area": "core",
+      "status": "internal-partial",
+      "route": null,
+      "evidencePaths": [
+        "packages/interpretation/src/temporal-explorer.cjs",
+        "packages/astrology-engine/src/subannual-placements.js"
+      ],
+      "referenceMenuObserved": false,
+      "nextGap": "Lưu nguyệt/nhật/thời còn trong diện nghiên cứu; chưa thẩm định theo trường phái."
+    },
+    {
+      "id": "books",
+      "name": "Thư viện sách / tài liệu",
+      "area": "knowledge",
+      "status": "not-implemented",
+      "route": null,
+      "evidencePaths": [],
+      "referenceMenuObserved": true,
+      "nextGap": "Có từ điển thuật ngữ, nhưng chưa có nền tảng sách/biên mục/tài liệu chuyên biệt."
+    },
+    {
+      "id": "forum",
+      "name": "Diễn đàn cộng đồng",
+      "area": "product",
+      "status": "not-implemented",
+      "route": null,
+      "evidencePaths": [],
+      "referenceMenuObserved": true,
+      "nextGap": "Chưa có forum, moderation, phân quyền và kiểm duyệt bài viết."
+    },
+    {
+      "id": "mai-hoa",
+      "name": "Gieo quẻ – Mai Hoa Dịch Số",
+      "area": "core",
+      "status": "source-implemented",
+      "route": "/mai-hoa",
+      "evidencePaths": [
+        "apps/web/src/app/mai-hoa/page.tsx",
+        "apps/web/src/features/mai-hoa/casting.cjs",
+        "apps/web/src/features/research-workbook/workbooks.cjs"
+      ],
+      "referenceMenuObserved": true,
+      "nextGap": "Đã có ba profile khởi quẻ, hỗ/biến, Thể/Dụng và hồ sơ phản kiểm; tháng nhuận, vượng suy theo thời điểm và ứng kỳ cần hợp đồng riêng."
+    },
+    {
+      "id": "gieo-que-nhan-menh",
+      "name": "Gieo quẻ nhân mệnh",
+      "area": "future-engine",
+      "status": "not-implemented",
+      "route": null,
+      "evidencePaths": [],
+      "referenceMenuObserved": true,
+      "nextGap": "Chưa định nghĩa bộ quy tắc nào sẽ dùng và cách đối chiếu khác biệt."
+    },
+    {
+      "id": "ha-lac",
+      "name": "Hà Lạc Lý Số",
+      "area": "future-engine",
+      "status": "source-implemented",
+      "route": "/ha-lac",
+      "evidencePaths": [
+        "packages/astrology-engine/src/ha-lac-source.cjs",
+        "apps/web/src/app/ha-lac/page.tsx",
+        "tests/v1136-heluo-tieban-calendar.test.cjs",
+        "packages/astrology-engine/src/ha-lac-minggua-v11145.cjs",
+        "packages/astrology-engine/fixtures/v11145-heluo-external-examples.json",
+        "tests/v11145-heluo-minggua.test.cjs"
+      ],
+      "referenceMenuObserved": true,
+      "nextGap": "V11.145: dựng ứng viên Tiên Thiên/Hậu Thiên và Nguyên Đường theo tài liệu, giữ vết tính; chưa phân ngoại lệ quẻ thuần, chưa kiểm lịch sử Tam Nguyên/tiết chí độc lập, đại vận và luận giải."
+    },
+    {
+      "id": "ky-mon",
+      "name": "Kỳ Môn Độn Giáp",
+      "area": "core",
+      "status": "source-implemented",
+      "route": "/ky-mon",
+      "evidencePaths": [
+        "apps/web/src/app/ky-mon/page.tsx",
+        "apps/web/src/features/ky-mon/formation.cjs",
+        "apps/web/src/features/ky-mon/month-strength.cjs",
+        "apps/web/src/features/research-workbook/workbooks.cjs"
+      ],
+      "referenceMenuObserved": true,
+      "nextGap": "Đã có Chai Bổ–Chuyển Bàn, dấu cấu trúc, nguyệt khí và hồ sơ theo Dụng thần; chưa tổng hợp chủ/khách, ứng kỳ hoặc kiểm định thiên văn độc lập."
+    },
+    {
+      "id": "thai-at",
+      "name": "Thái Ất Thần Số",
+      "area": "future-engine",
+      "status": "internal-partial",
+      "route": null,
+      "evidencePaths": [
+        "packages/astrology-engine/src/taiyi-annual-research.cjs"
+      ],
+      "referenceMenuObserved": true,
+      "nextGap": "Có module niên Thái Ất nghiên cứu theo quy ước hẹp; chưa có trang sản phẩm hoặc toàn bộ hệ phép truyền thống."
+    },
+    {
+      "id": "luc-nham",
+      "name": "Lục Nhâm Thần Khóa",
+      "area": "future-engine",
+      "status": "internal-partial",
+      "route": null,
+      "evidencePaths": [
+        "packages/astrology-engine/src/da-liu-ren-plates.cjs",
+        "packages/astrology-engine/src/da-liu-ren-four-lessons.cjs",
+        "packages/astrology-engine/src/da-liu-ren-three-transmissions.cjs"
+      ],
+      "referenceMenuObserved": true,
+      "nextGap": "Có các tiểu trình nghiên cứu thiên/địa bàn, Tứ Khóa và Tam Truyền; chưa có trang lập khóa hoàn chỉnh hay nghiệm thu trường phái độc lập."
+    },
+    {
+      "id": "numerology",
+      "name": "Thần số học",
+      "area": "future-engine",
+      "status": "source-implemented",
+      "route": "/numerology",
+      "evidencePaths": [
+        "apps/web/src/app/numerology/page.tsx",
+        "packages/astrology-engine/src/numerology-pythagorean.cjs"
+      ],
+      "referenceMenuObserved": true,
+      "nextGap": "Có công cụ Pythagoras và trace; chưa phân tích sâu, chưa có Chaldean.",
+      "development": {
+        "library": "partial",
+        "calculator": "available",
+        "analysis": "partial"
+      }
+    },
+    {
+      "id": "western-astrology",
+      "name": "Chiêm tinh học phương Tây",
+      "area": "future-engine",
+      "status": "source-implemented",
+      "route": "/western-astrology",
+      "evidencePaths": [
+        "apps/web/src/app/western-astrology/page.tsx",
+        "packages/astrology-engine/src/western-natal.cjs"
+      ],
+      "referenceMenuObserved": true,
+      "nextGap": "Có Natal tropical/Whole Sign và fixture độc lập; có tra IANA/DST và ba mẫu sai số giờ sinh; chưa kỹ thuật thời gian/đôi hoặc phân tích sâu.",
+      "development": {
+        "library": "partial",
+        "calculator": "available",
+        "analysis": "partial"
+      }
+    },
+    {
+      "id": "research-encyclopedia",
+      "name": "Bách khoa sao và các môn huyền học",
+      "area": "knowledge",
+      "status": "source-implemented",
+      "route": "/research",
+      "evidencePaths": [
+        "apps/web/src/app/research/page.tsx",
+        "packages/knowledge/src/reference-star-crosswalk.json",
+        "packages/knowledge/src/research-disciplines.json"
+      ],
+      "referenceMenuObserved": false,
+      "nextGap": "Đây là thư mục tri thức và đối chiếu tên sao; chưa bổ sung bộ máy tính toán hoặc kiểm chứng từng trường phái."
+    },
+    {
+      "id": "luc-hao",
+      "name": "Lục Hào",
+      "area": "core",
+      "status": "source-implemented",
+      "route": "/luc-hao",
+      "evidencePaths": [
+        "apps/web/src/app/luc-hao/page.tsx",
+        "apps/web/src/features/luc-hao/na-jia.cjs",
+        "apps/web/src/features/luc-hao/question-workbook-panel.tsx"
+      ],
+      "referenceMenuObserved": false,
+      "nextGap": "Có Bát Cung/Nạp Giáp và hồ sơ hiện/phục/đa hiện; chưa chọn duy nhất Dụng Thần, xác định xuất phục, tổng hợp vượng suy hoặc ứng kỳ."
+    },
+    {
+      "id": "iching",
+      "name": "Kinh Dịch – 64 quẻ",
+      "area": "knowledge",
+      "status": "source-implemented",
+      "route": "/iching",
+      "evidencePaths": [
+        "apps/web/src/app/iching/page.tsx",
+        "apps/web/src/features/iching/hexagrams.cjs"
+      ],
+      "referenceMenuObserved": false,
+      "nextGap": "Có cấu trúc 64 quẻ và ba đồng xu; phần tượng/quẻ là nội dung biên soạn, chưa thay thế chuyên khảo nguyên văn toàn bộ hào từ."
+    },
+    {
+      "id": "phong-thuy",
+      "name": "Phong thủy – La kinh",
+      "area": "core",
+      "status": "source-implemented",
+      "route": "/phong-thuy",
+      "evidencePaths": [
+        "apps/web/src/app/phong-thuy/page.tsx",
+        "apps/web/src/features/feng-shui/floor-plan.cjs"
+      ],
+      "referenceMenuObserved": false,
+      "nextGap": "Có đo góc/24 sơn và các lớp công cụ riêng; khảo sát thực địa, Thế quái và hợp nhất phương pháp chưa hoàn thành."
+    },
+    {
+      "id": "ngu-hanh",
+      "name": "Ngũ hành tương tác",
+      "area": "support",
+      "status": "source-implemented",
+      "route": "/ngu-hanh",
+      "evidencePaths": [
+        "apps/web/src/app/ngu-hanh/page.tsx",
+        "apps/web/src/features/wuxing/elements.cjs"
+      ],
+      "referenceMenuObserved": false,
+      "nextGap": "Có so sánh sinh/khắc có chiều; chưa tự gán bản mệnh, cường nhược hoặc kết quả sự kiện."
+    },
+    {
+      "id": "study",
+      "name": "Thư phòng cá nhân",
+      "area": "product",
+      "status": "source-implemented",
+      "route": "/study",
+      "evidencePaths": [
+        "apps/web/src/app/study/page.tsx",
+        "apps/web/src/features/study-room/study-links.cjs",
+        "apps/api/src/modules/study/study.service.ts"
+      ],
+      "referenceMenuObserved": false,
+      "nextGap": "Lưu/mở Bát Tự typed V11.142, Natal, Pythagoras và các môn cũ; import/export receipt giữ bản V1. Chưa nghiệm thu PostgreSQL native/provider thực."
+    },
+    {
+      "id": "tarot",
+      "name": "Tarot RWS 78 lá",
+      "area": "product",
+      "status": "source-implemented",
+      "route": "/tarot",
+      "evidencePaths": [
+        "apps/web/src/app/tarot/page.tsx",
+        "packages/astrology-engine/src/tarot-rws.cjs",
+        "packages/knowledge/src/tarot-rws-78.json"
+      ],
+      "referenceMenuObserved": false,
+      "nextGap": "Chưa có Celtic Cross, Tarot de Marseille hoặc đối chứng chuyên gia độc lập."
+    }
+  ]
+}

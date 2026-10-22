@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0.0",
+  "edition": "11.59.0",
+  "scope": "natal-four-court-conditional-study",
+  "expertReviewed": false,
+  "notice": "Bộ học tập điều kiện sáu nhóm sao gốc: khớp vị trí không đồng nghĩa xác nhận cách cục. Không ghép lưu niên, không tự động đoán cát hung, và các diễn giải chưa thẩm định độc lập.",
+  "profiles": {
+    "ta-huu-xuong-khuc": {
+      "focusAngle": "Khảo sát riêng hai lớp: Tả–Hữu gợi khía cạnh phối hợp, Xương–Khúc gợi việc học và biểu đạt. Chỉ khi đủ vị trí mới bàn đến sự liên hệ của hai lớp, không gộp chúng thành một nhãn công danh.",
+      "workedFull": "Nếu bốn sao đều nằm trong Tứ chính của cung Quan Lộc, hãy ghi rõ sao nào tọa Quan, sao nào tam hợp và sao nào xung chiếu. Sau đó đọc chính tinh ở các vị trí đó để xem hai lớp hỗ trợ và biểu đạt có cùng hướng trong câu hỏi nghề nghiệp hay không.",
+      "workedPartial": "Nếu chỉ có Tả Phụ và Văn Khúc trong Tứ chính, mới có hai điểm quan sát thuộc hai cặp khác nhau; chưa thể nói hội đủ Tả–Hữu–Xương–Khúc. Hai sao còn lại phải được ghi ở vị trí thực tế, dù nằm ngoài phạm vi khảo sát.",
+      "counterexample": "Bốn sao xuất hiện trong toàn lá số không có nghĩa bốn sao cùng hội một cung; sao ở ngoài Tứ chính phải được loại khỏi điều kiện hội chiếu của cung đang đọc.",
+      "practice": "Chọn cung Quan Lộc trên lá số, đánh dấu bốn vị trí sao, phân biệt từng cặp và đọc chính tinh mỗi cung có sao. Viết một nhận định có điều kiện và một trường hợp không đủ điều kiện.",
+      "boundary": "Không suy luận năng lực học tập, bằng cấp, sự nổi tiếng hoặc thành công nghề nghiệp từ việc đủ bốn tên sao."
+    },
+    "khoi-viet-xuong-khuc": {
+      "focusAngle": "Khôi–Việt và Xương–Khúc thuộc những lớp biểu tượng khác nhau: điều kiện hỗ trợ/ghi nhận và văn học/diễn đạt. Vị trí từng cặp quan trọng hơn tổng số sao.",
+      "workedFull": "Giả sử cả Khôi, Việt, Xương và Khúc đều hội về cung Mệnh qua bốn vị trí: cần đọc riêng sao tọa Mệnh, các chính tinh tam hợp và cung Thiên Di, rồi xác định cặp nào trực tiếp tọa cung, cặp nào chỉ hội chiếu.",
+      "workedPartial": "Nếu Khôi–Việt cùng hiện trong Tứ chính nhưng Xương–Khúc ở hai cung ngoài phạm vi, kết quả chỉ là một cặp hiện diện, không phải hai cặp cùng hội.",
+      "counterexample": "Không lấy sao Khôi hoặc Việt ở vị trí khác để thế chỗ cho Xương hoặc Khúc; số lượng sao được nhìn thấy không thay thế điều kiện đủ tên và đúng phạm vi.",
+      "practice": "Ghi bốn sao trên địa bàn, đối chiếu chúng với cung đang chọn và tự trả lời: hội chiếu, đồng cung hay nằm ngoài cả bốn vị trí?",
+      "boundary": "Không biến nhóm sao thành dự báo học lực, học bổng, thi cử, địa vị hay quý nhân ngoài đời."
+    },
+    "ta-huu-loc-ton": {
+      "focusAngle": "Tả–Hữu được xem như cặp hình tượng hỗ trợ; Lộc Tồn đặt thêm câu hỏi về bảo toàn nguồn lực. Cần kiểm tra vị trí thật của Lộc Tồn và hai cung giáp Kình–Đà.",
+      "workedFull": "Nếu Tả Phụ, Hữu Bật, Lộc Tồn cùng nằm trong Tứ chính của Tài Bạch, xem sao nào tọa Tài và sao nào chỉ hội. Sau đó kiểm chứng hai vị trí giáp Lộc Tồn trước khi mở rộng chủ đề nguồn lực.",
+      "workedPartial": "Nếu chỉ có Lộc Tồn và Tả Phụ trong Tứ chính, Hữu Bật ngoài phạm vi thì đây không phải thế hội đủ ba sao. Vẫn có thể học cách đọc hai thành phần đang quan sát nhưng không gắn tên nhóm đủ.",
+      "counterexample": "Lộc Tồn không đồng nghĩa Hóa Lộc; hai cung giáp Lộc Tồn không phải bằng chứng Kình Dương và Đà La đồng cung với Lộc Tồn.",
+      "practice": "Chọn Tài Bạch, xác định vị trí Lộc Tồn, Tả Phụ, Hữu Bật; sau đó tìm hai cung kề Lộc Tồn và xem chúng có thuộc Tứ chính của cung Tài đang đọc hay không.",
+      "boundary": "Không rút ra khả năng giàu có, mức tích lũy hay lời khuyên tài chính từ danh sách sao."
+    },
+    "kinh-da-hoa-linh": {
+      "focusAngle": "Phân biệt hai cặp Kình–Đà và Hỏa–Linh, kiểm tra vị trí cụ thể của từng sao trước khi thảo luận hình tượng về sức ép hoặc nhịp độ.",
+      "workedFull": "Nếu cả Kình, Đà, Hỏa và Linh đều xuất hiện trong Tứ chính của một cung, đánh dấu từng sao trong bốn cung và chỉ mô tả mạng phân bố. Kiểm tra xem Kình–Đà giáp Lộc Tồn đúng theo phép an nền trước khi bình luận thêm.",
+      "workedPartial": "Nếu Hỏa–Linh cùng ở Tứ chính còn Kình–Đà ở ngoài, không thể gọi đây là nhóm bốn sao hội đủ; việc đủ Hỏa–Linh cũng không tự tạo một kết luận về cung.",
+      "counterexample": "Theo phép an Kình–Đà của engine hiện tại, không xây điều kiện Kình Dương và Đà La đồng cung. Không tạo chỉ số “hung” bằng cách cộng số sát tinh.",
+      "practice": "Đánh dấu hai cung kề Lộc Tồn, nơi có Kình và Đà; sau đó xác định Hỏa, Linh và phân loại từng vị trí là tọa, tam hợp, đối hoặc ngoài Tứ chính.",
+      "boundary": "Không dùng thế sao để dự đoán tai nạn, bệnh tật, bạo lực hay điều bất hạnh."
+    },
+    "khong-kiep-hoa-linh": {
+      "focusAngle": "Địa Không–Địa Kiếp và Hỏa–Linh là hai cặp khác nhau; ưu tiên kiểm tra vị trí, tính duy nhất và chính tinh cùng cung thay vì áp nhãn tai họa.",
+      "workedFull": "Khi cả bốn sao xuất hiện tại Tứ chính của Điền Trạch, trước hết lập bản đồ nơi đặt từng sao, sau đó đọc các chính tinh và Tuần/Triệt tại mỗi vị trí liên quan. Mọi câu hỏi về môi trường sống phải giữ ở mức nghiên cứu biểu tượng.",
+      "workedPartial": "Nếu Địa Không và Linh Tinh tọa trong hai cung thuộc Tứ chính nhưng Địa Kiếp và Hỏa Tinh ngoài phạm vi, chỉ ghi nhận hai điểm, không suy diễn từ tên gọi của cả nhóm.",
+      "counterexample": "Một bản ghi Địa Không bị lặp ở hai cung khác nhau là dữ liệu mâu thuẫn, không phải “hai lần” tác động. Bản ghi ấy cần bị loại khỏi quan sát đáng tin cậy.",
+      "practice": "Tìm đủ bốn tên trên lá số và ghi lớp sao gốc. Cố ý so sánh một trường hợp thiếu Địa Kiếp để thấy kết luận “đủ bộ” phải thay đổi thế nào.",
+      "boundary": "Không dự đoán mất mát, phá sản, hỏa hoạn hoặc tình trạng sức khỏe cụ thể."
+    },
+    "ta-huu-khoi-viet": {
+      "focusAngle": "Tả–Hữu nhấn mạnh cặp hỗ trợ, Khôi–Việt nhấn mạnh cặp ghi nhận theo biểu tượng. Phải phân tích vai trò bốn cung, không gom tất cả thành kết luận “quý nhân phù trợ”.",
+      "workedFull": "Nếu bốn sao nằm trong Tứ chính của Nô Bộc, hãy xác định sao nào ở cung Nô, sao nào tam hợp và sao nào đối cung. Sau đó xét các chính tinh đồng cung để đặt câu hỏi về cấu trúc quan hệ, không đánh giá cá nhân cụ thể.",
+      "workedPartial": "Nếu cặp Tả–Hữu đủ nhưng Khôi–Việt nằm ngoài Tứ chính, chỉ cặp thứ nhất đang hội; không thể gọi là cả hai cặp cùng hội dù bốn sao đều có trên địa bàn.",
+      "counterexample": "Một sao nằm ở cung giáp bên cạnh nhưng không thuộc Tứ chính của cung đang xét không được tính vào nhóm hội chiếu này. Giáp cung là phép kiểm tra khác.",
+      "practice": "Trên cung Nô Bộc, vẽ bốn vị trí Tứ chính và hai cung giáp bằng màu khác nhau. Đặt Tả, Hữu, Khôi, Việt vào đúng vị trí và xác định nhóm nào thực sự được quan sát.",
+      "boundary": "Không khẳng định có người nâng đỡ, quan hệ tốt, công danh thuận lợi hay hợp tác thành công."
+    }
+  }
+}

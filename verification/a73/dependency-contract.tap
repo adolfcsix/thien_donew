@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: workspace aliases, relative specifiers and Node builtins are not external dependencies
+ok 1 - workspace aliases, relative specifiers and Node builtins are not external dependencies
+  ---
+  duration_ms: 8.306319
+  type: 'test'
+  ...
+# Subtest: unscoped, scoped and subpath dependencies normalize to declared package identity
+ok 2 - unscoped, scoped and subpath dependencies normalize to declared package identity
+  ---
+  duration_ms: 0.412589
+  type: 'test'
+  ...
+# Subtest: undeclared direct imports cannot rely on an npm transitive dependency being hoisted
+ok 3 - undeclared direct imports cannot rely on an npm transitive dependency being hoisted
+  ---
+  duration_ms: 0.714342
+  type: 'test'
+  ...
+# Subtest: AST dependency scan ignores commented-out and example-string imports
+ok 4 - AST dependency scan ignores commented-out and example-string imports
+  ---
+  duration_ms: 166.407887
+  type: 'test'
+  ...
+# Subtest: current API and web manifests cover imported external modules
+ok 5 - current API and web manifests cover imported external modules
+  ---
+  duration_ms: 0.893322
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 226.053272

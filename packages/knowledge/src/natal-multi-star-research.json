@@ -1,0 +1,84 @@
+{
+  "edition": "11.43.0",
+  "status": "editorial-positional-observation-only",
+  "notice": "Các nhóm ba hoặc bốn sao là chủ đề đối chiếu vị trí, không tự động xác lập cách cục hay dự đoán. Tứ Hóa năm sinh và lưu niên phải phân biệt.",
+  "groups": [
+    {
+      "id": "ta-huu-xuong-khuc",
+      "title": "Tả Hữu và Xương Khúc",
+      "category": "trợ lực – văn tinh",
+      "stars": [
+        "Tả Phụ",
+        "Hữu Bật",
+        "Văn Xương",
+        "Văn Khúc"
+      ],
+      "question": "Bốn sao phân bố thế nào trong Tam phương Tứ chính và có đồng cung với chính tinh nào?",
+      "nextStep": "Đối chiếu từng cung, sao đích của Tứ Hóa năm sinh và trạng thái chưa đủ chứng cứ; không khẳng định thành cách."
+    },
+    {
+      "id": "khoi-viet-xuong-khuc",
+      "title": "Khôi Việt và Xương Khúc",
+      "category": "quý tinh – văn tinh",
+      "stars": [
+        "Thiên Khôi",
+        "Thiên Việt",
+        "Văn Xương",
+        "Văn Khúc"
+      ],
+      "question": "Khôi Việt và Xương Khúc cùng liên hệ tới cung đang xét hay nằm ngoài phạm vi hội chiếu?",
+      "nextStep": "Đọc riêng vai trò của từng sao tại cung sở tại, không suy từ vị trí sao ra học vấn hoặc danh vị."
+    },
+    {
+      "id": "ta-huu-loc-ton",
+      "title": "Tả Hữu cùng Lộc Tồn",
+      "category": "trợ lực – lộc tinh",
+      "stars": [
+        "Tả Phụ",
+        "Hữu Bật",
+        "Lộc Tồn"
+      ],
+      "question": "Ba sao có hội về cung đang khảo sát không, và Lộc Tồn tọa cung nào?",
+      "nextStep": "Đối chiếu cung vị và các sao đi cùng; không mặc định đây là dấu hiệu giàu có."
+    },
+    {
+      "id": "kinh-da-hoa-linh",
+      "title": "Kình Đà cùng Hỏa Linh",
+      "category": "sát tinh",
+      "stars": [
+        "Kình Dương",
+        "Đà La",
+        "Hỏa Tinh",
+        "Linh Tinh"
+      ],
+      "question": "Bốn sát tinh có nằm đúng phạm vi Tứ chính không, hay chỉ là sự xuất hiện rời rạc?",
+      "nextStep": "Giữ nguyên vị trí nguồn và đọc bối cảnh cung, không diễn giải thành tai họa hay nguy cơ cụ thể."
+    },
+    {
+      "id": "khong-kiep-hoa-linh",
+      "title": "Không Kiếp cùng Hỏa Linh",
+      "category": "sát tinh",
+      "stars": [
+        "Địa Không",
+        "Địa Kiếp",
+        "Hỏa Tinh",
+        "Linh Tinh"
+      ],
+      "question": "Không Kiếp và Hỏa Linh cùng hội tại những cung nào, bản ghi có sao trùng bất thường không?",
+      "nextStep": "Tách dữ liệu gốc khỏi lưu niên, xem thêm chính tinh đi kèm và ghi rõ các yếu tố còn thiếu."
+    },
+    {
+      "id": "ta-huu-khoi-viet",
+      "title": "Tả Hữu cùng Khôi Việt",
+      "category": "trợ lực – quý tinh",
+      "stars": [
+        "Tả Phụ",
+        "Hữu Bật",
+        "Thiên Khôi",
+        "Thiên Việt"
+      ],
+      "question": "Hai cặp sao có tạo được một mạng liên hệ vị trí về cung đang xét trong Tứ chính hay không?",
+      "nextStep": "Liệt kê từng vị trí, các sao gốc cùng cung và chỉ khảo sát cách phân bố, không dự đoán được giúp đỡ."
+    }
+  ]
+}

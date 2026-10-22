@@ -1,0 +1,168 @@
+{
+  "edition": "star-study-v1-2026-10-10",
+  "disclaimer": "Gợi ý học tập dựa trên ngôn ngữ biểu tượng truyền thống; không phải luận đoán cá nhân, khoa học dự báo hoặc tư vấn chuyên môn.",
+  "sources": [
+    "https://mingli.vn/tu-vi/14-chinh-tinh",
+    "https://tuvi.dev/tu-vi-toan-thu/12-cung"
+  ],
+  "stars": {
+    "Tử Vi": {
+      "motif": "Vai trò điều phối, tập hợp",
+      "study": "Quan sát cách một hệ thống phân công trách nhiệm và ra quyết định.",
+      "caution": "Tránh mặc định có Tử Vi là có quyền lực hoặc địa vị.",
+      "crossCheck": "Xét Thiên Phủ, nhóm phò tá, Tứ Hóa và tam phương trước khi bàn về khả năng điều phối."
+    },
+    "Thiên Cơ": {
+      "motif": "Lập kế hoạch, suy xét, biến chuyển",
+      "study": "Tách năng lực thích ứng khỏi sự thiếu ổn định; xem cách một phương án được điều chỉnh.",
+      "caution": "Không suy từ hình tượng chuyển động thành chuyện đổi nghề, đổi nhà hay bệnh tật.",
+      "crossCheck": "Đối chiếu sao đồng cung và tương tác Thiên Cơ với các sao chủ về cấu trúc."
+    },
+    "Thái Dương": {
+      "motif": "Bộc lộ, đóng góp, trách nhiệm",
+      "study": "Đặt câu hỏi về phạm vi ảnh hưởng, cách diễn đạt và mức độ hướng ngoại.",
+      "caution": "Không gán trực tiếp giới tính, danh vọng hoặc quan hệ cha con từ một sao.",
+      "crossCheck": "So sánh địa chi và tính chất của nhóm sao hội chiếu trong bối cảnh cung đang xét."
+    },
+    "Vũ Khúc": {
+      "motif": "Nguồn lực, nguyên tắc, thực hành",
+      "study": "Xem sự cân bằng giữa tích lũy, kỹ năng, kỷ luật và sự linh hoạt.",
+      "caution": "Không mặc định đây là sao làm giàu hoặc mất tiền.",
+      "crossCheck": "Đọc với Tài Bạch, Quan Lộc và Tứ Hóa; tách mô tả biểu tượng khỏi tình hình tài chính."
+    },
+    "Thiên Đồng": {
+      "motif": "Hòa giải, cảm nhận, thích nghi",
+      "study": "Hỏi khi nào sự mềm dẻo giúp hợp tác và khi nào cần ranh giới rõ.",
+      "caution": "Không xem tính mềm dẻo là yếu đuối hay đảm bảo an nhàn.",
+      "crossCheck": "Đối chiếu các sao đồng cung để xác định hình tượng thích ứng trong bối cảnh riêng."
+    },
+    "Liêm Trinh": {
+      "motif": "Giới hạn, quy tắc, đánh giá",
+      "study": "Khảo sát việc thiết lập nguyên tắc và phản ứng trước xung đột lợi ích.",
+      "caution": "Không quy kết đạo đức cá nhân, pháp lý hoặc chuyện tình cảm từ tên sao.",
+      "crossCheck": "Xem Hóa Kỵ/Hóa Lộc và các sao hội chiếu theo đúng quy tắc nguồn đã chọn."
+    },
+    "Thiên Phủ": {
+      "motif": "Gìn giữ, quản trị, ổn định",
+      "study": "Xem thói quen quản lý nguồn lực và những điều cần bảo toàn.",
+      "caution": "Không kết luận sở hữu tài sản hay địa vị từ một vị trí sao.",
+      "crossCheck": "So với Tử Vi và các sao liên quan trước khi suy luận về việc quản lý."
+    },
+    "Thái Âm": {
+      "motif": "Tiếp nhận, nội tâm, tích lũy",
+      "study": "Tìm hiểu giá trị của quan sát, sự kín đáo và nhịp điệu ra quyết định.",
+      "caution": "Không suy diễn sức khỏe, giới tính hoặc chuyện người mẹ từ hình tượng mặt trăng.",
+      "crossCheck": "Đọc theo địa chi cùng sao đồng cung thay vì khẳng định một tính cách cố định."
+    },
+    "Tham Lang": {
+      "motif": "Trải nghiệm, giao tiếp, ham tìm hiểu",
+      "study": "Hỏi sự tò mò và mong muốn trải nghiệm được định hướng như thế nào.",
+      "caution": "Không mặc định hành vi hưởng thụ hay phán xét phẩm hạnh từ sao.",
+      "crossCheck": "Xem thêm phụ tinh, Tứ Hóa và cung chức để nhận ra nhiều lối đọc."
+    },
+    "Cự Môn": {
+      "motif": "Ngôn từ, phân tích, bất đồng",
+      "study": "Quan sát cách lập luận, truyền đạt và xử lý khác biệt quan điểm.",
+      "caution": "Không đoán tranh chấp hay thị phi tất yếu chỉ vì có Cự Môn.",
+      "crossCheck": "Phân biệt khả năng phản biện với cách sử dụng ngôn ngữ; kiểm tra sao hội chiếu."
+    },
+    "Thiên Tướng": {
+      "motif": "Phối hợp, phụ tá, duy trì chuẩn mực",
+      "study": "Khảo sát cách một vai trò hỗ trợ, kiểm soát và bảo vệ quy trình.",
+      "caution": "Không mặc định luôn có quý nhân hoặc được che chở.",
+      "crossCheck": "Đọc trong thế liên hệ với chính tinh đồng cung và vị trí đối cung."
+    },
+    "Thiên Lương": {
+      "motif": "Đạo lý, cân nhắc, bảo trợ",
+      "study": "Xem cách giữ nguyên tắc và hỗ trợ người khác khi có giới hạn.",
+      "caution": "Không khẳng định sống thọ, khỏi bệnh hoặc luôn gặp may.",
+      "crossCheck": "Chú ý dị bản Miếu/Hãm; ghi rõ bảng được dùng và xét toàn cung."
+    },
+    "Thất Sát": {
+      "motif": "Quyết định, tự chủ, chuyển tiếp",
+      "study": "Tìm hiểu điều kiện cần để hành động quyết đoán nhưng có kiểm soát.",
+      "caution": "Không gán sự kiện nguy hiểm hay tính hung bạo từ tên sao.",
+      "crossCheck": "Quan sát bộ sao đi kèm để phân biệt quyết đoán với nóng vội."
+    },
+    "Phá Quân": {
+      "motif": "Đổi mới, cải tổ, thử nghiệm",
+      "study": "Phân biệt thay đổi có kế hoạch với việc phá bỏ thiếu cơ sở.",
+      "caution": "Không dự báo đổ vỡ, thất nghiệp hoặc mất mát từ một sao.",
+      "crossCheck": "Xem các yếu tố giúp ổn định và tương quan với cung khác."
+    }
+  },
+  "palaces": {
+    "Mệnh": {
+      "scope": "Cách cá nhân xây dựng bản sắc và chủ động lựa chọn.",
+      "question": "Hình tượng của sao này giúp đặt câu hỏi gì về cách tiếp cận bản thân?",
+      "crossCheck": "Đối chiếu cung Thân, tam phương Mệnh–Tài–Quan và các sao đồng cung.",
+      "caution": "Tránh đồng nhất biểu tượng với tính cách cố định."
+    },
+    "Phụ Mẫu": {
+      "scope": "Quan hệ và tương tác giữa các thế hệ, người nuôi dưỡng.",
+      "question": "Hình tượng này gợi câu hỏi nào về trao đổi, hỗ trợ và ranh giới gia đình?",
+      "crossCheck": "Xét đối cung Tật Ách và các mối quan hệ thực tế trong gia đình.",
+      "caution": "Không dùng một sao để phán xét cha mẹ hoặc quá khứ."
+    },
+    "Phúc Đức": {
+      "scope": "Nền tảng tinh thần, nếp sống và truyền thống gia đình.",
+      "question": "Sao này gợi hướng suy ngẫm nào về cảm giác gắn kết và giá trị sống?",
+      "crossCheck": "Đối chiếu Điền Trạch, Mệnh và các dấu hiệu hội chiếu.",
+      "caution": "Không khẳng định nghiệp báo hoặc phúc họa có thật."
+    },
+    "Điền Trạch": {
+      "scope": "Môi trường sinh hoạt, không gian sống và việc duy trì nơi ở.",
+      "question": "Sao này mở câu hỏi nào về cách tổ chức và gắn bó với không gian sống?",
+      "crossCheck": "Xét Phúc Đức, Tài Bạch và tình hình thực tế của người nghiên cứu.",
+      "caution": "Không suy thẳng ra tài sản hoặc việc mua bán nhà."
+    },
+    "Quan Lộc": {
+      "scope": "Công việc, năng lực, vai trò và cách cộng tác.",
+      "question": "Hình tượng sao này giúp cân nhắc cách làm việc hay trách nhiệm nào?",
+      "crossCheck": "Đọc cùng Mệnh, Tài Bạch và Đại hạn nếu nghiên cứu biến đổi theo thời gian.",
+      "caution": "Không dự đoán nghề nghiệp, thăng chức hay thất nghiệp."
+    },
+    "Nô Bộc": {
+      "scope": "Bạn bè, đồng nghiệp, mạng lưới xã hội và hợp tác.",
+      "question": "Sao này đặt ra câu hỏi gì về sự tin cậy và giới hạn trong hợp tác?",
+      "crossCheck": "Đối chiếu Thiên Di, Quan Lộc và bối cảnh quan hệ thực tế.",
+      "caution": "Không kết luận người khác trung thành hay phản bội."
+    },
+    "Thiên Di": {
+      "scope": "Tương tác với môi trường bên ngoài, trải nghiệm xã hội.",
+      "question": "Hình tượng sao này gợi góc nhìn nào về thích nghi ở môi trường mới?",
+      "crossCheck": "Đối cung Mệnh, kiểm tra cách diễn giải thay đổi giữa trong và ngoài.",
+      "caution": "Không mặc định xuất ngoại, chuyển nhà hoặc tai nạn."
+    },
+    "Tật Ách": {
+      "scope": "Quan niệm truyền thống về khó khăn và khả năng ứng phó.",
+      "question": "Hình tượng này gợi cách xây dựng thói quen ứng phó nào không mang tính chẩn đoán?",
+      "crossCheck": "Xét môi trường sống và giới hạn của phương pháp biểu tượng.",
+      "caution": "Không dùng Tử Vi để chẩn đoán bệnh hoặc thay lời khuyên y khoa."
+    },
+    "Tài Bạch": {
+      "scope": "Cách tổ chức nguồn lực, tiêu dùng và tạo giá trị.",
+      "question": "Sao này gợi câu hỏi nào về kỷ luật và nguyên tắc sử dụng nguồn lực?",
+      "crossCheck": "Đối chiếu Mệnh–Quan Lộc và kế hoạch tài chính thực tế.",
+      "caution": "Không dùng sao làm căn cứ đầu tư hoặc vay nợ."
+    },
+    "Tử Tức": {
+      "scope": "Quan hệ chăm sóc thế hệ sau, việc truyền đạt và nuôi dưỡng.",
+      "question": "Sao này mở câu hỏi nào về trách nhiệm chăm sóc và giao tiếp?",
+      "crossCheck": "Đối chiếu Phu Thê, Phụ Mẫu và mối quan hệ thực tế.",
+      "caution": "Không dự đoán sinh sản, số con hoặc tình trạng thai kỳ."
+    },
+    "Phu Thê": {
+      "scope": "Cách nhìn về quan hệ gần gũi và phối hợp giữa hai người.",
+      "question": "Hình tượng sao này gợi cách đặt câu hỏi nào về giao tiếp và đồng thuận?",
+      "crossCheck": "Đọc cùng Mệnh, Phúc Đức và dữ kiện quan hệ thực tế.",
+      "caution": "Không phán quyết ly hôn, ngoại tình hoặc số lần kết hôn."
+    },
+    "Huynh Đệ": {
+      "scope": "Quan hệ ngang hàng, anh chị em và mạng lưới tương trợ.",
+      "question": "Hình tượng này giúp xem xét dạng hỗ trợ hoặc khoảng cách nào?",
+      "crossCheck": "Đối chiếu Nô Bộc và tương tác thực tế giữa các thành viên.",
+      "caution": "Không đánh giá phẩm chất người thân hay số anh chị em."
+    }
+  }
+}

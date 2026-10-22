@@ -1,0 +1,1312 @@
+{
+  "edition": "taiyi-jinjing-research-transcription-v1",
+  "sourceTitle": "太乙金鏡式經·陽局/陰局天目地目計神主客大小將立成",
+  "sourceURL": "https://www.deeporacle.ai/dianji/taiyi-jinjing-shijing/17-yang-ju-tian-mu-di-mu-ji-shen-zhu-ke-da-xiao-jia",
+  "tableStatus": "manual-transcription-requires-independent-page-by-page-collation",
+  "notes": [
+    "Counts 39 yang and 50 yang have source-version discrepancies; do not treat table transcription as universal authority.",
+    "Year application requires verified traditional-year boundary and explicit yang/yin historical plate setting."
+  ],
+  "sides": {
+    "yang": [
+      {
+        "ju": 1,
+        "taiyiPalace": 1,
+        "tianmu": "武德",
+        "hostCount": 7,
+        "dimu": "大武",
+        "guestCount": 13,
+        "jiShen": "寅"
+      },
+      {
+        "ju": 2,
+        "taiyiPalace": 1,
+        "tianmu": "太蔟",
+        "hostCount": 6,
+        "dimu": "阴主",
+        "guestCount": 1,
+        "jiShen": "丑"
+      },
+      {
+        "ju": 3,
+        "taiyiPalace": 1,
+        "tianmu": "阴主",
+        "hostCount": 1,
+        "dimu": "大义",
+        "guestCount": 40,
+        "jiShen": "子"
+      },
+      {
+        "ju": 4,
+        "taiyiPalace": 2,
+        "tianmu": "阴德",
+        "hostCount": 25,
+        "dimu": "阳德",
+        "guestCount": 17,
+        "jiShen": "亥"
+      },
+      {
+        "ju": 5,
+        "taiyiPalace": 2,
+        "tianmu": "阴德",
+        "hostCount": 25,
+        "dimu": "吕申",
+        "guestCount": 14,
+        "jiShen": "戌"
+      },
+      {
+        "ju": 6,
+        "taiyiPalace": 2,
+        "tianmu": "大义",
+        "hostCount": 25,
+        "dimu": "太阳",
+        "guestCount": 10,
+        "jiShen": "酉"
+      },
+      {
+        "ju": 7,
+        "taiyiPalace": 3,
+        "tianmu": "地主",
+        "hostCount": 8,
+        "dimu": "大神",
+        "guestCount": 25,
+        "jiShen": "申"
+      },
+      {
+        "ju": 8,
+        "taiyiPalace": 3,
+        "tianmu": "阳德",
+        "hostCount": 1,
+        "dimu": "大武",
+        "guestCount": 22,
+        "jiShen": "未"
+      },
+      {
+        "ju": 9,
+        "taiyiPalace": 3,
+        "tianmu": "和德",
+        "hostCount": 3,
+        "dimu": "太蔟",
+        "guestCount": 15,
+        "jiShen": "午"
+      },
+      {
+        "ju": 10,
+        "taiyiPalace": 4,
+        "tianmu": "吕申",
+        "hostCount": 1,
+        "dimu": "阴德",
+        "guestCount": 12,
+        "jiShen": "巳"
+      },
+      {
+        "ju": 11,
+        "taiyiPalace": 4,
+        "tianmu": "高丛",
+        "hostCount": 4,
+        "dimu": "阳德",
+        "guestCount": 4,
+        "jiShen": "辰"
+      },
+      {
+        "ju": 12,
+        "taiyiPalace": 4,
+        "tianmu": "太阳",
+        "hostCount": 37,
+        "dimu": "吕申",
+        "guestCount": 1,
+        "jiShen": "卯"
+      },
+      {
+        "ju": 13,
+        "taiyiPalace": 6,
+        "tianmu": "大炅",
+        "hostCount": 18,
+        "dimu": "太阳",
+        "guestCount": 19,
+        "jiShen": "寅"
+      },
+      {
+        "ju": 14,
+        "taiyiPalace": 6,
+        "tianmu": "大神",
+        "hostCount": 10,
+        "dimu": "大威",
+        "guestCount": 9,
+        "jiShen": "丑"
+      },
+      {
+        "ju": 15,
+        "taiyiPalace": 6,
+        "tianmu": "大威",
+        "hostCount": 9,
+        "dimu": "大武",
+        "guestCount": 7,
+        "jiShen": "子"
+      },
+      {
+        "ju": 16,
+        "taiyiPalace": 7,
+        "tianmu": "天道",
+        "hostCount": 1,
+        "dimu": "太蔟",
+        "guestCount": 33,
+        "jiShen": "亥"
+      },
+      {
+        "ju": 17,
+        "taiyiPalace": 7,
+        "tianmu": "大武",
+        "hostCount": 7,
+        "dimu": "大义",
+        "guestCount": 27,
+        "jiShen": "戌"
+      },
+      {
+        "ju": 18,
+        "taiyiPalace": 7,
+        "tianmu": "大武",
+        "hostCount": 7,
+        "dimu": "地主",
+        "guestCount": 26,
+        "jiShen": "酉"
+      },
+      {
+        "ju": 19,
+        "taiyiPalace": 8,
+        "tianmu": "武德",
+        "hostCount": 8,
+        "dimu": "和德",
+        "guestCount": 32,
+        "jiShen": "申"
+      },
+      {
+        "ju": 20,
+        "taiyiPalace": 8,
+        "tianmu": "太蔟",
+        "hostCount": 7,
+        "dimu": "太阳",
+        "guestCount": 26,
+        "jiShen": "未"
+      },
+      {
+        "ju": 21,
+        "taiyiPalace": 8,
+        "tianmu": "阴主",
+        "hostCount": 2,
+        "dimu": "大神",
+        "guestCount": 17,
+        "jiShen": "午"
+      },
+      {
+        "ju": 22,
+        "taiyiPalace": 9,
+        "tianmu": "阴德",
+        "hostCount": 16,
+        "dimu": "天道",
+        "guestCount": 30,
+        "jiShen": "巳"
+      },
+      {
+        "ju": 23,
+        "taiyiPalace": 9,
+        "tianmu": "阴德",
+        "hostCount": 16,
+        "dimu": "武德",
+        "guestCount": 23,
+        "jiShen": "辰"
+      },
+      {
+        "ju": 24,
+        "taiyiPalace": 9,
+        "tianmu": "大义",
+        "hostCount": 16,
+        "dimu": "阴主",
+        "guestCount": 17,
+        "jiShen": "卯"
+      },
+      {
+        "ju": 25,
+        "taiyiPalace": 1,
+        "tianmu": "地主",
+        "hostCount": 39,
+        "dimu": "大义",
+        "guestCount": 40,
+        "jiShen": "寅"
+      },
+      {
+        "ju": 26,
+        "taiyiPalace": 1,
+        "tianmu": "阳德",
+        "hostCount": 32,
+        "dimu": "和德",
+        "guestCount": 31,
+        "jiShen": "丑"
+      },
+      {
+        "ju": 27,
+        "taiyiPalace": 1,
+        "tianmu": "和德",
+        "hostCount": 31,
+        "dimu": "高丛",
+        "guestCount": 28,
+        "jiShen": "子"
+      },
+      {
+        "ju": 28,
+        "taiyiPalace": 2,
+        "tianmu": "吕申",
+        "hostCount": 14,
+        "dimu": "大炅",
+        "guestCount": 9,
+        "jiShen": "亥"
+      },
+      {
+        "ju": 29,
+        "taiyiPalace": 2,
+        "tianmu": "高丛",
+        "hostCount": 13,
+        "dimu": "天道",
+        "guestCount": 39,
+        "jiShen": "戌"
+      },
+      {
+        "ju": 30,
+        "taiyiPalace": 2,
+        "tianmu": "太阳",
+        "hostCount": 10,
+        "dimu": "武德",
+        "guestCount": 32,
+        "jiShen": "酉"
+      },
+      {
+        "ju": 31,
+        "taiyiPalace": 3,
+        "tianmu": "大炅",
+        "hostCount": 33,
+        "dimu": "阴主",
+        "guestCount": 10,
+        "jiShen": "申"
+      },
+      {
+        "ju": 32,
+        "taiyiPalace": 3,
+        "tianmu": "大神",
+        "hostCount": 25,
+        "dimu": "地主",
+        "guestCount": 8,
+        "jiShen": "未"
+      },
+      {
+        "ju": 33,
+        "taiyiPalace": 3,
+        "tianmu": "大威",
+        "hostCount": 24,
+        "dimu": "和德",
+        "guestCount": 3,
+        "jiShen": "午"
+      },
+      {
+        "ju": 34,
+        "taiyiPalace": 4,
+        "tianmu": "天道",
+        "hostCount": 26,
+        "dimu": "高丛",
+        "guestCount": 4,
+        "jiShen": "巳"
+      },
+      {
+        "ju": 35,
+        "taiyiPalace": 4,
+        "tianmu": "大武",
+        "hostCount": 25,
+        "dimu": "大神",
+        "guestCount": 28,
+        "jiShen": "辰"
+      },
+      {
+        "ju": 36,
+        "taiyiPalace": 4,
+        "tianmu": "大武",
+        "hostCount": 25,
+        "dimu": "大威",
+        "guestCount": 27,
+        "jiShen": "卯"
+      },
+      {
+        "ju": 37,
+        "taiyiPalace": 6,
+        "tianmu": "武德",
+        "hostCount": 1,
+        "dimu": "大武",
+        "guestCount": 7,
+        "jiShen": "寅"
+      },
+      {
+        "ju": 38,
+        "taiyiPalace": 6,
+        "tianmu": "太蔟",
+        "hostCount": 6,
+        "dimu": "阴主",
+        "guestCount": 35,
+        "jiShen": "丑"
+      },
+      {
+        "ju": 39,
+        "taiyiPalace": 6,
+        "tianmu": "阴主",
+        "hostCount": 25,
+        "dimu": "大义",
+        "guestCount": 34,
+        "jiShen": "子"
+      },
+      {
+        "ju": 40,
+        "taiyiPalace": 7,
+        "tianmu": "阴德",
+        "hostCount": 27,
+        "dimu": "阳德",
+        "guestCount": 19,
+        "jiShen": "亥"
+      },
+      {
+        "ju": 41,
+        "taiyiPalace": 7,
+        "tianmu": "阴德",
+        "hostCount": 27,
+        "dimu": "吕申",
+        "guestCount": 16,
+        "jiShen": "戌"
+      },
+      {
+        "ju": 42,
+        "taiyiPalace": 7,
+        "tianmu": "大义",
+        "hostCount": 27,
+        "dimu": "太阳",
+        "guestCount": 12,
+        "jiShen": "酉"
+      },
+      {
+        "ju": 43,
+        "taiyiPalace": 8,
+        "tianmu": "地主",
+        "hostCount": 8,
+        "dimu": "大神",
+        "guestCount": 17,
+        "jiShen": "申"
+      },
+      {
+        "ju": 44,
+        "taiyiPalace": 8,
+        "tianmu": "阳德",
+        "hostCount": 33,
+        "dimu": "大武",
+        "guestCount": 14,
+        "jiShen": "未"
+      },
+      {
+        "ju": 45,
+        "taiyiPalace": 8,
+        "tianmu": "和德",
+        "hostCount": 32,
+        "dimu": "太蔟",
+        "guestCount": 7,
+        "jiShen": "午"
+      },
+      {
+        "ju": 46,
+        "taiyiPalace": 9,
+        "tianmu": "吕申",
+        "hostCount": 5,
+        "dimu": "阴德",
+        "guestCount": 16,
+        "jiShen": "巳"
+      },
+      {
+        "ju": 47,
+        "taiyiPalace": 9,
+        "tianmu": "高丛",
+        "hostCount": 4,
+        "dimu": "阳德",
+        "guestCount": 8,
+        "jiShen": "辰"
+      },
+      {
+        "ju": 48,
+        "taiyiPalace": 9,
+        "tianmu": "太阳",
+        "hostCount": 1,
+        "dimu": "吕申",
+        "guestCount": 5,
+        "jiShen": "卯"
+      },
+      {
+        "ju": 49,
+        "taiyiPalace": 1,
+        "tianmu": "大炅",
+        "hostCount": 24,
+        "dimu": "太阳",
+        "guestCount": 25,
+        "jiShen": "寅"
+      },
+      {
+        "ju": 50,
+        "taiyiPalace": 1,
+        "tianmu": "大神",
+        "hostCount": 6,
+        "dimu": "大威",
+        "guestCount": 15,
+        "jiShen": "丑"
+      },
+      {
+        "ju": 51,
+        "taiyiPalace": 1,
+        "tianmu": "大威",
+        "hostCount": 15,
+        "dimu": "大武",
+        "guestCount": 13,
+        "jiShen": "子"
+      },
+      {
+        "ju": 52,
+        "taiyiPalace": 2,
+        "tianmu": "天道",
+        "hostCount": 39,
+        "dimu": "太蔟",
+        "guestCount": 31,
+        "jiShen": "亥"
+      },
+      {
+        "ju": 53,
+        "taiyiPalace": 2,
+        "tianmu": "大武",
+        "hostCount": 38,
+        "dimu": "大义",
+        "guestCount": 25,
+        "jiShen": "戌"
+      },
+      {
+        "ju": 54,
+        "taiyiPalace": 2,
+        "tianmu": "大武",
+        "hostCount": 38,
+        "dimu": "地主",
+        "guestCount": 24,
+        "jiShen": "酉"
+      },
+      {
+        "ju": 55,
+        "taiyiPalace": 3,
+        "tianmu": "武德",
+        "hostCount": 16,
+        "dimu": "和德",
+        "guestCount": 3,
+        "jiShen": "申"
+      },
+      {
+        "ju": 56,
+        "taiyiPalace": 3,
+        "tianmu": "太蔟",
+        "hostCount": 15,
+        "dimu": "太阳",
+        "guestCount": 34,
+        "jiShen": "未"
+      },
+      {
+        "ju": 57,
+        "taiyiPalace": 3,
+        "tianmu": "阴主",
+        "hostCount": 10,
+        "dimu": "大神",
+        "guestCount": 25,
+        "jiShen": "午"
+      },
+      {
+        "ju": 58,
+        "taiyiPalace": 4,
+        "tianmu": "阴德",
+        "hostCount": 12,
+        "dimu": "天道",
+        "guestCount": 26,
+        "jiShen": "巳"
+      },
+      {
+        "ju": 59,
+        "taiyiPalace": 4,
+        "tianmu": "阴德",
+        "hostCount": 12,
+        "dimu": "武德",
+        "guestCount": 19,
+        "jiShen": "辰"
+      },
+      {
+        "ju": 60,
+        "taiyiPalace": 4,
+        "tianmu": "大义",
+        "hostCount": 12,
+        "dimu": "阴主",
+        "guestCount": 13,
+        "jiShen": "卯"
+      },
+      {
+        "ju": 61,
+        "taiyiPalace": 6,
+        "tianmu": "地主",
+        "hostCount": 33,
+        "dimu": "大义",
+        "guestCount": 34,
+        "jiShen": "寅"
+      },
+      {
+        "ju": 62,
+        "taiyiPalace": 6,
+        "tianmu": "阳德",
+        "hostCount": 26,
+        "dimu": "和德",
+        "guestCount": 25,
+        "jiShen": "丑"
+      },
+      {
+        "ju": 63,
+        "taiyiPalace": 6,
+        "tianmu": "和德",
+        "hostCount": 25,
+        "dimu": "高丛",
+        "guestCount": 22,
+        "jiShen": "子"
+      },
+      {
+        "ju": 64,
+        "taiyiPalace": 7,
+        "tianmu": "吕申",
+        "hostCount": 16,
+        "dimu": "大炅",
+        "guestCount": 11,
+        "jiShen": "亥"
+      },
+      {
+        "ju": 65,
+        "taiyiPalace": 7,
+        "tianmu": "高丛",
+        "hostCount": 15,
+        "dimu": "天道",
+        "guestCount": 1,
+        "jiShen": "戌"
+      },
+      {
+        "ju": 66,
+        "taiyiPalace": 7,
+        "tianmu": "太阳",
+        "hostCount": 12,
+        "dimu": "武德",
+        "guestCount": 34,
+        "jiShen": "酉"
+      },
+      {
+        "ju": 67,
+        "taiyiPalace": 8,
+        "tianmu": "大炅",
+        "hostCount": 25,
+        "dimu": "阴主",
+        "guestCount": 2,
+        "jiShen": "申"
+      },
+      {
+        "ju": 68,
+        "taiyiPalace": 8,
+        "tianmu": "大神",
+        "hostCount": 17,
+        "dimu": "地主",
+        "guestCount": 8,
+        "jiShen": "未"
+      },
+      {
+        "ju": 69,
+        "taiyiPalace": 8,
+        "tianmu": "大威",
+        "hostCount": 16,
+        "dimu": "和德",
+        "guestCount": 32,
+        "jiShen": "午"
+      },
+      {
+        "ju": 70,
+        "taiyiPalace": 9,
+        "tianmu": "天道",
+        "hostCount": 30,
+        "dimu": "高丛",
+        "guestCount": 4,
+        "jiShen": "巳"
+      },
+      {
+        "ju": 71,
+        "taiyiPalace": 9,
+        "tianmu": "大武",
+        "hostCount": 29,
+        "dimu": "大神",
+        "guestCount": 32,
+        "jiShen": "辰"
+      },
+      {
+        "ju": 72,
+        "taiyiPalace": 9,
+        "tianmu": "大武",
+        "hostCount": 29,
+        "dimu": "大威",
+        "guestCount": 31,
+        "jiShen": "卯"
+      }
+    ],
+    "yin": [
+      {
+        "ju": 1,
+        "taiyiPalace": 9,
+        "tianmu": "吕申",
+        "hostCount": 5,
+        "dimu": "大武",
+        "guestCount": 29,
+        "jiShen": "申"
+      },
+      {
+        "ju": 2,
+        "taiyiPalace": 9,
+        "tianmu": "高丛",
+        "hostCount": 4,
+        "dimu": "阴主",
+        "guestCount": 17,
+        "jiShen": "未"
+      },
+      {
+        "ju": 3,
+        "taiyiPalace": 9,
+        "tianmu": "太阳",
+        "hostCount": 1,
+        "dimu": "大义",
+        "guestCount": 16,
+        "jiShen": "午"
+      },
+      {
+        "ju": 4,
+        "taiyiPalace": 8,
+        "tianmu": "大炅",
+        "hostCount": 25,
+        "dimu": "阳德",
+        "guestCount": 33,
+        "jiShen": "巳"
+      },
+      {
+        "ju": 5,
+        "taiyiPalace": 8,
+        "tianmu": "大炅",
+        "hostCount": 25,
+        "dimu": "吕申",
+        "guestCount": 30,
+        "jiShen": "辰"
+      },
+      {
+        "ju": 6,
+        "taiyiPalace": 8,
+        "tianmu": "大神",
+        "hostCount": 17,
+        "dimu": "太阳",
+        "guestCount": 26,
+        "jiShen": "卯"
+      },
+      {
+        "ju": 7,
+        "taiyiPalace": 7,
+        "tianmu": "大威",
+        "hostCount": 2,
+        "dimu": "大神",
+        "guestCount": 3,
+        "jiShen": "寅"
+      },
+      {
+        "ju": 8,
+        "taiyiPalace": 7,
+        "tianmu": "天道",
+        "hostCount": 1,
+        "dimu": "大武",
+        "guestCount": 7,
+        "jiShen": "丑"
+      },
+      {
+        "ju": 9,
+        "taiyiPalace": 7,
+        "tianmu": "大武",
+        "hostCount": 7,
+        "dimu": "太蔟",
+        "guestCount": 33,
+        "jiShen": "子"
+      },
+      {
+        "ju": 10,
+        "taiyiPalace": 6,
+        "tianmu": "武德",
+        "hostCount": 1,
+        "dimu": "阴德",
+        "guestCount": 34,
+        "jiShen": "亥"
+      },
+      {
+        "ju": 11,
+        "taiyiPalace": 6,
+        "tianmu": "太蔟",
+        "hostCount": 6,
+        "dimu": "阳德",
+        "guestCount": 36,
+        "jiShen": "戌"
+      },
+      {
+        "ju": 12,
+        "taiyiPalace": 6,
+        "tianmu": "阴主",
+        "hostCount": 35,
+        "dimu": "吕申",
+        "guestCount": 23,
+        "jiShen": "酉"
+      },
+      {
+        "ju": 13,
+        "taiyiPalace": 4,
+        "tianmu": "阴德",
+        "hostCount": 12,
+        "dimu": "太阳",
+        "guestCount": 37,
+        "jiShen": "申"
+      },
+      {
+        "ju": 14,
+        "taiyiPalace": 4,
+        "tianmu": "大义",
+        "hostCount": 12,
+        "dimu": "大威",
+        "guestCount": 27,
+        "jiShen": "未"
+      },
+      {
+        "ju": 15,
+        "taiyiPalace": 4,
+        "tianmu": "地主",
+        "hostCount": 11,
+        "dimu": "大武",
+        "guestCount": 29,
+        "jiShen": "午"
+      },
+      {
+        "ju": 16,
+        "taiyiPalace": 3,
+        "tianmu": "阳德",
+        "hostCount": 1,
+        "dimu": "太蔟",
+        "guestCount": 15,
+        "jiShen": "巳"
+      },
+      {
+        "ju": 17,
+        "taiyiPalace": 3,
+        "tianmu": "和德",
+        "hostCount": 3,
+        "dimu": "大义",
+        "guestCount": 9,
+        "jiShen": "辰"
+      },
+      {
+        "ju": 18,
+        "taiyiPalace": 3,
+        "tianmu": "和德",
+        "hostCount": 3,
+        "dimu": "地主",
+        "guestCount": 8,
+        "jiShen": "卯"
+      },
+      {
+        "ju": 19,
+        "taiyiPalace": 2,
+        "tianmu": "吕申",
+        "hostCount": 14,
+        "dimu": "和德",
+        "guestCount": 16,
+        "jiShen": "寅"
+      },
+      {
+        "ju": 20,
+        "taiyiPalace": 2,
+        "tianmu": "高丛",
+        "hostCount": 13,
+        "dimu": "太阳",
+        "guestCount": 10,
+        "jiShen": "丑"
+      },
+      {
+        "ju": 21,
+        "taiyiPalace": 2,
+        "tianmu": "太阳",
+        "hostCount": 10,
+        "dimu": "大神",
+        "guestCount": 1,
+        "jiShen": "子"
+      },
+      {
+        "ju": 22,
+        "taiyiPalace": 1,
+        "tianmu": "大炅",
+        "hostCount": 24,
+        "dimu": "天道",
+        "guestCount": 14,
+        "jiShen": "亥"
+      },
+      {
+        "ju": 23,
+        "taiyiPalace": 1,
+        "tianmu": "大炅",
+        "hostCount": 24,
+        "dimu": "武德",
+        "guestCount": 7,
+        "jiShen": "戌"
+      },
+      {
+        "ju": 24,
+        "taiyiPalace": 1,
+        "tianmu": "大神",
+        "hostCount": 16,
+        "dimu": "阴主",
+        "guestCount": 1,
+        "jiShen": "酉"
+      },
+      {
+        "ju": 25,
+        "taiyiPalace": 9,
+        "tianmu": "大威",
+        "hostCount": 21,
+        "dimu": "大义",
+        "guestCount": 16,
+        "jiShen": "申"
+      },
+      {
+        "ju": 26,
+        "taiyiPalace": 9,
+        "tianmu": "天道",
+        "hostCount": 31,
+        "dimu": "和德",
+        "guestCount": 7,
+        "jiShen": "未"
+      },
+      {
+        "ju": 27,
+        "taiyiPalace": 9,
+        "tianmu": "大武",
+        "hostCount": 39,
+        "dimu": "高丛",
+        "guestCount": 4,
+        "jiShen": "午"
+      },
+      {
+        "ju": 28,
+        "taiyiPalace": 8,
+        "tianmu": "武德",
+        "hostCount": 8,
+        "dimu": "大炅",
+        "guestCount": 25,
+        "jiShen": "巳"
+      },
+      {
+        "ju": 29,
+        "taiyiPalace": 8,
+        "tianmu": "太蔟",
+        "hostCount": 7,
+        "dimu": "天道",
+        "guestCount": 15,
+        "jiShen": "辰"
+      },
+      {
+        "ju": 30,
+        "taiyiPalace": 8,
+        "tianmu": "阴主",
+        "hostCount": 2,
+        "dimu": "武德",
+        "guestCount": 8,
+        "jiShen": "卯"
+      },
+      {
+        "ju": 31,
+        "taiyiPalace": 7,
+        "tianmu": "阴德",
+        "hostCount": 27,
+        "dimu": "阴主",
+        "guestCount": 28,
+        "jiShen": "寅"
+      },
+      {
+        "ju": 32,
+        "taiyiPalace": 7,
+        "tianmu": "大义",
+        "hostCount": 27,
+        "dimu": "地主",
+        "guestCount": 26,
+        "jiShen": "丑"
+      },
+      {
+        "ju": 33,
+        "taiyiPalace": 7,
+        "tianmu": "地主",
+        "hostCount": 26,
+        "dimu": "和德",
+        "guestCount": 18,
+        "jiShen": "子"
+      },
+      {
+        "ju": 34,
+        "taiyiPalace": 6,
+        "tianmu": "阳德",
+        "hostCount": 26,
+        "dimu": "高丛",
+        "guestCount": 22,
+        "jiShen": "亥"
+      },
+      {
+        "ju": 35,
+        "taiyiPalace": 6,
+        "tianmu": "和德",
+        "hostCount": 25,
+        "dimu": "大神",
+        "guestCount": 10,
+        "jiShen": "戌"
+      },
+      {
+        "ju": 36,
+        "taiyiPalace": 6,
+        "tianmu": "和德",
+        "hostCount": 25,
+        "dimu": "大威",
+        "guestCount": 9,
+        "jiShen": "酉"
+      },
+      {
+        "ju": 37,
+        "taiyiPalace": 4,
+        "tianmu": "吕申",
+        "hostCount": 1,
+        "dimu": "大威",
+        "guestCount": 25,
+        "jiShen": "申"
+      },
+      {
+        "ju": 38,
+        "taiyiPalace": 4,
+        "tianmu": "高丛",
+        "hostCount": 4,
+        "dimu": "阴主",
+        "guestCount": 13,
+        "jiShen": "未"
+      },
+      {
+        "ju": 39,
+        "taiyiPalace": 4,
+        "tianmu": "太阳",
+        "hostCount": 37,
+        "dimu": "大义",
+        "guestCount": 12,
+        "jiShen": "午"
+      },
+      {
+        "ju": 40,
+        "taiyiPalace": 3,
+        "tianmu": "大炅",
+        "hostCount": 33,
+        "dimu": "阳德",
+        "guestCount": 1,
+        "jiShen": "巳"
+      },
+      {
+        "ju": 41,
+        "taiyiPalace": 3,
+        "tianmu": "大炅",
+        "hostCount": 33,
+        "dimu": "吕申",
+        "guestCount": 38,
+        "jiShen": "辰"
+      },
+      {
+        "ju": 42,
+        "taiyiPalace": 3,
+        "tianmu": "大神",
+        "hostCount": 25,
+        "dimu": "太阳",
+        "guestCount": 34,
+        "jiShen": "卯"
+      },
+      {
+        "ju": 43,
+        "taiyiPalace": 2,
+        "tianmu": "大威",
+        "hostCount": 2,
+        "dimu": "大武",
+        "guestCount": 38,
+        "jiShen": "寅"
+      },
+      {
+        "ju": 44,
+        "taiyiPalace": 2,
+        "tianmu": "天道",
+        "hostCount": 39,
+        "dimu": "太蔟",
+        "guestCount": 31,
+        "jiShen": "丑"
+      },
+      {
+        "ju": 45,
+        "taiyiPalace": 2,
+        "tianmu": "大武",
+        "hostCount": 38,
+        "dimu": "太蔟",
+        "guestCount": 31,
+        "jiShen": "子"
+      },
+      {
+        "ju": 46,
+        "taiyiPalace": 1,
+        "tianmu": "武德",
+        "hostCount": 7,
+        "dimu": "阴德",
+        "guestCount": 2,
+        "jiShen": "亥"
+      },
+      {
+        "ju": 47,
+        "taiyiPalace": 1,
+        "tianmu": "太蔟",
+        "hostCount": 6,
+        "dimu": "阳德",
+        "guestCount": 32,
+        "jiShen": "戌"
+      },
+      {
+        "ju": 48,
+        "taiyiPalace": 1,
+        "tianmu": "阴主",
+        "hostCount": 1,
+        "dimu": "吕申",
+        "guestCount": 29,
+        "jiShen": "酉"
+      },
+      {
+        "ju": 49,
+        "taiyiPalace": 9,
+        "tianmu": "阴德",
+        "hostCount": 16,
+        "dimu": "太阳",
+        "guestCount": 1,
+        "jiShen": "申"
+      },
+      {
+        "ju": 50,
+        "taiyiPalace": 9,
+        "tianmu": "大义",
+        "hostCount": 16,
+        "dimu": "大威",
+        "guestCount": 31,
+        "jiShen": "未"
+      },
+      {
+        "ju": 51,
+        "taiyiPalace": 9,
+        "tianmu": "地主",
+        "hostCount": 15,
+        "dimu": "大武",
+        "guestCount": 29,
+        "jiShen": "午"
+      },
+      {
+        "ju": 52,
+        "taiyiPalace": 8,
+        "tianmu": "阳德",
+        "hostCount": 33,
+        "dimu": "太蔟",
+        "guestCount": 7,
+        "jiShen": "巳"
+      },
+      {
+        "ju": 53,
+        "taiyiPalace": 8,
+        "tianmu": "和德",
+        "hostCount": 32,
+        "dimu": "大义",
+        "guestCount": 1,
+        "jiShen": "辰"
+      },
+      {
+        "ju": 54,
+        "taiyiPalace": 8,
+        "tianmu": "和德",
+        "hostCount": 32,
+        "dimu": "地主",
+        "guestCount": 8,
+        "jiShen": "卯"
+      },
+      {
+        "ju": 55,
+        "taiyiPalace": 7,
+        "tianmu": "吕申",
+        "hostCount": 16,
+        "dimu": "和德",
+        "guestCount": 18,
+        "jiShen": "寅"
+      },
+      {
+        "ju": 56,
+        "taiyiPalace": 7,
+        "tianmu": "高丛",
+        "hostCount": 15,
+        "dimu": "太阳",
+        "guestCount": 12,
+        "jiShen": "丑"
+      },
+      {
+        "ju": 57,
+        "taiyiPalace": 7,
+        "tianmu": "太阳",
+        "hostCount": 12,
+        "dimu": "大神",
+        "guestCount": 3,
+        "jiShen": "子"
+      },
+      {
+        "ju": 58,
+        "taiyiPalace": 6,
+        "tianmu": "大炅",
+        "hostCount": 18,
+        "dimu": "天道",
+        "guestCount": 8,
+        "jiShen": "亥"
+      },
+      {
+        "ju": 59,
+        "taiyiPalace": 6,
+        "tianmu": "大炅",
+        "hostCount": 18,
+        "dimu": "武德",
+        "guestCount": 1,
+        "jiShen": "戌"
+      },
+      {
+        "ju": 60,
+        "taiyiPalace": 6,
+        "tianmu": "大神",
+        "hostCount": 10,
+        "dimu": "阴主",
+        "guestCount": 35,
+        "jiShen": "酉"
+      },
+      {
+        "ju": 61,
+        "taiyiPalace": 4,
+        "tianmu": "大威",
+        "hostCount": 27,
+        "dimu": "大义",
+        "guestCount": 12,
+        "jiShen": "申"
+      },
+      {
+        "ju": 62,
+        "taiyiPalace": 4,
+        "tianmu": "天道",
+        "hostCount": 26,
+        "dimu": "和德",
+        "guestCount": 3,
+        "jiShen": "未"
+      },
+      {
+        "ju": 63,
+        "taiyiPalace": 4,
+        "tianmu": "大武",
+        "hostCount": 25,
+        "dimu": "高丛",
+        "guestCount": 4,
+        "jiShen": "午"
+      },
+      {
+        "ju": 64,
+        "taiyiPalace": 3,
+        "tianmu": "武德",
+        "hostCount": 16,
+        "dimu": "大炅",
+        "guestCount": 33,
+        "jiShen": "巳"
+      },
+      {
+        "ju": 65,
+        "taiyiPalace": 3,
+        "tianmu": "太蔟",
+        "hostCount": 15,
+        "dimu": "天道",
+        "guestCount": 23,
+        "jiShen": "辰"
+      },
+      {
+        "ju": 66,
+        "taiyiPalace": 3,
+        "tianmu": "阴主",
+        "hostCount": 10,
+        "dimu": "武德",
+        "guestCount": 16,
+        "jiShen": "卯"
+      },
+      {
+        "ju": 67,
+        "taiyiPalace": 2,
+        "tianmu": "阴德",
+        "hostCount": 25,
+        "dimu": "阴主",
+        "guestCount": 26,
+        "jiShen": "寅"
+      },
+      {
+        "ju": 68,
+        "taiyiPalace": 2,
+        "tianmu": "大义",
+        "hostCount": 25,
+        "dimu": "地主",
+        "guestCount": 24,
+        "jiShen": "丑"
+      },
+      {
+        "ju": 69,
+        "taiyiPalace": 2,
+        "tianmu": "地主",
+        "hostCount": 24,
+        "dimu": "和德",
+        "guestCount": 16,
+        "jiShen": "子"
+      },
+      {
+        "ju": 70,
+        "taiyiPalace": 1,
+        "tianmu": "阳德",
+        "hostCount": 22,
+        "dimu": "高丛",
+        "guestCount": 28,
+        "jiShen": "亥"
+      },
+      {
+        "ju": 71,
+        "taiyiPalace": 1,
+        "tianmu": "和德",
+        "hostCount": 31,
+        "dimu": "大神",
+        "guestCount": 16,
+        "jiShen": "戌"
+      },
+      {
+        "ju": 72,
+        "taiyiPalace": 1,
+        "tianmu": "和德",
+        "hostCount": 31,
+        "dimu": "大威",
+        "guestCount": 15,
+        "jiShen": "酉"
+      }
+    ]
+  }
+}

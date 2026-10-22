@@ -1,0 +1,386 @@
+{
+  "version": "11.152.0",
+  "schemaVersion": 1,
+  "method": "static-evidence-inventory-only",
+  "notice": "File presence / prior tests DO NOT prove calculation correctness, school validity or independent reference verification.",
+  "disciplines": [
+    {
+      "phase": "V11.152",
+      "id": "tu-vi",
+      "name": "Tử Vi Đẩu Số",
+      "implementation": "packages/astrology-engine/src/tuvi.js",
+      "webRouteSource": "apps/web/src/app/chart/page.tsx",
+      "candidateTest": "tests/deep-calendar-bazi-regression.test.cjs",
+      "methodId": "tam-hop-core-v6.0",
+      "methodScope": "Hệ Tam Hợp (tham chiếu hiện hữu)",
+      "witnessGate": "traditional-school-comparison-required",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.152",
+      "id": "bat-tu",
+      "name": "Bát Tự / Tử Bình",
+      "implementation": "packages/astrology-engine/src/bazi-study-snapshot.cjs",
+      "webRouteSource": "apps/web/src/app/bazi/page.tsx",
+      "candidateTest": "tests/v11142-bazi-snapshot.test.cjs",
+      "methodId": "bazi-civil-time-utc7-v11.142",
+      "methodScope": "UTC+07 dân sự, chưa khẳng định giờ giao Jie tại biên",
+      "witnessGate": "astronomical-ingress-witness-required",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.152",
+      "id": "lich-phap",
+      "name": "Lịch pháp và DST",
+      "implementation": "packages/astrology-engine/src/natal-timezone.cjs",
+      "webRouteSource": "apps/web/src/app/calendar/page.tsx",
+      "candidateTest": "tests/v11118-natal-timezone.test.cjs",
+      "methodId": "iana-tzdb-2026e",
+      "methodScope": "IANA tzdb 2026e; đối chiếu corpus Python ZoneInfo",
+      "witnessGate": "independent-reference-partial",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.153",
+      "id": "mai-hoa",
+      "name": "Mai Hoa Dịch Số",
+      "implementation": "packages/astrology-engine/src/mai-hoa-profile.cjs",
+      "webRouteSource": "apps/web/src/app/mai-hoa/page.tsx",
+      "candidateTest": "tests/v11129-mai-hoa-depth.test.cjs",
+      "methodId": "mai-hoa-evidence-v1",
+      "methodScope": "Phương pháp tạo quẻ có nhiều biến thể; cần khai báo",
+      "witnessGate": "traditional-school-comparison-required",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.153",
+      "id": "luc-hao",
+      "name": "Lục Hào",
+      "implementation": "packages/astrology-engine/src/luc-hao-profile.cjs",
+      "webRouteSource": "apps/web/src/app/luc-hao/page.tsx",
+      "candidateTest": "tests/v11130-luc-hao-depth.test.cjs",
+      "methodId": "luc-hao-jingfang-evidence-v1",
+      "methodScope": "Kinh Phòng, tham số Dụng thần phải khai báo",
+      "witnessGate": "traditional-school-comparison-required",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.153",
+      "id": "ky-mon",
+      "name": "Kỳ Môn Độn Giáp",
+      "implementation": "packages/astrology-engine/src/qimen-profile.cjs",
+      "webRouteSource": "apps/web/src/app/ky-mon/page.tsx",
+      "candidateTest": "tests/v11131-qimen-depth.test.cjs",
+      "methodId": "qimen-nine-palace-evidence-v1",
+      "methodScope": "Trường phái Chuyển/Phi và luật Nhập Mộ phải chọn",
+      "witnessGate": "traditional-school-comparison-required",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.154",
+      "id": "dai-luc-nham",
+      "name": "Đại Lục Nhâm",
+      "implementation": "packages/astrology-engine/src/da-liu-ren-depth.cjs",
+      "webRouteSource": "apps/web/src/app/dai-luc-nham/page.tsx",
+      "candidateTest": "tests/v1190-liuren-four-lessons-transmissions.test.cjs",
+      "methodId": "da-liu-ren-nine-gates-yuanshushan-research-v2",
+      "methodScope": "Nghiệm tính Tứ Khóa/Tam Truyền phân nhánh cần độc lập",
+      "witnessGate": "research-only",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.154",
+      "id": "thai-at",
+      "name": "Thái Ất Thần Số",
+      "implementation": "packages/astrology-engine/src/taiyi-depth.cjs",
+      "webRouteSource": "apps/web/src/app/thai-at/page.tsx",
+      "candidateTest": "tests/v11133-taiyi-depth.test.cjs",
+      "methodId": "taiyi-jinjing-annual-724",
+      "methodScope": "Niên cục JinJing; chưa bao trùm mọi thời pháp",
+      "witnessGate": "research-only",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.154",
+      "id": "bat-trach",
+      "name": "Phong Thủy Bát Trạch",
+      "implementation": "apps/web/src/features/feng-shui/eight-mansions.cjs",
+      "webRouteSource": "apps/web/src/app/phong-thuy/page.tsx",
+      "candidateTest": "tests/v1179-feng-shui-eight-mansions-flying-stars.test.cjs",
+      "methodId": "fengshui-bat-trach-existing",
+      "methodScope": "Theo dữ liệu hiện hữu; cần đối chiếu nhà ở",
+      "witnessGate": "research-only",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.154",
+      "id": "phi-tinh",
+      "name": "Huyền Không Phi Tinh",
+      "implementation": "apps/web/src/features/feng-shui/flying-stars.cjs",
+      "webRouteSource": "apps/web/src/app/phong-thuy/page.tsx",
+      "candidateTest": "tests/v1179-feng-shui-eight-mansions-flying-stars.test.cjs",
+      "methodId": "fengshui-phi-tinh-existing",
+      "methodScope": "Vận/phi tinh cần đối chiếu trường phái",
+      "witnessGate": "research-only",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.154",
+      "id": "dai-quai",
+      "name": "Huyền Không Đại Quái",
+      "implementation": "apps/web/src/features/feng-shui/great-hexagrams.cjs",
+      "webRouteSource": "apps/web/src/app/phong-thuy/page.tsx",
+      "candidateTest": "tests/v1135-feng-shui-depth.test.cjs",
+      "methodId": "fengshui-dai-quai-existing",
+      "methodScope": "Không được suy rộng khi thiếu trường phái đối chiếu",
+      "witnessGate": "research-only",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.154",
+      "id": "trach-nhat",
+      "name": "Trạch Nhật",
+      "implementation": "packages/astrology-engine/src/trach-nhat-specialized.cjs",
+      "webRouteSource": "apps/web/src/app/good-days/page.tsx",
+      "candidateTest": "tests/v11134-ziping-trachnhat-depth.test.cjs",
+      "methodId": "trach-nhat-existing",
+      "methodScope": "Giới hạn dữ liệu ngày/tiết",
+      "witnessGate": "research-only",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.154",
+      "id": "ha-lac",
+      "name": "Hà Lạc Lý Số",
+      "implementation": "packages/astrology-engine/src/ha-lac-source.cjs",
+      "webRouteSource": "apps/web/src/app/ha-lac/page.tsx",
+      "candidateTest": "tests/v1136-heluo-tieban-calendar.test.cjs",
+      "methodId": "he-luo-number-candidate-study-v11.136",
+      "methodScope": "Nguồn bản khắc còn chưa hội đủ bằng chứng",
+      "witnessGate": "research-only",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.154",
+      "id": "thiet-ban",
+      "name": "Thiết Bản Thần Số",
+      "implementation": "packages/astrology-engine/src/tieban-source.cjs",
+      "webRouteSource": "apps/web/src/app/thiet-ban/page.tsx",
+      "candidateTest": "tests/v1136-heluo-tieban-calendar.test.cjs",
+      "methodId": "tie-ban-source-text-and-time-slices-v11.136",
+      "methodScope": "Đối chiếu văn bản và cách chọn số trước khi tính",
+      "witnessGate": "research-only",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.154",
+      "id": "natal",
+      "name": "Chiêm tinh Natal",
+      "implementation": "packages/astrology-engine/src/western-natal.cjs",
+      "webRouteSource": "apps/web/src/app/western-astrology/page.tsx",
+      "candidateTest": "tests/v11118-natal-timezone.test.cjs",
+      "methodId": "western-tropical-geocentric-whole-sign-v1",
+      "methodScope": "Độ chính xác thiên văn, lịch thiên văn cần witness riêng",
+      "witnessGate": "independent-reference-partial",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.154",
+      "id": "transit",
+      "name": "Western Transit",
+      "implementation": "packages/astrology-engine/src/western-natal.cjs",
+      "webRouteSource": "apps/web/src/app/western-astrology/page.tsx",
+      "candidateTest": "tests/v11127-western-depth.test.cjs",
+      "methodId": "western-transit-existing",
+      "methodScope": "Bộ góc hợp và orb theo phương pháp hiện hữu",
+      "witnessGate": "research-only",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.154",
+      "id": "progression",
+      "name": "Secondary Progression",
+      "implementation": "packages/astrology-engine/src/western-natal.cjs",
+      "webRouteSource": "apps/web/src/app/western-astrology/page.tsx",
+      "candidateTest": "tests/v11127-western-depth.test.cjs",
+      "methodId": "western-progression-existing",
+      "methodScope": "1 ngày ↔ 1 năm; cần kiểm tra thời điểm sinh",
+      "witnessGate": "research-only",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.154",
+      "id": "synastry",
+      "name": "Synastry",
+      "implementation": "packages/astrology-engine/src/western-relationship.cjs",
+      "webRouteSource": "apps/web/src/app/western-astrology/page.tsx",
+      "candidateTest": "tests/v11128-relationship.test.cjs",
+      "methodId": "western-synastry-existing",
+      "methodScope": "Quan hệ cặp, giữ dữ liệu có nguồn riêng",
+      "witnessGate": "research-only",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.154",
+      "id": "composite",
+      "name": "Composite",
+      "implementation": "packages/astrology-engine/src/western-relationship.cjs",
+      "webRouteSource": "apps/web/src/app/western-astrology/page.tsx",
+      "candidateTest": "tests/v11128-relationship.test.cjs",
+      "methodId": "western-composite-existing",
+      "methodScope": "Trung điểm hoàng đạo, cần xét quấn 360°",
+      "witnessGate": "research-only",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.154",
+      "id": "tarot",
+      "name": "Tarot RWS 78 lá",
+      "implementation": "packages/astrology-engine/src/tarot-rws.cjs",
+      "webRouteSource": "apps/web/src/app/tarot/page.tsx",
+      "candidateTest": "tests/v11124-tarot-depth.test.cjs",
+      "methodId": "rider-waite-smith-1909",
+      "methodScope": "Các trải bài và văn bản là phương pháp diễn giải, không là thiên văn",
+      "witnessGate": "research-only",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "phase": "V11.154",
+      "id": "than-so",
+      "name": "Thần số học",
+      "implementation": "packages/astrology-engine/src/numerology-advanced.cjs",
+      "webRouteSource": "apps/web/src/app/numerology/page.tsx",
+      "candidateTest": "tests/v11116-numerology.test.cjs",
+      "methodId": "pythagorean-advanced-comparison-v1",
+      "methodScope": "Cần tách số quy ước và diễn giải",
+      "witnessGate": "research-only",
+      "pathsPresent": {
+        "engine": true,
+        "page": true,
+        "test": true
+      },
+      "verifiedByIndependentWitness": false,
+      "acceptance": "NOT_ACCEPTED"
+    }
+  ]
+}

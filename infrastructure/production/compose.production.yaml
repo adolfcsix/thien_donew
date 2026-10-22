@@ -1,0 +1,136 @@
+name: thien-do-production
+x-app: &app
+  restart: unless-stopped
+  init: true
+  read_only: true
+  tmpfs: [/tmp]
+  security_opt: [no-new-privileges:true]
+  cap_drop: [ALL]
+  logging: &logs
+    driver: json-file
+    options: {max-size: "10m", max-file: "3"}
+services:
+  db:
+    logging: *logs
+    image: ${POSTGRES_IMAGE:?Set POSTGRES_IMAGE}
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: thiendo_owner
+      POSTGRES_DB: thiendo
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_owner_password
+    secrets: [db_owner_password, db_app_password]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init-db.sh:/docker-entrypoint-initdb.d/010-app-role.sh:ro
+    networks: [private]
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U thiendo_owner -d thiendo']
+      interval: 10s
+      timeout: 3s
+      retries: 10
+  migrate:
+    <<: *app
+    image: ${API_IMAGE:?Set API_IMAGE}
+    restart: "no"
+    profiles: [ops]
+    environment:
+      NODE_ENV: production
+      DB_USER: thiendo_owner
+      DB_PASSWORD_FILE: /run/secrets/db_owner_password
+    secrets: [db_owner_password]
+    command: [node, infrastructure/scripts/migrate.mjs]
+    depends_on:
+      db: {condition: service_healthy}
+    networks: [private]
+  api:
+    <<: *app
+    image: ${API_IMAGE:?Set API_IMAGE}
+    environment:
+      NODE_ENV: production
+      COOKIE_SECURE: "true"
+      API_HOST: 0.0.0.0
+      API_PORT: "8080"
+      WEB_ORIGIN: https://${THIEN_DO_DOMAIN:?Set THIEN_DO_DOMAIN}
+      DB_USER: thiendo_app
+      DB_PASSWORD_FILE: /run/secrets/db_app_password
+      PAYOS_CLIENT_ID: ${PAYOS_CLIENT_ID:-}
+      PAYOS_API_KEY: ${PAYOS_API_KEY:-}
+      PAYOS_CHECKSUM_KEY: ${PAYOS_CHECKSUM_KEY:-}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      AUTH_EMAIL_FROM: ${AUTH_EMAIL_FROM:-}
+      AUTH_OTP_SECRET_FILE: /run/secrets/auth_otp_secret
+      ADMIN_MFA_ENCRYPTION_KEY_FILE: /run/secrets/admin_mfa_encryption_key
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      WEB_ANALYTICS_ENABLED: ${WEB_ANALYTICS_ENABLED:-false}
+      BOOK_PRIVATE_STORAGE_DIR: /var/lib/thiendo/private/books
+      VAN_KHO_PRIVATE_MEDIA_DIR: /var/lib/thiendo/private/van-kho-media
+    secrets: [db_app_password, auth_otp_secret, admin_mfa_encryption_key]
+    volumes:
+      - private_assets:/var/lib/thiendo/private
+    depends_on:
+      db: {condition: service_healthy}
+    networks: [private]
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:8080/api/health/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 20s
+      timeout: 12s
+      retries: 3
+  assets:
+    <<: *app
+    image: ${API_IMAGE:?Set API_IMAGE}
+    restart: "no"
+    profiles: [ops]
+    entrypoint: [node, infrastructure/production/file-bundle.mjs]
+    command: [pack, /var/lib/thiendo/private]
+    volumes:
+      - private_assets:/var/lib/thiendo/private:ro
+    network_mode: none
+  web:
+    <<: *app
+    image: ${WEB_IMAGE:?Set WEB_IMAGE}
+    environment: {NODE_ENV: production, HOSTNAME: 0.0.0.0, PORT: "3000"}
+    networks: [private]
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 20s
+      timeout: 10s
+      retries: 3
+  gate:
+    logging: *logs
+    image: ${NGINX_IMAGE:?Set NGINX_IMAGE}
+    restart: unless-stopped
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./proxy-api.conf:/etc/nginx/proxy-api.conf:ro
+    depends_on: [api, web]
+    networks: [private]
+  edge:
+    logging: *logs
+    image: ${CADDY_IMAGE:?Set CADDY_IMAGE}
+    restart: unless-stopped
+    environment:
+      THIEN_DO_DOMAIN: ${THIEN_DO_DOMAIN:?Set THIEN_DO_DOMAIN}
+      ACME_EMAIL: ${ACME_EMAIL:?Set ACME_EMAIL}
+    ports: ["80:80", "443:443", "443:443/udp"]
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on: [gate]
+    networks:
+      private: {ipv4_address: 172.30.240.2}
+secrets:
+  db_owner_password: {file: ./secrets/db_owner_password}
+  db_app_password: {file: ./secrets/db_app_password}
+  auth_otp_secret: {file: ./secrets/auth_otp_secret}
+  admin_mfa_encryption_key: {file: ./secrets/admin_mfa_encryption_key}
+volumes:
+  pgdata: {}
+  private_assets: {}
+  caddy_data: {}
+  caddy_config: {}
+networks:
+  private:
+    ipam:
+      config: [{subnet: 172.30.240.0/24}]

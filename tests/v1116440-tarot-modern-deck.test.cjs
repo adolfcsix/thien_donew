@@ -1,0 +1,62 @@
+'use strict';
+const test=require('node:test');
+const assert=require('node:assert/strict');
+const {readFileSync}=require('node:fs');
+const {join}=require('node:path');
+const root=join(__dirname,'..');
+const read=file=>readFileSync(join(root,file),'utf8');
+const cards=JSON.parse(read('packages/knowledge/src/tarot-rws-78.json')).cards;
+const helper=read('apps/web/src/features/tarot/tarot-artwork.ts');
+const page=read('apps/web/src/app/tarot/page.tsx');
+const spread=read('apps/web/src/features/tarot/spread-layout.tsx');
+const installer=read('infrastructure/scripts/install-tarot-modern-images.mjs');
+const state=JSON.parse(read('apps/web/src/features/tarot/tarot-modern-local.json'));
+const url='https://github.com/reginanka/tarot-cards';
+const prefixes={major:'m',wands:'w',cups:'c',swords:'s',pentacles:'p'};
+function map(card){const family=card.arcana==='major'?'major':card.suit;const n=String(card.number).padStart(2,'0');return prefixes[family]+(family==='major'&&n==='08'?'11':family==='major'&&n==='11'?'08':n)+'.webp';}
+test('Modern deck maps every RWS identity to one unique complete 78-file set, including the Justice and Strength swap',()=>{
+ assert.equal(cards.length,78);
+ const names=cards.map(map);
+ assert.equal(new Set(names).size,78);
+ assert.equal(names.filter(n=>/^m/.test(n)).length,22);
+ for(const letter of ['w','c','s','p'])assert.equal(names.filter(n=>n.startsWith(letter)).length,14);
+ const strength=cards.find(c=>c.id==='major-08');const justice=cards.find(c=>c.id==='major-11');
+ assert.equal(map(strength),'m11.webp');assert.equal(map(justice),'m08.webp');
+ assert.match(helper,/found\[2\]==='08'\?'11'/);
+ assert.match(helper,/found\[2\]==='11'\?'08'/);
+ assert.match(installer,/group==='major'&&n==='08'\?'11'/);
+ assert.match(installer,/group==='major'&&n==='11'\?'08'/);
+});
+test('Deck selector is applied to reading cards, catalogue, single-card detail and Celtic/custom spread',()=>{
+ assert.match(page,/useState<TarotDeckId>\('rws-1909'\)/);
+ assert.match(page,/TAROT_DECKS\.map\(d=>/);
+ assert.match(page,/<TarotSpreadMap result=\{result\} deck=\{deck\}/);
+ assert.match(page,/<TarotFace card=\{activeCard\} deck=\{deck\}/);
+ assert.match(page,/src=\{tarotArtworkSrc\(card.id,deck\)\}/);
+ assert.match(page,/recoverTarotArtwork\(event,card.id,deck\)/);
+ assert.match(spread,/src=\{tarotArtworkSrc\(result.positions\[i\].card.id,deck\)\}/);
+ assert.match(spread,/recoverTarotArtwork\(event,result.positions\[i\].card.id,deck\)/);
+ assert.match(page,/key=\{`\$\{deck\}:\$\{card.id\}`\}/);
+ assert.match(page,/localStorage\.setItem\('thiendo:tarot-deck'/);
+});
+test('Offline modern art can be enabled only after 78 valid actual WebP downloads, with complete credit',()=>{
+ assert.deepEqual({ready:state.ready,images:state.images,license:state.license},{ready:true,images:78,license:'CC BY 4.0'});
+ assert.match(installer,/new Set\(names\)\.size!==78/);
+ assert.match(installer,/bytes\.toString\('ascii',0,4\)!=='RIFF'/);
+ assert.match(installer,/bytes\.toString\('ascii',8,12\)!=='WEBP'/);
+ assert.match(installer,/bytes\.length/);
+ assert.match(installer,/await writeFile\(flag,state\(false\)\)/);
+ assert.match(installer,/await writeFile\(flag,state\(true\)\)/);
+ assert.match(helper,/cdn\.jsdelivr\.net\/gh\/reginanka\/tarot-cards@main\/cards/);
+ assert.match(helper,/raw\.githubusercontent\.com\/reginanka\/tarot-cards\/main\/cards/);
+ assert.match(page,/creativecommons\.org\/licenses\/by\/4\.0/);
+ assert.match(page,/reginanka\/tarot-cards/);
+ assert.ok(read('docs/TAROT_DECKS_MODERN_LICENSES.md').includes(url));
+});
+test('Failures never silently mix modern and historic deck artwork',()=>{
+ assert.doesNotMatch(helper,/tarotArtworkSrc\(id,'rws-1909'\)/);
+ assert.match(helper,/tarotArtworkFilename\(id\)/);
+ assert.match(helper,/dataset\.tarotFallback='placeholder'/);
+ assert.match(read('apps/web/src/app/tarot/tarot.module.css'),/object-fit:contain/);
+ assert.match(read('apps/web/src/features/tarot/spread-layout.module.css'),/object-position:center center/);
+});

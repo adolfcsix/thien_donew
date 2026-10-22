@@ -1,0 +1,166 @@
+{
+  "version": "V11.164.93 / A66",
+  "status": "NO_GO",
+  "sourceA65SHA256": "0eea651596246fbb3e3e4956500f267ae932b69038779402a3eef53ad9a8e02d",
+  "verification": {
+    "bundle": "V11.164.93 / A66",
+    "status": "NO_GO",
+    "createdUTC": "2026-10-21T17:40:06.448800+00:00",
+    "baseZIP": "THIEN_DO_V11_164_92_A65_FONT_MOTION_SOURCE_NO_GO.zip",
+    "baseSHA256": "0eea651596246fbb3e3e4956500f267ae932b69038779402a3eef53ad9a8e02d",
+    "nodeTests": 3110,
+    "nodeFiles": 353,
+    "typecheck": "PASS",
+    "isolatedProductionBuild": "PASS",
+    "browser": [
+      {
+        "suite": "pointer",
+        "groups": 12,
+        "exitCode": 0,
+        "seconds": 33.53
+      },
+      {
+        "suite": "theme",
+        "groups": 2,
+        "exitCode": 0,
+        "seconds": 22.75
+      },
+      {
+        "suite": "visual",
+        "groups": 23,
+        "exitCode": 0,
+        "seconds": 110.66
+      },
+      {
+        "suite": "candidate",
+        "groups": 28,
+        "exitCode": 0,
+        "seconds": 135.52
+      },
+      {
+        "suite": "performance",
+        "groups": 2,
+        "exitCode": 0,
+        "seconds": 130.58
+      }
+    ],
+    "performance": {
+      "observations": 18,
+      "lcpMinMs": 156,
+      "lcpMaxMs": 1364,
+      "clsMax": 0.007955439814814814,
+      "observationsOver200ms": 9,
+      "largestEvent": {
+        "duration": 480,
+        "interactionId": 8707,
+        "inputDelayMs": 0.6000000005587935,
+        "processingMs": 1,
+        "presentationMs": 478.3999999994412
+      },
+      "populatedMotionCases": 8,
+      "targets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "interactionMs": 200
+      },
+      "scope": "Synthetic Chromium/Linux GPU disabled, not field INP/native device certification"
+    },
+    "earlierWrapperPerformance": {
+      "observations": 18,
+      "observationsOver200ms": 12,
+      "largestEventMs": 952,
+      "lcpMaxMs": 1684,
+      "scope": "Earlier Next custom server wrapper; superseded for standalone acceptance; retained for transparency"
+    },
+    "nativePostgres": "NOT_RUN",
+    "nativeDevices": "NOT_RUN",
+    "realProviders": "NOT_RUN",
+    "openGates": 11,
+    "checkpoint": {
+      "file": "THIEN_DO_A66_INTERACTION_CHECKPOINT_NO_GO.zip",
+      "sha256": "137946301d03e0e7dc90382d554a19777af586779a4f9f5deb98a4747183fc9f",
+      "saveOutcome": "succeeded",
+      "scope": "Core fixes verified, broader regression pending at checkpoint time"
+    }
+  },
+  "historicalA65": {
+    "version": "V11.164.92 / A65",
+    "status": "NO_GO",
+    "sourceA64SHA256": "b1ee6b2f9c295fc0ba8b62656024fea5c665fff2e571b5b82678535a99a60866",
+    "recovery": "Current source restored from verified A64; A65 checkpoint saved version1; final evidence collected after recovery. Earlier lost A65 logs excluded.",
+    "verification": {
+      "status": "COMPLETE_WITH_OPEN_GATES",
+      "bundle": "V11.164.92 / A65",
+      "nodeTests": 3110,
+      "nodeFiles": 353,
+      "typecheck": "PASS",
+      "isolatedProductionBuild": "PASS",
+      "browser": [
+        {
+          "suite": "audit",
+          "groups": 3,
+          "seconds": 198.66,
+          "exitCode": 0,
+          "buildRoot": "/tmp/thiendo-isolated-zTcir3"
+        },
+        {
+          "suite": "account",
+          "groups": 89,
+          "seconds": 128.35,
+          "exitCode": 0,
+          "buildRoot": "/tmp/thiendo-isolated-zTcir3"
+        },
+        {
+          "suite": "candidate",
+          "groups": 28,
+          "seconds": 127.36,
+          "exitCode": 0,
+          "buildRoot": "/tmp/thiendo-isolated-zTcir3"
+        },
+        {
+          "suite": "final-targeted",
+          "groups": 3,
+          "seconds": 54.5,
+          "exitCode": 0,
+          "buildRoot": "/tmp/thiendo-isolated-e9gmJT"
+        },
+        {
+          "suite": "final-visual",
+          "groups": 23,
+          "seconds": 81.81,
+          "exitCode": 0,
+          "buildRoot": "/tmp/thiendo-isolated-e9gmJT"
+        },
+        {
+          "suite": "final-performance",
+          "groups": 2,
+          "seconds": 140.35,
+          "exitCode": 0,
+          "buildRoot": "/tmp/thiendo-isolated-e9gmJT"
+        }
+      ],
+      "auditSamples": 96,
+      "finalTargetedSamples": 20,
+      "performance": {
+        "observations": 18,
+        "lcpMinMs": 112,
+        "lcpMaxMs": 4852,
+        "clsMax": 0.007955439814814814,
+        "observationsOver200ms": 11,
+        "largestEvent": {
+          "duration": 1400,
+          "interactionId": 6169,
+          "inputDelayMs": 31.899999999906868,
+          "processingMs": 0.20000000018626451,
+          "presentationMs": 1367.8999999999069
+        },
+        "fontTransferMin": 0,
+        "fontTransferMax": 280228,
+        "populatedMotionCases": 8
+      },
+      "nativeDevices": "NOT_RUN",
+      "nativePostgres": "NOT_RUN",
+      "realProviders": "NOT_RUN"
+    }
+  }
+}

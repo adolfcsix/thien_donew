@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "strict":true,"skipLibCheck":false,"noEmit":true,"target":"ES2022","module":"NodeNext","moduleResolution":"NodeNext",
+    "baseUrl":".","paths":{"@thiendo/shared-types":["packages/shared-types/index.d.ts"]},"types":[]
+  },
+  "include":["packages/knowledge/src/index.d.ts","packages/interpretation/src/index.d.ts","tests/types/v118-interpretation-contract.ts","tests/types/v1110-classical-contract.ts"]
+}

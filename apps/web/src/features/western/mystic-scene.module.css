@@ -1,0 +1,54 @@
+.scene{--scene-ink:#ecd4a1;--scene-glow:rgba(104,169,212,.22);width:min(100%,330px);aspect-ratio:1;position:relative;isolation:isolate;perspective:800px;transform-style:preserve-3d;pointer-events:none;contain:layout paint;flex-shrink:0;overflow:hidden;color:var(--scene-ink);border-radius:50%;background:radial-gradient(circle at 50% 54%,var(--scene-glow),transparent 67%)}
+.scene[data-mystic-scene=numerology]{--scene-ink:#63509b;--scene-glow:rgba(135,111,216,.19)}
+.scene[data-mystic-scene=tarot]{--scene-ink:#dfc291;--scene-glow:rgba(181,108,201,.22)}
+.halo{position:absolute;inset:15%;border-radius:50%;border:1px solid currentColor;opacity:.28;box-shadow:0 0 26px var(--scene-glow),inset 0 0 25px var(--scene-glow)}
+.orbitOuter,.orbitInner{position:absolute;inset:9%;border:1.5px solid currentColor;border-radius:50%;transform-style:preserve-3d;transform:rotateX(64deg) rotateZ(-15deg);animation:orbit 25s linear infinite;opacity:.75}
+.orbitInner{inset:18%;border-style:dashed;opacity:.48;animation-duration:19s;animation-direction:reverse;animation-name:innerOrbit;transform:rotateY(65deg) rotateZ(30deg)}
+.orbitOuter span{position:absolute;font-size:20px;text-shadow:0 0 12px currentColor}.orbitOuter span:nth-child(1){top:-10px;left:50%}.orbitOuter span:nth-child(2){right:-10px;top:50%}.orbitOuter span:nth-child(3){bottom:-10px;left:50%}.orbitOuter span:nth-child(4){left:-10px;top:50%}
+.constellation{position:absolute;inset:0;transform-style:preserve-3d;animation:drift 14s ease-in-out infinite alternate}.constellation i{position:absolute;width:3px;height:3px;border-radius:50%;background:currentColor;box-shadow:0 0 7px 2px currentColor;opacity:.75}.constellation i:nth-child(1){top:17%;left:30%}.constellation i:nth-child(2){top:26%;right:16%}.constellation i:nth-child(3){top:50%;left:14%}.constellation i:nth-child(4){top:77%;right:24%}.constellation i:nth-child(5){top:76%;left:32%}.constellation i:nth-child(6){top:39%;right:12%}
+.mysticEye{position:absolute;inset:32% 24%;display:grid;place-items:center;filter:drop-shadow(0 0 18px var(--scene-glow));animation:eyeFloat 9s ease-in-out infinite}.mysticEye svg{width:100%;overflow:visible}.blink{transform-box:fill-box;transform-origin:center;animation:blink 8s ease-in-out infinite}
+.hand{position:absolute;width:22%;height:40%;top:39%;filter:drop-shadow(0 0 7px var(--scene-glow));transform-style:preserve-3d;animation:handFloat 8s ease-in-out infinite alternate}.leftHand{left:3%;transform:rotate(-26deg) rotateY(32deg)}.rightHand{right:3%;transform:scaleX(-1) rotate(-26deg) rotateY(32deg);animation-delay:-4s}
+.coreGlow{position:absolute;left:49%;top:51%;width:2%;height:2%;border-radius:50%;background:currentColor;box-shadow:0 0 12px 5px currentColor;opacity:.46}
+.numberPolyhedron{position:absolute;inset:25%;transform-style:preserve-3d;animation:numberTurn 16s linear infinite}.numberFace{position:absolute;inset:8%;display:grid;place-items:center;border:2px solid currentColor;border-radius:18%;font:700 clamp(50px,7vw,80px) Georgia,serif;background:linear-gradient(145deg,rgba(245,240,255,.78),rgba(180,164,233,.15));box-shadow:inset 0 0 35px var(--scene-glow),0 0 18px var(--scene-glow);backface-visibility:hidden}.numberFace:nth-child(1){transform:translateZ(60px)}.numberFace:nth-child(2){transform:rotateY(180deg) translateZ(60px)}.numberFace:nth-child(3){transform:rotateY(90deg) translateZ(60px)}.numberFace:nth-child(4){transform:rotateY(-90deg) translateZ(60px)}.numberFace:nth-child(5){transform:rotateX(90deg) translateZ(60px)}.numberFace:nth-child(6){transform:rotateX(-90deg) translateZ(60px)}.numberCore{position:absolute;inset:35%;display:grid;place-items:center;font:700 20px Georgia,serif;transform:translateZ(5px);border-radius:50%;background:var(--scene-ink);color:var(--panel)}
+.tarotFan{position:absolute;inset:27% 30%;transform-style:preserve-3d;animation:fanFloat 8s ease-in-out infinite alternate}.tarotFan>div{position:absolute;inset:0;border:2px solid currentColor;border-radius:8px;background:linear-gradient(145deg,#3b3158,#1b223b);display:grid;place-items:center;font:56px Georgia,serif;box-shadow:0 6px 19px #09091866,inset 0 0 0 5px #b99a5755;backface-visibility:hidden}.tarotFan>div:nth-child(1){transform:rotate(-24deg) translateX(-26%) translateZ(-20px)}.tarotFan>div:nth-child(2){transform:translateZ(20px)}.tarotFan>div:nth-child(3){transform:rotate(24deg) translateX(26%) translateZ(-20px)}
+@keyframes orbit{from{transform:rotateX(64deg) rotateZ(0)}to{transform:rotateX(64deg) rotateZ(360deg)}}
+@keyframes drift{to{transform:translate3d(2%,-3%,12px)}}
+@keyframes blink{0%,42%,46%,78%,82%,100%{transform:scaleY(1)}44%,80%{transform:scaleY(.05)}}
+@keyframes eyeFloat{50%{transform:translate3d(0,-7px,17px)}}
+@keyframes handFloat{50%{translate:0 -9px;rotate:8deg}}
+@keyframes numberTurn{from{transform:rotateX(-15deg) rotateY(0deg)}to{transform:rotateX(-15deg) rotateY(360deg)}}
+@keyframes fanFloat{to{transform:rotateY(14deg) rotateX(-9deg) translateY(-7px)}}
+@media(prefers-reduced-motion:reduce){.scene *{animation:none!important;transition:none!important}}
+@media(max-width:640px){.scene{width:min(100%,270px);margin:auto}}
+@media print{.scene{display:none}}
+
+.scene[data-paused="true"] *, :global(html[data-thiendo-effects="reduced"]) .scene *{animation-play-state:paused!important}
+
+/* A62 · lightweight, layered 3D instruments. No full-screen GPU canvas or layout animation. */
+.ritualPlane{position:absolute;inset:15%;transform-style:preserve-3d;transform:rotateX(66deg) rotateY(-22deg);animation:ritualTurn 32s linear infinite;opacity:.24}
+.ritualPlane span{position:absolute;inset:0;border:1px solid currentColor;border-radius:12%;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)}
+.ritualPlane span:nth-child(1){transform:translateZ(-24px) rotate(30deg)}
+.ritualPlane span:nth-child(2){transform:translateZ(24px) rotate(90deg)}
+.ritualPlane span:nth-child(3){transform:rotate(15deg) rotateX(82deg)}
+.planetaryTrack{position:absolute;inset:12%;transform-style:preserve-3d;animation:planetTrack 27s linear infinite;opacity:.8}
+.planetaryTrack i{position:absolute;display:block;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 28%,#fff5d6 0%,#cba56b 27%,#8b5a4e 66%,#352f49 100%);box-shadow:inset -5px -5px 7px #08091588,0 0 15px var(--scene-glow)}
+.planetaryTrack i:nth-child(1){width:20px;top:7%;left:40%;transform:translateZ(28px)}
+.planetaryTrack i:nth-child(2){width:14px;right:4%;top:58%;transform:translateZ(-24px)}
+.planetaryTrack i:nth-child(3){width:9px;left:10%;bottom:10%;transform:translateZ(10px)}
+.arcaneSeal{position:absolute;inset:8%;border:1px solid currentColor;border-radius:50%;transform-style:preserve-3d;transform:rotateX(65deg);opacity:.45;animation:arcaneRotate 24s linear infinite}
+.arcaneSeal span{position:absolute;font:20px Georgia,serif;text-shadow:0 0 12px currentColor}
+.arcaneSeal span:nth-child(1){top:0;left:50%;transform:translateZ(20px)}
+.arcaneSeal span:nth-child(2){top:50%;right:0;transform:translateZ(-20px)}
+.arcaneSeal span:nth-child(3){bottom:0;left:50%;transform:translateZ(20px)}
+.arcaneSeal span:nth-child(4){top:50%;left:0;transform:translateZ(-20px)}
+@keyframes ritualTurn{from{transform:rotateX(66deg) rotateY(-22deg) rotateZ(0deg)}to{transform:rotateX(66deg) rotateY(-22deg) rotateZ(360deg)}}
+@keyframes planetTrack{from{transform:rotateX(52deg) rotateZ(0deg)}to{transform:rotateX(52deg) rotateZ(360deg)}}
+@keyframes arcaneRotate{to{transform:rotateX(65deg) rotateZ(360deg)}}
+:global(.site[data-western-world="numerology"][data-thiendo-theme="dark"]) .scene[data-mystic-scene="numerology"]{--scene-ink:#b5e9db;--scene-glow:rgba(73,179,159,.24)}
+:global(.site[data-western-world="numerology"][data-thiendo-theme="light"]) .scene[data-mystic-scene="numerology"]{--scene-ink:#356766;--scene-glow:rgba(67,145,136,.14)}
+:global(.site[data-western-world="tarot"][data-thiendo-theme="light"]) .scene[data-mystic-scene="tarot"]{--scene-ink:#785072;--scene-glow:rgba(145,72,136,.16)}
+@media(prefers-reduced-motion:reduce){.ritualPlane,.planetaryTrack,.arcaneSeal{animation:none!important}}
+.scene[data-paused="true"] .ritualPlane,.scene[data-paused="true"] .planetaryTrack,.scene[data-paused="true"] .arcaneSeal{animation-play-state:paused}
+
+/* Keep the inner ring on its independent Y axis throughout the orbit. */
+@keyframes innerOrbit{from{transform:rotateY(65deg) rotateZ(30deg)}to{transform:rotateY(65deg) rotateZ(390deg)}}

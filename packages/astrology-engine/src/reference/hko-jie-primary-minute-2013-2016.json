@@ -1,0 +1,257 @@
+{
+  "tableVersion": "HKO-PRIMARY-12JIE-2013-2016-V11.149.7",
+  "referenceTimezone": "Asia/Hong_Kong",
+  "utcOffsetMinutes": 480,
+  "publishedPrecision": "minute",
+  "boundaryGuardSeconds": 60,
+  "researchOnly": true,
+  "allowAutomaticPillarPromotion": false,
+  "sources": {
+    "2013": "https://www.hko.gov.hk/en/gts/astron2013/Solar_Term_2013.htm",
+    "2014": "https://www.hko.gov.hk/en/gts/astron2014/Solar_Term_2014.htm",
+    "2015": "https://www.hko.gov.hk/en/gts/astron2015/Solar_Term_2015.htm",
+    "2016": "https://www.hko.gov.hk/en/gts/astron2016/Solar_Term_2016.htm"
+  },
+  "records": [
+    {
+      "year": 2013,
+      "month": 1,
+      "localHkt": "2013-01-05T12:34:00+08:00"
+    },
+    {
+      "year": 2013,
+      "month": 2,
+      "localHkt": "2013-02-04T00:13:00+08:00"
+    },
+    {
+      "year": 2013,
+      "month": 3,
+      "localHkt": "2013-03-05T18:15:00+08:00"
+    },
+    {
+      "year": 2013,
+      "month": 4,
+      "localHkt": "2013-04-04T23:02:00+08:00"
+    },
+    {
+      "year": 2013,
+      "month": 5,
+      "localHkt": "2013-05-05T16:18:00+08:00"
+    },
+    {
+      "year": 2013,
+      "month": 6,
+      "localHkt": "2013-06-05T20:23:00+08:00"
+    },
+    {
+      "year": 2013,
+      "month": 7,
+      "localHkt": "2013-07-07T06:35:00+08:00"
+    },
+    {
+      "year": 2013,
+      "month": 8,
+      "localHkt": "2013-08-07T16:20:00+08:00"
+    },
+    {
+      "year": 2013,
+      "month": 9,
+      "localHkt": "2013-09-07T19:16:00+08:00"
+    },
+    {
+      "year": 2013,
+      "month": 10,
+      "localHkt": "2013-10-08T10:58:00+08:00"
+    },
+    {
+      "year": 2013,
+      "month": 11,
+      "localHkt": "2013-11-07T14:14:00+08:00"
+    },
+    {
+      "year": 2013,
+      "month": 12,
+      "localHkt": "2013-12-07T07:09:00+08:00"
+    },
+    {
+      "year": 2014,
+      "month": 1,
+      "localHkt": "2014-01-05T18:24:00+08:00"
+    },
+    {
+      "year": 2014,
+      "month": 2,
+      "localHkt": "2014-02-04T06:03:00+08:00"
+    },
+    {
+      "year": 2014,
+      "month": 3,
+      "localHkt": "2014-03-06T00:02:00+08:00"
+    },
+    {
+      "year": 2014,
+      "month": 4,
+      "localHkt": "2014-04-05T04:47:00+08:00"
+    },
+    {
+      "year": 2014,
+      "month": 5,
+      "localHkt": "2014-05-05T21:59:00+08:00"
+    },
+    {
+      "year": 2014,
+      "month": 6,
+      "localHkt": "2014-06-06T02:03:00+08:00"
+    },
+    {
+      "year": 2014,
+      "month": 7,
+      "localHkt": "2014-07-07T12:15:00+08:00"
+    },
+    {
+      "year": 2014,
+      "month": 8,
+      "localHkt": "2014-08-07T22:02:00+08:00"
+    },
+    {
+      "year": 2014,
+      "month": 9,
+      "localHkt": "2014-09-08T01:01:00+08:00"
+    },
+    {
+      "year": 2014,
+      "month": 10,
+      "localHkt": "2014-10-08T16:47:00+08:00"
+    },
+    {
+      "year": 2014,
+      "month": 11,
+      "localHkt": "2014-11-07T20:07:00+08:00"
+    },
+    {
+      "year": 2014,
+      "month": 12,
+      "localHkt": "2014-12-07T13:04:00+08:00"
+    },
+    {
+      "year": 2015,
+      "month": 1,
+      "localHkt": "2015-01-06T00:21:00+08:00"
+    },
+    {
+      "year": 2015,
+      "month": 2,
+      "localHkt": "2015-02-04T11:58:00+08:00"
+    },
+    {
+      "year": 2015,
+      "month": 3,
+      "localHkt": "2015-03-06T05:56:00+08:00"
+    },
+    {
+      "year": 2015,
+      "month": 4,
+      "localHkt": "2015-04-05T10:39:00+08:00"
+    },
+    {
+      "year": 2015,
+      "month": 5,
+      "localHkt": "2015-05-06T03:53:00+08:00"
+    },
+    {
+      "year": 2015,
+      "month": 6,
+      "localHkt": "2015-06-06T07:58:00+08:00"
+    },
+    {
+      "year": 2015,
+      "month": 7,
+      "localHkt": "2015-07-07T18:12:00+08:00"
+    },
+    {
+      "year": 2015,
+      "month": 8,
+      "localHkt": "2015-08-08T04:01:00+08:00"
+    },
+    {
+      "year": 2015,
+      "month": 9,
+      "localHkt": "2015-09-08T07:00:00+08:00"
+    },
+    {
+      "year": 2015,
+      "month": 10,
+      "localHkt": "2015-10-08T22:43:00+08:00"
+    },
+    {
+      "year": 2015,
+      "month": 11,
+      "localHkt": "2015-11-08T01:59:00+08:00"
+    },
+    {
+      "year": 2015,
+      "month": 12,
+      "localHkt": "2015-12-07T18:53:00+08:00"
+    },
+    {
+      "year": 2016,
+      "month": 1,
+      "localHkt": "2016-01-06T06:08:00+08:00"
+    },
+    {
+      "year": 2016,
+      "month": 2,
+      "localHkt": "2016-02-04T17:46:00+08:00"
+    },
+    {
+      "year": 2016,
+      "month": 3,
+      "localHkt": "2016-03-05T11:44:00+08:00"
+    },
+    {
+      "year": 2016,
+      "month": 4,
+      "localHkt": "2016-04-04T16:28:00+08:00"
+    },
+    {
+      "year": 2016,
+      "month": 5,
+      "localHkt": "2016-05-05T09:42:00+08:00"
+    },
+    {
+      "year": 2016,
+      "month": 6,
+      "localHkt": "2016-06-05T13:49:00+08:00"
+    },
+    {
+      "year": 2016,
+      "month": 7,
+      "localHkt": "2016-07-07T00:03:00+08:00"
+    },
+    {
+      "year": 2016,
+      "month": 8,
+      "localHkt": "2016-08-07T09:53:00+08:00"
+    },
+    {
+      "year": 2016,
+      "month": 9,
+      "localHkt": "2016-09-07T12:51:00+08:00"
+    },
+    {
+      "year": 2016,
+      "month": 10,
+      "localHkt": "2016-10-08T04:33:00+08:00"
+    },
+    {
+      "year": 2016,
+      "month": 11,
+      "localHkt": "2016-11-07T07:48:00+08:00"
+    },
+    {
+      "year": 2016,
+      "month": 12,
+      "localHkt": "2016-12-07T00:41:00+08:00"
+    }
+  ]
+}

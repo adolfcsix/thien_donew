@@ -1,0 +1,62 @@
+/* THIÊN ĐỒ / Stage 4: Shared contrast and motion contract.
+   Only shared shell and generic controls; never recolor semantic stars, charts,
+   formation diagrams, badges, specialized tables, or route-owned modules. */
+.site {
+  --td4-text: #f3f0e5;
+  --td4-muted: #d2ded2;
+  --td4-link: #f4d8a7;
+  --td4-field-bg: #18352b;
+  --td4-field-border: #a0b7a6;
+  --td4-placeholder: #c7d5c8;
+  --td4-selection-bg: #e8cc91;
+  --td4-selection-text: #142c21;
+  --td4-ring: #ffdfa5;
+  --td4-ease: cubic-bezier(.22,.72,.2,1);
+}
+.site.light {
+  --td4-text: #20392e;
+  --td4-muted: #405448;
+  --td4-link: #67421a;
+  --td4-field-bg: #fffdf7;
+  --td4-field-border: #668471;
+  --td4-placeholder: #4d6254;
+  --td4-selection-bg: #285c45;
+  --td4-selection-text: #fffdf6;
+  --td4-ring: #20543e;
+}
+/* Avoid translucent form fields on moving photographic backgrounds. */
+.site :is(.topbar,#thiendo-sidebar,.bottom-nav,.command-panel,.modal.account-modal)
+  :is(input:not([type=checkbox]):not([type=radio]),textarea,select) {
+  background-color: var(--td4-field-bg);
+  color: var(--td4-text);
+  border-color: var(--td4-field-border);
+  caret-color: var(--td4-text);
+}
+.site :is(.topbar,#thiendo-sidebar,.bottom-nav,.command-panel,.modal.account-modal)
+  :is(input,textarea)::placeholder { color:var(--td4-placeholder); opacity:1; }
+.site :is(.topbar,#thiendo-sidebar,.bottom-nav,.command-panel,.modal.account-modal)
+  :is(input,textarea,select)::selection { background:var(--td4-selection-bg);color:var(--td4-selection-text); }
+/* Keyboard focus must be visible in both themes and on textured surfaces. */
+.site :is(.topbar,#thiendo-sidebar,.bottom-nav,.command-panel,.modal.account-modal)
+  :is(a,button,input,select,textarea,[role=button]):focus-visible {
+  outline:3px solid var(--td4-ring);
+  outline-offset:3px;
+}
+/* Keep text color in lockstep with an opaque backdrop, not a separately
+   fading translucent text layer. Existing theme image crossfade is retained. */
+.site[data-theme-ready=true] :is(.command-panel,.modal.account-modal) {
+  transition:background-color 240ms var(--td4-ease),border-color 240ms var(--td4-ease),box-shadow 240ms var(--td4-ease);
+}
+@media (prefers-contrast: more) {
+  .site :is(.command-panel,.modal.account-modal) { background: #11291f; color:#f8f5ec; }
+  .site.light :is(.command-panel,.modal.account-modal) { background:#fffdf7;color:#172d21; }
+  .site :is(.topbar,#thiendo-sidebar,.bottom-nav,.command-panel,.modal.account-modal)
+    :is(input,textarea,select) { border-width:2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site[data-theme-ready=true] :is(.command-panel,.modal.account-modal) { transition:none; }
+}
+@media (forced-colors: active) {
+  .site :is(.topbar,#thiendo-sidebar,.bottom-nav,.command-panel,.modal.account-modal)
+    :is(a,button,input,select,textarea):focus-visible { outline:2px solid Highlight; }
+}

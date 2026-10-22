@@ -1,0 +1,10 @@
+import type {MaiHoaProfile} from '@thiendo/astrology-engine/src/mai-hoa-profile.cjs';
+import type {castByNumbers} from './casting.cjs';
+import type {makeDeepReading} from './deep-reading.cjs';
+import type {makeLineTrace} from './line-trace.cjs';
+export declare const LABELS:Readonly<Record<import('@thiendo/astrology-engine/src/mai-hoa-profile.cjs').MaiHoaMode,string>>;
+type Season={status:string;label:string;element:string|null;relation:{label:string}|null};
+export declare function studyMaiHoa(raw:unknown):Readonly<{method:string;version:number;input:MaiHoaProfile;methodLabel:string;cast:ReturnType<typeof castByNumbers>;nuclear:ReturnType<typeof castByNumbers>['nuclear'];nuclearSource:'original'|'transformed';pure:boolean;bodySeason:Season;layers:(ReturnType<typeof makeDeepReading>['layers'][number]&{perspective:string;guide:{title:string;reading:string;question:string};season:Season;basis:string})[];interactions:{a:string;b:string;reference:string;from:string;to:string;kind:string;label:string}[];trace:ReturnType<typeof makeLineTrace>;timing:{method:string;classification:string;count:number;formula:string;unit:string;status:string;pace:string;paceNote:string;calendarDate:null;branchCandidates:{layer:string;element:string;relation:string;branches:string[]}[];limit:string};synthesis:{status:string;supporting:string[];pressure:string[];outward:string[];observed:string[];assumed:string[];counter:string[];missing:string[];conclusion:string};facts:{id:string;status:string;statement:string;basis:string}[];evidence:MaiHoaProfile['evidence'];counters:string[];sources:{id:string;title:string;url:string;sections:string[];note:string}[];limits:string[]}>;
+export declare function compareNuclearPolicies(raw:unknown):{a:{bits:string;name:string};b:{bits:string;name:string};changed:boolean;applicable:boolean};
+
+export declare function compareCastingProfiles(raw:unknown):{sameOriginal:boolean;changedLine:boolean;items:{method:string;original:string;movingSeed:number;line:number;body:string;use:string;transformed:string}[];note:string}|null;

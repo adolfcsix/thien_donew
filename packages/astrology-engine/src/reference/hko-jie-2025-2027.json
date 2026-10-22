@@ -1,0 +1,295 @@
+{
+  "tableVersion": "HKO-Jie-2025-2027-minute-v1",
+  "sourceKind": "curated minute-resolution calendar reference (2025-2027); 2025/2026/2027 values cross-transcribed from secondary tables citing HKO",
+  "referenceTimezone": "Asia/Hong_Kong",
+  "referenceUtcOffsetMinutes": 480,
+  "publishedPrecision": "minute",
+  "boundaryGuardSeconds": 60,
+  "years": [
+    2025,
+    2026,
+    2027
+  ],
+  "validFromInclusive": "2025-01-05T10:32:00+08:00",
+  "validUntilExclusive": "2028-01-01T00:00:00+08:00",
+  "sources": [
+    {
+      "year": 2025,
+      "publisher": "Tinh Menh Do (secondary astronomical calculation, check individual values with HKO)",
+      "url": "https://tinhmenhdo.web.app/en/solar-terms-hongkong-2025/",
+      "officialHkoYearIndex": "https://www.hko.gov.hk/en/gts/astron2025/almanac2025_index.htm"
+    },
+    {
+      "year": 2026,
+      "publisher": "RecaTools (minute table claiming agreement with HKO)",
+      "url": "https://recatools.com/guides/why-solar-term-dates-move/",
+      "officialHkoYearIndex": "https://www.hko.gov.hk/en/gts/astron2026/almanac2026_index.htm"
+    },
+    {
+      "year": 2027,
+      "publisher": "Qimena published HKO comparison table",
+      "url": "https://www.qimena.com/en/wiki/qimen-calculation-rules/",
+      "officialHkoYearIndex": "https://www.hko.gov.hk/en/gts/astron2027/almanac2027_index.htm"
+    }
+  ],
+  "limits": [
+    "2025–2027 reference table only; no interpolation/extrapolation",
+    "Whole-minute transcriptions are not second-precision astronomical instants",
+    "Secondary transcription: verify individual minute values directly in HKO original before production use",
+    "UTC offset at birthplace must be confirmed separately; no timezone historical inference"
+  ],
+  "records": [
+    {
+      "year": 2025,
+      "term": "Tiểu Hàn",
+      "monthIndex": 11,
+      "solarLongitudeDegrees": 285,
+      "localHkt": "2025-01-05T10:32:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Lập Xuân",
+      "monthIndex": 0,
+      "solarLongitudeDegrees": 315,
+      "localHkt": "2025-02-03T22:10:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Kinh Trập",
+      "monthIndex": 1,
+      "solarLongitudeDegrees": 345,
+      "localHkt": "2025-03-05T16:07:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Thanh Minh",
+      "monthIndex": 2,
+      "solarLongitudeDegrees": 15,
+      "localHkt": "2025-04-04T20:48:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Lập Hạ",
+      "monthIndex": 3,
+      "solarLongitudeDegrees": 45,
+      "localHkt": "2025-05-05T13:57:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Mang Chủng",
+      "monthIndex": 4,
+      "solarLongitudeDegrees": 75,
+      "localHkt": "2025-06-05T17:56:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Tiểu Thử",
+      "monthIndex": 5,
+      "solarLongitudeDegrees": 105,
+      "localHkt": "2025-07-07T04:04:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Lập Thu",
+      "monthIndex": 6,
+      "solarLongitudeDegrees": 135,
+      "localHkt": "2025-08-07T13:51:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Bạch Lộ",
+      "monthIndex": 7,
+      "solarLongitudeDegrees": 165,
+      "localHkt": "2025-09-07T16:51:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Hàn Lộ",
+      "monthIndex": 8,
+      "solarLongitudeDegrees": 195,
+      "localHkt": "2025-10-08T08:41:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Lập Đông",
+      "monthIndex": 9,
+      "solarLongitudeDegrees": 225,
+      "localHkt": "2025-11-07T12:04:00+08:00"
+    },
+    {
+      "year": 2025,
+      "term": "Đại Tuyết",
+      "monthIndex": 10,
+      "solarLongitudeDegrees": 255,
+      "localHkt": "2025-12-07T05:04:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Tiểu Hàn",
+      "monthIndex": 11,
+      "solarLongitudeDegrees": 285,
+      "localHkt": "2026-01-05T16:23:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Lập Xuân",
+      "monthIndex": 0,
+      "solarLongitudeDegrees": 315,
+      "localHkt": "2026-02-04T04:02:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Kinh Trập",
+      "monthIndex": 1,
+      "solarLongitudeDegrees": 345,
+      "localHkt": "2026-03-05T21:59:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Thanh Minh",
+      "monthIndex": 2,
+      "solarLongitudeDegrees": 15,
+      "localHkt": "2026-04-05T02:40:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Lập Hạ",
+      "monthIndex": 3,
+      "solarLongitudeDegrees": 45,
+      "localHkt": "2026-05-05T19:49:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Mang Chủng",
+      "monthIndex": 4,
+      "solarLongitudeDegrees": 75,
+      "localHkt": "2026-06-05T23:48:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Tiểu Thử",
+      "monthIndex": 5,
+      "solarLongitudeDegrees": 105,
+      "localHkt": "2026-07-07T09:57:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Lập Thu",
+      "monthIndex": 6,
+      "solarLongitudeDegrees": 135,
+      "localHkt": "2026-08-07T19:43:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Bạch Lộ",
+      "monthIndex": 7,
+      "solarLongitudeDegrees": 165,
+      "localHkt": "2026-09-07T22:41:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Hàn Lộ",
+      "monthIndex": 8,
+      "solarLongitudeDegrees": 195,
+      "localHkt": "2026-10-08T14:29:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Lập Đông",
+      "monthIndex": 9,
+      "solarLongitudeDegrees": 225,
+      "localHkt": "2026-11-07T17:52:00+08:00"
+    },
+    {
+      "year": 2026,
+      "term": "Đại Tuyết",
+      "monthIndex": 10,
+      "solarLongitudeDegrees": 255,
+      "localHkt": "2026-12-07T10:52:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Tiểu Hàn",
+      "monthIndex": 11,
+      "solarLongitudeDegrees": 285,
+      "localHkt": "2027-01-05T22:10:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Lập Xuân",
+      "monthIndex": 0,
+      "solarLongitudeDegrees": 315,
+      "localHkt": "2027-02-04T09:46:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Kinh Trập",
+      "monthIndex": 1,
+      "solarLongitudeDegrees": 345,
+      "localHkt": "2027-03-06T03:40:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Thanh Minh",
+      "monthIndex": 2,
+      "solarLongitudeDegrees": 15,
+      "localHkt": "2027-04-05T08:17:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Lập Hạ",
+      "monthIndex": 3,
+      "solarLongitudeDegrees": 45,
+      "localHkt": "2027-05-06T01:25:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Mang Chủng",
+      "monthIndex": 4,
+      "solarLongitudeDegrees": 75,
+      "localHkt": "2027-06-06T05:26:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Tiểu Thử",
+      "monthIndex": 5,
+      "solarLongitudeDegrees": 105,
+      "localHkt": "2027-07-07T15:37:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Lập Thu",
+      "monthIndex": 6,
+      "solarLongitudeDegrees": 135,
+      "localHkt": "2027-08-08T01:27:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Bạch Lộ",
+      "monthIndex": 7,
+      "solarLongitudeDegrees": 165,
+      "localHkt": "2027-09-08T04:28:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Hàn Lộ",
+      "monthIndex": 8,
+      "solarLongitudeDegrees": 195,
+      "localHkt": "2027-10-08T20:17:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Lập Đông",
+      "monthIndex": 9,
+      "solarLongitudeDegrees": 225,
+      "localHkt": "2027-11-07T23:39:00+08:00"
+    },
+    {
+      "year": 2027,
+      "term": "Đại Tuyết",
+      "monthIndex": 10,
+      "solarLongitudeDegrees": 255,
+      "localHkt": "2027-12-07T16:38:00+08:00"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: Catalog contains eight distinct specialist disciplines, symbols, names and nonempty explanations
+ok 1 - Catalog contains eight distinct specialist disciplines, symbols, names and nonempty explanations
+  ---
+  duration_ms: 2.301242
+  type: 'test'
+  ...
+# Subtest: Catalog JSON is the single authority for both web and API
+ok 2 - Catalog JSON is the single authority for both web and API
+  ---
+  duration_ms: 0.448793
+  type: 'test'
+  ...
+# Subtest: 36 is additive: old 035 remains, new SQL has grants and irreversible revocation log
+ok 3 - 36 is additive: old 035 remains, new SQL has grants and irreversible revocation log
+  ---
+  duration_ms: 0.347641
+  type: 'test'
+  ...
+# Subtest: API exposes protected rank-domain read, grant and revocation routes
+ok 4 - API exposes protected rank-domain read, grant and revocation routes
+  ---
+  duration_ms: 0.291958
+  type: 'test'
+  ...
+# Subtest: Mutations demand admin + recent TOTP and recheck permissions inside transaction
+ok 5 - Mutations demand admin + recent TOTP and recheck permissions inside transaction
+  ---
+  duration_ms: 0.304157
+  type: 'test'
+  ...
+# Subtest: Grant and revoke serialize per recipient and reject duplicates/repeat actions
+ok 6 - Grant and revoke serialize per recipient and reject duplicates/repeat actions
+  ---
+  duration_ms: 0.192539
+  type: 'test'
+  ...
+# Subtest: No role, Expert, subscription or earned-rank mutation in specialty grant/revoke
+ok 7 - No role, Expert, subscription or earned-rank mutation in specialty grant/revoke
+  ---
+  duration_ms: 0.192649
+  type: 'test'
+  ...
+# Subtest: Public badge only after privacy-aware existing member profile query; not from front-end role claims
+ok 8 - Public badge only after privacy-aware existing member profile query; not from front-end role claims
+  ---
+  duration_ms: 0.215744
+  type: 'test'
+  ...
+# Subtest: Administrator forms are wired to API endpoints; no decorative action buttons
+ok 9 - Administrator forms are wired to API endpoints; no decorative action buttons
+  ---
+  duration_ms: 0.488914
+  type: 'test'
+  ...
+# Subtest: Login defaults to chart for user, never client-side grant admin
+ok 10 - Login defaults to chart for user, never client-side grant admin
+  ---
+  duration_ms: 0.521131
+  type: 'test'
+  ...
+# Subtest: Eastern animation has viewport pause and reduced-motion support
+ok 11 - Eastern animation has viewport pause and reduced-motion support
+  ---
+  duration_ms: 0.215393
+  type: 'test'
+  ...
+# Subtest: Eastern visual variants are present on 12 named pages without duplicating scene source
+ok 12 - Eastern visual variants are present on 12 named pages without duplicating scene source
+  ---
+  duration_ms: 1.92677
+  type: 'test'
+  ...
+# Subtest: Ten Eastern disciplines include context-specific guide with valid navigation
+ok 13 - Ten Eastern disciplines include context-specific guide with valid navigation
+  ---
+  duration_ms: 1.528804
+  type: 'test'
+  ...
+# Subtest: No-go metadata remains honest after migration
+ok 14 - No-go metadata remains honest after migration
+  ---
+  duration_ms: 1.174461
+  type: 'test'
+  ...
+# Subtest: Readiness fails shut on absent 035/036 migrations and their tables
+ok 15 - Readiness fails shut on absent 035/036 migrations and their tables
+  ---
+  duration_ms: 0.210245
+  type: 'test'
+  ...
+# Subtest: A80: exact source metadata and NO-GO gates
+ok 16 - A80: exact source metadata and NO-GO gates
+  ---
+  duration_ms: 1.83361
+  type: 'test'
+  ...
+# Subtest: A80: handover docs and validator agree on current source label
+ok 17 - A80: handover docs and validator agree on current source label
+  ---
+  duration_ms: 1.944086
+  type: 'test'
+  ...
+# Subtest: A80: compact navigation hover stays centered, focus state visible
+ok 18 - A80: compact navigation hover stays centered, focus state visible
+  ---
+  duration_ms: 0.493501
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 86.451933

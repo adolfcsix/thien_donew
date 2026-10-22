@@ -1,0 +1,12 @@
+.account-overlay[hidden]{display:none!important}
+.account-overlay{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;background:rgba(4,12,11,.78);backdrop-filter:blur(10px);z-index:500;padding:20px;overflow-y:auto}
+.account-dialog{position:relative;width:min(100%,430px);background:var(--card,#192f29);color:var(--text,#f4ede0);border:1px solid rgba(197,161,106,.34);border-radius:20px;padding:29px;box-shadow:0 32px 80px rgba(0,0,0,.4)}
+.account-close{position:absolute;top:13px;right:14px;border:1px solid rgba(197,161,106,.3);background:transparent;color:inherit;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:21px}
+#accountNotice{min-height:20px;margin-top:10px;font-size:12px}
+.auth-switch{display:block;background:transparent;border:0;color:var(--gold,#c5a16a);margin:14px auto 0;text-decoration:underline;cursor:pointer}
+.account-current{text-align:center;display:flex;flex-direction:column;gap:12px;align-items:stretch}.account-current p{font-size:13px;color:var(--muted,#becdc4)}.account-avatar{display:grid;place-items:center;width:55px;height:55px;margin:auto;background:#173f36;border:1px solid #c5a16a;border-radius:16px;color:#e0c18d;font-size:28px}
+.text-danger{border:0;background:transparent;color:#f3a69b;text-decoration:underline;cursor:pointer;font-size:12px;padding:9px}
+.saved-entry{padding:15px 0;border-bottom:1px solid rgba(197,161,106,.16);display:flex;justify-content:space-between;gap:15px;align-items:center}.saved-entry strong{font-size:14px}.saved-entry small{display:block;color:var(--muted,#b0bcb8);font-size:11px;margin-top:5px}.saved-actions{display:flex;gap:8px}.saved-actions button{background:transparent;color:var(--gold,#c5a16a);border:1px solid rgba(197,161,106,.37);border-radius:9px;padding:9px 14px;cursor:pointer}.saved-actions button:hover{background:rgba(197,161,106,.1)}
+.avatar{cursor:pointer;min-width:34px}
+.modal-open{overflow:hidden}
+@media(max-width:560px){.account-dialog{padding:23px 18px}.saved-entry{align-items:flex-start;flex-direction:column}.saved-actions{align-self:flex-end}}

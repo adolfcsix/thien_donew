@@ -1,0 +1,46 @@
+.sections{display:grid;gap:18px;min-width:0}
+.section{border:1px solid var(--line);border-radius:12px;padding:clamp(18px,3vw,32px);background:radial-gradient(circle at 0% 0%,rgba(39,123,101,.14),transparent 45%),var(--panel);color:var(--text);min-width:0}
+.heading{margin-bottom:23px}.heading h2{font:normal clamp(27px,3vw,40px) var(--font-display),serif;margin:10px 0 8px}.heading p{line-height:1.8;color:var(--muted);max-width:900px;font-size:13px}
+.eyebrow{font-size:11px;letter-spacing:.12em;font-weight:750;color:#85baa7}
+.twoColumns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+.controlPanel{border:1px solid var(--line);border-radius:10px;background:var(--body);padding:clamp(14px,2vw,22px);min-width:0}
+.controlPanel h3{font:normal 25px var(--font-display),serif;margin:10px 0 16px}
+.formRow,.formRowWide{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:17px;align-items:end}
+.formRow>label,.formRowWide>label{flex:1 1 155px;display:grid;gap:7px;color:var(--muted);font-size:12px}
+.formRow input,.formRow select,.formRowWide select{width:100%;border:1px solid var(--line-strong);border-radius:7px;color:var(--text);background:var(--panel);padding:11px;font:inherit}
+.hint{font-size:12px;line-height:1.8;color:var(--muted);margin:12px 0}.warning{color:#f1a5a5;font-size:12px}
+.summaryCards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}.summaryCards>div{display:grid;gap:8px;border:1px solid var(--line);border-radius:8px;padding:12px;min-width:0}.summaryCards span,.summaryCards small{color:var(--muted);font-size:11px}.summaryCards strong{color:#9bceb8;font-size:21px}
+.toggle{display:flex;flex-wrap:wrap;gap:7px}.toggle button{border:1px solid var(--line-strong);padding:9px 12px;border-radius:7px;color:var(--text);background:var(--panel);cursor:pointer}.toggle button[aria-pressed="true"]{border-color:#86bca8;background:rgba(48,126,98,.2)}
+.directionGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:14px}.direction{border-left:3px solid #8cb6a5;background:var(--panel);padding:10px;display:grid;gap:4px;min-width:0}.direction[data-kind="hung"]{border-color:#b98982}.direction small,.direction span{font-size:10px;color:var(--muted)}.direction strong{font-size:14px;color:var(--text)}.empty{padding:20px;color:var(--muted);font-size:13px}
+.formRowWide{margin-bottom:8px}.layerSwitch{display:grid;gap:7px;color:var(--muted);font-size:12px}.layerSwitch label{display:flex;align-items:center;gap:8px}
+.plate{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;min-width:0}.palace{display:grid;align-content:space-between;justify-items:center;gap:8px;min-height:116px;min-width:0;border:1px solid var(--line-strong);border-radius:8px;background:var(--body);padding:12px 5px;color:var(--muted);cursor:pointer}.palace[aria-pressed="true"]{border-color:#8cceaf;box-shadow:inset 0 0 0 1px #8cceaf}.palace small{font-size:10px}.palace>span{font-size:11px}.stars{display:flex;align-items:center;justify-content:center;gap:12px;min-height:38px}.baseStar{color:#97c5b1;font-size:33px;font-family:var(--font-display),serif}.annualStar{color:#e0ba7c;font-size:23px;font-family:var(--font-display),serif}.legend{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:14px;margin-top:4px;color:var(--muted);font-size:11px}.legend span{display:flex;align-items:center;gap:6px}.legend i{width:10px;height:10px;display:inline-block;border-radius:50%}.baseDot{background:#97c5b1}.annualDot{background:#e0ba7c}
+.detail{padding:12px 0;border-bottom:1px solid var(--line);display:grid;gap:6px}.detail span,.detail small{font-size:11px;color:var(--muted)}.detail strong{color:#a3cdb7;font-size:18px}.detail .path{font-size:13px;line-height:1.8}
+.caveat{border-top:1px solid var(--line);margin-top:25px;padding-top:13px;color:var(--muted);font-size:12px;line-height:1.8}.caveat summary{cursor:pointer;color:#9ac4aa;font-weight:750}
+.section button:focus-visible,.section input:focus-visible,.section select:focus-visible{outline:2px solid #9bd3b5;outline-offset:3px}
+@media(max-width:890px){.twoColumns{grid-template-columns:1fr}}
+@media(max-width:420px){.directionGrid,.summaryCards{grid-template-columns:1fr}.palace{min-height:96px}.palace small{font-size:9px}.stars{gap:7px}.baseStar{font-size:27px}.annualStar{font-size:21px}}
+
+/* V11.80 — Tam bàn Hạ quái và mặt bằng chín cung độc lập với CSS nền. */
+.natalStars{display:flex;align-items:center;justify-content:center;gap:7px;min-height:24px;font-variant-numeric:tabular-nums}
+.mountainStar,.facingStar{display:inline-grid;place-items:center;min-width:29px;min-height:29px;border-radius:6px;font-size:18px;font-family:var(--font-display),serif;font-weight:700}
+.mountainStar{color:#c9abef;background:rgba(139,101,188,.12)}.facingStar{color:#ecab98;background:rgba(180,91,68,.12)}
+.legend .mountainDot{background:#c9abef}.legend .facingDot{background:#ecab98}
+.floorGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;min-width:0}
+.floorCell{display:grid;align-content:space-between;justify-items:center;gap:6px;text-align:center;min-height:110px;min-width:0;padding:11px 5px;cursor:pointer;border:1px solid var(--line-strong);background:var(--body);color:var(--text);border-radius:8px}
+.floorCell small,.floorCell span{font-size:10px;color:var(--muted)}.floorCell strong{font-size:12px;overflow-wrap:anywhere}.floorCell[data-kind="cát"]{border-top:3px solid #68aa91}.floorCell[data-kind="hung"]{border-top:3px solid #c08079}
+.floorCell[data-kind="center"]{border-top:3px solid #ac9c6c}.floorCell[aria-pressed="true"]{box-shadow:inset 0 0 0 2px #8ccfa9;border-color:#8ccfa9}
+.floorLegend{grid-column:1/-1;font-size:11px;color:var(--muted);line-height:1.7;margin:6px 0}
+.zoneLabel{display:grid;gap:8px;font-size:12px;color:var(--muted)}.zoneLabel select{width:100%;padding:11px;background:var(--panel);color:var(--text);border-radius:7px;border:1px solid var(--line-strong)}
+.resetButton{cursor:pointer;border:1px solid var(--line-strong);border-radius:8px;padding:10px 14px;color:var(--text);background:var(--panel);margin-top:15px}
+@media(max-width:450px){.floorCell{min-height:95px;padding:9px 3px}.floorCell small,.floorCell span{font-size:9px}.floorCell strong{font-size:11px}.natalStars{gap:4px}.mountainStar,.facingStar{min-width:22px;font-size:16px}}
+
+/* V11.135: atlas Đại Quái và bảng kiểm định tách trường phái. */
+.formRowWide input{width:100%;border:1px solid var(--line-strong);border-radius:7px;color:var(--text);background:var(--panel);padding:11px;font:inherit}
+.auditSummary{display:grid;gap:6px;margin:10px 0;border-left:3px solid #92bda6;padding:12px;background:var(--body)}
+.auditSummary strong{color:#a6d5b8;font-size:16px}.auditSummary span{color:var(--muted);font-size:12px;line-height:1.6}
+.guaHero{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:15px 0}.guaHero>span{font-size:56px;color:#a9cbb0;line-height:1}.guaHero strong{font:normal 30px var(--font-display),serif}.guaHero small{color:var(--muted);font-size:12px}
+.atlasControls{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:16px 0}.atlasControls span{font-size:11px;color:var(--muted)}
+.atlasScroll{max-height:440px;overflow:auto;border:1px solid var(--line);border-radius:10px}
+.atlasTable{width:100%;border-collapse:collapse;min-width:565px;font-size:12px;color:var(--text)}.atlasTable th,.atlasTable td{padding:10px 11px;border-bottom:1px solid var(--line);text-align:left}.atlasTable thead{position:sticky;top:0;background:var(--body);z-index:1}.atlasTable tr[data-active="true"]{background:rgba(60,129,105,.25)}
+.evidenceGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.evidenceGrid>div{display:grid;gap:8px;align-content:start;border:1px solid var(--line);padding:15px;border-radius:8px;background:var(--body)}.evidenceGrid small,.evidenceGrid span{font-size:11px;line-height:1.6;color:var(--muted)}.evidenceGrid strong{color:#a2d0b5;font-size:17px}
+@media(max-width:780px){.evidenceGrid{grid-template-columns:1fr}.guaHero>span{font-size:40px}.guaHero strong{font-size:24px}}

@@ -1,0 +1,75 @@
+.research-heading>p{max-width:860px;line-height:1.85}
+.research-tally{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 12px}
+.research-tally span{border:1px solid var(--line);padding:9px 12px;border-radius:7px;background:var(--panel);color:var(--muted);font-size:12px}
+.research-tally b{color:var(--gold);font-size:15px}
+.research-tabs{display:flex;gap:10px;margin:0 0 19px;flex-wrap:wrap}
+.research-tabs button{border:1px solid var(--line);background:var(--panel-alt);color:var(--muted);border-radius:7px;padding:11px 18px;min-height:44px;font-weight:600}
+.research-tabs button.active{border-color:var(--gold);color:var(--text);background:var(--glow)}
+.research-context{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;padding:14px 17px;font-size:12px;color:var(--muted);line-height:1.9;margin:0 0 18px}
+.research-context b{color:var(--text)}
+.research-filters{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:12px;margin:0 0 18px}
+.research-filters label{display:grid;gap:8px;color:var(--text);font-size:12px;font-weight:600}
+.research-filters input,.research-filters select{background:var(--panel);border:1px solid var(--line-strong);color:var(--text);padding:11px 13px;border-radius:6px;min-height:44px;max-width:100%;width:100%}
+.research-result-count{font-size:12px;color:var(--muted);margin:8px 0 18px}.research-result-count strong{color:var(--gold)}
+.research-star-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.research-star{border:1px solid var(--line);background:linear-gradient(140deg,var(--panel),var(--panel-alt));border-radius:9px;padding:19px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.research-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:9px;flex-wrap:wrap;font-size:11px;color:var(--muted)}
+.research-status{border:1px solid var(--line);border-radius:20px;padding:5px 9px;font-size:10px;line-height:1.4}
+.research-status.status-engine-name{color:var(--text);border-color:var(--line-strong)}
+.research-status.status-possible-alias{color:var(--gold);border-color:var(--gold)}
+.research-status.status-not-in-engine{color:var(--muted);border-style:dashed}
+.research-star h2,.research-domain h2{font-size:24px;margin:0;line-height:1.35}
+.research-star p{font-size:12px;color:var(--muted);line-height:1.75;margin:0}
+.research-star .research-match{font-size:11px}.research-match b{color:var(--text)}
+.research-star>a{font-size:12px;color:var(--gold);margin-top:auto}
+.research-empty{padding:22px;color:var(--muted);grid-column:1/-1}
+.research-footnote{font-size:11px;color:var(--muted);margin:20px 0}
+.research-domain-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.research-domain{display:flex;flex-direction:column;gap:13px;border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:22px;min-width:0}
+.research-domain-index{font-size:11px;display:flex;justify-content:space-between;gap:12px;color:var(--gold)}
+.research-domain-index span{color:var(--muted)}.research-subtitle{font-size:13px;color:var(--gold);margin:0}
+.research-domain dl{display:grid;gap:8px;margin:0}.research-domain dt{font-size:11px;font-weight:700;color:var(--text);margin-top:6px}
+.research-domain dd{font-size:12px;color:var(--muted);line-height:1.8;margin:0}
+.research-domain>a,.research-not-ready{font-size:12px;color:var(--gold);margin-top:auto}.research-not-ready{color:var(--muted)}
+.research-next{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0}
+@media(max-width:1100px){.research-star-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.research-filters{grid-template-columns:1fr}.research-star-grid,.research-domain-grid{grid-template-columns:1fr}.research-star,.research-domain{padding:17px}}
+
+.research-method{border:1px solid var(--line);border-radius:8px;background:var(--panel);margin-bottom:20px;padding:14px 17px}.research-method summary{cursor:pointer;color:var(--gold);font-size:13px;font-weight:700}.research-method-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:15px}.research-method-list article{border:1px solid var(--line);border-radius:6px;padding:14px}.research-method-list h3{font-size:14px;color:var(--text);margin:0 0 9px}.research-method-list p{font-size:12px;color:var(--muted);line-height:1.75;margin:6px 0}.research-method-list b{color:var(--text)}@media(max-width:760px){.research-method-list{grid-template-columns:1fr}}
+
+/* V11.37 — expandable editorial research dossiers; no placement controls. */
+.research-dossier{border-top:1px solid var(--line);margin-top:4px;padding-top:12px}.research-dossier summary{color:var(--gold);cursor:pointer;font-size:12px;font-weight:700;line-height:1.6}.research-dossier[open] summary{margin-bottom:12px}.research-star .research-dossier p{margin:10px 0 0;line-height:1.8}.research-dossier p b{color:var(--text)}.research-star .research-dossier .research-dossier-state{border-left:2px solid var(--gold);padding:6px 9px;background:var(--panel-alt);font-size:11px}
+
+/* V11.38 — read-only Tướng Tiền reference, theme tokens inherited from the site. */
+.research-study-circle{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:22px;margin:0 0 23px;min-width:0}
+.research-study-circle-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.research-study-circle-heading>div{flex:1 1 370px}
+.research-study-circle-heading h2{font-size:clamp(19px,2vw,28px);margin:7px 0}
+.research-study-circle-heading p{font-size:12px;line-height:1.85;color:var(--muted);max-width:850px}
+.research-study-circle-heading strong{color:var(--text)}
+.research-study-circle-heading label{display:grid;gap:7px;min-width:140px;font-size:12px;color:var(--text)}
+.research-study-circle-heading select{min-height:44px;border-radius:6px;background:var(--panel-alt);color:var(--text);border:1px solid var(--line-strong);padding:10px}
+.research-study-start{font-size:12px;color:var(--muted);margin:18px 0 12px}.research-study-start b{color:var(--gold)}
+.research-study-table-scroll{max-width:100%;overflow-x:auto}
+.research-study-table{width:100%;border-collapse:collapse;font-size:12px;text-align:left;min-width:460px}
+.research-study-table caption{text-align:left;color:var(--muted);font-size:11px;margin:0 0 12px}
+.research-study-table th,.research-study-table td{border-bottom:1px solid var(--line);padding:10px 9px;line-height:1.6}
+.research-study-table thead th{color:var(--gold);font-size:11px}
+.research-study-table tbody th{color:var(--text);font-weight:600}
+.research-study-table td{color:var(--muted)}
+.research-study-caution{font-size:11px;line-height:1.8;color:var(--muted);margin:15px 0 0}
+@media(max-width:760px){.research-study-circle{padding:15px}.research-study-circle-heading{align-items:stretch}}
+
+/* V11.39 — method study cards, independent from natal chart engine. */
+.research-method-comparison{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:22px;margin:0 0 20px}
+.research-method-comparison h2{margin:8px 0 12px;font-size:clamp(20px,2vw,28px)}
+.research-method-lead{color:var(--muted);font-size:12px;line-height:1.85;max-width:830px}
+.research-method-controls{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.research-method-controls label{display:grid;gap:7px;color:var(--text);font-size:12px;font-weight:600}
+.research-method-controls select{width:100%;min-height:44px;border-radius:6px;border:1px solid var(--line-strong);padding:10px;background:var(--panel-alt);color:var(--text)}
+.research-method-result{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--panel-alt);padding:15px 18px;border:1px solid var(--line);border-radius:7px;font-size:12px;color:var(--muted)}
+.research-method-result strong{font-size:22px;color:var(--gold)}
+.research-method-alert{border-left:3px solid var(--gold);padding:9px 12px;margin:15px 0;background:var(--panel-alt);color:var(--muted);font-size:12px;line-height:1.7}
+.research-method-deferred{font-size:12px;color:var(--muted);line-height:1.8;margin:16px 0}
+.research-method-deferred summary{cursor:pointer;color:var(--gold);font-weight:700}
+@media(max-width:760px){.research-method-comparison{padding:15px}.research-method-controls{grid-template-columns:1fr}}

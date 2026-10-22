@@ -1,0 +1,196 @@
+/* THIÊN ĐỒ V11.164.18.1 — liquid atmosphere, isolated from all other routes.
+ * Only /huyen-giai, /study(/...), /research(/...) have data-visual-space.
+ * Never add an overlay above controls. Never change auth, navigation or charts.
+ */
+.site[data-visual-space] {
+  position: relative;
+  isolation: isolate;
+  /* Keep the theme artwork visually connected underneath sidebar AND content. */
+  --td-glass-base: rgba(10, 29, 25, .66);
+  --td-glass-edge: rgba(233, 201, 145, .30);
+  --td-glass-shadow: 0 12px 44px rgba(3, 16, 12, .21), inset 1px 0 rgba(255, 255, 255, .075);
+  --td-glass-heading: #f2dfba;
+  --td-glass-nav: #ebebe0;
+  --td-glass-muted: #c5d0c1;
+  --td-glass-active: rgba(228, 190, 125, .20);
+  --td-glass-hover: rgba(224, 190, 133, .13);
+}
+.site[data-visual-space].light {
+  --td-glass-base: rgba(244, 248, 236, .60);
+  --td-glass-edge: rgba(83, 109, 88, .32);
+  --td-glass-shadow: 0 10px 34px rgba(29, 53, 36, .10), inset 1px 0 rgba(255, 255, 255, .58);
+  --td-glass-heading: #365f4c;
+  --td-glass-nav: #233d33;
+  --td-glass-muted: #526e5d;
+  --td-glass-active: rgba(59, 101, 72, .14);
+  --td-glass-hover: rgba(56, 105, 70, .09);
+}
+/* Both locally hosted photos remain mounted; only composited opacity/transform
+ * change when switching themes. No frame-by-frame JavaScript or infinite animation.
+ * The gradients create a common vanishing point, while readable content stays in cards.
+ */
+.site[data-visual-space]::before,
+.site[data-visual-space]::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: cover, cover, cover;
+  transform-origin: 61% 43%;
+  opacity: 1;
+}
+.site[data-visual-space]::before {
+  background-image:
+    linear-gradient(180deg, rgba(10, 28, 23, .30) 0%, rgba(12, 34, 28, .39) 58%, rgba(11, 26, 22, .86) 100%),
+    radial-gradient(ellipse at 67% 29%, transparent 13%, rgba(7, 20, 16, .32) 87%),
+    url('/theme/thap-nhi-dia-chi.jpeg');
+  background-position: center, center, 61% 46%;
+  transform: scale(1);
+}
+.site[data-visual-space]::after {
+  background-image:
+    linear-gradient(180deg, rgba(241, 244, 231, .25) 0%, rgba(233, 241, 228, .32) 56%, rgba(230, 235, 220, .88) 100%),
+    radial-gradient(ellipse at 65% 34%, transparent 10%, rgba(218, 232, 212, .34) 88%),
+    url('/theme/cuon-thu-ngoc.jpeg');
+  background-position: center, center, 57% 44%;
+  opacity: 0;
+  transform: scale(1.035);
+}
+.site[data-visual-space].light::before { transform: scale(1.025); }
+.site[data-visual-space].light::after { opacity: 1; transform: scale(1); }
+/* Activate animation only AFTER local preference has been loaded; avoid an
+ * involuntary first-mount crossfade from the server's default dark markup. */
+@media (prefers-reduced-motion: no-preference) {
+  .site[data-visual-space][data-theme-ready="true"]::before,
+  .site[data-visual-space][data-theme-ready="true"]::after {
+    transition: opacity 960ms cubic-bezier(.25, .68, .22, 1),
+                transform 1100ms cubic-bezier(.2, .72, .27, 1);
+  }
+}
+/* The previous content-only photo is retained in V11.164.18 as an emergency
+ * fallback when this stylesheet is removed, but is hidden for this new system.
+ * This prevents double photographs, seams at the 258px sidebar, and ghosting. */
+.site[data-visual-space] .main-content::before { opacity: 0; }
+.site[data-visual-space] > .app-area {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+.site[data-visual-space] > .app-area .main-content { isolation: auto; }
+/* Liquid navigation: same photo behind glass instead of a separate wallpaper.
+ * The local cloud SVG is quiet engraving and cannot capture events. */
+.site[data-visual-space] > #thiendo-sidebar {
+  background-color: var(--td-glass-base);
+  background-image: url('/theme/van-may-thien-do.svg');
+  background-repeat: repeat;
+  background-size: 320px 384px;
+  border-right: 1px solid var(--td-glass-edge);
+  box-shadow: var(--td-glass-shadow);
+  -webkit-backdrop-filter: blur(15px) saturate(135%);
+  backdrop-filter: blur(15px) saturate(135%);
+  color: var(--td-glass-nav);
+}
+/* Earlier pseudo-decoration stays within glass and outside the hit area. */
+.site[data-visual-space] > #thiendo-sidebar::before {
+  background: radial-gradient(ellipse at 8% 8%, rgba(225, 202, 148, .10), transparent 75%);
+}
+.site[data-visual-space].light > #thiendo-sidebar::before {
+  background: radial-gradient(ellipse at 8% 8%, rgba(255, 255, 255, .23), transparent 75%);
+}
+.site[data-visual-space] > #thiendo-sidebar :is(.brand, .nav-heading, .nav-item) {
+  color: var(--td-glass-nav);
+}
+.site[data-visual-space] > #thiendo-sidebar :is(.nav-heading, [class*="sectionHeading"]) {
+  color: var(--td-glass-muted);
+}
+.site[data-visual-space] > #thiendo-sidebar :is(.brand small, [class*="groupToggle"]) {
+  color: var(--td-glass-nav);
+}
+.site[data-visual-space] > #thiendo-sidebar :is(.nav-item:hover, .nav-item.active, .nav-item[aria-current="page"], [class*="groupToggle"]:hover, [class*="groupToggle"]:focus-visible) {
+  background: var(--td-glass-hover);
+  border-color: var(--td-glass-edge);
+  color: var(--td-glass-heading);
+}
+.site[data-visual-space] > #thiendo-sidebar :is(.nav-item.active, .nav-item[aria-current="page"]) {
+  background: var(--td-glass-active);
+  box-shadow: inset 3px 0 0 #c7a773, 0 4px 18px rgba(7, 27, 20, .09);
+}
+.site[data-visual-space].light > #thiendo-sidebar :is(.nav-item.active,.nav-item[aria-current="page"]) {
+  box-shadow: inset 3px 0 0 #53745a, 0 4px 18px rgba(25, 64, 38, .07);
+}
+.site[data-visual-space] > #thiendo-sidebar :is(.nav-item, [class*="groupToggle"]) {
+  border-radius: 13px;
+}
+.site[data-visual-space] .topbar {
+  background: var(--td-glass-base);
+  background-image: url('/theme/van-may-thien-do.svg');
+  background-size: 320px 384px;
+  border-bottom-color: var(--td-glass-edge);
+  -webkit-backdrop-filter: blur(15px) saturate(135%);
+  backdrop-filter: blur(15px) saturate(135%);
+  box-shadow: inset 0 -1px rgba(255,255,255,.04);
+}
+.site[data-visual-space][data-theme-ready="true"] > #thiendo-sidebar,
+.site[data-visual-space][data-theme-ready="true"] .topbar {
+  transition: background-color 760ms ease, border-color 760ms ease,
+              box-shadow 760ms ease, color 760ms ease;
+}
+/* Match label-color timing with glass tint during a palette shift so the
+ * text never snaps dark while the menu surface is still dark. */
+.site[data-visual-space][data-theme-ready="true"] > #thiendo-sidebar :is(.brand, .nav-heading, .brand small, [class*="sectionHeading"]) {
+  transition: color 760ms ease;
+}
+/* Make header inputs glass-coherent without changing the controls' click logic. */
+.site[data-visual-space] .topbar :is(.quick-search-trigger, .mode-switch, .icon-button) {
+  background-color: color-mix(in srgb, var(--panel) 75%, transparent);
+  border-color: var(--td-glass-edge);
+}
+/* An opaque content card remains mandatory for long text and editable inputs. */
+.site[data-visual-space] .thiendo-legal-footer {
+  position: relative;
+  background: var(--td-study-surface);
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .site[data-visual-space] > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]):hover {
+    transform: translateX(2px);
+    box-shadow: 0 5px 16px rgba(5, 20, 15, .08);
+  }
+}
+.site[data-visual-space] > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]) {
+  transition: color 760ms ease, background-color 220ms ease,
+              border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+@media (max-width: 970px) {
+  .site[data-visual-space] > #thiendo-sidebar,
+  .site[data-visual-space] .topbar {
+    -webkit-backdrop-filter: blur(9px) saturate(125%);
+    backdrop-filter: blur(9px) saturate(125%);
+  }
+  .site[data-visual-space] > #thiendo-sidebar {
+    /* Preserve the existing drawer slide and 44px mobile hit areas. */
+    background-color: color-mix(in srgb,var(--td-glass-base) 88%, var(--panel));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site[data-visual-space]::before, .site[data-visual-space]::after,
+  .site[data-visual-space] > #thiendo-sidebar,
+  .site[data-visual-space] .topbar,
+  .site[data-visual-space] > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]) {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  /* Stronger tint when a browser cannot blur glass, so labels remain legible. */
+  .site[data-visual-space] > #thiendo-sidebar,
+  .site[data-visual-space] .topbar {background-color: rgba(13, 33, 28, .92);}
+  .site[data-visual-space].light > #thiendo-sidebar,
+  .site[data-visual-space].light .topbar {background-color: rgba(247, 249, 239, .94);}
+}
+@media print {
+  .site[data-visual-space]::before, .site[data-visual-space]::after {display:none !important;}
+  .site[data-visual-space] .main-content::before {display:none !important;}
+  .site[data-visual-space] > #thiendo-sidebar, .site[data-visual-space] .topbar {backdrop-filter:none;-webkit-backdrop-filter:none;}
+}

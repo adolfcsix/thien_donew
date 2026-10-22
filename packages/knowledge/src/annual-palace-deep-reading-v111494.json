@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "1.0.0",
+  "edition": "11.149.4",
+  "scope": "annual-palace-interpretive-questions-not-placement",
+  "expertReviewed": false,
+  "notice": "Khung đọc biểu tượng và câu hỏi phản biện cho 12 cung × 3 lớp thời gian và 12 sao lưu hiện có; không tự an sao, không xác nhận biến cố hoặc trường phái. Vị trí phải được xác minh bằng engine.",
+  "periodLabels": {
+    "daiHan": "Đại hạn (10 năm tuổi mụ)",
+    "tieuHan": "Tiểu hạn (1 năm theo dị bản hiện dùng)",
+    "luuThaiTue": "Lưu Thái Tuế (chi năm âm lịch)"
+  },
+  "palaces": {
+    "Mệnh": {
+      "daiHan": "Đối chiếu vai trò và lựa chọn dài hạn của bản thân với chính tinh tọa Mệnh; không coi đại hạn là tính cách bẩm sinh.",
+      "tieuHan": "Đặt các sự kiện được hỏi vào bối cảnh năm cụ thể, kiểm lại cung Tiểu hạn trước khi rút nhận xét về hành động.",
+      "luuThaiTue": "Xác minh sao lưu năm xem tác động lên khu vực bản sắc nào; phân biệt với sao Mệnh gốc và tránh suy diễn định mệnh."
+    },
+    "Phụ Mẫu": {
+      "daiHan": "Khi Đại hạn chiếu cung Phụ Mẫu, kiểm mối quan hệ liên thế hệ và trách nhiệm, không quy kết hành vi hay sức khỏe của người thân.",
+      "tieuHan": "Đặt vấn đề giao tiếp gia đình ở năm cụ thể; đối chiếu cung đối và sao tọa thay vì gán nhãn tốt–xấu.",
+      "luuThaiTue": "Dùng sao lưu để hình thành câu hỏi về kỳ vọng và ranh giới; không coi chúng là chứng cứ người thân gặp biến cố."
+    },
+    "Phúc Đức": {
+      "daiHan": "Xét cách xây dựng giá trị sống, truyền thống và điểm tựa tinh thần theo giai đoạn dài; cần so sánh Mệnh và các cung hội.",
+      "tieuHan": "Xem lựa chọn duy trì thói quen, quan hệ cộng đồng trong năm; không biến nhịp Tiểu hạn thành đo sức khỏe tinh thần.",
+      "luuThaiTue": "Xác định đúng lớp sao lưu năm xem trước khi hỏi về thay đổi môi trường và hỗ trợ xã hội."
+    },
+    "Điền Trạch": {
+      "daiHan": "Đọc biểu tượng tổ chức nơi ở và nguồn lực nhà cửa trong cả đại hạn, không khẳng định sẽ mua bán bất động sản.",
+      "tieuHan": "Khi đọc Tiểu hạn, kiểm sự kiện về không gian sống do người hỏi cung cấp, phân biệt dữ kiện với suy đoán.",
+      "luuThaiTue": "Sao lưu chỉ là vị trí tham chiếu cho câu hỏi về gìn giữ tài sản; không tự động dự báo tranh chấp."
+    },
+    "Quan Lộc": {
+      "daiHan": "Đặt mục tiêu học tập, nghề nghiệp và trách nhiệm nghề trong bối cảnh mười năm; kiểm cả Tài Bạch và Thiên Di.",
+      "tieuHan": "Đối chiếu lựa chọn công việc trong năm với sao gốc và tình huống thực tế; không tự quyết kết quả thăng tiến.",
+      "luuThaiTue": "Sao lưu năm có thể nhắc kiểm nhịp độ nghề nghiệp, nhưng chưa đủ để kết luận thành bại."
+    },
+    "Nô Bộc": {
+      "daiHan": "Quan sát cách thiết lập mạng lưới, giao tiếp và hợp tác trong một giai đoạn, không dự báo tính cách bạn bè.",
+      "tieuHan": "Kiểm chất lượng cộng tác ở năm đang hỏi, xét quan hệ với cung Huynh Đệ và Thiên Di nếu phù hợp.",
+      "luuThaiTue": "Phân biệt sao lưu năm với bản chất quan hệ; không gắn một sao với phản bội hay được giúp đỡ chắc chắn."
+    },
+    "Thiên Di": {
+      "daiHan": "So sánh môi trường bên ngoài với Mệnh trong giai đoạn dài và những thay đổi khả năng thích nghi.",
+      "tieuHan": "Theo năm, đánh giá nhu cầu dịch chuyển và giao tiếp xã hội dựa trên sự kiện thực, không dự đoán đi xa chắc chắn.",
+      "luuThaiTue": "Khi sao lưu ở Thiên Di, cần đọc tương quan với Mệnh trước khi hình thành giả thuyết về môi trường."
+    },
+    "Tật Ách": {
+      "daiHan": "Đặt chủ đề nhịp sống, khả năng thích ứng và chăm sóc bản thân trong đại hạn; tuyệt đối không dùng cung để chẩn đoán.",
+      "tieuHan": "Tiểu hạn chỉ nhắc cân nhắc thói quen sinh hoạt theo tình huống; mọi dấu hiệu sức khỏe cần đánh giá y khoa.",
+      "luuThaiTue": "Các sao mang tên bệnh/tang/khốc là biểu tượng văn hóa, không chứng minh tai nạn, tử vong hoặc bệnh tật."
+    },
+    "Tài Bạch": {
+      "daiHan": "Đọc câu hỏi về quản trị nguồn lực và thói quen chi tiêu trong mười năm cùng Quan Lộc và Điền Trạch.",
+      "tieuHan": "Năm Tiểu hạn có thể gợi kiểm kế hoạch tài chính thực tế; không khẳng định lợi nhuận hay mất tiền.",
+      "luuThaiTue": "Dù Lưu Lộc Tồn hiện diện, không suy ra thu nhập hoặc cơ hội đầu tư chắc chắn. Phải ghi rõ tên cung, sao tọa thủ và năm âm lịch đang đối chiếu."
+    },
+    "Tử Tức": {
+      "daiHan": "Xem cung này như chủ đề trách nhiệm chăm sóc, nuôi dưỡng hoặc dự án kế thừa; tránh kết luận khả năng sinh sản.",
+      "tieuHan": "Tiểu hạn chỉ là nhịp một năm để đối chiếu mong muốn và kế hoạch; không dự báo việc có con.",
+      "luuThaiTue": "Sao lưu cung này không cho phép suy đoán giới tính con, bệnh lý hoặc thời điểm sinh nở."
+    },
+    "Phu Thê": {
+      "daiHan": "Đối chiếu chủ đề hợp tác thân mật, cam kết và ranh giới trong dài hạn; không kết luận hôn nhân chắc chắn.",
+      "tieuHan": "Trong năm, kiểm lựa chọn giao tiếp và mong đợi hai phía, tránh lấy Tiểu hạn thay cho dữ liệu quan hệ thực.",
+      "luuThaiTue": "Sao lưu không xác nhận phản bội, ly hôn hay kết hôn; xem cùng Mệnh, Phúc Đức và thông tin tự nguyện."
+    },
+    "Huynh Đệ": {
+      "daiHan": "Khảo sát quan hệ anh chị em/đồng hành và cách chia sẻ trách nhiệm theo giai đoạn dài. Phải ghi rõ tên cung, sao tọa thủ và năm âm lịch đang đối chiếu.",
+      "tieuHan": "Tiểu hạn cho khung đặt câu hỏi về hỗ trợ và giới hạn trong năm, không dự đoán sự kiện của người khác.",
+      "luuThaiTue": "Sao lưu chỉ hỗ trợ đọc chủ đề tương tác; không suy đoán hoàn cảnh cá nhân của người thân."
+    }
+  },
+  "annualStars": {
+    "Lưu Lộc Tồn": {
+      "theme": "nguồn lực và cách duy trì",
+      "question": "Phân biệt vị trí Lưu Lộc Tồn với Lộc Tồn bản mệnh; hỏi về cách quản trị nguồn lực thay vì dự báo tiền đến.",
+      "status": "editorial-unreviewed"
+    },
+    "Lưu Kình Dương": {
+      "theme": "áp lực và tính quyết đoán",
+      "question": "Tìm bối cảnh có xung lực hoặc quyết định gấp; không coi Lưu Kình Dương là chứng cứ tai nạn.",
+      "status": "editorial-unreviewed"
+    },
+    "Lưu Đà La": {
+      "theme": "sự chậm trễ và điều chỉnh",
+      "question": "Nhận diện yếu tố trì hoãn trong kế hoạch thực tế; không quy kết thất bại.",
+      "status": "editorial-unreviewed"
+    },
+    "Lưu Thiên Mã": {
+      "theme": "nhịp thay đổi môi trường",
+      "question": "Đặt câu hỏi về di chuyển/thích nghi trong năm, không cam đoan chuyển nhà hay đổi việc.",
+      "status": "editorial-unreviewed"
+    },
+    "Lưu Đào Hoa": {
+      "theme": "giao tiếp và sức hấp dẫn xã hội",
+      "question": "Xem nhu cầu kết nối và ranh giới giao tiếp; không suy đoán chuyện tình cảm.",
+      "status": "editorial-unreviewed"
+    },
+    "Lưu Hoa Cái": {
+      "theme": "sự tập trung và sáng tạo",
+      "question": "Khảo sát nhu cầu độc lập, học hỏi hoặc sáng tạo, không đánh đồng với cô độc.",
+      "status": "editorial-unreviewed"
+    },
+    "Lưu Hồng Loan": {
+      "theme": "mối quan hệ và tình cảm",
+      "question": "Dùng như dấu đặt câu hỏi về kết nối; không xác nhận năm kết hôn. Kiểm tra lại cung tọa thực tế và sao gốc trước khi luận.",
+      "status": "editorial-unreviewed"
+    },
+    "Lưu Thiên Hỷ": {
+      "theme": "niềm vui và tương tác",
+      "question": "Khảo sát điều kiện tổ chức giao lưu và vui sống; không mặc định có tin vui.",
+      "status": "editorial-unreviewed"
+    },
+    "Lưu Tang Môn": {
+      "theme": "sự thay đổi và trách nhiệm tinh thần",
+      "question": "Không suy Lưu Tang Môn thành tang chế; xem vai trò chăm sóc và điều chỉnh cảm xúc.",
+      "status": "editorial-unreviewed"
+    },
+    "Lưu Bạch Hổ": {
+      "theme": "sự cứng rắn và ranh giới",
+      "question": "Tránh diễn giải thành tai nạn/bệnh tật; xem cách ứng xử với áp lực.",
+      "status": "editorial-unreviewed"
+    },
+    "Lưu Thiên Khốc": {
+      "theme": "khả năng đối diện khó khăn",
+      "question": "Đây là hình tượng cảm xúc, không dự báo mất mát; đặt câu hỏi về hỗ trợ tinh thần.",
+      "status": "editorial-unreviewed"
+    },
+    "Lưu Thiên Hư": {
+      "theme": "kỳ vọng và thực tế",
+      "question": "Đối chiếu kỳ vọng với dữ kiện hành động; không gắn sao với thất bại bắt buộc.",
+      "status": "editorial-unreviewed"
+    }
+  },
+  "boundaries": [
+    "Lưu Tứ Hóa dùng mục tiêu sao đã tính, không cộng vào số sao độc lập.",
+    "Cung gốc, sao gốc, vòng sao và lưu tinh là các lớp riêng biệt; không sao chép sao năm xem vào bản mệnh.",
+    "Khi chưa có Đại hạn tương ứng tuổi mụ, không gán thay Tiểu hạn hay Lưu niên.",
+    "Không có luận đoán Lưu nguyệt, Lưu nhật, Lưu thời chuẩn hóa từ lớp này."
+  ]
+}

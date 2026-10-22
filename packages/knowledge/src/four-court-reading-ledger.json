@@ -1,0 +1,75 @@
+{
+  "edition": "11.58.0",
+  "scope": "natal-four-court-evidence-ledger",
+  "expertReviewed": false,
+  "categories": {
+    "main": "Chính tinh có độ sáng hợp lệ",
+    "support": "Sao trợ lực theo danh mục nghiên cứu",
+    "challenge": "Sát tinh cần đối chiếu",
+    "transformation": "Tứ Hóa năm sinh hợp lệ",
+    "obstruction": "Dấu án ngữ trên địa bàn"
+  },
+  "profiles": {
+    "Mệnh": {
+      "localQuestion": "Chính tinh tọa Mệnh phản ánh hình tượng trung tâm nào trong ngôn ngữ Tử Vi, và trạng thái sáng có được ghi nhận hợp lệ không?",
+      "tamHopQuestion": "Tam hợp Mệnh–Tài–Quan đưa thêm những sao trợ lực nào, đồng thời có sát tinh nào khiến cách đọc phải dè dặt?",
+      "oppositionQuestion": "Đối cung Thiên Di có bổ sung một góc nhìn khác không, nhất là khi Mệnh vô chính diệu?"
+    },
+    "Phụ Mẫu": {
+      "localQuestion": "Chính tinh tại Phụ Mẫu đặt ra câu hỏi gì về kỳ vọng và cách giao tiếp giữa các thế hệ?",
+      "tamHopQuestion": "Các sao trong tam hợp Phụ Mẫu có cho thấy yếu tố nên đối chiếu với chủ đề vai trò và sự trợ giúp của gia đình?",
+      "oppositionQuestion": "Sao tại đối cung Tật Ách có thể được xem như chiều bổ sung của quan hệ gia đình theo hệ luận truyền thống ra sao?"
+    },
+    "Phúc Đức": {
+      "localQuestion": "Tọa tinh Phúc Đức gợi chủ đề giá trị tinh thần và nền tảng gia tộc nào, không quy thành tính cách định sẵn?",
+      "tamHopQuestion": "Tam hợp có những chỉ dấu trợ lực hay đối nghịch nào đáng chú ý khi nghiên cứu môi trường sống và nề nếp?",
+      "oppositionQuestion": "Đối cung Tài Bạch đặt ra câu hỏi gì về mối quan hệ giữa giá trị tinh thần và cách sử dụng nguồn lực?"
+    },
+    "Điền Trạch": {
+      "localQuestion": "Tọa tinh Điền Trạch cho thấy chủ đề học tập nào về không gian sống và ý niệm tích lũy?",
+      "tamHopQuestion": "Sao hội tam hợp có thể dẫn tới những câu hỏi gì về gia trạch, sinh hoạt và mối liên hệ với cung khác?",
+      "oppositionQuestion": "Đối cung Tử Tức gợi những đối chiếu nào về môi trường gia đình và kỳ vọng qua thế hệ?"
+    },
+    "Quan Lộc": {
+      "localQuestion": "Bộ chính tinh Quan Lộc nên được đọc như khuynh hướng chủ đề nghề nghiệp nào, thay vì khẳng định sự nghiệp thực tế?",
+      "tamHopQuestion": "Tam hợp Mệnh–Tài–Quan có hội những sao trợ lực, trở lực nào làm thay đổi câu hỏi nghiên cứu?",
+      "oppositionQuestion": "Đối cung Phu Thê có thêm góc nhìn gì về quan hệ, trách nhiệm và lựa chọn ưu tiên khi nghiên cứu Quan Lộc?"
+    },
+    "Nô Bộc": {
+      "localQuestion": "Các sao tọa Nô Bộc gợi hình tượng nào về hợp tác, bạn bè và quan hệ đồng hành trong những bối cảnh xã hội khác nhau?",
+      "tamHopQuestion": "Tam hợp có dấu hiệu nào cần so sánh trước khi bàn đến chuyện hỗ trợ hoặc xung đột trong quan hệ?",
+      "oppositionQuestion": "Đối cung Huynh Đệ đặt ra câu hỏi gì khi đối chiếu quan hệ gần gũi và mạng lưới xã hội?"
+    },
+    "Thiên Di": {
+      "localQuestion": "Chính tinh tọa Thiên Di mô tả hình tượng nào về việc tương tác với môi trường bên ngoài?",
+      "tamHopQuestion": "Tam hợp có trợ tinh hay sát tinh nào cần đưa vào bài học về thích nghi, trải nghiệm và tương tác xã hội?",
+      "oppositionQuestion": "Đối cung Mệnh cung cấp thông tin gì để không nhầm biểu hiện ra ngoài với toàn bộ con người?"
+    },
+    "Tật Ách": {
+      "localQuestion": "Những chính tinh Tật Ách gợi chủ đề trở ngại và khả năng thích ứng nào theo văn bản truyền thống, không suy thành chẩn đoán?",
+      "tamHopQuestion": "Tam hợp hội những yếu tố nào cần thận trọng diễn giải vì đây là cung dễ bị dùng sai vào quyết định sức khỏe?",
+      "oppositionQuestion": "Đối cung Phụ Mẫu có mở thêm hướng tìm hiểu về bối cảnh gia đình hay không, mà không kết luận nguyên nhân y khoa?"
+    },
+    "Tài Bạch": {
+      "localQuestion": "Bộ tọa tinh Tài Bạch đưa ra những câu hỏi biểu tượng nào về quản lý nguồn lực và sở trường?",
+      "tamHopQuestion": "Tam hợp Mệnh–Tài–Quan hội thêm các yếu tố nào khiến không thể suy thẳng ra mức thu nhập hay giàu nghèo?",
+      "oppositionQuestion": "Đối cung Phúc Đức gợi mối liên hệ nào giữa mục đích sử dụng tài nguyên và hệ giá trị?"
+    },
+    "Tử Tức": {
+      "localQuestion": "Chính tinh Tử Tức nên được đọc thành những chủ đề quan hệ gia đình và trách nhiệm chăm sóc nào?",
+      "tamHopQuestion": "Tam hợp có sao hỗ trợ hay yếu tố cần đối chiếu gì trước khi diễn giải các quan hệ liên thế hệ?",
+      "oppositionQuestion": "Đối cung Điền Trạch đóng vai trò nào trong câu hỏi về môi trường nuôi dưỡng và nếp sống?"
+    },
+    "Phu Thê": {
+      "localQuestion": "Chính tinh Phu Thê đặt ra câu hỏi gì về tương tác, kỳ vọng và cách duy trì quan hệ, không kết luận hôn nhân?",
+      "tamHopQuestion": "Tam hợp hội những bộ sao nào cần kiểm tra đồng thời, thay vì gán vận mệnh cho một cát tinh hay sát tinh đơn lẻ?",
+      "oppositionQuestion": "Đối cung Quan Lộc mở ra góc nhìn nào về cân bằng quan hệ, mục tiêu và trách nhiệm xã hội theo lối đọc Tử Vi truyền thống?"
+    },
+    "Huynh Đệ": {
+      "localQuestion": "Tọa tinh Huynh Đệ nêu lên những hình tượng nào về tương tác giữa người thân và anh chị em?",
+      "tamHopQuestion": "Tam hợp có sao nào cần tham chiếu để nghiên cứu cách hợp tác, ứng xử và chia sẻ nguồn lực trong mối quan hệ anh chị em?",
+      "oppositionQuestion": "Đối cung Nô Bộc cho thấy cần phân biệt quan hệ gia đình với quan hệ bạn bè, đồng nghiệp thế nào?"
+    }
+  },
+  "notice": "Trình tự học Tử Vi dựa trên chứng cứ lá số gốc; không xác định cát hung, không dự đoán kết quả đời sống. Trạng thái chưa xác minh không được tính như bằng chứng."
+}

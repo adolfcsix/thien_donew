@@ -1,0 +1,827 @@
+{
+  "schemaVersion": 2,
+  "bundleVersion": "V11.164.103",
+  "packageVersion": "11.164.0",
+  "status": "NO_GO",
+  "gatePolicy": "GO only after independent evidence for all mandatory gates and approved legal/publishing rights; documentation tests cannot approve release",
+  "blockingGates": [
+    {
+      "id": "P0_INSTALL",
+      "status": "OPEN",
+      "evidenceRequired": "npm ci from immutable lockfile on Windows and Linux; logs",
+      "localResult": "PARTIAL",
+      "remaining": "A72: npm registry DNS không phân giải; npm cache trống, dependency không được cài. Giữ OPEN cho đến khi npm ci với package-lock thật PASS."
+    },
+    {
+      "id": "P0_TYPECHECK_BUILD",
+      "status": "OPEN",
+      "evidenceRequired": "NestJS/Next.js typecheck + build with installed dependency tree",
+      "localResult": "PARTIAL",
+      "remaining": "A72: Next/Nest typecheck/build còn BLOCKED vì thiếu dependency; chưa kiểm nghiệm build thực tế."
+    },
+    {
+      "id": "P0_NODE_TESTS",
+      "status": "OPEN",
+      "evidenceRequired": "Current full Node.js suite and relevant integration evidence for the exact source bundle",
+      "localResult": "FAIL",
+      "remaining": "A72: 63/63 hồi quy trọng tâm PASS, 11/11 mới PASS; phép chạy gộp khác A71 đạt 2418/2471 với 53 lỗi MODULE_NOT_FOUND; npm test runner chuẩn dừng sau 111/359 tệp do giới hạn thời gian, KHÔNG đủ bằng chứng. A71 còn 44 lỗi import chưa được tái nghiệm thu với dependencies thật."
+    },
+    {
+      "id": "P0_AUTH_DB_E2E",
+      "status": "OPEN",
+      "evidenceRequired": "isolated PostgreSQL test DB; register/login/MFA/Admin/chart/study/CMS migration coverage",
+      "localResult": "PARTIAL",
+      "remaining": "A64 118 SQL/service/upgrade tests on PGlite PASS; native PostgreSQL clean/upgrade/concurrency/backup not verified."
+    },
+    {
+      "id": "P0_PAYMENT_AI",
+      "status": "OPEN",
+      "evidenceRequired": "verified PayOS webhook/sandbox; Gemini API behavior, quotas, refunds; secrets withheld",
+      "localResult": "BLOCKED",
+      "remaining": "Không có credentials/provider sandbox thật."
+    },
+    {
+      "id": "P0_PRODUCTION_CONFIG",
+      "status": "OPEN",
+      "evidenceRequired": "docker compose config + nginx -t in deployed image, TLS, rate limits, secrets and HTTPS",
+      "localResult": "BLOCKED",
+      "remaining": "Không Docker daemon/host staging/domain/TLS."
+    },
+    {
+      "id": "P0_BACKUP_RESTORE",
+      "status": "OPEN",
+      "evidenceRequired": "isolated backup/restore drill including DB + private assets and tested rollback",
+      "localResult": "BLOCKED",
+      "remaining": "Không PostgreSQL native/image/kho backup để diễn tập."
+    },
+    {
+      "id": "P0_LEGAL_LICENSES",
+      "status": "OPEN",
+      "evidenceRequired": "operator/counsel approval of 8 policy drafts; jurisdictional rights review of Tarot assets and fonts",
+      "localResult": "AWAITING_OPERATOR",
+      "remaining": "Giữ 8 legal drafts; chưa duyệt quyền xuất bản."
+    },
+    {
+      "id": "P1_BROWSER_VISUAL",
+      "status": "OPEN",
+      "evidenceRequired": "production build browser E2E desktop/mobile, PDF fonts and 18 badges/5 Western themes",
+      "localResult": "PARTIAL",
+      "remaining": "A72: chưa có Next production build; E2E auth thay đổi phiên, Chrome/Edge/Safari iPhone, avatar, theme và 3D motion đều NOT VERIFIED."
+    },
+    {
+      "id": "P1_PERFORMANCE",
+      "status": "OPEN",
+      "evidenceRequired": "observed LCP/INP/CLS and mobile GPU/CPU memory load",
+      "localResult": "PARTIAL",
+      "remaining": "A70: chưa có benchmark browser/device. A66 lab 9/18 quan sát tương tác >200ms (tối đa 480ms); chưa đo lại sau A70."
+    },
+    {
+      "id": "P1_TAROT_ASSETS",
+      "status": "OPEN",
+      "evidenceRequired": "verify all 78 images and attributions plus network/offline fallback in shipped artifact",
+      "localResult": "PASS_LOCAL_NOT_ACCEPTED",
+      "remaining": "A59 offline browser evidence retained as history;648 protected files unchanged. No new asset/device/legal acceptance A60."
+    }
+  ],
+  "legalDraftsApproved": false,
+  "realProviderTestsPassed": false,
+  "productionDatabaseTestPassed": false,
+  "guide": "HUONG_DAN.md",
+  "report": "docs/BAO_CAO_HIEN_TAI.md",
+  "a45SizeAudit": {
+    "base": "V11.164.71 / A44",
+    "status": "NO_GO",
+    "runtimeChange": "Lossless progressive RWS JPEG entropy optimization only",
+    "rwsOriginalBytes": 69581943,
+    "rwsOptimizedBytes": 65517218,
+    "allPixelsAndColorMetadataPreserved": true,
+    "duplicateSourceHashes": 0,
+    "obsoleteGuidesInSource": 0,
+    "performanceCertification": "Not established by archive size; A44 performance gate remains open",
+    "verification": {
+      "productionBuild": "PASS",
+      "typecheck": "PASS",
+      "nodeTests": 3008,
+      "nodeFiles": 340,
+      "browserGroups": 9,
+      "offlineImageDecodes": 312,
+      "pageErrors": 0,
+      "pixelParityImages": 78,
+      "freshViewportPayload": [
+        {
+          "width": 390,
+          "resourcesExcludingHtmlBytes": 1221305
+        },
+        {
+          "width": 1440,
+          "resourcesExcludingHtmlBytes": 3778537
+        }
+      ],
+      "performanceGate": "OPEN; observed event timing up to 1304 ms, not field INP; six lab samples under concurrent regression load",
+      "sqlEnvironment": "PGlite only for browser; native PostgreSQL gate still open"
+    }
+  },
+  "a46LocalRuntime": {
+    "status": "NO_GO",
+    "change": "Compiled loopback local launcher and atomic readable surface theme changes",
+    "fullProductionAcceptance": false,
+    "userDeviceReproduction": "Not available; exact slow action/dev mode not yet confirmed",
+    "sourceBase": "V11.164.72 / A45",
+    "verification": {
+      "build": "PASS",
+      "typecheck": "PASS",
+      "nodeTests": 3012,
+      "nodeFiles": 341,
+      "browserGroups": 34,
+      "standaloneBrowserGroups": 9,
+      "profileSamples": 12,
+      "sourceGuards": "PASS",
+      "windows": "NOT TESTED",
+      "nativePostgres": "BLOCKED",
+      "fieldPerformance": "OPEN",
+      "userDeviceReproduction": "Not available"
+    }
+  },
+  "a47Recheck": {
+    "base": "V11.164.73 / A46",
+    "status": "NO_GO",
+    "confirmedIssue": "P2: launcher rejected local origin trailing slash accepted by API",
+    "fix": "Normalize one optional slash for both child environments",
+    "verification": {
+      "round": "New retained logs after runner reset only",
+      "build": "PASS",
+      "typecheck": "PASS",
+      "nodeTests": 3013,
+      "nodeFiles": 341,
+      "sqlTests": 80,
+      "browserCases": 327,
+      "browserSuites": 7,
+      "pageErrors": 0,
+      "launcherTests": 5,
+      "migrationsFrozen": 33,
+      "mandatoryGatesStillOpen": 11,
+      "nativePostgres": "NOT CERTIFIED",
+      "realDevicesAndProviders": "NOT CERTIFIED",
+      "performanceGate": "OPEN"
+    }
+  },
+  "a48Motion": {
+    "base": "V11.164.74 / A47",
+    "status": "NO_GO",
+    "verification": {
+      "build": "PASS",
+      "typecheck": "PASS",
+      "nodeTests": 3020,
+      "nodeFiles": 342,
+      "sqlTests": 80,
+      "browserCases": 330,
+      "browserSuites": 7,
+      "pageErrors": 0,
+      "baselineSamples": 12,
+      "optimizedSamples": 12,
+      "newMotionTests": 7,
+      "sqlEngine": "PGlite; not native PostgreSQL",
+      "noJavaScript": "Pre-existing Next streaming/loading limitation confirmed in A47 and A48; not accepted",
+      "fieldPerformance": "OPEN"
+    },
+    "scope": "Homepage and real-data admin dashboard progressive motion only",
+    "performanceGate": "OPEN",
+    "motion": {
+      "durationMs": 280,
+      "translatePx": 10,
+      "concurrentLimit": 3,
+      "staggerMaxMs": 70,
+      "addedHomeJsEncodedBytes": 924,
+      "addedAdminJsEncodedBytes": 942
+    },
+    "mandatoryGatesStillOpen": 11
+  },
+  "a49Audit": {
+    "base": "V11.164.75 / A48",
+    "status": "NO_GO",
+    "verification": {
+      "build": "PASS",
+      "typecheck": "PASS",
+      "nodeTests": 3029,
+      "nodeFiles": 343,
+      "sqlTests": 82,
+      "browserCases": 334,
+      "browserSuites": 7,
+      "pageErrors": 0,
+      "staticRouteSmoke": 72,
+      "dynamicRoutesInventoried": 9,
+      "webNoUnusedLocals": "PASS",
+      "apiNoUnusedLocals": "PASS",
+      "newChatUnitTests": 9,
+      "newSqlOrderTests": 2,
+      "newBrowserGroups": 4,
+      "mandatoryGatesStillOpen": 11,
+      "nativePostgres": "NOT CERTIFIED",
+      "realProvidersAndDevices": "NOT CERTIFIED",
+      "performanceGate": "OPEN"
+    },
+    "confirmedIssues": [
+      "A49-SESSION-01",
+      "A49-CHAT-01",
+      "A49-CHAT-02",
+      "A49-CHAT-03"
+    ],
+    "cleanup": "6 frontend unused bindings + 3 backend imports + 3 unread DI storage properties; constructor parameter order/types retained"
+  },
+  "a50Changes": {
+    "base": "V11.164.76 / A49",
+    "nameInput": "Empty required input with placeholder; explicit saved-profile reuse retained",
+    "memberDestination": "/chart unless safe explicit tool return; server-confirmed Admin/Owner keep /admin and MFA",
+    "status": "NO_GO",
+    "verification": {
+      "build": "PASS",
+      "typecheck": "PASS",
+      "nodeTests": 3030,
+      "browserSuites": {
+        "account-final": 89,
+        "chart": 8,
+        "logout": 10,
+        "profiles-release": 27
+      },
+      "browserCases": 134,
+      "pageErrors": 0
+    }
+  },
+  "a51AdminAudit": {
+    "base": "V11.164.77 / A50",
+    "newFeatures": [
+      "capability/function center from server-verified session",
+      "scoped member operational dossier",
+      "Pro gift/revoke and Expert/rank workflow linkage",
+      "query panel menu matching",
+      "administrative inbox context"
+    ],
+    "permissionsPolicy": "Owner highest existing role; delegated Admin remains scoped; MFA/approval/participant privacy preserved",
+    "endpointInventory": 225,
+    "status": "NO_GO",
+    "verification": {
+      "version": "V11.164.78 / A51",
+      "status": "NO_GO",
+      "buildExit": 0,
+      "typecheckExit": 0,
+      "nodeTests": 3033,
+      "nodeFiles": 344,
+      "sqlTests": 88,
+      "browserCases": 296,
+      "browserSuites": {
+        "candidate": 24,
+        "system": 183,
+        "account": 89
+      },
+      "pageErrors": 0,
+      "newBrowserGroups": 8,
+      "newSqlCases": 6,
+      "newUnitCases": 3,
+      "mandatoryGatesStillOpen": 11,
+      "scope": "Ubuntu24.04 x64; Node24.19.0/npm11.9.0; production Next/Nest; Chromium Linux headless; isolated PGlite WASM; captured email; no live providers or real Windows/iPhone acceptance"
+    }
+  },
+  "a52Refinement": {
+    "base": "V11.164.78 / A51",
+    "migration": "034_admin_badge_showcase.sql",
+    "cosmeticBadges": "any subset of18 in chosen order; roles/Expert/Pro/points unchanged",
+    "runtimeBuild": "web build cleans generated output before next build",
+    "status": "NO_GO",
+    "verification": {
+      "version": "V11.164.79 / A52",
+      "status": "NO_GO",
+      "buildExit": 0,
+      "typecheckExit": 0,
+      "nodeTests": 3036,
+      "nodeFiles": 345,
+      "sqlTests": 103,
+      "migrationCount": 34,
+      "oldMigrationsByteIdentical": 33,
+      "browserSuites": {
+        "candidate": 27,
+        "system": 183,
+        "account": 89,
+        "visual": 19,
+        "chart": 9,
+        "logout": 10,
+        "source-protection": 11
+      },
+      "browserCases": 348,
+      "pageErrors": 0,
+      "newBrowserGroups": 6,
+      "scope": "Ubuntu24.04 x64; Node24.19.0/npm11.9.0; production Next/Nest; Chromium Linux headless; isolated PGlite WASM; synthetic QA/captured email; no Windows/iPhone/native PostgreSQL/provider acceptance"
+    },
+    "artifactLifecycle": "Mitigated with generated-output cleanup and current UI verified; orphan sentinel probe not fully passed, one ENOTEMPTY build failure then retry PASS. Windows/CI lifecycle acceptance still pending."
+  },
+  "a53Engraving": {
+    "status": "PASS_LOCAL_NO_GO",
+    "base": "V11.164.79 / A52",
+    "engineChanges": false,
+    "schemaChanges": false,
+    "newDependencies": false,
+    "newEvidence": "r53 recovered source fresh verification, not reused scratch results",
+    "verification": {
+      "version": "V11.164.80 / A53",
+      "status": "NO_GO",
+      "installExit": 0,
+      "buildExit": 0,
+      "typecheckExit": 0,
+      "nodeTests": 3036,
+      "nodeFiles": 345,
+      "sqlTests": 103,
+      "browserSuites": {
+        "candidate": 28,
+        "system": 183,
+        "account": 89,
+        "visual": 23,
+        "chart": 10,
+        "logout": 10,
+        "source-protection": 11,
+        "performance": 2
+      },
+      "browserCases": 356,
+      "pageErrors": 0,
+      "migrationCount": 34,
+      "protectedFilesByteIdentical": 648,
+      "scope": "Ubuntu24.04 x64;Node24.19.0/npm11.9.0;production Next/Nest;Chromium Linux headless/GPU disabled;PGlite WASM synthetic QA/captured email. No native PG/Windows/iPhone/providers/staging/legal acceptance."
+    },
+    "performance": {
+      "initialSamples": 18,
+      "lcpRangeMs": [
+        96,
+        1012
+      ],
+      "clsRange": [
+        0,
+        0.015749074074074075
+      ],
+      "observedInteractionMaxMs": 320,
+      "populatedMotionSamples": 8,
+      "rendererTaskSecondsRange": [
+        0.05998700000000001,
+        0.5767909999999999
+      ],
+      "budgetExceeded": {
+        "lcp": 0,
+        "cls": 0,
+        "interaction": 6
+      },
+      "limitations": "Initial load/theme observations and populated60-frame normal/reduced-motion observations; no throttling, real device/GPU/field INP or production percentile certification."
+    }
+  },
+  "historicalA53Verification": {
+    "version": "V11.164.80 / A53",
+    "status": "NO_GO",
+    "installExit": 0,
+    "buildExit": 0,
+    "typecheckExit": 0,
+    "nodeTests": 3036,
+    "nodeFiles": 345,
+    "sqlTests": 103,
+    "browserSuites": {
+      "candidate": 28,
+      "system": 183,
+      "account": 89,
+      "visual": 23,
+      "chart": 10,
+      "logout": 10,
+      "source-protection": 11,
+      "performance": 2
+    },
+    "browserCases": 356,
+    "pageErrors": 0,
+    "migrationCount": 34,
+    "protectedFilesByteIdentical": 648,
+    "scope": "Ubuntu24.04 x64;Node24.19.0/npm11.9.0;production Next/Nest;Chromium Linux headless/GPU disabled;PGlite WASM synthetic QA/captured email. No native PG/Windows/iPhone/providers/staging/legal acceptance.",
+    "bundleVersion": "V11.164.80",
+    "apiInstancesSupported": 1,
+    "nativePostgres": "NOT_CERTIFIED",
+    "deviceAcceptance": "Chromium Linux only; Windows/iPhone not certified",
+    "approval": "All11 mandatory gates remain OPEN; local evidence does not grant GO",
+    "featureMatrix": "docs/current/feature-matrix.md",
+    "adminMatrix": "docs/current/admin-capability-matrix.md"
+  },
+  "a58Recovery": {
+    "source": "A53 attached bytes verified; not original lost A57",
+    "engineChanges": false,
+    "schemaChanges": false,
+    "dependenciesChanged": false,
+    "performance": {
+      "initialSamples": 18,
+      "over200msSamples": 5,
+      "observedInteractionMaxMs": 352,
+      "lcpRangeMs": [
+        84,
+        772
+      ],
+      "clsMax": 0.007874537037037038,
+      "populatedSamples": 8,
+      "maxObservedFrameMs": 523.5,
+      "budgetAccepted": false
+    },
+    "artifactLifecycle": "Isolated build route verified twice; standard synchronized workspace and Windows/CI remain OPEN"
+  },
+  "historicalA58Verification": {
+    "version": "V11.164.85 / A58",
+    "bundleVersion": "V11.164.85",
+    "status": "NO_GO",
+    "sourceBase": "V11.164.80 / A53",
+    "baseSha256": "c27a5c97fd9332d49a724afa2fbd638eab95cdbe37bd54c3aa7fd9f61a297852",
+    "installExit": 0,
+    "buildExit": 0,
+    "buildScope": "Two isolated snapshots, fresh npm ci each. Standard synchronized workspace build failed ENOTEMPTY; not certified fixed everywhere.",
+    "typecheckExit": 0,
+    "nodeTests": 3041,
+    "nodeFiles": 346,
+    "sqlTests": 114,
+    "browserSuites": {
+      "recovery": 22,
+      "theme": 2,
+      "candidate": 28,
+      "system": 183,
+      "account": 89,
+      "visual": 23,
+      "chart": 10,
+      "logout": 10,
+      "source-protection": 11,
+      "performance": 2,
+      "trace": 1
+    },
+    "browserCases": 381,
+    "functionalBrowserCases": 378,
+    "collectorGroups": 3,
+    "pageErrors": 0,
+    "migrationCount": 34,
+    "protectedFilesByteIdentical": 648,
+    "scope": "Ubuntu24.04.3 x64/kernel6.18.55;Node24.19.0/npm11.9.0;Next16.4.0/Nest production;Chromium153.0.8010.0 headless/GPU disabled;PGlite0.5.10 synthetic QA/captured email. Native PG/Windows/iPhone/live providers/staging/legal not certified.",
+    "apiInstancesSupported": 1,
+    "featureMatrix": "docs/current/feature-matrix.md",
+    "adminMatrix": "docs/current/admin-capability-matrix.md",
+    "checkpointPersistence": "FAILED_HTTP_403",
+    "approval": "All11 mandatory gates OPEN; no production approval"
+  },
+  "a59Resilience": {
+    "engineChanges": false,
+    "schemaChanges": false,
+    "dependenciesChanged": false,
+    "performance": {
+      "initialSamples": 18,
+      "over200msSamples": 4,
+      "observedInteractionMaxMs": 272,
+      "lcpRangeMs": [
+        96,
+        664
+      ],
+      "clsMax": 0.007874537037037038,
+      "populatedSamples": 8,
+      "maxObservedFrameMs": 347.30000000074506,
+      "budgetAccepted": false
+    },
+    "baselines": "12 chat/name/author and2 admin negative cases on A58;2 upload negative cases on intermediate A59, not A58",
+    "artifactLifecycle": "Complete closed logs staged outside synchronization; final source ZIP atomic publication and integrity checks; Windows/CI remains OPEN"
+  },
+  "historicalA59Verification": {
+    "version": "V11.164.86 / A59",
+    "bundleVersion": "V11.164.86",
+    "status": "NO_GO",
+    "verificationState": "LOCAL_COMPLETE_GATES_OPEN",
+    "sourceBase": "V11.164.85 / A58",
+    "baseSha256": "6ac602242890df4406d4aafa355372bd438241b9ddbb2ff7965c58c57b2e34f5",
+    "installExit": 0,
+    "buildExit": 0,
+    "typecheckExit": 0,
+    "nodeTests": 3074,
+    "nodeFiles": 349,
+    "sqlTests": 114,
+    "browserSuites": {
+      "recovery": 22,
+      "theme": 2,
+      "candidate": 28,
+      "system": 183,
+      "account": 89,
+      "visual": 23,
+      "chart": 10,
+      "logout": 10,
+      "source-protection": 11,
+      "resilience": 16,
+      "admin-draft": 2,
+      "performance": 2,
+      "trace": 1
+    },
+    "browserCases": 399,
+    "functionalBrowserCases": 396,
+    "collectorGroups": 3,
+    "pageErrors": 0,
+    "migrationCount": 34,
+    "protectedFilesByteIdentical": 648,
+    "apiInstancesSupported": 1,
+    "featureMatrix": "docs/current/feature-matrix.md",
+    "adminMatrix": "docs/current/admin-capability-matrix.md",
+    "checkpointPersistence": "FAILED_HTTP_403",
+    "scope": "Ubuntu24.04.3 x64/kernel6.18.55;Node24.19.0/npm11.9.0;Next16.4.0/Nest production;Chromium153.0.8010.0 headless/GPU disabled;PGlite0.5.10 synthetic QA. Native PG/Windows/iPhone/live providers/staging/legal not certified.",
+    "approval": "All11 mandatory gates OPEN; no production approval"
+  },
+  "a60HttpRecovery": {
+    "applicationFixes": [
+      "Preserve HTTP status/requestId when private upload receives HTML/empty errors",
+      "Clear stale list error only after successful read-back; preserve editor draft"
+    ],
+    "externalLibrary403": "Official refreshed helper denied during read-only tools/list before upload; builtin list PASS; not fixed by application code",
+    "baseline": "A59 production four new browser failures and two valid permission cases; four transport unit failures",
+    "performance": "No new performance run or CSS/artwork/engine changes; A59 measurements remain historical"
+  },
+  "a61FocusedFixes": {
+    "sourceBase": "V11.164.87 / A60",
+    "status": "NO_GO",
+    "scope": [
+      "Admin MFA first-run/email step UX without backend bypass",
+      "Natal wheel CSS fit against both width and viewport height",
+      "Astrology, Numerology, Tarot decorative CSS 3D scene with motion observer",
+      "Numerology and Tarot hover effects"
+    ],
+    "verification": {
+      "focusedNodeTests": "30/30 PASS across six tests (includes previous 16/16 run)",
+      "syntax": "7 edited TS/TSX files transpile parse PASS",
+      "fullNodeAttempt": "2531 PASS / 46 FAIL in partial dependency environment; results are NOT full suite certification",
+      "dependencyInstall": "npm ci --offline ENOTCACHED yoctocolors-cjs@2.1.3; npm ci online timed out",
+      "browserProductionBuild": "NOT VERIFIED",
+      "nativePostgreSQL": "NOT VERIFIED",
+      "windowsSafari": "NOT VERIFIED",
+      "realProviders": "NOT VERIFIED",
+      "tarotStaticAssets": "Two decks ×78 local images, Pillow image verify 156/156 PASS, attribution/legal and offline browser not certified"
+    },
+    "mandatoryGatesStillOpen": 11
+  },
+  "a62Refinement": {
+    "base": "V11.164.88 / A61",
+    "bundle": "V11.164.89 / A62",
+    "migration": "035_admin_trusted_devices.sql",
+    "scope": [
+      "opt-in 30-day trusted browser for admin read-only entry",
+      "server-only role and independent fresh TOTP for admin writes",
+      "revocation on role/password/block and logout-all",
+      "responsive forum chat and inline badges",
+      "CSS 3D scene polish and theme"
+    ],
+    "localEvidence": {
+      "sqlMigrationChain": 35,
+      "frozenMigrations": 35,
+      "targetedNodeTests": 140,
+      "modifiedTsTsxSyntaxFiles": 15,
+      "newMigrationNativePostgres": "NOT_RUN",
+      "fullInstall": "BLOCKED",
+      "fullTypecheckBuild": "NOT_RUN",
+      "browserDevices": "NOT_RUN",
+      "nodeTestFiles": 18,
+      "nodeTestFailures": 0,
+      "testScope": "selected static/source-contract and Node regression tests; not full project tests",
+      "modifiedSourceFiles": 40,
+      "addedSourceFiles": 4,
+      "deletedSourceFiles": 0
+    },
+    "status": "NO_GO",
+    "blockingGatesStillOpen": 11
+  },
+  "a63Specialty": {
+    "sourceBase": "V11.164.89 / A62",
+    "scope": "8 honorary specialist badges, migration 036, routes, 12 Eastern scene placements and 10 contextual guides; does not grant expert/admin/pro privileges",
+    "acceptance": "NO_GO",
+    "nativePostgres": "NOT_RUN",
+    "realDevice": "NOT_RUN"
+  },
+  "a64Merge": {
+    "sources": [
+      {
+        "name": "THIEN_DO_V11_164_90_A63_SOURCE_NO_GO(1).zip",
+        "sha256": "43d11856121752662c46f5779393c0b1d70dd4050f80926d039d53ebfa104a1c"
+      },
+      {
+        "name": "THIEN_DO_A62_RECOVERED_CHECKPOINT_NO_GO.zip",
+        "sha256": "81d402eb224a8345428a5327fa3b97dfaa4137285ac0d4af2b6f4ea432bde38c"
+      }
+    ],
+    "base": "A63; restore independent A62 document draft safeguards",
+    "checkpointSHA256": "22262cb85eac7bde05c029780e404d42928a4ee2839173b12f53f6cbe1d89859",
+    "status": "NO_GO"
+  },
+  "a66Interaction": {
+    "base": "V11.164.92 / A65",
+    "scope": [
+      "coalesce pointer geometry reads",
+      "cancel chart light on pointer cancellation/touch/coarse pointer/blur",
+      "retain in-memory theme when storage reads fail"
+    ],
+    "verification": {
+      "typecheck": "PASS",
+      "isolatedProductionBuild": "PASS",
+      "node": "3110/3110 across353 files PASS",
+      "browser": [
+        {
+          "suite": "pointer",
+          "groups": 12,
+          "exitCode": 0,
+          "seconds": 33.53
+        },
+        {
+          "suite": "theme",
+          "groups": 2,
+          "exitCode": 0,
+          "seconds": 22.75
+        },
+        {
+          "suite": "visual",
+          "groups": 23,
+          "exitCode": 0,
+          "seconds": 110.66
+        },
+        {
+          "suite": "candidate",
+          "groups": 28,
+          "exitCode": 0,
+          "seconds": 135.52
+        },
+        {
+          "suite": "performance",
+          "groups": 2,
+          "exitCode": 0,
+          "seconds": 130.58
+        }
+      ],
+      "performance": "Collector complete; see current measured budgets, no universal acceptance"
+    },
+    "status": "NO_GO"
+  },
+  "historicalA65Verification": {
+    "status": "COMPLETE_WITH_OPEN_GATES",
+    "bundle": "V11.164.92 / A65",
+    "nodeTests": 3110,
+    "nodeFiles": 353,
+    "typecheck": "PASS",
+    "isolatedProductionBuild": "PASS",
+    "browser": [
+      {
+        "suite": "audit",
+        "groups": 3,
+        "seconds": 198.66,
+        "exitCode": 0,
+        "buildRoot": "/tmp/thiendo-isolated-zTcir3"
+      },
+      {
+        "suite": "account",
+        "groups": 89,
+        "seconds": 128.35,
+        "exitCode": 0,
+        "buildRoot": "/tmp/thiendo-isolated-zTcir3"
+      },
+      {
+        "suite": "candidate",
+        "groups": 28,
+        "seconds": 127.36,
+        "exitCode": 0,
+        "buildRoot": "/tmp/thiendo-isolated-zTcir3"
+      },
+      {
+        "suite": "final-targeted",
+        "groups": 3,
+        "seconds": 54.5,
+        "exitCode": 0,
+        "buildRoot": "/tmp/thiendo-isolated-e9gmJT"
+      },
+      {
+        "suite": "final-visual",
+        "groups": 23,
+        "seconds": 81.81,
+        "exitCode": 0,
+        "buildRoot": "/tmp/thiendo-isolated-e9gmJT"
+      },
+      {
+        "suite": "final-performance",
+        "groups": 2,
+        "seconds": 140.35,
+        "exitCode": 0,
+        "buildRoot": "/tmp/thiendo-isolated-e9gmJT"
+      }
+    ],
+    "auditSamples": 96,
+    "finalTargetedSamples": 20,
+    "performance": {
+      "observations": 18,
+      "lcpMinMs": 112,
+      "lcpMaxMs": 4852,
+      "clsMax": 0.007955439814814814,
+      "observationsOver200ms": 11,
+      "largestEvent": {
+        "duration": 1400,
+        "interactionId": 6169,
+        "inputDelayMs": 31.899999999906868,
+        "processingMs": 0.20000000018626451,
+        "presentationMs": 1367.8999999999069
+      },
+      "fontTransferMin": 0,
+      "fontTransferMax": 280228,
+      "populatedMotionCases": 8
+    },
+    "nativeDevices": "NOT_RUN",
+    "nativePostgres": "NOT_RUN",
+    "realProviders": "NOT_RUN"
+  },
+  "localVerification": {
+    "bundle": "V11.164.93 / A66",
+    "status": "NO_GO",
+    "createdUTC": "2026-10-21T17:40:06.448800+00:00",
+    "baseZIP": "THIEN_DO_V11_164_92_A65_FONT_MOTION_SOURCE_NO_GO.zip",
+    "baseSHA256": "0eea651596246fbb3e3e4956500f267ae932b69038779402a3eef53ad9a8e02d",
+    "nodeTests": 3110,
+    "nodeFiles": 353,
+    "typecheck": "PASS",
+    "isolatedProductionBuild": "PASS",
+    "browser": [
+      {
+        "suite": "pointer",
+        "groups": 12,
+        "exitCode": 0,
+        "seconds": 33.53
+      },
+      {
+        "suite": "theme",
+        "groups": 2,
+        "exitCode": 0,
+        "seconds": 22.75
+      },
+      {
+        "suite": "visual",
+        "groups": 23,
+        "exitCode": 0,
+        "seconds": 110.66
+      },
+      {
+        "suite": "candidate",
+        "groups": 28,
+        "exitCode": 0,
+        "seconds": 135.52
+      },
+      {
+        "suite": "performance",
+        "groups": 2,
+        "exitCode": 0,
+        "seconds": 130.58
+      }
+    ],
+    "performance": {
+      "observations": 18,
+      "lcpMinMs": 156,
+      "lcpMaxMs": 1364,
+      "clsMax": 0.007955439814814814,
+      "observationsOver200ms": 9,
+      "largestEvent": {
+        "duration": 480,
+        "interactionId": 8707,
+        "inputDelayMs": 0.6000000005587935,
+        "processingMs": 1,
+        "presentationMs": 478.3999999994412
+      },
+      "populatedMotionCases": 8,
+      "targets": {
+        "lcpMs": 2500,
+        "cls": 0.1,
+        "interactionMs": 200
+      },
+      "scope": "Synthetic Chromium/Linux GPU disabled, not field INP/native device certification"
+    },
+    "earlierWrapperPerformance": {
+      "observations": 18,
+      "observationsOver200ms": 12,
+      "largestEventMs": 952,
+      "lcpMaxMs": 1684,
+      "scope": "Earlier Next custom server wrapper; superseded for standalone acceptance; retained for transparency"
+    },
+    "nativePostgres": "NOT_RUN",
+    "nativeDevices": "NOT_RUN",
+    "realProviders": "NOT_RUN",
+    "openGates": 11,
+    "checkpoint": {
+      "file": "THIEN_DO_A66_INTERACTION_CHECKPOINT_NO_GO.zip",
+      "sha256": "137946301d03e0e7dc90382d554a19777af586779a4f9f5deb98a4747183fc9f",
+      "saveOutcome": "succeeded",
+      "scope": "Core fixes verified, broader regression pending at checkpoint time"
+    }
+  },
+  "currentIterationVerification": {
+    "label": "A83 export download lifecycle consistency; NO-GO; source checks and focused regressions",
+    "sourceBase": "THIEN_DO_V11_164_102_A82_EXPORT_NATAL_RELIABILITY_NO_GO.zip",
+    "scope": [
+      "18 export flows migrated to shared downloadBlobFile helper without payload/schema changes",
+      "Legacy A82 export regression and new A83 retention tests",
+      "GitHub source-integrity checks and protected asset preservation"
+    ],
+    "focusedTests": "A83 new focused tests PASS; browser download E2E not performed",
+    "npmCi": "BLOCKED in prior rounds: registry unavailable; not rerun in this package",
+    "productionBuild": "NOT RUN: dependency environment unavailable",
+    "browserE2E": "NOT RUN",
+    "nativePostgres": "NOT RUN",
+    "realProviders": "NOT RUN",
+    "productionDecision": "NO_GO; all 11 blocking gates remain OPEN",
+    "sourceCheck": "PASS: source TS/TSX parse and relative-import checks; does not replace full build",
+    "staticAudits": "PASS handover, architecture, lockfile, migration, GitHub source preflight"
+  }
+}

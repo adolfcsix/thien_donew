@@ -1,0 +1,66 @@
+[
+  {
+    "id": "astrologer",
+    "name": "Chiêm Tinh Gia",
+    "subject": "Chiêm tinh Tây phương",
+    "symbol": "☉",
+    "tone": "amber",
+    "description": "Nghiên cứu bản đồ sao, hệ nhà, hành tinh và góc hợp"
+  },
+  {
+    "id": "tarot-master",
+    "name": "Bậc Thầy Tarot",
+    "subject": "Tarot",
+    "symbol": "✦",
+    "tone": "violet",
+    "description": "Nghiên cứu biểu tượng 78 lá và hệ trải bài"
+  },
+  {
+    "id": "tu-vi-scholar",
+    "name": "Học Giả Tử Vi",
+    "subject": "Tử Vi Đẩu Số",
+    "symbol": "天",
+    "tone": "jade",
+    "description": "Nghiên cứu cung, sao, Tứ Hóa và các lớp thời vận"
+  },
+  {
+    "id": "iching-master",
+    "name": "Dịch Học Gia",
+    "subject": "Kinh Dịch",
+    "symbol": "☷",
+    "tone": "copper",
+    "description": "Nghiên cứu tượng quẻ, hào và truyền thống Dịch học"
+  },
+  {
+    "id": "feng-shui-master",
+    "name": "Phong Thủy Sư",
+    "subject": "Phong thủy",
+    "symbol": "☯",
+    "tone": "jade",
+    "description": "Nghiên cứu la kinh, phương vị và trường phái phong thủy"
+  },
+  {
+    "id": "bazi-scholar",
+    "name": "Mệnh Lý Gia",
+    "subject": "Bát Tự",
+    "symbol": "干",
+    "tone": "copper",
+    "description": "Nghiên cứu Tứ Trụ, tiết khí và Ngũ Hành"
+  },
+  {
+    "id": "numerology-scholar",
+    "name": "Số Học Gia",
+    "subject": "Thần số học",
+    "symbol": "∞",
+    "tone": "azure",
+    "description": "Nghiên cứu cấu trúc, phép quy đổi và đối chiếu số học"
+  },
+  {
+    "id": "qimen-scholar",
+    "name": "Kỳ Môn Học Giả",
+    "subject": "Kỳ Môn Độn Giáp",
+    "symbol": "門",
+    "tone": "amber",
+    "description": "Nghiên cứu cục, cung, môn và lịch pháp Kỳ Môn"
+  }
+]

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#173F36"/>
+<meta name="color-scheme" content="dark light"/>
+<meta name="description" content="THIÊN ĐỒ V7 — nền tảng lá số Đông Á Ngọc Bích với tài khoản và lưu lá số riêng tư."/>
+<title>THIÊN ĐỒ — Astrology Engine V7</title>
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/account.css">
+</head>
+<body>
+<div class="app" id="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="brand-mark">天</div><div><strong>THIÊN ĐỒ</strong><small>ĐÔNG PHƯƠNG HUYỀN HỌC</small></div></div>
+  <div><div class="navlabel">Thư phòng của bạn</div><nav class="nav" id="navMain"></nav></div>
+  <div><div class="navlabel">Hệ môn nghiên cứu</div><nav class="nav" id="navTools"></nav></div>
+  <div class="side-bottom"><div class="s">✧</div><strong>Minh triết xưa · Công nghệ mới</strong><p>Hai tầng trải nghiệm trên cùng một hệ thống dữ liệu. Trực quan cho người mới, đầy đủ cho người nghiên cứu.</p><button class="ghost-btn" onclick="switchMode()">Chuyển chế độ ↗</button></div>
+</aside>
+<div class="main">
+<header class="topbar"><div class="top-left"><button class="mini-icon drawer-toggle" aria-label="Mở menu" onclick="toggleDrawer()">☰</button><span class="crumb">Thư phòng của bạn <span style="opacity:.5"> / </span> <b id="breadcrumb">Tổng quan</b></span><span style="font-family:Georgia,serif;font-size:17px;letter-spacing:.05em" class="mobile-logo">✦</span></div><div class="top-right"><span style="color:var(--faint);font-size:11px;white-space:nowrap" id="modeLabel">Cách nhìn</span><div class="mode-switch"><button id="basicBtn" class="on" onclick="setMode('basic')">Cơ bản</button><button id="expertBtn" onclick="setMode('expert')">Chuyên sâu</button></div><button class="mini-icon" aria-label="Đổi màu giao diện" title="Đổi sáng tối" onclick="toggleTheme()">◐</button><button type="button" class="avatar" id="accountToggle" title="Đăng nhập / Đăng ký" aria-label="Tài khoản" onclick="openAccount()">T</button></div></header>
+<main class="content" id="view" tabindex="-1"></main>
+</div>
+<nav class="mobile-bottom" aria-label="Điều hướng điện thoại"><button id="bhome" onclick="navigate('home')"><span class="emo">⌂</span>Trang chủ</button><button id="bchart" onclick="navigate('chart')"><span class="emo">▦</span>Lá số</button><button id="bai" onclick="navigate('ai')"><span class="emo">✧</span>AI</button><button id="bmore" onclick="toggleMore()"><span class="emo">☰</span>Thêm</button><button id="mobileAccount" onclick="openAccount()"><span class="emo">◉</span>Tài khoản</button></nav>
+<div class="mobile-more" id="mobileMore"></div>
+</div>
+<script defer src="engine/lunar.js"></script>
+<script defer src="engine/auxiliary.js"></script>
+<script defer src="engine/tuhoa.js"></script>
+<script defer src="engine/cycles.js"></script>
+<script defer src="engine/year-stars.js"></script>
+<script defer src="engine/tuvi.js"></script>
+<script defer src="engine/verify.js"></script>
+<script defer src="assets/state-nav.js"></script>
+<script defer src="assets/chart-ui.js"></script>
+<script defer src="assets/pages.js"></script>
+<script defer src="assets/account.js"></script>
+<script defer src="assets/app.js"></script>
+<div class="account-overlay" id="accountOverlay" hidden role="dialog" aria-modal="true" aria-label="Tài khoản THIÊN ĐỒ" onclick="if(event.target===this)closeAccount()">
+  <section class="account-dialog"><button type="button" class="account-close" onclick="closeAccount()" aria-label="Đóng">×</button>
+  <div id="accountContent"></div><p id="accountNotice" role="status" aria-live="polite"></p></section>
+</div>
+</body></html>

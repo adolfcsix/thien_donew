@@ -1,0 +1,261 @@
+{
+  "edition": "11.147.0",
+  "notice": "Hồ sơ tri thức phục vụ học tập; không tuyên bố engine hoặc tính đúng chuyên môn khi không có chứng cứ.",
+  "records": [
+    {
+      "id": "tu-vi",
+      "name": "Tử Vi Đẩu Số",
+      "focus": "Địa bàn 12 cung, 14 chính tinh và phụ tinh",
+      "studyWorkflow": "Bắt đầu từ Can Chi, ngày giờ sinh, vị trí Mệnh–Thân, cục, chính tinh, rồi đối chiếu tam phương và vận hạn.",
+      "practiceExercise": "So sánh hai cung Mệnh có cùng chính tinh nhưng khác phụ tinh; ghi rõ khác biệt nằm ở đâu.",
+      "boundary": "Chưa xác minh toàn bộ quy tắc an sao theo từng phái; không suy sự kiện đời sống từ một tên sao.",
+      "route": "/chart",
+      "implementation": "tool-present-not-professionally-validated",
+      "reviewStatus": "editorial-draft-not-expert-reviewed",
+      "advancedStudy": {
+        "readingMethod": "Bản mệnh 12 cung, 14 chính tinh, 90 tên phụ/vòng và tứ hóa chỉ được đọc trong đúng lớp an; phối cung không suy trực tiếp biến cố.",
+        "verificationExercise": "Xác định Mệnh–Thân, Cục và vị trí sao; kiểm tam phương tứ chính, lưu Đại hạn–Tiểu hạn theo năm âm lịch.",
+        "remainingGap": "11 sao/4 dị danh, Lưu Thiên Không và phương pháp hạn theo dị bản cần lá số độc lập trước khi thêm.",
+        "expertReviewed": false
+      }
+    },
+    {
+      "id": "bat-tu",
+      "name": "Bát Tự – Tứ Trụ",
+      "focus": "Bốn trụ năm, tháng, ngày, giờ",
+      "studyWorkflow": "Phân biệt Nhật chủ với cả lá số; học thiên can, địa chi, tàng can, thập thần và tiết khí trước khi xét dụng thần hoặc đại vận.",
+      "practiceExercise": "So sánh cách trụ tháng thay đổi sát mốc Lập Xuân, ghi múi giờ và phép xác định tiết khí.",
+      "boundary": "Tiết khí và ranh giới giờ Tý có dị bản; kết luận tài vận hoặc sức khỏe không dựa trên một thần sát.",
+      "route": "/bazi",
+      "implementation": "tool-present-not-professionally-validated",
+      "reviewStatus": "editorial-draft-not-expert-reviewed",
+      "advancedStudy": {
+        "readingMethod": "Luận dụng thần là đánh giá có điều kiện của nhiều phép xét; khác với bảng thiên can, địa chi, tàng can và thập thần đã tính.",
+        "verificationExercise": "Ghi rõ tiết khí xác định tháng, múi giờ giờ sinh và quy ước giờ Tý; so ba phép xét dụng thần mà không tự chọn một.",
+        "remainingGap": "Bảng Jie chuyên sâu mới có các năm 2025–2027; các năm khác không được gán trạng thái đã đối chứng.",
+        "expertReviewed": false
+      }
+    },
+    {
+      "id": "lich-phap",
+      "name": "Lịch pháp Can Chi – tiết khí",
+      "focus": "Hạ tầng lịch âm–dương và giờ địa phương",
+      "studyWorkflow": "Phân biệt ngày dân dụng, ngày âm, tháng nhuận, ngày Julius, múi giờ và hệ 24 tiết khí. Kiểm tra chuyển đổi xuôi–ngược.",
+      "practiceExercise": "Lập bảng 3 mốc gần giao năm âm và 3 mốc gần tiết khí, so lại lịch chuẩn bên ngoài.",
+      "boundary": "Độ chính xác lịch không thể chỉ suy ra từ việc chuyển đổi nội bộ thành công.",
+      "route": "/calendar",
+      "implementation": "tool-present-not-professionally-validated",
+      "reviewStatus": "editorial-draft-not-expert-reviewed",
+      "advancedStudy": {
+        "readingMethod": "Âm lịch, Can Chi và tiết khí là các lớp lịch khác nhau; chuyển âm–dương đúng trong một thuật toán chưa chứng minh độ chuẩn lịch sử.",
+        "verificationExercise": "Kiểm ngày giao tiết, tháng nhuận và sai lệch múi giờ với hai lịch độc lập; thử mốc 23:00 và Tết.",
+        "remainingGap": "Chưa duyệt đủ múi giờ lịch sử và sai số tại ranh tiết khí.",
+        "expertReviewed": false
+      }
+    },
+    {
+      "id": "kinh-dich",
+      "name": "Kinh Dịch – 64 quẻ",
+      "focus": "Bát quái, sáu hào, quẻ chủ và quẻ biến",
+      "studyWorkflow": "Học tám quái, sáu vị trí hào, ý nghĩa quẻ và phương pháp lập quẻ được chọn. Tách văn bản Kinh với lời chú giải đời sau.",
+      "practiceExercise": "Ghi cùng một quẻ nhưng có hai hào động; xem quy tắc đọc quẻ của từng phương pháp khác nhau.",
+      "boundary": "Có tra 64 quẻ và ba đồng xu; công cụ Lục Hào Nạp Giáp/Thế Ứng là môn riêng tại /luc-hao. Chưa triển khai chuyên khảo đủ mọi hào từ.",
+      "route": "/iching",
+      "implementation": "king-wen-64-hexagram-lookup-and-three-coin-structure",
+      "reviewStatus": "editorial-draft-not-expert-reviewed",
+      "advancedStudy": {
+        "readingMethod": "Quẻ chủ, hỗ, biến và các hào động là các loại dữ kiện riêng; văn quẻ cổ không đồng nghĩa với diễn giải hiện đại.",
+        "verificationExercise": "Đối chiếu đúng thứ tự 64 quẻ, 6 hào, ký hiệu âm dương và cách lấy động từ đầu vào; giữ nhật ký khởi quẻ.",
+        "remainingGap": "Hào từ và dị bản dịch chú giải còn cần kiểm chứng/giấy phép sử dụng.",
+        "expertReviewed": false
+      }
+    },
+    {
+      "id": "mai-hoa",
+      "name": "Mai Hoa Dịch Số",
+      "focus": "Tượng số và phương pháp khởi quẻ",
+      "studyWorkflow": "Trình bày quy ước lấy số, thời gian hoặc sự vật để khởi quẻ; tách Thể, Dụng, hỗ quẻ, biến quẻ và ngũ hành sinh khắc.",
+      "practiceExercise": "Với một mốc giờ, ghi rõ cách quy đổi Can Chi, tổng số, dư số và hào động; thử đối chiếu hai dị bản.",
+      "boundary": "Có ba profile năm chi/tháng ngày âm/giờ, hai số giản lược và Hậu Thiên vật tượng/phương vị; hồ sơ Thể/Dụng/hỗ/biến có phản kiểm. Chưa giải quyết mọi dị bản tháng nhuận hoặc ứng kỳ.",
+      "route": "/mai-hoa",
+      "implementation": "lunar-branch-or-two-number-casting-hexagrams-body-use",
+      "reviewStatus": "editorial-draft-not-expert-reviewed",
+      "advancedStudy": {
+        "readingMethod": "Thể–Dụng, quẻ hỗ, quẻ biến là khung phân tích theo trường phái; không dùng một cách lấy quẻ làm quy tắc mọi phái.",
+        "verificationExercise": "Ghi rõ phương pháp khởi, phép lấy dư, giờ lịch, hào động và quy tắc ngũ hành; đối chứng ca phản ví dụ.",
+        "remainingGap": "Chưa thẩm định hết ứng kỳ và tháng nhuận/biên tiết theo từng phép.",
+        "expertReviewed": false
+      }
+    },
+    {
+      "id": "luc-hao",
+      "name": "Lục Hào Nạp Giáp",
+      "focus": "Lục Hào Nạp Giáp, Bát Cung, Thế–Ứng, Nhật/Nguyệt và quan hệ hào động–hào hóa",
+      "studyWorkflow": "Khởi sáu hào 6–9, xác định Bát Cung, Nạp Giáp và Lục Thân; tiếp tục nhập Can Chi ngày và Nguyệt kiến để tra Tuần Không, đồng chi/hợp/xung và đối chiếu ngũ hành theo từng hào. Phân biệt dữ liệu tra tự động và nhập thủ công.",
+      "practiceExercise": "Đặt cùng một quẻ vào hai ngày Can Chi khác nhau, quan sát Tuần Không và Nhật xung; thử chuyển tiết khí để xác nhận mọi nhãn Nguyệt được tạm ẩn.",
+      "boundary": "Có Bát Cung/Nạp Giáp/Thế Ứng, Nhật/Nguyệt và hồ sơ hiện/phục/đa hiện có xác nhận; chưa chọn duy nhất Dụng Thần, xuất phục, cường nhược hoặc ứng kỳ.",
+      "route": "/luc-hao",
+      "implementation": "jing-fang-na-jia-with-utc7-day-branch-and-month-term-review",
+      "reviewStatus": "editorial-draft-not-expert-reviewed",
+      "advancedStudy": {
+        "readingMethod": "Dụng thần phải được xác định theo câu hỏi và quy tắc của phương pháp; không tự suy từ tên hào động.",
+        "verificationExercise": "Đối chứng Thế–Ứng, Nạp Giáp, Nhật–Nguyệt, Phục Thần và đa hiện bằng ví dụ nêu rõ đầu vào và lý do lựa chọn.",
+        "remainingGap": "Còn trường hợp dụng thần đa hiện, phục thần và ứng kỳ chưa chốt theo một bản.",
+        "expertReviewed": false
+      }
+    },
+    {
+      "id": "ha-lac",
+      "name": "Hà Lạc Lý Số",
+      "focus": "Thiên/Địa số từ Can Chi, lập ứng viên Tiên Thiên quẻ/Nguyên Đường/Hậu Thiên theo văn bản có dấu vết; chứng bản quẻ nhập riêng.",
+      "studyWorkflow": "Đối chiếu Can Chi lịch pháp, chọn quy ước nam/nữ, phân biệt số 5 ký cung Tam Nguyên đã có chứng bản, kiểm bảng Nguyên Đường sáu giờ và đổi quái.",
+      "practiceExercise": "So ca Giáp Tý Đinh Mão Canh Thân Canh Thìn với 31/34, Cấu→Trung Phu; thử mệnh số 5 hoặc quẻ thuần để xem engine báo thiếu điều kiện.",
+      "boundary": "V11.145 chỉ dựng quẻ theo quy tắc nguồn; quẻ thuần/tiết chí và tính Tam Nguyên chưa tự động, chưa suy vận hạn/cát hung. 3 ví dụ có văn bản không chứng minh đầy đủ các trường phái.",
+      "route": "/ha-lac",
+      "implementation": "v11.145-minggua-and-yuantang-source-candidate",
+      "reviewStatus": "editorial-draft-not-expert-reviewed",
+      "advancedStudy": {
+        "readingMethod": "Quẻ tiên thiên/hậu thiên, Nguyên Đường và Tam Nguyên là những lớp khác nhau; trạng thái thiếu nguồn phải được giữ nguyên.",
+        "verificationExercise": "Chọn trường phái, kiểm mệnh quẻ theo Can Chi và giờ, ghi điểm cần chọn thủ công khi số 5 hoặc quẻ thuần.",
+        "remainingGap": "Chưa đủ chứng bản độc lập cho quẻ thuần, tiết chí và Tam Nguyên số 5.",
+        "expertReviewed": false
+      }
+    },
+    {
+      "id": "ky-mon",
+      "name": "Kỳ Môn Độn Giáp",
+      "focus": "Cửu cung, tam kỳ lục nghi và bát môn",
+      "studyWorkflow": "Bắt đầu từ tiết khí, âm/dương độn, cục, thiên bàn, địa bàn, cửu tinh, bát môn và bát thần. Luôn ghi rõ cách khởi cục.",
+      "practiceExercise": "Lấy một ngày sát tiết khí và so hai phương pháp phi bàn/chuyển bàn về thứ tự an môn.",
+      "boundary": "Có Chai Bổ–Chuyển Bàn, Môn Bách/Tam Kỳ Nhập Mộ, cặp Can, nguyệt khí và hồ sơ tại Dụng thần; chưa luận tổ hợp tổng thể, ứng kỳ hay kiểm định thiên văn mọi thời điểm.",
+      "route": "/ky-mon",
+      "implementation": "chai-bo-solar-term-base-and-rotating-hour-plate-with-input-guards",
+      "reviewStatus": "editorial-draft-not-expert-reviewed",
+      "advancedStudy": {
+        "readingMethod": "Cửu cung, tinh, môn, thần và các quan hệ nhập mộ phải được đọc theo cục và trường phái cụ thể.",
+        "verificationExercise": "Kiểm tiết khí, âm/dương độn, Chai Bổ/Chuyển Bàn, Môn Bách và Ngũ Hành ở từng cung; đối chiếu bàn mẫu.",
+        "remainingGap": "Chưa có tập ca độc lập đủ mạnh cho ứng kỳ và phối hợp nhiều cấu trúc.",
+        "expertReviewed": false
+      }
+    },
+    {
+      "id": "thai-at",
+      "name": "Thái Ất Thần Số",
+      "focus": "Thuật số lịch đại và bố cục Thái Ất",
+      "studyWorkflow": "Nêu rõ kỳ nguyên, phép tính tích niên và danh mục thần tướng của bản phái trước khi đọc bất kỳ đồ hình nào.",
+      "practiceExercise": "Tra mốc năm 724 và năm 2026, so Âm–Dương cùng cục và kiểm tra hai ô chủ toán cục 39, 50.",
+      "boundary": "Có Tuế kế Âm/Dương, bảng lập thành 72 cục, chủ/khách, bàn cung và nhật ký; Nguyệt/Nhật chỉ có phép cung theo tích kỳ thủ công, Thời kế cần kiểm chứng và chưa lập toàn bàn.",
+      "route": "/thai-at",
+      "implementation": "v11.133-jinjing-annual-72-yang-yin-research",
+      "reviewStatus": "editorial-draft-not-expert-reviewed",
+      "advancedStudy": {
+        "readingMethod": "72 cục, Chủ–Khách, tinh/thần và Tuế–Nguyệt–Nhật–Thời kế không thể gộp thành một phép chung.",
+        "verificationExercise": "Ghi từng bước tích kỳ/cục số và kết quả chủ khách; đối chiếu mẫu bản truyền riêng cho thời kỳ đang xét.",
+        "remainingGap": "Nguyệt/Nhật/Thời kế còn cần chứng bản với đủ quy tắc đầu vào.",
+        "expertReviewed": false
+      }
+    },
+    {
+      "id": "luc-nham",
+      "name": "Đại Lục Nhâm",
+      "focus": "Tứ khóa, tam truyền, thiên tướng",
+      "studyWorkflow": "Học địa bàn–thiên bàn, nguyệt tướng, giờ chiếm, cách lấy Tứ khóa rồi mới tiến đến Tam truyền.",
+      "practiceExercise": "Theo dõi từng bước lập Tứ khóa, không nhảy thẳng từ giờ sinh sang kết luận cát hung.",
+      "boundary": "V11.144 có engine Thiệp Hại/Phản Ngâm tính Tam Truyền theo một truyền bản và 27 ví dụ đối chiếu đã ghi; thống kê 720 ca vẫn lệch 1 nhánh so với số liệu sách, chưa kết luận toàn bộ phép định truyền bản đúng. Ngày Can Chi/Nguyệt Tướng có nhánh cần dữ liệu nhập hoặc đối chứng; không xem kết quả như dự báo thực nghiệm.",
+      "route": "/dai-luc-nham",
+      "implementation": "v11.144-shehai-source-traceable-not-fully-reconciled",
+      "reviewStatus": "editorial-draft-not-expert-reviewed",
+      "advancedStudy": {
+        "readingMethod": "Tứ Khóa, Tam Truyền, Thiên–Địa bàn và Thiên Tướng là những tầng suy tính khác nhau; nhánh Thiệp Hại cần xác định bản.",
+        "verificationExercise": "So ca 720 tổ hợp, 27 ví dụ chép nguồn với khóa truyền và giờ tháng tướng; đánh dấu nơi tổng thống kê lệch.",
+        "remainingGap": "Chưa phân xử một ca chênh lệch thống kê và các nhánh ngoại lệ.",
+        "expertReviewed": false
+      }
+    },
+    {
+      "id": "numerology",
+      "name": "Thần số học hiện đại",
+      "focus": "Chỉ số Pythagoras, dị bản phép rút, trưởng thành và chu kỳ tháng",
+      "studyWorkflow": "Bắt đầu bằng bảng chữ Pythagoras, chuyển tự và quy tắc chữ Y; tiếp tục đối chiếu rút gọn theo phần với tổng chữ số trực tiếp, số trưởng thành và số còn khuyết trong bảng tên. Không tự kết luận vận mệnh.",
+      "practiceExercise": "Chạy cùng tên và ngày sinh qua hai phép rút có vết tính, đối chiếu 12 tháng cá nhân và ghi nhận những trường hợp cùng/khác số chủ.",
+      "boundary": "V11.137 có chỉ số nền, tính nâng cao và đối chiếu nội bộ Pythagoras; chưa có engine Chaldean; chữ Hebrew/gematria thuộc atlas lịch sử riêng, không gán chung một bộ số.",
+      "route": "/numerology",
+      "implementation": "v11.137-pythagorean-advanced-auditable",
+      "reviewStatus": "editorial-draft-not-expert-reviewed",
+      "advancedStudy": {
+        "readingMethod": "Tính chỉ số theo bảng Pythagoras là một truyền thống riêng, không thay thế Chaldean hay gematria.",
+        "verificationExercise": "So tên có dấu/không dấu, chuẩn hóa chữ Y và ngày sinh bằng phép số độc lập; giữ bảng chuyển chữ.",
+        "remainingGap": "Chaldean chưa có engine, các hệ biểu tượng Kabbalah không chuyển thành cùng thuật toán.",
+        "expertReviewed": false
+      }
+    },
+    {
+      "id": "astrology-western",
+      "name": "Chiêm tinh học phương Tây",
+      "focus": "Hoàng đạo, hành tinh, nhà và góc hợp",
+      "studyWorkflow": "Tách vị trí thiên văn của hành tinh khỏi diễn giải biểu tượng; xác định hệ hoàng đạo nhiệt đới/hằng tinh và hệ phân nhà.",
+      "practiceExercise": "Thử thay đổi múi giờ giờ sinh và hệ nhà khi dựng một bản đồ giả định.",
+      "boundary": "Có Natal tropical, địa tâm, Whole Sign với fixture thiên văn; có IANA 2026e và ba mẫu sai số giờ sinh; chưa các hệ nhà khác hoặc kỹ thuật thời gian/đôi.",
+      "route": "/western-astrology",
+      "implementation": "tropical-geocentric-whole-sign-natal",
+      "reviewStatus": "editorial-draft-not-expert-reviewed",
+      "advancedStudy": {
+        "readingMethod": "Natal tropical/Whole Sign và Synastry/Composite phải giữ rõ hệ nhà, tọa độ và cách lấy thời điểm.",
+        "verificationExercise": "So kinh độ hành tinh với thư viện thiên văn độc lập, thử giờ mùa hè, phút sát biên và địa điểm khác bán cầu.",
+        "remainingGap": "Placidus, Davison, transit và nhiều tình huống IANA lịch sử chưa nghiệm thu toàn diện.",
+        "expertReviewed": false
+      }
+    },
+    {
+      "id": "phong-thuy",
+      "name": "Phong thủy lý khí và hình thế",
+      "focus": "Phương hướng, không gian và các trường phái",
+      "studyWorkflow": "Trình bày hệ Bát Trạch, Huyền Không Phi Tinh và hình thế như các phương pháp khác nhau; làm rõ tọa–hướng, năm xây và sơ đồ mặt bằng.",
+      "practiceExercise": "Đặt cùng một sơ đồ trong hai phương pháp rồi liệt kê các tham số mỗi bên cần dùng.",
+      "boundary": "Đã có tra la bàn 24 sơn tọa–hướng, phân khu Bát Trạch, Phi Tinh tam bàn Hạ quái (Vận/Sơn/Hướng tinh) và sao năm theo dữ liệu người dùng nhập. Chưa có Thế quái, mặt bằng theo tỷ lệ thực, đo hướng tự động, phân tích hình thế chuyên gia hoặc thẩm định đầy đủ các trường phái.",
+      "route": "/phong-thuy",
+      "implementation": "24-mountains-bat-trach-nine-palace-and-lower-hexagram-flying-stars",
+      "reviewStatus": "editorial-draft-not-expert-reviewed",
+      "advancedStudy": {
+        "readingMethod": "Tọa–hướng, Bát Trạch, tam bàn Phi Tinh và Đại Quái là các lớp lý thuyết khác nhau; không mặc định một công thức hợp mọi nhà.",
+        "verificationExercise": "Xác nhận góc la bàn 24 sơn, vận bàn theo mốc đổi vận và năm sinh người dùng; dùng sơ đồ mặt bằng đã kiểm đo.",
+        "remainingGap": "Các trường hợp ranh 24 sơn, nhập trung và đo địa hình chưa đối chứng đủ.",
+        "expertReviewed": false
+      }
+    },
+    {
+      "id": "tarot",
+      "name": "Tarot Rider–Waite–Smith",
+      "focus": "Bộ bài 78 lá, 22 Ẩn chính và 56 Ẩn phụ, nghĩa xuôi/ngược và trải một hoặc ba lá",
+      "studyWorkflow": "Đọc nghĩa RWS và lịch sử 1909; tra bảng so sánh tên/số 78 lá của Marseille và Thoth theo khóa lá, kiểm tra sự khác nhau ở Justice–Strength và các court cards trước khi diễn giải.",
+      "practiceExercise": "Chọn cùng mã lá ở ba truyền thống rồi so tên, số và khác biệt hệ minh họa; chỉ dùng engine trải bài với RWS, tránh tự ghép nghĩa sang bộ khác.",
+      "boundary": "Engine trải bài chỉ có RWS; V11.137 thêm atlas đối chiếu Marseille/Thoth đủ 78 mã, không tải ảnh Thoth có bản quyền và không giả định các court cards tương đương.",
+      "route": "/tarot",
+      "implementation": "rws1909-78-library-and-cryptorandom-one-three-reflection",
+      "reviewStatus": "editorial-draft-not-expert-reviewed",
+      "advancedStudy": {
+        "readingMethod": "RWS 78 lá và Marseille/Thoth có hệ biểu tượng riêng; trải bài/đảo chiều phải theo deck và quy tắc người dùng chọn.",
+        "verificationExercise": "Kiểm mapping đủ 78 mã, ngữ cảnh vị trí trải bài, quyền ảnh và cách so sánh lá tương đương giữa deck.",
+        "remainingGap": "Chưa xác nhận quyền ảnh mọi bộ và chuẩn hóa diễn giải mọi trải bài chuyên sâu.",
+        "expertReviewed": false
+      }
+    },
+    {
+      "id": "thiet-ban",
+      "name": "Thiết Bản Thần Số",
+      "focus": "Khảo khắc và sổ chứng bản theo dị bản, dòng truyền bản và phần giờ",
+      "studyWorkflow": "Chọn phép chia giờ; khai báo ấn bản, quyền trích lục, dòng truyền bản và trang; gắn điều văn vào phần giờ theo nguồn; xuất JSON để lưu vết nghiên cứu.",
+      "practiceExercise": "So một phần giờ bằng hai dòng truyền bản độc lập và một cặp sao chép cùng nguồn, ghi mâu thuẫn số điều hoặc dị văn.",
+      "boundary": "Có sổ khảo chứng, phân phần và đối chiếu; chưa có công thức định điều được thẩm định, không xác thực dự báo hoặc cung cấp kho 12.000 điều.",
+      "route": "/thiet-ban",
+      "implementation": "v11.146-critical-source-ledger-time-slot-article-witness-no-determination",
+      "reviewStatus": "editorial-draft-not-expert-reviewed",
+      "advancedStudy": {
+        "readingMethod": "Sổ khảo chứng điều văn không phải thuật toán tự định số điều; không đưa số điều giả lên kết quả.",
+        "verificationExercise": "Gắn mỗi điều với truyền bản, ấn bản, trang và phép chia giờ; đối chiếu hai bản sao độc lập nếu có.",
+        "remainingGap": "Chưa có chứng cứ đầy đủ để tự định số điều Thiết Bản theo quy tắc toán hóa.",
+        "expertReviewed": false
+      }
+    }
+  ]
+}

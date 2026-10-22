@@ -1,0 +1,72 @@
+/* V11.7 – independent, responsive educational reading panel. */
+.palace-reading{margin:22px 0;border:1px solid var(--line-strong);background:var(--panel);color:var(--text);padding:clamp(16px,2.2vw,28px);min-width:0;border-radius:6px}
+.palace-reading-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.palace-reading-head .eyebrow{font-size:10px;color:var(--gold);letter-spacing:.11em}
+.palace-reading-head h3{font-size:clamp(23px,2.6vw,32px);margin:8px 0 4px;font-weight:500}
+.palace-reading-head p{margin:0;color:var(--muted);font-size:13px}
+.palace-reading-level{display:flex;gap:5px;border:1px solid var(--line-strong);padding:4px;border-radius:5px}
+.palace-reading-level button{min-height:39px;min-width:95px;border:0;background:transparent;color:var(--muted);font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;border-radius:3px}
+.palace-reading-level button[aria-pressed=true]{background:var(--gold);color:#172d27}
+.palace-reading-level button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.palace-reading-lead{padding:19px 0 9px;max-width:900px}
+.palace-reading-lead strong{color:var(--gold);font-size:14px}
+.palace-reading-lead p,.palace-reading-body p,.palace-reading-deep p,.palace-reading-deep li{font-size:clamp(13px,1vw,15px);line-height:1.8}
+.palace-reading-reflection{border-left:2px solid var(--gold);padding-left:13px;color:var(--muted)}
+.palace-reading-body{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:14px}
+.palace-reading-body article,.palace-reading-deep article{border:1px solid var(--line);padding:16px;min-width:0;background:var(--panel-alt)}
+.palace-reading h4{font:500 19px var(--font-display);margin:0 0 12px}
+.palace-reading-star{margin:11px 0 0;padding:12px;border:1px solid var(--line);background:var(--panel)}
+.palace-reading-star>div{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.palace-reading-star strong{color:var(--gold);font-size:15px}
+.palace-reading-star span{font-size:11px;color:var(--muted)}
+.palace-reading-star p{margin:7px 0 0}
+.palace-reading-star small,.palace-reading-deep small{display:block;line-height:1.7;color:var(--muted);font-size:12px;margin-top:7px}
+.palace-reading-notice{font-size:12px!important;color:var(--muted)}
+.palace-reading-deep{margin-top:15px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.palace-reading-links{display:grid;gap:8px}.palace-reading-links>div{display:grid;gap:4px;padding:11px;background:var(--panel);border:1px solid var(--line)}
+.palace-reading-links span{font-size:12px;color:var(--muted)}.palace-reading-links strong{font-size:14px;font-weight:550}
+.palace-reading-deep ol{padding-left:19px}
+@media(max-width:730px){.palace-reading-body,.palace-reading-deep{grid-template-columns:1fr}.palace-reading-level{width:100%}.palace-reading-level button{flex:1}}
+
+/* V11.8: dense, collapsible reading records; never scale the 12-palace chart. */
+.palace-reading-quick{display:grid;gap:10px;margin:12px 0}
+.palace-reading-quick>div{border-left:2px solid var(--gold);padding:4px 0 4px 12px;background:var(--panel)}
+.palace-reading-quick strong{font-size:14px;color:var(--gold)}
+.palace-reading-quick p{margin:4px 0;font-size:14px;line-height:1.6}
+.palace-reading-quick small{font-size:12px;color:var(--muted)}
+.palace-reading-editorial{min-width:0}
+.palace-reading-symbol{border-bottom:1px solid var(--line);padding:0 0 4px}
+.palace-reading-symbol summary{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:3px 12px;cursor:pointer;padding:12px 2px;list-style:none}
+.palace-reading-symbol summary::-webkit-details-marker{display:none}
+.palace-reading-symbol summary:after{content:'+';color:var(--gold);font-size:17px}
+.palace-reading-symbol[open] summary:after{content:'−'}
+.palace-reading-symbol summary strong{font-size:14px;color:var(--gold)}
+.palace-reading-symbol summary span{font-size:12px;color:var(--muted);flex:1}
+.palace-reading-symbol summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.palace-reading-symbol>p,.palace-reading-symbol>small{margin:2px 0 10px;line-height:1.7;overflow-wrap:anywhere}
+.palace-reading-combination{padding:12px 0;border-bottom:1px solid var(--line)}
+.palace-reading-combination h5,.palace-reading-cycle h5{font-size:15px;color:var(--gold);margin:0 0 6px}
+.palace-reading-combination p{margin:5px 0}
+.palace-reading-cycle{padding:12px 0;border-bottom:1px solid var(--line)}
+@media(max-width:730px){.palace-reading-symbol summary span{flex-basis:100%}}
+
+/* V11.9: evidential inter-palace configurations, only in deep reading. */
+.palace-reading-scope{color:var(--muted);font-size:13px!important;margin:0 0 12px}
+.palace-reading-evidence{padding-left:20px;margin:11px 0;display:grid;gap:5px}
+.palace-reading-evidence li{overflow-wrap:anywhere;font-size:13px!important;line-height:1.6!important}
+.palace-reading-evidence strong{color:var(--gold)}
+
+/* V11.10: evidence-led classical star-family overview; never a fortune-score badge. */
+.palace-reading-classical .palace-reading-label{display:block;color:var(--gold);margin-top:12px;font-size:13px}
+.palace-reading-classical .palace-reading-symbol>p{overflow-wrap:anywhere}
+.palace-reading-review{margin:12px 0;padding:12px;border-left:2px solid var(--gold);background:var(--panel)}
+.palace-reading-review>strong{font-size:13px;color:var(--gold)}
+.palace-reading-review ul{margin:7px 0;padding-left:20px}
+.palace-reading-review li{font-size:13px;line-height:1.6}
+
+/* V11.31: actual natal evidence linked to the 14×12 editorial context library. */
+.palace-reading-primary-context{grid-column:1/-1}
+.palace-reading-primary-context .palace-reading-symbol{padding:0 4px 7px}
+.palace-reading-primary-context .palace-reading-symbol>p{max-width:920px}
+.palace-reading-primary-context .palace-reading-review ul{margin:8px 0 0;padding-left:22px}
+.palace-reading-primary-context .palace-reading-review li{overflow-wrap:anywhere}

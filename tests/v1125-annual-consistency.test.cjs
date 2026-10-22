@@ -1,0 +1,10 @@
+'use strict';
+const {test}=require('node:test');const assert=require('node:assert/strict');
+const {inspectAnnualItems,auditAnnualConsistency}=require('../packages/star-audit/src/annual-consistency.cjs');
+const chart={houses:[{branchIndex:0,palace:'Mệnh'}]};
+const sample=(items)=>({luuStars:{items}});
+const valid={name:'Lưu A',branch:0,palace:'Mệnh',ruleSet:'test'};
+test('annual item structural checks accept well-formed sample',()=>{assert.deepEqual(inspectAnnualItems(chart,sample([valid]),2026).issues,[])});
+test('annual check rejects duplicate star names after normalization',()=>{const r=inspectAnnualItems(chart,sample([valid,{...valid,name:'  lưu a  '}]),2026);assert.ok(r.issues.some(x=>x.includes('duplicated')))});
+test('annual check rejects branch/palace mismatch and missing ruleSet',()=>{const r=inspectAnnualItems(chart,sample([{...valid,palace:'Quan Lộc',ruleSet:''}]),2026);assert.ok(r.issues.some(x=>x.includes('palace mismatch')));assert.ok(r.issues.some(x=>x.includes('missing ruleSet')))});
+test('22 baseline natal charts keep invariant annual star identities across 4 years',()=>{const r=auditAnnualConsistency();assert.equal(r.cases,22);assert.ok(r.checks>=70&&r.checks<=88);assert.deepEqual(r.issues,[])});

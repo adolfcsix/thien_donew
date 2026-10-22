@@ -1,0 +1,54 @@
+.root{max-width:1180px;margin:auto;background:transparent;color:var(--text);border-radius:24px;padding:clamp(14px,3vw,36px)}.hero{padding:clamp(20px,4vw,48px);border:1px solid #62577d;border-radius:20px;background:radial-gradient(ellipse at top right,#423665,#15203a 65%)}.hero>span,.panel>span{font-size:12px;letter-spacing:.17em;color:#d8bd87}.hero h1{font-family:var(--font-serif);font-size:clamp(32px,5vw,58px);font-weight:400;line-height:1.15;margin:20px 0}.hero p{max-width:740px;line-height:1.8}.hero b{display:inline-block;font-size:13px;color:#e8d09f;padding:10px 14px;border:1px solid #8d7b54;border-radius:30px}.layout{display:grid;grid-template-columns:1.15fr 1fr;gap:18px}.panel{border:1px solid var(--line-strong);padding:clamp(18px,3vw,30px);border-radius:16px;background:var(--panel);margin-top:18px;line-height:1.8}.panel h2{font-family:var(--font-serif);font-weight:400;font-size:27px;color:var(--gold)}.panel h3{color:var(--gold)}.panel svg{display:block;max-width:500px;width:100%;margin:auto}.signs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.signs button{background:var(--panel-alt);color:var(--text);border:1px solid #686080;padding:10px 5px;font:inherit;font-size:12px;border-radius:8px;cursor:pointer}.signs button[aria-pressed=true]{background:#4c3e70;border-color:#c5a66e;color:#ffe7b4}.panel dt{font-weight:bold;color:var(--gold)}.panel dd{margin:0 0 15px}.bodies{display:flex;flex-wrap:wrap;gap:10px}.bodies span{border:1px solid #72678e;padding:10px 16px;border-radius:30px}.panel li{margin-bottom:13px}.panel a{color:var(--gold);text-decoration:underline}.root :focus-visible{outline:3px solid #e0b962;outline-offset:3px}@media(max-width:760px){.layout{grid-template-columns:1fr}.root{border-radius:12px}.signs{grid-template-columns:repeat(2,1fr)}}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.form label{display:grid;gap:7px;font-size:14px}.form input,.form select{width:100%;min-width:0;padding:12px;border:1px solid var(--line-strong);border-radius:9px;background:var(--panel-alt);color:var(--text);font:inherit}.form .confirm{grid-column:1/-1;display:flex;align-items:flex-start;gap:12px}.confirm input{width:20px;height:20px;flex-shrink:0;margin-top:6px}.form button,.export{padding:13px 20px;border:1px solid #c1a36d;background:var(--gold);color:var(--panel);border-radius:10px;font:inherit;cursor:pointer}.form button:disabled{opacity:.5}.table{overflow:auto}.table table{border-collapse:collapse;min-width:630px;width:100%;font-size:14px}.table th,.table td{text-align:left;border-bottom:1px solid #514c68;padding:12px;vertical-align:top}.panel summary{cursor:pointer;color:var(--gold)}.layout>div{min-width:0}@media(max-width:760px){.form{grid-template-columns:1fr}}
+
+.form>div{grid-column:1/-1;min-width:0}.form select{max-width:100%}
+
+.root{--font-serif:var(--font-display)}.hero{min-height:0;padding:clamp(22px,3vw,36px)}.hero h1{margin:14px 0;font-size:clamp(32px,4vw,48px)}.hero p{font-size:14px}.panel svg{height:auto}.table{max-width:100%;overscroll-behavior-inline:contain}@media(max-width:1200px){.layout{grid-template-columns:minmax(0,1fr)}}@media(max-width:680px){.root{padding:12px}.hero{padding:22px 16px}.panel{padding:18px 14px}.form input,.form select{font-size:16px}.form{gap:14px}}
+
+.hero{color:#f4ecdc}.hero b{color:#f4dbab}.hero>span{color:#e0c390}.panel dt{color:var(--gold)}
+
+/* A28 — Natal chart: responsive plotting, independent of longitude calculations. */
+.root{max-width:1480px;width:100%;min-width:0;box-sizing:border-box;margin:0 auto;overflow-wrap:anywhere}
+.root *, .root *::before, .root *::after{box-sizing:border-box}
+.panel{min-width:0;overflow-wrap:anywhere}
+.chartLayout{display:grid;grid-template-columns:minmax(0,1.28fr) minmax(260px,.72fr);gap:clamp(14px,2.5vw,32px);align-items:start}
+.chartLayout>div{min-width:0}
+.natalWheel{--astro-core:color-mix(in srgb,var(--panel) 94%,var(--gold) 6%);--astro-edge:var(--panel-alt);width:100%;min-width:0}
+.natalWheel svg{width:100%;max-width:660px;height:auto;margin:0 auto;overflow:visible;touch-action:manipulation}
+.wheelRim{stroke:var(--gold);stroke-width:2;filter:drop-shadow(0 3px 10px color-mix(in srgb,var(--gold) 25%,transparent))}
+.wheelRing{stroke:color-mix(in srgb,var(--text) 40%,transparent);stroke-width:1}
+.zodiacDivision{stroke:color-mix(in srgb,var(--gold) 57%,transparent);stroke-width:1.2}
+.zodiacGlyph{fill:var(--gold);font-size:19px;font-weight:600}
+.houseBoundary{stroke:var(--gold);stroke-width:1.6}
+.houseNumber{fill:var(--text);font-size:10px;font-weight:600}
+.softAspect{stroke:var(--astro-soft,#5793aa);stroke-width:1.5}
+.tenseAspect{stroke:var(--astro-tense,#cc6587);stroke-width:1.5}
+.planetLeader,.planetTick{stroke:var(--text);stroke-width:1;opacity:.72;pointer-events:none}
+.planetDisc{fill:var(--panel);stroke:var(--gold);stroke-width:1.1}
+.planetActive{fill:color-mix(in srgb,var(--gold) 30%,var(--panel));stroke:var(--gold);stroke-width:2}
+.planetGlyph{fill:var(--text);font-size:20px;font-weight:600;pointer-events:none}
+.planetTarget{cursor:pointer;outline:none}
+.planetTarget:focus-visible .planetDisc,.planetTarget:focus-visible .planetActive{stroke:var(--gold);stroke-width:4}
+.wheelCore{fill:var(--panel);stroke:var(--gold);stroke-width:1;opacity:.96}
+.wheelEyebrow{font-size:9px;letter-spacing:1px;fill:var(--gold);font-weight:700}
+.wheelCenter{font-size:15px;letter-spacing:.7px;fill:var(--text);font-weight:700}
+.wheelSub,.wheelCount{font-size:9px;fill:var(--text);opacity:.9}
+.axisCaption{font-size:11px;fill:var(--gold);font-weight:700}
+.mcMark{fill:var(--gold);stroke:var(--panel);stroke-width:2}
+.chartLegend{display:flex;gap:6px 16px;flex-wrap:wrap;justify-content:center;font-size:11px;color:var(--text);opacity:.82;margin:8px auto 14px}
+.wheelFootnote{font-size:12px;max-width:660px;margin:10px auto;opacity:.84}
+.planetInspector{border:1px solid var(--line-strong);background:var(--panel-alt);border-radius:20px;padding:clamp(16px,2vw,28px);min-width:0;position:sticky;top:20px}
+.inspectorLabel{font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.13em}
+.planetInspector h3{font-family:var(--font-display,serif);font-size:clamp(23px,2.8vw,40px);margin:8px 0 18px}
+.hero a{display:inline-block;max-width:100%;overflow-wrap:anywhere}
+@media(max-width:1080px){.chartLayout{grid-template-columns:minmax(0,1fr)}.planetInspector{position:static}}
+@media(max-width:620px){.root{padding:12px}.natalWheel svg{max-width:100%}.planetGlyph{font-size:22px}.chartLegend{justify-content:flex-start}.hero h1{overflow-wrap:normal}}
+@media(prefers-reduced-motion:reduce){.natalWheel svg *{transition:none!important;animation:none!important}}
+
+/* Precision plotting refinement. */
+.wheelRim{filter:none;stroke-width:1.3}.wheelCore{fill:none;stroke:none}.softAspect,.tenseAspect{stroke-width:1.6}.planetLeader{stroke-dasharray:2 2;opacity:.6;stroke-width:.8}.wheelRing{stroke:color-mix(in srgb,var(--text) 38%,transparent)}.chartLegend button{font:inherit;padding:8px 12px;border:1px solid var(--line-strong);border-radius:8px;background:var(--panel);color:var(--text);cursor:pointer}.chartLegend button[aria-pressed=true]{border-color:var(--gold);box-shadow:inset 0 -2px var(--gold)}
+/* A61 — Intricate, deliberately non-computational CSS 3D sky; readable on both themes. */
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.heroScene{position:absolute;right:clamp(10px,3vw,30px);top:50%;width:min(33%,330px);transform:translateY(-50%);z-index:0}
+.hero>:not(.heroScene){position:relative;z-index:1;max-width:65%}
+@media(max-width:760px){.heroScene{position:relative;top:auto;right:auto;transform:none;width:min(100%,270px);margin:0 auto 14px}.hero>:not(.heroScene){max-width:100%}}

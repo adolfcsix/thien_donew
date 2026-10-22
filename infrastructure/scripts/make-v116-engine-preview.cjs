@@ -1,0 +1,18 @@
+'use strict';
+const fs=require('node:fs');
+const path=require('node:path');
+const root=path.resolve(__dirname,'../..');
+const E=require(path.join(root,'packages/astrology-engine/src/tuvi.js'));
+const {renderChartSvg}=require(path.join(root,'packages/chart-export/src/index.cjs'));
+const input={date:'2026-10-10',calendar:'solar',hour:12,minute:30,gender:'Nam',leap:false};
+const result=E.calculate(input);
+const annual=E.annualOverview(result,2026);
+const svg=renderChartSvg(result,'Lá số mẫu — Nam 10/10/2026 · 12:30',annual);
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const list=items=>items.map(v=>`<li><strong>${esc(v.name)}</strong><span>${esc(result.houses[v.branch].branch)} · ${esc(result.houses[v.branch].palace)}</span></li>`).join('');
+const markers=result.obstructionMarkers.map(m=>`<li><strong>${esc(m.name)}</strong><span>${m.branches.map(i=>esc(result.houses[i].branch)).join(' – ')}</span></li>`).join('');
+const annualEntries=annual.luuStars.items.map(v=>`<li><strong>${esc(v.name)}</strong><span>${esc(result.houses[v.branch].branch)} · ${esc(v.palace)}</span></li>`).join('');
+const html=`<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>THIÊN ĐỒ V11.6 — Mẫu an sao</title><style>body{margin:0;background:#112b23;color:#f3ebda;font:15px/1.65 system-ui,'Segoe UI',sans-serif}.wrap{max-width:1520px;margin:auto;padding:27px}.head{border-bottom:1px solid #a9936466;padding-bottom:16px;margin-bottom:18px}h1{font-size:27px;color:#e2bb82;margin:0}p{color:#b9c9bf}.grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:19px}.chart{overflow:auto;border:2px solid #b69760;background:#f6f0e1;padding:14px}.chart svg{width:100%;height:auto;display:block;min-width:530px}.side{display:grid;gap:15px;align-content:start}section{border:1px solid #7a937a66;padding:16px;background:#18372e;border-radius:8px}h2{font-size:16px;margin:0 0 12px;color:#e0bf88}ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}li{display:flex;justify-content:space-between;gap:6px;padding:4px 0;border-bottom:1px solid #ffffff14}li strong{color:#e5e5cc}li span{color:#c0d0c6;text-align:right}.note{margin-top:17px;font-size:12px;color:#a3b8ac}@media(max-width:1000px){.grid{grid-template-columns:1fr}.side{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.side{grid-template-columns:1fr}.wrap{padding:12px}}</style></head><body><div class="wrap"><header class="head"><h1>THIÊN ĐỒ V11.6 · Mệnh bàn an sao mở rộng</h1><p>Ví dụ tính từ engine: Nam · 10/10/2026 · 12:30 · Dương lịch. Bản xem trước dữ liệu, không phải ứng dụng Next.js.</p></header><div class="grid"><div class="chart">${svg}</div><aside class="side"><section><h2>4 sao an mở rộng</h2><ul>${list(result.advancedStars)}</ul></section><section><h2>Tuần / Triệt (dấu cặp cung)</h2><ul>${markers}</ul></section><section><h2>8 sao lưu · ${annual.canChi}</h2><ul>${annualEntries}</ul></section><section><h2>Trạng thái vận hạn</h2><p>Đại hạn: ${annual.activeDaiHan?.palace||'—'} · Tiểu hạn: ${annual.tieuHan.palace} (${annual.tieuHan.branch}).</p><p>Chưa đủ Lưu niên / Lưu nguyệt / Lưu nhật / Lưu thời; không suy luận biến cố từ bảng an sao.</p></section></aside></div><div class="note">Quy tắc V11.6 đã chọn một dị bản; vị trí một số sao có thể khác giữa các trường phái. Xem docs/reference/advanced-stars-and-periods.md.</div></div></body></html>`;
+const dest=path.join(root,'previews/v116-engine-star-coverage.html');
+fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,html,'utf8');
+console.log(dest);

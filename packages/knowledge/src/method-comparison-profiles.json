@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "1.0.0",
+  "edition": "V11.39",
+  "researchOnly": true,
+  "autoPlacement": false,
+  "expertReviewed": false,
+  "note": "Tất cả bảng này là ví dụ phương pháp nghiên cứu, chưa đủ điều kiện tích hợp bộ máy an sao.",
+  "stems": [
+    "Giáp",
+    "Ất",
+    "Bính",
+    "Đinh",
+    "Mậu",
+    "Kỷ",
+    "Canh",
+    "Tân",
+    "Nhâm",
+    "Quý"
+  ],
+  "branches": [
+    "Tý",
+    "Sửu",
+    "Dần",
+    "Mão",
+    "Thìn",
+    "Tỵ",
+    "Ngọ",
+    "Mùi",
+    "Thân",
+    "Dậu",
+    "Tuất",
+    "Hợi"
+  ],
+  "profiles": [
+    {
+      "id": "luu-nien-van-tinh-natal-stem",
+      "name": "Lưu Niên Văn Tinh",
+      "system": "tu-vi-vietnamese-reference",
+      "inputAxis": "natal-year-stem",
+      "inputLabel": "Thiên can năm sinh",
+      "recordId": "study-luu-nien-van-tinh",
+      "ruleKind": "lookup",
+      "lookup": {
+        "Giáp": "Tỵ",
+        "Ất": "Ngọ",
+        "Bính": "Thân",
+        "Đinh": "Dậu",
+        "Mậu": "Thân",
+        "Kỷ": "Dậu",
+        "Canh": "Hợi",
+        "Tân": "Tý",
+        "Nhâm": "Dần",
+        "Quý": "Mão"
+      },
+      "methodStatus": "editorial-reference-unverified",
+      "sourceNotes": "Bảng tham khảo một dị bản Tử Vi Việt Nam; chưa khẳng định giống mọi trường phái.",
+      "sources": [
+        "https://thienco.vn/luu-nien-van-tinh-trong-tu-vi.html",
+        "https://tuvicaimenh.com/sao-luu-nien-van-tinh"
+      ],
+      "warning": "Tên có chữ Lưu Niên không có nghĩa sao được an lại theo năm đang xem."
+    },
+    {
+      "id": "hong-diem-bazi-day-stem",
+      "name": "Hồng Diễm",
+      "system": "bat-tu-tu-tru-reference",
+      "inputAxis": "day-stem",
+      "inputLabel": "Thiên can ngày sinh",
+      "recordId": "study-hong-diem",
+      "ruleKind": "lookup",
+      "lookup": {
+        "Giáp": "Ngọ",
+        "Ất": "Ngọ",
+        "Bính": "Dần",
+        "Đinh": "Mùi",
+        "Mậu": "Thìn",
+        "Kỷ": "Thìn",
+        "Canh": "Tuất",
+        "Tân": "Dậu",
+        "Nhâm": "Tý",
+        "Quý": "Thân"
+      },
+      "methodStatus": "editorial-reference-unverified",
+      "sourceNotes": "Bảng tra tham khảo Tứ Trụ theo can ngày; một số sách có dị bản, không chuyển sang nguyên bàn Tử Vi.",
+      "sources": [
+        "https://thayungkhiem.vn/than-sat-hong-diem",
+        "https://bazifu.net/hong-diem/"
+      ],
+      "warning": "Không áp dụng bảng Bát Tự theo can ngày vào engine Tử Vi dùng can năm sinh."
+    },
+    {
+      "id": "quan-sach-sui-qian-branch",
+      "name": "Quán Sách",
+      "system": "tue-tien-12-reference",
+      "inputAxis": "reference-year-branch",
+      "inputLabel": "Địa chi năm tham chiếu",
+      "recordId": "study-quan-sach",
+      "ruleKind": "cycle-offset",
+      "offset": 3,
+      "lookup": {
+        "Tý": "Mão",
+        "Sửu": "Thìn",
+        "Dần": "Tỵ",
+        "Mão": "Ngọ",
+        "Thìn": "Mùi",
+        "Tỵ": "Thân",
+        "Ngọ": "Dậu",
+        "Mùi": "Tuất",
+        "Thân": "Hợi",
+        "Dậu": "Tý",
+        "Tuất": "Sửu",
+        "Hợi": "Dần"
+      },
+      "methodStatus": "editorial-reference-unverified",
+      "sourceNotes": "Trong danh mục 歲前十二神, 貫索 đứng thứ tư tính từ 歲建; chỉ là phương pháp vị trí tham khảo.",
+      "sources": [
+        "https://www.lnka.tw/amp/article/ziwei-JjwFqb.html",
+        "https://shunshi.ai/en/wiki/ziwei/zayao/suiqian-12"
+      ],
+      "warning": "Phải chọn rõ chi năm sinh hay chi lưu niên theo hệ nghiên cứu, không tự gộp với Quan Phù hoặc Quan Phủ."
+    }
+  ],
+  "deferredMethods": [
+    {
+      "id": "hong-diem-tuvi-natal-stem",
+      "name": "Hồng Diễm",
+      "system": "tu-vi-natal",
+      "inputAxis": "natal-year-stem",
+      "reason": "Có mô tả an theo can năm sinh, nhưng chưa đủ bảng tra 10 can đã đối chiếu độc lập. Không sử dụng bảng can ngày của Bát Tự.",
+      "sources": [
+        "https://thayungkhiem.vn/tu-dien/sao-hong-diem"
+      ]
+    }
+  ]
+}

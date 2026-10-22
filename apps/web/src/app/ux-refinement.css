@@ -1,0 +1,245 @@
+/* THIÊN ĐỒ · Ngọc Bích UX refinement: progressive CSS, no animation dependency. */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 270px;
+  z-index: 110;
+  padding: 12px 18px;
+  background: var(--gold);
+  color: #14231b;
+  font-weight: 700;
+  border-radius: 8px;
+  transform: translateY(-150%);
+}
+.skip-link:focus-visible { transform: translateY(0); }
+
+.nav-item { min-height: 44px; }
+.nav-item:focus-visible { outline: 2px solid #e3bf86; outline-offset: 2px; }
+.sidebar { scrollbar-width: thin; overflow-y: auto; }
+
+.quick-search-trigger {
+  min-height: 36px;
+  min-width: 155px;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  padding: 0 10px;
+  border: 1px solid var(--line-strong);
+  color: var(--muted);
+  background: var(--panel);
+  border-radius: 9px;
+  font-size: 11px;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.quick-search-trigger:hover, .quick-search-trigger:focus-visible {
+  background: var(--panel-alt);
+  border-color: var(--gold);
+  color: var(--text);
+}
+.quick-search-trigger > span:first-child { color: var(--gold); font-size: 21px; line-height: 1; }
+.quick-search-trigger kbd {
+  margin-left: auto;
+  border: 1px solid var(--line);
+  padding: 3px 5px;
+  font: inherit;
+  font-size: 9px;
+  border-radius: 4px;
+  color: var(--faint);
+}
+
+.entry-paths {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 26px;
+}
+.entry-path {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+  padding: clamp(20px, 3vw, 32px);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(116deg, var(--panel), var(--panel-alt));
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.entry-path:before {
+  content: '✦';
+  position: absolute;
+  right: 22px;
+  top: 11px;
+  font-size: 68px;
+  color: var(--gold);
+  opacity: .10;
+  pointer-events: none;
+}
+.entry-path:hover, .entry-path:focus-visible {
+  border-color: var(--line-strong);
+  box-shadow: 0 15px 40px rgba(0,0,0,.12);
+  transform: translateY(-3px);
+}
+.entry-path strong { font-size: clamp(22px, 2.3vw, 29px); font-weight: normal; }
+.entry-path > span:not(.eyebrow):not(.path-arrow) { color: var(--muted); font-size: 12px; line-height: 1.7; }
+.entry-path .path-arrow { color: var(--gold); margin-top: 7px; font-weight: 650; font-size: 11px; }
+
+.feature-card { border-radius: 7px; }
+.feature-card:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.feature-card:active, .btn:active { transform: scale(.985); }
+.btn, .icon-button, .avatar-button, .mode-switch button { min-height: 36px; }
+
+/* The search overlay sits above mobile tab navigation and account dialogs. */
+.command-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 85;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: min(12vh, 112px) 18px 20px;
+  background: rgba(5,14,11,.78);
+  backdrop-filter: blur(10px);
+}
+.command-panel {
+  width: min(600px, 100%);
+  max-height: min(78vh, 700px);
+  display: flex;
+  flex-direction: column;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: 15px;
+  box-shadow: 0 28px 110px rgba(0,0,0,.40);
+  overflow: hidden;
+  animation: command-in .19s ease both;
+}
+.command-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+}
+.command-head > span { color: var(--gold); font-size: 28px; line-height: 1; }
+.command-head input {
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+  padding: 4px 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font-size: clamp(13px, 2vw, 16px);
+}
+.command-head input::placeholder { color: var(--faint); opacity: 1; }
+.command-head input:focus-visible { outline: none; }
+.command-head:focus-within { box-shadow: inset 0 -2px var(--gold); }
+.command-close {
+  flex-shrink: 0;
+  border: 1px solid var(--line-strong);
+  color: var(--muted);
+  background: var(--panel-alt);
+  border-radius: 5px;
+  padding: 6px 8px;
+  font-size: 10px;
+}
+.command-results { display: grid; gap: 3px; overflow-y: auto; padding: 11px; scrollbar-width: thin; }
+.command-option {
+  border: 1px solid transparent;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 61px;
+  padding: 10px 14px;
+  text-align: left;
+  color: var(--text);
+  background: transparent;
+}
+.command-option:hover, .command-option.selected, .command-option:focus-visible {
+  background: var(--panel-alt);
+  border-color: var(--line-strong);
+}
+.command-symbol {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font: 22px var(--font-display);
+}
+.command-option > span:nth-child(2) { display: grid; gap: 4px; }
+.command-option strong { font-size: 13px; font-weight: 600; }
+.command-option small { color: var(--muted); font-size: 10px; }
+.command-arrow { margin-left: auto; color: var(--gold); }
+.command-empty { padding: 28px 16px; color: var(--muted); line-height: 1.7; }
+.command-footer {
+  border-top: 1px solid var(--line);
+  padding: 12px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  color: var(--faint);
+  font-size: 10px;
+}
+@keyframes command-in { from { opacity: 0; transform: translateY(-12px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+/* Full theme fidelity: the old hero and lower navigation were hard-coded dark. */
+.site.light .hero {
+  background: radial-gradient(circle at 74% 48%,rgba(197,161,106,.18), transparent 50%), linear-gradient(126deg,#f8f0e3,#e6dfcc);
+}
+.site.light .celestial-core { background: radial-gradient(circle, #e5d9bd, #f2e9d5); }
+.site.light .feature-card { background: linear-gradient(160deg,var(--panel),var(--panel-alt)); }
+.site.light .sidebar { box-shadow: 5px 0 25px rgba(17,25,22,.07); }
+.site.light .bottom-nav { background: #f6f0e4; border-top-color: var(--line-strong); }
+.site.light .bottom-nav a, .site.light .bottom-nav button { color: #435c4f; }
+.site.light .bottom-nav a.active { color: #8b6126; }
+.site.light .command-backdrop { background: rgba(22,38,29,.45); }
+
+@media (max-width: 970px) {
+  .skip-link { left: 15px; }
+  .sidebar { visibility: hidden; transition: transform .2s ease, visibility .2s ease; }
+  .sidebar.show { visibility: visible; }
+}
+@media (max-width: 800px) {
+  .quick-search-trigger { min-width: 37px; width: 37px; justify-content: center; padding: 0; }
+  .quick-search-label, .quick-search-trigger kbd { display: none; }
+}
+@media (max-width: 680px) {
+  .entry-paths { grid-template-columns: 1fr; gap: 10px; margin-top: 15px; }
+  .entry-path { padding: 19px 22px; gap: 7px; }
+  .entry-path strong { font-size: 23px; }
+  .feature-card p { font-size: 12px; line-height: 1.55; }
+  .feature-card { min-height: 245px; }
+  .bottom-nav { height: calc(65px + env(safe-area-inset-bottom)); padding-bottom: env(safe-area-inset-bottom); }
+  .bottom-nav a, .bottom-nav button { min-height: 43px; }
+  .command-backdrop { padding: max(20px, env(safe-area-inset-top)) 10px 10px; }
+  .command-panel { max-height: min(85vh, 720px); }
+  .command-head { padding: 12px 13px; }
+  .command-footer { padding: 12px; gap: 12px; }
+  .main-content { padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 370px) {
+  .feature-grid { grid-template-columns: repeat(1, minmax(0,1fr)); }
+  .feature-card { min-height: 190px; }
+  .theme-button { display: grid !important; }
+  .crumb { font-size: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .command-panel { animation: none; }
+  .entry-path, .feature-card, .btn { transition: none; }
+  .entry-path:hover, .entry-path:focus-visible, .feature-card:hover, .btn:hover { transform: none; }
+}
+/* Never let long route titles push the mobile toolbar outside the viewport. */
+.topbar-name { min-width: 0; }
+.crumb { display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.toolbar { flex-shrink: 0; }
+@media (max-width: 370px) { .crumb { display: none; } }

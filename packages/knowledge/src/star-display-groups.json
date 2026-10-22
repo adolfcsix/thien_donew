@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "1.0.0",
+  "scope": "presentation-only",
+  "notice": "Nhóm màu đọc nhanh, không chứng minh cát hung hoặc thuật toán an sao. Không suy đoán tính chất các sao chưa được chỉ định.",
+  "main": [
+    "Tử Vi",
+    "Thiên Cơ",
+    "Thái Dương",
+    "Vũ Khúc",
+    "Thiên Đồng",
+    "Liêm Trinh",
+    "Thiên Phủ",
+    "Thái Âm",
+    "Tham Lang",
+    "Cự Môn",
+    "Thiên Tướng",
+    "Thiên Lương",
+    "Thất Sát",
+    "Phá Quân"
+  ],
+  "support": [
+    "Lộc Tồn",
+    "Tả Phụ",
+    "Hữu Bật",
+    "Văn Xương",
+    "Văn Khúc",
+    "Thiên Khôi",
+    "Thiên Việt",
+    "Thiên Đức",
+    "Nguyệt Đức",
+    "Thiên Giải",
+    "Địa Giải",
+    "Giải Thần",
+    "Thiên Quan",
+    "Thiên Phúc",
+    "Ân Quang",
+    "Thiên Quý",
+    "Tam Thai",
+    "Bát Tọa",
+    "Long Trì",
+    "Phượng Các",
+    "Thái Phụ",
+    "Phong Cáo"
+  ],
+  "challenging": [
+    "Kình Dương",
+    "Đà La",
+    "Địa Không",
+    "Địa Kiếp",
+    "Hỏa Tinh",
+    "Linh Tinh"
+  ],
+  "transform": [
+    "Hóa Lộc",
+    "Hóa Quyền",
+    "Hóa Khoa",
+    "Hóa Kỵ"
+  ],
+  "colors": {
+    "main": "#9c3746",
+    "support": "#22745e",
+    "challenging": "#b94e30",
+    "transform": "#92671d",
+    "annual": "#7059a2",
+    "cycle": "#346d88",
+    "neutral": "#53606b"
+  }
+}

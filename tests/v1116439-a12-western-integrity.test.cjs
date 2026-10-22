@@ -1,0 +1,56 @@
+'use strict';
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const root=path.resolve(__dirname,'..');
+const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const W=require('../packages/astrology-engine/src/western-symbols.cjs');
+const N=require('../packages/astrology-engine/src/numerology-pythagorean.cjs');
+const A=require('../packages/astrology-engine/src/numerology-advanced.cjs');
+const T=require('../packages/astrology-engine/src/tarot-rws.cjs');
+const S=require('../packages/astrology-engine/src/tarot-spreads.cjs');
+const matrix=JSON.parse(read('packages/knowledge/src/development-matrix.json'));
+test('A12-001 profile import checks UUID, owner and uses the shared restoring gate before the API fetch',()=>{
+ const source=read('apps/web/src/app/numerology/page.tsx');
+ const effect=source.slice(source.indexOf("get('profile')"),source.indexOf(' function submit('));
+ assert.match(effect,/\^\[0-9a-f-\]\{36\}\$/);
+ assert.ok(effect.indexOf('if(!user)')<effect.indexOf('birthProfileApi.get('));
+ assert.ok(effect.indexOf('setRestoring(true)')<effect.indexOf('birthProfileApi.get('));
+ assert.match(effect,/finally\(\(\)=>\{if\(!controller.signal.aborted\)setRestoring\(false\);\}\)/);
+ assert.match(effect,/Math.max\(s.year,Number\(p.date.slice\(0,4\)\)\)/);
+ assert.match(effect,/Dữ liệu ngày sinh trong hồ sơ không hợp lệ/);
+ assert.match(effect,/revision.current===version\)setMessage/);
+});
+test('A12-002 Tarot crosswalk and development matrix reflect the existing real RWS art implementation',()=>{
+ const rws=W.getDeck('rws-1909');
+ assert.match(rws.artStatus,/78 lá RWS/);
+ assert.doesNotMatch(rws.artStatus,/Không nhúng tranh ảnh/);
+ assert.match(W.getDeck('thoth-1943').artStatus,/Không phân phối/);
+ const page=read('apps/web/src/app/western-symbols/page.tsx');
+ assert.match(page,/useState\('rws-1909'\)/);
+ const tarot=matrix.records.find(x=>x.id==='tarot');
+ assert.match(tarot.gap,/ảnh 78 lá RWS/);
+ assert.match(tarot.gap,/chỉ trải RWS/);
+ assert.equal(matrix.records.find(x=>x.id==='kabbalah').calculator,'planned');
+});
+test('A12-003 Tarot atlas has all 78 distinct RWS identities and 22 hermetic paths without changing tradition boundaries',()=>{
+ assert.equal(T.CARDS.length,78);
+ assert.equal(new Set(T.CARDS.map(c=>c.id)).size,78);
+ assert.equal(W.PATHS.length,22);
+ assert.equal(W.getCorrespondence('major-00').path.letter,'א');
+ assert.equal(W.getCorrespondence('major-00','jewish-source-only').connected,false);
+ for(const c of T.CARDS)assert.equal(W.compareCard(c.id).id,c.id);
+});
+test('A12-004 retained independent numerology conventions and Tarot snapshots are deterministic',()=>{
+ const input={method:N.METHOD,name:'Đặng Thị Mỹ',date:'2004-01-01',year:2026,yMode:'consonant',masters:true};
+ const base=N.calculate(input),advanced=A.calculate(input);
+ assert.equal(base.normalizedName,'DANG THI MY');
+ assert.deepEqual(advanced.input,base.input);
+ assert.equal(advanced.lifePathComparison.segmented.value,base.lifePath.value);
+ const snap=S.newAdvancedSpread({spread:'celtic-cross',includeReversed:false,question:'Cân nhắc điều gì?'}, n=>new Uint8Array([0]));
+ const validated=T.validateSpreadSnapshot(snap);
+ assert.equal(validated.draw.length,10);
+ assert.equal(new Set(validated.draw.map(c=>c.id)).size,10);
+ assert.deepEqual(validated,T.validateSpreadSnapshot(validated));
+});

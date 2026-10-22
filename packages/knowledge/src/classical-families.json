@@ -1,0 +1,62 @@
+{
+  "edition": "v11.10.0",
+  "classification": "Bộ chính tinh tham chiếu theo phép xét Mệnh — chỉ nhận diện điều kiện ban đầu, không tự xác nhận thành cách cổ điển",
+  "rules": [
+    {
+      "id": "tu-phu-vu-tuong",
+      "title": "Tử Phủ Vũ Tướng",
+      "conditions": {
+        "focusPalace": "Mệnh",
+        "scope": "tu-chinh",
+        "requiredStars": ["Tử Vi", "Thiên Phủ", "Vũ Khúc", "Thiên Tướng"],
+        "focusAny": ["Tử Vi", "Thiên Phủ", "Vũ Khúc", "Thiên Tướng"],
+        "supportAny": ["Tả Phụ", "Hữu Bật", "Thiên Khôi", "Thiên Việt", "Văn Xương", "Văn Khúc", "Lộc Tồn"],
+        "reviewAny": ["Kình Dương", "Đà La", "Hỏa Tinh", "Linh Tinh", "Địa Không", "Địa Kiếp"]
+      },
+      "interpretation": "Bốn hình tượng về điều phối, tích lũy, thực thi và khuôn phép cùng hội về Mệnh. Đọc vị trí sao tại Mệnh trước, sau đó xét Tài Bạch, Quan Lộc và Thiên Di để hiểu mạng lưới cung.",
+      "boundary": "Đủ bộ sao chưa đồng nghĩa với cách cục đã thành. Còn phải xét miếu hãm, sao trợ lực, sát tinh, Hóa Kỵ và những điều kiện riêng của trường phái."
+    },
+    {
+      "id": "co-nguyet-dong-luong",
+      "title": "Cơ Nguyệt Đồng Lương",
+      "conditions": {
+        "focusPalace": "Mệnh",
+        "scope": "tu-chinh",
+        "requiredStars": ["Thiên Cơ", "Thái Âm", "Thiên Đồng", "Thiên Lương"],
+        "focusAny": ["Thiên Cơ", "Thái Âm", "Thiên Đồng", "Thiên Lương"],
+        "supportAny": ["Văn Xương", "Văn Khúc", "Thiên Khôi", "Thiên Việt", "Tả Phụ", "Hữu Bật", "Lộc Tồn"],
+        "reviewAny": ["Kình Dương", "Đà La", "Hỏa Tinh", "Linh Tinh", "Địa Không", "Địa Kiếp"]
+      },
+      "interpretation": "Bốn sao biểu tượng cho suy xét, cảm nhận, thích ứng và nề nếp xuất hiện trong Tứ chính của Mệnh. Cần đọc riêng chính tinh tọa Mệnh rồi mới xét ảnh hưởng từ các cung hội chiếu.",
+      "boundary": "Không suy từ tên bộ sao ra nghề nghiệp, học lực hay kết quả cuộc đời. Các trường phái có thể khác nhau về mức hội hợp cần thiết để định danh cách."
+    },
+    {
+      "id": "sat-pha-tham",
+      "title": "Sát Phá Tham",
+      "conditions": {
+        "focusPalace": "Mệnh",
+        "scope": "tu-chinh",
+        "requiredStars": ["Thất Sát", "Phá Quân", "Tham Lang"],
+        "focusAny": ["Thất Sát", "Phá Quân", "Tham Lang", "Liêm Trinh", "Vũ Khúc"],
+        "supportAny": ["Tả Phụ", "Hữu Bật", "Thiên Khôi", "Thiên Việt", "Lộc Tồn", "Văn Xương", "Văn Khúc"],
+        "reviewAny": ["Kình Dương", "Đà La", "Hỏa Tinh", "Linh Tinh", "Địa Không", "Địa Kiếp"]
+      },
+      "interpretation": "Thất Sát, Phá Quân và Tham Lang cùng hội về Mệnh theo bố cục Tứ chính. Có thể đối chiếu các biểu tượng về thay đổi, chủ động và điều chỉnh hướng đi giữa những cung liên hệ.",
+      "boundary": "Tên gọi này chỉ cho biết một nhóm chính tinh đang hội về Mệnh; không đủ để khẳng định khí chất, sự nghiệp hay một biến cố."
+    },
+    {
+      "id": "cu-nhat",
+      "title": "Cự Nhật",
+      "conditions": {
+        "focusPalace": "Mệnh",
+        "scope": "tu-chinh",
+        "requiredStars": ["Cự Môn", "Thái Dương"],
+        "focusAny": ["Cự Môn", "Thái Dương"],
+        "supportAny": ["Văn Xương", "Văn Khúc", "Thiên Khôi", "Thiên Việt", "Tả Phụ", "Hữu Bật"],
+        "reviewAny": ["Kình Dương", "Đà La", "Hỏa Tinh", "Linh Tinh", "Địa Không", "Địa Kiếp"]
+      },
+      "interpretation": "Cự Môn và Thái Dương hội về cung Mệnh. Nên đọc riêng cách diễn giải về lời nói, khả năng trình bày và tính minh bạch trong bối cảnh chính tinh cùng các cung liên hệ.",
+      "boundary": "Cần đối chiếu độ sáng của từng chính tinh, vị trí Mệnh và những sao tham gia; không kết luận học lực, danh tiếng hoặc quyền lực."
+    }
+  ]
+}

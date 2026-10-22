@@ -1,0 +1,11 @@
+{
+  "name": "@thiendo/astrology-engine",
+  "version": "6.6.0",
+  "private": true,
+  "main": "src/tuvi.js",
+  "types": "src/index.d.ts",
+  "dependencies": {
+    "astronomy-engine": "2.1.19",
+    "moment-timezone": "0.6.5"
+  }
+}

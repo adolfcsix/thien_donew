@@ -1,0 +1,117 @@
+:root  {
+  /* All fonts are local/system fallbacks; the website does not require external font downloads. */
+  --font-ui:"Be Vietnam Pro","Inter","Segoe UI","Noto Sans",system-ui,Arial,sans-serif;
+  --font-display:"Cambria","Noto Serif","Times New Roman",Georgia,serif;
+  --font-han:"Microsoft YaHei UI","Noto Sans CJK SC","Noto Sans SC","PingFang SC","Yu Gothic",sans-serif;
+  --font-mono:"JetBrains Mono","Cascadia Mono","SFMono-Regular",Consolas,"Liberation Mono",monospace;
+   --ink:#111916;
+  --jade:#173f36;
+  --jade2:#214e43;
+  --gold:#c5a16a;
+  --paper:#f4ede0;
+  --body:#111c19;
+  --panel:#16231e;
+  --panel-alt:#1b2b25;
+  --line:rgba(206,187,145,.16);
+  --line-strong:rgba(206,187,145,.35);
+  --text:#f3ebdb;
+  --muted:#aebbb2;
+  --faint:#809188;
+  --glow:rgba(197,161,106,.14);
+  --shadow:0 20px 70px rgba(0,0,0,.23);
+  color-scheme:dark;
+}
+
+* {
+  box-sizing:border-box
+}
+
+html {
+  scroll-behavior:smooth
+}
+
+body {
+  margin:0;
+  font-family:var(--font-ui);
+  background:#101b17;
+  color:var(--text);
+  font-size:14px;
+  line-height:1.55;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-synthesis:none
+}
+
+button,input,select,textarea {
+  font:inherit
+}
+
+button {
+  cursor:pointer
+}
+
+a {
+  color:inherit;
+  text-decoration:none
+}
+
+button:disabled {
+  opacity:.55;
+  cursor:not-allowed
+}
+
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible {
+  outline:2px solid var(--gold);
+  outline-offset:3px
+}
+
+h1,h2,h3,p {
+  margin-top:0
+}
+
+.serif {
+  font-family:var(--font-display);
+  font-weight:500;
+  letter-spacing:.01em
+}
+
+code,kbd,samp,pre {
+  font-family:var(--font-mono)
+}
+
+:lang(zh), :lang(ja) {font-family:var(--font-han)}
+
+.muted {
+  color:var(--muted)
+}
+
+.tiny {
+  font-size:12px
+}
+
+.site {
+  --body:#111c19;
+  --panel:#16231e;
+  --panel-alt:#1b2b25;
+  --text:#f3ebdb;
+  --muted:#aebbb2;
+  --faint:#809188;
+  min-height:100vh;
+  background:radial-gradient(circle at 72% 6%,rgba(25,70,55,.32),transparent 35%),var(--body);
+  color:var(--text);
+  display:flex
+}
+
+.site.light {
+  --body:#eee8da;
+  --panel:#f6f0e4;
+  --panel-alt:#e9e1d0;
+  --text:#21322a;
+  --muted:#5b7266;
+  --faint:#70877a;
+  --line:rgba(50,85,70,.20);
+  --line-strong:rgba(70,90,78,.40);
+  --glow:rgba(197,161,106,.22);
+  color-scheme:light
+}

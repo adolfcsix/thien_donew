@@ -1,0 +1,2136 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedFrom": "engine-derived-star-inventory",
+  "release": "11.164.0",
+  "warning": "Danh mục nội bộ về độ phủ code; không chứng minh công thức an sao hay luận đoán chính xác theo trường phái.",
+  "counts": {
+    "natal": 68,
+    "cycle": 36,
+    "annual": 12,
+    "obstruction": 2,
+    "natal-transformation": 4,
+    "annual-transformation": 4,
+    "annual-locator": 1
+  },
+  "records": [
+    {
+      "id": "natal:main:tham-lang",
+      "name": "Tham Lang",
+      "layer": "natal",
+      "type": "star",
+      "group": "main",
+      "placementModule": "packages/astrology-engine/src/tuvi.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-study-guide.json",
+        "packages/knowledge/src/primary-star-palace-guidance.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:main:thien-dong",
+      "name": "Thiên Đồng",
+      "layer": "natal",
+      "type": "star",
+      "group": "main",
+      "placementModule": "packages/astrology-engine/src/tuvi.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-study-guide.json",
+        "packages/knowledge/src/primary-star-palace-guidance.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:main:cu-mon",
+      "name": "Cự Môn",
+      "layer": "natal",
+      "type": "star",
+      "group": "main",
+      "placementModule": "packages/astrology-engine/src/tuvi.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-study-guide.json",
+        "packages/knowledge/src/primary-star-palace-guidance.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:main:vu-khuc",
+      "name": "Vũ Khúc",
+      "layer": "natal",
+      "type": "star",
+      "group": "main",
+      "placementModule": "packages/astrology-engine/src/tuvi.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-study-guide.json",
+        "packages/knowledge/src/primary-star-palace-guidance.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:main:thien-tuong",
+      "name": "Thiên Tướng",
+      "layer": "natal",
+      "type": "star",
+      "group": "main",
+      "placementModule": "packages/astrology-engine/src/tuvi.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-study-guide.json",
+        "packages/knowledge/src/primary-star-palace-guidance.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:main:thai-duong",
+      "name": "Thái Dương",
+      "layer": "natal",
+      "type": "star",
+      "group": "main",
+      "placementModule": "packages/astrology-engine/src/tuvi.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-study-guide.json",
+        "packages/knowledge/src/primary-star-palace-guidance.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:main:thien-luong",
+      "name": "Thiên Lương",
+      "layer": "natal",
+      "type": "star",
+      "group": "main",
+      "placementModule": "packages/astrology-engine/src/tuvi.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-study-guide.json",
+        "packages/knowledge/src/primary-star-palace-guidance.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:main:that-sat",
+      "name": "Thất Sát",
+      "layer": "natal",
+      "type": "star",
+      "group": "main",
+      "placementModule": "packages/astrology-engine/src/tuvi.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-study-guide.json",
+        "packages/knowledge/src/primary-star-palace-guidance.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:main:thien-co",
+      "name": "Thiên Cơ",
+      "layer": "natal",
+      "type": "star",
+      "group": "main",
+      "placementModule": "packages/astrology-engine/src/tuvi.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-study-guide.json",
+        "packages/knowledge/src/primary-star-palace-guidance.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:main:tu-vi",
+      "name": "Tử Vi",
+      "layer": "natal",
+      "type": "star",
+      "group": "main",
+      "placementModule": "packages/astrology-engine/src/tuvi.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-study-guide.json",
+        "packages/knowledge/src/primary-star-palace-guidance.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:main:pha-quan",
+      "name": "Phá Quân",
+      "layer": "natal",
+      "type": "star",
+      "group": "main",
+      "placementModule": "packages/astrology-engine/src/tuvi.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-study-guide.json",
+        "packages/knowledge/src/primary-star-palace-guidance.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:main:liem-trinh",
+      "name": "Liêm Trinh",
+      "layer": "natal",
+      "type": "star",
+      "group": "main",
+      "placementModule": "packages/astrology-engine/src/tuvi.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-study-guide.json",
+        "packages/knowledge/src/primary-star-palace-guidance.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:main:thien-phu",
+      "name": "Thiên Phủ",
+      "layer": "natal",
+      "type": "star",
+      "group": "main",
+      "placementModule": "packages/astrology-engine/src/tuvi.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-study-guide.json",
+        "packages/knowledge/src/primary-star-palace-guidance.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:main:thai-am",
+      "name": "Thái Âm",
+      "layer": "natal",
+      "type": "star",
+      "group": "main",
+      "placementModule": "packages/astrology-engine/src/tuvi.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-study-guide.json",
+        "packages/knowledge/src/primary-star-palace-guidance.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:auxiliary:loc-ton",
+      "name": "Lộc Tồn",
+      "layer": "natal",
+      "type": "star",
+      "group": "auxiliary",
+      "placementModule": "packages/astrology-engine/src/auxiliary.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:auxiliary:kinh-duong",
+      "name": "Kình Dương",
+      "layer": "natal",
+      "type": "star",
+      "group": "auxiliary",
+      "placementModule": "packages/astrology-engine/src/auxiliary.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:auxiliary:da-la",
+      "name": "Đà La",
+      "layer": "natal",
+      "type": "star",
+      "group": "auxiliary",
+      "placementModule": "packages/astrology-engine/src/auxiliary.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:auxiliary:ta-phu",
+      "name": "Tả Phụ",
+      "layer": "natal",
+      "type": "star",
+      "group": "auxiliary",
+      "placementModule": "packages/astrology-engine/src/auxiliary.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:auxiliary:huu-bat",
+      "name": "Hữu Bật",
+      "layer": "natal",
+      "type": "star",
+      "group": "auxiliary",
+      "placementModule": "packages/astrology-engine/src/auxiliary.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:auxiliary:van-xuong",
+      "name": "Văn Xương",
+      "layer": "natal",
+      "type": "star",
+      "group": "auxiliary",
+      "placementModule": "packages/astrology-engine/src/auxiliary.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:auxiliary:van-khuc",
+      "name": "Văn Khúc",
+      "layer": "natal",
+      "type": "star",
+      "group": "auxiliary",
+      "placementModule": "packages/astrology-engine/src/auxiliary.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:auxiliary:thien-khoi",
+      "name": "Thiên Khôi",
+      "layer": "natal",
+      "type": "star",
+      "group": "auxiliary",
+      "placementModule": "packages/astrology-engine/src/auxiliary.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:auxiliary:thien-viet",
+      "name": "Thiên Việt",
+      "layer": "natal",
+      "type": "star",
+      "group": "auxiliary",
+      "placementModule": "packages/astrology-engine/src/auxiliary.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:year_branch:thien-ma",
+      "name": "Thiên Mã",
+      "layer": "natal",
+      "type": "star",
+      "group": "year_branch",
+      "placementModule": "packages/astrology-engine/src/year-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:year_branch:dao-hoa",
+      "name": "Đào Hoa",
+      "layer": "natal",
+      "type": "star",
+      "group": "year_branch",
+      "placementModule": "packages/astrology-engine/src/year-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:year_branch:hoa-cai",
+      "name": "Hoa Cái",
+      "layer": "natal",
+      "type": "star",
+      "group": "year_branch",
+      "placementModule": "packages/astrology-engine/src/year-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:year_branch:hong-loan",
+      "name": "Hồng Loan",
+      "layer": "natal",
+      "type": "star",
+      "group": "year_branch",
+      "placementModule": "packages/astrology-engine/src/year-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:year_branch:thien-hy",
+      "name": "Thiên Hỷ",
+      "layer": "natal",
+      "type": "star",
+      "group": "year_branch",
+      "placementModule": "packages/astrology-engine/src/year-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:supplementary:thien-hinh",
+      "name": "Thiên Hình",
+      "layer": "natal",
+      "type": "star",
+      "group": "supplementary",
+      "placementModule": "packages/astrology-engine/src/additional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:supplementary:thien-rieu",
+      "name": "Thiên Riêu",
+      "layer": "natal",
+      "type": "star",
+      "group": "supplementary",
+      "placementModule": "packages/astrology-engine/src/additional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:supplementary:thien-y",
+      "name": "Thiên Y",
+      "layer": "natal",
+      "type": "star",
+      "group": "supplementary",
+      "placementModule": "packages/astrology-engine/src/additional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:supplementary:thien-khoc",
+      "name": "Thiên Khốc",
+      "layer": "natal",
+      "type": "star",
+      "group": "supplementary",
+      "placementModule": "packages/astrology-engine/src/additional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:supplementary:thien-hu",
+      "name": "Thiên Hư",
+      "layer": "natal",
+      "type": "star",
+      "group": "supplementary",
+      "placementModule": "packages/astrology-engine/src/additional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:supplementary:tam-thai",
+      "name": "Tam Thai",
+      "layer": "natal",
+      "type": "star",
+      "group": "supplementary",
+      "placementModule": "packages/astrology-engine/src/additional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:supplementary:bat-toa",
+      "name": "Bát Tọa",
+      "layer": "natal",
+      "type": "star",
+      "group": "supplementary",
+      "placementModule": "packages/astrology-engine/src/additional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:advanced:dia-kiep",
+      "name": "Địa Kiếp",
+      "layer": "natal",
+      "type": "star",
+      "group": "advanced",
+      "placementModule": "packages/astrology-engine/src/advanced-placements.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:advanced:dia-khong",
+      "name": "Địa Không",
+      "layer": "natal",
+      "type": "star",
+      "group": "advanced",
+      "placementModule": "packages/astrology-engine/src/advanced-placements.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:advanced:hoa-tinh",
+      "name": "Hỏa Tinh",
+      "layer": "natal",
+      "type": "star",
+      "group": "advanced",
+      "placementModule": "packages/astrology-engine/src/advanced-placements.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:advanced:linh-tinh",
+      "name": "Linh Tinh",
+      "layer": "natal",
+      "type": "star",
+      "group": "advanced",
+      "placementModule": "packages/astrology-engine/src/advanced-placements.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:traditional:long-tri",
+      "name": "Long Trì",
+      "layer": "natal",
+      "type": "star",
+      "group": "traditional",
+      "placementModule": "packages/astrology-engine/src/traditional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json",
+        "packages/knowledge/src/traditional-star-catalogue.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:traditional:phuong-cac",
+      "name": "Phượng Các",
+      "layer": "natal",
+      "type": "star",
+      "group": "traditional",
+      "placementModule": "packages/astrology-engine/src/traditional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json",
+        "packages/knowledge/src/traditional-star-catalogue.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:traditional:giai-than",
+      "name": "Giải Thần",
+      "layer": "natal",
+      "type": "star",
+      "group": "traditional",
+      "placementModule": "packages/astrology-engine/src/traditional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json",
+        "packages/knowledge/src/traditional-star-catalogue.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:traditional:co-than",
+      "name": "Cô Thần",
+      "layer": "natal",
+      "type": "star",
+      "group": "traditional",
+      "placementModule": "packages/astrology-engine/src/traditional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json",
+        "packages/knowledge/src/traditional-star-catalogue.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:traditional:qua-tu",
+      "name": "Quả Tú",
+      "layer": "natal",
+      "type": "star",
+      "group": "traditional",
+      "placementModule": "packages/astrology-engine/src/traditional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json",
+        "packages/knowledge/src/traditional-star-catalogue.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:traditional:thien-quan",
+      "name": "Thiên Quan",
+      "layer": "natal",
+      "type": "star",
+      "group": "traditional",
+      "placementModule": "packages/astrology-engine/src/traditional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json",
+        "packages/knowledge/src/traditional-star-catalogue.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:traditional:thien-phuc",
+      "name": "Thiên Phúc",
+      "layer": "natal",
+      "type": "star",
+      "group": "traditional",
+      "placementModule": "packages/astrology-engine/src/traditional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json",
+        "packages/knowledge/src/traditional-star-catalogue.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:traditional:an-quang",
+      "name": "Ân Quang",
+      "layer": "natal",
+      "type": "star",
+      "group": "traditional",
+      "placementModule": "packages/astrology-engine/src/traditional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json",
+        "packages/knowledge/src/traditional-star-catalogue.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:traditional:thien-quy",
+      "name": "Thiên Quý",
+      "layer": "natal",
+      "type": "star",
+      "group": "traditional",
+      "placementModule": "packages/astrology-engine/src/traditional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json",
+        "packages/knowledge/src/traditional-star-catalogue.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:traditional:thai-phu",
+      "name": "Thái Phụ",
+      "layer": "natal",
+      "type": "star",
+      "group": "traditional",
+      "placementModule": "packages/astrology-engine/src/traditional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json",
+        "packages/knowledge/src/traditional-star-catalogue.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:traditional:phong-cao",
+      "name": "Phong Cáo",
+      "layer": "natal",
+      "type": "star",
+      "group": "traditional",
+      "placementModule": "packages/astrology-engine/src/traditional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json",
+        "packages/knowledge/src/traditional-star-catalogue.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:natal_extensions:quoc-an",
+      "name": "Quốc Ấn",
+      "layer": "natal",
+      "type": "star",
+      "group": "natal_extensions",
+      "placementModule": "packages/astrology-engine/src/natal-extensions.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json",
+        "packages/knowledge/src/natal-extension-catalogue.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:natal_extensions:kiep-sat",
+      "name": "Kiếp Sát",
+      "layer": "natal",
+      "type": "star",
+      "group": "natal_extensions",
+      "placementModule": "packages/astrology-engine/src/natal-extensions.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json",
+        "packages/knowledge/src/natal-extension-catalogue.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:natal_extensions:pha-toai",
+      "name": "Phá Toái",
+      "layer": "natal",
+      "type": "star",
+      "group": "natal_extensions",
+      "placementModule": "packages/astrology-engine/src/natal-extensions.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json",
+        "packages/knowledge/src/natal-extension-catalogue.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:benefic:thien-duc",
+      "name": "Thiên Đức",
+      "layer": "natal",
+      "type": "star",
+      "group": "benefic",
+      "placementModule": "packages/astrology-engine/src/benefic-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:benefic:nguyet-duc",
+      "name": "Nguyệt Đức",
+      "layer": "natal",
+      "type": "star",
+      "group": "benefic",
+      "placementModule": "packages/astrology-engine/src/benefic-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:benefic:thien-giai",
+      "name": "Thiên Giải",
+      "layer": "natal",
+      "type": "star",
+      "group": "benefic",
+      "placementModule": "packages/astrology-engine/src/benefic-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:benefic:dia-giai",
+      "name": "Địa Giải",
+      "layer": "natal",
+      "type": "star",
+      "group": "benefic",
+      "placementModule": "packages/astrology-engine/src/benefic-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:positional:thien-la",
+      "name": "Thiên La",
+      "layer": "natal",
+      "type": "star",
+      "group": "positional",
+      "placementModule": "packages/astrology-engine/src/positional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:positional:dia-vong",
+      "name": "Địa Võng",
+      "layer": "natal",
+      "type": "star",
+      "group": "positional",
+      "placementModule": "packages/astrology-engine/src/positional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:positional:thien-thuong",
+      "name": "Thiên Thương",
+      "layer": "natal",
+      "type": "star",
+      "group": "positional",
+      "placementModule": "packages/astrology-engine/src/positional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:positional:thien-su",
+      "name": "Thiên Sứ",
+      "layer": "natal",
+      "type": "star",
+      "group": "positional",
+      "placementModule": "packages/astrology-engine/src/positional-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:missing_stars:thien-tru",
+      "name": "Thiên Trù",
+      "layer": "natal",
+      "type": "star",
+      "group": "missing_stars",
+      "placementModule": "packages/astrology-engine/src/missing-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:missing_stars:luu-ha",
+      "name": "Lưu Hà",
+      "layer": "natal",
+      "type": "star",
+      "group": "missing_stars",
+      "placementModule": "packages/astrology-engine/src/missing-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:missing_stars:thien-khong",
+      "name": "Thiên Không",
+      "layer": "natal",
+      "type": "star",
+      "group": "missing_stars",
+      "placementModule": "packages/astrology-engine/src/missing-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:missing_stars:dau-quan",
+      "name": "Đẩu Quân",
+      "layer": "natal",
+      "type": "star",
+      "group": "missing_stars",
+      "placementModule": "packages/astrology-engine/src/missing-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:derived:thien-tai",
+      "name": "Thiên Tài",
+      "layer": "natal",
+      "type": "star",
+      "group": "derived",
+      "placementModule": "packages/astrology-engine/src/derived-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:derived:thien-tho",
+      "name": "Thiên Thọ",
+      "layer": "natal",
+      "type": "star",
+      "group": "derived",
+      "placementModule": "packages/astrology-engine/src/derived-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal:derived:duong-phu",
+      "name": "Đường Phù",
+      "layer": "natal",
+      "type": "star",
+      "group": "derived",
+      "placementModule": "packages/astrology-engine/src/derived-stars.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:thai_tue:thai-tue",
+      "name": "Thái Tuế",
+      "layer": "cycle",
+      "type": "star",
+      "group": "thai_tue",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:thai_tue:thieu-duong",
+      "name": "Thiếu Dương",
+      "layer": "cycle",
+      "type": "star",
+      "group": "thai_tue",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:thai_tue:tang-mon",
+      "name": "Tang Môn",
+      "layer": "cycle",
+      "type": "star",
+      "group": "thai_tue",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:thai_tue:thieu-am",
+      "name": "Thiếu Âm",
+      "layer": "cycle",
+      "type": "star",
+      "group": "thai_tue",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:thai_tue:quan-phu",
+      "name": "Quan Phù",
+      "layer": "cycle",
+      "type": "star",
+      "group": "thai_tue",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:thai_tue:tu-phu",
+      "name": "Tử Phù",
+      "layer": "cycle",
+      "type": "star",
+      "group": "thai_tue",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:thai_tue:tue-pha",
+      "name": "Tuế Phá",
+      "layer": "cycle",
+      "type": "star",
+      "group": "thai_tue",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:thai_tue:long-duc",
+      "name": "Long Đức",
+      "layer": "cycle",
+      "type": "star",
+      "group": "thai_tue",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:thai_tue:bach-ho",
+      "name": "Bạch Hổ",
+      "layer": "cycle",
+      "type": "star",
+      "group": "thai_tue",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:thai_tue:phuc-duc",
+      "name": "Phúc Đức",
+      "layer": "cycle",
+      "type": "star",
+      "group": "thai_tue",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:thai_tue:dieu-khach",
+      "name": "Điếu Khách",
+      "layer": "cycle",
+      "type": "star",
+      "group": "thai_tue",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:thai_tue:truc-phu",
+      "name": "Trực Phù",
+      "layer": "cycle",
+      "type": "star",
+      "group": "thai_tue",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:bac_si:bac-si",
+      "name": "Bác Sĩ",
+      "layer": "cycle",
+      "type": "star",
+      "group": "bac_si",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:bac_si:luc-si",
+      "name": "Lực Sĩ",
+      "layer": "cycle",
+      "type": "star",
+      "group": "bac_si",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:bac_si:thanh-long",
+      "name": "Thanh Long",
+      "layer": "cycle",
+      "type": "star",
+      "group": "bac_si",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:bac_si:tieu-hao",
+      "name": "Tiểu Hao",
+      "layer": "cycle",
+      "type": "star",
+      "group": "bac_si",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:bac_si:tuong-quan",
+      "name": "Tướng Quân",
+      "layer": "cycle",
+      "type": "star",
+      "group": "bac_si",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:bac_si:tau-thu",
+      "name": "Tấu Thư",
+      "layer": "cycle",
+      "type": "star",
+      "group": "bac_si",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:bac_si:phi-liem",
+      "name": "Phi Liêm",
+      "layer": "cycle",
+      "type": "star",
+      "group": "bac_si",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:bac_si:hy-than",
+      "name": "Hỷ Thần",
+      "layer": "cycle",
+      "type": "star",
+      "group": "bac_si",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:bac_si:benh-phu",
+      "name": "Bệnh Phù",
+      "layer": "cycle",
+      "type": "star",
+      "group": "bac_si",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:bac_si:dai-hao",
+      "name": "Đại Hao",
+      "layer": "cycle",
+      "type": "star",
+      "group": "bac_si",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:bac_si:phuc-binh",
+      "name": "Phục Binh",
+      "layer": "cycle",
+      "type": "star",
+      "group": "bac_si",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:bac_si:quan-phu",
+      "name": "Quan Phủ",
+      "layer": "cycle",
+      "type": "star",
+      "group": "bac_si",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:trang_sinh:trang-sinh",
+      "name": "Tràng Sinh",
+      "layer": "cycle",
+      "type": "star",
+      "group": "trang_sinh",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:trang_sinh:moc-duc",
+      "name": "Mộc Dục",
+      "layer": "cycle",
+      "type": "star",
+      "group": "trang_sinh",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:trang_sinh:quan-doi",
+      "name": "Quan Đới",
+      "layer": "cycle",
+      "type": "star",
+      "group": "trang_sinh",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:trang_sinh:lam-quan",
+      "name": "Lâm Quan",
+      "layer": "cycle",
+      "type": "star",
+      "group": "trang_sinh",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:trang_sinh:de-vuong",
+      "name": "Đế Vượng",
+      "layer": "cycle",
+      "type": "star",
+      "group": "trang_sinh",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:trang_sinh:suy",
+      "name": "Suy",
+      "layer": "cycle",
+      "type": "star",
+      "group": "trang_sinh",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:trang_sinh:benh",
+      "name": "Bệnh",
+      "layer": "cycle",
+      "type": "star",
+      "group": "trang_sinh",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:trang_sinh:tu",
+      "name": "Tử",
+      "layer": "cycle",
+      "type": "star",
+      "group": "trang_sinh",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:trang_sinh:mo",
+      "name": "Mộ",
+      "layer": "cycle",
+      "type": "star",
+      "group": "trang_sinh",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:trang_sinh:tuyet",
+      "name": "Tuyệt",
+      "layer": "cycle",
+      "type": "star",
+      "group": "trang_sinh",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:trang_sinh:thai",
+      "name": "Thai",
+      "layer": "cycle",
+      "type": "star",
+      "group": "trang_sinh",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "cycle:trang_sinh:duong",
+      "name": "Dưỡng",
+      "layer": "cycle",
+      "type": "star",
+      "group": "trang_sinh",
+      "placementModule": "packages/astrology-engine/src/cycles.js",
+      "editorialSources": [
+        "packages/knowledge/src/star-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual:annual-overlays:luu-loc-ton",
+      "name": "Lưu Lộc Tồn",
+      "layer": "annual",
+      "type": "annual-star",
+      "group": "annual-overlays",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": "natal:auxiliary:loc-ton",
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual:annual-overlays:luu-kinh-duong",
+      "name": "Lưu Kình Dương",
+      "layer": "annual",
+      "type": "annual-star",
+      "group": "annual-overlays",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": "natal:auxiliary:kinh-duong",
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual:annual-overlays:luu-da-la",
+      "name": "Lưu Đà La",
+      "layer": "annual",
+      "type": "annual-star",
+      "group": "annual-overlays",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": "natal:auxiliary:da-la",
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual:annual-overlays:luu-thien-ma",
+      "name": "Lưu Thiên Mã",
+      "layer": "annual",
+      "type": "annual-star",
+      "group": "annual-overlays",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": "natal:year_branch:thien-ma",
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual:annual-overlays:luu-dao-hoa",
+      "name": "Lưu Đào Hoa",
+      "layer": "annual",
+      "type": "annual-star",
+      "group": "annual-overlays",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": "natal:year_branch:dao-hoa",
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual:annual-overlays:luu-hoa-cai",
+      "name": "Lưu Hoa Cái",
+      "layer": "annual",
+      "type": "annual-star",
+      "group": "annual-overlays",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": "natal:year_branch:hoa-cai",
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual:annual-overlays:luu-hong-loan",
+      "name": "Lưu Hồng Loan",
+      "layer": "annual",
+      "type": "annual-star",
+      "group": "annual-overlays",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": "natal:year_branch:hong-loan",
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual:annual-overlays:luu-thien-hy",
+      "name": "Lưu Thiên Hỷ",
+      "layer": "annual",
+      "type": "annual-star",
+      "group": "annual-overlays",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": "natal:year_branch:thien-hy",
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual:annual-overlays:luu-tang-mon",
+      "name": "Lưu Tang Môn",
+      "layer": "annual",
+      "type": "annual-star",
+      "group": "annual-overlays",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": "cycle:thai_tue:tang-mon",
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual:annual-overlays:luu-bach-ho",
+      "name": "Lưu Bạch Hổ",
+      "layer": "annual",
+      "type": "annual-star",
+      "group": "annual-overlays",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": "cycle:thai_tue:bach-ho",
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual:annual-overlays:luu-thien-khoc",
+      "name": "Lưu Thiên Khốc",
+      "layer": "annual",
+      "type": "annual-star",
+      "group": "annual-overlays",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": "natal:supplementary:thien-khoc",
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual:annual-overlays:luu-thien-hu",
+      "name": "Lưu Thiên Hư",
+      "layer": "annual",
+      "type": "annual-star",
+      "group": "annual-overlays",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": "natal:supplementary:thien-hu",
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "obstruction:obstruction-markers:tuan",
+      "name": "Tuần",
+      "layer": "obstruction",
+      "type": "paired-marker",
+      "group": "obstruction-markers",
+      "placementModule": "packages/astrology-engine/src/advanced-placements.js",
+      "editorialSources": [
+        "packages/knowledge/src/obstruction-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "obstruction:obstruction-markers:triet",
+      "name": "Triệt",
+      "layer": "obstruction",
+      "type": "paired-marker",
+      "group": "obstruction-markers",
+      "placementModule": "packages/astrology-engine/src/advanced-placements.js",
+      "editorialSources": [
+        "packages/knowledge/src/obstruction-symbols.json"
+      ],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal-transformation:tu-hoa:hoa-loc",
+      "name": "Hóa Lộc",
+      "layer": "natal-transformation",
+      "type": "transformation-label",
+      "group": "tu-hoa",
+      "placementModule": "packages/astrology-engine/src/tuhoa.js",
+      "editorialSources": [],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal-transformation:tu-hoa:hoa-quyen",
+      "name": "Hóa Quyền",
+      "layer": "natal-transformation",
+      "type": "transformation-label",
+      "group": "tu-hoa",
+      "placementModule": "packages/astrology-engine/src/tuhoa.js",
+      "editorialSources": [],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal-transformation:tu-hoa:hoa-khoa",
+      "name": "Hóa Khoa",
+      "layer": "natal-transformation",
+      "type": "transformation-label",
+      "group": "tu-hoa",
+      "placementModule": "packages/astrology-engine/src/tuhoa.js",
+      "editorialSources": [],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "natal-transformation:tu-hoa:hoa-ky",
+      "name": "Hóa Kỵ",
+      "layer": "natal-transformation",
+      "type": "transformation-label",
+      "group": "tu-hoa",
+      "placementModule": "packages/astrology-engine/src/tuhoa.js",
+      "editorialSources": [],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual-transformation:tu-hoa:hoa-loc",
+      "name": "Hóa Lộc",
+      "layer": "annual-transformation",
+      "type": "transformation-label",
+      "group": "tu-hoa",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual-transformation:tu-hoa:hoa-quyen",
+      "name": "Hóa Quyền",
+      "layer": "annual-transformation",
+      "type": "transformation-label",
+      "group": "tu-hoa",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual-transformation:tu-hoa:hoa-khoa",
+      "name": "Hóa Khoa",
+      "layer": "annual-transformation",
+      "type": "transformation-label",
+      "group": "tu-hoa",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual-transformation:tu-hoa:hoa-ky",
+      "name": "Hóa Kỵ",
+      "layer": "annual-transformation",
+      "type": "transformation-label",
+      "group": "tu-hoa",
+      "placementModule": "packages/astrology-engine/src/annual-layers.js",
+      "editorialSources": [],
+      "originId": null,
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    },
+    {
+      "id": "annual-locator:annual-locator:luu-thai-tue",
+      "name": "Lưu Thái Tuế",
+      "layer": "annual-locator",
+      "type": "branch-locator",
+      "group": "annual-locator",
+      "placementModule": "packages/astrology-engine/src/annual.js",
+      "editorialSources": [],
+      "originId": "cycle:thai_tue:thai-tue",
+      "expertReviewed": false,
+      "reviewStatus": "not-independently-reviewed"
+    }
+  ],
+  "ruleLinks": [
+    {
+      "id": "phu-bat-dong-cung",
+      "kind": "combination",
+      "source": "packages/knowledge/src/combination-rules.json",
+      "starIds": [
+        "natal:auxiliary:ta-phu",
+        "natal:auxiliary:huu-bat"
+      ]
+    },
+    {
+      "id": "xuong-khuc-dong-cung",
+      "kind": "combination",
+      "source": "packages/knowledge/src/combination-rules.json",
+      "starIds": [
+        "natal:auxiliary:van-xuong",
+        "natal:auxiliary:van-khuc"
+      ]
+    },
+    {
+      "id": "khong-kiep-dong-cung",
+      "kind": "combination",
+      "source": "packages/knowledge/src/combination-rules.json",
+      "starIds": [
+        "natal:advanced:dia-khong",
+        "natal:advanced:dia-kiep"
+      ]
+    },
+    {
+      "id": "hoa-linh-dong-cung",
+      "kind": "combination",
+      "source": "packages/knowledge/src/combination-rules.json",
+      "starIds": [
+        "natal:advanced:hoa-tinh",
+        "natal:advanced:linh-tinh"
+      ]
+    },
+    {
+      "id": "thai-toa-dong-cung",
+      "kind": "combination",
+      "source": "packages/knowledge/src/combination-rules.json",
+      "starIds": [
+        "natal:supplementary:tam-thai",
+        "natal:supplementary:bat-toa"
+      ]
+    },
+    {
+      "id": "tu-hoa-loc",
+      "kind": "combination",
+      "source": "packages/knowledge/src/combination-rules.json",
+      "starIds": [
+        "natal-transformation:tu-hoa:hoa-loc"
+      ]
+    },
+    {
+      "id": "tu-hoa-quyen",
+      "kind": "combination",
+      "source": "packages/knowledge/src/combination-rules.json",
+      "starIds": [
+        "natal-transformation:tu-hoa:hoa-quyen"
+      ]
+    },
+    {
+      "id": "tu-hoa-khoa",
+      "kind": "combination",
+      "source": "packages/knowledge/src/combination-rules.json",
+      "starIds": [
+        "natal-transformation:tu-hoa:hoa-khoa"
+      ]
+    },
+    {
+      "id": "tu-hoa-ky",
+      "kind": "combination",
+      "source": "packages/knowledge/src/combination-rules.json",
+      "starIds": [
+        "natal-transformation:tu-hoa:hoa-ky"
+      ]
+    },
+    {
+      "id": "phu-bat-hoi-tam-hop",
+      "kind": "relationship",
+      "source": "packages/knowledge/src/relationship-patterns.json",
+      "starIds": [
+        "natal:auxiliary:ta-phu",
+        "natal:auxiliary:huu-bat"
+      ]
+    },
+    {
+      "id": "xuong-khuc-hoi-tam-hop",
+      "kind": "relationship",
+      "source": "packages/knowledge/src/relationship-patterns.json",
+      "starIds": [
+        "natal:auxiliary:van-xuong",
+        "natal:auxiliary:van-khuc"
+      ]
+    },
+    {
+      "id": "khoi-viet-hoi-tam-hop",
+      "kind": "relationship",
+      "source": "packages/knowledge/src/relationship-patterns.json",
+      "starIds": [
+        "natal:auxiliary:thien-khoi",
+        "natal:auxiliary:thien-viet"
+      ]
+    },
+    {
+      "id": "khong-kiep-hoi-tam-hop",
+      "kind": "relationship",
+      "source": "packages/knowledge/src/relationship-patterns.json",
+      "starIds": [
+        "natal:advanced:dia-khong",
+        "natal:advanced:dia-kiep"
+      ]
+    },
+    {
+      "id": "hoa-linh-hoi-tam-hop",
+      "kind": "relationship",
+      "source": "packages/knowledge/src/relationship-patterns.json",
+      "starIds": [
+        "natal:advanced:hoa-tinh",
+        "natal:advanced:linh-tinh"
+      ]
+    },
+    {
+      "id": "phu-bat-loc-hoi-tu-chinh",
+      "kind": "relationship",
+      "source": "packages/knowledge/src/relationship-patterns.json",
+      "starIds": [
+        "natal:auxiliary:ta-phu",
+        "natal:auxiliary:huu-bat",
+        "natal:auxiliary:loc-ton"
+      ]
+    },
+    {
+      "id": "xuong-khuc-khoi-hoi-tu-chinh",
+      "kind": "relationship",
+      "source": "packages/knowledge/src/relationship-patterns.json",
+      "starIds": [
+        "natal:auxiliary:van-xuong",
+        "natal:auxiliary:van-khuc",
+        "natal:auxiliary:thien-khoi"
+      ]
+    },
+    {
+      "id": "khoi-viet-xuong-khuc-tu-chinh",
+      "kind": "relationship",
+      "source": "packages/knowledge/src/relationship-patterns.json",
+      "starIds": [
+        "natal:auxiliary:thien-khoi",
+        "natal:auxiliary:thien-viet",
+        "natal:auxiliary:van-xuong",
+        "natal:auxiliary:van-khuc"
+      ]
+    },
+    {
+      "id": "sat-tinh-bon-sao-tu-chinh",
+      "kind": "relationship",
+      "source": "packages/knowledge/src/relationship-patterns.json",
+      "starIds": [
+        "natal:advanced:dia-khong",
+        "natal:advanced:dia-kiep",
+        "natal:advanced:hoa-tinh",
+        "natal:advanced:linh-tinh"
+      ]
+    },
+    {
+      "id": "co-nguyet-dong-luong-tu-chinh",
+      "kind": "relationship",
+      "source": "packages/knowledge/src/relationship-patterns.json",
+      "starIds": [
+        "natal:main:thien-co",
+        "natal:main:thai-am",
+        "natal:main:thien-dong",
+        "natal:main:thien-luong"
+      ]
+    },
+    {
+      "id": "tu-phu-vu-tuong",
+      "kind": "classical",
+      "source": "packages/knowledge/src/classical-families.json",
+      "starIds": [
+        "natal:main:tu-vi",
+        "natal:main:thien-phu",
+        "natal:main:vu-khuc",
+        "natal:main:thien-tuong",
+        "natal:auxiliary:ta-phu",
+        "natal:auxiliary:huu-bat",
+        "natal:auxiliary:thien-khoi",
+        "natal:auxiliary:thien-viet",
+        "natal:auxiliary:van-xuong",
+        "natal:auxiliary:van-khuc",
+        "natal:auxiliary:loc-ton",
+        "natal:auxiliary:kinh-duong",
+        "natal:auxiliary:da-la",
+        "natal:advanced:hoa-tinh",
+        "natal:advanced:linh-tinh",
+        "natal:advanced:dia-khong",
+        "natal:advanced:dia-kiep"
+      ]
+    },
+    {
+      "id": "co-nguyet-dong-luong",
+      "kind": "classical",
+      "source": "packages/knowledge/src/classical-families.json",
+      "starIds": [
+        "natal:main:thien-co",
+        "natal:main:thai-am",
+        "natal:main:thien-dong",
+        "natal:main:thien-luong",
+        "natal:auxiliary:van-xuong",
+        "natal:auxiliary:van-khuc",
+        "natal:auxiliary:thien-khoi",
+        "natal:auxiliary:thien-viet",
+        "natal:auxiliary:ta-phu",
+        "natal:auxiliary:huu-bat",
+        "natal:auxiliary:loc-ton",
+        "natal:auxiliary:kinh-duong",
+        "natal:auxiliary:da-la",
+        "natal:advanced:hoa-tinh",
+        "natal:advanced:linh-tinh",
+        "natal:advanced:dia-khong",
+        "natal:advanced:dia-kiep"
+      ]
+    },
+    {
+      "id": "sat-pha-tham",
+      "kind": "classical",
+      "source": "packages/knowledge/src/classical-families.json",
+      "starIds": [
+        "natal:main:that-sat",
+        "natal:main:pha-quan",
+        "natal:main:tham-lang",
+        "natal:main:liem-trinh",
+        "natal:main:vu-khuc",
+        "natal:auxiliary:ta-phu",
+        "natal:auxiliary:huu-bat",
+        "natal:auxiliary:thien-khoi",
+        "natal:auxiliary:thien-viet",
+        "natal:auxiliary:loc-ton",
+        "natal:auxiliary:van-xuong",
+        "natal:auxiliary:van-khuc",
+        "natal:auxiliary:kinh-duong",
+        "natal:auxiliary:da-la",
+        "natal:advanced:hoa-tinh",
+        "natal:advanced:linh-tinh",
+        "natal:advanced:dia-khong",
+        "natal:advanced:dia-kiep"
+      ]
+    },
+    {
+      "id": "cu-nhat",
+      "kind": "classical",
+      "source": "packages/knowledge/src/classical-families.json",
+      "starIds": [
+        "natal:main:cu-mon",
+        "natal:main:thai-duong",
+        "natal:auxiliary:van-xuong",
+        "natal:auxiliary:van-khuc",
+        "natal:auxiliary:thien-khoi",
+        "natal:auxiliary:thien-viet",
+        "natal:auxiliary:ta-phu",
+        "natal:auxiliary:huu-bat",
+        "natal:auxiliary:kinh-duong",
+        "natal:auxiliary:da-la",
+        "natal:advanced:hoa-tinh",
+        "natal:advanced:linh-tinh",
+        "natal:advanced:dia-khong",
+        "natal:advanced:dia-kiep"
+      ]
+    },
+    {
+      "id": "ta-huu-giap",
+      "kind": "adjacent",
+      "source": "packages/knowledge/src/adjacent-palace-patterns.json",
+      "starIds": [
+        "natal:auxiliary:ta-phu",
+        "natal:auxiliary:huu-bat"
+      ]
+    },
+    {
+      "id": "xuong-khuc-giap",
+      "kind": "adjacent",
+      "source": "packages/knowledge/src/adjacent-palace-patterns.json",
+      "starIds": [
+        "natal:auxiliary:van-xuong",
+        "natal:auxiliary:van-khuc"
+      ]
+    },
+    {
+      "id": "khoi-viet-giap",
+      "kind": "adjacent",
+      "source": "packages/knowledge/src/adjacent-palace-patterns.json",
+      "starIds": [
+        "natal:auxiliary:thien-khoi",
+        "natal:auxiliary:thien-viet"
+      ]
+    },
+    {
+      "id": "khong-kiep-giap",
+      "kind": "adjacent",
+      "source": "packages/knowledge/src/adjacent-palace-patterns.json",
+      "starIds": [
+        "natal:advanced:dia-khong",
+        "natal:advanced:dia-kiep"
+      ]
+    },
+    {
+      "id": "hoa-linh-giap",
+      "kind": "adjacent",
+      "source": "packages/knowledge/src/adjacent-palace-patterns.json",
+      "starIds": [
+        "natal:advanced:hoa-tinh",
+        "natal:advanced:linh-tinh"
+      ]
+    },
+    {
+      "id": "kinh-da-giap",
+      "kind": "adjacent",
+      "source": "packages/knowledge/src/adjacent-palace-patterns.json",
+      "starIds": [
+        "natal:auxiliary:kinh-duong",
+        "natal:auxiliary:da-la"
+      ]
+    },
+    {
+      "id": "kinh-da-giap-loc-ton",
+      "kind": "geometry",
+      "source": "packages/knowledge/src/natal-geometry-rules.json",
+      "starIds": [
+        "natal:auxiliary:kinh-duong",
+        "natal:auxiliary:da-la",
+        "natal:auxiliary:loc-ton"
+      ]
+    },
+    {
+      "id": "loan-hy-xung-chieu",
+      "kind": "geometry",
+      "source": "packages/knowledge/src/natal-geometry-rules.json",
+      "starIds": [
+        "natal:year_branch:hong-loan",
+        "natal:year_branch:thien-hy"
+      ]
+    },
+    {
+      "id": "khoi-viet-vet-vi-tri",
+      "kind": "geometry",
+      "source": "packages/knowledge/src/natal-geometry-rules.json",
+      "starIds": [
+        "natal:auxiliary:thien-khoi",
+        "natal:auxiliary:thien-viet"
+      ]
+    }
+  ],
+  "unresolvedRuleReferences": [],
+  "declaredAliases": []
+}

@@ -1,0 +1,18 @@
+/* V11.51: editorial-only scope, no research engine interaction. */
+.school-review-shell{width:100%;min-width:0}.school-review-boundary{border:1px solid var(--line);border-left:3px solid var(--gold);background:var(--panel);border-radius:8px;padding:16px 18px;color:var(--muted);font-size:13px;line-height:1.8;margin:18px 0}.school-review-boundary strong{color:var(--text)}
+.school-review-overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:20px 0 26px}
+.school-review-method{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:19px;display:grid;gap:10px;align-content:start}
+.school-review-method h2{font-size:17px;line-height:1.5;margin:0;color:var(--text)}.school-review-method p{color:var(--muted);line-height:1.7;font-size:12px;margin:0}.school-review-method p strong{color:var(--text)}.school-review-method span{font-size:11px;color:var(--gold)}
+.school-review-controls{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:17px 0}.school-review-controls label{display:grid;gap:8px;color:var(--text);font-size:12px;font-weight:600}.school-review-controls input,.school-review-controls select{border:1px solid var(--line-strong);background:var(--panel);color:var(--text);border-radius:6px;padding:10px;min-height:44px;min-width:0}
+.school-review-count{font-size:12px;line-height:1.8;color:var(--muted)}.school-review-count strong{color:var(--gold)}
+.school-review-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0 28px}
+.school-review-card{min-width:0;padding:20px;border:1px solid var(--line);background:var(--panel);border-radius:9px;display:flex;flex-direction:column;gap:12px}.school-review-card h2{font-size:21px;margin:0;line-height:1.45;color:var(--text)}.school-review-card p{color:var(--muted);font-size:12px;line-height:1.8;margin:0}.school-review-card p b{color:var(--text)}.school-review-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--muted);font-size:11px}.school-review-meta span:last-child{color:var(--gold)}.school-review-card details{border-top:1px solid var(--line);padding-top:13px;margin-top:auto}.school-review-card summary{font-size:12px;font-weight:700;color:var(--gold);cursor:pointer}.school-review-card ol{padding-left:22px;font-size:12px;line-height:1.8;color:var(--muted)}.school-review-card li{margin-top:7px}
+@media(max-width:760px){.school-review-overview,.school-review-list,.school-review-controls{grid-template-columns:1fr}.school-review-card,.school-review-method{padding:16px}}
+
+/* V11.52 — human-review protocol; visible only after user expands a rule. */
+.school-review-protocol-body{display:grid;gap:11px;margin-top:12px}.school-review-protocol-body section{border-left:2px solid var(--line-strong);padding:0 0 0 12px}
+.school-review-protocol-body section h3{font-size:12px;margin:0 0 5px;color:var(--text);font-weight:700}
+.school-review-protocol-body p{overflow-wrap:anywhere}.school-review-protocol-caution{border-top:1px solid var(--line);padding-top:10px}
+.school-review-protocol summary{min-height:44px;display:flex;align-items:center}
+.school-review-protocol summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+@media(max-width:760px){.school-review-protocol-body{gap:9px}.school-review-protocol-body section{padding-left:10px}}

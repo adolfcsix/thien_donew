@@ -1,0 +1,252 @@
+{
+  "edition": "11.64.0",
+  "scope": "additional-hypothetical-natal-cases",
+  "notice": "Năm ví dụ thêm cho tám ví dụ của V11.63; chỉ là thử phạm vi vị trí trên lá số giả định, không kết luận về con người.",
+  "cases": [
+    {
+      "id": "tu-phu-vu-tuong-anchor",
+      "familyId": "tu-phu-vu-tuong",
+      "label": "Đủ vị trí theo cả ba phép thử (chưa phải thành cách)",
+      "input": {
+        "date": "1976-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 9,
+        "minute": 15
+      },
+      "focusBranchIndex": 8,
+      "observed": [
+        {
+          "star": "Tử Vi",
+          "branchIndex": 8,
+          "relation": "toa-cung"
+        },
+        {
+          "star": "Thiên Phủ",
+          "branchIndex": 8,
+          "relation": "toa-cung"
+        },
+        {
+          "star": "Vũ Khúc",
+          "branchIndex": 4,
+          "relation": "tam-hop"
+        },
+        {
+          "star": "Thiên Tướng",
+          "branchIndex": 0,
+          "relation": "tam-hop"
+        }
+      ],
+      "statuses": [
+        {
+          "id": "four-court",
+          "status": "geometry-observed",
+          "geometryMatches": true
+        },
+        {
+          "id": "triad-only",
+          "status": "geometry-observed",
+          "geometryMatches": true
+        },
+        {
+          "id": "focus-anchored",
+          "status": "geometry-observed",
+          "geometryMatches": true
+        }
+      ],
+      "expertReviewed": false,
+      "confirmedClassicalFormation": false
+    },
+    {
+      "id": "co-nguyet-dong-luong-anchor",
+      "familyId": "co-nguyet-dong-luong",
+      "label": "Đủ vị trí theo cả ba phép thử (chưa phải thành cách)",
+      "input": {
+        "date": "1976-10-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 21,
+        "minute": 15
+      },
+      "focusBranchIndex": 10,
+      "observed": [
+        {
+          "star": "Thiên Cơ",
+          "branchIndex": 10,
+          "relation": "toa-cung"
+        },
+        {
+          "star": "Thái Âm",
+          "branchIndex": 6,
+          "relation": "tam-hop"
+        },
+        {
+          "star": "Thiên Đồng",
+          "branchIndex": 6,
+          "relation": "tam-hop"
+        },
+        {
+          "star": "Thiên Lương",
+          "branchIndex": 10,
+          "relation": "toa-cung"
+        }
+      ],
+      "statuses": [
+        {
+          "id": "four-court",
+          "status": "geometry-observed",
+          "geometryMatches": true
+        },
+        {
+          "id": "triad-only",
+          "status": "geometry-observed",
+          "geometryMatches": true
+        },
+        {
+          "id": "focus-anchored",
+          "status": "geometry-observed",
+          "geometryMatches": true
+        }
+      ],
+      "expertReviewed": false,
+      "confirmedClassicalFormation": false
+    },
+    {
+      "id": "sat-pha-tham-anchor",
+      "familyId": "sat-pha-tham",
+      "label": "Đủ vị trí theo cả ba phép thử (chưa phải thành cách)",
+      "input": {
+        "date": "1976-04-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 6,
+        "minute": 15
+      },
+      "focusBranchIndex": 1,
+      "observed": [
+        {
+          "star": "Thất Sát",
+          "branchIndex": 1,
+          "relation": "toa-cung"
+        },
+        {
+          "star": "Phá Quân",
+          "branchIndex": 5,
+          "relation": "tam-hop"
+        },
+        {
+          "star": "Tham Lang",
+          "branchIndex": 9,
+          "relation": "tam-hop"
+        }
+      ],
+      "statuses": [
+        {
+          "id": "four-court",
+          "status": "geometry-observed",
+          "geometryMatches": true
+        },
+        {
+          "id": "triad-only",
+          "status": "geometry-observed",
+          "geometryMatches": true
+        },
+        {
+          "id": "focus-anchored",
+          "status": "geometry-observed",
+          "geometryMatches": true
+        }
+      ],
+      "expertReviewed": false,
+      "confirmedClassicalFormation": false
+    },
+    {
+      "id": "cu-nhat-anchor",
+      "familyId": "cu-nhat",
+      "label": "Đủ vị trí theo cả ba phép thử (chưa phải thành cách)",
+      "input": {
+        "date": "1976-04-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 12,
+        "minute": 15
+      },
+      "focusBranchIndex": 10,
+      "observed": [
+        {
+          "star": "Cự Môn",
+          "branchIndex": 10,
+          "relation": "toa-cung"
+        },
+        {
+          "star": "Thái Dương",
+          "branchIndex": 6,
+          "relation": "tam-hop"
+        }
+      ],
+      "statuses": [
+        {
+          "id": "four-court",
+          "status": "geometry-observed",
+          "geometryMatches": true
+        },
+        {
+          "id": "triad-only",
+          "status": "geometry-observed",
+          "geometryMatches": true
+        },
+        {
+          "id": "focus-anchored",
+          "status": "geometry-observed",
+          "geometryMatches": true
+        }
+      ],
+      "expertReviewed": false,
+      "confirmedClassicalFormation": false
+    },
+    {
+      "id": "cu-nhat-contrast",
+      "familyId": "cu-nhat",
+      "label": "Khớp Tứ chính nhưng khác tam hợp vì sao ở đối cung",
+      "input": {
+        "date": "1990-06-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 14,
+        "minute": 15
+      },
+      "focusBranchIndex": 11,
+      "observed": [
+        {
+          "star": "Cự Môn",
+          "branchIndex": 11,
+          "relation": "toa-cung"
+        },
+        {
+          "star": "Thái Dương",
+          "branchIndex": 5,
+          "relation": "doi-cung"
+        }
+      ],
+      "statuses": [
+        {
+          "id": "four-court",
+          "status": "geometry-observed",
+          "geometryMatches": true
+        },
+        {
+          "id": "triad-only",
+          "status": "geometry-not-met",
+          "geometryMatches": false
+        },
+        {
+          "id": "focus-anchored",
+          "status": "geometry-observed",
+          "geometryMatches": true
+        }
+      ],
+      "expertReviewed": false,
+      "confirmedClassicalFormation": false
+    }
+  ]
+}

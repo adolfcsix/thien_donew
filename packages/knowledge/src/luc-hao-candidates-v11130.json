@@ -1,0 +1,2367 @@
+{
+  "version": "11.130",
+  "rule": "jing-fang-pure-palace-absent-relative-v11.97",
+  "provenance": "Generated from frozen legacy Na Jia / hidden-relative contracts; reproducibility verified by V11.130 audit. Not an independent source.",
+  "entries": {
+    "100000": {
+      "palace": "kun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            1,
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        }
+      }
+    },
+    "100001": {
+      "palace": "xun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            5
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            5
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        }
+      }
+    },
+    "100010": {
+      "palace": "kan",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            5
+          ]
+        }
+      }
+    },
+    "100011": {
+      "palace": "xun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        }
+      }
+    },
+    "100100": {
+      "palace": "zhen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3,
+            6
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        }
+      }
+    },
+    "100101": {
+      "palace": "xun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3,
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        }
+      }
+    },
+    "100110": {
+      "palace": "zhen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            4
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3,
+            6
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        }
+      }
+    },
+    "100111": {
+      "palace": "xun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3,
+            6
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        }
+      }
+    },
+    "101000": {
+      "palace": "kan",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            4
+          ]
+        }
+      }
+    },
+    "101001": {
+      "palace": "gen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3,
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        }
+      }
+    },
+    "101010": {
+      "palace": "kan",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            5
+          ]
+        }
+      }
+    },
+    "101011": {
+      "palace": "xun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            2,
+            4
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        }
+      }
+    },
+    "101100": {
+      "palace": "kan",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            6
+          ]
+        }
+      }
+    },
+    "101101": {
+      "palace": "li",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            2,
+            5
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        }
+      }
+    },
+    "101110": {
+      "palace": "kan",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            6
+          ]
+        }
+      }
+    },
+    "101111": {
+      "palace": "li",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            2,
+            6
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        }
+      }
+    },
+    "110000": {
+      "palace": "kun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        }
+      }
+    },
+    "110001": {
+      "palace": "gen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            6
+          ]
+        }
+      }
+    },
+    "110010": {
+      "palace": "kan",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            5
+          ]
+        }
+      }
+    },
+    "110011": {
+      "palace": "gen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            5
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            6
+          ]
+        }
+      }
+    },
+    "110100": {
+      "palace": "dui",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            3,
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            1,
+            4
+          ]
+        }
+      }
+    },
+    "110101": {
+      "palace": "gen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        }
+      }
+    },
+    "110110": {
+      "palace": "dui",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            3,
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        }
+      }
+    },
+    "110111": {
+      "palace": "gen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            4
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        }
+      }
+    },
+    "111000": {
+      "palace": "kun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            1,
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        }
+      }
+    },
+    "111001": {
+      "palace": "gen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            1,
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            6
+          ]
+        }
+      }
+    },
+    "111010": {
+      "palace": "kun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        }
+      }
+    },
+    "111011": {
+      "palace": "xun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        }
+      }
+    },
+    "111100": {
+      "palace": "kun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        }
+      }
+    },
+    "111101": {
+      "palace": "qian",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            3,
+            5
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        }
+      }
+    },
+    "111110": {
+      "palace": "kun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            1,
+            4
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        }
+      }
+    },
+    "111111": {
+      "palace": "qian",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            3,
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        }
+      }
+    },
+    "000000": {
+      "palace": "kun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            1,
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        }
+      }
+    },
+    "010000": {
+      "palace": "kan",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            4
+          ]
+        }
+      }
+    },
+    "001000": {
+      "palace": "dui",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            4
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        }
+      }
+    },
+    "011000": {
+      "palace": "zhen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            2,
+            5
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            1,
+            4
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            6
+          ]
+        }
+      }
+    },
+    "000100": {
+      "palace": "zhen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "hidden",
+          "positions": [
+            1
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            2,
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        }
+      }
+    },
+    "010100": {
+      "palace": "zhen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "hidden",
+          "positions": [
+            1
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            2,
+            6
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        }
+      }
+    },
+    "001100": {
+      "palace": "dui",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            4
+          ]
+        }
+      }
+    },
+    "011100": {
+      "palace": "zhen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            5
+          ]
+        }
+      }
+    },
+    "000010": {
+      "palace": "kun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            1,
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        }
+      }
+    },
+    "010010": {
+      "palace": "kan",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            5
+          ]
+        }
+      }
+    },
+    "001010": {
+      "palace": "dui",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            5
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        }
+      }
+    },
+    "011010": {
+      "palace": "zhen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            2,
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            1,
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        }
+      }
+    },
+    "000110": {
+      "palace": "dui",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        }
+      }
+    },
+    "010110": {
+      "palace": "dui",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            2,
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        }
+      }
+    },
+    "001110": {
+      "palace": "dui",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        }
+      }
+    },
+    "011110": {
+      "palace": "zhen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            2,
+            4
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            5
+          ]
+        }
+      }
+    },
+    "000001": {
+      "palace": "qian",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            4
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "hidden",
+          "positions": [
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3,
+            6
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        }
+      }
+    },
+    "010001": {
+      "palace": "li",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            2,
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            4
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        }
+      }
+    },
+    "001001": {
+      "palace": "gen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            1,
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        }
+      }
+    },
+    "011001": {
+      "palace": "xun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            2,
+            5
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            5
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            1,
+            4
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        }
+      }
+    },
+    "000101": {
+      "palace": "qian",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            5
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            1
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            6
+          ]
+        }
+      }
+    },
+    "010101": {
+      "palace": "li",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            2,
+            5
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        }
+      }
+    },
+    "001101": {
+      "palace": "li",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "hidden",
+          "positions": [
+            1
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            1,
+            5
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        }
+      }
+    },
+    "011101": {
+      "palace": "li",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "hidden",
+          "positions": [
+            1
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            1,
+            5
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        }
+      }
+    },
+    "000011": {
+      "palace": "qian",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            4
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "hidden",
+          "positions": [
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            1
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3,
+            6
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            5
+          ]
+        }
+      }
+    },
+    "010011": {
+      "palace": "li",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            2,
+            4
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            4
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        }
+      }
+    },
+    "001011": {
+      "palace": "gen",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            2,
+            5
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            1,
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        }
+      }
+    },
+    "011011": {
+      "palace": "xun",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            6
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            1,
+            4
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        }
+      }
+    },
+    "000111": {
+      "palace": "qian",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            1
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            3
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            4
+          ]
+        }
+      }
+    },
+    "010111": {
+      "palace": "li",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            4
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            2,
+            6
+          ]
+        },
+        "Thê Tài": {
+          "kind": "visible",
+          "positions": [
+            5
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "hidden",
+          "positions": [
+            3
+          ]
+        }
+      }
+    },
+    "001111": {
+      "palace": "qian",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "hidden",
+          "positions": [
+            1
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            2,
+            4
+          ]
+        }
+      }
+    },
+    "011111": {
+      "palace": "qian",
+      "families": {
+        "Phụ Mẫu": {
+          "kind": "visible",
+          "positions": [
+            1,
+            6
+          ]
+        },
+        "Huynh Đệ": {
+          "kind": "visible",
+          "positions": [
+            3,
+            5
+          ]
+        },
+        "Tử Tôn": {
+          "kind": "visible",
+          "positions": [
+            2
+          ]
+        },
+        "Thê Tài": {
+          "kind": "hidden",
+          "positions": [
+            2
+          ]
+        },
+        "Quan Quỷ": {
+          "kind": "visible",
+          "positions": [
+            4
+          ]
+        }
+      }
+    }
+  }
+}

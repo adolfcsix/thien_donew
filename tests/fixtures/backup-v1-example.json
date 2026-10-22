@@ -1,0 +1,16 @@
+{
+  "format": "thien-do.saved-charts",
+  "version": 1,
+  "exportedAt": "2026-10-10T00:00:00Z",
+  "charts": [
+    {
+      "label": "Lá số giả định",
+      "date": "2004-01-01",
+      "hour": 8,
+      "minute": 30,
+      "calendar": "solar",
+      "leap": false,
+      "gender": "Nam"
+    }
+  ]
+}

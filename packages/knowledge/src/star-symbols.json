@@ -1,0 +1,545 @@
+{
+  "edition": "v11.19-star-symbols",
+  "records": {
+    "Lộc Tồn": {
+      "family": "Phụ tinh",
+      "motif": "Tích lũy, giữ nguồn lực",
+      "context": "Lộc Tồn thường gợi chủ đề bảo toàn và quản trị những gì đang có. Hãy xem cách một nguồn lực được duy trì, đồng thời đối chiếu các sao đồng cung và quan hệ cung.",
+      "caution": "Không suy trực tiếp thành thu nhập, của cải hay mức sống."
+    },
+    "Kình Dương": {
+      "family": "Phụ tinh",
+      "motif": "Lực đẩy và va chạm",
+      "context": "Kình Dương được dùng như hình tượng sức ép, tính quyết liệt và điểm cần điều tiết. Khi luận nên nhìn yếu tố gây căng thẳng và những sao hỗ trợ, không tách một sao khỏi toàn cục.",
+      "caution": "Không gán thành tai nạn, bệnh tật hay tính hung bạo."
+    },
+    "Đà La": {
+      "family": "Phụ tinh",
+      "motif": "Trì hoãn và ma sát",
+      "context": "Đà La gợi những quá trình gặp trở lực, đòi hỏi điều chỉnh nhịp độ hoặc cách tiếp cận. Đọc cùng Kình Dương, Lộc Tồn và các yếu tố tại cung để tránh phán đoán đơn tuyến.",
+      "caution": "Không coi là định sẵn thất bại hay bất hạnh."
+    },
+    "Tả Phụ": {
+      "family": "Phụ tinh",
+      "motif": "Hợp tác và nâng đỡ",
+      "context": "Tả Phụ là biểu tượng phụ trợ, mạng lưới cộng tác và cách một vai trò được củng cố. Luận giải nên xét đồng cung với chính tinh và vị trí Hữu Bật trong toàn địa bàn.",
+      "caution": "Không khẳng định chắc chắn có quý nhân hay người giúp đỡ."
+    },
+    "Hữu Bật": {
+      "family": "Phụ tinh",
+      "motif": "Hỗ trợ và điều phối",
+      "context": "Hữu Bật thường được đọc trong cặp Phụ–Bật, gợi việc phối hợp nguồn lực, hậu thuẫn và kết nối con người. Cần xem vị trí thực tế của các sao, không mặc định luôn cùng cung.",
+      "caution": "Không tự suy đoán về quan hệ cá nhân hoặc sự thăng tiến."
+    },
+    "Văn Xương": {
+      "family": "Phụ tinh",
+      "motif": "Cấu trúc tri thức và biểu đạt",
+      "context": "Văn Xương gợi chủ đề học tập, tư duy có hệ thống và diễn đạt rõ ràng. Để hiểu hình tượng, có thể đối chiếu Văn Khúc cùng chính tinh ở cung được xét.",
+      "caution": "Không biến biểu tượng thành điểm số, bằng cấp hoặc tài năng đã được chứng minh."
+    },
+    "Văn Khúc": {
+      "family": "Phụ tinh",
+      "motif": "Diễn đạt và cảm thụ",
+      "context": "Văn Khúc là biểu tượng của cách biểu đạt, cảm nhận và xử lý thông tin qua nghệ thuật hoặc ngôn ngữ. Chỉ nên đọc như một gợi ý quan sát trong mạng lưới sao.",
+      "caution": "Không dự báo chắc chắn nghề nghiệp, thành tích học tập hay năng lực nghệ thuật."
+    },
+    "Thiên Khôi": {
+      "family": "Phụ tinh",
+      "motif": "Định hướng và tiêu chuẩn",
+      "context": "Thiên Khôi thường được liên tưởng đến khuôn mẫu, sự chỉ dẫn và khả năng nhận ra chuẩn mực. Đối chiếu Thiên Việt và các sao trong cung để xem chủ đề này được nhấn mạnh ra sao.",
+      "caution": "Không kết luận người nào sẽ xuất hiện hay mang đến may mắn."
+    },
+    "Thiên Việt": {
+      "family": "Phụ tinh",
+      "motif": "Sự ghi nhận và học hỏi",
+      "context": "Thiên Việt đi cùng nhóm Khôi–Việt về hình tượng cơ hội tiếp nhận hỗ trợ, học hỏi và được ghi nhận. Khi giải nghĩa cần xác định vị trí riêng của từng sao.",
+      "caution": "Không bảo đảm thăng chức, thi đỗ hoặc gặp người giúp."
+    },
+    "Đào Hoa": {
+      "family": "Sao theo năm sinh",
+      "motif": "Sức hút và quan hệ xã hội",
+      "context": "Đào Hoa gợi cách tạo thiện cảm, thu hút sự chú ý và tương tác xã hội. Cần cân bằng biểu tượng này với chủ đề cung và các sao đồng hành.",
+      "caution": "Không suy ra chuyện tình cảm, ngoại tình hoặc hôn nhân từ một sao."
+    },
+    "Thiên Hỷ": {
+      "family": "Sao theo năm sinh",
+      "motif": "Niềm vui và dịp kết nối",
+      "context": "Thiên Hỷ là hình tượng niềm vui, sinh hoạt chung và sự hòa hợp trong một bối cảnh. Diễn giải hữu ích là xem hoạt động gắn kết được thể hiện như thế nào.",
+      "caution": "Không khẳng định có tin vui, cưới hỏi hay sự kiện cụ thể."
+    },
+    "Thiên Mã": {
+      "family": "Sao theo năm sinh",
+      "motif": "Di chuyển và thay đổi bối cảnh",
+      "context": "Thiên Mã thường gợi sự dịch chuyển, đổi môi trường hoặc khả năng thích nghi trước biến đổi. Cần đọc đồng thời với các cung liên quan và lớp vận hạn, nếu có.",
+      "caution": "Không coi là dấu hiệu chắc chắn chuyển nhà, đi xa hoặc đổi việc."
+    },
+    "Hồng Loan": {
+      "family": "Sao theo năm sinh",
+      "motif": "Kết nối và cảm xúc",
+      "context": "Hồng Loan được đọc như biểu tượng sự thu hút, tương tác cảm xúc và các liên kết con người. Có thể đối chiếu Thiên Hỷ và chủ đề cung để mở rộng câu hỏi.",
+      "caution": "Không dự đoán mốc kết hôn, người yêu hay trạng thái quan hệ."
+    },
+    "Hoa Cái": {
+      "family": "Sao theo năm sinh",
+      "motif": "Tính biểu tượng và bản sắc tinh thần",
+      "context": "Hoa Cái gợi xu hướng tìm giá trị thẩm mỹ, nghi thức hoặc chiều sâu nội tâm trong hệ thống diễn giải truyền thống. Chỉ nên dùng để gợi câu hỏi về sự quan tâm và biểu đạt.",
+      "caution": "Không xác định tôn giáo, đức tin hoặc phẩm chất đạo đức."
+    },
+    "Thiên Hình": {
+      "family": "Phụ tinh theo tháng/ngày",
+      "motif": "Quy tắc và ranh giới",
+      "context": "Thiên Hình thường được liên hệ với nguyên tắc, sự phân định và cách tiếp cận khuôn phép. Đọc cùng chính tinh và sao đồng cung để xác định câu hỏi về giới hạn phù hợp.",
+      "caution": "Không suy diễn thành kiện tụng, phẫu thuật hoặc hình phạt."
+    },
+    "Thiên Riêu": {
+      "family": "Phụ tinh theo tháng/ngày",
+      "motif": "Độ nhạy và các khuynh hướng thu hút",
+      "context": "Thiên Riêu gợi các khía cạnh cảm thụ, sự hấp dẫn và tính phức tạp của chú ý. Việc diễn giải cần giữ tính trung lập và dựa trên bối cảnh cung.",
+      "caution": "Không phán đoán đời sống riêng tư hay tình dục."
+    },
+    "Thiên Y": {
+      "family": "Phụ tinh theo tháng/ngày",
+      "motif": "Chăm sóc và hồi phục",
+      "context": "Thiên Y gợi biểu tượng chăm nom, điều dưỡng và khả năng quan tâm tới sức khỏe trong cách đọc truyền thống. Có thể dùng làm chủ đề tự chăm sóc chung, không chẩn đoán.",
+      "caution": "Không suy ra bệnh trạng, khả năng chữa khỏi hoặc lời khuyên y khoa."
+    },
+    "Thiên Khốc": {
+      "family": "Phụ tinh theo tháng/ngày",
+      "motif": "Biểu đạt nỗi lo",
+      "context": "Thiên Khốc thường gợi sự suy tư, cảm xúc nặng và cách đối diện điều khó nói. Nên quan sát nó cùng hệ thống sao, tránh đặt lên người đọc một nhãn cảm xúc.",
+      "caution": "Không khẳng định mất mát hoặc vấn đề sức khỏe tinh thần."
+    },
+    "Thiên Hư": {
+      "family": "Phụ tinh theo tháng/ngày",
+      "motif": "Kỳ vọng và khoảng cách thực tế",
+      "context": "Thiên Hư gợi cảm giác hụt hẫng, sự kiểm tra kỳ vọng và những điều chưa đạt như dự định. Đây là hình tượng suy ngẫm, không phải dự báo kết quả.",
+      "caution": "Không coi là số phận cô độc hay thường xuyên thất bại."
+    },
+    "Tam Thai": {
+      "family": "Phụ tinh theo tháng/ngày",
+      "motif": "Cấu trúc và bước đệm",
+      "context": "Tam Thai thường tượng trưng cho cấp bậc, nền tảng và quá trình hoàn thiện một kỹ năng. Đọc cùng Bát Tọa và chính tinh để đặt câu hỏi về cách phát triển.",
+      "caution": "Không tự động suy ra chức vụ, địa vị hoặc thành tựu."
+    },
+    "Bát Tọa": {
+      "family": "Phụ tinh theo tháng/ngày",
+      "motif": "Điểm tựa và sự ổn định",
+      "context": "Bát Tọa được dùng như hình tượng một điểm tựa, chỗ dựa và năng lực duy trì nề nếp. Việc diễn giải cần xét cung cụ thể cùng các sao phụ trợ khác.",
+      "caution": "Không khẳng định sẽ được che chở hoặc có tài sản."
+    },
+    "Địa Không": {
+      "family": "Sát tinh",
+      "motif": "Khoảng trống và bất định",
+      "context": "Địa Không gợi sự thiếu chắc chắn, thay đổi cấu trúc và nhu cầu rà lại giả định. Khi đọc nên kiểm tra vị trí Địa Kiếp, chính tinh và các điều kiện liên hệ khác.",
+      "caution": "Không gán thành tai họa hay dự đoán sự mất mát."
+    },
+    "Địa Kiếp": {
+      "family": "Sát tinh",
+      "motif": "Biến động và điều cần bảo toàn",
+      "context": "Địa Kiếp trong Tử Vi thường gợi những biến động hoặc nỗi lo về điều kiện giữ vững kết quả. Phân tích nên đặt trong toàn cung và các lớp sao hỗ trợ, không tách riêng.",
+      "caution": "Không kết luận thiên tai, tổn thất hay bệnh tật."
+    },
+    "Hỏa Tinh": {
+      "family": "Sát tinh",
+      "motif": "Năng lượng nhanh và tính bộc phát",
+      "context": "Hỏa Tinh gợi tốc độ phản ứng, quyết đoán và cường độ cao. Đọc với Linh Tinh hoặc các sao đồng cung như một phép đối chiếu cường độ, không đánh giá con người.",
+      "caution": "Không gán thành nóng nảy, bạo lực hay tai nạn."
+    },
+    "Linh Tinh": {
+      "family": "Sát tinh",
+      "motif": "Cường độ kín và phản ứng",
+      "context": "Linh Tinh được đọc như hình tượng áp lực tích tụ, biến chuyển và năng lực phản ứng trong bối cảnh nhiều biến số. Cần đối chiếu với Hỏa Tinh và sao khác để giữ sự cân bằng.",
+      "caution": "Không mặc định là mất kiểm soát hoặc gặp biến cố."
+    },
+    "Thái Tuế": {
+      "family": "Vòng Thái Tuế",
+      "motif": "Thời thế và vị trí trong tập thể",
+      "context": "Gợi cách một chủ đề được đặt vào mối quan hệ với bối cảnh chung và chu kỳ năm.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Thiếu Dương": {
+      "family": "Vòng Thái Tuế",
+      "motif": "Điểm mở và quan sát mới",
+      "context": "Gợi nhu cầu soi sáng vấn đề từ nhiều góc và tránh quyết định vội.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Tang Môn": {
+      "family": "Vòng Thái Tuế",
+      "motif": "Sự khép lại và điều chỉnh",
+      "context": "Gợi chủ đề xử lý chuyển tiếp hoặc trách nhiệm sau một thay đổi, không báo trước tang sự.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Thiếu Âm": {
+      "family": "Vòng Thái Tuế",
+      "motif": "Chú ý bên trong",
+      "context": "Gợi sự lắng nghe, thận trọng và khả năng tìm ý nghĩa ở chi tiết.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Quan Phù": {
+      "family": "Vòng Thái Tuế",
+      "motif": "Quy chuẩn và trao đổi",
+      "context": "Gợi câu hỏi về quy trình, trách nhiệm và cách làm rõ khác biệt quan điểm.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Tử Phù": {
+      "family": "Vòng Thái Tuế",
+      "motif": "Cam kết và trách nhiệm",
+      "context": "Gợi sự đối chiếu lời hứa với hành động và mối quan hệ nhân quả trong lựa chọn.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Tuế Phá": {
+      "family": "Vòng Thái Tuế",
+      "motif": "Phản biện và khác biệt",
+      "context": "Gợi việc nhận diện xung đột lợi ích hoặc quan điểm và tìm cách xử lý xây dựng.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Long Đức": {
+      "family": "Vòng Thái Tuế",
+      "motif": "Thiện chí và hỗ trợ",
+      "context": "Gợi thái độ cư xử tử tế, tin cậy và khả năng duy trì thiện chí.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Bạch Hổ": {
+      "family": "Vòng Thái Tuế",
+      "motif": "Sức ép và ranh giới",
+      "context": "Gợi vấn đề cường độ, sự quyết liệt và nhu cầu đặt giới hạn an toàn.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Phúc Đức": {
+      "family": "Vòng Thái Tuế",
+      "motif": "Giá trị nền và kết nối",
+      "context": "Gợi cách một người liên hệ chuẩn mực cá nhân với cộng đồng.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Điếu Khách": {
+      "family": "Vòng Thái Tuế",
+      "motif": "Đối thoại và trao đổi",
+      "context": "Gợi việc sử dụng lời nói để kết nối hoặc tranh luận trong tập thể.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Trực Phù": {
+      "family": "Vòng Thái Tuế",
+      "motif": "Sự nhất quán",
+      "context": "Gợi câu hỏi về tính minh bạch, sự ngay thẳng và giới hạn của quan điểm cá nhân.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Bác Sĩ": {
+      "family": "Vòng Bác Sĩ",
+      "motif": "Học hỏi và quan sát",
+      "context": "Gợi việc tích lũy hiểu biết trước khi đưa ra phương án.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Lực Sĩ": {
+      "family": "Vòng Bác Sĩ",
+      "motif": "Sức bền và thực hành",
+      "context": "Gợi cách duy trì nỗ lực theo một kỷ luật có kiểm soát.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Thanh Long": {
+      "family": "Vòng Bác Sĩ",
+      "motif": "Khởi sắc và động lực",
+      "context": "Gợi việc nhận diện điều kiện thuận lợi thay vì bảo đảm một kết quả.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Tiểu Hao": {
+      "family": "Vòng Bác Sĩ",
+      "motif": "Chi phí nhỏ và phân bổ",
+      "context": "Gợi cách lưu ý tài nguyên tiêu hao hằng ngày, không dự đoán mất tiền.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Tướng Quân": {
+      "family": "Vòng Bác Sĩ",
+      "motif": "Vai trò và tổ chức",
+      "context": "Gợi khả năng đảm nhiệm trách nhiệm và phối hợp nguồn lực.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Tấu Thư": {
+      "family": "Vòng Bác Sĩ",
+      "motif": "Văn bản và truyền đạt",
+      "context": "Gợi sự chuẩn bị thông tin, diễn đạt và kiểm tra tính rõ ràng.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Phi Liêm": {
+      "family": "Vòng Bác Sĩ",
+      "motif": "Nhanh và linh hoạt",
+      "context": "Gợi nhịp chuyển động và sự cần thiết kiểm soát tốc độ.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Hỷ Thần": {
+      "family": "Vòng Bác Sĩ",
+      "motif": "Tinh thần phấn chấn",
+      "context": "Gợi cách nhận diện động lực tích cực và chia sẻ niềm vui.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Bệnh Phù": {
+      "family": "Vòng Bác Sĩ",
+      "motif": "Tự chăm sóc và giới hạn",
+      "context": "Gợi sự quan tâm đến nhịp sống và phục hồi, không phải chỉ dấu chẩn đoán.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Đại Hao": {
+      "family": "Vòng Bác Sĩ",
+      "motif": "Tổn hao và cân đối",
+      "context": "Gợi câu hỏi về phân bổ nguồn lực cho mục tiêu lớn, không dự báo thua lỗ.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Phục Binh": {
+      "family": "Vòng Bác Sĩ",
+      "motif": "Thông tin chưa rõ",
+      "context": "Gợi nhu cầu kiểm tra giả định và tránh quy kết động cơ cho người khác.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Quan Phủ": {
+      "family": "Vòng Bác Sĩ",
+      "motif": "Quy trình và trách nhiệm",
+      "context": "Gợi cách tổ chức công việc theo quy tắc, không dự báo tranh chấp.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Tràng Sinh": {
+      "family": "Vòng Tràng Sinh",
+      "motif": "Khởi đầu chu kỳ",
+      "context": "Gợi giai đoạn hình thành sức sống biểu tượng và đặt nền tảng.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Mộc Dục": {
+      "family": "Vòng Tràng Sinh",
+      "motif": "Thích nghi và điều chỉnh",
+      "context": "Gợi sự làm quen hoàn cảnh và giai đoạn biến đổi ban đầu.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Quan Đới": {
+      "family": "Vòng Tràng Sinh",
+      "motif": "Định hình vai trò",
+      "context": "Gợi việc thiết lập khuôn khổ, danh phận và cách biểu đạt.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Lâm Quan": {
+      "family": "Vòng Tràng Sinh",
+      "motif": "Đảm nhiệm và thực thi",
+      "context": "Gợi giai đoạn vận hành ổn định và thực hiện trách nhiệm.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Đế Vượng": {
+      "family": "Vòng Tràng Sinh",
+      "motif": "Đỉnh cường độ chu kỳ",
+      "context": "Gợi mức độ phát triển mạnh của vòng biểu tượng, không khẳng định thành công.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Suy": {
+      "family": "Vòng Tràng Sinh",
+      "motif": "Giảm nhịp và đánh giá",
+      "context": "Gợi cơ hội xem xét giới hạn khi một chu trình đi qua cao điểm.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Bệnh": {
+      "family": "Vòng Tràng Sinh",
+      "motif": "Suy giảm trong chu trình",
+      "context": "Gợi nhu cầu nghỉ và điều tiết của một giai đoạn biểu tượng, không chỉ tình trạng bệnh.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Tử": {
+      "family": "Vòng Tràng Sinh",
+      "motif": "Kết thúc một nhịp",
+      "context": "Gợi sự dừng lại và chuyển pha, không phải cái chết thực tế.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Mộ": {
+      "family": "Vòng Tràng Sinh",
+      "motif": "Tích tụ và lưu giữ",
+      "context": "Gợi việc gom lại nguồn lực hoặc kết quả trước một giai đoạn khác.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Tuyệt": {
+      "family": "Vòng Tràng Sinh",
+      "motif": "Đứt nhịp và tái định hướng",
+      "context": "Gợi thay đổi sâu của chu trình; không dự đoán tuyệt vọng hay tai họa.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Thai": {
+      "family": "Vòng Tràng Sinh",
+      "motif": "Mầm ý tưởng",
+      "context": "Gợi giai đoạn tiềm năng còn chưa định hình rõ.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Dưỡng": {
+      "family": "Vòng Tràng Sinh",
+      "motif": "Nuôi dưỡng và chuẩn bị",
+      "context": "Gợi sự chăm chút cho một quá trình sắp phát triển.",
+      "caution": "Vòng sao là lớp biểu tượng theo chu kỳ; không suy một vị trí riêng thành kết quả cá nhân."
+    },
+    "Long Trì": {
+      "family": "Sao theo chi năm sinh",
+      "motif": "Nề nếp, sự trang nhã",
+      "context": "Long Trì được dùng để gợi chủ đề hình thức, lễ nghi và khả năng duy trì chuẩn mực. Khi đọc cung, đặt sao này trong tương quan với Phượng Các, Hoa Cái và chính tinh.",
+      "caution": "Chỉ là hình tượng trong hệ Tử Vi; không nên suy ra sự kiện hoặc kết luận cá nhân từ một sao."
+    },
+    "Phượng Các": {
+      "family": "Sao theo chi năm sinh",
+      "motif": "Cảm quan thẩm mỹ, sự trang trọng",
+      "context": "Phượng Các tượng trưng cho yếu tố thanh nhã, diễn đạt và giá trị tinh thần. Cần nhìn cùng Long Trì và nhóm sao đang hiện diện trong cung.",
+      "caution": "Chỉ là hình tượng trong hệ Tử Vi; không nên suy ra sự kiện hoặc kết luận cá nhân từ một sao."
+    },
+    "Giải Thần": {
+      "family": "Sao theo chi năm sinh",
+      "motif": "Điều hòa và tháo gỡ",
+      "context": "Giải Thần luôn an cùng cung với Phượng Các trong bảng được chọn. Khi diễn giải, xem đây là hình tượng khả năng điều chỉnh thay vì lời hứa mọi khó khăn đều biến mất.",
+      "caution": "Chỉ là hình tượng trong hệ Tử Vi; không nên suy ra sự kiện hoặc kết luận cá nhân từ một sao."
+    },
+    "Cô Thần": {
+      "family": "Sao theo chi năm sinh",
+      "motif": "Tự lập và khoảng riêng",
+      "context": "Cô Thần được đọc như biểu tượng của ranh giới, sự tập trung cá nhân hoặc nhu cầu có không gian riêng; cần tránh định kiến về tính cách và các mối quan hệ.",
+      "caution": "Chỉ là hình tượng trong hệ Tử Vi; không nên suy ra sự kiện hoặc kết luận cá nhân từ một sao."
+    },
+    "Quả Tú": {
+      "family": "Sao theo chi năm sinh",
+      "motif": "Chiêm nghiệm và tính độc lập",
+      "context": "Quả Tú gợi nhu cầu chiêm nghiệm, thời gian riêng và sự trưởng thành trong cách tương tác; phải đối chiếu chủ đề cung và các sao khác.",
+      "caution": "Chỉ là hình tượng trong hệ Tử Vi; không nên suy ra sự kiện hoặc kết luận cá nhân từ một sao."
+    },
+    "Thiên Quan": {
+      "family": "Sao theo can năm sinh",
+      "motif": "Tinh thần hỗ trợ và trách nhiệm",
+      "context": "Thiên Quan là hình tượng sự giúp đỡ có nguyên tắc và trách nhiệm với người khác. Ý nghĩa chỉ hữu ích khi đặt cạnh toàn bộ chính phụ tinh.",
+      "caution": "Chỉ là hình tượng trong hệ Tử Vi; không nên suy ra sự kiện hoặc kết luận cá nhân từ một sao."
+    },
+    "Thiên Phúc": {
+      "family": "Sao theo can năm sinh",
+      "motif": "Phúc thiện và lòng quan tâm",
+      "context": "Thiên Phúc được xem như biểu tượng của sự quan tâm và khả năng góp sức trong hoàn cảnh chung; không hàm ý chắc chắn gặp may.",
+      "caution": "Chỉ là hình tượng trong hệ Tử Vi; không nên suy ra sự kiện hoặc kết luận cá nhân từ một sao."
+    },
+    "Ân Quang": {
+      "family": "Phụ tinh theo ngày sinh",
+      "motif": "Sự ghi nhận và lòng biết ơn",
+      "context": "Ân Quang có vị trí phái sinh từ Văn Xương và ngày âm lịch, gợi nét hỗ trợ học hỏi và sự ghi nhận trong cách đọc truyền thống.",
+      "caution": "Chỉ là hình tượng trong hệ Tử Vi; không nên suy ra sự kiện hoặc kết luận cá nhân từ một sao."
+    },
+    "Thiên Quý": {
+      "family": "Phụ tinh theo ngày sinh",
+      "motif": "Trân trọng và sự nâng đỡ",
+      "context": "Thiên Quý có vị trí phái sinh từ Văn Khúc và ngày âm lịch theo cách đếm đã chọn. Khi đọc cần đối chiếu cả Xương–Khúc.",
+      "caution": "Chỉ là hình tượng trong hệ Tử Vi; không nên suy ra sự kiện hoặc kết luận cá nhân từ một sao."
+    },
+    "Thái Phụ": {
+      "family": "Phụ tinh theo giờ sinh",
+      "motif": "Nghi thức và khả năng thể hiện",
+      "context": "Thái Phụ được xác định từ Văn Khúc, thường gắn với cách thể hiện vai trò trong môi trường có tổ chức hoặc nghi thức.",
+      "caution": "Chỉ là hình tượng trong hệ Tử Vi; không nên suy ra sự kiện hoặc kết luận cá nhân từ một sao."
+    },
+    "Phong Cáo": {
+      "family": "Phụ tinh theo giờ sinh",
+      "motif": "Quy cách và sự công nhận",
+      "context": "Phong Cáo được an kề Văn Khúc trong cách đếm được chọn, gợi chủ đề trình bày, nề nếp và sự công nhận theo bối cảnh.",
+      "caution": "Chỉ là hình tượng trong hệ Tử Vi; không nên suy ra sự kiện hoặc kết luận cá nhân từ một sao."
+    },
+    "Quốc Ấn": {
+      "family": "Phụ tinh theo can năm sinh",
+      "motif": "Trách nhiệm và sự công nhận",
+      "context": "Quốc Ấn gắn với hình tượng ấn tín và thẩm quyền trong cách đọc truyền thống. Sao được an theo vị trí Lộc Tồn, không tự mang nghĩa chắc chắn về chức vụ hay thành công. Khi đọc cần đối chiếu chính tinh tại cung, cung Quan Lộc và các yếu tố hỗ trợ.",
+      "caution": "Không dùng một sao để kết luận về nghề nghiệp, chức danh hay tương lai của một người."
+    },
+    "Kiếp Sát": {
+      "family": "Tạp tinh theo chi năm sinh",
+      "motif": "Biến động và sự chủ động ứng phó",
+      "context": "Kiếp Sát là hình tượng về khả năng xảy ra va chạm, biến động hoặc tình thế cần thận trọng trong lối luận Tử Vi. Đây là một ký hiệu trong hệ an sao theo chi năm sinh, phải đọc cùng cả cung và các sao khác.",
+      "caution": "Không suy đoán tai nạn, bệnh tật hay sự kiện gây hại chỉ từ sự có mặt của Kiếp Sát."
+    },
+    "Phá Toái": {
+      "family": "Tạp tinh theo chi năm sinh",
+      "motif": "Khó khăn nhỏ và điều chỉnh",
+      "context": "Phá Toái trong cách hiểu truyền thống thường chỉ những trở ngại, sự gián đoạn hoặc nhu cầu điều chỉnh phương án. Vị trí sao phụ thuộc nhóm địa chi năm sinh và không đủ để dự báo kết quả của từng sự việc.",
+      "caution": "Không gán các sự cố có thật hoặc định lượng rủi ro từ một sao đơn lẻ."
+    },
+    "Thiên Đức": {
+      "family": "Cát phụ tinh theo địa chi năm sinh",
+      "motif": "Nhân hòa và điều tiết",
+      "context": "Trong Tử Vi truyền thống, Thiên Đức gợi khả năng điều hòa và hỗ trợ khi xem xét quan hệ giữa các sao. Cần đối chiếu chính tinh, cung tọa thủ và các sao hội chiếu để hiểu đúng bối cảnh.",
+      "caution": "Không suy thành cam kết tránh tai ương hay may mắn trong đời thực."
+    },
+    "Nguyệt Đức": {
+      "family": "Cát phụ tinh theo địa chi năm sinh",
+      "motif": "Khoan dung và hòa giải",
+      "context": "Nguyệt Đức tượng trưng cho tính chất hòa dịu và năng lực xem xét vấn đề nhiều chiều theo cách giải nghĩa truyền thống. Nên đọc cùng Thiên Đức và các sao cùng cung nếu chúng có quan hệ.",
+      "caution": "Không khẳng định biến cố sẽ tự nhiên được hóa giải."
+    },
+    "Thiên Giải": {
+      "family": "Giải tinh theo tháng sinh âm lịch",
+      "motif": "Tháo gỡ và ứng biến",
+      "context": "Thiên Giải là hình tượng tìm phương án giảm trở ngại. Khi đọc lá số, cần phân biệt Thiên Giải với Địa Giải và Giải Thần vì ba sao được an theo những bảng khác nhau.",
+      "caution": "Không dùng sao này để dự đoán khỏi bệnh, hết nợ hay giải hạn chắc chắn."
+    },
+    "Địa Giải": {
+      "family": "Giải tinh theo tháng sinh âm lịch",
+      "motif": "Ổn định và tháo gỡ",
+      "context": "Địa Giải thường được đọc như biểu tượng tìm điểm tựa và giải pháp thực tiễn. Sắc thái tại cung phụ thuộc chính tinh, phụ tinh và quan hệ Tam phương Tứ chính.",
+      "caution": "Không coi sao đơn lẻ là khả năng vô hiệu hóa mọi sát tinh."
+    },
+    "Thiên La": {
+      "family": "Dấu cung Thìn",
+      "motif": "Giới hạn và kiên nhẫn",
+      "context": "Thiên La gắn cố định với địa chi Thìn trong quy ước Tử Vi Nam phái, biểu tượng cho các tình huống cần nhận diện ranh giới và tính kiên nhẫn. Ý nghĩa phụ thuộc các sao và cung chức cùng vị trí; không phải kết luận về cuộc đời.",
+      "caution": "Không xem dấu Thiên La là dự báo chắc chắn về giam cầm, tai họa hay trở ngại."
+    },
+    "Địa Võng": {
+      "family": "Dấu cung Tuất",
+      "motif": "Khuôn khổ và trách nhiệm",
+      "context": "Địa Võng gắn cố định với địa chi Tuất, tạo cặp hình tượng La–Võng với Thiên La ở Thìn. Cần phân tích các sao hội chiếu và chủ đề cung chức tại Tuất thay vì suy một ý nghĩa bất biến cho mọi lá số.",
+      "caution": "Không diễn giải Địa Võng thành một biến cố thực tế tất yếu."
+    },
+    "Thiên Thương": {
+      "family": "Phụ tinh cố định tại Nô Bộc",
+      "motif": "Tương tác và ranh giới xã hội",
+      "context": "Thiên Thương được đặt tại cung Nô Bộc theo quy ước Nam phái phổ biến. Khi nghiên cứu cung này, có thể đặt câu hỏi về giới hạn trong quan hệ xã hội, hỗ trợ và trách nhiệm giữa người với người; cần đối chiếu các sao khác.",
+      "caution": "Không dùng riêng sao này để tiên đoán tổn thương, bệnh tật, mất mát hay tai nạn."
+    },
+    "Thiên Sứ": {
+      "family": "Phụ tinh cố định tại Tật Ách",
+      "motif": "Sự cân bằng và tự chăm sóc",
+      "context": "Thiên Sứ được đặt tại cung Tật Ách trong quy ước Nam phái phổ biến. Phần giải nghĩa gợi ý quan tâm tới việc duy trì giới hạn, sức khỏe và thói quen chăm sóc bản thân ở góc độ biểu tượng, không phải chẩn đoán.",
+      "caution": "Không dùng Thiên Sứ để phán đoán bệnh hoặc sự cố sức khỏe và không thay thế tư vấn y khoa."
+    },
+    "Thiên Tài": {
+      "family": "Phụ tinh theo Mệnh và năm sinh",
+      "motif": "Khả năng và sự học hỏi",
+      "context": "Trong cách diễn giải biểu tượng của Tử Vi, Thiên Tài được liên hệ với năng lực tích lũy và sự rèn luyện trí tuệ. Vị trí sao tính từ cung Mệnh rồi đếm thuận theo chi năm sinh; cần đọc cùng sao tọa thủ, cung chức và bối cảnh toàn lá số.",
+      "caution": "Không dùng riêng Thiên Tài để khẳng định IQ, tài năng bẩm sinh hoặc thành công chắc chắn."
+    },
+    "Thiên Thọ": {
+      "family": "Phụ tinh theo Thân và năm sinh",
+      "motif": "Sự bền bỉ và nhịp độ trưởng thành",
+      "context": "Thiên Thọ được tính từ vị trí cung Thân rồi đếm thuận theo chi năm sinh. Khi nghiên cứu, có thể dùng như hình tượng về tính kiên trì và sự tích lũy theo thời gian, nhưng phải đặt trong mối quan hệ Mệnh–Thân và các sao liên quan.",
+      "caution": "Không lấy tên Thiên Thọ để dự đoán tuổi thọ, bệnh tật hay sức khỏe cá nhân."
+    },
+    "Đường Phù": {
+      "family": "Phụ tinh theo Lộc Tồn",
+      "motif": "Nề nếp và sự tổ chức",
+      "context": "Đường Phù được an theo vị trí Lộc Tồn: lấy cung Lộc Tồn là vị trí thứ nhất và đếm nghịch tới vị trí thứ tám. Trong biểu tượng Tử Vi, sao gợi sự nề nếp, trách nhiệm và tổ chức, cần xét cùng các sao ở cung liên hệ.",
+      "caution": "Không kết luận quyền lực, chức vụ, giấy tờ nhà đất hay kết quả pháp lý chỉ từ riêng Đường Phù."
+    },
+    "Thiên Trù": {
+      "family": "Phụ tinh theo Can năm sinh",
+      "motif": "Sự nuôi dưỡng, hưởng dụng và nguồn lực đời sống",
+      "context": "Thiên Trù được dùng như hình tượng về dinh dưỡng, tiếp đãi và cách chăm sóc nhu cầu thường nhật. Đọc cùng các sao đồng cung và chủ đề cung đang xét.",
+      "caution": "Không suy riêng sao này thành giàu sang hay mức sống thực tế."
+    },
+    "Lưu Hà": {
+      "family": "Phụ tinh theo Can năm sinh",
+      "motif": "Dòng chảy, giao tiếp và sự biến động",
+      "context": "Lưu Hà trong biểu tượng Tử Vi gắn với dòng chảy và khả năng diễn đạt, đồng thời nhắc xem xét những tình huống thay đổi. Cần xét cả cung và tổ hợp sao khác.",
+      "caution": "Không sử dụng sao này để dự đoán tai nạn, bệnh tật hoặc sự kiện nguy hiểm."
+    },
+    "Thiên Không": {
+      "family": "Phụ tinh theo Chi năm sinh",
+      "motif": "Khoảng trống, buông bỏ và sự thay đổi",
+      "context": "Thiên Không được an kề sau Thái Tuế, thường trùng vị trí Thiếu Dương trong quy ước đã chọn. Khi luận, cần phân biệt rõ với Địa Không và xem toàn cảnh cung.",
+      "caution": "Không kết luận sự mất mát hay thất bại chắc chắn từ một sao; xem phối hợp nhiều yếu tố trước khi đưa ra lời giải thích."
+    },
+    "Đẩu Quân": {
+      "family": "Phụ tinh theo năm/tháng/giờ",
+      "motif": "Nhịp điều tiết và mốc tháng",
+      "context": "Đẩu Quân được suy từ Thái Tuế năm sinh, tháng sinh và giờ sinh; trong một số truyền thống còn được dùng làm mốc xem lưu nguyệt. Bản này mới an sao gốc, chưa suy luận hạn tháng.",
+      "caution": "Không nhầm Đẩu Quân gốc với Lưu Đẩu Quân của năm xem; hạn tháng cần một mô hình tính riêng đã được đối chiếu."
+    }
+  }
+}

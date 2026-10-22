@@ -1,0 +1,12 @@
+[Unit]
+Description=Thien Do operation failure notification
+[Service]
+Type=oneshot
+User=nobody
+EnvironmentFile=/opt/thien-do/private/alerts.env
+ExecStart=/usr/bin/node /opt/thien-do/production/notify-failure.mjs %i
+TimeoutStartSec=15
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true

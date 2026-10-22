@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS users (
+ id UUID PRIMARY KEY, email VARCHAR(150) NOT NULL UNIQUE, password_hash TEXT NOT NULL,
+ salt TEXT NOT NULL, created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE TABLE IF NOT EXISTS sessions (
+ token_hash CHAR(64) PRIMARY KEY, user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+ expires_at TIMESTAMPTZ NOT NULL
+);
+CREATE INDEX IF NOT EXISTS sessions_user_idx ON sessions(user_id);
+CREATE TABLE IF NOT EXISTS charts (
+ id UUID PRIMARY KEY, user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+ label VARCHAR(70) NOT NULL, birth_date DATE NOT NULL,
+ hour SMALLINT NOT NULL CHECK(hour BETWEEN 0 AND 23),
+ minute SMALLINT NOT NULL CHECK(minute BETWEEN 0 AND 59),
+ calendar VARCHAR(5) NOT NULL CHECK(calendar IN ('solar','lunar')),
+ leap BOOLEAN NOT NULL DEFAULT FALSE,
+ gender VARCHAR(3) NOT NULL CHECK(gender IN ('Nam','Nữ')),
+ rule_set TEXT NOT NULL, created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS charts_user_idx ON charts(user_id,created_at DESC);

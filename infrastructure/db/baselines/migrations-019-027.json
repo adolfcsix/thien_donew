@@ -1,0 +1,15 @@
+{
+  "sourceVersion": "11.160.1",
+  "policy": "Freeze existing 019–027 migration bytes; future migrations must be append-only.",
+  "migrations": {
+    "019_account_admin_mfa.sql": "8c4a67cb23df7e7f0d1f6d412de843b3f5c16280c9a8274c8ffbdec5a3abd2b1",
+    "020_huyen_giai_ai.sql": "17935de4ee10c0fd3a9a20adc2a0a9426418e2a4c8435ea062667322fb718571",
+    "021_library_books.sql": "4986ac4b9437606a62feb48df29b8d1bf718f587fca8fac62ec63f1f450922f9",
+    "022_van_kho_cms.sql": "6e7a8b87434ba32f9305cc4c1f8621fe006e323fe85c4e98f14aeb1d8142dfb1",
+    "023_van_kho_media.sql": "4b31f636d67b465755f7a88310e6381e66de4649250e2cf0c40b814152f2b16a",
+    "024_forum_community.sql": "9db5d7c4241d8e107dea70b50c6f825f2a315d10c745203a13a0ffc8e32c5a1e",
+    "025_forum_moderation.sql": "2d48347ef64b57065f84ade548a5b0d5194f39cf5452c1dad9808a437e8988d6",
+    "026_tinh_canh_points.sql": "1f0b265ba1cc286d2ee17949ba2a9a30ed5a7adc04a257685c4c15838ec568de",
+    "027_tinh_canh_manual_grants.sql": "04889e28415b576b085497ff46dfe6f7aeaa4deb033f45a6fd125458dd749515"
+  }
+}

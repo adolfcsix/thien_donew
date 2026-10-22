@@ -1,0 +1,331 @@
+{
+  "title": "V11.144 independent manually transcribed classic examples",
+  "selection": "examples extracted from classical text; first upper at Can upper, derive month general from stem lodging under a fixed divinationHour Tý",
+  "caveat": "23 differing-depth examples plus two fan-yin, one jian-ji and one zhuixia; not all 720 examples",
+  "rows": [
+    {
+      "dayStem": "Giáp",
+      "dayBranch": "Thìn",
+      "firstUpper": "Tý",
+      "expected": [
+        "Dần",
+        "Tý",
+        "Tuất"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Giáp",
+      "dayBranch": "Ngọ",
+      "firstUpper": "Tý",
+      "expected": [
+        "Dần",
+        "Tý",
+        "Tuất"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Giáp",
+      "dayBranch": "Thìn",
+      "firstUpper": "Mùi",
+      "expected": [
+        "Tý",
+        "Tỵ",
+        "Tuất"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Giáp",
+      "dayBranch": "Thìn",
+      "firstUpper": "Tuất",
+      "expected": [
+        "Tý",
+        "Thân",
+        "Thìn"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Ất",
+      "dayBranch": "Mão",
+      "firstUpper": "Dần",
+      "expected": [
+        "Hợi",
+        "Dậu",
+        "Mùi"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Ất",
+      "dayBranch": "Mão",
+      "firstUpper": "Thân",
+      "expected": [
+        "Hợi",
+        "Mão",
+        "Mùi"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Ất",
+      "dayBranch": "Mão",
+      "firstUpper": "Hợi",
+      "expected": [
+        "Ngọ",
+        "Sửu",
+        "Thân"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Đinh",
+      "dayBranch": "Mão",
+      "firstUpper": "Tỵ",
+      "expected": [
+        "Hợi",
+        "Dậu",
+        "Mùi"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Đinh",
+      "dayBranch": "Mão",
+      "firstUpper": "Hợi",
+      "expected": [
+        "Hợi",
+        "Mão",
+        "Mùi"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Kỷ",
+      "dayBranch": "Mão",
+      "firstUpper": "Tỵ",
+      "expected": [
+        "Hợi",
+        "Dậu",
+        "Mùi"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Kỷ",
+      "dayBranch": "Mão",
+      "firstUpper": "Hợi",
+      "expected": [
+        "Hợi",
+        "Mão",
+        "Mùi"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Kỷ",
+      "dayBranch": "Hợi",
+      "firstUpper": "Hợi",
+      "expected": [
+        "Hợi",
+        "Mão",
+        "Mùi"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Kỷ",
+      "dayBranch": "Sửu",
+      "firstUpper": "Mão",
+      "expected": [
+        "Mão",
+        "Hợi",
+        "Mùi"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Kỷ",
+      "dayBranch": "Dậu",
+      "firstUpper": "Mão",
+      "expected": [
+        "Mão",
+        "Hợi",
+        "Mùi"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Canh",
+      "dayBranch": "Dần",
+      "firstUpper": "Thìn",
+      "expected": [
+        "Tý",
+        "Thân",
+        "Thìn"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Canh",
+      "dayBranch": "Ngọ",
+      "firstUpper": "Thìn",
+      "expected": [
+        "Tý",
+        "Thân",
+        "Thìn"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Canh",
+      "dayBranch": "Thìn",
+      "firstUpper": "Ngọ",
+      "expected": [
+        "Dần",
+        "Tý",
+        "Tuất"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Canh",
+      "dayBranch": "Ngọ",
+      "firstUpper": "Ngọ",
+      "expected": [
+        "Dần",
+        "Tý",
+        "Tuất"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Tân",
+      "dayBranch": "Mão",
+      "firstUpper": "Dần",
+      "expected": [
+        "Hợi",
+        "Mão",
+        "Mùi"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Tân",
+      "dayBranch": "Mão",
+      "firstUpper": "Thân",
+      "expected": [
+        "Hợi",
+        "Dậu",
+        "Mùi"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Quý",
+      "dayBranch": "Dậu",
+      "firstUpper": "Thân",
+      "expected": [
+        "Hợi",
+        "Ngọ",
+        "Sửu"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Quý",
+      "dayBranch": "Mùi",
+      "firstUpper": "Dậu",
+      "expected": [
+        "Mão",
+        "Hợi",
+        "Mùi"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Quý",
+      "dayBranch": "Mão",
+      "firstUpper": "Hợi",
+      "expected": [
+        "Hợi",
+        "Dậu",
+        "Mùi"
+      ],
+      "reference": "《大六壬探原》推演篇 上 二十四课改正段（手工抄录）",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Mậu",
+      "dayBranch": "Thìn",
+      "firstUpper": "Hợi",
+      "expected": [
+        "Hợi",
+        "Tỵ",
+        "Hợi"
+      ],
+      "reference": "《大六壬探原》返吟二课缀瑕校正",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Mậu",
+      "dayBranch": "Tuất",
+      "firstUpper": "Hợi",
+      "expected": [
+        "Hợi",
+        "Tỵ",
+        "Hợi"
+      ],
+      "reference": "《大六壬探原》返吟二课缀瑕校正",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Bính",
+      "dayBranch": "Tý",
+      "firstUpper": "Tý",
+      "expected": [
+        "Tý",
+        "Mùi",
+        "Dần"
+      ],
+      "reference": "《大六壬探原》丙子午将亥时: 见机",
+      "sourceUrl": "https://shuyuan.zhiming.life/read/大六壬探原(推演篇)-上/1"
+    },
+    {
+      "dayStem": "Mậu",
+      "dayBranch": "Thìn",
+      "firstUpper": "Tý",
+      "expected": [
+        "Tý",
+        "Mùi",
+        "Dần"
+      ],
+      "reference": "《大六壬探原》戊辰日 干上子: 缀瑕",
+      "sourceUrl": "https://luckclub.cn/daliuren/003/002/"
+    }
+  ]
+}

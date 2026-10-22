@@ -1,0 +1,6 @@
+/* Lớp tra cứu Lục Thân V11.75; chỉ can thiệp component mới. */
+.field{display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:600;max-width:390px;margin:18px 0}
+.field select{background:var(--body);color:var(--text);border:1px solid var(--line-strong);border-radius:9px;padding:11px 13px;font:inherit;min-height:42px}
+.field select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.summary{font-size:12px;line-height:1.8;color:var(--text);border-left:3px solid var(--accent);background:var(--glow);border-radius:4px;padding:13px 15px;margin:15px 0}
+.empty{font-size:12px;line-height:1.85;color:var(--muted);border:1px dashed var(--line-strong);padding:15px;border-radius:9px;margin:16px 0}

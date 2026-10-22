@@ -1,0 +1,154 @@
+/* THIÊN ĐỒ V11.5 — Mệnh bàn dễ đọc.
+ * Presentation only; never changes an sao or the data returned by the engine.
+ * Applied after the historical atlas/heritage/fit styles to keep one readable
+ * source of truth for the on-screen typography of all twelve cung.
+ */
+.chart-text-size-switch{
+  display:flex;align-items:center;gap:5px;flex-wrap:wrap;
+  padding-inline:8px 11px;border-left:1px solid var(--line-strong);
+}
+.chart-text-size-switch>span{
+  color:var(--muted);font:700 11px/1.4 var(--font-ui);letter-spacing:.035em;margin-right:5px;
+}
+.chart-text-size-switch button{
+  border:1px solid var(--line-strong);border-radius:6px;
+  background:var(--panel);color:var(--text);padding:9px 11px;
+  min-height:40px;font:650 12px/1.3 var(--font-ui);
+}
+.chart-text-size-switch button[aria-pressed="true"]{
+  background:rgba(197,161,106,.13);border-color:var(--gold);color:var(--gold);
+}
+.chart-text-size-switch button:hover{border-color:var(--gold)}
+
+/* Default level is intentionally larger than V11.4: previously many auxiliary
+   stars were rendered at 10.5px and main stars at 12.5px on desktop. */
+.chart-room-layout[data-board-skin]{
+  --chart-cung-size:17px;
+  --chart-can-chi-size:12px;
+  --chart-main-size:15px;
+  --chart-aux-size:13px;
+  --chart-label-size:10.5px;
+  --chart-meta-size:11.5px;
+  --chart-line-height:1.52;
+}
+.chart-room-layout[data-chart-text-size="large"]{
+  --chart-cung-size:19px;
+  --chart-can-chi-size:13px;
+  --chart-main-size:17px;
+  --chart-aux-size:14.5px;
+  --chart-label-size:11px;
+  --chart-meta-size:12px;
+  --chart-line-height:1.58;
+}
+.chart-room-layout[data-board-skin] .atlas-grid{
+  grid-template-rows:repeat(4,minmax(242px,auto));
+  align-items:stretch;
+}
+.chart-room-layout[data-board-skin] .atlas-house.house{min-height:242px;overflow:visible}
+.chart-room-layout[data-board-skin] .atlas-house-header{
+  min-height:44px!important;padding:8px 10px;gap:5px;
+}
+.chart-room-layout[data-board-skin] .atlas-house-header strong{
+  font-size:var(--chart-cung-size);line-height:1.35;white-space:normal;
+  overflow-wrap:normal;word-break:normal;
+}
+.chart-room-layout[data-board-skin] .atlas-house-header .atlas-branch{
+  font-size:var(--chart-can-chi-size);line-height:1.38;
+}
+.chart-room-layout[data-board-skin] .atlas-house-content{
+  min-width:0;padding:11px 10px 9px 12px;gap:9px;
+}
+.chart-room-layout[data-board-skin] .atlas-star-group{gap:5px;min-width:0}
+.chart-room-layout[data-board-skin] .atlas-group-label{
+  font-size:var(--chart-label-size);line-height:1.4;letter-spacing:.025em;
+  font-weight:700;
+}
+.chart-room-layout[data-board-skin] .atlas-main-star-list{
+  gap:6px 8px;align-items:start;
+}
+.chart-room-layout[data-board-skin] .atlas-main-star-entry{
+  align-items:baseline;gap:5px;line-height:var(--chart-line-height);
+}
+.chart-room-layout[data-board-skin] .atlas-main-star-entry strong{
+  font-size:var(--chart-main-size);font-weight:750;line-height:var(--chart-line-height);
+  overflow-wrap:break-word;word-break:normal;
+}
+.chart-room-layout[data-board-skin] .atlas-main-star-empty{
+  font-size:var(--chart-main-size);line-height:var(--chart-line-height);
+}
+.chart-room-layout[data-board-skin] .atlas-strength-badge{
+  min-width:20px;height:20px;font-size:11px;border-radius:3px;
+}
+.chart-room-layout[data-board-skin] .atlas-house-assist{gap:8px 10px}
+.chart-room-layout[data-board-skin] .atlas-star-items{
+  gap:4px 6px;line-height:var(--chart-line-height);
+}
+.chart-room-layout[data-board-skin] .atlas-star,
+.chart-room-layout[data-board-skin] .atlas-house-assist .atlas-star,
+.chart-room-layout[data-board-skin] .atlas-year .atlas-star,
+.chart-room-layout[data-board-skin] .atlas-gold .atlas-star{
+  font-size:var(--chart-aux-size);line-height:var(--chart-line-height);
+  overflow-wrap:break-word;word-break:normal;
+}
+.chart-room-layout[data-board-skin] .atlas-house-bottom{
+  min-height:39px;padding:8px 10px 8px 12px;gap:6px;
+}
+.chart-room-layout[data-board-skin] .atlas-age{
+  font-size:var(--chart-meta-size);line-height:1.5;white-space:normal;
+}
+.chart-room-layout[data-board-skin] .atlas-age b{font-size:calc(var(--chart-meta-size) + 1px)}
+.chart-room-layout[data-board-skin] .atlas-cycle-pills i,
+.chart-room-layout[data-board-skin] .atlas-markers i{
+  font-size:11px;line-height:1.4;
+}
+.chart-room-layout[data-board-skin] .atlas-center-data span{font-size:11.5px!important}
+.chart-room-layout[data-board-skin] .atlas-center-data strong{font-size:13px;line-height:1.5}
+.chart-room-layout[data-board-skin] .atlas-center-disclaimer{font-size:10.5px!important}
+
+/* Narrow laptop: prefer one readable column in a small cung over two columns
+   of 10px characters. Rows are allowed to grow naturally, never cropped. */
+@media (max-width:1100px){
+  .chart-room-layout[data-board-skin]{
+    --chart-cung-size:15px;--chart-main-size:13.5px;
+    --chart-aux-size:12px;--chart-label-size:10px;
+    --chart-can-chi-size:11px;--chart-meta-size:10.5px;
+  }
+  .chart-room-layout[data-board-skin][data-chart-text-size="large"]{
+    --chart-cung-size:17px;--chart-main-size:15px;
+    --chart-aux-size:13px;--chart-label-size:10.5px;
+    --chart-can-chi-size:12px;--chart-meta-size:11px;
+  }
+  .chart-room-layout[data-board-skin] .atlas-main-star-list,
+  .chart-room-layout[data-board-skin] .atlas-house-assist{grid-template-columns:minmax(0,1fr)}
+  .chart-room-layout[data-board-skin] .atlas-house-content{padding-inline:8px}
+}
+@media(max-width:760px){
+  /* The 12-cung board is overview-only at this width. The list and dialog
+     preserve full-size reading; do not force the board to scroll sideways. */
+  .chart-room-layout[data-board-skin],
+  .chart-room-layout[data-board-skin][data-chart-text-size="large"]{
+    --chart-cung-size:12px;--chart-main-size:11px;
+    --chart-aux-size:10px;--chart-label-size:8px;
+    --chart-can-chi-size:9px;--chart-meta-size:9px;
+  }
+  .chart-room-layout[data-board-skin] .atlas-grid{grid-template-rows:repeat(4,minmax(165px,auto))}
+  .chart-room-layout[data-board-skin] .atlas-house.house{min-height:165px}
+  .chart-room-layout[data-board-skin] .atlas-house-header{min-height:0!important;padding:5px 4px}
+  .chart-room-layout[data-board-skin] .atlas-house-content{padding:5px 4px;gap:5px}
+  .chart-room-layout[data-board-skin] .atlas-house-bottom{min-height:0;padding:5px 4px}
+  .chart-room-layout[data-board-skin] .atlas-strength-badge{min-width:16px;height:16px;font-size:9px}
+  .chart-room-layout[data-board-skin] .atlas-center-data strong{font-size:9px}
+  .chart-room-layout[data-board-skin] .atlas-center-data span{font-size:8px!important}
+  .chart-room-layout[data-board-skin] .atlas-center-disclaimer{font-size:8px!important}
+  .chart-text-size-switch{border-left:0;padding-inline:0;width:100%}
+  .chart-palace-list-item .chart-list-content strong{font-size:15px;line-height:1.5}
+  .chart-palace-list-item .chart-list-content small{font-size:12.5px;line-height:1.65}
+}
+@media(max-width:500px){
+  .chart-room-layout[data-board-skin] .atlas-grid{grid-template-rows:repeat(4,minmax(145px,auto))}
+  .chart-room-layout[data-board-skin] .atlas-house.house{min-height:145px}
+  .chart-text-size-switch button{flex:1 1 110px}
+}
+@media(prefers-reduced-motion:reduce){
+  .chart-text-size-switch button{transition:none}
+}

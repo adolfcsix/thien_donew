@@ -1,0 +1,60 @@
+/* A62: chat, forum identity, and MFA responsive surfaces. Relies only on shared theme tokens. */
+.hub-chat{--chat-paper:var(--td-reading-surface,var(--panel));--chat-ink:var(--text);--chat-border:var(--line-strong);gap:clamp(12px,2vw,24px);align-items:stretch}
+.hub-chat>aside{background:linear-gradient(145deg,var(--glow),transparent 60%),var(--panel);border-color:var(--chat-border);box-shadow:var(--td-card-elevation);min-height:440px}
+.hub-chat>section{border-color:var(--chat-border);background:var(--chat-paper);color:var(--chat-ink);display:flex;flex-direction:column;min-height:min(690px,82dvh);border-radius:clamp(16px,2vw,24px);box-shadow:var(--td-card-elevation);overflow:hidden;isolation:isolate}
+.hub-chat>section>.td-engraving{opacity:.12!important}
+.hub-chat .hub-letterhead{background:linear-gradient(90deg,var(--glow),var(--panel));flex:none;color:var(--muted)}
+.hub-chat .hub-chat-heading{background:color-mix(in srgb,var(--panel) 92%,var(--glow));border-bottom-color:var(--line-strong)}
+.hub-chat .hub-message-field{display:flex;flex-direction:column;min-height:0;flex:1;position:relative;background:radial-gradient(ellipse at 55% 10%,var(--glow),transparent 65%),var(--chat-paper)}
+.hub-chat .hub-message-field>.td-engraving{opacity:.12;z-index:0;pointer-events:none}
+.hub-chat .hub-messages{isolation:isolate;position:relative;z-index:1;flex:1;min-height:180px;max-height:56dvh;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:transparent;color:var(--text)}
+.hub-chat .hub-messages li{border:1px solid var(--line-strong);color:var(--text);background:color-mix(in srgb,var(--panel) 96%,var(--glow));border-radius:17px 17px 17px 5px;box-shadow:0 6px 20px rgba(0,0,0,.07);min-width:0}
+.hub-chat .hub-messages li.hub-mine{background:color-mix(in srgb,var(--panel) 82%,var(--glow));border-color:var(--line-strong);border-radius:17px 17px 5px 17px}
+.hub-chat .hub-messages li p{font-size:clamp(13px,1.2vw,15px);line-height:1.7;overflow-wrap:anywhere}
+.hub-chat .hub-composer{background:var(--panel);color:var(--text);flex:none;position:relative;z-index:2;gap:8px}
+.hub-chat .hub-composer :is(textarea,button):focus-visible,.hub-chat .hub-conversation:focus-visible{outline:3px solid var(--td-accent-text,var(--gold));outline-offset:2px}
+.hub-chat .hub-composer textarea{min-height:72px;max-height:28dvh;background:var(--td-field-bg,var(--panel-alt));border:1px solid var(--line-strong);color:var(--text)}
+.hub-chat .hub-conversation{border-radius:14px;min-height:64px}
+.hub-chat .hub-conversation[aria-pressed=true]{background:var(--panel-alt);border-color:var(--line-strong);box-shadow:inset 3px 0 var(--td-accent-text,var(--gold))}
+.hub-back-row{display:none;flex:none;align-items:center;justify-content:space-between;gap:8px;padding:8px 14px;background:var(--panel);border-bottom:1px solid var(--line-strong)}
+.hub-back-row span{color:var(--muted);font-size:10px;letter-spacing:.08em;text-align:end}
+.hub-page .hub-back-row button{padding:8px 12px;margin:0;background:var(--panel-alt);color:var(--text);border-color:var(--line-strong);font-size:12px;flex:none}
+/* Public byline: avatar, member name and badges on one flowing line; no badges trapped inside a capsule. */
+.hub-member-identity{display:inline-flex!important;align-items:center!important;column-gap:9px!important;row-gap:4px;flex-wrap:wrap!important;min-width:0;max-width:100%;vertical-align:middle}
+.hub-member-identity>a{display:inline-flex;align-items:center;gap:8px;min-width:0;flex:none;margin:0;text-decoration:none}
+.hub-member-identity>a strong{display:inline;color:var(--text);font-size:13px;line-height:1.3;text-decoration:none;border-bottom:1px solid transparent}
+.hub-member-identity>a:hover strong{border-bottom-color:currentColor}
+.hub-member-identity .hub-badges{display:inline-flex;align-items:center;gap:5px;flex:none;overflow:visible;max-width:100%}
+.hub-member-identity .hub-rank,.hub-member-identity .hub-role{display:inline-flex;align-items:center;gap:4px;min-width:0;max-width:none;flex:none}
+.hub-member-identity .hub-role{border:0!important;border-radius:0;background:transparent!important;padding:0!important;box-shadow:none!important}
+.hub-member-identity .hub-rank small{display:none}
+.hub-member-identity .hub-role svg,.hub-member-identity .hub-rank svg{max-width:none;overflow:visible}
+.hub-member-identity .hub-showcase>small{display:none}
+/* Shared visual variables — avoid hard-coded dark text inside light themes or inversely. */
+.hub-chat :is(.hub-chat-heading,.hub-composer,.hub-letterhead,.hub-inbox-title){color:var(--text)}
+.hub-chat :is(.hub-peer-name small,.hub-conversation-copy small,.hub-letterhead){color:var(--muted)}
+.hub-page .hub-chat-empty{background:transparent;color:var(--muted);flex:1}
+.hub-page .hub-chat-empty h2{color:var(--text)}
+.hub-page .hub-composer button{min-height:44px}
+@media(max-width:760px){
+ .hub-chat{grid-template-columns:minmax(0,1fr)}
+ .hub-chat>aside{max-height:55dvh;min-height:160px;overflow-y:auto}
+ .hub-chat>section{min-height:min(560px,75dvh)}
+ .hub-chat[data-thread-open=true]>aside{display:none}
+ .hub-chat[data-thread-open=true] .hub-back-row{display:flex}
+ .hub-chat .hub-messages{max-height:calc(100dvh - 300px);padding:14px 10px}
+ .hub-chat .hub-messages li{max-width:min(92%,64ch)}
+ .hub-chat .hub-chat-heading{padding:12px}
+ .hub-chat .hub-composer{padding:12px}
+ .hub-chat .hub-letterhead{padding:9px 12px}
+ .hub-chat[data-thread-open=true]>section{min-height:min(640px,calc(100dvh - 126px))}
+}
+@media(max-width:370px){.hub-back-row span{font-size:9px}.hub-member-identity{column-gap:4px!important}.hub-member-identity>a strong{font-size:12px}.hub-member-identity .hub-rank svg{width:28px;height:28px}}
+@media(prefers-reduced-motion:reduce){.hub-chat *, .hub-member-identity *{scroll-behavior:auto!important;transition:none!important}}
+@media print{.hub-back-row,.hub-chat .hub-composer,.hub-chat>aside{display:none!important}.hub-chat .hub-messages{max-height:none!important}}
+
+/* A63: specialist title is a floating prismatic sigil beside the byline, never a pill. */
+.hub-member-identity .hub-specialty{display:inline-flex;gap:9px;align-items:center;overflow:visible;flex-wrap:wrap}
+.hub-specialty{display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:100%}
+.hub-specialty>small{font:600 10px var(--font-ui);color:var(--muted)}
+@media(max-width:400px){.hub-member-identity .hub-specialty{gap:5px}}

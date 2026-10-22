@@ -1,0 +1,92 @@
+/* THIÊN ĐỒ · Chart study dock: only describes source data and branch geography. */
+.chart-room-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,294px);gap:12px;align-items:start;min-width:0}
+.chart-room-canvas{min-width:0}
+.chart-insight-dock{position:sticky;top:16px;align-self:start;min-width:0;max-height:calc(100vh - 30px);overflow-y:auto;overscroll-behavior:contain;border:1px solid var(--line-strong);background:linear-gradient(160deg,rgba(197,161,106,.045),transparent 190px),var(--panel);padding:15px 15px 12px;scrollbar-width:thin}
+.chart-insight-title{border-bottom:1px solid var(--line-strong);padding-bottom:12px}
+.chart-insight-title .eyebrow{letter-spacing:.14em;font-size:9px}
+.chart-insight-title h3{font-size:24px;margin:9px 0 7px;font-weight:500;color:var(--text)}
+.chart-insight-title h3 small{font-family:inherit;font-size:12px;color:var(--gold);white-space:nowrap}
+.chart-insight-title p{color:var(--muted);font-size:10px;line-height:1.7;margin:0}
+.chart-insight-section{padding:14px 0;border-bottom:1px solid var(--line)}
+.chart-insight-label{display:block;font-size:10px;font-weight:750;letter-spacing:.09em;color:var(--gold);margin-bottom:11px}
+.chart-insight-scope{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin-bottom:10px}
+.chart-insight-scope button{min-width:0;min-height:37px;border:1px solid var(--line-strong);background:var(--body);color:var(--muted);font-size:10px;padding:7px 2px;border-radius:4px;line-height:1.3}
+.chart-insight-scope button.active{background:rgba(197,161,106,.12);border-color:var(--gold);color:var(--gold)}
+.chart-insight-relations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.chart-insight-relation{min-width:0;min-height:94px;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:5px;padding:10px 9px;border:1px solid var(--line);background:var(--body);color:var(--text);border-radius:3px}
+.chart-insight-relation span{font-size:9px;letter-spacing:.07em;color:var(--faint)}
+.chart-insight-relation strong{font-size:13px;line-height:1.3;overflow-wrap:anywhere}
+.chart-insight-relation small{font-size:10px;color:var(--muted);line-height:1.5;overflow-wrap:anywhere}
+.chart-insight-relation.illuminated{border-color:rgba(111,175,141,.65);box-shadow:inset 0 0 0 1px rgba(111,175,141,.09)}
+.chart-insight-relation.relation-doi-cung.illuminated{border-color:rgba(115,157,203,.7)}
+.chart-insight-relation.relation-current{background:rgba(197,161,106,.11);border-color:var(--gold)}
+.chart-insight-help{font-size:10px;line-height:1.7;color:var(--muted);margin:9px 0 0}
+.chart-insight-stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+.chart-insight-stat-grid span{display:grid;gap:6px;padding:9px 5px;border:1px solid var(--line);font-size:9px;color:var(--muted);text-align:center;line-height:1.4}
+.chart-insight-stat-grid b{font-size:15px;color:var(--text);font-weight:650}
+.chart-insight-chips,.chart-insight-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.chart-insight-chips span,.chart-insight-tags span{font-size:10px;line-height:1.5;padding:4px 7px;border:1px solid var(--line-strong);color:var(--text)}
+.chart-insight-tags span{border-color:rgba(197,161,106,.5);color:var(--gold)}
+.chart-insight-evidence{font-size:11px;line-height:1.55;color:var(--muted);margin-top:10px}
+.chart-insight-evidence b{color:var(--gold);font-weight:650}
+.chart-insight-evidence p{margin:4px 0 0;overflow-wrap:anywhere}
+.chart-insight-year-heading{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.chart-insight-year-heading span{font-size:11px;color:var(--gold)}
+.chart-insight-year-stepper{display:grid;grid-template-columns:40px 1fr 40px;gap:6px;align-items:center}
+.chart-insight-year-stepper button{height:39px;border:1px solid var(--line-strong);background:var(--panel-alt);color:var(--gold);border-radius:4px;font-size:17px}
+.chart-insight-year-stepper button:disabled{opacity:.35;cursor:not-allowed}
+.chart-insight-year-stepper output{text-align:center;font:500 22px var(--font-display);color:var(--text);font-variant-numeric:tabular-nums}
+.chart-insight-reference{display:block;text-align:center;margin-top:12px;padding:11px;color:var(--gold);font-size:11px;text-decoration:none;border:1px solid var(--line-strong)}
+.chart-insight-reference:hover{text-decoration:underline;text-underline-offset:3px}
+.chart-insight-scope button:focus-visible,.chart-insight-relation:focus-visible,.chart-insight-year-stepper button:focus-visible,.chart-insight-reference:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+/* Keep the complex board scrollable, not the page, on laptop and tablet widths. */
+@media(max-width:1080px){.chart-room-layout{grid-template-columns:1fr}.chart-insight-dock{position:static;max-height:none;overflow:visible}.chart-insight-relations{grid-template-columns:repeat(4,minmax(0,1fr))}.chart-insight-dock{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:18px}.chart-insight-title,.chart-insight-reference{grid-column:1/-1}.chart-insight-section{min-width:0}}
+@media(max-width:670px){.chart-insight-dock{display:block;padding:14px}.chart-insight-relations{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.chart-insight-relation,.chart-insight-scope button{transition:none}}
+/* Basic mode actually targets the V10.8 atlas DOM rather than legacy class names. */
+.site[data-mode="basic"] .atlas-house-assist,
+.site[data-mode="basic"] .atlas-house .atlas-annual-data,
+.site[data-mode="basic"] .atlas-house .atlas-cycle-pills,
+.site[data-mode="basic"] .atlas-house .atlas-markers {display:none}
+.site[data-mode="basic"] .atlas-house .atlas-house-content {gap:5px}
+
+/* V10.8: Study dock is opt-in; collapsing it returns the entire width to the chart. */
+.chart-room-layout[data-dock-open="false"]{grid-template-columns:minmax(0,1fr)}
+.chart-dock-slot[hidden]{display:none!important}
+.chart-dock-slot{min-width:0}
+.chart-room-controls{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin:12px 0 10px;padding:12px 14px;border:1px solid var(--line-strong);background:linear-gradient(135deg,rgba(122,199,176,.08),transparent 34%),var(--panel-alt);border-radius:8px}
+.chart-room-control{padding:9px 12px;min-height:40px;border-radius:6px;border:1px solid var(--line-strong);background:linear-gradient(180deg,rgba(255,255,255,.02),transparent),var(--panel);color:var(--text);font-weight:650}
+.chart-room-control.active{border-color:var(--gold);color:var(--gold);background:linear-gradient(180deg,rgba(197,161,106,.16),rgba(197,161,106,.06))}
+.chart-room-control:hover{border-color:var(--gold);transform:translateY(-1px)}
+.chart-line-scope{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.chart-line-scope button{border:1px solid var(--line-strong);border-radius:6px;color:var(--muted);background:var(--body);min-height:37px;padding:7px 10px;font-size:11px}
+.chart-line-scope button[aria-pressed="true"]{border-color:var(--gold);color:var(--gold);background:rgba(197,161,106,.10)}
+.chart-line-legend{display:inline-flex;align-items:center;gap:5px;font-size:10px;color:var(--muted);padding-inline:4px;line-height:1.6}
+.chart-line-legend i{width:18px;border-top:3px solid #79c5a0}
+.chart-line-legend .chart-line-dashed{border-top:3px dashed #8baee3;margin-left:7px}
+.atlas-grid{position:relative}
+.chart-relation-lines{position:absolute;inset:0;display:block;pointer-events:none;z-index:3;overflow:visible}
+.chart-relation-path path{fill:none;stroke-width:2.8;stroke-linecap:round;}
+.chart-relation-path circle{stroke:var(--panel);stroke-width:1.4}
+.chart-relation-tam-hop path{}
+.chart-relation-tam-hop circle{fill:#79c5a0}
+.chart-relation-doi-cung path{stroke-dasharray:8 6}
+.chart-relation-doi-cung circle{fill:#8baee3}
+/* Keep the center labels readable while the geometry passes behind them. */
+.atlas-center.board-center{position:relative}
+.atlas-center-upper,.atlas-center-data,.atlas-center-foot,.atlas-center-disclaimer{position:relative;z-index:4}
+@media(max-width:670px){.chart-room-controls{align-items:stretch}.chart-room-control{flex:1 1 175px}.chart-line-scope{width:100%}.chart-line-legend{width:100%;margin-top:3px}}
+.chart-room-control,.chart-line-scope button{transition:all .16s ease}
+@media(prefers-reduced-motion:reduce){.chart-room-control,.chart-line-scope button{transition:none}}
+
+/* V11.1 — quiet, fluid relationship guides. The persistent SVG fades on mouse-out;
+   the geometry glides between hovered palaces in the React layer. */
+.chart-relation-lines{opacity:0;transition:opacity .22s ease-in-out;will-change:opacity}
+.chart-relation-lines[data-visible="true"]{opacity:1}
+.chart-relation-lines[data-visible="false"]{opacity:0}
+.chart-relation-path .chart-relation-stroke{stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.chart-relation-path .chart-relation-halo{stroke-width:6;stroke-linecap:round;stroke-linejoin:round;opacity:.10;stroke-dasharray:none;filter:blur(1.5px)}
+.chart-relation-path circle{opacity:.78;stroke-width:1.1;stroke-linecap:round}
+.chart-relation-doi-cung .chart-relation-stroke{stroke-dasharray:6 7}
+.chart-relation-doi-cung .chart-relation-halo{stroke-dasharray:none}
+@media(prefers-reduced-motion:reduce){.chart-relation-lines{transition:none}}

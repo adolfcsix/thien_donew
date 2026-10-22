@@ -1,0 +1,14 @@
+[Unit]
+Description=Thien Do HTTPS readiness and certificate probe
+OnFailure=thien-do-alert@%n.service
+After=network-online.target
+[Service]
+Type=oneshot
+User=nobody
+EnvironmentFile=/opt/thien-do/production/monitor.env
+ExecStart=/usr/bin/node /opt/thien-do/production/ops-check.mjs
+TimeoutStartSec=70
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true

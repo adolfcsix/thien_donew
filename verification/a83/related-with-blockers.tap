@@ -1,0 +1,436 @@
+TAP version 13
+# Subtest: A80: exact source metadata and NO-GO gates
+ok 1 - A80: exact source metadata and NO-GO gates
+  ---
+  duration_ms: 1.885997
+  type: 'test'
+  ...
+# Subtest: A80: handover docs and validator agree on current source label
+ok 2 - A80: handover docs and validator agree on current source label
+  ---
+  duration_ms: 3.345404
+  type: 'test'
+  ...
+# Subtest: A80: compact navigation hover stays centered, focus state visible
+ok 3 - A80: compact navigation hover stays centered, focus state visible
+  ---
+  duration_ms: 0.436096
+  type: 'test'
+  ...
+# Subtest: A82 client exports reuse shared helper rather than synchronously revoke their object URLs
+ok 4 - A82 client exports reuse shared helper rather than synchronously revoke their object URLs
+  ---
+  duration_ms: 1.394909
+  type: 'test'
+  ...
+# Subtest: A82 helper attaches anchor and defers revocation on success and thrown click
+ok 5 - A82 helper attaches anchor and defers revocation on success and thrown click
+  ---
+  duration_ms: 1.519576
+  type: 'test'
+  ...
+# Subtest: A82 Western Natal invalidates old detailed reading as soon as birth input changes
+ok 6 - A82 Western Natal invalidates old detailed reading as soon as birth input changes
+  ---
+  duration_ms: 1.109289
+  type: 'test'
+  ...
+# Subtest: A82 saved Numerology request cannot display errors after user edits inputs
+ok 7 - A82 saved Numerology request cannot display errors after user edits inputs
+  ---
+  duration_ms: 0.271038
+  type: 'test'
+  ...
+# Subtest: A83: every migrated export uses the same attached-link lifecycle
+ok 8 - A83: every migrated export uses the same attached-link lifecycle
+  ---
+  duration_ms: 4.129133
+  type: 'test'
+  ...
+# Subtest: A83: Tarot and Tu Vi exports preserve UTF-8 JSON payloads and a newline
+ok 9 - A83: Tarot and Tu Vi exports preserve UTF-8 JSON payloads and a newline
+  ---
+  duration_ms: 0.479381
+  type: 'test'
+  ...
+# Subtest: A83: CSV and SVG exports retain MIME types
+ok 10 - A83: CSV and SVG exports retain MIME types
+  ---
+  duration_ms: 0.328805
+  type: 'test'
+  ...
+# Subtest: A83: shared helper guarantees anchor removal and revocation even if click fails
+ok 11 - A83: shared helper guarantees anchor removal and revocation even if click fails
+  ---
+  duration_ms: 1.391363
+  type: 'test'
+  ...
+# Subtest: study: four roles form unique valid branches and wrap 11 to 3/7/5
+ok 12 - study: four roles form unique valid branches and wrap 11 to 3/7/5
+  ---
+  duration_ms: 1.467288
+  type: 'test'
+  ...
+# Subtest: study: invalid branches are rejected
+ok 13 - study: invalid branches are rejected
+  ---
+  duration_ms: 0.444078
+  type: 'test'
+  ...
+# Subtest: study: main star cards always refer to exact engine record and editorial guide
+ok 14 - study: main star cards always refer to exact engine record and editorial guide
+  ---
+  duration_ms: 6.419078
+  type: 'test'
+  ...
+# Subtest: study: reversed chart order preserves original evidence positions
+ok 15 - study: reversed chart order preserves original evidence positions
+  ---
+  duration_ms: 1.060515
+  type: 'test'
+  ...
+# Subtest: study: focus mode does not leak star cards from linked palaces
+ok 16 - study: focus mode does not leak star cards from linked palaces
+  ---
+  duration_ms: 0.900595
+  type: 'test'
+  ...
+# Subtest: study: period toggles annual evidence and keeps natal data unchanged
+ok 17 - study: period toggles annual evidence and keeps natal data unchanged
+  ---
+  duration_ms: 0.843329
+  type: 'test'
+  ...
+# Subtest: study: missing editorial star never produces fabricated description
+ok 18 - study: missing editorial star never produces fabricated description
+  ---
+  duration_ms: 0.749228
+  type: 'test'
+  ...
+# Subtest: study: invalid rows and duplicates rejected even if source array is ordered
+ok 19 - study: invalid rows and duplicates rejected even if source array is ordered
+  ---
+  duration_ms: 0.774416
+  type: 'test'
+  ...
+# Subtest: study: Markdown includes observed sources, user note, privacy and limitations
+ok 20 - study: Markdown includes observed sources, user note, privacy and limitations
+  ---
+  duration_ms: 1.29633
+  type: 'test'
+  ...
+# Subtest: study: UI is isolated, supports privacy and linked atlas; CSS basic mode hidden
+ok 21 - study: UI is isolated, supports privacy and linked atlas; CSS basic mode hidden
+  ---
+  duration_ms: 0.796478
+  type: 'test'
+  ...
+# Subtest: 12-palace ledger: 12 unique branches, engine-derived only, source not mutated
+ok 22 - 12-palace ledger: 12 unique branches, engine-derived only, source not mutated
+  ---
+  duration_ms: 5.777173
+  type: 'test'
+  ...
+# Subtest: 12-palace ledger: exact array-index path resolves against original chart order, including reversed chart
+ok 23 - 12-palace ledger: exact array-index path resolves against original chart order, including reversed chart
+  ---
+  duration_ms: 1.951676
+  type: 'test'
+  ...
+# Subtest: 12-palace ledger: all ten layers have stable labels, no duplicates
+ok 24 - 12-palace ledger: all ten layers have stable labels, no duplicates
+  ---
+  duration_ms: 1.310963
+  type: 'test'
+  ...
+# Subtest: 12-palace ledger: source validation rejects missing, duplicated or invalid branches
+ok 25 - 12-palace ledger: source validation rejects missing, duplicated or invalid branches
+  ---
+  duration_ms: 0.995177
+  type: 'test'
+  ...
+# Subtest: 12-palace ledger: Vietnamese accent-insensitive filtering respects selected layers
+ok 26 - 12-palace ledger: Vietnamese accent-insensitive filtering respects selected layers
+  ---
+  duration_ms: 2.216124
+  type: 'test'
+  ...
+# Subtest: 12-palace ledger: shared/exclusive names are exact inventory and do not mutate input
+ok 27 - 12-palace ledger: shared/exclusive names are exact inventory and do not mutate input
+  ---
+  duration_ms: 3.939447
+  type: 'test'
+  ...
+# Subtest: 12-palace ledger: absent natal targets are flagged but not fabricated
+ok 28 - 12-palace ledger: absent natal targets are flagged but not fabricated
+  ---
+  duration_ms: 0.999323
+  type: 'test'
+  ...
+# Subtest: 12-palace ledger: markers follow annual API on 12 branches
+ok 29 - 12-palace ledger: markers follow annual API on 12 branches
+  ---
+  duration_ms: 0.573042
+  type: 'test'
+  ...
+# Subtest: 12-palace ledger: CSV uses BOM/CRLF, exact paths, no birth identifiers, escapes formulas
+ok 30 - 12-palace ledger: CSV uses BOM/CRLF, exact paths, no birth identifiers, escapes formulas
+  ---
+  duration_ms: 1.812587
+  type: 'test'
+  ...
+# Subtest: 12-palace ledger: board uses standalone module with accessibility and CSS breakpoints
+ok 31 - 12-palace ledger: board uses standalone module with accessibility and CSS breakpoints
+  ---
+  duration_ms: 0.964431
+  type: 'test'
+  ...
+# Subtest: 78 identities exactly match existing RWS; 156 symbols, 234 contexts, 156 scenarios and 78 distinct identity-bound comparisons
+ok 32 - 78 identities exactly match existing RWS; 156 symbols, 234 contexts, 156 scenarios and 78 distinct identity-bound comparisons
+  ---
+  duration_ms: 4.872671
+  type: 'test'
+  ...
+# Subtest: element profile preserves Golden Dawn provenance: Wands Fire/Swords Air; planetary majors are not forcibly assigned
+ok 33 - element profile preserves Golden Dawn provenance: Wands Fire/Swords Air; planetary majors are not forcibly assigned
+  ---
+  duration_ms: 0.567865
+  type: 'test'
+  ...
+# Subtest: numerical lens differentiates Zero, pip Ten and court King with no false pip 14 or personal number
+ok 34 - numerical lens differentiates Zero, pip Ten and court King with no false pip 14 or personal number
+  ---
+  duration_ms: 0.521835
+  type: 'test'
+  ...
+# Subtest: known symbols trace to distinct actual card image: Moon towers vs Sun child; Four Wands has recovery reversal alternative
+ok 35 - known symbols trace to distinct actual card image: Moon towers vs Sun child; Four Wands has recovery reversal alternative
+  ---
+  duration_ms: 0.559141
+  type: 'test'
+  ...
+# Subtest: read-only deterministic report preserves archive and secure draw identities/orientations; no random redraw or private question export
+ok 36 - read-only deterministic report preserves archive and secure draw identities/orientations; no random redraw or private question export
+  ---
+  duration_ms: 2.385099
+  type: 'test'
+  ...
+# Subtest: one-card has zero combinations; three-card has exactly three unordered index pairs with correct orientation
+ok 37 - one-card has zero combinations; three-card has exactly three unordered index pairs with correct orientation
+  ---
+  duration_ms: 0.566422
+  type: 'test'
+  ...
+# Subtest: context changes prompts only, retaining every drawn position; curated pair honors relationship/resources contexts
+ok 38 - context changes prompts only, retaining every drawn position; curated pair honors relationship/resources contexts
+  ---
+  duration_ms: 0.440853
+  type: 'test'
+  ...
+# Subtest: orientation toggle changes interpretation while retaining pair membership and position labels
+ok 39 - orientation toggle changes interpretation while retaining pair membership and position labels
+  ---
+  duration_ms: 0.478861
+  type: 'test'
+  ...
+# Subtest: same-suit and cross-theme pairs are bounded observations, never automatic elemental conflict
+ok 40 - same-suit and cross-theme pairs are bounded observations, never automatic elemental conflict
+  ---
+  duration_ms: 2.834484
+  type: 'test'
+  ...
+# Subtest: every one of 78 cards works in both orientations with complete evidence and safe input rejection
+ok 41 - every one of 78 cards works in both orientations with complete evidence and safe input rejection
+  ---
+  duration_ms: 6.661432
+  type: 'test'
+  ...
+# Subtest: caller cannot mutate canonical card depth, methods or shared sources via returned report
+ok 42 - caller cannot mutate canonical card depth, methods or shared sources via returned report
+  ---
+  duration_ms: 0.453002
+  type: 'test'
+  ...
+# Subtest: search exposes original names and deep motifs, with no dependence on subjective free-text question
+ok 43 - search exposes original names and deep motifs, with no dependence on subjective free-text question
+  ---
+  duration_ms: 0.683869
+  type: 'test'
+  ...
+# Subtest: Waite reflective Celtic fixed order and independent coordinates: aim3/basis4/past5/next6, 10 cards without Significator
+ok 44 - Waite reflective Celtic fixed order and independent coordinates: aim3/basis4/past5/next6, 10 cards without Significator
+  ---
+  duration_ms: 3.64223
+  type: 'test'
+  ...
+# Subtest: legacy one/three snapshots and standalone archive remain exact v1; no automatic migration
+ok 45 - legacy one/three snapshots and standalone archive remain exact v1; no automatic migration
+  ---
+  duration_ms: 1.022168
+  type: 'test'
+  ...
+# Subtest: new snapshots pin supported method, knowledge checksum and base-catalog checksum
+ok 46 - new snapshots pin supported method, knowledge checksum and base-catalog checksum
+  ---
+  duration_ms: 3.627338
+  type: 'test'
+  ...
+# Subtest: all four advanced layouts draw distinct cards and honor disabled reversals, including custom 16-card upper bound
+ok 47 - all four advanced layouts draw distinct cards and honor disabled reversals, including custom 16-card upper bound
+  ---
+  duration_ms: 19.902013
+  type: 'test'
+  ...
+# Subtest: advanced validation checks before drawing: malformed layout consumes no entropy
+ok 48 - advanced validation checks before drawing: malformed layout consumes no entropy
+  ---
+  duration_ms: 0.323697
+  type: 'test'
+  ...
+# Subtest: fixed layout cannot be relabeled, reordered, rotated differently or repurposed under same version
+ok 49 - fixed layout cannot be relabeled, reordered, rotated differently or repurposed under same version
+  ---
+  duration_ms: 1.230852
+  type: 'test'
+  ...
+# Subtest: custom definitions survive exact JSON round trip including Unicode labels, roles, coordinates and context
+ok 50 - custom definitions survive exact JSON round trip including Unicode labels, roles, coordinates and context
+  ---
+  duration_ms: 1.081527
+  type: 'test'
+  ...
+# Subtest: reject duplicate labels/cells/IDs, unknown roles, empty/too-long prompts and invalid custom ranges
+ok 51 - reject duplicate labels/cells/IDs, unknown roles, empty/too-long prompts and invalid custom ranges
+  ---
+  duration_ms: 0.588405
+  type: 'test'
+  ...
+# Subtest: advanced raw oversize, wrong count, repeated/unknown cards, unknown context and illegal reversal fail closed
+ok 52 - advanced raw oversize, wrong count, repeated/unknown cards, unknown context and illegal reversal fail closed
+  ---
+  duration_ms: 1.050971
+  type: 'test'
+  ...
+# Subtest: untrusted computed results are discarded without changing method or user custom input
+ok 53 - untrusted computed results are discarded without changing method or user custom input
+  ---
+  duration_ms: 0.75091
+  type: 'test'
+  ...
+# Subtest: deep reading uses all 10 true roles and stored context, not hardcoded three-card roles
+ok 54 - deep reading uses all 10 true roles and stored context, not hardcoded three-card roles
+  ---
+  duration_ms: 1.6013
+  type: 'test'
+  ...
+# Subtest: custom 16-card deep report has 120 pairs and retains arbitrary slot purpose, with no snapshot mutation
+ok 55 - custom 16-card deep report has 120 pairs and retains arbitrary slot purpose, with no snapshot mutation
+  ---
+  duration_ms: 1.864045
+  type: 'test'
+  ...
+# Subtest: identical semantic layouts compare position-by-position and retain actual shared-card direction and positions
+ok 56 - identical semantic layouts compare position-by-position and retain actual shared-card direction and positions
+  ---
+  duration_ms: 1.908642
+  type: 'test'
+  ...
+# Subtest: different layout/version/role definitions never align ordinal slots; only actual card overlap is compared
+ok 57 - different layout/version/role definitions never align ordinal slots; only actual card overlap is compared
+  ---
+  duration_ms: 1.688621
+  type: 'test'
+  ...
+# Subtest: context may differ while positional definition stays aligned; comparison does not copy main questions or predict probability
+ok 58 - context may differ while positional definition stays aligned; comparison does not copy main questions or predict probability
+  ---
+  duration_ms: 0.672021
+  type: 'test'
+  ...
+# Subtest: portable archive max-sized valid Unicode layout remains within parser limit
+ok 59 - portable archive max-sized valid Unicode layout remains within parser limit
+  ---
+  duration_ms: 1.243621
+  type: 'test'
+  ...
+# node:internal/modules/cjs/loader:1404
+#   throw err;
+#   ^
+# Error: Cannot find module 'astronomy-engine'
+# Require stack:
+# - /mnt/data/thiendo_a83/thien-do/packages/astrology-engine/src/western-natal.cjs
+# - /mnt/data/thiendo_a83/thien-do/tests/v11127-western-depth.test.cjs
+#     at Function._resolveFilename (node:internal/modules/cjs/loader:1401:15)
+#     at defaultResolveImpl (node:internal/modules/cjs/loader:1057:19)
+#     at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1062:22)
+#     at Function._load (node:internal/modules/cjs/loader:1211:37)
+#     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+#     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+#     at Module.require (node:internal/modules/cjs/loader:1487:12)
+#     at require (node:internal/modules/helpers:135:16)
+#     at Object.<anonymous> (/mnt/data/thiendo_a83/thien-do/packages/astrology-engine/src/western-natal.cjs:2:17)
+#     at Module._compile (node:internal/modules/cjs/loader:1730:14) {
+#   code: 'MODULE_NOT_FOUND',
+#   requireStack: [
+#     '/mnt/data/thiendo_a83/thien-do/packages/astrology-engine/src/western-natal.cjs',
+#     '/mnt/data/thiendo_a83/thien-do/tests/v11127-western-depth.test.cjs'
+#   ]
+# }
+# Node.js v22.16.0
+# Subtest: tests/v11127-western-depth.test.cjs
+not ok 8 - tests/v11127-western-depth.test.cjs
+  ---
+  duration_ms: 41.990316
+  type: 'test'
+  location: '/mnt/data/thiendo_a83/thien-do/tests/v11127-western-depth.test.cjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:internal/modules/cjs/loader:1404
+#   throw err;
+#   ^
+# Error: Cannot find module 'astronomy-engine'
+# Require stack:
+# - /mnt/data/thiendo_a83/thien-do/packages/astrology-engine/src/western-natal.cjs
+# - /mnt/data/thiendo_a83/thien-do/tests/v11128-relationship.test.cjs
+#     at Function._resolveFilename (node:internal/modules/cjs/loader:1401:15)
+#     at defaultResolveImpl (node:internal/modules/cjs/loader:1057:19)
+#     at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1062:22)
+#     at Function._load (node:internal/modules/cjs/loader:1211:37)
+#     at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+#     at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+#     at Module.require (node:internal/modules/cjs/loader:1487:12)
+#     at require (node:internal/modules/helpers:135:16)
+#     at Object.<anonymous> (/mnt/data/thiendo_a83/thien-do/packages/astrology-engine/src/western-natal.cjs:2:17)
+#     at Module._compile (node:internal/modules/cjs/loader:1730:14) {
+#   code: 'MODULE_NOT_FOUND',
+#   requireStack: [
+#     '/mnt/data/thiendo_a83/thien-do/packages/astrology-engine/src/western-natal.cjs',
+#     '/mnt/data/thiendo_a83/thien-do/tests/v11128-relationship.test.cjs'
+#   ]
+# }
+# Node.js v22.16.0
+# Subtest: tests/v11128-relationship.test.cjs
+not ok 9 - tests/v11128-relationship.test.cjs
+  ---
+  duration_ms: 50.745298
+  type: 'test'
+  location: '/mnt/data/thiendo_a83/thien-do/tests/v11128-relationship.test.cjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..61
+# tests 61
+# suites 0
+# pass 59
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 506.971095

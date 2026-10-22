@@ -1,0 +1,555 @@
+[
+  {
+    "term": "Thiên Can",
+    "group": "Lịch pháp",
+    "meaning": "Hệ 10 ký hiệu Giáp đến Quý, kết hợp Địa Chi thành chu kỳ 60 hoa giáp.",
+    "caution": "Một Thiên Can không tự mô tả vận mệnh.",
+    "route": "/academy/can-chi-gio-sinh"
+  },
+  {
+    "term": "Địa Chi",
+    "group": "Lịch pháp",
+    "meaning": "Mười hai ký hiệu Tý đến Hợi, dùng gắn vị trí giờ và địa bàn.",
+    "caution": "Phân biệt địa chi Thân với cung Thân.",
+    "route": "/academy/doc-dia-ban-12-cung"
+  },
+  {
+    "term": "Lục Thập Hoa Giáp",
+    "group": "Lịch pháp",
+    "meaning": "Chu kỳ 60 cặp Can Chi hợp lệ theo thứ tự tương ứng âm dương.",
+    "caution": "Không phải chu kỳ 60 năm dự báo kết quả đời sống.",
+    "route": "/academy/can-chi-gio-sinh"
+  },
+  {
+    "term": "Âm lịch",
+    "group": "Lịch pháp",
+    "meaning": "Hệ lịch tính theo chu kỳ tháng âm và cách xác định tháng, có thể có tháng nhuận.",
+    "caution": "Ngày âm không đồng nghĩa ngày dương nhập vào biểu mẫu.",
+    "route": "/calendar"
+  },
+  {
+    "term": "Tháng nhuận",
+    "group": "Lịch pháp",
+    "meaning": "Tháng được thêm trong năm âm lịch nhất định để đồng bộ chu kỳ tháng với mùa.",
+    "caution": "Nhớ chọn cờ tháng nhuận khi quy đổi âm sang dương.",
+    "route": "/academy/can-chi-gio-sinh"
+  },
+  {
+    "term": "Tiết khí",
+    "group": "Lịch pháp",
+    "meaning": "Các mốc được xác định theo vị trí Mặt Trời trên đường hoàng đạo trong một năm.",
+    "caution": "Gần thời điểm chuyển tiết khí, sai số giờ có thể đổi trụ tháng Bát Tự.",
+    "route": "/bazi"
+  },
+  {
+    "term": "Lập Xuân",
+    "group": "Lịch pháp",
+    "meaning": "Mốc tiết khí thường dùng làm ranh năm theo hệ thống Bát Tự.",
+    "caution": "Không luôn trùng Tết âm lịch hoặc ngày 1/1.",
+    "route": "/academy/nhap-mon-bat-tu"
+  },
+  {
+    "term": "Giờ Tý",
+    "group": "Lịch pháp",
+    "meaning": "Khoảng giờ giao ranh cuối và đầu ngày; có các quy ước khác nhau về mốc đổi ngày.",
+    "caution": "Người sinh 23:00–23:59 cần xem cảnh báo trường phái.",
+    "route": "/academy/can-chi-gio-sinh"
+  },
+  {
+    "term": "Cung Mệnh",
+    "group": "Tử Vi",
+    "meaning": "Vị trí an từ tháng âm và giờ sinh, là mốc phân bố tên 12 cung.",
+    "caution": "Không phải một địa chi cố định cho tất cả lá số.",
+    "route": "/academy/doc-dia-ban-12-cung"
+  },
+  {
+    "term": "Cung Thân",
+    "group": "Tử Vi",
+    "meaning": "Vị trí an từ tháng âm và giờ sinh theo chiều tính khác với Mệnh.",
+    "caution": "Không nhầm với địa chi Thân.",
+    "route": "/academy/menh-than-va-ngu-hanh-cuc"
+  },
+  {
+    "term": "Ngũ Hành Cục",
+    "group": "Tử Vi",
+    "meaning": "Tên Cục Thủy Nhị, Mộc Tam, Kim Tứ, Thổ Ngũ, Hỏa Lục gắn với tham số an sao.",
+    "caution": "Số Cục không phải điểm may mắn.",
+    "route": "/academy/menh-than-va-ngu-hanh-cuc"
+  },
+  {
+    "term": "Chính tinh",
+    "group": "Tử Vi",
+    "meaning": "Nhóm 14 ngôi sao chính trong phép an Tử Vi theo bộ quy tắc Tam Hợp đang dùng.",
+    "caution": "Vị trí sao là dữ liệu quy tắc, không phải sự kiện đời sống.",
+    "route": "/star-atlas"
+  },
+  {
+    "term": "Phụ tinh",
+    "group": "Tử Vi",
+    "meaning": "Nhóm sao bổ trợ được an dựa trên các đầu vào như Can Chi, giờ và tháng.",
+    "caution": "Cần phân biệt phụ tinh với sao năm sinh và các vòng sao.",
+    "route": "/academy/phu-tinh-va-cac-vong-sao"
+  },
+  {
+    "term": "Miếu – Vượng – Đắc – Bình – Hãm",
+    "group": "Tử Vi",
+    "meaning": "Bộ nhãn mô tả vị trí chính tinh tại từng địa chi theo một bảng quy ước cụ thể.",
+    "caution": "Có nhiều dị bản giữa các nguồn; không đồng nhất nhãn với tốt/xấu.",
+    "route": "/star-atlas"
+  },
+  {
+    "term": "Tứ Hóa",
+    "group": "Tử Vi",
+    "meaning": "Bốn nhãn Hóa Lộc, Hóa Quyền, Hóa Khoa và Hóa Kỵ gắn theo bảng Thiên Can.",
+    "caution": "Bảng gán khác nhau giữa một số trường phái.",
+    "route": "/academy/tu-hoa-va-bang-quy-tac"
+  },
+  {
+    "term": "Tam hợp",
+    "group": "Tử Vi",
+    "meaning": "Nhóm ba địa chi cách nhau bốn vị trí trên vòng 12 chi, gồm cung đang xem và hai chi liên hệ.",
+    "caution": "Tên cung chức trên các chi thay đổi theo lá số.",
+    "route": "/academy/tam-phuong-tu-chinh"
+  },
+  {
+    "term": "Đối cung",
+    "group": "Tử Vi",
+    "meaning": "Cung đối diện, cách sáu vị trí trên vòng 12 địa chi.",
+    "caution": "Là phép xác định vị trí, không tự tạo ra kết luận diễn giải.",
+    "route": "/academy/tam-phuong-tu-chinh"
+  },
+  {
+    "term": "Tam phương Tứ chính",
+    "group": "Tử Vi",
+    "meaning": "Nhóm cung hiện tại, hai cung tam hợp và một cung đối diện để đối chiếu sao.",
+    "caution": "Không gộp mọi sao của bốn cung thành một lời phán duy nhất.",
+    "route": "/academy/tam-phuong-tu-chinh"
+  },
+  {
+    "term": "Đại hạn",
+    "group": "Tử Vi",
+    "meaning": "Lớp chu kỳ mười năm an theo Cục, giới tính và chiều thuận/nghịch đã chọn.",
+    "caution": "Tuổi trong phép an theo tuổi mụ, không phải ngày sinh nhật dương.",
+    "route": "/academy/dai-han-luu-nien"
+  },
+  {
+    "term": "Tiểu hạn",
+    "group": "Tử Vi",
+    "meaning": "Lớp hạn được an theo quy tắc bổ sung với vị trí có thể thay đổi theo tuổi/năm.",
+    "caution": "Nên đối chiếu quy tắc và năm tham chiếu đang xem.",
+    "route": "/academy/dai-han-luu-nien"
+  },
+  {
+    "term": "Lưu niên",
+    "group": "Tử Vi",
+    "meaning": "Lớp sao và dấu mốc phụ thuộc vào năm xem, đặt cạnh dữ liệu lá số gốc.",
+    "caution": "Đổi năm xem không có nghĩa đổi thông tin ngày giờ sinh.",
+    "route": "/academy/dai-han-luu-nien"
+  },
+  {
+    "term": "Quy tắc an sao",
+    "group": "Nghiên cứu",
+    "meaning": "Tập các phép tính dùng để phân bố sao theo dữ liệu sinh và lịch, có thể gắn phiên bản.",
+    "caution": "Cùng tên thuật ngữ có thể khác bảng theo trường phái.",
+    "route": "/academy/truy-vet-luan-cu"
+  },
+  {
+    "term": "Vết nguồn",
+    "group": "Nghiên cứu",
+    "meaning": "Đường dẫn về trường dữ liệu đầu ra như houses[index].stars hoặc annual.items[index].",
+    "caution": "Vết nguồn chứng minh phép tính trong hệ thống, không chứng minh tiên đoán.",
+    "route": "/academy/truy-vet-luan-cu"
+  },
+  {
+    "term": "Dị bản",
+    "group": "Nghiên cứu",
+    "meaning": "Sự khác nhau giữa các bảng, quy ước hoặc trường phái trong tài liệu truyền thống.",
+    "caution": "Ghi rõ tên bảng và phiên bản khi so sánh.",
+    "route": "/academy/truy-vet-luan-cu"
+  },
+  {
+    "term": "Tứ Trụ",
+    "group": "Bát Tự",
+    "meaning": "Bốn trụ Năm, Tháng, Ngày, Giờ; mỗi trụ có một cặp Can Chi.",
+    "caution": "Ranh trụ tháng và năm phải xét tiết khí theo quy ước đã chọn.",
+    "route": "/academy/nhap-mon-bat-tu"
+  },
+  {
+    "term": "Nhật chủ",
+    "group": "Bát Tự",
+    "meaning": "Thiên Can của trụ Ngày trong biểu diễn Tứ Trụ.",
+    "caution": "Là nhãn dữ liệu, không tự định đoạt tính cách.",
+    "route": "/academy/nhap-mon-bat-tu"
+  },
+  {
+    "term": "Ẩn Can",
+    "group": "Bát Tự",
+    "meaning": "Các Thiên Can được gắn bên trong từng Địa Chi theo bảng Tàng Can.",
+    "caution": "Tùy hệ thống có cách phân vai Chính khí/Khí phụ/Dư khí.",
+    "route": "/bazi"
+  },
+  {
+    "term": "Thập thần",
+    "group": "Bát Tự",
+    "meaning": "Hệ phân loại quan hệ giữa các Can và Nhật chủ trong lối học Bát Tự.",
+    "caution": "Không phải chỉ số tâm lý được kiểm định.",
+    "route": "/bazi"
+  },
+  {
+    "term": "Đồng cung",
+    "group": "Tử Vi",
+    "meaning": "Hai hay nhiều sao cùng tọa một cung trên lá số theo cùng lớp thời gian.",
+    "caution": "Sao lưu niên không tự động được tính là sao gốc.",
+    "route": "/chart"
+  },
+  {
+    "term": "Giáp cung",
+    "group": "Tử Vi",
+    "meaning": "Hai cung liền kề cung đang xét, dùng trong một số quy tắc nhận diện cách cục.",
+    "caution": "Không nên biến mọi cặp sao giáp cung thành một cách cổ điển.",
+    "route": "/chart"
+  },
+  {
+    "term": "Sao lưu niên",
+    "group": "Tử Vi",
+    "meaning": "Những nhãn sao được an theo năm đang xem hạn, không cố định theo năm sinh.",
+    "caution": "Năm xem hợp lệ và quy tắc từng sao phải được xác nhận trước khi luận.",
+    "route": "/chart"
+  },
+  {
+    "term": "Vòng Thái Tuế",
+    "group": "Tử Vi",
+    "meaning": "Nhóm mười hai sao phân bố theo địa chi năm sinh trong lối an sao Tam Hợp.",
+    "caution": "Phân biệt vòng năm sinh với Lưu Thái Tuế của năm xem.",
+    "route": "/chart"
+  },
+  {
+    "term": "Vòng Bác Sĩ",
+    "group": "Tử Vi",
+    "meaning": "Chuỗi mười hai sao khởi từ Lộc Tồn theo quy ước thuận/nghịch của hệ an sao.",
+    "caution": "Tên Quan Phủ khác Quan Phù dù chỉ lệch một chữ.",
+    "route": "/chart"
+  },
+  {
+    "term": "Vòng Tràng Sinh",
+    "group": "Tử Vi",
+    "meaning": "Chuỗi mười hai trạng thái tượng trưng cho một chu kỳ sinh–trưởng–suy–tái sinh.",
+    "caution": "Tên Tràng Sinh và Trường Sinh có thể là dị cách viết; không nên đếm hai lần.",
+    "route": "/chart"
+  },
+  {
+    "term": "Lục cát",
+    "group": "Tử Vi",
+    "meaning": "Nhóm Phụ, Bật, Xương, Khúc, Khôi, Việt thường dùng khi xem khả năng hỗ trợ và hội chiếu.",
+    "caution": "Phải xem có hiện diện thật trên lá số, không suy theo tên nhóm.",
+    "route": "/research"
+  },
+  {
+    "term": "Lục sát",
+    "group": "Tử Vi",
+    "meaning": "Nhóm Kình, Đà, Hỏa, Linh, Không, Kiếp thường được tham chiếu theo điều kiện cụ thể.",
+    "caution": "Không coi nhãn hung tinh là bằng chứng về tai nạn hay bệnh tật.",
+    "route": "/research"
+  },
+  {
+    "term": "Sao gốc và dị danh",
+    "group": "Tử Vi",
+    "meaning": "Tên được engine an sao có thể khác cách viết trong một thư mục tài liệu khác.",
+    "caution": "Không tự đồng nhất các dị danh khi chưa đối chiếu trường phái.",
+    "route": "/research"
+  },
+  {
+    "term": "Tứ Hóa năm sinh",
+    "group": "Tử Vi",
+    "meaning": "Bốn nhãn Lộc, Quyền, Khoa, Kỵ gắn với sao đích theo thiên can năm sinh trong bảng quy ước.",
+    "caution": "Không coi nhãn Hóa Lộc là ngôi sao độc lập luôn có vị trí cố định.",
+    "route": "/chart"
+  },
+  {
+    "term": "Miếu vượng đắc hãm",
+    "group": "Tử Vi",
+    "meaning": "Phân loại vị thế một số chính tinh theo địa chi trong một bảng quy ước cụ thể.",
+    "caution": "Không có một bảng chung được mọi trường phái áp dụng giống nhau.",
+    "route": "/star-atlas"
+  },
+  {
+    "term": "Tàng can",
+    "group": "Bát Tự",
+    "meaning": "Các thiên can được quy ước ẩn trong từng địa chi để phân tích khí của địa chi.",
+    "caution": "Bảng tàng can cần được dùng thống nhất trong phép tính.",
+    "route": "/bazi"
+  },
+  {
+    "term": "Đại vận Bát Tự",
+    "group": "Bát Tự",
+    "meaning": "Các chu kỳ vận được suy theo cách tính hướng và khởi vận của hệ Tứ Trụ.",
+    "caution": "Giới tính, năm sinh, tiết khí và quy tắc làm tròn có thể làm lệch mốc khởi vận.",
+    "route": "/bazi"
+  },
+  {
+    "term": "Dụng thần",
+    "group": "Bát Tự",
+    "meaning": "Khái niệm về yếu tố điều hòa cục diện trong một số cách phân tích Tứ Trụ.",
+    "caution": "Các phái có cách lấy dụng thần khác nhau; không thể lấy một quy tắc đơn giản cho mọi lá số.",
+    "route": "/bazi"
+  },
+  {
+    "term": "Quẻ chủ",
+    "group": "Nghiên cứu",
+    "meaning": "Quẻ xuất hiện khi dùng một phương pháp khởi quẻ Kinh Dịch nhất định.",
+    "caution": "Phải ghi rõ phương pháp khởi quẻ; không thay thế bằng chọn ngẫu nhiên tùy tiện.",
+    "route": "/research"
+  },
+  {
+    "term": "Quẻ biến",
+    "group": "Nghiên cứu",
+    "meaning": "Quẻ sau khi thay đổi các hào động theo quy tắc của phương pháp được sử dụng.",
+    "caution": "Hai phương pháp gieo quẻ có thể có cách sử dụng hào động khác nhau.",
+    "route": "/research"
+  },
+  {
+    "term": "Thể và Dụng",
+    "group": "Nghiên cứu",
+    "meaning": "Cặp khái niệm dùng trong Mai Hoa Dịch Số để phân định chủ thể và tương tác.",
+    "caution": "Cần có cách xác định Thể–Dụng trước khi xét quan hệ ngũ hành.",
+    "route": "/research"
+  },
+  {
+    "term": "Bát quái",
+    "group": "Nghiên cứu",
+    "meaning": "Tám quái Càn, Khảm, Cấn, Chấn, Tốn, Ly, Khôn, Đoài được ký hiệu bằng ba hào.",
+    "caution": "Không gộp quái tiên thiên với hậu thiên trong cùng phép xác định số.",
+    "route": "/research"
+  },
+  {
+    "term": "Hỗ quẻ",
+    "group": "Nghiên cứu",
+    "meaning": "Quẻ phụ được cấu thành từ các hào bên trong quẻ chủ theo quy ước Kinh Dịch.",
+    "caution": "Phải khai báo rõ cách lấy hào, không suy từ tên quẻ.",
+    "route": "/research"
+  },
+  {
+    "term": "Cửu cung Lạc Thư",
+    "group": "Nghiên cứu",
+    "meaning": "Sơ đồ chín ô có tổ hợp số 1 đến 9 với những quan hệ tổng hàng, cột và đường chéo.",
+    "caution": "Ma phương chỉ là một cấu trúc số, không phải engine Hà Lạc đầy đủ.",
+    "route": "/research"
+  },
+  {
+    "term": "Âm độn và Dương độn",
+    "group": "Nghiên cứu",
+    "meaning": "Hai chiều bố trí cục dùng trong Kỳ Môn Độn Giáp theo những quy tắc nhất định.",
+    "caution": "Cách xác định thời điểm đổi độn phụ thuộc phương pháp khởi cục.",
+    "route": "/research"
+  },
+  {
+    "term": "Bát môn",
+    "group": "Nghiên cứu",
+    "meaning": "Tám môn được bố trí trong địa bàn Kỳ Môn theo hệ quy tắc của từng phái.",
+    "caution": "Không an vị trí môn khi chưa xác định cục và thời điểm.",
+    "route": "/research"
+  },
+  {
+    "term": "Tứ khóa Tam truyền",
+    "group": "Nghiên cứu",
+    "meaning": "Cấu trúc khóa và truyền khi lập một khóa Đại Lục Nhâm.",
+    "caution": "Không đánh đồng với Tiểu Lục Nhâm hay bấm độn dân gian.",
+    "route": "/research"
+  },
+  {
+    "term": "Tích niên Thái Ất",
+    "group": "Nghiên cứu",
+    "meaning": "Phương thức đếm năm từ một kỳ nguyên khi dựng bố cục Thái Ất.",
+    "caution": "Đổi kỳ nguyên có thể đổi toàn bộ kết quả; phải lưu thông số.",
+    "route": "/research"
+  },
+  {
+    "term": "Hệ hoàng đạo nhiệt đới",
+    "group": "Nghiên cứu",
+    "meaning": "Cách quy chiếu kinh độ thiên thể theo điểm xuân phân trong chiêm tinh phương Tây.",
+    "caution": "Khác với hệ hằng tinh và không chứng minh giá trị dự báo của diễn giải.",
+    "route": "/research"
+  },
+  {
+    "term": "Hệ nhà chiêm tinh",
+    "group": "Nghiên cứu",
+    "meaning": "Quy tắc chia vòng nhật động thành các nhà trong bản đồ sao phương Tây.",
+    "caution": "Placidus, Whole Sign và các hệ khác không hoán đổi trực tiếp cho nhau.",
+    "route": "/research"
+  },
+  {
+    "term": "Bát Trạch",
+    "group": "Nghiên cứu",
+    "meaning": "Một nhánh phong thủy dùng cung mệnh và phương hướng theo quy tắc quy chiếu.",
+    "caution": "Không được trộn kết quả với Phi Tinh khi không giải thích sự khác biệt.",
+    "route": "/research"
+  },
+  {
+    "term": "Bát Quái",
+    "group": "Kinh Dịch",
+    "meaning": "Tám quái ba hào: Càn, Đoài, Ly, Chấn, Tốn, Khảm, Cấn, Khôn; tổ hợp thượng và hạ quái tạo 64 quẻ.",
+    "caution": "Phân biệt tên quái với mệnh ngũ hành, không dùng một quái để kết luận toàn lá số.",
+    "route": "/iching"
+  },
+  {
+    "term": "Hào âm",
+    "group": "Kinh Dịch",
+    "meaning": "Hào bị đứt ở giữa, dùng biểu diễn trạng thái âm trong cấu trúc sáu hào và tam quái của Kinh Dịch.",
+    "caution": "Cần đọc vị trí hào từ dưới lên; âm không mặc định là xấu.",
+    "route": "/iching"
+  },
+  {
+    "term": "Hào dương",
+    "group": "Kinh Dịch",
+    "meaning": "Hào được vẽ liền nét, dùng biểu diễn trạng thái dương trong cấu trúc sáu hào và tam quái của Kinh Dịch.",
+    "caution": "Dương không mặc định là tốt; phải xét phương pháp diễn giải.",
+    "route": "/iching"
+  },
+  {
+    "term": "Hào động",
+    "group": "Kinh Dịch",
+    "meaning": "Trong phương pháp ba xu, hào 6 hoặc 9 đổi cực tính khi lập quẻ biến.",
+    "caution": "Không nhầm số 6/9 của phép gieo xu với tên gọi hào từ trong bản Kinh.",
+    "route": "/iching"
+  },
+  {
+    "term": "Hào tĩnh",
+    "group": "Kinh Dịch",
+    "meaning": "Hào 7 hoặc 8 giữ nguyên cực tính khi lập quẻ biến.",
+    "caution": "Không tự đổi hào tĩnh khi tạo quẻ biến.",
+    "route": "/iching"
+  },
+  {
+    "term": "Thượng quái",
+    "group": "Kinh Dịch",
+    "meaning": "Ba hào ở phần trên của một quẻ sáu hào, được ghép với hạ quái để định danh quẻ Văn Vương.",
+    "caution": "Nên phân biệt thượng quái với hạ quái khi tra tên.",
+    "route": "/iching"
+  },
+  {
+    "term": "Hạ quái",
+    "group": "Kinh Dịch",
+    "meaning": "Ba hào ở phần dưới của một quẻ sáu hào, làm nền tảng cho sự kết hợp cùng thượng quái.",
+    "caution": "Hào thứ nhất nằm dưới cùng.",
+    "route": "/iching"
+  },
+  {
+    "term": "Thứ tự Văn Vương",
+    "group": "Kinh Dịch",
+    "meaning": "Cách đánh số truyền thống từ 1 Càn đến 64 Vị Tế.",
+    "caution": "Không giống thứ tự nhị phân Phục Hy; không hoán đổi số quẻ giữa hai hệ.",
+    "route": "/iching"
+  },
+  {
+    "term": "Ba đồng xu",
+    "group": "Kinh Dịch",
+    "meaning": "Cách lập sáu hào từ sáu lượt tung ba đồng xu, mỗi mặt ứng 2 hoặc 3.",
+    "caution": "Nếu đồng xu công bằng, 6 và 9 có xác suất 1/8 mỗi hào; mô phỏng là ngẫu nhiên.",
+    "route": "/iching"
+  },
+  {
+    "term": "Nạp Giáp",
+    "group": "Kinh Dịch",
+    "meaning": "Phương pháp gán Can Chi cho các hào trong truyền thống Dịch học.",
+    "caution": "Ứng dụng Thế/Ứng, Lục thân còn cần một bộ quy tắc riêng, không thể suy ra chỉ từ tên quẻ.",
+    "route": "/iching"
+  },
+  {
+    "term": "Lục Hào",
+    "group": "Kinh Dịch",
+    "meaning": "Truyền thống luận quẻ dùng sáu hào và nhiều lớp như Lục thân, Thế/Ứng, Nhật Nguyệt.",
+    "caution": "Không đồng nghĩa với thao tác gieo ba xu thông thường.",
+    "route": "/iching"
+  },
+  {
+    "term": "Mai Hoa Dịch Số",
+    "group": "Kinh Dịch",
+    "meaning": "Hệ lấy tượng và số để lập và xét quẻ trong một số truyền thống Dịch học.",
+    "caution": "Không gộp công thức Mai Hoa vào hệ gieo ba đồng xu.",
+    "route": "/iching"
+  },
+  {
+    "term": "Ngũ hành",
+    "group": "Nghiên cứu",
+    "meaning": "Năm hành Kim, Mộc, Thủy, Hỏa, Thổ được dùng làm hệ quy chiếu vận động trong nhiều truyền thống Đông Á.",
+    "caution": "Không phải năm chất vật lý; không thể suy ra vận mệnh chỉ từ tên một hành.",
+    "route": "/ngu-hanh"
+  },
+  {
+    "term": "Tương sinh",
+    "group": "Nghiên cứu",
+    "meaning": "Chu trình Mộc sinh Hỏa, Hỏa sinh Thổ, Thổ sinh Kim, Kim sinh Thủy, Thủy sinh Mộc.",
+    "caution": "Sinh không đồng nghĩa tốt tuyệt đối; cần xét trạng thái và bối cảnh của từng hệ.",
+    "route": "/ngu-hanh"
+  },
+  {
+    "term": "Tương khắc",
+    "group": "Nghiên cứu",
+    "meaning": "Chu trình Mộc khắc Thổ, Thổ khắc Thủy, Thủy khắc Hỏa, Hỏa khắc Kim, Kim khắc Mộc.",
+    "caution": "Khắc không đồng nghĩa xấu tuyệt đối; quan hệ chế ước có thể giúp cân bằng.",
+    "route": "/ngu-hanh"
+  },
+  {
+    "term": "Đồng hành",
+    "group": "Nghiên cứu",
+    "meaning": "Trường hợp hai đối tượng cùng một trong năm hành, chưa kết luận tương sinh hay tương khắc trực tiếp.",
+    "caution": "Cùng hành không đồng nghĩa luôn tăng lợi ích, vì còn vượng suy và thời tiết.",
+    "route": "/ngu-hanh"
+  },
+  {
+    "term": "Vượng suy ngũ hành",
+    "group": "Nghiên cứu",
+    "meaning": "Cách các truyền thống xem trạng thái mạnh yếu của hành tùy tiết khí, mùa, vị trí và những tương tác chung.",
+    "caution": "Không tính được chỉ từ số lần xuất hiện ký hiệu hành; cần phương pháp luận riêng.",
+    "route": "/ngu-hanh"
+  },
+  {
+    "term": "Đường đời",
+    "group": "Thần số học",
+    "meaning": "Chỉ số tính từ tháng, ngày, năm sinh theo phép rút gọn đã chọn.",
+    "caution": "Các dị bản cộng số và giữ số chủ có thể khác kết quả; không xác định tương lai.",
+    "route": "/numerology"
+  },
+  {
+    "term": "Biểu đạt – Linh hồn – Nhân cách",
+    "group": "Thần số học",
+    "meaning": "Ba chỉ số theo toàn bộ chữ, nguyên âm và phụ âm trong tên chuyển đổi.",
+    "caution": "Chuyển tự và quy ước Y phải được ghi riêng; không suy tính cách như kết quả khoa học.",
+    "route": "/numerology"
+  },
+  {
+    "term": "Năm cá nhân",
+    "group": "Thần số học",
+    "meaning": "Tổng tháng sinh, ngày sinh và năm dương lịch cần xem, rút về 1–9 trong công cụ hiện tại.",
+    "caution": "Đây là chu kỳ biểu tượng, không phải dự báo sự kiện.",
+    "route": "/numerology"
+  },
+  {
+    "term": "Natal Chart",
+    "group": "Chiêm tinh",
+    "meaning": "Bản đồ vị trí thiên thể và các nhà tại thời điểm/địa điểm sinh theo phương pháp đã chọn.",
+    "caution": "Công cụ hỗ trợ tropical/địa tâm/Whole Sign; người dùng phải xác nhận UTC offset lịch sử, chưa có IANA/DST tự động.",
+    "route": "/western-astrology"
+  },
+  {
+    "term": "Hoàng đạo và nhà",
+    "group": "Chiêm tinh",
+    "meaning": "Cung là phần của vòng Hoàng đạo; nhà cần thời điểm, địa điểm và một hệ nhà.",
+    "caution": "Không đồng nhất cung với nhà hoặc chòm sao thiên văn.",
+    "route": "/western-astrology"
+  },
+  {
+    "term": "Transit – Progression",
+    "group": "Chiêm tinh",
+    "meaning": "Transit so vị trí ngày xem; tiến triển thứ cấp dùng phép thời gian tượng trưng riêng.",
+    "caution": "Hai kỹ thuật độc lập, chưa được tính trong Thiên Đồ.",
+    "route": "/western-astrology"
+  },
+  {
+    "term": "Synastry – Composite",
+    "group": "Chiêm tinh",
+    "meaning": "Synastry đối chiếu hai lá số; composite là hệ trung điểm theo phương pháp riêng.",
+    "caution": "Không dùng để xác nhận quan hệ hoặc tạo điểm hợp nhau như sự thật.",
+    "route": "/western-astrology"
+  }
+]

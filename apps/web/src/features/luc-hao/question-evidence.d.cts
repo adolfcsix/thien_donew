@@ -1,0 +1,18 @@
+export type Family = 'Phụ Mẫu'|'Huynh Đệ'|'Tử Tôn'|'Thê Tài'|'Quan Quỷ';
+export type Topic='money-owned-assets'|'documents-contracts'|'office-position'|'children-descendants'|'siblings-peers';
+export declare const RULE:'jingfang-question-relative-evidence-v11.98';
+export declare const QUESTION_GUIDES: Readonly<Record<Topic,Readonly<{family:Family;scope:string;citation:string}>>>;
+export declare function getQuestionGuide(questionId:Topic): Readonly<{id:Topic;family:Family;scope:string;citation:string;requiresExplicitConfirmation:true}>;
+export type CalendarInput = {source:string;date:string|null;dayStem:string;dayBranch:string;monthBranch:string|null;voidBranches:readonly string[]};
+export type EvidenceLine=Readonly<{position:number;stemBranch:string;relative:Family;element:string;isDeclaredMoving:boolean;
+ day:Readonly<{branch:string;relations:readonly string[];elementFromDay:string;clash:boolean}>|null;
+ month:Readonly<{branch:string;relations:readonly string[];elementFromMonth:string;monthBreak:boolean}>|null;
+ xunVoid:boolean|null;flying:Readonly<{stemBranch:string;element:string;flyingToHidden:string;hiddenToFlying:string;
+ movementIsDeclaredForFlying:boolean;dayClash:boolean|null;monthBreak:boolean|null;xunVoid:boolean|null}>|null;
+ emergence:null;dayBreak:null;monthProsperity:null;auspiciousness:null;timing:null;needsSchoolAdjudication:readonly string[]}>;
+export declare function buildQuestionEvidence(chart:unknown, options:{questionId:Topic;confirmedFamily:Family;
+ context?:CalendarInput|null;movingPositions?:number[]}):Readonly<{rule:string;school:string;question:ReturnType<typeof getQuestionGuide>;
+ referenceFamily:Family;relativeSelectionConfirmed:true;chosenUsefulGodLine:null;palace:string;purePalaceBits:string;
+ referenceStatus:'VISIBLE'|'HIDDEN_REFERENCE';calendarStatus:string;monthOrigin:string|null;movingPositions:readonly number[];
+ visible:readonly EvidenceLine[];hidden:readonly EvidenceLine[];
+ decision:Readonly<{usefulGod:null;emergence:null;prosperity:null;auspiciousness:null;timing:null}>;notes:readonly string[]}>;

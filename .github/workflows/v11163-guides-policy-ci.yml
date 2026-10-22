@@ -1,0 +1,93 @@
+name: Thiên Đồ V11.163 - Guides and Policy Review
+on:
+  push:
+    branches: [audit/v11.163]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  portal-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 105
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: thiendo
+          POSTGRES_PASSWORD: thiendo_ci_only
+          POSTGRES_DB: thiendo_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U thiendo -d thiendo_test"
+          --health-interval 5s --health-timeout 5s --health-retries 15
+    env:
+      CI: 'true'
+      E2E_LOCAL_DB_CONFIRM: 'YES'
+      DATABASE_URL: postgresql://thiendo:thiendo_ci_only@127.0.0.1:5432/thiendo_test
+      API_INTERNAL_URL: http://127.0.0.1:8080
+      WEB_ORIGIN: http://127.0.0.1:3000
+      NEXT_BASE_URL: http://127.0.0.1:3000
+      API_BASE_URL: http://127.0.0.1:8080
+      API_HOST: 127.0.0.1
+      API_PORT: '8080'
+      COOKIE_SECURE: 'false'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify source integrity and all 29 immutable migrations
+        run: |
+          npm run check:lockfile
+          npm run check:source
+          npm run audit:architecture
+          npm run audit:migration-chain
+          npm run audit:release-metadata
+      - name: Install locked packages
+        run: npm ci --no-audit --no-fund
+      - name: Typecheck and build Next and Nest
+        run: |
+          npm run typecheck
+          npm run build
+      - name: Verify guide CMS policy contracts
+        run: |
+          node --test tests/v11163-guides-policy-security.test.cjs
+          node --test tests/v111602-migration-chain.test.mjs tests/v11149-1-restore-schema-contract.test.cjs
+      - name: Full regression
+        run: npm test
+      - name: Apply migration to disposable PostgreSQL, twice for idempotence
+        run: |
+          npm run check:e2e-pre-migrate
+          npm run db:migrate
+          npm run db:migrate
+          npm run check:e2e-db
+          node tests/v11163-portal-postgres.test.mjs
+      - name: Install Chromium in separate runner directory
+        run: |
+          npm install --prefix "$RUNNER_TEMP/thiendo-ui-browser" --no-save --no-package-lock --ignore-scripts playwright@1.56.1
+          node "$RUNNER_TEMP/thiendo-ui-browser/node_modules/playwright/cli.js" install --with-deps chromium
+          echo "THIENDO_PLAYWRIGHT_MODULE=$RUNNER_TEMP/thiendo-ui-browser/node_modules/playwright/index.mjs" >> "$GITHUB_ENV"
+      - name: HTTP E2E and live Chromium guide acceptance
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('infrastructure/scripts/run-ci-http.sh')
+          content=p.read_text()
+          needle="printf 'PASS: live Next -> Nest -> dedicated PostgreSQL HTTP E2E.\\n'"
+          assert content.count(needle)==1,'STOP: CI harness changed unexpectedly'
+          content=content.replace(needle,'node --test tests/v11163-portal-http.mjs\nnode tests/v11163-guides-browser.mjs\n'+needle)
+          p.write_text(content)
+          PY
+          bash infrastructure/scripts/run-ci-http.sh
+      - name: Retain real browser screenshots and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v11163-guide-chromium-evidence
+          path: |
+            browser-evidence/v11163/**/*
+            ${{ runner.temp }}/thiendo-ci-logs.*/*.log
+          if-no-files-found: ignore
+          retention-days: 14

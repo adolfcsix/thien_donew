@@ -1,0 +1,13 @@
+
+/* V11.134 Zi Ping: independently auditable methods, without fate scores */
+.bz-depth{margin-bottom:18px}.bz-depth h2{margin:12px 0;font-size:27px;color:var(--gold)}.bz-depth h3{font-size:16px;color:var(--text);margin-top:22px}
+.bz-method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}.bz-method{border:1px solid var(--line-strong);border-radius:13px;padding:16px;background:var(--body);min-width:0}.bz-method h3{margin:0 0 12px;color:var(--gold);line-height:1.45}.bz-method p,.bz-method li{font-size:12px;line-height:1.65;color:var(--muted)}.bz-method ul{padding-left:17px}.bz-warning{border-left:3px solid var(--gold);padding:11px 13px;background:var(--glow);font-size:12px;line-height:1.7;color:var(--text)}
+
+/* V11.149.3: scoped status, visible in both Basic and Expert modes. */
+.bz-coverage{border:1px solid var(--line-strong);border-radius:14px;margin-bottom:18px;padding:18px 20px;background:var(--panel);color:var(--text)}
+.bz-coverage strong{display:block;font-size:14px;color:var(--gold);margin-bottom:8px}
+.bz-coverage p{font-size:13px;line-height:1.65;margin:0 0 8px}
+.bz-coverage small{display:block;font-size:11px;line-height:1.6;color:var(--muted)}
+.bz-coverage[data-level="blocked"]{border-left:4px solid var(--gold)}
+.bz-coverage[data-level="review"]{border-left:4px solid #d3a66e}
+@media(max-width:580px){.bz-coverage{padding:15px}}

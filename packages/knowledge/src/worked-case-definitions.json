@@ -1,0 +1,21 @@
+{
+  "edition": "11.50.0",
+  "scope": "synthetic-replayable-chart-exercises",
+  "school": "Khung thực hành đối chiếu vị trí Tử Vi; chưa gán một trường phái được chuyên gia chứng nhận",
+  "expertReviewed": false,
+  "notice": "Đây là tình huống học tập sinh từ bộ lá số đối chứng trong mã nguồn, không phải thông tin của người thật, không phải phép thẩm định công thức an sao hoặc lời tiên đoán.",
+  "cases": [
+    {"id":"menh-hoa","palace":"Mệnh","family":"conditional","recordId":"main-transformation","wanted":"observed","prompt":"Phân biệt Tứ Hóa gắn vào chính tinh Mệnh với Hóa cùng cung nhưng sao đích không phải chính tinh.","exercise":"Chỉ ra chính tinh, trạng thái sáng và nhãn Hóa thực sự cùng sao đích; không suy diễn vận mệnh từ một chỉ báo."},
+    {"id":"phu-mau-doi","palace":"Phụ Mẫu","family":"relational","recordId":"doi-cung","wanted":"partial","prompt":"Vì sao một cung đối thiếu chính tinh đã xác minh không thể coi là bằng chứng phản chiếu đã đầy đủ?","exercise":"Chỉ rõ cung đối, chính tinh còn thiếu và tác động của dữ liệu độ sáng chưa xác minh."},
+    {"id":"phuc-duc-giap","palace":"Phúc Đức","family":"relational","recordId":"giap-cung","wanted":"observed","prompt":"Một cặp sao ở hai bên giáp cung khác gì hai sao cùng nằm ở một cung kề?","exercise":"Chỉ ra hai cung kề và tên sao ở từng phía; loại trường hợp cặp bị dồn vào cùng một phía."},
+    {"id":"dien-trach-tro","palace":"Điền Trạch","family":"conditional","recordId":"main-support","wanted":"observed","prompt":"Sao trợ lực đồng cung được ghi nhận bằng chứng nào trước khi nghiên cứu chủ đề không gian sống?","exercise":"Đối chiếu tên chính tinh, độ sáng và sao trợ lực; không biến bằng chứng thành lời khuyên mua bán nhà."},
+    {"id":"quan-loc-tam","palace":"Quan Lộc","family":"relational","recordId":"tam-hop","wanted":"observed","prompt":"Phân biệt sao tọa thủ với sao hội từ hai cung tam hợp khi nghiên cứu công việc.","exercise":"Tìm đủ ba địa chi liên quan và kiểm chứng sao nào thật sự ở cung hội, không phải cung chính."},
+    {"id":"no-boc-sat","palace":"Nô Bộc","family":"conditional","recordId":"main-challenge","wanted":"partial","prompt":"Nếu chưa thấy sát tinh ở cung này, điều đó có chứng minh không có khó khăn trong quan hệ xã hội không?","exercise":"Xem lại tình trạng thiếu dữ liệu và phân biệt 'không quan sát' với 'khẳng định không tồn tại'."},
+    {"id":"thien-di-doi","palace":"Thiên Di","family":"relational","recordId":"doi-cung","wanted":"observed","prompt":"Vị trí chính tinh ở đối cung Mệnh khác sao tọa tại Thiên Di như thế nào?","exercise":"Tìm địa chi đối cung và kiểm tra độ sáng của sao được viện dẫn."},
+    {"id":"tat-ach-sat","palace":"Tật Ách","family":"conditional","recordId":"main-challenge","wanted":"observed","prompt":"Cần xác minh những điều gì khi có chính tinh và sát tinh cùng cung Tật Ách?","exercise":"Kiểm tra vị trí từng sao mà không suy diễn chẩn đoán bệnh hoặc thay thế bác sĩ."},
+    {"id":"tai-bach-tro","palace":"Tài Bạch","family":"conditional","recordId":"main-support","wanted":"partial","prompt":"Thiếu sao trợ lực đồng cung có đồng nghĩa tài chính xấu?","exercise":"Đánh dấu điều kiện đã ghi nhận và điều kiện còn thiếu; không dùng làm khuyến nghị đầu tư."},
+    {"id":"tu-tuc-giap","palace":"Tử Tức","family":"relational","recordId":"giap-cung","wanted":"partial","prompt":"Khi chỉ có một phía của cặp giáp, giới hạn nghiên cứu là gì?","exercise":"Nêu cung giáp còn thiếu và vì sao không thể coi một sao đơn lẻ là cặp giáp."},
+    {"id":"phu-the-hoa","palace":"Phu Thê","family":"conditional","recordId":"main-transformation","wanted":"partial","prompt":"Có chính tinh nhưng không có Tứ Hóa trỏ đúng sao đích thì phải ghi nhận như thế nào?","exercise":"So sánh nhãn Hóa được kiểm toán với tên chính tinh, tránh suy đoán kết cục quan hệ."},
+    {"id":"huynh-de-hoi","palace":"Huynh Đệ","family":"relational","recordId":"tam-hop","wanted":"observed","prompt":"Những sao hội từ Tam hợp có thể kiểm chứng lại bằng vị trí nào?","exercise":"Phân loại bằng chứng sao tại cung gốc và hai cung tam hợp mà không suy luận về anh chị em thật."}
+  ]
+}

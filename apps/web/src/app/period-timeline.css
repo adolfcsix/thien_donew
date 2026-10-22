@@ -1,0 +1,31 @@
+/* THIÊN ĐỒ V11.20 — period overview, compact by default; no horizontal overflow. */
+.period-timeline{border:1px solid #bbab82;border-radius:16px;background:linear-gradient(145deg,#fbf6e8,#f2ebda);color:#263d33;margin:18px 0 22px;box-shadow:0 10px 24px #233d3510;overflow:hidden}
+.period-timeline-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:19px 22px}
+.period-timeline-heading h3{font-family:var(--font-display,serif);font-size:clamp(19px,2.1vw,25px);line-height:1.3;margin:4px 0 8px;color:#254b3c}
+.period-timeline-heading p,.period-timeline-intro{margin:0;line-height:1.55;color:#596b60;font-size:13px}
+.period-toggle{flex-shrink:0;border:1px solid #748d79;border-radius:10px;padding:12px 15px;background:#245244;color:#fff6df;font-weight:700;cursor:pointer;min-height:44px}
+.period-toggle:hover,.period-toggle:focus-visible{background:#316753}
+.period-timeline-content{border-top:1px solid #d8c9a8;padding:17px 22px 20px}
+.period-timeline-intro{margin-bottom:16px}
+.period-year-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.period-year{border:1px solid #d5c9b2;background:#fffcf5;color:#35483c;border-radius:9px;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:4px;padding:11px;min-width:0;cursor:pointer;min-height:115px}
+.period-year strong{font-size:18px}.period-year span{font-size:13px}.period-year small{font-size:11px;line-height:1.35}.period-year em{font-style:normal;font-size:10px;color:#905b33}
+.period-year.selected{border-color:#2b6a52;background:#dceadf;box-shadow:inset 0 0 0 1px #2b6a52}
+.period-year:focus-visible,.period-house-item:focus-visible{outline:3px solid #b88d47;outline-offset:2px}
+.period-current-header{display:flex;justify-content:space-between;align-items:end;gap:12px;border-bottom:1px solid #d6ccb7;margin:19px 0 12px;padding-bottom:10px}
+.period-current-header h4{font-family:var(--font-display,serif);font-size:21px;margin:4px 0 0}.period-current-header>span{color:#577461;font-weight:600;font-size:13px}
+.period-overview-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.period-overview-grid>div{display:flex;flex-direction:column;gap:6px;padding:13px;background:#e9ede3;border:1px solid #cad6ca;border-radius:10px;min-width:0}
+.period-overview-grid small{color:#506e5e;letter-spacing:.06em;font-size:10px;font-weight:700}.period-overview-grid strong{font-size:15px}.period-overview-grid span{font-size:12px;line-height:1.4;color:#64716a}
+.period-table-header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:20px 0 8px}.period-table-header h4{font-size:17px;margin:0}.period-table-header label{font-size:12px;display:flex;align-items:center;gap:7px}
+.period-house-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.period-house-item{width:100%;border:1px solid #ddd4c0;border-radius:9px;background:#fffdf8;min-width:0;text-align:left;display:flex;align-items:start;gap:12px;padding:11px 12px;cursor:pointer;color:#243b32}
+.period-house-item:hover{border-color:#73937c;background:#f1f8f1}
+.period-house-name{min-width:70px;max-width:100px;display:flex;flex-direction:column;gap:3px}.period-house-name strong{font-size:14px}.period-house-name small{color:#718273}
+.period-house-detail{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1;font-size:12px;line-height:1.45;overflow-wrap:anywhere}.period-house-item>span:last-child{color:#718e7a;font-size:20px}
+.period-tags{display:flex;flex-wrap:wrap;gap:4px}.period-tags em{font-style:normal;background:#e0ebe2;border:1px solid #bed2c0;color:#315c46;padding:2px 6px;border-radius:6px;font-size:11px}
+.period-overlaps,.period-limitation{font-size:12px;line-height:1.6;margin:13px 0 0;color:#6b6350}.period-limitation{background:#f6edd9;border-left:3px solid #b8995d;padding:10px 12px}
+@media(max-width:960px){.period-year-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:620px){.period-timeline-heading{flex-direction:column;align-items:stretch;padding:15px}.period-timeline-content{padding:15px}.period-toggle{width:100%}.period-year-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.period-year{padding:8px;min-height:105px}.period-overview-grid{grid-template-columns:1fr}.period-house-list{grid-template-columns:1fr}.period-table-header{align-items:flex-start;flex-direction:column}.period-current-header h4{font-size:19px}}
+@media(max-width:350px){.period-year-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.period-toggle,.period-year,.period-house-item{transition:none!important}}

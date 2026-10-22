@@ -1,0 +1,31 @@
+{
+  "name": "@thiendo/api",
+  "version": "10.8.0",
+  "private": true,
+  "scripts": {
+    "dev": "nest start --watch",
+    "build": "nest build",
+    "start": "node dist/main.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.1.0",
+    "@nestjs/core": "^11.1.0",
+    "@nestjs/platform-express": "^11.1.0",
+    "@payos/node": "2.0.5",
+    "@thiendo/astrology-engine": "file:../../packages/astrology-engine",
+    "@thiendo/interpretation": "file:../../packages/interpretation",
+    "@thiendo/shared-types": "file:../../packages/shared-types",
+    "express": "^5.1.0",
+    "pg": "^8.13.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.15.0",
+    "@types/pg": "^8.11.0",
+    "typescript": "^5.9.0"
+  }
+}

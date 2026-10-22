@@ -1,0 +1,17 @@
+.editor,.map{min-width:0;margin:18px 0;padding:18px;border:1px solid #d6c7b7;border-radius:14px;background:#f7f1e7;color:#352b45;line-height:1.6;overflow-wrap:anywhere}.controls{display:flex;gap:12px;flex-wrap:wrap}.editor label{display:grid;gap:5px;font-size:.85rem;min-width:0;flex:1}.editor input,.editor select,.editor textarea{max-width:100%;width:100%;min-height:40px;padding:8px;border:1px solid #bfae9a;border-radius:7px;background:#fffaf3;color:#352b45;font:inherit}.editor fieldset{margin:14px 0;border:1px solid #d6c7b7;border-radius:9px;padding:12px;min-width:0}.editor legend{padding:0 5px}.grid{display:grid;gap:12px;margin:18px 0;min-width:0}.card{background:#fffaf3;border:1px solid #bba485;border-radius:10px;padding:10px;text-align:center;display:flex;flex-direction:column;gap:5px;justify-content:center;font-size:.8rem;min-width:0}.card span{font-size:30px}.center{align-self:start;margin-bottom:156px}.crossing{align-self:end;min-height:144px;z-index:1;background:#eee4d6;box-shadow:0 3px 8px #33284920}.card small{font-size:.76rem}.map a{color:#684783}.editor :is(input,select,textarea):focus-visible,.map summary:focus-visible{outline:3px solid #896c45;outline-offset:3px}@media(max-width:640px){.controls{display:grid;grid-template-columns:minmax(0,1fr)}.grid{grid-template-columns:1fr!important;grid-template-rows:none!important}.card{grid-row:auto!important;grid-column:1!important;text-align:left}.center{margin-bottom:0;align-self:stretch}.crossing{align-self:stretch;min-height:0}.card span{display:none}.editor,.map{padding:12px}}
+
+/* Real Tarot art, including mobile spread layout. */
+.card .mapArtwork{display:block;width:78px;height:130px;max-width:100%;aspect-ratio:3/5;object-fit:contain;object-position:center center;align-self:center;justify-self:center;margin:5px auto;padding:3px;background:#f8f2e8;border:1px solid #d8c8b4;border-radius:6px;box-shadow:0 2px 7px #281e3720;transform-origin:center center}
+.card .mapReversed{transform:rotate(180deg)}
+@media(max-width:640px){.card .mapArtwork{display:block;margin:5px 0}}
+
+/* The cloth owns the surface; tiles remain legible in both palettes. */
+.map{background:transparent;color:var(--text);border:0;padding:0;margin:0}
+.map a{color:var(--td-accent-text,var(--gold))}
+.card{color:var(--text);background:color-mix(in srgb,var(--panel) 88%,transparent);border-color:var(--line-strong);box-shadow:0 8px 20px #080a1618;backdrop-filter:blur(4px)}
+.crossing{background:var(--panel-alt);border-color:var(--gold)}
+.map h3{font-family:var(--font-display,serif);font-weight:500;font-size:24px;margin-top:0;color:var(--text)}
+.map :is(p,small,details){color:var(--text)}
+
+.crossing .mapArtwork{transform:rotate(90deg)}.crossing .mapReversed{transform:rotate(270deg)}
+@media(max-width:640px){.crossing .mapArtwork{transform:none}.crossing .mapReversed{transform:rotate(180deg)}}

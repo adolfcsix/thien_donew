@@ -1,0 +1,2 @@
+# Keep migration bytes stable on Windows/Unix: V11.150 verifies SHA-256.
+infrastructure/db/*.sql text eol=lf

@@ -1,0 +1,10 @@
+export type StarDirection='forward'|'reverse';
+export type MountainPosition=Readonly<{palace:number;rank:number;name:string;polarity:'yin'|'yang'}>;
+export type Flight=Readonly<{seed:number;direction:StarDirection;polarity:'yin'|'yang';homePalace:number;referenceMountain:string;rank:number;borrowedFromPeriod:boolean;rule:string}>;
+export type NatalPalace=Readonly<{number:number;direction:string;trigram:string;periodStar:number;mountainStar:number;waterStar:number;periodName:string;mountainName:string;waterName:string;sittingPalace:boolean;facingPalace:boolean}>;
+export type NatalChart=Readonly<{period:number;measured:{facingDegrees:number;sittingDegrees:number;boundaryDistance:number};sitting:MountainPosition;facing:MountainPosition;mountain:Flight;facingStar:Flight;positions:readonly NatalPalace[];nearBoundary:boolean;method:string;boundaryWarning:string|null}>;
+export declare const MOUNTAINS:Readonly<Record<number,readonly (readonly [string,'yin'|'yang'])[]>>;
+export declare const HOME_PALACE:Readonly<Record<string,number>>;
+export declare function mountainPosition(mountain:{name:string;trigram:string}):MountainPosition;
+export declare function seedFlight(seed:number,position:MountainPosition,period:number):Flight;
+export declare function natalStarChart(period:number,facingDegrees:number):NatalChart;

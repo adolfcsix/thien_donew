@@ -1,0 +1,7 @@
+{
+  "name": "@thiendo/star-audit",
+  "version": "11.35.0",
+  "private": true,
+  "main": "src/index.cjs",
+  "type": "commonjs"
+}

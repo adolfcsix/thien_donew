@@ -1,0 +1,2141 @@
+{
+  "schemaVersion": "1.0.0",
+  "edition": "v11.36-research-crosswalk",
+  "reference": {
+    "title": "Danh sách tên sao đối chiếu theo một danh mục 121 sao công khai (không phải chuẩn toàn ngành)",
+    "url": "https://thayungkhiem.vn/cac-sao-tu-vi",
+    "checkedOn": "2026-10-11",
+    "method": "Chỉ đối chiếu tên sao và nhóm, không sao chép diễn giải, không nhập công thức an sao, không dùng số lượng 121 làm mẫu số chuẩn mọi trường phái."
+  },
+  "interpretationBoundary": "Thiếu theo danh mục tham chiếu không có nghĩa phải an tự động hoặc rằng engine hiện tại sai. Một số dị danh và sao thần sát phụ thuộc trường phái.",
+  "counts": {
+    "referenceNames": 121,
+    "engineDistinctNatalAndCycle": 104,
+    "engineMainStars": 14,
+    "engine-name": 106,
+    "possible-alias": 4,
+    "not-in-engine": 11
+  },
+  "records": [
+    {
+      "name": "Tử Vi",
+      "family": "14 chính tinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Tử Vi"
+      ],
+      "engineIds": [
+        "natal:main:tu-vi"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Cơ",
+      "family": "14 chính tinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Cơ"
+      ],
+      "engineIds": [
+        "natal:main:thien-co"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thái Dương",
+      "family": "14 chính tinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thái Dương"
+      ],
+      "engineIds": [
+        "natal:main:thai-duong"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Vũ Khúc",
+      "family": "14 chính tinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Vũ Khúc"
+      ],
+      "engineIds": [
+        "natal:main:vu-khuc"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Đồng",
+      "family": "14 chính tinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Đồng"
+      ],
+      "engineIds": [
+        "natal:main:thien-dong"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Liêm Trinh",
+      "family": "14 chính tinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Liêm Trinh"
+      ],
+      "engineIds": [
+        "natal:main:liem-trinh"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Phủ",
+      "family": "14 chính tinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Phủ"
+      ],
+      "engineIds": [
+        "natal:main:thien-phu"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thái Âm",
+      "family": "14 chính tinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thái Âm"
+      ],
+      "engineIds": [
+        "natal:main:thai-am"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Tham Lang",
+      "family": "14 chính tinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Tham Lang"
+      ],
+      "engineIds": [
+        "natal:main:tham-lang"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Cự Môn",
+      "family": "14 chính tinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Cự Môn"
+      ],
+      "engineIds": [
+        "natal:main:cu-mon"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Tướng",
+      "family": "14 chính tinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Tướng"
+      ],
+      "engineIds": [
+        "natal:main:thien-tuong"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Lương",
+      "family": "14 chính tinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Lương"
+      ],
+      "engineIds": [
+        "natal:main:thien-luong"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thất Sát",
+      "family": "14 chính tinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thất Sát"
+      ],
+      "engineIds": [
+        "natal:main:that-sat"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Phá Quân",
+      "family": "14 chính tinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Phá Quân"
+      ],
+      "engineIds": [
+        "natal:main:pha-quan"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Văn Xương",
+      "family": "Lục cát",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Văn Xương"
+      ],
+      "engineIds": [
+        "natal:auxiliary:van-xuong"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Văn Khúc",
+      "family": "Lục cát",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Văn Khúc"
+      ],
+      "engineIds": [
+        "natal:auxiliary:van-khuc"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Tả Phụ",
+      "family": "Lục cát",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Tả Phụ"
+      ],
+      "engineIds": [
+        "natal:auxiliary:ta-phu"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Hữu Bật",
+      "family": "Lục cát",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Hữu Bật"
+      ],
+      "engineIds": [
+        "natal:auxiliary:huu-bat"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Khôi",
+      "family": "Lục cát",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Khôi"
+      ],
+      "engineIds": [
+        "natal:auxiliary:thien-khoi"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Việt",
+      "family": "Lục cát",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Việt"
+      ],
+      "engineIds": [
+        "natal:auxiliary:thien-viet"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Kình Dương",
+      "family": "Lục sát",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Kình Dương"
+      ],
+      "engineIds": [
+        "natal:auxiliary:kinh-duong"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Đà La",
+      "family": "Lục sát",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Đà La"
+      ],
+      "engineIds": [
+        "natal:auxiliary:da-la"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Hỏa Tinh",
+      "family": "Lục sát",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Hỏa Tinh"
+      ],
+      "engineIds": [
+        "natal:advanced:hoa-tinh"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Linh Tinh",
+      "family": "Lục sát",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Linh Tinh"
+      ],
+      "engineIds": [
+        "natal:advanced:linh-tinh"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Địa Không",
+      "family": "Lục sát",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Địa Không"
+      ],
+      "engineIds": [
+        "natal:advanced:dia-khong"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Địa Kiếp",
+      "family": "Lục sát",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Địa Kiếp"
+      ],
+      "engineIds": [
+        "natal:advanced:dia-kiep"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Hóa Lộc",
+      "family": "Tứ Hóa",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Hóa Lộc"
+      ],
+      "engineIds": [
+        "natal-transformation:tu-hoa:hoa-loc",
+        "annual-transformation:tu-hoa:hoa-loc"
+      ],
+      "layers": [
+        "annual-transformation",
+        "natal-transformation"
+      ],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Hóa Quyền",
+      "family": "Tứ Hóa",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Hóa Quyền"
+      ],
+      "engineIds": [
+        "natal-transformation:tu-hoa:hoa-quyen",
+        "annual-transformation:tu-hoa:hoa-quyen"
+      ],
+      "layers": [
+        "annual-transformation",
+        "natal-transformation"
+      ],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Hóa Khoa",
+      "family": "Tứ Hóa",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Hóa Khoa"
+      ],
+      "engineIds": [
+        "natal-transformation:tu-hoa:hoa-khoa",
+        "annual-transformation:tu-hoa:hoa-khoa"
+      ],
+      "layers": [
+        "annual-transformation",
+        "natal-transformation"
+      ],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Hóa Kỵ",
+      "family": "Tứ Hóa",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Hóa Kỵ"
+      ],
+      "engineIds": [
+        "natal-transformation:tu-hoa:hoa-ky",
+        "annual-transformation:tu-hoa:hoa-ky"
+      ],
+      "layers": [
+        "annual-transformation",
+        "natal-transformation"
+      ],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Lộc Tồn",
+      "family": "Song Lộc và Thiên Mã",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Lộc Tồn"
+      ],
+      "engineIds": [
+        "natal:auxiliary:loc-ton"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Mã",
+      "family": "Song Lộc và Thiên Mã",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Mã"
+      ],
+      "engineIds": [
+        "natal:year_branch:thien-ma"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thái Tuế",
+      "family": "Vòng Thái Tuế",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thái Tuế"
+      ],
+      "engineIds": [
+        "cycle:thai_tue:thai-tue"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiếu Dương",
+      "family": "Vòng Thái Tuế",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiếu Dương"
+      ],
+      "engineIds": [
+        "cycle:thai_tue:thieu-duong"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Tang Môn",
+      "family": "Vòng Thái Tuế",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Tang Môn"
+      ],
+      "engineIds": [
+        "cycle:thai_tue:tang-mon"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiếu Âm",
+      "family": "Vòng Thái Tuế",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiếu Âm"
+      ],
+      "engineIds": [
+        "cycle:thai_tue:thieu-am"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Quan Phù",
+      "family": "Vòng Thái Tuế",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Quan Phù"
+      ],
+      "engineIds": [
+        "cycle:thai_tue:quan-phu"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Tử Phù",
+      "family": "Vòng Thái Tuế",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Tử Phù"
+      ],
+      "engineIds": [
+        "cycle:thai_tue:tu-phu"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Tuế Phá",
+      "family": "Vòng Thái Tuế",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Tuế Phá"
+      ],
+      "engineIds": [
+        "cycle:thai_tue:tue-pha"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Long Đức",
+      "family": "Vòng Thái Tuế",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Long Đức"
+      ],
+      "engineIds": [
+        "cycle:thai_tue:long-duc"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Bạch Hổ",
+      "family": "Vòng Thái Tuế",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Bạch Hổ"
+      ],
+      "engineIds": [
+        "cycle:thai_tue:bach-ho"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Phúc Đức",
+      "family": "Vòng Thái Tuế",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Phúc Đức"
+      ],
+      "engineIds": [
+        "cycle:thai_tue:phuc-duc"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Điếu Khách",
+      "family": "Vòng Thái Tuế",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Điếu Khách"
+      ],
+      "engineIds": [
+        "cycle:thai_tue:dieu-khach"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Trực Phù",
+      "family": "Vòng Thái Tuế",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Trực Phù"
+      ],
+      "engineIds": [
+        "cycle:thai_tue:truc-phu"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Trường Sinh",
+      "family": "Vòng Tràng Sinh",
+      "status": "possible-alias",
+      "matchType": "spelling-variant",
+      "engineNames": [
+        "Tràng Sinh"
+      ],
+      "engineIds": [
+        "cycle:trang_sinh:trang-sinh"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Dị danh cần đối chiếu trường phái trước khi coi là cùng công thức."
+    },
+    {
+      "name": "Mộc Dục",
+      "family": "Vòng Tràng Sinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Mộc Dục"
+      ],
+      "engineIds": [
+        "cycle:trang_sinh:moc-duc"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Quan Đới",
+      "family": "Vòng Tràng Sinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Quan Đới"
+      ],
+      "engineIds": [
+        "cycle:trang_sinh:quan-doi"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Lâm Quan",
+      "family": "Vòng Tràng Sinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Lâm Quan"
+      ],
+      "engineIds": [
+        "cycle:trang_sinh:lam-quan"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Đế Vượng",
+      "family": "Vòng Tràng Sinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Đế Vượng"
+      ],
+      "engineIds": [
+        "cycle:trang_sinh:de-vuong"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Suy",
+      "family": "Vòng Tràng Sinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Suy"
+      ],
+      "engineIds": [
+        "cycle:trang_sinh:suy"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Bệnh",
+      "family": "Vòng Tràng Sinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Bệnh"
+      ],
+      "engineIds": [
+        "cycle:trang_sinh:benh"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Tử",
+      "family": "Vòng Tràng Sinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Tử"
+      ],
+      "engineIds": [
+        "cycle:trang_sinh:tu"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Mộ",
+      "family": "Vòng Tràng Sinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Mộ"
+      ],
+      "engineIds": [
+        "cycle:trang_sinh:mo"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Tuyệt",
+      "family": "Vòng Tràng Sinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Tuyệt"
+      ],
+      "engineIds": [
+        "cycle:trang_sinh:tuyet"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thai",
+      "family": "Vòng Tràng Sinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thai"
+      ],
+      "engineIds": [
+        "cycle:trang_sinh:thai"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Dưỡng",
+      "family": "Vòng Tràng Sinh",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Dưỡng"
+      ],
+      "engineIds": [
+        "cycle:trang_sinh:duong"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Bác Sĩ",
+      "family": "Vòng Bác Sĩ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Bác Sĩ"
+      ],
+      "engineIds": [
+        "cycle:bac_si:bac-si"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Lực Sĩ",
+      "family": "Vòng Bác Sĩ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Lực Sĩ"
+      ],
+      "engineIds": [
+        "cycle:bac_si:luc-si"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thanh Long",
+      "family": "Vòng Bác Sĩ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thanh Long"
+      ],
+      "engineIds": [
+        "cycle:bac_si:thanh-long"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Tiểu Hao",
+      "family": "Vòng Bác Sĩ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Tiểu Hao"
+      ],
+      "engineIds": [
+        "cycle:bac_si:tieu-hao"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Tướng Quân",
+      "family": "Vòng Bác Sĩ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Tướng Quân"
+      ],
+      "engineIds": [
+        "cycle:bac_si:tuong-quan"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Tấu Thư",
+      "family": "Vòng Bác Sĩ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Tấu Thư"
+      ],
+      "engineIds": [
+        "cycle:bac_si:tau-thu"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Phi Liêm",
+      "family": "Vòng Bác Sĩ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Phi Liêm"
+      ],
+      "engineIds": [
+        "cycle:bac_si:phi-liem"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Hỷ Thần",
+      "family": "Vòng Bác Sĩ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Hỷ Thần"
+      ],
+      "engineIds": [
+        "cycle:bac_si:hy-than"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Bệnh Phù",
+      "family": "Vòng Bác Sĩ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Bệnh Phù"
+      ],
+      "engineIds": [
+        "cycle:bac_si:benh-phu"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Đại Hao",
+      "family": "Vòng Bác Sĩ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Đại Hao"
+      ],
+      "engineIds": [
+        "cycle:bac_si:dai-hao"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Phục Binh",
+      "family": "Vòng Bác Sĩ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Phục Binh"
+      ],
+      "engineIds": [
+        "cycle:bac_si:phuc-binh"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Quan Phủ",
+      "family": "Vòng Bác Sĩ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Quan Phủ"
+      ],
+      "engineIds": [
+        "cycle:bac_si:quan-phu"
+      ],
+      "layers": [
+        "cycle"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Hồng Loan",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Hồng Loan"
+      ],
+      "engineIds": [
+        "natal:year_branch:hong-loan"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Hỷ",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Hỷ"
+      ],
+      "engineIds": [
+        "natal:year_branch:thien-hy"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Đào Hoa",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Đào Hoa"
+      ],
+      "engineIds": [
+        "natal:year_branch:dao-hoa"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Hình",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Hình"
+      ],
+      "engineIds": [
+        "natal:supplementary:thien-hinh"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Riêu",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Riêu"
+      ],
+      "engineIds": [
+        "natal:supplementary:thien-rieu"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Cô Thần",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Cô Thần"
+      ],
+      "engineIds": [
+        "natal:traditional:co-than"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Quả Tú",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Quả Tú"
+      ],
+      "engineIds": [
+        "natal:traditional:qua-tu"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Long Trì",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Long Trì"
+      ],
+      "engineIds": [
+        "natal:traditional:long-tri"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Phượng Các",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Phượng Các"
+      ],
+      "engineIds": [
+        "natal:traditional:phuong-cac"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Tam Thai",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Tam Thai"
+      ],
+      "engineIds": [
+        "natal:supplementary:tam-thai"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Bát Tọa",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Bát Tọa"
+      ],
+      "engineIds": [
+        "natal:supplementary:bat-toa"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Ân Quang",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Ân Quang"
+      ],
+      "engineIds": [
+        "natal:traditional:an-quang"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Quý",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Quý"
+      ],
+      "engineIds": [
+        "natal:traditional:thien-quy"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thai Phụ",
+      "family": "Phụ tinh lẻ",
+      "status": "possible-alias",
+      "matchType": "orthographic-variant-needs-expert-review",
+      "engineNames": [
+        "Thái Phụ"
+      ],
+      "engineIds": [
+        "natal:traditional:thai-phu"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Dị danh cần đối chiếu trường phái trước khi coi là cùng công thức."
+    },
+    {
+      "name": "Phong Cáo",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Phong Cáo"
+      ],
+      "engineIds": [
+        "natal:traditional:phong-cao"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Không",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Không"
+      ],
+      "engineIds": [
+        "natal:missing_stars:thien-khong"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Kiếp Sát",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Kiếp Sát"
+      ],
+      "engineIds": [
+        "natal:natal_extensions:kiep-sat"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Phá Toái",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Phá Toái"
+      ],
+      "engineIds": [
+        "natal:natal_extensions:pha-toai"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Đức",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Đức"
+      ],
+      "engineIds": [
+        "natal:benefic:thien-duc"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Nguyệt Đức",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Nguyệt Đức"
+      ],
+      "engineIds": [
+        "natal:benefic:nguyet-duc"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Y",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Y"
+      ],
+      "engineIds": [
+        "natal:supplementary:thien-y"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Giải Thần",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Giải Thần"
+      ],
+      "engineIds": [
+        "natal:traditional:giai-than"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Quan",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Quan"
+      ],
+      "engineIds": [
+        "natal:traditional:thien-quan"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Phúc",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Phúc"
+      ],
+      "engineIds": [
+        "natal:traditional:thien-phuc"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Trù",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Trù"
+      ],
+      "engineIds": [
+        "natal:missing_stars:thien-tru"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Tài",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Tài"
+      ],
+      "engineIds": [
+        "natal:derived:thien-tai"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Thọ",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Thọ"
+      ],
+      "engineIds": [
+        "natal:derived:thien-tho"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Hoa Cái",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Hoa Cái"
+      ],
+      "engineIds": [
+        "natal:year_branch:hoa-cai"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Đẩu Quân",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Đẩu Quân"
+      ],
+      "engineIds": [
+        "natal:missing_stars:dau-quan"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Tuần Không",
+      "family": "Phụ tinh lẻ",
+      "status": "possible-alias",
+      "matchType": "classical-label",
+      "engineNames": [
+        "Tuần"
+      ],
+      "engineIds": [
+        "obstruction:obstruction-markers:tuan"
+      ],
+      "layers": [
+        "obstruction"
+      ],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Dị danh cần đối chiếu trường phái trước khi coi là cùng công thức."
+    },
+    {
+      "name": "Triệt Không",
+      "family": "Phụ tinh lẻ",
+      "status": "possible-alias",
+      "matchType": "classical-label",
+      "engineNames": [
+        "Triệt"
+      ],
+      "engineIds": [
+        "obstruction:obstruction-markers:triet"
+      ],
+      "layers": [
+        "obstruction"
+      ],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Dị danh cần đối chiếu trường phái trước khi coi là cùng công thức."
+    },
+    {
+      "name": "Lưu Hà",
+      "family": "Phụ tinh lẻ",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Lưu Hà"
+      ],
+      "engineIds": [
+        "natal:missing_stars:luu-ha"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Khốc",
+      "family": "Phụ tinh bổ sung",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Khốc"
+      ],
+      "engineIds": [
+        "natal:supplementary:thien-khoc"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Hư",
+      "family": "Phụ tinh bổ sung",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Hư"
+      ],
+      "engineIds": [
+        "natal:supplementary:thien-hu"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Quốc Ấn",
+      "family": "Phụ tinh bổ sung",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Quốc Ấn"
+      ],
+      "engineIds": [
+        "natal:natal_extensions:quoc-an"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Đường Phù",
+      "family": "Phụ tinh bổ sung",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Đường Phù"
+      ],
+      "engineIds": [
+        "natal:derived:duong-phu"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Lưu Niên Văn Tinh",
+      "family": "Phụ tinh bổ sung",
+      "status": "not-in-engine",
+      "matchType": "absent-from-current-generated-registry",
+      "engineNames": [],
+      "engineIds": [],
+      "layers": [],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Chưa có mã an sao trong danh mục hiện tại. Mới là tên tham khảo, không an tự động."
+    },
+    {
+      "name": "Thiên Giải",
+      "family": "Phụ tinh bổ sung",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Giải"
+      ],
+      "engineIds": [
+        "natal:benefic:thien-giai"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Địa Giải",
+      "family": "Phụ tinh bổ sung",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Địa Giải"
+      ],
+      "engineIds": [
+        "natal:benefic:dia-giai"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Thương",
+      "family": "Phụ tinh bổ sung",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Thương"
+      ],
+      "engineIds": [
+        "natal:positional:thien-thuong"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên Sứ",
+      "family": "Phụ tinh bổ sung",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên Sứ"
+      ],
+      "engineIds": [
+        "natal:positional:thien-su"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Thiên La",
+      "family": "Phụ tinh bổ sung",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Thiên La"
+      ],
+      "engineIds": [
+        "natal:positional:thien-la"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Địa Võng",
+      "family": "Phụ tinh bổ sung",
+      "status": "engine-name",
+      "matchType": "exact",
+      "engineNames": [
+        "Địa Võng"
+      ],
+      "engineIds": [
+        "natal:positional:dia-vong"
+      ],
+      "layers": [
+        "natal"
+      ],
+      "expertReviewed": false,
+      "placementReady": true,
+      "note": "Có mã định danh trong engine; chưa được kiểm chứng chuyên gia."
+    },
+    {
+      "name": "Tướng Tinh",
+      "family": "Thần sát Tam Hợp mở rộng",
+      "status": "not-in-engine",
+      "matchType": "absent-from-current-generated-registry",
+      "engineNames": [],
+      "engineIds": [],
+      "layers": [],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Chưa có mã an sao trong danh mục hiện tại. Mới là tên tham khảo, không an tự động."
+    },
+    {
+      "name": "Phan An",
+      "family": "Thần sát Tam Hợp mở rộng",
+      "status": "not-in-engine",
+      "matchType": "absent-from-current-generated-registry",
+      "engineNames": [],
+      "engineIds": [],
+      "layers": [],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Chưa có mã an sao trong danh mục hiện tại. Mới là tên tham khảo, không an tự động."
+    },
+    {
+      "name": "Tức Thần",
+      "family": "Thần sát Tam Hợp mở rộng",
+      "status": "not-in-engine",
+      "matchType": "absent-from-current-generated-registry",
+      "engineNames": [],
+      "engineIds": [],
+      "layers": [],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Chưa có mã an sao trong danh mục hiện tại. Mới là tên tham khảo, không an tự động."
+    },
+    {
+      "name": "Tai Sát",
+      "family": "Thần sát Tam Hợp mở rộng",
+      "status": "not-in-engine",
+      "matchType": "absent-from-current-generated-registry",
+      "engineNames": [],
+      "engineIds": [],
+      "layers": [],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Chưa có mã an sao trong danh mục hiện tại. Mới là tên tham khảo, không an tự động."
+    },
+    {
+      "name": "Thiên Sát",
+      "family": "Thần sát Tam Hợp mở rộng",
+      "status": "not-in-engine",
+      "matchType": "absent-from-current-generated-registry",
+      "engineNames": [],
+      "engineIds": [],
+      "layers": [],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Chưa có mã an sao trong danh mục hiện tại. Mới là tên tham khảo, không an tự động."
+    },
+    {
+      "name": "Chỉ Bối",
+      "family": "Thần sát Tam Hợp mở rộng",
+      "status": "not-in-engine",
+      "matchType": "absent-from-current-generated-registry",
+      "engineNames": [],
+      "engineIds": [],
+      "layers": [],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Chưa có mã an sao trong danh mục hiện tại. Mới là tên tham khảo, không an tự động."
+    },
+    {
+      "name": "Nguyệt Sát",
+      "family": "Thần sát Tam Hợp mở rộng",
+      "status": "not-in-engine",
+      "matchType": "absent-from-current-generated-registry",
+      "engineNames": [],
+      "engineIds": [],
+      "layers": [],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Chưa có mã an sao trong danh mục hiện tại. Mới là tên tham khảo, không an tự động."
+    },
+    {
+      "name": "Vong Thần",
+      "family": "Thần sát Tam Hợp mở rộng",
+      "status": "not-in-engine",
+      "matchType": "absent-from-current-generated-registry",
+      "engineNames": [],
+      "engineIds": [],
+      "layers": [],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Chưa có mã an sao trong danh mục hiện tại. Mới là tên tham khảo, không an tự động."
+    },
+    {
+      "name": "Hồng Diễm",
+      "family": "Thần sát Tam Hợp mở rộng",
+      "status": "not-in-engine",
+      "matchType": "absent-from-current-generated-registry",
+      "engineNames": [],
+      "engineIds": [],
+      "layers": [],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Chưa có mã an sao trong danh mục hiện tại. Mới là tên tham khảo, không an tự động."
+    },
+    {
+      "name": "Quán Sách",
+      "family": "Thần sát Tam Hợp mở rộng",
+      "status": "not-in-engine",
+      "matchType": "absent-from-current-generated-registry",
+      "engineNames": [],
+      "engineIds": [],
+      "layers": [],
+      "expertReviewed": false,
+      "placementReady": false,
+      "note": "Chưa có mã an sao trong danh mục hiện tại. Mới là tên tham khảo, không an tự động."
+    }
+  ]
+}

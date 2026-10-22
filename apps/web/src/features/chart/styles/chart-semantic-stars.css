@@ -1,0 +1,143 @@
+/* V11.68: independent reading hierarchy for star names.
+   Star categories never affect positioning, statuses or interpretations. */
+:root{
+  --star-main:#9c3746;--star-support:#22745e;--star-challenging:#b94e30;
+  --star-transform:#92671d;--star-annual:#7059a2;--star-cycle:#346d88;
+  --star-neutral:#53606b;
+}
+.chart-room-layout[data-board-skin="jade"]{
+  --star-main:#f9b2a9;--star-support:#8bdfb6;--star-challenging:#ffab87;
+  --star-transform:#f0cf82;--star-annual:#c6b5fa;--star-cycle:#9cd2eb;
+  --star-neutral:#c5d4d7;
+}
+/* Legacy atlas color tokens have higher specificity, so override by exact skin + target. */
+.chart-room-layout[data-board-skin] .atlas-star-kind-main,
+.chart-room-layout[data-board-skin] .atlas-main-star-entry.atlas-star-kind-main strong {color:var(--star-main)}
+.chart-room-layout[data-board-skin] .atlas-star-kind-support{color:var(--star-support)}
+.chart-room-layout[data-board-skin] .atlas-star-kind-challenging{color:var(--star-challenging)}
+.chart-room-layout[data-board-skin] .atlas-star-kind-transform{color:var(--star-transform)}
+.chart-room-layout[data-board-skin] .atlas-star-kind-annual{color:var(--star-annual)}
+.chart-room-layout[data-board-skin] .atlas-star-kind-cycle{color:var(--star-cycle)}
+.chart-room-layout[data-board-skin] .atlas-star-kind-neutral{color:var(--star-neutral)}
+.chart-room-layout[data-board-skin] .atlas-star-items .atlas-star{
+  font-weight:650;padding-left:5px;border-left:2px solid currentColor;
+  text-decoration:none;opacity:1;filter:none;
+}
+.chart-room-layout[data-board-skin] .atlas-main-star-entry strong{letter-spacing:.005em}
+.chart-room-layout[data-board-skin] .atlas-main-star-entry{padding-inline-start:5px;border-left:3px solid var(--star-main)}
+.chart-room-layout[data-board-skin] .atlas-annual-data{border-left:2px solid var(--star-annual);padding-left:6px}
+/* The detail cards sit outside .chart-room-layout: make the same legend useful there. */
+.atlas-detail .atlas-star-kind-main{color:#aa4650}
+.atlas-detail .atlas-star-kind-support{color:#2b9274}
+.atlas-detail .atlas-star-kind-challenging{color:#d26c4b}
+.atlas-detail .atlas-star-kind-transform{color:#bf9d51}
+.atlas-detail .atlas-star-kind-annual{color:#a18ae8}
+.atlas-detail .atlas-star-kind-cycle{color:#6aa9c9}
+.atlas-detail .atlas-star-kind-neutral{color:var(--text)}
+.atlas-detail .atlas-star-items .atlas-star{font-weight:650;border-left:2px solid currentColor;padding-left:5px}
+/* Neutral legend with structured colors; never suggest that a color is a prognosis. */
+.star-color-legend{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin:12px 0 15px;padding:12px 15px;background:var(--panel-alt);border:1px solid var(--line);border-radius:8px}
+.star-color-legend-heading{font:750 11px/1.5 var(--font-ui);letter-spacing:.06em;color:var(--text);margin-right:5px}
+.star-color-legend-item{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.star-color-legend-item i{width:10px;height:10px;display:inline-block;border-radius:3px;background:var(--star-neutral);border:1px solid rgba(0,0,0,.12)}
+.star-color-legend-item[data-tone="main"] i{background:#9c3746}
+.star-color-legend-item[data-tone="support"] i{background:#22745e}
+.star-color-legend-item[data-tone="challenging"] i{background:#b94e30}
+.star-color-legend-item[data-tone="transform"] i{background:#92671d}
+.star-color-legend-item[data-tone="annual"] i{background:#7059a2}
+.star-color-legend-item[data-tone="cycle"] i{background:#346d88}
+.star-color-legend-note{flex-basis:100%;font-size:11px;color:var(--muted);line-height:1.6;margin:0}
+/* Dedicated, scroll-friendly per-star research instrument. */
+.star-context-explorer{container-type:inline-size;container-name:star-context;min-width:0;margin:18px 0 22px;border:1px solid var(--line);background:var(--panel);border-radius:9px;padding:clamp(14px,2.3vw,25px);color:var(--text)}
+.star-context-heading{display:flex;justify-content:space-between;align-items:start;gap:16px;margin-bottom:18px}
+.star-context-heading h3{font-size:clamp(21px,2.3vw,28px);margin:7px 0}
+.star-context-heading p{font-size:12px;line-height:1.8;color:var(--muted);max-width:720px;margin:0}
+.star-context-count{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:7px 9px;white-space:nowrap}
+.star-context-layout{display:grid;grid-template-columns:minmax(175px,240px) minmax(0,1fr);gap:15px;align-items:start}
+.star-context-picker{display:flex;flex-wrap:wrap;align-content:start;gap:6px;max-height:480px;overflow-y:auto;padding:3px}
+.star-context-chip{border:1px solid var(--line-strong);color:var(--text);background:var(--panel-alt);border-radius:6px;padding:7px 9px;display:inline-flex;align-items:center;gap:7px;font:650 12px/1.5 var(--font-ui);text-align:left;cursor:pointer;transition:background .12s,border-color .12s}
+.star-context-chip:hover{border-color:var(--gold)}
+.star-context-chip[aria-pressed="true"]{border-color:var(--gold);background:rgba(197,161,106,.15);box-shadow:inset 0 0 0 1px var(--gold)}
+.star-context-chip small{font-size:10px;color:var(--muted);border:1px solid var(--line);padding:1px 4px;border-radius:3px}
+.star-context-chip.atlas-star-kind-main{color:#c26f75;border-left:3px solid #b75361}
+.star-context-chip.atlas-star-kind-support{color:#4caa8b;border-left:3px solid #2f8b6c}
+.star-context-chip.atlas-star-kind-challenging{color:#d77d5d;border-left:3px solid #bd6042}
+.star-context-chip.atlas-star-kind-transform{color:#c6a05a;border-left:3px solid #a4853e}
+.star-context-chip.atlas-star-kind-annual{color:#a48adb;border-left:3px solid #8062bb}
+.star-context-chip.atlas-star-kind-cycle{color:#75b0cf;border-left:3px solid #407e9b}
+.star-context-profile{border:1px solid var(--line);background:var(--body);border-radius:8px;padding:clamp(14px,2vw,22px);min-height:240px}
+.star-context-profile-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:13px;margin-bottom:15px}
+.star-context-profile-heading h4{font-size:25px;margin:5px 0 0;color:var(--gold)}
+.star-context-profile-heading a{color:var(--gold);text-decoration:underline;text-underline-offset:4px;font-size:12px}
+.star-context-profile p{font-size:13px;line-height:1.85;margin:6px 0 12px}
+.star-context-evidence{border-left:2px solid var(--gold);padding-left:13px;margin-bottom:14px}
+.star-context-evidence b{font-size:12px;color:var(--text)}
+.star-context-evidence ul{padding-left:18px;margin:10px 0 14px;display:grid;gap:5px;font-size:12px;line-height:1.6}
+.star-context-evidence li strong{color:var(--gold)}
+.star-context-strength{border:1px solid var(--line);border-radius:6px;padding:10px 12px;background:var(--panel-alt)}
+.star-context-expand{border:1px solid var(--line);padding:10px 13px;border-radius:6px;margin-bottom:15px}
+.star-context-expand summary{cursor:pointer;font-size:12px;font-weight:750}
+.star-context-expand p{margin:10px 0 0}
+.star-context-caution,.star-context-boundary{display:block;color:var(--muted);font-size:12px;line-height:1.8}
+.star-context-footnote{font-size:11px;line-height:1.7;color:var(--muted);margin:15px 0 0}
+.star-context-empty{padding:12px;border:1px dashed var(--line-strong)}
+@container star-context (max-width:700px){.star-context-layout{grid-template-columns:minmax(0,1fr)}.star-context-picker{max-height:180px}.star-context-heading{flex-wrap:wrap}}
+@media(max-width:550px){.star-context-profile{padding:12px}.star-color-legend{gap:8px 12px}.star-context-chip{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.star-context-chip{transition:none}}
+/* Fully exposed color-coded star rows in the mobile/list reading mode. */
+.chart-list-star-row{display:grid;gap:5px;margin:4px 0 8px}
+.chart-list-star-row>small{font:700 10px/1.4 var(--font-ui);letter-spacing:.035em;color:var(--muted)}
+.chart-list-star-tokens{display:flex;flex-wrap:wrap;gap:5px 7px}
+.chart-palace-list-item .chart-list-star-chip{font:650 11px/1.45 var(--font-ui);border-radius:4px;border:1px solid var(--line);border-left:3px solid currentColor;padding:3px 6px;background:var(--panel-alt);color:var(--text);white-space:normal}
+.chart-palace-list-item .atlas-star-kind-main{color:#d17d85}
+.chart-palace-list-item .atlas-star-kind-support{color:#5ac1a0}
+.chart-palace-list-item .atlas-star-kind-challenging{color:#d9906c}
+.chart-palace-list-item .atlas-star-kind-transform{color:#dbb66a}
+.chart-palace-list-item .atlas-star-kind-annual{color:#bda8e8}
+.chart-palace-list-item .atlas-star-kind-cycle{color:#8bc6df}
+.chart-palace-list-item .atlas-star-kind-neutral{color:var(--text)}
+.chart-list-obstruction{color:var(--gold)!important}
+@media(min-width:800px){.chart-palace-list-item .chart-list-star-chip{font-size:12px}}
+
+/* Pin only semantic ink: historic `.atlas-year` and `.atlas-gold` have
+   more-specific selectors, so a direct token remains authoritative. */
+.chart-room-layout[data-board-skin] .atlas-star-group .atlas-star-kind-main{color:var(--star-main)!important}
+.chart-room-layout[data-board-skin] .atlas-star-group .atlas-star-kind-support{color:var(--star-support)!important}
+.chart-room-layout[data-board-skin] .atlas-star-group .atlas-star-kind-challenging{color:var(--star-challenging)!important}
+.chart-room-layout[data-board-skin] .atlas-star-group .atlas-star-kind-transform{color:var(--star-transform)!important}
+.chart-room-layout[data-board-skin] .atlas-star-group .atlas-star-kind-annual{color:var(--star-annual)!important}
+.chart-room-layout[data-board-skin] .atlas-star-group .atlas-star-kind-cycle{color:var(--star-cycle)!important}
+.chart-room-layout[data-board-skin] .atlas-star-group .atlas-star-kind-neutral{color:var(--star-neutral)!important}
+.atlas-detail .atlas-star-group .atlas-star-kind-main{color:#ef9fa7!important}
+.atlas-detail .atlas-star-group .atlas-star-kind-support{color:#87d4b0!important}
+.atlas-detail .atlas-star-group .atlas-star-kind-challenging{color:#ffaf8a!important}
+.atlas-detail .atlas-star-group .atlas-star-kind-transform{color:#f0cf82!important}
+.atlas-detail .atlas-star-group .atlas-star-kind-annual{color:#c6b5fa!important}
+.atlas-detail .atlas-star-group .atlas-star-kind-cycle{color:#9cd2eb!important}
+.atlas-detail .atlas-star-group .atlas-star-kind-neutral{color:var(--text)!important}
+.site.light .atlas-detail .atlas-star-group .atlas-star-kind-main{color:#9c3746!important}
+.site.light .atlas-detail .atlas-star-group .atlas-star-kind-support{color:#22745e!important}
+.site.light .atlas-detail .atlas-star-group .atlas-star-kind-challenging{color:#b94e30!important}
+.site.light .atlas-detail .atlas-star-group .atlas-star-kind-transform{color:#92671d!important}
+.site.light .atlas-detail .atlas-star-group .atlas-star-kind-annual{color:#7059a2!important}
+.site.light .atlas-detail .atlas-star-group .atlas-star-kind-cycle{color:#346d88!important}
+
+/* V11.69: evidence hierarchy for four-court comparison inside the selected-star profile. */
+.star-four-court{margin:12px 0 18px;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--panel-alt)}
+.star-four-court-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;color:var(--text);font-size:13px}
+.star-four-court-heading small,.star-four-court-notice{color:var(--muted);font-size:11px}
+.star-four-court>p{color:var(--muted);font-size:12px;line-height:1.7}
+.star-four-court-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0}
+.star-four-court-item{padding:12px;border:1px solid var(--line);border-radius:7px;background:var(--panel);min-width:0}
+.star-four-court-title{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:5px 10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.star-four-court-title b{font-size:10px;letter-spacing:.05em;color:var(--gold)}
+.star-four-court-title strong{font-size:12px}
+.star-four-court-item dl{margin:9px 0;display:grid;gap:7px}
+.star-four-court-item dl>div{display:grid;grid-template-columns:85px minmax(0,1fr);gap:6px}
+.star-four-court-item dt{font-size:10px;color:var(--muted)}
+.star-four-court-item dd{margin:0;overflow-wrap:anywhere;font-size:11px;line-height:1.55;color:var(--text)}
+.star-four-court-item>small{display:block;color:var(--muted);font-size:10px}
+.star-four-court-alert{padding:8px 10px;border-left:3px solid var(--gold);background:var(--panel);font-size:12px}
+.star-four-court-alert ul{padding-left:18px}
+.star-context-critical{margin-top:14px}
+@container star-context (max-width:590px){.star-four-court-grid{grid-template-columns:minmax(0,1fr)}.star-four-court{padding:10px}}

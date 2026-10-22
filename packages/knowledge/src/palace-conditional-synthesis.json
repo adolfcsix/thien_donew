@@ -1,0 +1,102 @@
+{
+  "edition": "11.48.0",
+  "scope": "conditional-palace-synthesis",
+  "expertReviewed": false,
+  "notice": "Đây là bài tập đọc chứng cứ theo cung. Đủ dữ liệu để thảo luận không đồng nghĩa cách cục thành hoặc kết quả đời thực.",
+  "patterns": [
+    {
+      "id": "main-support",
+      "title": "Chính tinh × sao trợ lực",
+      "gate": "local-natal-evidence"
+    },
+    {
+      "id": "main-challenge",
+      "title": "Chính tinh × sát tinh",
+      "gate": "local-natal-evidence"
+    },
+    {
+      "id": "main-transformation",
+      "title": "Chính tinh × Tứ Hóa",
+      "gate": "local-natal-evidence"
+    },
+    {
+      "id": "natal-annual",
+      "title": "Bản mệnh × năm xem",
+      "gate": "audited-annual-evidence"
+    }
+  ],
+  "profiles": {
+    "Mệnh": {
+      "main-support": "Khi chính tinh có độ sáng rõ và sao trợ lực cùng cung, cá nhân có thể đặt câu hỏi gì về cách sử dụng hỗ trợ mà vẫn tự chủ?",
+      "main-challenge": "Khi chính tinh và sát tinh cùng hiện diện, nên phân biệt phản ứng nhất thời và lựa chọn hành động có cân nhắc ra sao?",
+      "main-transformation": "Nếu Hóa năm sinh tác động đúng chính tinh tọa Mệnh, cần kiểm tra sự nhất quán giữa vai trò tự nhận và hành động thực tế thế nào?",
+      "natal-annual": "Khi năm xem có dữ liệu kiểm toán ở Mệnh, nên so sánh điều kiện nền tảng và bối cảnh tạm thời ra sao để tránh đồng nhất hai lớp?"
+    },
+    "Phụ Mẫu": {
+      "main-support": "Khi sao trợ lực cùng cung với chính tinh tại Phụ Mẫu, câu hỏi nào giúp khám phá cách hỗ trợ giữa các thế hệ mà không quy kết người thân?",
+      "main-challenge": "Khi chính tinh đồng cung sát tinh tại Phụ Mẫu, cần cân nhắc ranh giới giao tiếp và sự khác biệt thế hệ thế nào?",
+      "main-transformation": "Với Tứ Hóa hợp lệ trên chính tinh ở Phụ Mẫu, cần phân biệt mong muốn được công nhận và trách nhiệm cá nhân ra sao?",
+      "natal-annual": "Khi lớp năm xem chạm tới Phụ Mẫu, nên ghi nhận thay đổi trong giao tiếp như bối cảnh, không suy đoán biến cố gia đình thế nào?"
+    },
+    "Phúc Đức": {
+      "main-support": "Nếu chính tinh và sao trợ lực cùng hiện diện ở Phúc Đức, câu hỏi nào giúp nhận diện nguồn nâng đỡ tinh thần không đồng nhất với số phận?",
+      "main-challenge": "Khi sát tinh cùng chính tinh tại Phúc Đức, có thể quan sát căng thẳng giữa nếp cũ và lựa chọn hiện tại bằng cách nào?",
+      "main-transformation": "Với Tứ Hóa có sao đích rõ tại Phúc Đức, nên hỏi về giá trị được kế thừa và điều đang chủ động thay đổi ra sao?",
+      "natal-annual": "Khi xuất hiện lớp năm xem ở Phúc Đức, nên tách trải nghiệm nhất thời khỏi câu chuyện dài hạn về giá trị gia đình thế nào?"
+    },
+    "Điền Trạch": {
+      "main-support": "Khi chính tinh và sao trợ lực tọa Điền Trạch, có thể xem xét việc phối hợp chăm sóc không gian sống mà không dự báo sở hữu tài sản thế nào?",
+      "main-challenge": "Khi chính tinh và sát tinh cùng cung Điền, cần đặt câu hỏi gì về an toàn, ổn định và khả năng thích nghi không gian?",
+      "main-transformation": "Khi Tứ Hóa năm sinh gắn đúng chính tinh ở Điền, nên phân biệt kế hoạch nhà ở và mong muốn cá nhân ra sao?",
+      "natal-annual": "Nếu sao lưu được xác minh xuất hiện tại Điền, cần đối chiếu nhu cầu sắp xếp nhà cửa trong năm với điều kiện lâu dài như thế nào?"
+    },
+    "Quan Lộc": {
+      "main-support": "Khi sao trợ lực đồng cung chính tinh ở Quan Lộc, có thể đặt câu hỏi gì về cộng tác và phân công trách nhiệm nghề nghiệp?",
+      "main-challenge": "Khi sát tinh cùng chính tinh tại Quan, cần suy ngẫm cách ứng phó áp lực công việc mà không dự báo thăng trầm nghề nghiệp ra sao?",
+      "main-transformation": "Nếu Tứ Hóa hợp lệ tác động chính tinh ở Quan, nên kiểm tra động lực học nghề và lựa chọn vai trò thế nào?",
+      "natal-annual": "Khi lớp năm xem được kiểm toán ở Quan Lộc, có thể so sánh kế hoạch ngắn hạn với mục tiêu nghề nghiệp dài hạn ra sao?"
+    },
+    "Nô Bộc": {
+      "main-support": "Khi chính tinh đi cùng sao trợ lực ở Nô Bộc, câu hỏi nào làm rõ tính hai chiều của việc giúp đỡ trong tập thể?",
+      "main-challenge": "Khi sát tinh cùng chính tinh ở Nô Bộc, nên kiểm tra ranh giới nhóm và cách xử lý khác biệt lợi ích ra sao?",
+      "main-transformation": "Với Tứ Hóa năm sinh có sao đích ở Nô Bộc, cần hỏi thế nào về trách nhiệm chia sẻ thông tin và cam kết?",
+      "natal-annual": "Khi lớp năm xem ở Nô Bộc có bằng chứng, cần tách sự thay đổi nhóm cộng tác trước mắt khỏi phán xét về quan hệ lâu dài thế nào?"
+    },
+    "Thiên Di": {
+      "main-support": "Khi sao trợ lực cùng chính tinh ở Thiên Di, nên đặt câu hỏi gì về khả năng tham gia cộng đồng bên ngoài?",
+      "main-challenge": "Khi sát tinh cùng chính tinh tại Thiên Di, có thể rà soát phương án thích nghi môi trường mới mà không tiên đoán tai nạn thế nào?",
+      "main-transformation": "Nếu Hóa năm sinh gắn chính tinh ở Thiên Di, cần phân biệt cơ hội tiếp xúc và năng lực chủ động ra quyết định thế nào?",
+      "natal-annual": "Khi năm xem có sao lưu được kiểm toán tại Thiên Di, nên liên hệ bối cảnh dịch chuyển ngắn hạn với kế hoạch học hỏi dài hạn ra sao?"
+    },
+    "Tật Ách": {
+      "main-support": "Khi chính tinh và sao trợ lực cùng cung Tật Ách, có thể phản tư thói quen tự chăm sóc mà không suy diễn chẩn đoán bệnh ra sao?",
+      "main-challenge": "Khi chính tinh đi cùng sát tinh ở Tật Ách, câu hỏi nào về phản ứng với áp lực phù hợp mà không biến sao thành chỉ báo sức khỏe?",
+      "main-transformation": "Nếu Tứ Hóa được xác minh tại Tật Ách, nên giới hạn suy luận biểu tượng và giữ ranh giới lời khuyên y khoa như thế nào?",
+      "natal-annual": "Khi sao lưu năm xem tại Tật Ách hợp lệ, cần phân biệt nhịp sinh hoạt tạm thời và tình trạng sức khỏe thực tế ra sao?"
+    },
+    "Tài Bạch": {
+      "main-support": "Khi sao trợ lực cùng chính tinh ở Tài Bạch, câu hỏi nào giúp suy ngẫm việc phối hợp quản lý nguồn lực mà không dự báo thu nhập?",
+      "main-challenge": "Khi sát tinh đồng cung chính tinh tại Tài, nên đặt vấn đề về giới hạn rủi ro tài chính mà không kết luận thua lỗ như thế nào?",
+      "main-transformation": "Khi Hóa năm sinh có sao đích đúng tại Tài Bạch, nên phân biệt thái độ đối với tiền bạc và quyết định đầu tư thực tế ra sao?",
+      "natal-annual": "Khi lớp năm xem xuất hiện ở Tài Bạch, có thể tách chi tiêu thời điểm hiện tại khỏi mục tiêu tài chính dài hạn thế nào?"
+    },
+    "Tử Tức": {
+      "main-support": "Khi sao trợ lực cùng chính tinh tại Tử Tức, câu hỏi nào về sự nuôi dưỡng và phân bổ thời gian không quy kết tương lai con cái?",
+      "main-challenge": "Khi chính tinh đi cùng sát tinh ở Tử Tức, nên kiểm tra kỳ vọng chăm sóc mà không suy đoán khả năng sinh sản như thế nào?",
+      "main-transformation": "Với Tứ Hóa có sao đích hợp lệ ở Tử Tức, có thể phản tư trách nhiệm chăm sóc mà không đưa ra dự báo về trẻ nhỏ ra sao?",
+      "natal-annual": "Khi dữ liệu năm xem chạm tới Tử Tức, nên phân biệt thay đổi lịch sinh hoạt với những khẳng định về gia đình thế nào?"
+    },
+    "Phu Thê": {
+      "main-support": "Khi chính tinh cùng sao trợ lực tại Phu Thê, có thể đặt câu hỏi gì về đối thoại và sự đồng thuận mà không đánh giá bạn đời?",
+      "main-challenge": "Khi sát tinh cùng chính tinh ở Phu Thê, nên nghiên cứu cách giải quyết bất đồng thay vì dự báo chia tay như thế nào?",
+      "main-transformation": "Khi Hóa năm sinh gắn đúng chính tinh tại Phu Thê, câu hỏi nào giúp làm rõ kỳ vọng lẫn trách nhiệm trong quan hệ?",
+      "natal-annual": "Khi sao lưu năm xem tại Phu Thê đã kiểm toán, cần phân biệt hoàn cảnh ngắn hạn với kết luận về chất lượng mối quan hệ ra sao?"
+    },
+    "Huynh Đệ": {
+      "main-support": "Nếu chính tinh cùng sao trợ lực ở Huynh Đệ, có thể suy ngẫm phân chia trách nhiệm giữa anh chị em mà không gán tính cách ai?",
+      "main-challenge": "Khi sát tinh đồng cung chính tinh ở Huynh Đệ, câu hỏi nào phù hợp về hòa giải và ranh giới cá nhân?",
+      "main-transformation": "Khi Tứ Hóa có sao đích hợp lệ ở Huynh Đệ, nên đặt câu hỏi gì về việc trao đổi kỳ vọng và hỗ trợ trong gia đình?",
+      "natal-annual": "Khi lớp năm xem ở Huynh Đệ có ghi nhận, có thể quan sát lịch trình tương tác mà không dự đoán mâu thuẫn tương lai ra sao?"
+    }
+  }
+}

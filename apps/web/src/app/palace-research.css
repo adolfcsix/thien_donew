@@ -1,0 +1,44 @@
+/* THIÊN ĐỒ V10.8 — evidence-focused Tam phương Tứ chính research. */
+.palace-research{min-width:0;margin-top:20px;padding:21px;border:1px solid var(--line-strong);background:linear-gradient(140deg,var(--panel-alt),var(--panel) 60%);}
+.palace-research-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:19px;}
+.palace-research-heading h3{font-size:clamp(23px,3vw,31px);margin:8px 0 9px;color:var(--text);}
+.palace-research-heading p{max-width:730px;font-size:12px;line-height:1.7;margin:0;color:var(--muted);}
+.palace-research-heading p strong{color:var(--gold);}
+.palace-research-edition{font-size:10px;color:var(--muted);border:1px solid var(--line);padding:7px 9px;white-space:nowrap;}
+.palace-research-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0;}
+.palace-research-card{min-width:0;display:flex;flex-direction:column;gap:12px;padding:19px 18px;border:1px solid var(--line-strong);background:var(--panel);}
+.palace-research-card.research-selected{border-color:var(--gold);background:linear-gradient(135deg,rgba(197,161,106,.07),var(--panel) 43%);}
+.palace-research-card-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:9px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+.palace-research-role{font-size:10px;color:var(--gold);letter-spacing:.1em;font-weight:700;}
+.palace-research-card-heading h4{font-family:var(--font-display);font-size:23px;font-weight:normal;margin:7px 0 4px;}
+.palace-research-card-heading small{color:var(--muted);font-size:11px;}
+.palace-research-jump{min-height:34px;flex-shrink:0;padding:6px 10px;border:1px solid var(--line-strong);border-radius:3px;background:var(--panel-alt);color:var(--gold);font-size:11px;}
+.palace-research-jump:hover,.palace-research-jump:focus-visible{border-color:var(--gold);}
+.palace-research-count{font-size:11px;line-height:1.6;margin:0;color:var(--muted);}
+.palace-research-count strong{color:var(--gold);font-size:16px;}
+.palace-research-layers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 14px;}
+.palace-research-layer{min-width:0;}
+.palace-research-layer>strong,.palace-research-transformations>strong{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--gold);margin-bottom:8px;}
+.palace-research-layer strong small,.palace-research-transformations strong small{color:var(--muted);font-weight:400;}
+.palace-research-names{display:flex;gap:5px;flex-wrap:wrap;align-items:flex-start;}
+.palace-research-names a,.palace-research-names span,.palace-research-transformations p span{display:inline-flex;align-items:center;gap:3px;padding:4px 6px;border:1px solid var(--line);font-size:11px;line-height:1.45;color:var(--text);overflow-wrap:anywhere;}
+.palace-research-names a{border-color:var(--line-strong);color:var(--gold);}
+.palace-research-names a:hover,.palace-research-names a:focus-visible{text-decoration:underline;text-underline-offset:2px;}
+.palace-research-names em,.palace-research-transformations em{font-size:10px;color:var(--faint);font-style:normal;}
+.palace-research-transformations{display:grid;grid-template-columns:1fr;gap:2px;border-top:1px solid var(--line);padding-top:12px;}
+.palace-research-transformations p{margin:0 0 9px;display:flex;gap:6px;flex-wrap:wrap;}
+.palace-research-transformations p span{color:var(--gold);}
+.palace-research-provenance{margin-top:auto;border-top:1px solid var(--line);padding-top:10px;}
+.palace-research-provenance summary{cursor:pointer;font-size:11px;color:var(--muted);}
+.palace-research-provenance>div{font-size:10px;line-height:1.7;color:var(--muted);padding-top:5px;overflow-wrap:anywhere;}
+.palace-research-provenance code{font-size:10px;color:var(--gold);}
+.palace-research-warning{margin-top:13px;border-left:3px solid var(--gold);padding:10px 14px;background:var(--panel-alt);font-size:11px;line-height:1.7;color:var(--muted);}
+.palace-research-warning strong{color:var(--text);}
+@media(max-width:900px){.palace-research-grid{grid-template-columns:1fr;}.palace-research{padding:15px;}}
+@media(max-width:500px){.palace-research-card{padding:14px 12px}.palace-research-layers{grid-template-columns:1fr 1fr;gap:11px 9px}.palace-research-heading{display:block}.palace-research-edition{display:inline-block;margin-top:12px}.palace-research-card-heading h4{font-size:21px}}
+@media(max-width:340px){.palace-research-layers{grid-template-columns:1fr}}
+
+.palace-research-toggle{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:18px 0 4px;}
+.palace-research-toggle span{font-size:11px;color:var(--muted);line-height:1.5;}
+
+.palace-research-missing-target{border-left:2px solid var(--gold);padding:8px 10px;color:var(--muted);background:var(--panel-alt);font-size:11px;line-height:1.7;margin:0;}

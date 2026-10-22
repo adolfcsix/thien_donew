@@ -1,0 +1,99 @@
+{
+  "edition": "11.49.0",
+  "scope": "palace-relational-synthesis",
+  "expertReviewed": false,
+  "notice": "Bảng hướng dẫn học tập quan hệ cung, không xác nhận cách cục hay kết quả thực tế. Chỉ ghi bằng chứng vị trí sao bản mệnh hợp lệ.",
+  "patterns": [
+    {
+      "id": "tam-hop",
+      "title": "Tam hợp: sao hội chiếu",
+      "scope": "two-trinal-houses"
+    },
+    {
+      "id": "doi-cung",
+      "title": "Xung chiếu: chính tinh đối cung",
+      "scope": "opposite-house"
+    },
+    {
+      "id": "giap-cung",
+      "title": "Giáp cung: cặp sao ở hai phía",
+      "scope": "immediate-neighbor-houses"
+    }
+  ],
+  "eligibleFlankPairs": [
+    [
+      "Tả Phụ",
+      "Hữu Bật"
+    ],
+    [
+      "Văn Xương",
+      "Văn Khúc"
+    ],
+    [
+      "Thiên Khôi",
+      "Thiên Việt"
+    ]
+  ],
+  "profiles": {
+    "Mệnh": {
+      "tam-hop": "Tam hợp tại Mệnh có thêm nguồn trợ lực hay sức ép nào trong cách tự quản, và bằng chứng thuộc cung nào?",
+      "doi-cung": "Đối cung Thiên Di có chính tinh nào làm rõ sự khác nhau giữa tự nhìn nhận và tương tác bên ngoài?",
+      "giap-cung": "Hai cung giáp Mệnh có cặp sao bổ trợ đối xứng thực sự không, hay mới chỉ có một phía?"
+    },
+    "Phụ Mẫu": {
+      "tam-hop": "Tam hợp Phụ Mẫu cho thêm góc nhìn nào về giao tiếp giữa các thế hệ mà không quy kết người thân?",
+      "doi-cung": "Đối cung Phụ Mẫu có những chính tinh nào cần đối chiếu trước khi bàn về ranh giới gia đình?",
+      "giap-cung": "Hai cung kề Phụ Mẫu có dấu hiệu cặp sao hỗ trợ nào, và có bị nhầm với sao lưu niên không?"
+    },
+    "Phúc Đức": {
+      "tam-hop": "Những sao ở hai cung tam hợp Phúc Đức gợi câu hỏi gì về giá trị kế thừa và tự chủ?",
+      "doi-cung": "Đối cung Phúc Đức có chính tinh hoặc vô chính diệu, cần phân biệt hai trạng thái khi nghiên cứu như thế nào?",
+      "giap-cung": "Có đủ hai vị trí sao thuộc cùng một cặp ở hai cung kề Phúc Đức không?"
+    },
+    "Điền Trạch": {
+      "tam-hop": "Vị trí sao trong tam hợp Điền Trạch đặt ra câu hỏi nào về cách sử dụng và chăm sóc không gian sống?",
+      "doi-cung": "Chính tinh tại cung đối Điền Trạch là dữ liệu thực hay chỉ là suy diễn từ danh mục sao khác?",
+      "giap-cung": "Hai phía giáp Điền Trạch cùng xuất hiện cặp sao bổ trợ nào; liệu có dữ liệu trùng cung?"
+    },
+    "Quan Lộc": {
+      "tam-hop": "Tam hợp Quan Lộc có sao nào liên quan đến phối hợp công việc và điều kiện nào còn phải kiểm tra?",
+      "doi-cung": "Khi đối chiếu Quan Lộc với cung đối, chính tinh và độ sáng ở hai vị trí có được ghi nhận hợp lệ không?",
+      "giap-cung": "Hai cung giáp Quan Lộc có đủ hai sao thuộc một cặp để đặt câu hỏi về sự cân bằng trách nhiệm không?"
+    },
+    "Nô Bộc": {
+      "tam-hop": "Sao ở tam hợp Nô Bộc bổ sung bằng chứng gì về quan hệ nhóm, không suy thành lời dự báo quý nhân?",
+      "doi-cung": "Cung đối Nô Bộc có chính tinh nào khác biệt với cung đang xem và có bản ghi độ sáng hợp lệ không?",
+      "giap-cung": "Các cung kề Nô Bộc có hỗ trợ hai chiều hay chỉ ghi một sao của cặp; bước kiểm tra kế là gì?"
+    },
+    "Thiên Di": {
+      "tam-hop": "Tam hợp Thiên Di cung cấp các vị trí sao nào để nghiên cứu thích nghi môi trường mới?",
+      "doi-cung": "Đối cung Mệnh có những chính tinh nào; cần đối chiếu tự nhận thức với hành động ra sao?",
+      "giap-cung": "Một cặp sao xuất hiện ở hai cung giáp Thiên Di hay không; liệu có nhầm lớp dữ liệu năm xem?"
+    },
+    "Tật Ách": {
+      "tam-hop": "Tam hợp Tật Ách có bằng chứng sao ở cung nào mà vẫn giữ ranh giới không suy diễn chẩn đoán sức khỏe?",
+      "doi-cung": "Đối cung Tật Ách có chính tinh nào để nghiên cứu biểu tượng nếp sống, không thay thế tư vấn y tế?",
+      "giap-cung": "Hai cung giáp Tật Ách có hai sao cùng cặp hay không; dữ liệu này không được coi là chẩn đoán bệnh thế nào?"
+    },
+    "Tài Bạch": {
+      "tam-hop": "Tam hợp Tài Bạch có sao trợ lực hay sát tinh nào cho bài tập đối chiếu quản lý nguồn lực?",
+      "doi-cung": "Đối cung Tài Bạch có chính tinh hoặc vô chính diệu và việc ghi nhận độ sáng đã hợp lệ chưa?",
+      "giap-cung": "Hai cung giáp Tài Bạch có đủ cặp sao hỗ trợ hay chỉ có dấu vết một phía, không dự đoán lãi lỗ?"
+    },
+    "Tử Tức": {
+      "tam-hop": "Tam hợp Tử Tức cho thấy những vị trí sao nào liên quan đến câu hỏi trách nhiệm chăm sóc, không suy đoán sinh sản?",
+      "doi-cung": "Đối cung Tử Tức có chính tinh nào cần đọc đúng bối cảnh, không kết luận tương lai con trẻ?",
+      "giap-cung": "Hai cung giáp Tử Tức có cặp sao ở hai phía hay không, và vị trí có được kiểm chứng duy nhất?"
+    },
+    "Phu Thê": {
+      "tam-hop": "Sao ở tam hợp Phu Thê bổ sung câu hỏi gì về giao tiếp và đồng thuận, không suy đoán kết cục quan hệ?",
+      "doi-cung": "Chính tinh tại đối cung Phu Thê có bằng chứng độ sáng đáng tin cậy không, trước khi đối chiếu kỳ vọng hai bên?",
+      "giap-cung": "Hai cung kề Phu Thê có cặp sao bổ trợ nào thật sự đứng giáp; có cần kiểm tra sao trùng?"
+    },
+    "Huynh Đệ": {
+      "tam-hop": "Tam hợp Huynh Đệ ghi nhận sao nào để đặt câu hỏi về phân chia trách nhiệm trong gia đình?",
+      "doi-cung": "Cung đối Huynh Đệ có chính tinh nào, và điều gì vẫn chưa đủ để diễn giải tương tác anh chị em?",
+      "giap-cung": "Cặp sao nào thực sự nằm hai phía giáp Huynh Đệ, khác với trường hợp chỉ đồng cung hoặc cùng tam hợp?"
+    }
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "edition": "v11.63.0",
+  "scope": "natal-editorial-examples",
+  "expertReviewed": false,
+  "notice": "Các ngày giờ là ca học tập giả định, tính bằng engine của Thiên Đồ. Không phải dữ liệu cá nhân hoặc xác thực luận đoán.",
+  "cases": [
+    {
+      "id": "tu-phu-vu-tuong-match",
+      "familyId": "tu-phu-vu-tuong",
+      "label": "Đủ điều kiện vị trí để khảo sát",
+      "input": {
+        "date": "1998-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 14,
+        "minute": 15
+      },
+      "focusBranchIndex": 6,
+      "expectedStatus": "qualified-candidate",
+      "expectedStructural": true,
+      "observed": [
+        {
+          "star": "Tử Vi",
+          "branchIndex": 10
+        },
+        {
+          "star": "Thiên Phủ",
+          "branchIndex": 6
+        },
+        {
+          "star": "Vũ Khúc",
+          "branchIndex": 6
+        },
+        {
+          "star": "Thiên Tướng",
+          "branchIndex": 10
+        }
+      ],
+      "absent": []
+    },
+    {
+      "id": "tu-phu-vu-tuong-partial",
+      "familyId": "tu-phu-vu-tuong",
+      "label": "Thiếu điều kiện vị trí",
+      "input": {
+        "date": "1998-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 0,
+        "minute": 15
+      },
+      "focusBranchIndex": 1,
+      "expectedStatus": "conditions-not-met",
+      "expectedStructural": false,
+      "observed": [
+        {
+          "star": "Tử Vi",
+          "branchIndex": 7
+        },
+        {
+          "star": "Thiên Phủ",
+          "branchIndex": 9
+        },
+        {
+          "star": "Thiên Tướng",
+          "branchIndex": 1
+        }
+      ],
+      "absent": [
+        "Vũ Khúc"
+      ]
+    },
+    {
+      "id": "co-nguyet-dong-luong-match",
+      "familyId": "co-nguyet-dong-luong",
+      "label": "Đủ điều kiện vị trí để khảo sát",
+      "input": {
+        "date": "1998-02-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 4,
+        "minute": 15
+      },
+      "focusBranchIndex": 0,
+      "expectedStatus": "qualified-candidate",
+      "expectedStructural": true,
+      "observed": [
+        {
+          "star": "Thiên Cơ",
+          "branchIndex": 4
+        },
+        {
+          "star": "Thái Âm",
+          "branchIndex": 0
+        },
+        {
+          "star": "Thiên Đồng",
+          "branchIndex": 0
+        },
+        {
+          "star": "Thiên Lương",
+          "branchIndex": 4
+        }
+      ],
+      "absent": []
+    },
+    {
+      "id": "co-nguyet-dong-luong-partial",
+      "familyId": "co-nguyet-dong-luong",
+      "label": "Thiếu điều kiện vị trí",
+      "input": {
+        "date": "1998-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 2,
+        "minute": 15
+      },
+      "focusBranchIndex": 0,
+      "expectedStatus": "conditions-not-met",
+      "expectedStructural": false,
+      "observed": [
+        {
+          "star": "Thiên Cơ",
+          "branchIndex": 6
+        }
+      ],
+      "absent": [
+        "Thái Âm",
+        "Thiên Đồng",
+        "Thiên Lương"
+      ]
+    },
+    {
+      "id": "sat-pha-tham-match",
+      "familyId": "sat-pha-tham",
+      "label": "Đủ điều kiện vị trí để khảo sát",
+      "input": {
+        "date": "1998-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 6,
+        "minute": 15
+      },
+      "focusBranchIndex": 10,
+      "expectedStatus": "qualified-candidate",
+      "expectedStructural": true,
+      "observed": [
+        {
+          "star": "Thất Sát",
+          "branchIndex": 2
+        },
+        {
+          "star": "Phá Quân",
+          "branchIndex": 6
+        },
+        {
+          "star": "Tham Lang",
+          "branchIndex": 10
+        }
+      ],
+      "absent": []
+    },
+    {
+      "id": "sat-pha-tham-partial",
+      "familyId": "sat-pha-tham",
+      "label": "Thiếu điều kiện vị trí",
+      "input": {
+        "date": "1998-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 0,
+        "minute": 15
+      },
+      "focusBranchIndex": 1,
+      "expectedStatus": "conditions-not-met",
+      "expectedStructural": false,
+      "observed": [
+        {
+          "star": "Phá Quân",
+          "branchIndex": 7
+        }
+      ],
+      "absent": [
+        "Thất Sát",
+        "Tham Lang"
+      ]
+    },
+    {
+      "id": "cu-nhat-match",
+      "familyId": "cu-nhat",
+      "label": "Đủ điều kiện vị trí để khảo sát",
+      "input": {
+        "date": "1998-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 2,
+        "minute": 15
+      },
+      "focusBranchIndex": 0,
+      "expectedStatus": "qualified-candidate",
+      "expectedStructural": true,
+      "observed": [
+        {
+          "star": "Cự Môn",
+          "branchIndex": 0
+        },
+        {
+          "star": "Thái Dương",
+          "branchIndex": 4
+        }
+      ],
+      "absent": []
+    },
+    {
+      "id": "cu-nhat-partial",
+      "familyId": "cu-nhat",
+      "label": "Thiếu điều kiện vị trí",
+      "input": {
+        "date": "1998-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 10,
+        "minute": 15
+      },
+      "focusBranchIndex": 8,
+      "expectedStatus": "conditions-not-met",
+      "expectedStructural": false,
+      "observed": [
+        {
+          "star": "Cự Môn",
+          "branchIndex": 0
+        },
+        {
+          "star": "Thái Dương",
+          "branchIndex": 4
+        }
+      ],
+      "absent": []
+    }
+  ]
+}

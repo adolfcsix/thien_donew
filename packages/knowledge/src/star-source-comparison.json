@@ -1,0 +1,2956 @@
+{
+  "release": "11.119.0",
+  "scope": "research-only-snapshot-of-current-engine-and-named-source-rules",
+  "automaticPlacement": false,
+  "automaticAlias": false,
+  "expertReviewed": false,
+  "branches": [
+    "Tý",
+    "Sửu",
+    "Dần",
+    "Mão",
+    "Thìn",
+    "Tỵ",
+    "Ngọ",
+    "Mùi",
+    "Thân",
+    "Dậu",
+    "Tuất",
+    "Hợi"
+  ],
+  "stems": [
+    "Giáp",
+    "Ất",
+    "Bính",
+    "Đinh",
+    "Mậu",
+    "Kỷ",
+    "Canh",
+    "Tân",
+    "Nhâm",
+    "Quý"
+  ],
+  "hourRows": [
+    {
+      "hour": "Tý",
+      "vanKhuc": "Thìn",
+      "engineThaiPhu": "Tỵ",
+      "sourceThaiPhu": "Ngọ",
+      "enginePhongCao": "Mão",
+      "sourcePhongCao": "Dần"
+    },
+    {
+      "hour": "Sửu",
+      "vanKhuc": "Tỵ",
+      "engineThaiPhu": "Ngọ",
+      "sourceThaiPhu": "Mùi",
+      "enginePhongCao": "Thìn",
+      "sourcePhongCao": "Mão"
+    },
+    {
+      "hour": "Dần",
+      "vanKhuc": "Ngọ",
+      "engineThaiPhu": "Mùi",
+      "sourceThaiPhu": "Thân",
+      "enginePhongCao": "Tỵ",
+      "sourcePhongCao": "Thìn"
+    },
+    {
+      "hour": "Mão",
+      "vanKhuc": "Mùi",
+      "engineThaiPhu": "Thân",
+      "sourceThaiPhu": "Dậu",
+      "enginePhongCao": "Ngọ",
+      "sourcePhongCao": "Tỵ"
+    },
+    {
+      "hour": "Thìn",
+      "vanKhuc": "Thân",
+      "engineThaiPhu": "Dậu",
+      "sourceThaiPhu": "Tuất",
+      "enginePhongCao": "Mùi",
+      "sourcePhongCao": "Ngọ"
+    },
+    {
+      "hour": "Tỵ",
+      "vanKhuc": "Dậu",
+      "engineThaiPhu": "Tuất",
+      "sourceThaiPhu": "Hợi",
+      "enginePhongCao": "Thân",
+      "sourcePhongCao": "Mùi"
+    },
+    {
+      "hour": "Ngọ",
+      "vanKhuc": "Tuất",
+      "engineThaiPhu": "Hợi",
+      "sourceThaiPhu": "Tý",
+      "enginePhongCao": "Dậu",
+      "sourcePhongCao": "Thân"
+    },
+    {
+      "hour": "Mùi",
+      "vanKhuc": "Hợi",
+      "engineThaiPhu": "Tý",
+      "sourceThaiPhu": "Sửu",
+      "enginePhongCao": "Tuất",
+      "sourcePhongCao": "Dậu"
+    },
+    {
+      "hour": "Thân",
+      "vanKhuc": "Tý",
+      "engineThaiPhu": "Sửu",
+      "sourceThaiPhu": "Dần",
+      "enginePhongCao": "Hợi",
+      "sourcePhongCao": "Tuất"
+    },
+    {
+      "hour": "Dậu",
+      "vanKhuc": "Sửu",
+      "engineThaiPhu": "Dần",
+      "sourceThaiPhu": "Mão",
+      "enginePhongCao": "Tý",
+      "sourcePhongCao": "Hợi"
+    },
+    {
+      "hour": "Tuất",
+      "vanKhuc": "Dần",
+      "engineThaiPhu": "Mão",
+      "sourceThaiPhu": "Thìn",
+      "enginePhongCao": "Sửu",
+      "sourcePhongCao": "Tý"
+    },
+    {
+      "hour": "Hợi",
+      "vanKhuc": "Mão",
+      "engineThaiPhu": "Thìn",
+      "sourceThaiPhu": "Tỵ",
+      "enginePhongCao": "Dần",
+      "sourcePhongCao": "Sửu"
+    }
+  ],
+  "pairRows": [
+    {
+      "stem": "Giáp",
+      "enginePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sourceSingle": "Thân",
+      "sameRepresentation": false,
+      "sourceInPair": true
+    },
+    {
+      "stem": "Ất",
+      "enginePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sourceSingle": "Ngọ",
+      "sameRepresentation": false,
+      "sourceInPair": true
+    },
+    {
+      "stem": "Bính",
+      "enginePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sourceSingle": "Thìn",
+      "sameRepresentation": false,
+      "sourceInPair": true
+    },
+    {
+      "stem": "Đinh",
+      "enginePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sourceSingle": "Dần",
+      "sameRepresentation": false,
+      "sourceInPair": true
+    },
+    {
+      "stem": "Mậu",
+      "enginePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sourceSingle": "Tý",
+      "sameRepresentation": false,
+      "sourceInPair": true
+    },
+    {
+      "stem": "Kỷ",
+      "enginePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sourceSingle": "Dậu",
+      "sameRepresentation": false,
+      "sourceInPair": true
+    },
+    {
+      "stem": "Canh",
+      "enginePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sourceSingle": "Mùi",
+      "sameRepresentation": false,
+      "sourceInPair": true
+    },
+    {
+      "stem": "Tân",
+      "enginePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sourceSingle": "Tỵ",
+      "sameRepresentation": false,
+      "sourceInPair": true
+    },
+    {
+      "stem": "Nhâm",
+      "enginePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sourceSingle": "Mão",
+      "sameRepresentation": false,
+      "sourceInPair": true
+    },
+    {
+      "stem": "Quý",
+      "enginePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sourceSingle": "Sửu",
+      "sameRepresentation": false,
+      "sourceInPair": true
+    }
+  ],
+  "tuanRows": [
+    {
+      "year": "Giáp Tý",
+      "enginePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sourcePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Ất Sửu",
+      "enginePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sourcePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Bính Dần",
+      "enginePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sourcePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Đinh Mão",
+      "enginePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sourcePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Mậu Thìn",
+      "enginePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sourcePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Kỷ Tỵ",
+      "enginePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sourcePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Canh Ngọ",
+      "enginePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sourcePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Tân Mùi",
+      "enginePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sourcePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Nhâm Thân",
+      "enginePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sourcePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Quý Dậu",
+      "enginePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sourcePair": [
+        "Tuất",
+        "Hợi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Giáp Tuất",
+      "enginePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sourcePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Ất Hợi",
+      "enginePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sourcePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Bính Tý",
+      "enginePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sourcePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Đinh Sửu",
+      "enginePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sourcePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Mậu Dần",
+      "enginePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sourcePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Kỷ Mão",
+      "enginePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sourcePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Canh Thìn",
+      "enginePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sourcePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Tân Tỵ",
+      "enginePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sourcePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Nhâm Ngọ",
+      "enginePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sourcePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Quý Mùi",
+      "enginePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sourcePair": [
+        "Thân",
+        "Dậu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Giáp Thân",
+      "enginePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sourcePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Ất Dậu",
+      "enginePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sourcePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Bính Tuất",
+      "enginePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sourcePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Đinh Hợi",
+      "enginePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sourcePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Mậu Tý",
+      "enginePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sourcePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Kỷ Sửu",
+      "enginePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sourcePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Canh Dần",
+      "enginePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sourcePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Tân Mão",
+      "enginePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sourcePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Nhâm Thìn",
+      "enginePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sourcePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Quý Tỵ",
+      "enginePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sourcePair": [
+        "Ngọ",
+        "Mùi"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Giáp Ngọ",
+      "enginePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sourcePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Ất Mùi",
+      "enginePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sourcePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Bính Thân",
+      "enginePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sourcePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Đinh Dậu",
+      "enginePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sourcePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Mậu Tuất",
+      "enginePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sourcePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Kỷ Hợi",
+      "enginePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sourcePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Canh Tý",
+      "enginePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sourcePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Tân Sửu",
+      "enginePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sourcePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Nhâm Dần",
+      "enginePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sourcePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Quý Mão",
+      "enginePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sourcePair": [
+        "Thìn",
+        "Tỵ"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Giáp Thìn",
+      "enginePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sourcePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Ất Tỵ",
+      "enginePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sourcePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Bính Ngọ",
+      "enginePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sourcePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Đinh Mùi",
+      "enginePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sourcePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Mậu Thân",
+      "enginePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sourcePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Kỷ Dậu",
+      "enginePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sourcePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Canh Tuất",
+      "enginePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sourcePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Tân Hợi",
+      "enginePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sourcePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Nhâm Tý",
+      "enginePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sourcePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Quý Sửu",
+      "enginePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sourcePair": [
+        "Dần",
+        "Mão"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Giáp Dần",
+      "enginePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sourcePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Ất Mão",
+      "enginePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sourcePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Bính Thìn",
+      "enginePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sourcePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Đinh Tỵ",
+      "enginePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sourcePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Mậu Ngọ",
+      "enginePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sourcePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Kỷ Mùi",
+      "enginePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sourcePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Canh Thân",
+      "enginePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sourcePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Tân Dậu",
+      "enginePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sourcePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Nhâm Tuất",
+      "enginePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sourcePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sameLocation": true
+    },
+    {
+      "year": "Quý Hợi",
+      "enginePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sourcePair": [
+        "Tý",
+        "Sửu"
+      ],
+      "sameLocation": true
+    }
+  ],
+  "circleRows": [
+    {
+      "yearBranch": "Tý",
+      "tuong": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Tý"
+        },
+        {
+          "name": "Phan An",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Dần"
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Mão"
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Thân"
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Hợi"
+        }
+      ],
+      "tue": [
+        {
+          "name": "Tuế Kiến",
+          "hanzi": "歲建",
+          "branch": "Tý"
+        },
+        {
+          "name": "Hối Khí",
+          "hanzi": "晦氣",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Tang Môn",
+          "hanzi": "喪門",
+          "branch": "Dần"
+        },
+        {
+          "name": "Quán Sách",
+          "hanzi": "貫索",
+          "branch": "Mão"
+        },
+        {
+          "name": "Quan Phù",
+          "hanzi": "官符",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Tiểu Hao",
+          "hanzi": "小耗",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Đại Hao",
+          "hanzi": "大耗",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Long Đức",
+          "hanzi": "龍德",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Bạch Hổ",
+          "hanzi": "白虎",
+          "branch": "Thân"
+        },
+        {
+          "name": "Thiên Đức",
+          "hanzi": "天德",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Điếu Khách",
+          "hanzi": "弔客",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Bệnh Phù",
+          "hanzi": "病符",
+          "branch": "Hợi"
+        }
+      ],
+      "engineThaiTue": [
+        {
+          "name": "Thái Tuế",
+          "branch": "Tý"
+        },
+        {
+          "name": "Thiếu Dương",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Tang Môn",
+          "branch": "Dần"
+        },
+        {
+          "name": "Thiếu Âm",
+          "branch": "Mão"
+        },
+        {
+          "name": "Quan Phù",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Tử Phù",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Tuế Phá",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Long Đức",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Bạch Hổ",
+          "branch": "Thân"
+        },
+        {
+          "name": "Phúc Đức",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Điếu Khách",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Trực Phù",
+          "branch": "Hợi"
+        }
+      ]
+    },
+    {
+      "yearBranch": "Sửu",
+      "tuong": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Phan An",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Tý"
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Dần"
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Mão"
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Thân"
+        }
+      ],
+      "tue": [
+        {
+          "name": "Tuế Kiến",
+          "hanzi": "歲建",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Hối Khí",
+          "hanzi": "晦氣",
+          "branch": "Dần"
+        },
+        {
+          "name": "Tang Môn",
+          "hanzi": "喪門",
+          "branch": "Mão"
+        },
+        {
+          "name": "Quán Sách",
+          "hanzi": "貫索",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Quan Phù",
+          "hanzi": "官符",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Tiểu Hao",
+          "hanzi": "小耗",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Đại Hao",
+          "hanzi": "大耗",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Long Đức",
+          "hanzi": "龍德",
+          "branch": "Thân"
+        },
+        {
+          "name": "Bạch Hổ",
+          "hanzi": "白虎",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Thiên Đức",
+          "hanzi": "天德",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Điếu Khách",
+          "hanzi": "弔客",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Bệnh Phù",
+          "hanzi": "病符",
+          "branch": "Tý"
+        }
+      ],
+      "engineThaiTue": [
+        {
+          "name": "Thái Tuế",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Thiếu Dương",
+          "branch": "Dần"
+        },
+        {
+          "name": "Tang Môn",
+          "branch": "Mão"
+        },
+        {
+          "name": "Thiếu Âm",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Quan Phù",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Tử Phù",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Tuế Phá",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Long Đức",
+          "branch": "Thân"
+        },
+        {
+          "name": "Bạch Hổ",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Phúc Đức",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Điếu Khách",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Trực Phù",
+          "branch": "Tý"
+        }
+      ]
+    },
+    {
+      "yearBranch": "Dần",
+      "tuong": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Phan An",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Thân"
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Tý"
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Dần"
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Mão"
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Tỵ"
+        }
+      ],
+      "tue": [
+        {
+          "name": "Tuế Kiến",
+          "hanzi": "歲建",
+          "branch": "Dần"
+        },
+        {
+          "name": "Hối Khí",
+          "hanzi": "晦氣",
+          "branch": "Mão"
+        },
+        {
+          "name": "Tang Môn",
+          "hanzi": "喪門",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Quán Sách",
+          "hanzi": "貫索",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Quan Phù",
+          "hanzi": "官符",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Tiểu Hao",
+          "hanzi": "小耗",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Đại Hao",
+          "hanzi": "大耗",
+          "branch": "Thân"
+        },
+        {
+          "name": "Long Đức",
+          "hanzi": "龍德",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Bạch Hổ",
+          "hanzi": "白虎",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Thiên Đức",
+          "hanzi": "天德",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Điếu Khách",
+          "hanzi": "弔客",
+          "branch": "Tý"
+        },
+        {
+          "name": "Bệnh Phù",
+          "hanzi": "病符",
+          "branch": "Sửu"
+        }
+      ],
+      "engineThaiTue": [
+        {
+          "name": "Thái Tuế",
+          "branch": "Dần"
+        },
+        {
+          "name": "Thiếu Dương",
+          "branch": "Mão"
+        },
+        {
+          "name": "Tang Môn",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Thiếu Âm",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Quan Phù",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Tử Phù",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Tuế Phá",
+          "branch": "Thân"
+        },
+        {
+          "name": "Long Đức",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Bạch Hổ",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Phúc Đức",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Điếu Khách",
+          "branch": "Tý"
+        },
+        {
+          "name": "Trực Phù",
+          "branch": "Sửu"
+        }
+      ]
+    },
+    {
+      "yearBranch": "Mão",
+      "tuong": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Mão"
+        },
+        {
+          "name": "Phan An",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Thân"
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Tý"
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Dần"
+        }
+      ],
+      "tue": [
+        {
+          "name": "Tuế Kiến",
+          "hanzi": "歲建",
+          "branch": "Mão"
+        },
+        {
+          "name": "Hối Khí",
+          "hanzi": "晦氣",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Tang Môn",
+          "hanzi": "喪門",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Quán Sách",
+          "hanzi": "貫索",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Quan Phù",
+          "hanzi": "官符",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Tiểu Hao",
+          "hanzi": "小耗",
+          "branch": "Thân"
+        },
+        {
+          "name": "Đại Hao",
+          "hanzi": "大耗",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Long Đức",
+          "hanzi": "龍德",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Bạch Hổ",
+          "hanzi": "白虎",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Thiên Đức",
+          "hanzi": "天德",
+          "branch": "Tý"
+        },
+        {
+          "name": "Điếu Khách",
+          "hanzi": "弔客",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Bệnh Phù",
+          "hanzi": "病符",
+          "branch": "Dần"
+        }
+      ],
+      "engineThaiTue": [
+        {
+          "name": "Thái Tuế",
+          "branch": "Mão"
+        },
+        {
+          "name": "Thiếu Dương",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Tang Môn",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Thiếu Âm",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Quan Phù",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Tử Phù",
+          "branch": "Thân"
+        },
+        {
+          "name": "Tuế Phá",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Long Đức",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Bạch Hổ",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Phúc Đức",
+          "branch": "Tý"
+        },
+        {
+          "name": "Điếu Khách",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Trực Phù",
+          "branch": "Dần"
+        }
+      ]
+    },
+    {
+      "yearBranch": "Thìn",
+      "tuong": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Tý"
+        },
+        {
+          "name": "Phan An",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Dần"
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Mão"
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Thân"
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Hợi"
+        }
+      ],
+      "tue": [
+        {
+          "name": "Tuế Kiến",
+          "hanzi": "歲建",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Hối Khí",
+          "hanzi": "晦氣",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Tang Môn",
+          "hanzi": "喪門",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Quán Sách",
+          "hanzi": "貫索",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Quan Phù",
+          "hanzi": "官符",
+          "branch": "Thân"
+        },
+        {
+          "name": "Tiểu Hao",
+          "hanzi": "小耗",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Đại Hao",
+          "hanzi": "大耗",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Long Đức",
+          "hanzi": "龍德",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Bạch Hổ",
+          "hanzi": "白虎",
+          "branch": "Tý"
+        },
+        {
+          "name": "Thiên Đức",
+          "hanzi": "天德",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Điếu Khách",
+          "hanzi": "弔客",
+          "branch": "Dần"
+        },
+        {
+          "name": "Bệnh Phù",
+          "hanzi": "病符",
+          "branch": "Mão"
+        }
+      ],
+      "engineThaiTue": [
+        {
+          "name": "Thái Tuế",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Thiếu Dương",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Tang Môn",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Thiếu Âm",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Quan Phù",
+          "branch": "Thân"
+        },
+        {
+          "name": "Tử Phù",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Tuế Phá",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Long Đức",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Bạch Hổ",
+          "branch": "Tý"
+        },
+        {
+          "name": "Phúc Đức",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Điếu Khách",
+          "branch": "Dần"
+        },
+        {
+          "name": "Trực Phù",
+          "branch": "Mão"
+        }
+      ]
+    },
+    {
+      "yearBranch": "Tỵ",
+      "tuong": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Phan An",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Tý"
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Dần"
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Mão"
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Thân"
+        }
+      ],
+      "tue": [
+        {
+          "name": "Tuế Kiến",
+          "hanzi": "歲建",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Hối Khí",
+          "hanzi": "晦氣",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Tang Môn",
+          "hanzi": "喪門",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Quán Sách",
+          "hanzi": "貫索",
+          "branch": "Thân"
+        },
+        {
+          "name": "Quan Phù",
+          "hanzi": "官符",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Tiểu Hao",
+          "hanzi": "小耗",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Đại Hao",
+          "hanzi": "大耗",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Long Đức",
+          "hanzi": "龍德",
+          "branch": "Tý"
+        },
+        {
+          "name": "Bạch Hổ",
+          "hanzi": "白虎",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Thiên Đức",
+          "hanzi": "天德",
+          "branch": "Dần"
+        },
+        {
+          "name": "Điếu Khách",
+          "hanzi": "弔客",
+          "branch": "Mão"
+        },
+        {
+          "name": "Bệnh Phù",
+          "hanzi": "病符",
+          "branch": "Thìn"
+        }
+      ],
+      "engineThaiTue": [
+        {
+          "name": "Thái Tuế",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Thiếu Dương",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Tang Môn",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Thiếu Âm",
+          "branch": "Thân"
+        },
+        {
+          "name": "Quan Phù",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Tử Phù",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Tuế Phá",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Long Đức",
+          "branch": "Tý"
+        },
+        {
+          "name": "Bạch Hổ",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Phúc Đức",
+          "branch": "Dần"
+        },
+        {
+          "name": "Điếu Khách",
+          "branch": "Mão"
+        },
+        {
+          "name": "Trực Phù",
+          "branch": "Thìn"
+        }
+      ]
+    },
+    {
+      "yearBranch": "Ngọ",
+      "tuong": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Phan An",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Thân"
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Tý"
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Dần"
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Mão"
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Tỵ"
+        }
+      ],
+      "tue": [
+        {
+          "name": "Tuế Kiến",
+          "hanzi": "歲建",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Hối Khí",
+          "hanzi": "晦氣",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Tang Môn",
+          "hanzi": "喪門",
+          "branch": "Thân"
+        },
+        {
+          "name": "Quán Sách",
+          "hanzi": "貫索",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Quan Phù",
+          "hanzi": "官符",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Tiểu Hao",
+          "hanzi": "小耗",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Đại Hao",
+          "hanzi": "大耗",
+          "branch": "Tý"
+        },
+        {
+          "name": "Long Đức",
+          "hanzi": "龍德",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Bạch Hổ",
+          "hanzi": "白虎",
+          "branch": "Dần"
+        },
+        {
+          "name": "Thiên Đức",
+          "hanzi": "天德",
+          "branch": "Mão"
+        },
+        {
+          "name": "Điếu Khách",
+          "hanzi": "弔客",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Bệnh Phù",
+          "hanzi": "病符",
+          "branch": "Tỵ"
+        }
+      ],
+      "engineThaiTue": [
+        {
+          "name": "Thái Tuế",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Thiếu Dương",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Tang Môn",
+          "branch": "Thân"
+        },
+        {
+          "name": "Thiếu Âm",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Quan Phù",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Tử Phù",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Tuế Phá",
+          "branch": "Tý"
+        },
+        {
+          "name": "Long Đức",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Bạch Hổ",
+          "branch": "Dần"
+        },
+        {
+          "name": "Phúc Đức",
+          "branch": "Mão"
+        },
+        {
+          "name": "Điếu Khách",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Trực Phù",
+          "branch": "Tỵ"
+        }
+      ]
+    },
+    {
+      "yearBranch": "Mùi",
+      "tuong": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Mão"
+        },
+        {
+          "name": "Phan An",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Thân"
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Tý"
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Dần"
+        }
+      ],
+      "tue": [
+        {
+          "name": "Tuế Kiến",
+          "hanzi": "歲建",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Hối Khí",
+          "hanzi": "晦氣",
+          "branch": "Thân"
+        },
+        {
+          "name": "Tang Môn",
+          "hanzi": "喪門",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Quán Sách",
+          "hanzi": "貫索",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Quan Phù",
+          "hanzi": "官符",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Tiểu Hao",
+          "hanzi": "小耗",
+          "branch": "Tý"
+        },
+        {
+          "name": "Đại Hao",
+          "hanzi": "大耗",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Long Đức",
+          "hanzi": "龍德",
+          "branch": "Dần"
+        },
+        {
+          "name": "Bạch Hổ",
+          "hanzi": "白虎",
+          "branch": "Mão"
+        },
+        {
+          "name": "Thiên Đức",
+          "hanzi": "天德",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Điếu Khách",
+          "hanzi": "弔客",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Bệnh Phù",
+          "hanzi": "病符",
+          "branch": "Ngọ"
+        }
+      ],
+      "engineThaiTue": [
+        {
+          "name": "Thái Tuế",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Thiếu Dương",
+          "branch": "Thân"
+        },
+        {
+          "name": "Tang Môn",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Thiếu Âm",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Quan Phù",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Tử Phù",
+          "branch": "Tý"
+        },
+        {
+          "name": "Tuế Phá",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Long Đức",
+          "branch": "Dần"
+        },
+        {
+          "name": "Bạch Hổ",
+          "branch": "Mão"
+        },
+        {
+          "name": "Phúc Đức",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Điếu Khách",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Trực Phù",
+          "branch": "Ngọ"
+        }
+      ]
+    },
+    {
+      "yearBranch": "Thân",
+      "tuong": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Tý"
+        },
+        {
+          "name": "Phan An",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Dần"
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Mão"
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Thân"
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Hợi"
+        }
+      ],
+      "tue": [
+        {
+          "name": "Tuế Kiến",
+          "hanzi": "歲建",
+          "branch": "Thân"
+        },
+        {
+          "name": "Hối Khí",
+          "hanzi": "晦氣",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Tang Môn",
+          "hanzi": "喪門",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Quán Sách",
+          "hanzi": "貫索",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Quan Phù",
+          "hanzi": "官符",
+          "branch": "Tý"
+        },
+        {
+          "name": "Tiểu Hao",
+          "hanzi": "小耗",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Đại Hao",
+          "hanzi": "大耗",
+          "branch": "Dần"
+        },
+        {
+          "name": "Long Đức",
+          "hanzi": "龍德",
+          "branch": "Mão"
+        },
+        {
+          "name": "Bạch Hổ",
+          "hanzi": "白虎",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Thiên Đức",
+          "hanzi": "天德",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Điếu Khách",
+          "hanzi": "弔客",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Bệnh Phù",
+          "hanzi": "病符",
+          "branch": "Mùi"
+        }
+      ],
+      "engineThaiTue": [
+        {
+          "name": "Thái Tuế",
+          "branch": "Thân"
+        },
+        {
+          "name": "Thiếu Dương",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Tang Môn",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Thiếu Âm",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Quan Phù",
+          "branch": "Tý"
+        },
+        {
+          "name": "Tử Phù",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Tuế Phá",
+          "branch": "Dần"
+        },
+        {
+          "name": "Long Đức",
+          "branch": "Mão"
+        },
+        {
+          "name": "Bạch Hổ",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Phúc Đức",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Điếu Khách",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Trực Phù",
+          "branch": "Mùi"
+        }
+      ]
+    },
+    {
+      "yearBranch": "Dậu",
+      "tuong": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Phan An",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Tý"
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Dần"
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Mão"
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Thân"
+        }
+      ],
+      "tue": [
+        {
+          "name": "Tuế Kiến",
+          "hanzi": "歲建",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Hối Khí",
+          "hanzi": "晦氣",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Tang Môn",
+          "hanzi": "喪門",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Quán Sách",
+          "hanzi": "貫索",
+          "branch": "Tý"
+        },
+        {
+          "name": "Quan Phù",
+          "hanzi": "官符",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Tiểu Hao",
+          "hanzi": "小耗",
+          "branch": "Dần"
+        },
+        {
+          "name": "Đại Hao",
+          "hanzi": "大耗",
+          "branch": "Mão"
+        },
+        {
+          "name": "Long Đức",
+          "hanzi": "龍德",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Bạch Hổ",
+          "hanzi": "白虎",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Thiên Đức",
+          "hanzi": "天德",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Điếu Khách",
+          "hanzi": "弔客",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Bệnh Phù",
+          "hanzi": "病符",
+          "branch": "Thân"
+        }
+      ],
+      "engineThaiTue": [
+        {
+          "name": "Thái Tuế",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Thiếu Dương",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Tang Môn",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Thiếu Âm",
+          "branch": "Tý"
+        },
+        {
+          "name": "Quan Phù",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Tử Phù",
+          "branch": "Dần"
+        },
+        {
+          "name": "Tuế Phá",
+          "branch": "Mão"
+        },
+        {
+          "name": "Long Đức",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Bạch Hổ",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Phúc Đức",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Điếu Khách",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Trực Phù",
+          "branch": "Thân"
+        }
+      ]
+    },
+    {
+      "yearBranch": "Tuất",
+      "tuong": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Phan An",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Thân"
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Tý"
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Dần"
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Mão"
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Tỵ"
+        }
+      ],
+      "tue": [
+        {
+          "name": "Tuế Kiến",
+          "hanzi": "歲建",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Hối Khí",
+          "hanzi": "晦氣",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Tang Môn",
+          "hanzi": "喪門",
+          "branch": "Tý"
+        },
+        {
+          "name": "Quán Sách",
+          "hanzi": "貫索",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Quan Phù",
+          "hanzi": "官符",
+          "branch": "Dần"
+        },
+        {
+          "name": "Tiểu Hao",
+          "hanzi": "小耗",
+          "branch": "Mão"
+        },
+        {
+          "name": "Đại Hao",
+          "hanzi": "大耗",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Long Đức",
+          "hanzi": "龍德",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Bạch Hổ",
+          "hanzi": "白虎",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Thiên Đức",
+          "hanzi": "天德",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Điếu Khách",
+          "hanzi": "弔客",
+          "branch": "Thân"
+        },
+        {
+          "name": "Bệnh Phù",
+          "hanzi": "病符",
+          "branch": "Dậu"
+        }
+      ],
+      "engineThaiTue": [
+        {
+          "name": "Thái Tuế",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Thiếu Dương",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Tang Môn",
+          "branch": "Tý"
+        },
+        {
+          "name": "Thiếu Âm",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Quan Phù",
+          "branch": "Dần"
+        },
+        {
+          "name": "Tử Phù",
+          "branch": "Mão"
+        },
+        {
+          "name": "Tuế Phá",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Long Đức",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Bạch Hổ",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Phúc Đức",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Điếu Khách",
+          "branch": "Thân"
+        },
+        {
+          "name": "Trực Phù",
+          "branch": "Dậu"
+        }
+      ]
+    },
+    {
+      "yearBranch": "Hợi",
+      "tuong": [
+        {
+          "name": "Tướng Tinh",
+          "branch": "Mão"
+        },
+        {
+          "name": "Phan An",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Tuế Dịch",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Tức Thần",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Hoa Cái",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Kiếp Sát",
+          "branch": "Thân"
+        },
+        {
+          "name": "Tai Sát",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Thiên Sát",
+          "branch": "Tuất"
+        },
+        {
+          "name": "Chỉ Bối",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Hàm Trì",
+          "branch": "Tý"
+        },
+        {
+          "name": "Nguyệt Sát",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Vong Thần",
+          "branch": "Dần"
+        }
+      ],
+      "tue": [
+        {
+          "name": "Tuế Kiến",
+          "hanzi": "歲建",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Hối Khí",
+          "hanzi": "晦氣",
+          "branch": "Tý"
+        },
+        {
+          "name": "Tang Môn",
+          "hanzi": "喪門",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Quán Sách",
+          "hanzi": "貫索",
+          "branch": "Dần"
+        },
+        {
+          "name": "Quan Phù",
+          "hanzi": "官符",
+          "branch": "Mão"
+        },
+        {
+          "name": "Tiểu Hao",
+          "hanzi": "小耗",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Đại Hao",
+          "hanzi": "大耗",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Long Đức",
+          "hanzi": "龍德",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Bạch Hổ",
+          "hanzi": "白虎",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Thiên Đức",
+          "hanzi": "天德",
+          "branch": "Thân"
+        },
+        {
+          "name": "Điếu Khách",
+          "hanzi": "弔客",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Bệnh Phù",
+          "hanzi": "病符",
+          "branch": "Tuất"
+        }
+      ],
+      "engineThaiTue": [
+        {
+          "name": "Thái Tuế",
+          "branch": "Hợi"
+        },
+        {
+          "name": "Thiếu Dương",
+          "branch": "Tý"
+        },
+        {
+          "name": "Tang Môn",
+          "branch": "Sửu"
+        },
+        {
+          "name": "Thiếu Âm",
+          "branch": "Dần"
+        },
+        {
+          "name": "Quan Phù",
+          "branch": "Mão"
+        },
+        {
+          "name": "Tử Phù",
+          "branch": "Thìn"
+        },
+        {
+          "name": "Tuế Phá",
+          "branch": "Tỵ"
+        },
+        {
+          "name": "Long Đức",
+          "branch": "Ngọ"
+        },
+        {
+          "name": "Bạch Hổ",
+          "branch": "Mùi"
+        },
+        {
+          "name": "Phúc Đức",
+          "branch": "Thân"
+        },
+        {
+          "name": "Điếu Khách",
+          "branch": "Dậu"
+        },
+        {
+          "name": "Trực Phù",
+          "branch": "Tuất"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "hourCases": 12,
+    "thaiPhuDifferences": 12,
+    "phongCaoDifferences": 12,
+    "tuanCases": 60,
+    "tuanLocationMatches": 60,
+    "trietCases": 10,
+    "trietSourceSubsetMatches": 10,
+    "trietRepresentationMatches": 0,
+    "changshengCases": 600,
+    "changshengMismatches": 0,
+    "circleAnchorMismatches": 0
+  },
+  "ruleSets": {
+    "traditional": "traditional-eleven-natal-v11.13.0",
+    "advanced": "advanced-placements-tam-hop-v11.6.0",
+    "cycles": "cycles-tam-hop-fixed-anchor-v5.0"
+  },
+  "notice": "So công thức/vị trí theo nguồn được chọn; không tự chứng minh nguồn nào đúng, không tự thay quy tắc hoặc gộp alias."
+}

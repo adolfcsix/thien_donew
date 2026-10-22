@@ -1,0 +1,13 @@
+{
+  "edition": "v11.19-review-candidates",
+  "scope": "Danh sách công việc ưu tiên; không phải danh mục sao Tử Vi chuẩn, không dùng làm mẫu số để tính % hoàn thiện toàn ngành",
+  "editorialNotice": "Trạng thái 'đề xuất kiểm chứng' không xác nhận có một quy tắc an sao thống nhất. Cần đối chiếu trường phái trước khi xây công thức và nội dung.",
+  "natal": [],
+  "annual": [
+    {
+      "name": "Lưu Thiên Không",
+      "priority": "low",
+      "reason": "Cần kiểm chứng nếu được sử dụng trong trường phái đã chọn."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "edition": "v11.11.0",
+  "classification": "Các cặp sao nằm tại hai cung giáp — đối chiếu hình học, không xác nhận cách cục cổ điển",
+  "rules": [
+    {"id":"ta-huu-giap", "title":"Tả – Hữu giáp cung", "stars":["Tả Phụ","Hữu Bật"], "interpretation":"Tả Phụ và Hữu Bật nằm ở hai cung kề hai bên cung đang xem. Có thể khảo sát vai trò hỗ trợ qua các cung lân cận và đối chiếu thêm sao tọa thủ.", "caution":"Thế giáp không đồng nghĩa với sao đồng cung hoặc tự động có quý nhân."},
+    {"id":"xuong-khuc-giap", "title":"Xương – Khúc giáp cung", "stars":["Văn Xương","Văn Khúc"], "interpretation":"Văn Xương và Văn Khúc phân bố tại hai cung giáp. Đây là dữ kiện để nghiên cứu hình tượng học hỏi và biểu đạt giữa các vị trí gần nhau.", "caution":"Không khẳng định học vấn hay thành công từ vị trí hai sao."},
+    {"id":"khoi-viet-giap", "title":"Khôi – Việt giáp cung", "stars":["Thiên Khôi","Thiên Việt"], "interpretation":"Thiên Khôi và Thiên Việt đóng ở hai cung kề cung đang xét. Có thể so sánh chủ đề của các cung này khi nghiên cứu bố cục lá số.", "caution":"Không mặc định đây là cách cục cổ điển đã thành."},
+    {"id":"khong-kiep-giap", "title":"Không – Kiếp giáp cung", "stars":["Địa Không","Địa Kiếp"], "interpretation":"Địa Không và Địa Kiếp chia nhau hai cung giáp, gợi một vị trí cần phân tích kỹ trong bố cục truyền thống, cùng các sao tọa thủ và hội chiếu.", "caution":"Không kết luận rủi ro hay biến cố cụ thể."},
+    {"id":"hoa-linh-giap", "title":"Hỏa – Linh giáp cung", "stars":["Hỏa Tinh","Linh Tinh"], "interpretation":"Hỏa Tinh và Linh Tinh ở hai cung giáp, tạo dữ kiện để so sánh các hình tượng biến động và cường độ trong hai cung kề.", "caution":"Cách an Hỏa–Linh có dị bản; không tự dự báo hạn nạn."},
+    {"id":"kinh-da-giap", "title":"Kình – Đà giáp cung", "stars":["Kình Dương","Đà La"], "interpretation":"Kình Dương và Đà La nằm tại hai cung kề hai bên cung đang đọc. Cần phân biệt thế giáp với đồng cung và Tam hợp khi phân tích.", "caution":"Chỉ ghi nhận vị trí sao, không gán nhãn tốt/xấu hoặc kết luận thành cách."}
+  ]
+}

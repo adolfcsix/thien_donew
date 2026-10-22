@@ -1,0 +1,944 @@
+{
+  "edition": "v11.27-primary-star-palace-v2",
+  "status": "editorial-unreviewed",
+  "scope": "14 chính tinh × 12 cung: gợi ý phân tích đa chiều, chưa kiểm chứng trường phái; không thay thế an sao hoặc tư vấn chuyên môn",
+  "schemaVersion": "2.0",
+  "defaults": {
+    "status": "editorial-unreviewed",
+    "requiredContext": [
+      "chính tinh đồng cung",
+      "phụ tinh và sát tinh",
+      "tam phương tứ chính",
+      "tứ hóa và hạn áp dụng"
+    ],
+    "evidence": "editorial-heuristic-not-traditionally-validated"
+  },
+  "starShared": {
+    "Tử Vi": {
+      "tradeoff": "Điểm cần thận trọng: xu hướng kiểm soát quá mức; biểu hiện thực tế phụ thuộc hoàn cảnh và toàn bộ tổ hợp lá số.",
+      "reflectionTemplate": "Đối chiếu trải nghiệm: Quyền quyết định có được chia sẻ minh bạch? Khi đọc cung {palace}, cần xem chính tinh đồng cung, Tam phương Tứ chính và trạng thái Tứ Hóa trước khi hình thành giả thuyết."
+    },
+    "Thiên Cơ": {
+      "tradeoff": "Điểm cần thận trọng: dễ phân tán vì tính toán nhiều; biểu hiện thực tế phụ thuộc hoàn cảnh và toàn bộ tổ hợp lá số.",
+      "reflectionTemplate": "Đối chiếu trải nghiệm: Thay đổi dựa vào dữ kiện hay chỉ là lo ngại? Khi đọc cung {palace}, cần xem chính tinh đồng cung, Tam phương Tứ chính và trạng thái Tứ Hóa trước khi hình thành giả thuyết."
+    },
+    "Thái Dương": {
+      "tradeoff": "Điểm cần thận trọng: dễ hao sức vì muốn gánh phần hơn; biểu hiện thực tế phụ thuộc hoàn cảnh và toàn bộ tổ hợp lá số.",
+      "reflectionTemplate": "Đối chiếu trải nghiệm: Mức độ công nhận có đi đôi với đóng góp? Khi đọc cung {palace}, cần xem chính tinh đồng cung, Tam phương Tứ chính và trạng thái Tứ Hóa trước khi hình thành giả thuyết."
+    },
+    "Vũ Khúc": {
+      "tradeoff": "Điểm cần thận trọng: cứng nhắc khi đánh giá lợi ích; biểu hiện thực tế phụ thuộc hoàn cảnh và toàn bộ tổ hợp lá số.",
+      "reflectionTemplate": "Đối chiếu trải nghiệm: Hiệu quả có cân bằng với quan hệ? Khi đọc cung {palace}, cần xem chính tinh đồng cung, Tam phương Tứ chính và trạng thái Tứ Hóa trước khi hình thành giả thuyết."
+    },
+    "Thiên Đồng": {
+      "tradeoff": "Điểm cần thận trọng: dễ trì hoãn quyết định khó; biểu hiện thực tế phụ thuộc hoàn cảnh và toàn bộ tổ hợp lá số.",
+      "reflectionTemplate": "Đối chiếu trải nghiệm: Sự thoải mái có đánh đổi trách nhiệm? Khi đọc cung {palace}, cần xem chính tinh đồng cung, Tam phương Tứ chính và trạng thái Tứ Hóa trước khi hình thành giả thuyết."
+    },
+    "Liêm Trinh": {
+      "tradeoff": "Điểm cần thận trọng: dễ vướng mâu thuẫn giữa mong muốn và quy định; biểu hiện thực tế phụ thuộc hoàn cảnh và toàn bộ tổ hợp lá số.",
+      "reflectionTemplate": "Đối chiếu trải nghiệm: Ranh giới có được nói rõ? Khi đọc cung {palace}, cần xem chính tinh đồng cung, Tam phương Tứ chính và trạng thái Tứ Hóa trước khi hình thành giả thuyết."
+    },
+    "Thiên Phủ": {
+      "tradeoff": "Điểm cần thận trọng: dễ ngại thay đổi khi cần; biểu hiện thực tế phụ thuộc hoàn cảnh và toàn bộ tổ hợp lá số.",
+      "reflectionTemplate": "Đối chiếu trải nghiệm: Tích lũy có phục vụ mục tiêu rõ ràng? Khi đọc cung {palace}, cần xem chính tinh đồng cung, Tam phương Tứ chính và trạng thái Tứ Hóa trước khi hình thành giả thuyết."
+    },
+    "Thái Âm": {
+      "tradeoff": "Điểm cần thận trọng: dễ giữ cảm xúc trong lòng; biểu hiện thực tế phụ thuộc hoàn cảnh và toàn bộ tổ hợp lá số.",
+      "reflectionTemplate": "Đối chiếu trải nghiệm: Nhu cầu cá nhân có được diễn đạt? Khi đọc cung {palace}, cần xem chính tinh đồng cung, Tam phương Tứ chính và trạng thái Tứ Hóa trước khi hình thành giả thuyết."
+    },
+    "Tham Lang": {
+      "tradeoff": "Điểm cần thận trọng: dễ quá tải vì nhiều mong muốn; biểu hiện thực tế phụ thuộc hoàn cảnh và toàn bộ tổ hợp lá số.",
+      "reflectionTemplate": "Đối chiếu trải nghiệm: Cơ hội có phù hợp ưu tiên dài hạn? Khi đọc cung {palace}, cần xem chính tinh đồng cung, Tam phương Tứ chính và trạng thái Tứ Hóa trước khi hình thành giả thuyết."
+    },
+    "Cự Môn": {
+      "tradeoff": "Điểm cần thận trọng: dễ kéo dài tranh luận hoặc hiểu lầm; biểu hiện thực tế phụ thuộc hoàn cảnh và toàn bộ tổ hợp lá số.",
+      "reflectionTemplate": "Đối chiếu trải nghiệm: Bằng chứng có được tách khỏi suy diễn? Khi đọc cung {palace}, cần xem chính tinh đồng cung, Tam phương Tứ chính và trạng thái Tứ Hóa trước khi hình thành giả thuyết."
+    },
+    "Thiên Tướng": {
+      "tradeoff": "Điểm cần thận trọng: dễ bị cuốn theo kỳ vọng người khác; biểu hiện thực tế phụ thuộc hoàn cảnh và toàn bộ tổ hợp lá số.",
+      "reflectionTemplate": "Đối chiếu trải nghiệm: Vai trò của các bên có cân xứng? Khi đọc cung {palace}, cần xem chính tinh đồng cung, Tam phương Tứ chính và trạng thái Tứ Hóa trước khi hình thành giả thuyết."
+    },
+    "Thiên Lương": {
+      "tradeoff": "Điểm cần thận trọng: dễ tự đặt chuẩn mực quá cao; biểu hiện thực tế phụ thuộc hoàn cảnh và toàn bộ tổ hợp lá số.",
+      "reflectionTemplate": "Đối chiếu trải nghiệm: Lời khuyên có tôn trọng quyền tự quyết? Khi đọc cung {palace}, cần xem chính tinh đồng cung, Tam phương Tứ chính và trạng thái Tứ Hóa trước khi hình thành giả thuyết."
+    },
+    "Thất Sát": {
+      "tradeoff": "Điểm cần thận trọng: dễ tạo đứt gãy vì quá nhanh; biểu hiện thực tế phụ thuộc hoàn cảnh và toàn bộ tổ hợp lá số.",
+      "reflectionTemplate": "Đối chiếu trải nghiệm: Rủi ro đã được tính trước khi hành động? Khi đọc cung {palace}, cần xem chính tinh đồng cung, Tam phương Tứ chính và trạng thái Tứ Hóa trước khi hình thành giả thuyết."
+    },
+    "Phá Quân": {
+      "tradeoff": "Điểm cần thận trọng: dễ phá cấu trúc trước khi có phương án thay; biểu hiện thực tế phụ thuộc hoàn cảnh và toàn bộ tổ hợp lá số.",
+      "reflectionTemplate": "Đối chiếu trải nghiệm: Điều gì phải giữ trong quá trình thay đổi? Khi đọc cung {palace}, cần xem chính tinh đồng cung, Tam phương Tứ chính và trạng thái Tứ Hóa trước khi hình thành giả thuyết."
+    }
+  },
+  "records": {
+    "Tử Vi": {
+      "Mệnh": {
+        "focus": "Điều phối, trách nhiệm và vị thế trong chủ đề cách hình thành bản sắc và phản ứng trước lựa chọn",
+        "interpretation": "Ở cung Mệnh, Tử Vi có thể được dùng như một biểu tượng để suy ngẫm về khả năng tổ chức và gánh trách nhiệm trong cách định hình lựa chọn và phong cách ứng xử. Đồng thời nên quan sát mặt căng thẳng: xu hướng kiểm soát quá mức. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tổ chức và gánh trách nhiệm khi đặt trong cách định hình lựa chọn và phong cách ứng xử."
+      },
+      "Phụ Mẫu": {
+        "focus": "Điều phối, trách nhiệm và vị thế trong chủ đề giao tiếp, kỳ vọng và ranh giới với thế hệ trước",
+        "interpretation": "Ở cung Phụ Mẫu, Tử Vi có thể được dùng như một biểu tượng để suy ngẫm về khả năng tổ chức và gánh trách nhiệm trong ranh giới, kỳ vọng và giao tiếp liên thế hệ. Đồng thời nên quan sát mặt căng thẳng: xu hướng kiểm soát quá mức. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tổ chức và gánh trách nhiệm khi đặt trong ranh giới, kỳ vọng và giao tiếp liên thế hệ."
+      },
+      "Phúc Đức": {
+        "focus": "Điều phối, trách nhiệm và vị thế trong chủ đề giá trị sống, sự nâng đỡ tinh thần và thói quen bền vững",
+        "interpretation": "Ở cung Phúc Đức, Tử Vi có thể được dùng như một biểu tượng để suy ngẫm về khả năng tổ chức và gánh trách nhiệm trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững. Đồng thời nên quan sát mặt căng thẳng: xu hướng kiểm soát quá mức. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tổ chức và gánh trách nhiệm khi đặt trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững."
+      },
+      "Điền Trạch": {
+        "focus": "Điều phối, trách nhiệm và vị thế trong chủ đề quan hệ với không gian sống, nơi ở và việc gìn giữ tài sản",
+        "interpretation": "Ở cung Điền Trạch, Tử Vi có thể được dùng như một biểu tượng để suy ngẫm về khả năng tổ chức và gánh trách nhiệm trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở. Đồng thời nên quan sát mặt căng thẳng: xu hướng kiểm soát quá mức. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tổ chức và gánh trách nhiệm khi đặt trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở."
+      },
+      "Quan Lộc": {
+        "focus": "Điều phối, trách nhiệm và vị thế trong chủ đề vai trò nghề nghiệp, trách nhiệm và cách hợp tác trong công việc",
+        "interpretation": "Ở cung Quan Lộc, Tử Vi có thể được dùng như một biểu tượng để suy ngẫm về khả năng tổ chức và gánh trách nhiệm trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc. Đồng thời nên quan sát mặt căng thẳng: xu hướng kiểm soát quá mức. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tổ chức và gánh trách nhiệm khi đặt trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc."
+      },
+      "Nô Bộc": {
+        "focus": "Điều phối, trách nhiệm và vị thế trong chủ đề xây dựng mạng lưới, phân chia trách nhiệm và chọn cộng sự",
+        "interpretation": "Ở cung Nô Bộc, Tử Vi có thể được dùng như một biểu tượng để suy ngẫm về khả năng tổ chức và gánh trách nhiệm trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều. Đồng thời nên quan sát mặt căng thẳng: xu hướng kiểm soát quá mức. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tổ chức và gánh trách nhiệm khi đặt trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều."
+      },
+      "Thiên Di": {
+        "focus": "Điều phối, trách nhiệm và vị thế trong chủ đề cách tiếp xúc môi trường mới và thích nghi bên ngoài",
+        "interpretation": "Ở cung Thiên Di, Tử Vi có thể được dùng như một biểu tượng để suy ngẫm về khả năng tổ chức và gánh trách nhiệm trong cách thích ứng môi trường ngoài và gặp gỡ người mới. Đồng thời nên quan sát mặt căng thẳng: xu hướng kiểm soát quá mức. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tổ chức và gánh trách nhiệm khi đặt trong cách thích ứng môi trường ngoài và gặp gỡ người mới."
+      },
+      "Tật Ách": {
+        "focus": "Điều phối, trách nhiệm và vị thế trong chủ đề nhận biết áp lực, nhịp sinh hoạt và cách chăm sóc bản thân",
+        "interpretation": "Ở cung Tật Ách, Tử Vi có thể được dùng như một biểu tượng để suy ngẫm về khả năng tổ chức và gánh trách nhiệm trong thói quen tự chăm sóc và phản ứng khi căng thẳng. Đồng thời nên quan sát mặt căng thẳng: xu hướng kiểm soát quá mức. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tổ chức và gánh trách nhiệm khi đặt trong thói quen tự chăm sóc và phản ứng khi căng thẳng."
+      },
+      "Tài Bạch": {
+        "focus": "Điều phối, trách nhiệm và vị thế trong chủ đề thói quen quản lý nguồn lực, lựa chọn chi tiêu và kế hoạch tài chính",
+        "interpretation": "Ở cung Tài Bạch, Tử Vi có thể được dùng như một biểu tượng để suy ngẫm về khả năng tổ chức và gánh trách nhiệm trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu. Đồng thời nên quan sát mặt căng thẳng: xu hướng kiểm soát quá mức. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tổ chức và gánh trách nhiệm khi đặt trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu."
+      },
+      "Tử Tức": {
+        "focus": "Điều phối, trách nhiệm và vị thế trong chủ đề chăm sóc thế hệ sau hoặc các dự án được nuôi dưỡng dài hạn",
+        "interpretation": "Ở cung Tử Tức, Tử Vi có thể được dùng như một biểu tượng để suy ngẫm về khả năng tổ chức và gánh trách nhiệm trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng. Đồng thời nên quan sát mặt căng thẳng: xu hướng kiểm soát quá mức. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tổ chức và gánh trách nhiệm khi đặt trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng."
+      },
+      "Phu Thê": {
+        "focus": "Điều phối, trách nhiệm và vị thế trong chủ đề giao tiếp, sự tương hỗ và thỏa thuận trong quan hệ đôi lứa",
+        "interpretation": "Ở cung Phu Thê, Tử Vi có thể được dùng như một biểu tượng để suy ngẫm về khả năng tổ chức và gánh trách nhiệm trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm. Đồng thời nên quan sát mặt căng thẳng: xu hướng kiểm soát quá mức. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tổ chức và gánh trách nhiệm khi đặt trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm."
+      },
+      "Huynh Đệ": {
+        "focus": "Điều phối, trách nhiệm và vị thế trong chủ đề hợp tác, gắn kết và tôn trọng khác biệt với anh chị em hoặc người ngang hàng",
+        "interpretation": "Ở cung Huynh Đệ, Tử Vi có thể được dùng như một biểu tượng để suy ngẫm về khả năng tổ chức và gánh trách nhiệm trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng. Đồng thời nên quan sát mặt căng thẳng: xu hướng kiểm soát quá mức. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tổ chức và gánh trách nhiệm khi đặt trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng."
+      }
+    },
+    "Thiên Cơ": {
+      "Mệnh": {
+        "focus": "Tư duy linh hoạt và tính toán phương án trong chủ đề cách hình thành bản sắc và phản ứng trước lựa chọn",
+        "interpretation": "Ở cung Mệnh, Thiên Cơ có thể được dùng như một biểu tượng để suy ngẫm về tư duy linh hoạt và khả năng xoay xở trong cách định hình lựa chọn và phong cách ứng xử. Đồng thời nên quan sát mặt căng thẳng: dễ phân tán vì tính toán nhiều. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: tư duy linh hoạt và khả năng xoay xở khi đặt trong cách định hình lựa chọn và phong cách ứng xử."
+      },
+      "Phụ Mẫu": {
+        "focus": "Tư duy linh hoạt và tính toán phương án trong chủ đề giao tiếp, kỳ vọng và ranh giới với thế hệ trước",
+        "interpretation": "Ở cung Phụ Mẫu, Thiên Cơ có thể được dùng như một biểu tượng để suy ngẫm về tư duy linh hoạt và khả năng xoay xở trong ranh giới, kỳ vọng và giao tiếp liên thế hệ. Đồng thời nên quan sát mặt căng thẳng: dễ phân tán vì tính toán nhiều. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: tư duy linh hoạt và khả năng xoay xở khi đặt trong ranh giới, kỳ vọng và giao tiếp liên thế hệ."
+      },
+      "Phúc Đức": {
+        "focus": "Tư duy linh hoạt và tính toán phương án trong chủ đề giá trị sống, sự nâng đỡ tinh thần và thói quen bền vững",
+        "interpretation": "Ở cung Phúc Đức, Thiên Cơ có thể được dùng như một biểu tượng để suy ngẫm về tư duy linh hoạt và khả năng xoay xở trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững. Đồng thời nên quan sát mặt căng thẳng: dễ phân tán vì tính toán nhiều. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: tư duy linh hoạt và khả năng xoay xở khi đặt trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững."
+      },
+      "Điền Trạch": {
+        "focus": "Tư duy linh hoạt và tính toán phương án trong chủ đề quan hệ với không gian sống, nơi ở và việc gìn giữ tài sản",
+        "interpretation": "Ở cung Điền Trạch, Thiên Cơ có thể được dùng như một biểu tượng để suy ngẫm về tư duy linh hoạt và khả năng xoay xở trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở. Đồng thời nên quan sát mặt căng thẳng: dễ phân tán vì tính toán nhiều. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: tư duy linh hoạt và khả năng xoay xở khi đặt trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở."
+      },
+      "Quan Lộc": {
+        "focus": "Tư duy linh hoạt và tính toán phương án trong chủ đề vai trò nghề nghiệp, trách nhiệm và cách hợp tác trong công việc",
+        "interpretation": "Ở cung Quan Lộc, Thiên Cơ có thể được dùng như một biểu tượng để suy ngẫm về tư duy linh hoạt và khả năng xoay xở trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc. Đồng thời nên quan sát mặt căng thẳng: dễ phân tán vì tính toán nhiều. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: tư duy linh hoạt và khả năng xoay xở khi đặt trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc."
+      },
+      "Nô Bộc": {
+        "focus": "Tư duy linh hoạt và tính toán phương án trong chủ đề xây dựng mạng lưới, phân chia trách nhiệm và chọn cộng sự",
+        "interpretation": "Ở cung Nô Bộc, Thiên Cơ có thể được dùng như một biểu tượng để suy ngẫm về tư duy linh hoạt và khả năng xoay xở trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều. Đồng thời nên quan sát mặt căng thẳng: dễ phân tán vì tính toán nhiều. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: tư duy linh hoạt và khả năng xoay xở khi đặt trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều."
+      },
+      "Thiên Di": {
+        "focus": "Tư duy linh hoạt và tính toán phương án trong chủ đề cách tiếp xúc môi trường mới và thích nghi bên ngoài",
+        "interpretation": "Ở cung Thiên Di, Thiên Cơ có thể được dùng như một biểu tượng để suy ngẫm về tư duy linh hoạt và khả năng xoay xở trong cách thích ứng môi trường ngoài và gặp gỡ người mới. Đồng thời nên quan sát mặt căng thẳng: dễ phân tán vì tính toán nhiều. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: tư duy linh hoạt và khả năng xoay xở khi đặt trong cách thích ứng môi trường ngoài và gặp gỡ người mới."
+      },
+      "Tật Ách": {
+        "focus": "Tư duy linh hoạt và tính toán phương án trong chủ đề nhận biết áp lực, nhịp sinh hoạt và cách chăm sóc bản thân",
+        "interpretation": "Ở cung Tật Ách, Thiên Cơ có thể được dùng như một biểu tượng để suy ngẫm về tư duy linh hoạt và khả năng xoay xở trong thói quen tự chăm sóc và phản ứng khi căng thẳng. Đồng thời nên quan sát mặt căng thẳng: dễ phân tán vì tính toán nhiều. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: tư duy linh hoạt và khả năng xoay xở khi đặt trong thói quen tự chăm sóc và phản ứng khi căng thẳng."
+      },
+      "Tài Bạch": {
+        "focus": "Tư duy linh hoạt và tính toán phương án trong chủ đề thói quen quản lý nguồn lực, lựa chọn chi tiêu và kế hoạch tài chính",
+        "interpretation": "Ở cung Tài Bạch, Thiên Cơ có thể được dùng như một biểu tượng để suy ngẫm về tư duy linh hoạt và khả năng xoay xở trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu. Đồng thời nên quan sát mặt căng thẳng: dễ phân tán vì tính toán nhiều. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: tư duy linh hoạt và khả năng xoay xở khi đặt trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu."
+      },
+      "Tử Tức": {
+        "focus": "Tư duy linh hoạt và tính toán phương án trong chủ đề chăm sóc thế hệ sau hoặc các dự án được nuôi dưỡng dài hạn",
+        "interpretation": "Ở cung Tử Tức, Thiên Cơ có thể được dùng như một biểu tượng để suy ngẫm về tư duy linh hoạt và khả năng xoay xở trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng. Đồng thời nên quan sát mặt căng thẳng: dễ phân tán vì tính toán nhiều. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: tư duy linh hoạt và khả năng xoay xở khi đặt trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng."
+      },
+      "Phu Thê": {
+        "focus": "Tư duy linh hoạt và tính toán phương án trong chủ đề giao tiếp, sự tương hỗ và thỏa thuận trong quan hệ đôi lứa",
+        "interpretation": "Ở cung Phu Thê, Thiên Cơ có thể được dùng như một biểu tượng để suy ngẫm về tư duy linh hoạt và khả năng xoay xở trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm. Đồng thời nên quan sát mặt căng thẳng: dễ phân tán vì tính toán nhiều. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: tư duy linh hoạt và khả năng xoay xở khi đặt trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm."
+      },
+      "Huynh Đệ": {
+        "focus": "Tư duy linh hoạt và tính toán phương án trong chủ đề hợp tác, gắn kết và tôn trọng khác biệt với anh chị em hoặc người ngang hàng",
+        "interpretation": "Ở cung Huynh Đệ, Thiên Cơ có thể được dùng như một biểu tượng để suy ngẫm về tư duy linh hoạt và khả năng xoay xở trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng. Đồng thời nên quan sát mặt căng thẳng: dễ phân tán vì tính toán nhiều. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: tư duy linh hoạt và khả năng xoay xở khi đặt trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng."
+      }
+    },
+    "Thái Dương": {
+      "Mệnh": {
+        "focus": "Sự chủ động, minh bạch và đóng góp trong chủ đề cách hình thành bản sắc và phản ứng trước lựa chọn",
+        "interpretation": "Ở cung Mệnh, Thái Dương có thể được dùng như một biểu tượng để suy ngẫm về sự chủ động và khả năng thể hiện trong cách định hình lựa chọn và phong cách ứng xử. Đồng thời nên quan sát mặt căng thẳng: dễ hao sức vì muốn gánh phần hơn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: sự chủ động và khả năng thể hiện khi đặt trong cách định hình lựa chọn và phong cách ứng xử."
+      },
+      "Phụ Mẫu": {
+        "focus": "Sự chủ động, minh bạch và đóng góp trong chủ đề giao tiếp, kỳ vọng và ranh giới với thế hệ trước",
+        "interpretation": "Ở cung Phụ Mẫu, Thái Dương có thể được dùng như một biểu tượng để suy ngẫm về sự chủ động và khả năng thể hiện trong ranh giới, kỳ vọng và giao tiếp liên thế hệ. Đồng thời nên quan sát mặt căng thẳng: dễ hao sức vì muốn gánh phần hơn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: sự chủ động và khả năng thể hiện khi đặt trong ranh giới, kỳ vọng và giao tiếp liên thế hệ."
+      },
+      "Phúc Đức": {
+        "focus": "Sự chủ động, minh bạch và đóng góp trong chủ đề giá trị sống, sự nâng đỡ tinh thần và thói quen bền vững",
+        "interpretation": "Ở cung Phúc Đức, Thái Dương có thể được dùng như một biểu tượng để suy ngẫm về sự chủ động và khả năng thể hiện trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững. Đồng thời nên quan sát mặt căng thẳng: dễ hao sức vì muốn gánh phần hơn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: sự chủ động và khả năng thể hiện khi đặt trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững."
+      },
+      "Điền Trạch": {
+        "focus": "Sự chủ động, minh bạch và đóng góp trong chủ đề quan hệ với không gian sống, nơi ở và việc gìn giữ tài sản",
+        "interpretation": "Ở cung Điền Trạch, Thái Dương có thể được dùng như một biểu tượng để suy ngẫm về sự chủ động và khả năng thể hiện trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở. Đồng thời nên quan sát mặt căng thẳng: dễ hao sức vì muốn gánh phần hơn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: sự chủ động và khả năng thể hiện khi đặt trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở."
+      },
+      "Quan Lộc": {
+        "focus": "Sự chủ động, minh bạch và đóng góp trong chủ đề vai trò nghề nghiệp, trách nhiệm và cách hợp tác trong công việc",
+        "interpretation": "Ở cung Quan Lộc, Thái Dương có thể được dùng như một biểu tượng để suy ngẫm về sự chủ động và khả năng thể hiện trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc. Đồng thời nên quan sát mặt căng thẳng: dễ hao sức vì muốn gánh phần hơn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: sự chủ động và khả năng thể hiện khi đặt trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc."
+      },
+      "Nô Bộc": {
+        "focus": "Sự chủ động, minh bạch và đóng góp trong chủ đề xây dựng mạng lưới, phân chia trách nhiệm và chọn cộng sự",
+        "interpretation": "Ở cung Nô Bộc, Thái Dương có thể được dùng như một biểu tượng để suy ngẫm về sự chủ động và khả năng thể hiện trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều. Đồng thời nên quan sát mặt căng thẳng: dễ hao sức vì muốn gánh phần hơn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: sự chủ động và khả năng thể hiện khi đặt trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều."
+      },
+      "Thiên Di": {
+        "focus": "Sự chủ động, minh bạch và đóng góp trong chủ đề cách tiếp xúc môi trường mới và thích nghi bên ngoài",
+        "interpretation": "Ở cung Thiên Di, Thái Dương có thể được dùng như một biểu tượng để suy ngẫm về sự chủ động và khả năng thể hiện trong cách thích ứng môi trường ngoài và gặp gỡ người mới. Đồng thời nên quan sát mặt căng thẳng: dễ hao sức vì muốn gánh phần hơn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: sự chủ động và khả năng thể hiện khi đặt trong cách thích ứng môi trường ngoài và gặp gỡ người mới."
+      },
+      "Tật Ách": {
+        "focus": "Sự chủ động, minh bạch và đóng góp trong chủ đề nhận biết áp lực, nhịp sinh hoạt và cách chăm sóc bản thân",
+        "interpretation": "Ở cung Tật Ách, Thái Dương có thể được dùng như một biểu tượng để suy ngẫm về sự chủ động và khả năng thể hiện trong thói quen tự chăm sóc và phản ứng khi căng thẳng. Đồng thời nên quan sát mặt căng thẳng: dễ hao sức vì muốn gánh phần hơn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: sự chủ động và khả năng thể hiện khi đặt trong thói quen tự chăm sóc và phản ứng khi căng thẳng."
+      },
+      "Tài Bạch": {
+        "focus": "Sự chủ động, minh bạch và đóng góp trong chủ đề thói quen quản lý nguồn lực, lựa chọn chi tiêu và kế hoạch tài chính",
+        "interpretation": "Ở cung Tài Bạch, Thái Dương có thể được dùng như một biểu tượng để suy ngẫm về sự chủ động và khả năng thể hiện trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu. Đồng thời nên quan sát mặt căng thẳng: dễ hao sức vì muốn gánh phần hơn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: sự chủ động và khả năng thể hiện khi đặt trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu."
+      },
+      "Tử Tức": {
+        "focus": "Sự chủ động, minh bạch và đóng góp trong chủ đề chăm sóc thế hệ sau hoặc các dự án được nuôi dưỡng dài hạn",
+        "interpretation": "Ở cung Tử Tức, Thái Dương có thể được dùng như một biểu tượng để suy ngẫm về sự chủ động và khả năng thể hiện trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng. Đồng thời nên quan sát mặt căng thẳng: dễ hao sức vì muốn gánh phần hơn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: sự chủ động và khả năng thể hiện khi đặt trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng."
+      },
+      "Phu Thê": {
+        "focus": "Sự chủ động, minh bạch và đóng góp trong chủ đề giao tiếp, sự tương hỗ và thỏa thuận trong quan hệ đôi lứa",
+        "interpretation": "Ở cung Phu Thê, Thái Dương có thể được dùng như một biểu tượng để suy ngẫm về sự chủ động và khả năng thể hiện trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm. Đồng thời nên quan sát mặt căng thẳng: dễ hao sức vì muốn gánh phần hơn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: sự chủ động và khả năng thể hiện khi đặt trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm."
+      },
+      "Huynh Đệ": {
+        "focus": "Sự chủ động, minh bạch và đóng góp trong chủ đề hợp tác, gắn kết và tôn trọng khác biệt với anh chị em hoặc người ngang hàng",
+        "interpretation": "Ở cung Huynh Đệ, Thái Dương có thể được dùng như một biểu tượng để suy ngẫm về sự chủ động và khả năng thể hiện trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng. Đồng thời nên quan sát mặt căng thẳng: dễ hao sức vì muốn gánh phần hơn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: sự chủ động và khả năng thể hiện khi đặt trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng."
+      }
+    },
+    "Vũ Khúc": {
+      "Mệnh": {
+        "focus": "Kỷ luật, nguồn lực và quyết đoán trong chủ đề cách hình thành bản sắc và phản ứng trước lựa chọn",
+        "interpretation": "Ở cung Mệnh, Vũ Khúc có thể được dùng như một biểu tượng để suy ngẫm về kỷ luật và cách quản lý nguồn lực trong cách định hình lựa chọn và phong cách ứng xử. Đồng thời nên quan sát mặt căng thẳng: cứng nhắc khi đánh giá lợi ích. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: kỷ luật và cách quản lý nguồn lực khi đặt trong cách định hình lựa chọn và phong cách ứng xử."
+      },
+      "Phụ Mẫu": {
+        "focus": "Kỷ luật, nguồn lực và quyết đoán trong chủ đề giao tiếp, kỳ vọng và ranh giới với thế hệ trước",
+        "interpretation": "Ở cung Phụ Mẫu, Vũ Khúc có thể được dùng như một biểu tượng để suy ngẫm về kỷ luật và cách quản lý nguồn lực trong ranh giới, kỳ vọng và giao tiếp liên thế hệ. Đồng thời nên quan sát mặt căng thẳng: cứng nhắc khi đánh giá lợi ích. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: kỷ luật và cách quản lý nguồn lực khi đặt trong ranh giới, kỳ vọng và giao tiếp liên thế hệ."
+      },
+      "Phúc Đức": {
+        "focus": "Kỷ luật, nguồn lực và quyết đoán trong chủ đề giá trị sống, sự nâng đỡ tinh thần và thói quen bền vững",
+        "interpretation": "Ở cung Phúc Đức, Vũ Khúc có thể được dùng như một biểu tượng để suy ngẫm về kỷ luật và cách quản lý nguồn lực trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững. Đồng thời nên quan sát mặt căng thẳng: cứng nhắc khi đánh giá lợi ích. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: kỷ luật và cách quản lý nguồn lực khi đặt trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững."
+      },
+      "Điền Trạch": {
+        "focus": "Kỷ luật, nguồn lực và quyết đoán trong chủ đề quan hệ với không gian sống, nơi ở và việc gìn giữ tài sản",
+        "interpretation": "Ở cung Điền Trạch, Vũ Khúc có thể được dùng như một biểu tượng để suy ngẫm về kỷ luật và cách quản lý nguồn lực trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở. Đồng thời nên quan sát mặt căng thẳng: cứng nhắc khi đánh giá lợi ích. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: kỷ luật và cách quản lý nguồn lực khi đặt trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở."
+      },
+      "Quan Lộc": {
+        "focus": "Kỷ luật, nguồn lực và quyết đoán trong chủ đề vai trò nghề nghiệp, trách nhiệm và cách hợp tác trong công việc",
+        "interpretation": "Ở cung Quan Lộc, Vũ Khúc có thể được dùng như một biểu tượng để suy ngẫm về kỷ luật và cách quản lý nguồn lực trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc. Đồng thời nên quan sát mặt căng thẳng: cứng nhắc khi đánh giá lợi ích. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: kỷ luật và cách quản lý nguồn lực khi đặt trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc."
+      },
+      "Nô Bộc": {
+        "focus": "Kỷ luật, nguồn lực và quyết đoán trong chủ đề xây dựng mạng lưới, phân chia trách nhiệm và chọn cộng sự",
+        "interpretation": "Ở cung Nô Bộc, Vũ Khúc có thể được dùng như một biểu tượng để suy ngẫm về kỷ luật và cách quản lý nguồn lực trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều. Đồng thời nên quan sát mặt căng thẳng: cứng nhắc khi đánh giá lợi ích. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: kỷ luật và cách quản lý nguồn lực khi đặt trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều."
+      },
+      "Thiên Di": {
+        "focus": "Kỷ luật, nguồn lực và quyết đoán trong chủ đề cách tiếp xúc môi trường mới và thích nghi bên ngoài",
+        "interpretation": "Ở cung Thiên Di, Vũ Khúc có thể được dùng như một biểu tượng để suy ngẫm về kỷ luật và cách quản lý nguồn lực trong cách thích ứng môi trường ngoài và gặp gỡ người mới. Đồng thời nên quan sát mặt căng thẳng: cứng nhắc khi đánh giá lợi ích. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: kỷ luật và cách quản lý nguồn lực khi đặt trong cách thích ứng môi trường ngoài và gặp gỡ người mới."
+      },
+      "Tật Ách": {
+        "focus": "Kỷ luật, nguồn lực và quyết đoán trong chủ đề nhận biết áp lực, nhịp sinh hoạt và cách chăm sóc bản thân",
+        "interpretation": "Ở cung Tật Ách, Vũ Khúc có thể được dùng như một biểu tượng để suy ngẫm về kỷ luật và cách quản lý nguồn lực trong thói quen tự chăm sóc và phản ứng khi căng thẳng. Đồng thời nên quan sát mặt căng thẳng: cứng nhắc khi đánh giá lợi ích. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: kỷ luật và cách quản lý nguồn lực khi đặt trong thói quen tự chăm sóc và phản ứng khi căng thẳng."
+      },
+      "Tài Bạch": {
+        "focus": "Kỷ luật, nguồn lực và quyết đoán trong chủ đề thói quen quản lý nguồn lực, lựa chọn chi tiêu và kế hoạch tài chính",
+        "interpretation": "Ở cung Tài Bạch, Vũ Khúc có thể được dùng như một biểu tượng để suy ngẫm về kỷ luật và cách quản lý nguồn lực trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu. Đồng thời nên quan sát mặt căng thẳng: cứng nhắc khi đánh giá lợi ích. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: kỷ luật và cách quản lý nguồn lực khi đặt trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu."
+      },
+      "Tử Tức": {
+        "focus": "Kỷ luật, nguồn lực và quyết đoán trong chủ đề chăm sóc thế hệ sau hoặc các dự án được nuôi dưỡng dài hạn",
+        "interpretation": "Ở cung Tử Tức, Vũ Khúc có thể được dùng như một biểu tượng để suy ngẫm về kỷ luật và cách quản lý nguồn lực trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng. Đồng thời nên quan sát mặt căng thẳng: cứng nhắc khi đánh giá lợi ích. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: kỷ luật và cách quản lý nguồn lực khi đặt trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng."
+      },
+      "Phu Thê": {
+        "focus": "Kỷ luật, nguồn lực và quyết đoán trong chủ đề giao tiếp, sự tương hỗ và thỏa thuận trong quan hệ đôi lứa",
+        "interpretation": "Ở cung Phu Thê, Vũ Khúc có thể được dùng như một biểu tượng để suy ngẫm về kỷ luật và cách quản lý nguồn lực trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm. Đồng thời nên quan sát mặt căng thẳng: cứng nhắc khi đánh giá lợi ích. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: kỷ luật và cách quản lý nguồn lực khi đặt trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm."
+      },
+      "Huynh Đệ": {
+        "focus": "Kỷ luật, nguồn lực và quyết đoán trong chủ đề hợp tác, gắn kết và tôn trọng khác biệt với anh chị em hoặc người ngang hàng",
+        "interpretation": "Ở cung Huynh Đệ, Vũ Khúc có thể được dùng như một biểu tượng để suy ngẫm về kỷ luật và cách quản lý nguồn lực trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng. Đồng thời nên quan sát mặt căng thẳng: cứng nhắc khi đánh giá lợi ích. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: kỷ luật và cách quản lý nguồn lực khi đặt trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng."
+      }
+    },
+    "Thiên Đồng": {
+      "Mệnh": {
+        "focus": "Sự hòa nhã, thích nghi và nhu cầu an ổn trong chủ đề cách hình thành bản sắc và phản ứng trước lựa chọn",
+        "interpretation": "Ở cung Mệnh, Thiên Đồng có thể được dùng như một biểu tượng để suy ngẫm về khả năng thích nghi và tìm sự hài hòa trong cách định hình lựa chọn và phong cách ứng xử. Đồng thời nên quan sát mặt căng thẳng: dễ trì hoãn quyết định khó. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng thích nghi và tìm sự hài hòa khi đặt trong cách định hình lựa chọn và phong cách ứng xử."
+      },
+      "Phụ Mẫu": {
+        "focus": "Sự hòa nhã, thích nghi và nhu cầu an ổn trong chủ đề giao tiếp, kỳ vọng và ranh giới với thế hệ trước",
+        "interpretation": "Ở cung Phụ Mẫu, Thiên Đồng có thể được dùng như một biểu tượng để suy ngẫm về khả năng thích nghi và tìm sự hài hòa trong ranh giới, kỳ vọng và giao tiếp liên thế hệ. Đồng thời nên quan sát mặt căng thẳng: dễ trì hoãn quyết định khó. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng thích nghi và tìm sự hài hòa khi đặt trong ranh giới, kỳ vọng và giao tiếp liên thế hệ."
+      },
+      "Phúc Đức": {
+        "focus": "Sự hòa nhã, thích nghi và nhu cầu an ổn trong chủ đề giá trị sống, sự nâng đỡ tinh thần và thói quen bền vững",
+        "interpretation": "Ở cung Phúc Đức, Thiên Đồng có thể được dùng như một biểu tượng để suy ngẫm về khả năng thích nghi và tìm sự hài hòa trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững. Đồng thời nên quan sát mặt căng thẳng: dễ trì hoãn quyết định khó. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng thích nghi và tìm sự hài hòa khi đặt trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững."
+      },
+      "Điền Trạch": {
+        "focus": "Sự hòa nhã, thích nghi và nhu cầu an ổn trong chủ đề quan hệ với không gian sống, nơi ở và việc gìn giữ tài sản",
+        "interpretation": "Ở cung Điền Trạch, Thiên Đồng có thể được dùng như một biểu tượng để suy ngẫm về khả năng thích nghi và tìm sự hài hòa trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở. Đồng thời nên quan sát mặt căng thẳng: dễ trì hoãn quyết định khó. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng thích nghi và tìm sự hài hòa khi đặt trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở."
+      },
+      "Quan Lộc": {
+        "focus": "Sự hòa nhã, thích nghi và nhu cầu an ổn trong chủ đề vai trò nghề nghiệp, trách nhiệm và cách hợp tác trong công việc",
+        "interpretation": "Ở cung Quan Lộc, Thiên Đồng có thể được dùng như một biểu tượng để suy ngẫm về khả năng thích nghi và tìm sự hài hòa trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc. Đồng thời nên quan sát mặt căng thẳng: dễ trì hoãn quyết định khó. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng thích nghi và tìm sự hài hòa khi đặt trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc."
+      },
+      "Nô Bộc": {
+        "focus": "Sự hòa nhã, thích nghi và nhu cầu an ổn trong chủ đề xây dựng mạng lưới, phân chia trách nhiệm và chọn cộng sự",
+        "interpretation": "Ở cung Nô Bộc, Thiên Đồng có thể được dùng như một biểu tượng để suy ngẫm về khả năng thích nghi và tìm sự hài hòa trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều. Đồng thời nên quan sát mặt căng thẳng: dễ trì hoãn quyết định khó. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng thích nghi và tìm sự hài hòa khi đặt trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều."
+      },
+      "Thiên Di": {
+        "focus": "Sự hòa nhã, thích nghi và nhu cầu an ổn trong chủ đề cách tiếp xúc môi trường mới và thích nghi bên ngoài",
+        "interpretation": "Ở cung Thiên Di, Thiên Đồng có thể được dùng như một biểu tượng để suy ngẫm về khả năng thích nghi và tìm sự hài hòa trong cách thích ứng môi trường ngoài và gặp gỡ người mới. Đồng thời nên quan sát mặt căng thẳng: dễ trì hoãn quyết định khó. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng thích nghi và tìm sự hài hòa khi đặt trong cách thích ứng môi trường ngoài và gặp gỡ người mới."
+      },
+      "Tật Ách": {
+        "focus": "Sự hòa nhã, thích nghi và nhu cầu an ổn trong chủ đề nhận biết áp lực, nhịp sinh hoạt và cách chăm sóc bản thân",
+        "interpretation": "Ở cung Tật Ách, Thiên Đồng có thể được dùng như một biểu tượng để suy ngẫm về khả năng thích nghi và tìm sự hài hòa trong thói quen tự chăm sóc và phản ứng khi căng thẳng. Đồng thời nên quan sát mặt căng thẳng: dễ trì hoãn quyết định khó. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng thích nghi và tìm sự hài hòa khi đặt trong thói quen tự chăm sóc và phản ứng khi căng thẳng."
+      },
+      "Tài Bạch": {
+        "focus": "Sự hòa nhã, thích nghi và nhu cầu an ổn trong chủ đề thói quen quản lý nguồn lực, lựa chọn chi tiêu và kế hoạch tài chính",
+        "interpretation": "Ở cung Tài Bạch, Thiên Đồng có thể được dùng như một biểu tượng để suy ngẫm về khả năng thích nghi và tìm sự hài hòa trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu. Đồng thời nên quan sát mặt căng thẳng: dễ trì hoãn quyết định khó. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng thích nghi và tìm sự hài hòa khi đặt trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu."
+      },
+      "Tử Tức": {
+        "focus": "Sự hòa nhã, thích nghi và nhu cầu an ổn trong chủ đề chăm sóc thế hệ sau hoặc các dự án được nuôi dưỡng dài hạn",
+        "interpretation": "Ở cung Tử Tức, Thiên Đồng có thể được dùng như một biểu tượng để suy ngẫm về khả năng thích nghi và tìm sự hài hòa trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng. Đồng thời nên quan sát mặt căng thẳng: dễ trì hoãn quyết định khó. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng thích nghi và tìm sự hài hòa khi đặt trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng."
+      },
+      "Phu Thê": {
+        "focus": "Sự hòa nhã, thích nghi và nhu cầu an ổn trong chủ đề giao tiếp, sự tương hỗ và thỏa thuận trong quan hệ đôi lứa",
+        "interpretation": "Ở cung Phu Thê, Thiên Đồng có thể được dùng như một biểu tượng để suy ngẫm về khả năng thích nghi và tìm sự hài hòa trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm. Đồng thời nên quan sát mặt căng thẳng: dễ trì hoãn quyết định khó. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng thích nghi và tìm sự hài hòa khi đặt trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm."
+      },
+      "Huynh Đệ": {
+        "focus": "Sự hòa nhã, thích nghi và nhu cầu an ổn trong chủ đề hợp tác, gắn kết và tôn trọng khác biệt với anh chị em hoặc người ngang hàng",
+        "interpretation": "Ở cung Huynh Đệ, Thiên Đồng có thể được dùng như một biểu tượng để suy ngẫm về khả năng thích nghi và tìm sự hài hòa trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng. Đồng thời nên quan sát mặt căng thẳng: dễ trì hoãn quyết định khó. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng thích nghi và tìm sự hài hòa khi đặt trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng."
+      }
+    },
+    "Liêm Trinh": {
+      "Mệnh": {
+        "focus": "Nguyên tắc, giới hạn và sức hút cá nhân trong chủ đề cách hình thành bản sắc và phản ứng trước lựa chọn",
+        "interpretation": "Ở cung Mệnh, Liêm Trinh có thể được dùng như một biểu tượng để suy ngẫm về ý thức nguyên tắc và ranh giới trong cách định hình lựa chọn và phong cách ứng xử. Đồng thời nên quan sát mặt căng thẳng: dễ vướng mâu thuẫn giữa mong muốn và quy định. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức nguyên tắc và ranh giới khi đặt trong cách định hình lựa chọn và phong cách ứng xử."
+      },
+      "Phụ Mẫu": {
+        "focus": "Nguyên tắc, giới hạn và sức hút cá nhân trong chủ đề giao tiếp, kỳ vọng và ranh giới với thế hệ trước",
+        "interpretation": "Ở cung Phụ Mẫu, Liêm Trinh có thể được dùng như một biểu tượng để suy ngẫm về ý thức nguyên tắc và ranh giới trong ranh giới, kỳ vọng và giao tiếp liên thế hệ. Đồng thời nên quan sát mặt căng thẳng: dễ vướng mâu thuẫn giữa mong muốn và quy định. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức nguyên tắc và ranh giới khi đặt trong ranh giới, kỳ vọng và giao tiếp liên thế hệ."
+      },
+      "Phúc Đức": {
+        "focus": "Nguyên tắc, giới hạn và sức hút cá nhân trong chủ đề giá trị sống, sự nâng đỡ tinh thần và thói quen bền vững",
+        "interpretation": "Ở cung Phúc Đức, Liêm Trinh có thể được dùng như một biểu tượng để suy ngẫm về ý thức nguyên tắc và ranh giới trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững. Đồng thời nên quan sát mặt căng thẳng: dễ vướng mâu thuẫn giữa mong muốn và quy định. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức nguyên tắc và ranh giới khi đặt trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững."
+      },
+      "Điền Trạch": {
+        "focus": "Nguyên tắc, giới hạn và sức hút cá nhân trong chủ đề quan hệ với không gian sống, nơi ở và việc gìn giữ tài sản",
+        "interpretation": "Ở cung Điền Trạch, Liêm Trinh có thể được dùng như một biểu tượng để suy ngẫm về ý thức nguyên tắc và ranh giới trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở. Đồng thời nên quan sát mặt căng thẳng: dễ vướng mâu thuẫn giữa mong muốn và quy định. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức nguyên tắc và ranh giới khi đặt trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở."
+      },
+      "Quan Lộc": {
+        "focus": "Nguyên tắc, giới hạn và sức hút cá nhân trong chủ đề vai trò nghề nghiệp, trách nhiệm và cách hợp tác trong công việc",
+        "interpretation": "Ở cung Quan Lộc, Liêm Trinh có thể được dùng như một biểu tượng để suy ngẫm về ý thức nguyên tắc và ranh giới trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc. Đồng thời nên quan sát mặt căng thẳng: dễ vướng mâu thuẫn giữa mong muốn và quy định. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức nguyên tắc và ranh giới khi đặt trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc."
+      },
+      "Nô Bộc": {
+        "focus": "Nguyên tắc, giới hạn và sức hút cá nhân trong chủ đề xây dựng mạng lưới, phân chia trách nhiệm và chọn cộng sự",
+        "interpretation": "Ở cung Nô Bộc, Liêm Trinh có thể được dùng như một biểu tượng để suy ngẫm về ý thức nguyên tắc và ranh giới trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều. Đồng thời nên quan sát mặt căng thẳng: dễ vướng mâu thuẫn giữa mong muốn và quy định. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức nguyên tắc và ranh giới khi đặt trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều."
+      },
+      "Thiên Di": {
+        "focus": "Nguyên tắc, giới hạn và sức hút cá nhân trong chủ đề cách tiếp xúc môi trường mới và thích nghi bên ngoài",
+        "interpretation": "Ở cung Thiên Di, Liêm Trinh có thể được dùng như một biểu tượng để suy ngẫm về ý thức nguyên tắc và ranh giới trong cách thích ứng môi trường ngoài và gặp gỡ người mới. Đồng thời nên quan sát mặt căng thẳng: dễ vướng mâu thuẫn giữa mong muốn và quy định. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức nguyên tắc và ranh giới khi đặt trong cách thích ứng môi trường ngoài và gặp gỡ người mới."
+      },
+      "Tật Ách": {
+        "focus": "Nguyên tắc, giới hạn và sức hút cá nhân trong chủ đề nhận biết áp lực, nhịp sinh hoạt và cách chăm sóc bản thân",
+        "interpretation": "Ở cung Tật Ách, Liêm Trinh có thể được dùng như một biểu tượng để suy ngẫm về ý thức nguyên tắc và ranh giới trong thói quen tự chăm sóc và phản ứng khi căng thẳng. Đồng thời nên quan sát mặt căng thẳng: dễ vướng mâu thuẫn giữa mong muốn và quy định. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức nguyên tắc và ranh giới khi đặt trong thói quen tự chăm sóc và phản ứng khi căng thẳng."
+      },
+      "Tài Bạch": {
+        "focus": "Nguyên tắc, giới hạn và sức hút cá nhân trong chủ đề thói quen quản lý nguồn lực, lựa chọn chi tiêu và kế hoạch tài chính",
+        "interpretation": "Ở cung Tài Bạch, Liêm Trinh có thể được dùng như một biểu tượng để suy ngẫm về ý thức nguyên tắc và ranh giới trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu. Đồng thời nên quan sát mặt căng thẳng: dễ vướng mâu thuẫn giữa mong muốn và quy định. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức nguyên tắc và ranh giới khi đặt trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu."
+      },
+      "Tử Tức": {
+        "focus": "Nguyên tắc, giới hạn và sức hút cá nhân trong chủ đề chăm sóc thế hệ sau hoặc các dự án được nuôi dưỡng dài hạn",
+        "interpretation": "Ở cung Tử Tức, Liêm Trinh có thể được dùng như một biểu tượng để suy ngẫm về ý thức nguyên tắc và ranh giới trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng. Đồng thời nên quan sát mặt căng thẳng: dễ vướng mâu thuẫn giữa mong muốn và quy định. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức nguyên tắc và ranh giới khi đặt trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng."
+      },
+      "Phu Thê": {
+        "focus": "Nguyên tắc, giới hạn và sức hút cá nhân trong chủ đề giao tiếp, sự tương hỗ và thỏa thuận trong quan hệ đôi lứa",
+        "interpretation": "Ở cung Phu Thê, Liêm Trinh có thể được dùng như một biểu tượng để suy ngẫm về ý thức nguyên tắc và ranh giới trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm. Đồng thời nên quan sát mặt căng thẳng: dễ vướng mâu thuẫn giữa mong muốn và quy định. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức nguyên tắc và ranh giới khi đặt trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm."
+      },
+      "Huynh Đệ": {
+        "focus": "Nguyên tắc, giới hạn và sức hút cá nhân trong chủ đề hợp tác, gắn kết và tôn trọng khác biệt với anh chị em hoặc người ngang hàng",
+        "interpretation": "Ở cung Huynh Đệ, Liêm Trinh có thể được dùng như một biểu tượng để suy ngẫm về ý thức nguyên tắc và ranh giới trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng. Đồng thời nên quan sát mặt căng thẳng: dễ vướng mâu thuẫn giữa mong muốn và quy định. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức nguyên tắc và ranh giới khi đặt trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng."
+      }
+    },
+    "Thiên Phủ": {
+      "Mệnh": {
+        "focus": "Bảo quản, ổn định và quản trị tài nguyên trong chủ đề cách hình thành bản sắc và phản ứng trước lựa chọn",
+        "interpretation": "Ở cung Mệnh, Thiên Phủ có thể được dùng như một biểu tượng để suy ngẫm về khả năng tích lũy và giữ ổn định trong cách định hình lựa chọn và phong cách ứng xử. Đồng thời nên quan sát mặt căng thẳng: dễ ngại thay đổi khi cần. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tích lũy và giữ ổn định khi đặt trong cách định hình lựa chọn và phong cách ứng xử."
+      },
+      "Phụ Mẫu": {
+        "focus": "Bảo quản, ổn định và quản trị tài nguyên trong chủ đề giao tiếp, kỳ vọng và ranh giới với thế hệ trước",
+        "interpretation": "Ở cung Phụ Mẫu, Thiên Phủ có thể được dùng như một biểu tượng để suy ngẫm về khả năng tích lũy và giữ ổn định trong ranh giới, kỳ vọng và giao tiếp liên thế hệ. Đồng thời nên quan sát mặt căng thẳng: dễ ngại thay đổi khi cần. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tích lũy và giữ ổn định khi đặt trong ranh giới, kỳ vọng và giao tiếp liên thế hệ."
+      },
+      "Phúc Đức": {
+        "focus": "Bảo quản, ổn định và quản trị tài nguyên trong chủ đề giá trị sống, sự nâng đỡ tinh thần và thói quen bền vững",
+        "interpretation": "Ở cung Phúc Đức, Thiên Phủ có thể được dùng như một biểu tượng để suy ngẫm về khả năng tích lũy và giữ ổn định trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững. Đồng thời nên quan sát mặt căng thẳng: dễ ngại thay đổi khi cần. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tích lũy và giữ ổn định khi đặt trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững."
+      },
+      "Điền Trạch": {
+        "focus": "Bảo quản, ổn định và quản trị tài nguyên trong chủ đề quan hệ với không gian sống, nơi ở và việc gìn giữ tài sản",
+        "interpretation": "Ở cung Điền Trạch, Thiên Phủ có thể được dùng như một biểu tượng để suy ngẫm về khả năng tích lũy và giữ ổn định trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở. Đồng thời nên quan sát mặt căng thẳng: dễ ngại thay đổi khi cần. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tích lũy và giữ ổn định khi đặt trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở."
+      },
+      "Quan Lộc": {
+        "focus": "Bảo quản, ổn định và quản trị tài nguyên trong chủ đề vai trò nghề nghiệp, trách nhiệm và cách hợp tác trong công việc",
+        "interpretation": "Ở cung Quan Lộc, Thiên Phủ có thể được dùng như một biểu tượng để suy ngẫm về khả năng tích lũy và giữ ổn định trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc. Đồng thời nên quan sát mặt căng thẳng: dễ ngại thay đổi khi cần. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tích lũy và giữ ổn định khi đặt trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc."
+      },
+      "Nô Bộc": {
+        "focus": "Bảo quản, ổn định và quản trị tài nguyên trong chủ đề xây dựng mạng lưới, phân chia trách nhiệm và chọn cộng sự",
+        "interpretation": "Ở cung Nô Bộc, Thiên Phủ có thể được dùng như một biểu tượng để suy ngẫm về khả năng tích lũy và giữ ổn định trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều. Đồng thời nên quan sát mặt căng thẳng: dễ ngại thay đổi khi cần. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tích lũy và giữ ổn định khi đặt trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều."
+      },
+      "Thiên Di": {
+        "focus": "Bảo quản, ổn định và quản trị tài nguyên trong chủ đề cách tiếp xúc môi trường mới và thích nghi bên ngoài",
+        "interpretation": "Ở cung Thiên Di, Thiên Phủ có thể được dùng như một biểu tượng để suy ngẫm về khả năng tích lũy và giữ ổn định trong cách thích ứng môi trường ngoài và gặp gỡ người mới. Đồng thời nên quan sát mặt căng thẳng: dễ ngại thay đổi khi cần. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tích lũy và giữ ổn định khi đặt trong cách thích ứng môi trường ngoài và gặp gỡ người mới."
+      },
+      "Tật Ách": {
+        "focus": "Bảo quản, ổn định và quản trị tài nguyên trong chủ đề nhận biết áp lực, nhịp sinh hoạt và cách chăm sóc bản thân",
+        "interpretation": "Ở cung Tật Ách, Thiên Phủ có thể được dùng như một biểu tượng để suy ngẫm về khả năng tích lũy và giữ ổn định trong thói quen tự chăm sóc và phản ứng khi căng thẳng. Đồng thời nên quan sát mặt căng thẳng: dễ ngại thay đổi khi cần. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tích lũy và giữ ổn định khi đặt trong thói quen tự chăm sóc và phản ứng khi căng thẳng."
+      },
+      "Tài Bạch": {
+        "focus": "Bảo quản, ổn định và quản trị tài nguyên trong chủ đề thói quen quản lý nguồn lực, lựa chọn chi tiêu và kế hoạch tài chính",
+        "interpretation": "Ở cung Tài Bạch, Thiên Phủ có thể được dùng như một biểu tượng để suy ngẫm về khả năng tích lũy và giữ ổn định trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu. Đồng thời nên quan sát mặt căng thẳng: dễ ngại thay đổi khi cần. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tích lũy và giữ ổn định khi đặt trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu."
+      },
+      "Tử Tức": {
+        "focus": "Bảo quản, ổn định và quản trị tài nguyên trong chủ đề chăm sóc thế hệ sau hoặc các dự án được nuôi dưỡng dài hạn",
+        "interpretation": "Ở cung Tử Tức, Thiên Phủ có thể được dùng như một biểu tượng để suy ngẫm về khả năng tích lũy và giữ ổn định trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng. Đồng thời nên quan sát mặt căng thẳng: dễ ngại thay đổi khi cần. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tích lũy và giữ ổn định khi đặt trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng."
+      },
+      "Phu Thê": {
+        "focus": "Bảo quản, ổn định và quản trị tài nguyên trong chủ đề giao tiếp, sự tương hỗ và thỏa thuận trong quan hệ đôi lứa",
+        "interpretation": "Ở cung Phu Thê, Thiên Phủ có thể được dùng như một biểu tượng để suy ngẫm về khả năng tích lũy và giữ ổn định trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm. Đồng thời nên quan sát mặt căng thẳng: dễ ngại thay đổi khi cần. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tích lũy và giữ ổn định khi đặt trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm."
+      },
+      "Huynh Đệ": {
+        "focus": "Bảo quản, ổn định và quản trị tài nguyên trong chủ đề hợp tác, gắn kết và tôn trọng khác biệt với anh chị em hoặc người ngang hàng",
+        "interpretation": "Ở cung Huynh Đệ, Thiên Phủ có thể được dùng như một biểu tượng để suy ngẫm về khả năng tích lũy và giữ ổn định trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng. Đồng thời nên quan sát mặt căng thẳng: dễ ngại thay đổi khi cần. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng tích lũy và giữ ổn định khi đặt trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng."
+      }
+    },
+    "Thái Âm": {
+      "Mệnh": {
+        "focus": "Chiều sâu nội tâm, chăm sóc và tích lũy trong chủ đề cách hình thành bản sắc và phản ứng trước lựa chọn",
+        "interpretation": "Ở cung Mệnh, Thái Âm có thể được dùng như một biểu tượng để suy ngẫm về khả năng quan sát và nuôi dưỡng chiều sâu trong cách định hình lựa chọn và phong cách ứng xử. Đồng thời nên quan sát mặt căng thẳng: dễ giữ cảm xúc trong lòng. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng quan sát và nuôi dưỡng chiều sâu khi đặt trong cách định hình lựa chọn và phong cách ứng xử."
+      },
+      "Phụ Mẫu": {
+        "focus": "Chiều sâu nội tâm, chăm sóc và tích lũy trong chủ đề giao tiếp, kỳ vọng và ranh giới với thế hệ trước",
+        "interpretation": "Ở cung Phụ Mẫu, Thái Âm có thể được dùng như một biểu tượng để suy ngẫm về khả năng quan sát và nuôi dưỡng chiều sâu trong ranh giới, kỳ vọng và giao tiếp liên thế hệ. Đồng thời nên quan sát mặt căng thẳng: dễ giữ cảm xúc trong lòng. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng quan sát và nuôi dưỡng chiều sâu khi đặt trong ranh giới, kỳ vọng và giao tiếp liên thế hệ."
+      },
+      "Phúc Đức": {
+        "focus": "Chiều sâu nội tâm, chăm sóc và tích lũy trong chủ đề giá trị sống, sự nâng đỡ tinh thần và thói quen bền vững",
+        "interpretation": "Ở cung Phúc Đức, Thái Âm có thể được dùng như một biểu tượng để suy ngẫm về khả năng quan sát và nuôi dưỡng chiều sâu trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững. Đồng thời nên quan sát mặt căng thẳng: dễ giữ cảm xúc trong lòng. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng quan sát và nuôi dưỡng chiều sâu khi đặt trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững."
+      },
+      "Điền Trạch": {
+        "focus": "Chiều sâu nội tâm, chăm sóc và tích lũy trong chủ đề quan hệ với không gian sống, nơi ở và việc gìn giữ tài sản",
+        "interpretation": "Ở cung Điền Trạch, Thái Âm có thể được dùng như một biểu tượng để suy ngẫm về khả năng quan sát và nuôi dưỡng chiều sâu trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở. Đồng thời nên quan sát mặt căng thẳng: dễ giữ cảm xúc trong lòng. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng quan sát và nuôi dưỡng chiều sâu khi đặt trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở."
+      },
+      "Quan Lộc": {
+        "focus": "Chiều sâu nội tâm, chăm sóc và tích lũy trong chủ đề vai trò nghề nghiệp, trách nhiệm và cách hợp tác trong công việc",
+        "interpretation": "Ở cung Quan Lộc, Thái Âm có thể được dùng như một biểu tượng để suy ngẫm về khả năng quan sát và nuôi dưỡng chiều sâu trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc. Đồng thời nên quan sát mặt căng thẳng: dễ giữ cảm xúc trong lòng. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng quan sát và nuôi dưỡng chiều sâu khi đặt trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc."
+      },
+      "Nô Bộc": {
+        "focus": "Chiều sâu nội tâm, chăm sóc và tích lũy trong chủ đề xây dựng mạng lưới, phân chia trách nhiệm và chọn cộng sự",
+        "interpretation": "Ở cung Nô Bộc, Thái Âm có thể được dùng như một biểu tượng để suy ngẫm về khả năng quan sát và nuôi dưỡng chiều sâu trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều. Đồng thời nên quan sát mặt căng thẳng: dễ giữ cảm xúc trong lòng. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng quan sát và nuôi dưỡng chiều sâu khi đặt trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều."
+      },
+      "Thiên Di": {
+        "focus": "Chiều sâu nội tâm, chăm sóc và tích lũy trong chủ đề cách tiếp xúc môi trường mới và thích nghi bên ngoài",
+        "interpretation": "Ở cung Thiên Di, Thái Âm có thể được dùng như một biểu tượng để suy ngẫm về khả năng quan sát và nuôi dưỡng chiều sâu trong cách thích ứng môi trường ngoài và gặp gỡ người mới. Đồng thời nên quan sát mặt căng thẳng: dễ giữ cảm xúc trong lòng. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng quan sát và nuôi dưỡng chiều sâu khi đặt trong cách thích ứng môi trường ngoài và gặp gỡ người mới."
+      },
+      "Tật Ách": {
+        "focus": "Chiều sâu nội tâm, chăm sóc và tích lũy trong chủ đề nhận biết áp lực, nhịp sinh hoạt và cách chăm sóc bản thân",
+        "interpretation": "Ở cung Tật Ách, Thái Âm có thể được dùng như một biểu tượng để suy ngẫm về khả năng quan sát và nuôi dưỡng chiều sâu trong thói quen tự chăm sóc và phản ứng khi căng thẳng. Đồng thời nên quan sát mặt căng thẳng: dễ giữ cảm xúc trong lòng. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng quan sát và nuôi dưỡng chiều sâu khi đặt trong thói quen tự chăm sóc và phản ứng khi căng thẳng."
+      },
+      "Tài Bạch": {
+        "focus": "Chiều sâu nội tâm, chăm sóc và tích lũy trong chủ đề thói quen quản lý nguồn lực, lựa chọn chi tiêu và kế hoạch tài chính",
+        "interpretation": "Ở cung Tài Bạch, Thái Âm có thể được dùng như một biểu tượng để suy ngẫm về khả năng quan sát và nuôi dưỡng chiều sâu trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu. Đồng thời nên quan sát mặt căng thẳng: dễ giữ cảm xúc trong lòng. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng quan sát và nuôi dưỡng chiều sâu khi đặt trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu."
+      },
+      "Tử Tức": {
+        "focus": "Chiều sâu nội tâm, chăm sóc và tích lũy trong chủ đề chăm sóc thế hệ sau hoặc các dự án được nuôi dưỡng dài hạn",
+        "interpretation": "Ở cung Tử Tức, Thái Âm có thể được dùng như một biểu tượng để suy ngẫm về khả năng quan sát và nuôi dưỡng chiều sâu trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng. Đồng thời nên quan sát mặt căng thẳng: dễ giữ cảm xúc trong lòng. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng quan sát và nuôi dưỡng chiều sâu khi đặt trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng."
+      },
+      "Phu Thê": {
+        "focus": "Chiều sâu nội tâm, chăm sóc và tích lũy trong chủ đề giao tiếp, sự tương hỗ và thỏa thuận trong quan hệ đôi lứa",
+        "interpretation": "Ở cung Phu Thê, Thái Âm có thể được dùng như một biểu tượng để suy ngẫm về khả năng quan sát và nuôi dưỡng chiều sâu trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm. Đồng thời nên quan sát mặt căng thẳng: dễ giữ cảm xúc trong lòng. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng quan sát và nuôi dưỡng chiều sâu khi đặt trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm."
+      },
+      "Huynh Đệ": {
+        "focus": "Chiều sâu nội tâm, chăm sóc và tích lũy trong chủ đề hợp tác, gắn kết và tôn trọng khác biệt với anh chị em hoặc người ngang hàng",
+        "interpretation": "Ở cung Huynh Đệ, Thái Âm có thể được dùng như một biểu tượng để suy ngẫm về khả năng quan sát và nuôi dưỡng chiều sâu trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng. Đồng thời nên quan sát mặt căng thẳng: dễ giữ cảm xúc trong lòng. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng quan sát và nuôi dưỡng chiều sâu khi đặt trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng."
+      }
+    },
+    "Tham Lang": {
+      "Mệnh": {
+        "focus": "Khát vọng trải nghiệm, giao tiếp và phát triển trong chủ đề cách hình thành bản sắc và phản ứng trước lựa chọn",
+        "interpretation": "Ở cung Mệnh, Tham Lang có thể được dùng như một biểu tượng để suy ngẫm về năng lực kết nối và khám phá cơ hội trong cách định hình lựa chọn và phong cách ứng xử. Đồng thời nên quan sát mặt căng thẳng: dễ quá tải vì nhiều mong muốn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực kết nối và khám phá cơ hội khi đặt trong cách định hình lựa chọn và phong cách ứng xử."
+      },
+      "Phụ Mẫu": {
+        "focus": "Khát vọng trải nghiệm, giao tiếp và phát triển trong chủ đề giao tiếp, kỳ vọng và ranh giới với thế hệ trước",
+        "interpretation": "Ở cung Phụ Mẫu, Tham Lang có thể được dùng như một biểu tượng để suy ngẫm về năng lực kết nối và khám phá cơ hội trong ranh giới, kỳ vọng và giao tiếp liên thế hệ. Đồng thời nên quan sát mặt căng thẳng: dễ quá tải vì nhiều mong muốn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực kết nối và khám phá cơ hội khi đặt trong ranh giới, kỳ vọng và giao tiếp liên thế hệ."
+      },
+      "Phúc Đức": {
+        "focus": "Khát vọng trải nghiệm, giao tiếp và phát triển trong chủ đề giá trị sống, sự nâng đỡ tinh thần và thói quen bền vững",
+        "interpretation": "Ở cung Phúc Đức, Tham Lang có thể được dùng như một biểu tượng để suy ngẫm về năng lực kết nối và khám phá cơ hội trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững. Đồng thời nên quan sát mặt căng thẳng: dễ quá tải vì nhiều mong muốn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực kết nối và khám phá cơ hội khi đặt trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững."
+      },
+      "Điền Trạch": {
+        "focus": "Khát vọng trải nghiệm, giao tiếp và phát triển trong chủ đề quan hệ với không gian sống, nơi ở và việc gìn giữ tài sản",
+        "interpretation": "Ở cung Điền Trạch, Tham Lang có thể được dùng như một biểu tượng để suy ngẫm về năng lực kết nối và khám phá cơ hội trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở. Đồng thời nên quan sát mặt căng thẳng: dễ quá tải vì nhiều mong muốn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực kết nối và khám phá cơ hội khi đặt trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở."
+      },
+      "Quan Lộc": {
+        "focus": "Khát vọng trải nghiệm, giao tiếp và phát triển trong chủ đề vai trò nghề nghiệp, trách nhiệm và cách hợp tác trong công việc",
+        "interpretation": "Ở cung Quan Lộc, Tham Lang có thể được dùng như một biểu tượng để suy ngẫm về năng lực kết nối và khám phá cơ hội trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc. Đồng thời nên quan sát mặt căng thẳng: dễ quá tải vì nhiều mong muốn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực kết nối và khám phá cơ hội khi đặt trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc."
+      },
+      "Nô Bộc": {
+        "focus": "Khát vọng trải nghiệm, giao tiếp và phát triển trong chủ đề xây dựng mạng lưới, phân chia trách nhiệm và chọn cộng sự",
+        "interpretation": "Ở cung Nô Bộc, Tham Lang có thể được dùng như một biểu tượng để suy ngẫm về năng lực kết nối và khám phá cơ hội trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều. Đồng thời nên quan sát mặt căng thẳng: dễ quá tải vì nhiều mong muốn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực kết nối và khám phá cơ hội khi đặt trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều."
+      },
+      "Thiên Di": {
+        "focus": "Khát vọng trải nghiệm, giao tiếp và phát triển trong chủ đề cách tiếp xúc môi trường mới và thích nghi bên ngoài",
+        "interpretation": "Ở cung Thiên Di, Tham Lang có thể được dùng như một biểu tượng để suy ngẫm về năng lực kết nối và khám phá cơ hội trong cách thích ứng môi trường ngoài và gặp gỡ người mới. Đồng thời nên quan sát mặt căng thẳng: dễ quá tải vì nhiều mong muốn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực kết nối và khám phá cơ hội khi đặt trong cách thích ứng môi trường ngoài và gặp gỡ người mới."
+      },
+      "Tật Ách": {
+        "focus": "Khát vọng trải nghiệm, giao tiếp và phát triển trong chủ đề nhận biết áp lực, nhịp sinh hoạt và cách chăm sóc bản thân",
+        "interpretation": "Ở cung Tật Ách, Tham Lang có thể được dùng như một biểu tượng để suy ngẫm về năng lực kết nối và khám phá cơ hội trong thói quen tự chăm sóc và phản ứng khi căng thẳng. Đồng thời nên quan sát mặt căng thẳng: dễ quá tải vì nhiều mong muốn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực kết nối và khám phá cơ hội khi đặt trong thói quen tự chăm sóc và phản ứng khi căng thẳng."
+      },
+      "Tài Bạch": {
+        "focus": "Khát vọng trải nghiệm, giao tiếp và phát triển trong chủ đề thói quen quản lý nguồn lực, lựa chọn chi tiêu và kế hoạch tài chính",
+        "interpretation": "Ở cung Tài Bạch, Tham Lang có thể được dùng như một biểu tượng để suy ngẫm về năng lực kết nối và khám phá cơ hội trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu. Đồng thời nên quan sát mặt căng thẳng: dễ quá tải vì nhiều mong muốn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực kết nối và khám phá cơ hội khi đặt trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu."
+      },
+      "Tử Tức": {
+        "focus": "Khát vọng trải nghiệm, giao tiếp và phát triển trong chủ đề chăm sóc thế hệ sau hoặc các dự án được nuôi dưỡng dài hạn",
+        "interpretation": "Ở cung Tử Tức, Tham Lang có thể được dùng như một biểu tượng để suy ngẫm về năng lực kết nối và khám phá cơ hội trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng. Đồng thời nên quan sát mặt căng thẳng: dễ quá tải vì nhiều mong muốn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực kết nối và khám phá cơ hội khi đặt trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng."
+      },
+      "Phu Thê": {
+        "focus": "Khát vọng trải nghiệm, giao tiếp và phát triển trong chủ đề giao tiếp, sự tương hỗ và thỏa thuận trong quan hệ đôi lứa",
+        "interpretation": "Ở cung Phu Thê, Tham Lang có thể được dùng như một biểu tượng để suy ngẫm về năng lực kết nối và khám phá cơ hội trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm. Đồng thời nên quan sát mặt căng thẳng: dễ quá tải vì nhiều mong muốn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực kết nối và khám phá cơ hội khi đặt trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm."
+      },
+      "Huynh Đệ": {
+        "focus": "Khát vọng trải nghiệm, giao tiếp và phát triển trong chủ đề hợp tác, gắn kết và tôn trọng khác biệt với anh chị em hoặc người ngang hàng",
+        "interpretation": "Ở cung Huynh Đệ, Tham Lang có thể được dùng như một biểu tượng để suy ngẫm về năng lực kết nối và khám phá cơ hội trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng. Đồng thời nên quan sát mặt căng thẳng: dễ quá tải vì nhiều mong muốn. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực kết nối và khám phá cơ hội khi đặt trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng."
+      }
+    },
+    "Cự Môn": {
+      "Mệnh": {
+        "focus": "Ngôn ngữ, phân tích và sự phản biện trong chủ đề cách hình thành bản sắc và phản ứng trước lựa chọn",
+        "interpretation": "Ở cung Mệnh, Cự Môn có thể được dùng như một biểu tượng để suy ngẫm về khả năng chất vấn và diễn đạt quan điểm trong cách định hình lựa chọn và phong cách ứng xử. Đồng thời nên quan sát mặt căng thẳng: dễ kéo dài tranh luận hoặc hiểu lầm. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng chất vấn và diễn đạt quan điểm khi đặt trong cách định hình lựa chọn và phong cách ứng xử."
+      },
+      "Phụ Mẫu": {
+        "focus": "Ngôn ngữ, phân tích và sự phản biện trong chủ đề giao tiếp, kỳ vọng và ranh giới với thế hệ trước",
+        "interpretation": "Ở cung Phụ Mẫu, Cự Môn có thể được dùng như một biểu tượng để suy ngẫm về khả năng chất vấn và diễn đạt quan điểm trong ranh giới, kỳ vọng và giao tiếp liên thế hệ. Đồng thời nên quan sát mặt căng thẳng: dễ kéo dài tranh luận hoặc hiểu lầm. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng chất vấn và diễn đạt quan điểm khi đặt trong ranh giới, kỳ vọng và giao tiếp liên thế hệ."
+      },
+      "Phúc Đức": {
+        "focus": "Ngôn ngữ, phân tích và sự phản biện trong chủ đề giá trị sống, sự nâng đỡ tinh thần và thói quen bền vững",
+        "interpretation": "Ở cung Phúc Đức, Cự Môn có thể được dùng như một biểu tượng để suy ngẫm về khả năng chất vấn và diễn đạt quan điểm trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững. Đồng thời nên quan sát mặt căng thẳng: dễ kéo dài tranh luận hoặc hiểu lầm. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng chất vấn và diễn đạt quan điểm khi đặt trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững."
+      },
+      "Điền Trạch": {
+        "focus": "Ngôn ngữ, phân tích và sự phản biện trong chủ đề quan hệ với không gian sống, nơi ở và việc gìn giữ tài sản",
+        "interpretation": "Ở cung Điền Trạch, Cự Môn có thể được dùng như một biểu tượng để suy ngẫm về khả năng chất vấn và diễn đạt quan điểm trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở. Đồng thời nên quan sát mặt căng thẳng: dễ kéo dài tranh luận hoặc hiểu lầm. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng chất vấn và diễn đạt quan điểm khi đặt trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở."
+      },
+      "Quan Lộc": {
+        "focus": "Ngôn ngữ, phân tích và sự phản biện trong chủ đề vai trò nghề nghiệp, trách nhiệm và cách hợp tác trong công việc",
+        "interpretation": "Ở cung Quan Lộc, Cự Môn có thể được dùng như một biểu tượng để suy ngẫm về khả năng chất vấn và diễn đạt quan điểm trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc. Đồng thời nên quan sát mặt căng thẳng: dễ kéo dài tranh luận hoặc hiểu lầm. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng chất vấn và diễn đạt quan điểm khi đặt trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc."
+      },
+      "Nô Bộc": {
+        "focus": "Ngôn ngữ, phân tích và sự phản biện trong chủ đề xây dựng mạng lưới, phân chia trách nhiệm và chọn cộng sự",
+        "interpretation": "Ở cung Nô Bộc, Cự Môn có thể được dùng như một biểu tượng để suy ngẫm về khả năng chất vấn và diễn đạt quan điểm trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều. Đồng thời nên quan sát mặt căng thẳng: dễ kéo dài tranh luận hoặc hiểu lầm. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng chất vấn và diễn đạt quan điểm khi đặt trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều."
+      },
+      "Thiên Di": {
+        "focus": "Ngôn ngữ, phân tích và sự phản biện trong chủ đề cách tiếp xúc môi trường mới và thích nghi bên ngoài",
+        "interpretation": "Ở cung Thiên Di, Cự Môn có thể được dùng như một biểu tượng để suy ngẫm về khả năng chất vấn và diễn đạt quan điểm trong cách thích ứng môi trường ngoài và gặp gỡ người mới. Đồng thời nên quan sát mặt căng thẳng: dễ kéo dài tranh luận hoặc hiểu lầm. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng chất vấn và diễn đạt quan điểm khi đặt trong cách thích ứng môi trường ngoài và gặp gỡ người mới."
+      },
+      "Tật Ách": {
+        "focus": "Ngôn ngữ, phân tích và sự phản biện trong chủ đề nhận biết áp lực, nhịp sinh hoạt và cách chăm sóc bản thân",
+        "interpretation": "Ở cung Tật Ách, Cự Môn có thể được dùng như một biểu tượng để suy ngẫm về khả năng chất vấn và diễn đạt quan điểm trong thói quen tự chăm sóc và phản ứng khi căng thẳng. Đồng thời nên quan sát mặt căng thẳng: dễ kéo dài tranh luận hoặc hiểu lầm. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng chất vấn và diễn đạt quan điểm khi đặt trong thói quen tự chăm sóc và phản ứng khi căng thẳng."
+      },
+      "Tài Bạch": {
+        "focus": "Ngôn ngữ, phân tích và sự phản biện trong chủ đề thói quen quản lý nguồn lực, lựa chọn chi tiêu và kế hoạch tài chính",
+        "interpretation": "Ở cung Tài Bạch, Cự Môn có thể được dùng như một biểu tượng để suy ngẫm về khả năng chất vấn và diễn đạt quan điểm trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu. Đồng thời nên quan sát mặt căng thẳng: dễ kéo dài tranh luận hoặc hiểu lầm. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng chất vấn và diễn đạt quan điểm khi đặt trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu."
+      },
+      "Tử Tức": {
+        "focus": "Ngôn ngữ, phân tích và sự phản biện trong chủ đề chăm sóc thế hệ sau hoặc các dự án được nuôi dưỡng dài hạn",
+        "interpretation": "Ở cung Tử Tức, Cự Môn có thể được dùng như một biểu tượng để suy ngẫm về khả năng chất vấn và diễn đạt quan điểm trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng. Đồng thời nên quan sát mặt căng thẳng: dễ kéo dài tranh luận hoặc hiểu lầm. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng chất vấn và diễn đạt quan điểm khi đặt trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng."
+      },
+      "Phu Thê": {
+        "focus": "Ngôn ngữ, phân tích và sự phản biện trong chủ đề giao tiếp, sự tương hỗ và thỏa thuận trong quan hệ đôi lứa",
+        "interpretation": "Ở cung Phu Thê, Cự Môn có thể được dùng như một biểu tượng để suy ngẫm về khả năng chất vấn và diễn đạt quan điểm trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm. Đồng thời nên quan sát mặt căng thẳng: dễ kéo dài tranh luận hoặc hiểu lầm. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng chất vấn và diễn đạt quan điểm khi đặt trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm."
+      },
+      "Huynh Đệ": {
+        "focus": "Ngôn ngữ, phân tích và sự phản biện trong chủ đề hợp tác, gắn kết và tôn trọng khác biệt với anh chị em hoặc người ngang hàng",
+        "interpretation": "Ở cung Huynh Đệ, Cự Môn có thể được dùng như một biểu tượng để suy ngẫm về khả năng chất vấn và diễn đạt quan điểm trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng. Đồng thời nên quan sát mặt căng thẳng: dễ kéo dài tranh luận hoặc hiểu lầm. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng chất vấn và diễn đạt quan điểm khi đặt trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng."
+      }
+    },
+    "Thiên Tướng": {
+      "Mệnh": {
+        "focus": "Công bằng, hỗ trợ và tinh thần phục vụ trong chủ đề cách hình thành bản sắc và phản ứng trước lựa chọn",
+        "interpretation": "Ở cung Mệnh, Thiên Tướng có thể được dùng như một biểu tượng để suy ngẫm về khả năng phối hợp và bảo vệ nguyên tắc chung trong cách định hình lựa chọn và phong cách ứng xử. Đồng thời nên quan sát mặt căng thẳng: dễ bị cuốn theo kỳ vọng người khác. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng phối hợp và bảo vệ nguyên tắc chung khi đặt trong cách định hình lựa chọn và phong cách ứng xử."
+      },
+      "Phụ Mẫu": {
+        "focus": "Công bằng, hỗ trợ và tinh thần phục vụ trong chủ đề giao tiếp, kỳ vọng và ranh giới với thế hệ trước",
+        "interpretation": "Ở cung Phụ Mẫu, Thiên Tướng có thể được dùng như một biểu tượng để suy ngẫm về khả năng phối hợp và bảo vệ nguyên tắc chung trong ranh giới, kỳ vọng và giao tiếp liên thế hệ. Đồng thời nên quan sát mặt căng thẳng: dễ bị cuốn theo kỳ vọng người khác. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng phối hợp và bảo vệ nguyên tắc chung khi đặt trong ranh giới, kỳ vọng và giao tiếp liên thế hệ."
+      },
+      "Phúc Đức": {
+        "focus": "Công bằng, hỗ trợ và tinh thần phục vụ trong chủ đề giá trị sống, sự nâng đỡ tinh thần và thói quen bền vững",
+        "interpretation": "Ở cung Phúc Đức, Thiên Tướng có thể được dùng như một biểu tượng để suy ngẫm về khả năng phối hợp và bảo vệ nguyên tắc chung trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững. Đồng thời nên quan sát mặt căng thẳng: dễ bị cuốn theo kỳ vọng người khác. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng phối hợp và bảo vệ nguyên tắc chung khi đặt trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững."
+      },
+      "Điền Trạch": {
+        "focus": "Công bằng, hỗ trợ và tinh thần phục vụ trong chủ đề quan hệ với không gian sống, nơi ở và việc gìn giữ tài sản",
+        "interpretation": "Ở cung Điền Trạch, Thiên Tướng có thể được dùng như một biểu tượng để suy ngẫm về khả năng phối hợp và bảo vệ nguyên tắc chung trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở. Đồng thời nên quan sát mặt căng thẳng: dễ bị cuốn theo kỳ vọng người khác. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng phối hợp và bảo vệ nguyên tắc chung khi đặt trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở."
+      },
+      "Quan Lộc": {
+        "focus": "Công bằng, hỗ trợ và tinh thần phục vụ trong chủ đề vai trò nghề nghiệp, trách nhiệm và cách hợp tác trong công việc",
+        "interpretation": "Ở cung Quan Lộc, Thiên Tướng có thể được dùng như một biểu tượng để suy ngẫm về khả năng phối hợp và bảo vệ nguyên tắc chung trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc. Đồng thời nên quan sát mặt căng thẳng: dễ bị cuốn theo kỳ vọng người khác. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng phối hợp và bảo vệ nguyên tắc chung khi đặt trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc."
+      },
+      "Nô Bộc": {
+        "focus": "Công bằng, hỗ trợ và tinh thần phục vụ trong chủ đề xây dựng mạng lưới, phân chia trách nhiệm và chọn cộng sự",
+        "interpretation": "Ở cung Nô Bộc, Thiên Tướng có thể được dùng như một biểu tượng để suy ngẫm về khả năng phối hợp và bảo vệ nguyên tắc chung trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều. Đồng thời nên quan sát mặt căng thẳng: dễ bị cuốn theo kỳ vọng người khác. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng phối hợp và bảo vệ nguyên tắc chung khi đặt trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều."
+      },
+      "Thiên Di": {
+        "focus": "Công bằng, hỗ trợ và tinh thần phục vụ trong chủ đề cách tiếp xúc môi trường mới và thích nghi bên ngoài",
+        "interpretation": "Ở cung Thiên Di, Thiên Tướng có thể được dùng như một biểu tượng để suy ngẫm về khả năng phối hợp và bảo vệ nguyên tắc chung trong cách thích ứng môi trường ngoài và gặp gỡ người mới. Đồng thời nên quan sát mặt căng thẳng: dễ bị cuốn theo kỳ vọng người khác. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng phối hợp và bảo vệ nguyên tắc chung khi đặt trong cách thích ứng môi trường ngoài và gặp gỡ người mới."
+      },
+      "Tật Ách": {
+        "focus": "Công bằng, hỗ trợ và tinh thần phục vụ trong chủ đề nhận biết áp lực, nhịp sinh hoạt và cách chăm sóc bản thân",
+        "interpretation": "Ở cung Tật Ách, Thiên Tướng có thể được dùng như một biểu tượng để suy ngẫm về khả năng phối hợp và bảo vệ nguyên tắc chung trong thói quen tự chăm sóc và phản ứng khi căng thẳng. Đồng thời nên quan sát mặt căng thẳng: dễ bị cuốn theo kỳ vọng người khác. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng phối hợp và bảo vệ nguyên tắc chung khi đặt trong thói quen tự chăm sóc và phản ứng khi căng thẳng."
+      },
+      "Tài Bạch": {
+        "focus": "Công bằng, hỗ trợ và tinh thần phục vụ trong chủ đề thói quen quản lý nguồn lực, lựa chọn chi tiêu và kế hoạch tài chính",
+        "interpretation": "Ở cung Tài Bạch, Thiên Tướng có thể được dùng như một biểu tượng để suy ngẫm về khả năng phối hợp và bảo vệ nguyên tắc chung trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu. Đồng thời nên quan sát mặt căng thẳng: dễ bị cuốn theo kỳ vọng người khác. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng phối hợp và bảo vệ nguyên tắc chung khi đặt trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu."
+      },
+      "Tử Tức": {
+        "focus": "Công bằng, hỗ trợ và tinh thần phục vụ trong chủ đề chăm sóc thế hệ sau hoặc các dự án được nuôi dưỡng dài hạn",
+        "interpretation": "Ở cung Tử Tức, Thiên Tướng có thể được dùng như một biểu tượng để suy ngẫm về khả năng phối hợp và bảo vệ nguyên tắc chung trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng. Đồng thời nên quan sát mặt căng thẳng: dễ bị cuốn theo kỳ vọng người khác. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng phối hợp và bảo vệ nguyên tắc chung khi đặt trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng."
+      },
+      "Phu Thê": {
+        "focus": "Công bằng, hỗ trợ và tinh thần phục vụ trong chủ đề giao tiếp, sự tương hỗ và thỏa thuận trong quan hệ đôi lứa",
+        "interpretation": "Ở cung Phu Thê, Thiên Tướng có thể được dùng như một biểu tượng để suy ngẫm về khả năng phối hợp và bảo vệ nguyên tắc chung trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm. Đồng thời nên quan sát mặt căng thẳng: dễ bị cuốn theo kỳ vọng người khác. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng phối hợp và bảo vệ nguyên tắc chung khi đặt trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm."
+      },
+      "Huynh Đệ": {
+        "focus": "Công bằng, hỗ trợ và tinh thần phục vụ trong chủ đề hợp tác, gắn kết và tôn trọng khác biệt với anh chị em hoặc người ngang hàng",
+        "interpretation": "Ở cung Huynh Đệ, Thiên Tướng có thể được dùng như một biểu tượng để suy ngẫm về khả năng phối hợp và bảo vệ nguyên tắc chung trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng. Đồng thời nên quan sát mặt căng thẳng: dễ bị cuốn theo kỳ vọng người khác. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng phối hợp và bảo vệ nguyên tắc chung khi đặt trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng."
+      }
+    },
+    "Thiên Lương": {
+      "Mệnh": {
+        "focus": "Bảo hộ, đạo lý và cân nhắc lâu dài trong chủ đề cách hình thành bản sắc và phản ứng trước lựa chọn",
+        "interpretation": "Ở cung Mệnh, Thiên Lương có thể được dùng như một biểu tượng để suy ngẫm về ý thức bảo trợ và cân nhắc đạo lý trong cách định hình lựa chọn và phong cách ứng xử. Đồng thời nên quan sát mặt căng thẳng: dễ tự đặt chuẩn mực quá cao. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức bảo trợ và cân nhắc đạo lý khi đặt trong cách định hình lựa chọn và phong cách ứng xử."
+      },
+      "Phụ Mẫu": {
+        "focus": "Bảo hộ, đạo lý và cân nhắc lâu dài trong chủ đề giao tiếp, kỳ vọng và ranh giới với thế hệ trước",
+        "interpretation": "Ở cung Phụ Mẫu, Thiên Lương có thể được dùng như một biểu tượng để suy ngẫm về ý thức bảo trợ và cân nhắc đạo lý trong ranh giới, kỳ vọng và giao tiếp liên thế hệ. Đồng thời nên quan sát mặt căng thẳng: dễ tự đặt chuẩn mực quá cao. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức bảo trợ và cân nhắc đạo lý khi đặt trong ranh giới, kỳ vọng và giao tiếp liên thế hệ."
+      },
+      "Phúc Đức": {
+        "focus": "Bảo hộ, đạo lý và cân nhắc lâu dài trong chủ đề giá trị sống, sự nâng đỡ tinh thần và thói quen bền vững",
+        "interpretation": "Ở cung Phúc Đức, Thiên Lương có thể được dùng như một biểu tượng để suy ngẫm về ý thức bảo trợ và cân nhắc đạo lý trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững. Đồng thời nên quan sát mặt căng thẳng: dễ tự đặt chuẩn mực quá cao. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức bảo trợ và cân nhắc đạo lý khi đặt trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững."
+      },
+      "Điền Trạch": {
+        "focus": "Bảo hộ, đạo lý và cân nhắc lâu dài trong chủ đề quan hệ với không gian sống, nơi ở và việc gìn giữ tài sản",
+        "interpretation": "Ở cung Điền Trạch, Thiên Lương có thể được dùng như một biểu tượng để suy ngẫm về ý thức bảo trợ và cân nhắc đạo lý trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở. Đồng thời nên quan sát mặt căng thẳng: dễ tự đặt chuẩn mực quá cao. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức bảo trợ và cân nhắc đạo lý khi đặt trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở."
+      },
+      "Quan Lộc": {
+        "focus": "Bảo hộ, đạo lý và cân nhắc lâu dài trong chủ đề vai trò nghề nghiệp, trách nhiệm và cách hợp tác trong công việc",
+        "interpretation": "Ở cung Quan Lộc, Thiên Lương có thể được dùng như một biểu tượng để suy ngẫm về ý thức bảo trợ và cân nhắc đạo lý trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc. Đồng thời nên quan sát mặt căng thẳng: dễ tự đặt chuẩn mực quá cao. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức bảo trợ và cân nhắc đạo lý khi đặt trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc."
+      },
+      "Nô Bộc": {
+        "focus": "Bảo hộ, đạo lý và cân nhắc lâu dài trong chủ đề xây dựng mạng lưới, phân chia trách nhiệm và chọn cộng sự",
+        "interpretation": "Ở cung Nô Bộc, Thiên Lương có thể được dùng như một biểu tượng để suy ngẫm về ý thức bảo trợ và cân nhắc đạo lý trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều. Đồng thời nên quan sát mặt căng thẳng: dễ tự đặt chuẩn mực quá cao. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức bảo trợ và cân nhắc đạo lý khi đặt trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều."
+      },
+      "Thiên Di": {
+        "focus": "Bảo hộ, đạo lý và cân nhắc lâu dài trong chủ đề cách tiếp xúc môi trường mới và thích nghi bên ngoài",
+        "interpretation": "Ở cung Thiên Di, Thiên Lương có thể được dùng như một biểu tượng để suy ngẫm về ý thức bảo trợ và cân nhắc đạo lý trong cách thích ứng môi trường ngoài và gặp gỡ người mới. Đồng thời nên quan sát mặt căng thẳng: dễ tự đặt chuẩn mực quá cao. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức bảo trợ và cân nhắc đạo lý khi đặt trong cách thích ứng môi trường ngoài và gặp gỡ người mới."
+      },
+      "Tật Ách": {
+        "focus": "Bảo hộ, đạo lý và cân nhắc lâu dài trong chủ đề nhận biết áp lực, nhịp sinh hoạt và cách chăm sóc bản thân",
+        "interpretation": "Ở cung Tật Ách, Thiên Lương có thể được dùng như một biểu tượng để suy ngẫm về ý thức bảo trợ và cân nhắc đạo lý trong thói quen tự chăm sóc và phản ứng khi căng thẳng. Đồng thời nên quan sát mặt căng thẳng: dễ tự đặt chuẩn mực quá cao. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức bảo trợ và cân nhắc đạo lý khi đặt trong thói quen tự chăm sóc và phản ứng khi căng thẳng."
+      },
+      "Tài Bạch": {
+        "focus": "Bảo hộ, đạo lý và cân nhắc lâu dài trong chủ đề thói quen quản lý nguồn lực, lựa chọn chi tiêu và kế hoạch tài chính",
+        "interpretation": "Ở cung Tài Bạch, Thiên Lương có thể được dùng như một biểu tượng để suy ngẫm về ý thức bảo trợ và cân nhắc đạo lý trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu. Đồng thời nên quan sát mặt căng thẳng: dễ tự đặt chuẩn mực quá cao. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức bảo trợ và cân nhắc đạo lý khi đặt trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu."
+      },
+      "Tử Tức": {
+        "focus": "Bảo hộ, đạo lý và cân nhắc lâu dài trong chủ đề chăm sóc thế hệ sau hoặc các dự án được nuôi dưỡng dài hạn",
+        "interpretation": "Ở cung Tử Tức, Thiên Lương có thể được dùng như một biểu tượng để suy ngẫm về ý thức bảo trợ và cân nhắc đạo lý trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng. Đồng thời nên quan sát mặt căng thẳng: dễ tự đặt chuẩn mực quá cao. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức bảo trợ và cân nhắc đạo lý khi đặt trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng."
+      },
+      "Phu Thê": {
+        "focus": "Bảo hộ, đạo lý và cân nhắc lâu dài trong chủ đề giao tiếp, sự tương hỗ và thỏa thuận trong quan hệ đôi lứa",
+        "interpretation": "Ở cung Phu Thê, Thiên Lương có thể được dùng như một biểu tượng để suy ngẫm về ý thức bảo trợ và cân nhắc đạo lý trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm. Đồng thời nên quan sát mặt căng thẳng: dễ tự đặt chuẩn mực quá cao. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức bảo trợ và cân nhắc đạo lý khi đặt trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm."
+      },
+      "Huynh Đệ": {
+        "focus": "Bảo hộ, đạo lý và cân nhắc lâu dài trong chủ đề hợp tác, gắn kết và tôn trọng khác biệt với anh chị em hoặc người ngang hàng",
+        "interpretation": "Ở cung Huynh Đệ, Thiên Lương có thể được dùng như một biểu tượng để suy ngẫm về ý thức bảo trợ và cân nhắc đạo lý trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng. Đồng thời nên quan sát mặt căng thẳng: dễ tự đặt chuẩn mực quá cao. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: ý thức bảo trợ và cân nhắc đạo lý khi đặt trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng."
+      }
+    },
+    "Thất Sát": {
+      "Mệnh": {
+        "focus": "Đột phá, độc lập và quyết định khó trong chủ đề cách hình thành bản sắc và phản ứng trước lựa chọn",
+        "interpretation": "Ở cung Mệnh, Thất Sát có thể được dùng như một biểu tượng để suy ngẫm về năng lực quyết đoán trước áp lực trong cách định hình lựa chọn và phong cách ứng xử. Đồng thời nên quan sát mặt căng thẳng: dễ tạo đứt gãy vì quá nhanh. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực quyết đoán trước áp lực khi đặt trong cách định hình lựa chọn và phong cách ứng xử."
+      },
+      "Phụ Mẫu": {
+        "focus": "Đột phá, độc lập và quyết định khó trong chủ đề giao tiếp, kỳ vọng và ranh giới với thế hệ trước",
+        "interpretation": "Ở cung Phụ Mẫu, Thất Sát có thể được dùng như một biểu tượng để suy ngẫm về năng lực quyết đoán trước áp lực trong ranh giới, kỳ vọng và giao tiếp liên thế hệ. Đồng thời nên quan sát mặt căng thẳng: dễ tạo đứt gãy vì quá nhanh. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực quyết đoán trước áp lực khi đặt trong ranh giới, kỳ vọng và giao tiếp liên thế hệ."
+      },
+      "Phúc Đức": {
+        "focus": "Đột phá, độc lập và quyết định khó trong chủ đề giá trị sống, sự nâng đỡ tinh thần và thói quen bền vững",
+        "interpretation": "Ở cung Phúc Đức, Thất Sát có thể được dùng như một biểu tượng để suy ngẫm về năng lực quyết đoán trước áp lực trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững. Đồng thời nên quan sát mặt căng thẳng: dễ tạo đứt gãy vì quá nhanh. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực quyết đoán trước áp lực khi đặt trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững."
+      },
+      "Điền Trạch": {
+        "focus": "Đột phá, độc lập và quyết định khó trong chủ đề quan hệ với không gian sống, nơi ở và việc gìn giữ tài sản",
+        "interpretation": "Ở cung Điền Trạch, Thất Sát có thể được dùng như một biểu tượng để suy ngẫm về năng lực quyết đoán trước áp lực trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở. Đồng thời nên quan sát mặt căng thẳng: dễ tạo đứt gãy vì quá nhanh. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực quyết đoán trước áp lực khi đặt trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở."
+      },
+      "Quan Lộc": {
+        "focus": "Đột phá, độc lập và quyết định khó trong chủ đề vai trò nghề nghiệp, trách nhiệm và cách hợp tác trong công việc",
+        "interpretation": "Ở cung Quan Lộc, Thất Sát có thể được dùng như một biểu tượng để suy ngẫm về năng lực quyết đoán trước áp lực trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc. Đồng thời nên quan sát mặt căng thẳng: dễ tạo đứt gãy vì quá nhanh. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực quyết đoán trước áp lực khi đặt trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc."
+      },
+      "Nô Bộc": {
+        "focus": "Đột phá, độc lập và quyết định khó trong chủ đề xây dựng mạng lưới, phân chia trách nhiệm và chọn cộng sự",
+        "interpretation": "Ở cung Nô Bộc, Thất Sát có thể được dùng như một biểu tượng để suy ngẫm về năng lực quyết đoán trước áp lực trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều. Đồng thời nên quan sát mặt căng thẳng: dễ tạo đứt gãy vì quá nhanh. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực quyết đoán trước áp lực khi đặt trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều."
+      },
+      "Thiên Di": {
+        "focus": "Đột phá, độc lập và quyết định khó trong chủ đề cách tiếp xúc môi trường mới và thích nghi bên ngoài",
+        "interpretation": "Ở cung Thiên Di, Thất Sát có thể được dùng như một biểu tượng để suy ngẫm về năng lực quyết đoán trước áp lực trong cách thích ứng môi trường ngoài và gặp gỡ người mới. Đồng thời nên quan sát mặt căng thẳng: dễ tạo đứt gãy vì quá nhanh. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực quyết đoán trước áp lực khi đặt trong cách thích ứng môi trường ngoài và gặp gỡ người mới."
+      },
+      "Tật Ách": {
+        "focus": "Đột phá, độc lập và quyết định khó trong chủ đề nhận biết áp lực, nhịp sinh hoạt và cách chăm sóc bản thân",
+        "interpretation": "Ở cung Tật Ách, Thất Sát có thể được dùng như một biểu tượng để suy ngẫm về năng lực quyết đoán trước áp lực trong thói quen tự chăm sóc và phản ứng khi căng thẳng. Đồng thời nên quan sát mặt căng thẳng: dễ tạo đứt gãy vì quá nhanh. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực quyết đoán trước áp lực khi đặt trong thói quen tự chăm sóc và phản ứng khi căng thẳng."
+      },
+      "Tài Bạch": {
+        "focus": "Đột phá, độc lập và quyết định khó trong chủ đề thói quen quản lý nguồn lực, lựa chọn chi tiêu và kế hoạch tài chính",
+        "interpretation": "Ở cung Tài Bạch, Thất Sát có thể được dùng như một biểu tượng để suy ngẫm về năng lực quyết đoán trước áp lực trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu. Đồng thời nên quan sát mặt căng thẳng: dễ tạo đứt gãy vì quá nhanh. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực quyết đoán trước áp lực khi đặt trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu."
+      },
+      "Tử Tức": {
+        "focus": "Đột phá, độc lập và quyết định khó trong chủ đề chăm sóc thế hệ sau hoặc các dự án được nuôi dưỡng dài hạn",
+        "interpretation": "Ở cung Tử Tức, Thất Sát có thể được dùng như một biểu tượng để suy ngẫm về năng lực quyết đoán trước áp lực trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng. Đồng thời nên quan sát mặt căng thẳng: dễ tạo đứt gãy vì quá nhanh. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực quyết đoán trước áp lực khi đặt trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng."
+      },
+      "Phu Thê": {
+        "focus": "Đột phá, độc lập và quyết định khó trong chủ đề giao tiếp, sự tương hỗ và thỏa thuận trong quan hệ đôi lứa",
+        "interpretation": "Ở cung Phu Thê, Thất Sát có thể được dùng như một biểu tượng để suy ngẫm về năng lực quyết đoán trước áp lực trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm. Đồng thời nên quan sát mặt căng thẳng: dễ tạo đứt gãy vì quá nhanh. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực quyết đoán trước áp lực khi đặt trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm."
+      },
+      "Huynh Đệ": {
+        "focus": "Đột phá, độc lập và quyết định khó trong chủ đề hợp tác, gắn kết và tôn trọng khác biệt với anh chị em hoặc người ngang hàng",
+        "interpretation": "Ở cung Huynh Đệ, Thất Sát có thể được dùng như một biểu tượng để suy ngẫm về năng lực quyết đoán trước áp lực trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng. Đồng thời nên quan sát mặt căng thẳng: dễ tạo đứt gãy vì quá nhanh. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: năng lực quyết đoán trước áp lực khi đặt trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng."
+      }
+    },
+    "Phá Quân": {
+      "Mệnh": {
+        "focus": "Đổi mới, tái cấu trúc và phá bỏ lối cũ trong chủ đề cách hình thành bản sắc và phản ứng trước lựa chọn",
+        "interpretation": "Ở cung Mệnh, Phá Quân có thể được dùng như một biểu tượng để suy ngẫm về khả năng cải tổ và bỏ lối mòn trong cách định hình lựa chọn và phong cách ứng xử. Đồng thời nên quan sát mặt căng thẳng: dễ phá cấu trúc trước khi có phương án thay. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng cải tổ và bỏ lối mòn khi đặt trong cách định hình lựa chọn và phong cách ứng xử."
+      },
+      "Phụ Mẫu": {
+        "focus": "Đổi mới, tái cấu trúc và phá bỏ lối cũ trong chủ đề giao tiếp, kỳ vọng và ranh giới với thế hệ trước",
+        "interpretation": "Ở cung Phụ Mẫu, Phá Quân có thể được dùng như một biểu tượng để suy ngẫm về khả năng cải tổ và bỏ lối mòn trong ranh giới, kỳ vọng và giao tiếp liên thế hệ. Đồng thời nên quan sát mặt căng thẳng: dễ phá cấu trúc trước khi có phương án thay. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng cải tổ và bỏ lối mòn khi đặt trong ranh giới, kỳ vọng và giao tiếp liên thế hệ."
+      },
+      "Phúc Đức": {
+        "focus": "Đổi mới, tái cấu trúc và phá bỏ lối cũ trong chủ đề giá trị sống, sự nâng đỡ tinh thần và thói quen bền vững",
+        "interpretation": "Ở cung Phúc Đức, Phá Quân có thể được dùng như một biểu tượng để suy ngẫm về khả năng cải tổ và bỏ lối mòn trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững. Đồng thời nên quan sát mặt căng thẳng: dễ phá cấu trúc trước khi có phương án thay. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng cải tổ và bỏ lối mòn khi đặt trong hệ giá trị, điểm tựa tinh thần và sinh hoạt bền vững."
+      },
+      "Điền Trạch": {
+        "focus": "Đổi mới, tái cấu trúc và phá bỏ lối cũ trong chủ đề quan hệ với không gian sống, nơi ở và việc gìn giữ tài sản",
+        "interpretation": "Ở cung Điền Trạch, Phá Quân có thể được dùng như một biểu tượng để suy ngẫm về khả năng cải tổ và bỏ lối mòn trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở. Đồng thời nên quan sát mặt căng thẳng: dễ phá cấu trúc trước khi có phương án thay. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng cải tổ và bỏ lối mòn khi đặt trong không gian sống, nền tảng gia đình và việc quản lý tài sản nhà ở."
+      },
+      "Quan Lộc": {
+        "focus": "Đổi mới, tái cấu trúc và phá bỏ lối cũ trong chủ đề vai trò nghề nghiệp, trách nhiệm và cách hợp tác trong công việc",
+        "interpretation": "Ở cung Quan Lộc, Phá Quân có thể được dùng như một biểu tượng để suy ngẫm về khả năng cải tổ và bỏ lối mòn trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc. Đồng thời nên quan sát mặt căng thẳng: dễ phá cấu trúc trước khi có phương án thay. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng cải tổ và bỏ lối mòn khi đặt trong mục tiêu nghề nghiệp, trách nhiệm và môi trường làm việc."
+      },
+      "Nô Bộc": {
+        "focus": "Đổi mới, tái cấu trúc và phá bỏ lối cũ trong chủ đề xây dựng mạng lưới, phân chia trách nhiệm và chọn cộng sự",
+        "interpretation": "Ở cung Nô Bộc, Phá Quân có thể được dùng như một biểu tượng để suy ngẫm về khả năng cải tổ và bỏ lối mòn trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều. Đồng thời nên quan sát mặt căng thẳng: dễ phá cấu trúc trước khi có phương án thay. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng cải tổ và bỏ lối mòn khi đặt trong quan hệ đồng nghiệp, bạn bè và sự hỗ trợ hai chiều."
+      },
+      "Thiên Di": {
+        "focus": "Đổi mới, tái cấu trúc và phá bỏ lối cũ trong chủ đề cách tiếp xúc môi trường mới và thích nghi bên ngoài",
+        "interpretation": "Ở cung Thiên Di, Phá Quân có thể được dùng như một biểu tượng để suy ngẫm về khả năng cải tổ và bỏ lối mòn trong cách thích ứng môi trường ngoài và gặp gỡ người mới. Đồng thời nên quan sát mặt căng thẳng: dễ phá cấu trúc trước khi có phương án thay. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng cải tổ và bỏ lối mòn khi đặt trong cách thích ứng môi trường ngoài và gặp gỡ người mới."
+      },
+      "Tật Ách": {
+        "focus": "Đổi mới, tái cấu trúc và phá bỏ lối cũ trong chủ đề nhận biết áp lực, nhịp sinh hoạt và cách chăm sóc bản thân",
+        "interpretation": "Ở cung Tật Ách, Phá Quân có thể được dùng như một biểu tượng để suy ngẫm về khả năng cải tổ và bỏ lối mòn trong thói quen tự chăm sóc và phản ứng khi căng thẳng. Đồng thời nên quan sát mặt căng thẳng: dễ phá cấu trúc trước khi có phương án thay. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng cải tổ và bỏ lối mòn khi đặt trong thói quen tự chăm sóc và phản ứng khi căng thẳng."
+      },
+      "Tài Bạch": {
+        "focus": "Đổi mới, tái cấu trúc và phá bỏ lối cũ trong chủ đề thói quen quản lý nguồn lực, lựa chọn chi tiêu và kế hoạch tài chính",
+        "interpretation": "Ở cung Tài Bạch, Phá Quân có thể được dùng như một biểu tượng để suy ngẫm về khả năng cải tổ và bỏ lối mòn trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu. Đồng thời nên quan sát mặt căng thẳng: dễ phá cấu trúc trước khi có phương án thay. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng cải tổ và bỏ lối mòn khi đặt trong cách xây dựng ngân sách, tích lũy và lựa chọn chi tiêu."
+      },
+      "Tử Tức": {
+        "focus": "Đổi mới, tái cấu trúc và phá bỏ lối cũ trong chủ đề chăm sóc thế hệ sau hoặc các dự án được nuôi dưỡng dài hạn",
+        "interpretation": "Ở cung Tử Tức, Phá Quân có thể được dùng như một biểu tượng để suy ngẫm về khả năng cải tổ và bỏ lối mòn trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng. Đồng thời nên quan sát mặt căng thẳng: dễ phá cấu trúc trước khi có phương án thay. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng cải tổ và bỏ lối mòn khi đặt trong kỳ vọng với thế hệ sau và vai trò nuôi dưỡng."
+      },
+      "Phu Thê": {
+        "focus": "Đổi mới, tái cấu trúc và phá bỏ lối cũ trong chủ đề giao tiếp, sự tương hỗ và thỏa thuận trong quan hệ đôi lứa",
+        "interpretation": "Ở cung Phu Thê, Phá Quân có thể được dùng như một biểu tượng để suy ngẫm về khả năng cải tổ và bỏ lối mòn trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm. Đồng thời nên quan sát mặt căng thẳng: dễ phá cấu trúc trước khi có phương án thay. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng cải tổ và bỏ lối mòn khi đặt trong cách thương lượng, đồng hành và duy trì ranh giới trong tình cảm."
+      },
+      "Huynh Đệ": {
+        "focus": "Đổi mới, tái cấu trúc và phá bỏ lối cũ trong chủ đề hợp tác, gắn kết và tôn trọng khác biệt với anh chị em hoặc người ngang hàng",
+        "interpretation": "Ở cung Huynh Đệ, Phá Quân có thể được dùng như một biểu tượng để suy ngẫm về khả năng cải tổ và bỏ lối mòn trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng. Đồng thời nên quan sát mặt căng thẳng: dễ phá cấu trúc trước khi có phương án thay. Đây là khung tham khảo văn hóa, không phải dự báo cá nhân hay kết luận tất định.",
+        "potential": "Góc nhìn xây dựng: khả năng cải tổ và bỏ lối mòn khi đặt trong cách giữ liên hệ và phân chia trách nhiệm giữa người ngang hàng."
+      }
+    }
+  }
+}

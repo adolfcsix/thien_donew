@@ -1,0 +1,150 @@
+/* THIÊN ĐỒ V11 · Mệnh bàn giấy ngà.
+   All geometry and astrology values remain sourced from ChartBoard/engine.
+   Explicit board-skin scope prevents the paper treatment from leaking into the app. */
+.chart-skin-switch{display:inline-flex;gap:5px;align-items:center;flex-wrap:wrap;border-right:1px solid var(--line-strong);padding-right:12px;margin-right:4px}
+.chart-skin-switch>span{font-size:10px;letter-spacing:.10em;color:var(--muted);font-weight:700;margin-right:4px}
+.chart-skin-switch button{border:1px solid var(--line-strong);color:var(--muted);background:var(--panel);border-radius:5px;padding:9px 10px;min-height:40px;font-size:12px;line-height:1.35;font-weight:600}
+.chart-skin-switch button[aria-pressed="true"]{color:var(--gold);border-color:var(--gold);background:rgba(197,161,106,.11)}
+.chart-skin-switch button:hover{border-color:var(--gold)}
+.chart-room-layout[data-board-skin="heritage"] .chart-room-canvas{--paper-ink:#27382f;--paper-secondary:#516052;--paper-muted:#707768;--paper-edge:#9eaa96;--paper-jade:#295e50;--paper-gold:#987341}
+.chart-room-layout[data-board-skin="heritage"] .board-scroll{
+  background:linear-gradient(145deg,#314a3e,#1d362c 62%,#344d3b);padding:9px;border:1px solid #8e805e;
+  border-radius:3px;box-shadow:0 15px 35px rgba(0,0,0,.20),inset 0 0 0 2px rgba(215,180,121,.15)
+}
+.chart-room-layout[data-board-skin="heritage"] .atlas-grid{
+  min-width:940px;grid-template-rows:repeat(4,minmax(218px,auto));gap:0;padding:6px;
+  border:2px solid #7a8e7b;background:#f6f0df;
+  box-shadow:inset 0 0 0 2px #e5d9bd,0 0 0 1px rgba(230,203,148,.26)
+}
+.chart-room-layout[data-board-skin="heritage"] .atlas-house.house{
+  border:1px solid #b5baa8;border-radius:0;box-shadow:none;transform:none;
+  color:var(--paper-ink);background:linear-gradient(145deg,rgba(255,255,255,.30),transparent 65%),#faf7ed;
+  transition:background-color .12s ease,border-color .12s ease,box-shadow .12s ease;
+  overflow:visible;min-height:218px
+}
+.chart-room-layout[data-board-skin="heritage"] .atlas-house.house::before{
+  content:"";position:absolute;inset:0 auto 0 0;width:3px;
+  background:color-mix(in srgb,var(--house-accent,#6a947b) 62%,#486a56);opacity:.62
+}
+.chart-room-layout[data-board-skin="heritage"] .atlas-house.house.selected::after{font-size:11px;color:#9b783d;top:2px;right:4px}
+.chart-room-layout[data-board-skin="heritage"] .atlas-house.house.selected:not(.visual-focus){
+  border-color:#a99a76;box-shadow:inset 0 0 0 1px rgba(150,120,68,.12);
+  background:linear-gradient(150deg,#f9f2df,#fdf9f0 65%)
+}
+.chart-room-layout[data-board-skin="heritage"] .atlas-house.house.visual-focus,
+.chart-room-layout[data-board-skin="heritage"] .atlas-house.house:hover{
+  background:linear-gradient(145deg,#f1ead6,#fef9ed 65%);border-color:#628b73;
+  box-shadow:inset 0 0 0 2px rgba(53,105,80,.30);transform:none
+}
+.chart-room-layout[data-board-skin="heritage"] .atlas-house.house.related-tam-hop:not(.visual-focus){
+  border-color:#58957b;background:#f1f7ed
+}
+.chart-room-layout[data-board-skin="heritage"] .atlas-house.house.related-doi-cung:not(.visual-focus){
+  border-color:#7597b6;background:#f0f4f6
+}
+.chart-room-layout[data-board-skin="heritage"] .atlas-house-header{
+  background:linear-gradient(90deg,rgba(55,92,71,.085),transparent 70%);border-bottom:1px solid #c5c8b7;
+  padding:7px 12px 7px 14px;min-height:38px!important;gap:5px
+}
+.chart-room-layout[data-board-skin="heritage"] .atlas-house-header .atlas-branch{
+  font-size:11px;letter-spacing:0;color:#815f35;font-weight:600
+}
+.chart-room-layout[data-board-skin="heritage"] .atlas-house-header strong{
+  color:#293d32;font-family:var(--font-display);font-size:15px;line-height:1.35;font-weight:700
+}
+.chart-room-layout[data-board-skin="heritage"] .atlas-house-header em{color:#8b5a34;border-color:#c9b38e}
+.chart-room-layout[data-board-skin="heritage"] .atlas-house-content{padding:10px 12px 6px 14px;gap:7px}
+.chart-room-layout[data-board-skin="heritage"] .atlas-star-group{gap:3px}
+.chart-room-layout[data-board-skin="heritage"] .atlas-group-label{color:#747d6e;font-size:9px;line-height:1.4;letter-spacing:.06em}
+.chart-room-layout[data-board-skin="heritage"] .atlas-star{color:#526557;font-size:11.5px;line-height:1.65;overflow-wrap:normal;word-break:normal}
+.chart-room-layout[data-board-skin="heritage"] .atlas-main .atlas-star{color:#2d5c4b;font-size:13.2px;font-weight:700}
+.chart-room-layout[data-board-skin="heritage"] .atlas-gold .atlas-star{color:#9a6028;font-weight:700}
+.chart-room-layout[data-board-skin="heritage"] .atlas-year .atlas-star{color:#426b8b}
+.chart-room-layout[data-board-skin="heritage"] .atlas-group-empty{color:#677666}
+.chart-room-layout[data-board-skin="heritage"] .atlas-house-bottom{
+  min-height:34px;padding:5px 10px 5px 13px;border-top:1px solid #cbd0be;background:rgba(213,206,180,.12)
+}
+.chart-room-layout[data-board-skin="heritage"] .atlas-age{color:#586c5a;font-size:10px;letter-spacing:0}
+.chart-room-layout[data-board-skin="heritage"] .atlas-age b{color:#815a31;font-size:11px}
+.chart-room-layout[data-board-skin="heritage"] .atlas-cycle-pills i{color:#4c6657;background:#f2eddd;border-color:#c9cdbc}
+.chart-room-layout[data-board-skin="heritage"] .atlas-markers i{color:#305d4a;background:#edf1e5;border-color:#bac8b4}
+.chart-room-layout[data-board-skin="heritage"] .atlas-center.board-center{
+  background:radial-gradient(ellipse at 50% 6%,rgba(202,183,134,.15),transparent 54%),#f9f5e9;
+  border:1px solid #9d9f8a;box-shadow:inset 0 0 0 5px #f9f5e9,inset 0 0 0 6px #d0c5a7;
+  padding:22px 30px 15px;color:var(--paper-ink)
+}
+.chart-room-layout[data-board-skin="heritage"] .atlas-center-upper{border-bottom-color:#d5ccb5;padding-bottom:10px}
+.chart-room-layout[data-board-skin="heritage"] .atlas-center-overline{color:#98733c!important;letter-spacing:.14em!important}
+.chart-room-layout[data-board-skin="heritage"] .atlas-center-seal{
+  width:48px;height:48px;margin:6px 0 0;background:#f0e7d4;color:#926b37!important;
+  border-color:#bfa87d;font-size:32px!important
+}
+.chart-room-layout[data-board-skin="heritage"] .atlas-center h3{color:#315849;letter-spacing:.24em;font-size:25px}
+.chart-room-layout[data-board-skin="heritage"] .atlas-center-upper p{color:#807050;font-size:10px}
+.chart-room-layout[data-board-skin="heritage"] .atlas-center-data>div{border-bottom-color:#dad2be;background:rgba(249,245,233,.92)}
+.chart-room-layout[data-board-skin="heritage"] .atlas-center-data>div:nth-child(odd){border-right-color:#dad2be}
+.chart-room-layout[data-board-skin="heritage"] .atlas-center-data span{color:#697268!important;font-size:10.5px!important}
+.chart-room-layout[data-board-skin="heritage"] .atlas-center-data strong{color:#2a4034;font-size:12px}
+.chart-room-layout[data-board-skin="heritage"] .atlas-center-foot{color:#626d60}
+.chart-room-layout[data-board-skin="heritage"] .atlas-center-foot strong{color:#886936}
+.chart-room-layout[data-board-skin="heritage"] .atlas-center-disclaimer{color:#727667!important;font-size:10px!important}
+.chart-room-layout[data-board-skin="heritage"] .chart-relation-tam-hop path{stroke:#478c72}
+.chart-room-layout[data-board-skin="heritage"] .chart-relation-doi-cung path{stroke:#648cb1}
+.chart-room-layout[data-board-skin="heritage"] .chart-relation-path path{stroke-width:1.8;opacity:.72}
+.chart-room-layout[data-board-skin="heritage"] .chart-relation-path circle{opacity:.7}
+/* Jade skin retains the app's original visual language for advanced readers. */
+.chart-room-layout[data-board-skin="jade"] .atlas-grid{border-radius:3px}
+.chart-room-layout[data-board-skin="jade"] .atlas-house.house{border-radius:2px}
+@media(max-width:1080px){.chart-skin-switch{flex:1 1 100%;border-right:0;border-bottom:1px solid var(--line);padding:0 0 9px;margin:0 0 3px}}
+@media(max-width:600px){.chart-skin-switch button{flex:1 1 120px}.chart-room-layout[data-board-skin="heritage"] .atlas-grid{min-width:940px}}
+@media(prefers-reduced-motion:reduce){.chart-room-layout[data-board-skin="heritage"] .atlas-house.house{transition:none}}
+
+
+/* V11 / giai đoạn 2 — hierarchy inside each palace, shared by heritage and jade. */
+.atlas-main-star-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:4px 6px;min-width:0}
+.atlas-main-star-entry{display:inline-flex;min-width:0;align-items:baseline;justify-content:flex-start;gap:4px;white-space:normal;overflow-wrap:anywhere;line-height:1.4}
+.atlas-main-star-entry strong{min-width:0;font-family:var(--font-ui);font-size:clamp(11px,1.04vw,13px);font-weight:750;color:var(--text)}
+.atlas-main-star-empty{grid-column:1/-1;font-family:var(--font-display);font-style:italic;color:var(--muted);font-size:12px;line-height:1.6}
+.atlas-strength-badge{display:inline-flex;flex:0 0 auto;justify-content:center;align-items:center;min-width:18px;height:18px;border-radius:3px;padding:1px 3px;font:750 10px/1 var(--font-ui);font-style:normal;letter-spacing:0;border:1px solid currentColor}
+.atlas-strength-m{color:#248b6d;background:rgba(45,159,119,.1)}
+.atlas-strength-v{color:#398da9;background:rgba(50,141,172,.1)}
+.atlas-strength-d{color:#a47d32;background:rgba(172,132,59,.1)}
+.atlas-strength-b{color:#787f73;background:rgba(146,153,140,.1)}
+.atlas-strength-h{color:#c2705f;background:rgba(187,94,71,.1)}
+.atlas-strength-legend{display:flex;align-items:center;flex-wrap:wrap;gap:5px 7px;border:1px solid var(--line);border-radius:6px;padding:8px 12px;margin:0 0 11px;background:var(--panel-alt)}
+.atlas-strength-legend>span{font-weight:700;font-size:10px;letter-spacing:.065em;color:var(--gold);margin-right:8px}
+.atlas-strength-legend small{font-size:11px;color:var(--muted)}
+.atlas-strength-legend .atlas-legend-note{margin-left:auto;font-size:10px}
+.atlas-house-assist{gap:7px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.atlas-house-assist .atlas-star-group{min-width:0}
+.atlas-house-assist .atlas-star-items{gap:3px 5px;line-height:1.5}
+.atlas-house-assist .atlas-star{font-size:10.5px;white-space:normal;overflow-wrap:break-word}
+.chart-room-layout[data-board-skin="heritage"] .atlas-house-content{padding:10px 10px 6px 12px;gap:8px}
+.chart-room-layout[data-board-skin="heritage"] .atlas-main-star-entry strong{color:#245d49;font-size:12.5px}
+.chart-room-layout[data-board-skin="heritage"] .atlas-main-star-empty{color:#596c61}
+.chart-room-layout[data-board-skin="heritage"] .atlas-strength-m{color:#24735d;background:#e4f1e5}
+.chart-room-layout[data-board-skin="heritage"] .atlas-strength-v{color:#346b83;background:#e4eff1}
+.chart-room-layout[data-board-skin="heritage"] .atlas-strength-d{color:#916c2f;background:#f5ead2}
+.chart-room-layout[data-board-skin="heritage"] .atlas-strength-b{color:#686e66;background:#edebe2}
+.chart-room-layout[data-board-skin="heritage"] .atlas-strength-h{color:#a75344;background:#f7e6de}
+@media(max-width:1100px){.atlas-strength-legend .atlas-legend-note{margin-left:0;flex-basis:100%}}
+@media(max-width:600px){.atlas-strength-legend{gap:5px 6px}.atlas-strength-legend>span{flex-basis:100%}}
+
+/* Keep visual guides understated against aged ivory; no ink overlays the text. */
+.chart-room-layout[data-board-skin="heritage"] .chart-relation-path .chart-relation-stroke{stroke-width:1.45;opacity:.82}
+.chart-room-layout[data-board-skin="heritage"] .chart-relation-path .chart-relation-halo{opacity:.08}
+
+/* V11.2: restrained silk guides around the central identity, never across text. */
+.chart-room-layout[data-board-skin="heritage"] .chart-relation-path .chart-relation-stroke{stroke-width:1.3;opacity:.86}
+.chart-room-layout[data-board-skin="heritage"] .chart-relation-path .chart-relation-halo{stroke-width:4.5;opacity:.065}
+.chart-room-layout[data-board-skin="heritage"] .atlas-house.house.visual-focus{box-shadow:inset 0 0 0 1px rgba(47,103,79,.34)}
+
+/* V11.3: straight traditional guides; subtle natural ink over antique paper. */
+.chart-room-layout[data-board-skin="heritage"] .chart-relation-tam-hop .chart-relation-stroke {stroke:#247c66;opacity:.73;stroke-width:1.55;stroke-dasharray:none}
+.chart-room-layout[data-board-skin="heritage"] .chart-relation-doi-cung .chart-relation-stroke {stroke:#ab793d;opacity:.77;stroke-width:1.55;stroke-dasharray:5 6}
+.chart-room-layout[data-board-skin="heritage"] .chart-relation-tam-hop .chart-relation-halo {stroke:#247c66;opacity:.055}
+.chart-room-layout[data-board-skin="heritage"] .chart-relation-doi-cung .chart-relation-halo {stroke:#ab793d;opacity:.055;stroke-dasharray:none}
+.chart-room-layout[data-board-skin="heritage"] .chart-relation-tam-hop circle {fill:#247c66}
+.chart-room-layout[data-board-skin="heritage"] .chart-relation-doi-cung circle {fill:#ab793d}
+.chart-room-layout[data-board-skin="heritage"] .chart-line-legend .chart-line-solid {border-color:#247c66}
+.chart-room-layout[data-board-skin="heritage"] .chart-line-legend .chart-line-dashed {border-color:#ab793d}

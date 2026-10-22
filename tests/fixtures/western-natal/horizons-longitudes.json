@@ -1,0 +1,224 @@
+{
+  "source": "NASA/JPL Horizons API",
+  "quantity": 31,
+  "center": "500@399",
+  "timeType": "UT",
+  "retrievedAt": "2026-10-13",
+  "dates": [
+    "1900-01-01T00:00:00Z",
+    "2000-01-01T12:00:00Z",
+    "2026-10-13T00:00:00Z"
+  ],
+  "records": [
+    {
+      "body": "Sun",
+      "utc": "1900-01-01T00:00:00Z",
+      "longitude": 280.1532941,
+      "latitude": 6.48e-05,
+      "command": "10"
+    },
+    {
+      "body": "Sun",
+      "utc": "2000-01-01T12:00:00Z",
+      "longitude": 280.3689092,
+      "latitude": 0.0002381,
+      "command": "10"
+    },
+    {
+      "body": "Sun",
+      "utc": "2026-10-13T00:00:00Z",
+      "longitude": 199.6758838,
+      "latitude": -0.0001292,
+      "command": "10"
+    },
+    {
+      "body": "Moon",
+      "utc": "1900-01-01T00:00:00Z",
+      "longitude": 272.4162663,
+      "latitude": 1.1082671,
+      "command": "301"
+    },
+    {
+      "body": "Moon",
+      "utc": "2000-01-01T12:00:00Z",
+      "longitude": 223.323786,
+      "latitude": 5.1707422,
+      "command": "301"
+    },
+    {
+      "body": "Moon",
+      "utc": "2026-10-13T00:00:00Z",
+      "longitude": 227.1589373,
+      "latitude": -4.9981182,
+      "command": "301"
+    },
+    {
+      "body": "Mercury",
+      "utc": "1900-01-01T00:00:00Z",
+      "longitude": 258.9977026,
+      "latitude": 1.126422,
+      "command": "199"
+    },
+    {
+      "body": "Mercury",
+      "utc": "2000-01-01T12:00:00Z",
+      "longitude": 271.8892699,
+      "latitude": -0.994819,
+      "command": "199"
+    },
+    {
+      "body": "Mercury",
+      "utc": "2026-10-13T00:00:00Z",
+      "longitude": 224.6672414,
+      "latitude": -2.941681,
+      "command": "199"
+    },
+    {
+      "body": "Venus",
+      "utc": "1900-01-01T00:00:00Z",
+      "longitude": 306.3743725,
+      "latitude": -1.6830905,
+      "command": "299"
+    },
+    {
+      "body": "Venus",
+      "utc": "2000-01-01T12:00:00Z",
+      "longitude": 241.5657794,
+      "latitude": 2.0663548,
+      "command": "299"
+    },
+    {
+      "body": "Venus",
+      "utc": "2026-10-13T00:00:00Z",
+      "longitude": 216.6411663,
+      "latitude": -7.5634055,
+      "command": "299"
+    },
+    {
+      "body": "Mars",
+      "utc": "1900-01-01T00:00:00Z",
+      "longitude": 283.8676754,
+      "latitude": -0.9254021,
+      "command": "499"
+    },
+    {
+      "body": "Mars",
+      "utc": "2000-01-01T12:00:00Z",
+      "longitude": 327.9632921,
+      "latitude": -1.0677752,
+      "command": "499"
+    },
+    {
+      "body": "Mars",
+      "utc": "2026-10-13T00:00:00Z",
+      "longitude": 128.5292279,
+      "latitude": 1.2283024,
+      "command": "499"
+    },
+    {
+      "body": "Jupiter",
+      "utc": "1900-01-01T00:00:00Z",
+      "longitude": 241.135883,
+      "latitude": 0.8142907,
+      "command": "599"
+    },
+    {
+      "body": "Jupiter",
+      "utc": "2000-01-01T12:00:00Z",
+      "longitude": 25.2530685,
+      "latitude": -1.2621868,
+      "command": "599"
+    },
+    {
+      "body": "Jupiter",
+      "utc": "2026-10-13T00:00:00Z",
+      "longitude": 141.6310264,
+      "latitude": 0.6301561,
+      "command": "599"
+    },
+    {
+      "body": "Saturn",
+      "utc": "1900-01-01T00:00:00Z",
+      "longitude": 267.7167387,
+      "latitude": 1.0076898,
+      "command": "699"
+    },
+    {
+      "body": "Saturn",
+      "utc": "2000-01-01T12:00:00Z",
+      "longitude": 40.3956366,
+      "latitude": -2.4448533,
+      "command": "699"
+    },
+    {
+      "body": "Saturn",
+      "utc": "2026-10-13T00:00:00Z",
+      "longitude": 10.6389181,
+      "latitude": -2.712548,
+      "command": "699"
+    },
+    {
+      "body": "Uranus",
+      "utc": "1900-01-01T00:00:00Z",
+      "longitude": 250.1391591,
+      "latitude": 0.0634029,
+      "command": "799"
+    },
+    {
+      "body": "Uranus",
+      "utc": "2000-01-01T12:00:00Z",
+      "longitude": 314.809168,
+      "latitude": -0.658324,
+      "command": "799"
+    },
+    {
+      "body": "Uranus",
+      "utc": "2026-10-13T00:00:00Z",
+      "longitude": 65.2712843,
+      "latitude": -0.1528083,
+      "command": "799"
+    },
+    {
+      "body": "Neptune",
+      "utc": "1900-01-01T00:00:00Z",
+      "longitude": 85.2186599,
+      "latitude": -1.2996533,
+      "command": "899"
+    },
+    {
+      "body": "Neptune",
+      "utc": "2000-01-01T12:00:00Z",
+      "longitude": 303.1930007,
+      "latitude": 0.2350026,
+      "command": "899"
+    },
+    {
+      "body": "Neptune",
+      "utc": "2026-10-13T00:00:00Z",
+      "longitude": 2.537366,
+      "latitude": -1.4195413,
+      "command": "899"
+    },
+    {
+      "body": "Pluto",
+      "utc": "1900-01-01T00:00:00Z",
+      "longitude": 75.2513936,
+      "latitude": -9.7769714,
+      "command": "999"
+    },
+    {
+      "body": "Pluto",
+      "utc": "2000-01-01T12:00:00Z",
+      "longitude": 251.4547644,
+      "latitude": 10.8552605,
+      "command": "999"
+    },
+    {
+      "body": "Pluto",
+      "utc": "2026-10-13T00:00:00Z",
+      "longitude": 303.0709281,
+      "latitude": -4.2859514,
+      "command": "999"
+    }
+  ]
+}

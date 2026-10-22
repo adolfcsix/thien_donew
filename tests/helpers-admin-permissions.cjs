@@ -1,0 +1,2 @@
+const fs=require('node:fs'),path=require('node:path'),ts=require('./helpers-typeloader.cjs');
+module.exports=common=>{const mod={exports:{}};const code=ts.transpileModule(fs.readFileSync(path.join(__dirname,'../apps/api/src/modules/admin-console/permissions.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText;new Function('require','module','exports',code)(()=>common,mod,mod.exports);return mod.exports;};

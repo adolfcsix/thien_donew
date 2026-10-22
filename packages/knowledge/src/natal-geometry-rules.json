@@ -1,0 +1,41 @@
+{
+  "edition": "11.55.0",
+  "classification": "Chỉ mô tả cấu trúc sao bản mệnh theo quy tắc an hiện có; chưa xác định cách cục hoặc hiệu quả dự báo.",
+  "expertReviewed": false,
+  "rules": [
+    {
+      "id": "kinh-da-giap-loc-ton",
+      "title": "Kình – Đà giáp Lộc Tồn",
+      "geometry": "flank-anchor",
+      "stars": [
+        "Kình Dương",
+        "Đà La"
+      ],
+      "anchor": "Lộc Tồn",
+      "interpretation": "Lộc Tồn tại cung đang xét, trong khi Kình Dương và Đà La đứng ở hai cung kề hai bên. Đây là quan hệ định vị có tính bắt buộc theo quy tắc an sao bản mệnh đang áp dụng; không phải Kình và Đà đồng cung. Khi đọc cần đối chiếu chính tinh của cung Lộc Tồn, hai cung giáp và các yếu tố hội chiếu, không cộng nghĩa các sao một cách cơ học.",
+      "caution": "Chỉ xác nhận hình học an sao; không kết luận thành cách cục cát/hung, phát tài hay mất mát."
+    },
+    {
+      "id": "loan-hy-xung-chieu",
+      "title": "Hồng Loan – Thiên Hỷ xung chiếu",
+      "geometry": "opposition",
+      "stars": [
+        "Hồng Loan",
+        "Thiên Hỷ"
+      ],
+      "interpretation": "Hồng Loan và Thiên Hỷ ở hai cung đối diện nhau trong hệ an sao đang sử dụng. Tọa cung của một sao chính là đối cung của sao còn lại; không thể gọi là Loan–Hỷ đồng cung. Cần đọc chủ đề của cả hai cung và những sao tọa thủ thực tế để đặt câu hỏi về hình tượng kết nối và niềm vui.",
+      "caution": "Không coi vị trí xung chiếu là dự đoán hôn nhân, cưới hỏi hoặc thời điểm có tin vui."
+    },
+    {
+      "id": "khoi-viet-vet-vi-tri",
+      "title": "Thiên Khôi – Thiên Việt: thế vị trí theo Thiên Can",
+      "geometry": "pair-separation",
+      "stars": [
+        "Thiên Khôi",
+        "Thiên Việt"
+      ],
+      "interpretation": "Thiên Khôi và Thiên Việt được an theo cùng Thiên Can năm sinh nhưng không đồng cung theo bảng đang áp dụng. Khoảng cách có thể thuộc thế đối cung, tam hợp hoặc cách nhau hai cung. Chỉ khi đã xác định đúng vị trí của hai sao mới khảo sát ý nghĩa học hỏi, hỗ trợ và khuôn mẫu trong những cung liên hệ.",
+      "caution": "Không suy ra quý nhân, thành tích hay cách cục chỉ từ sự tồn tại của cặp sao; các dị bản bảng an cần được đối chiếu riêng."
+    }
+  ]
+}

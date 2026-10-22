@@ -1,0 +1,2666 @@
+{
+  "status": "PASS",
+  "images": 156,
+  "records": [
+    {
+      "deck": "rws-1909",
+      "id": "major-00",
+      "path": "apps/web/public/tarot/rws-1909/ar00.jpg",
+      "width": 1144,
+      "height": 1919,
+      "bytes": 1104822,
+      "sha256": "ddf09e945d084292b38feae9ea7b7b8a001f073082904ef2145c82cd8878da7e",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar00.webp",
+        "width": 262,
+        "height": 440,
+        "bytes": 42304,
+        "sha256": "2c161076859caeee6af9ee80107ced6140314ec617c9f2c5a7bdf515c4f07753"
+      },
+      "a44SourceSha256": "557c6592b73107508eac65ef140d090d2ccd657ac5a2d5d4fe31c6c2ceacbcb5",
+      "decodedPixelSha256": "f22b5a5a9e087134d451574451b38eb2b09bc843a6341c4b13364a59f95e0f6d"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-01",
+      "path": "apps/web/public/tarot/rws-1909/ar01.jpg",
+      "width": 1108,
+      "height": 1920,
+      "bytes": 753853,
+      "sha256": "9e149a629084069541295593ecefb23112192584224edc573207c18ed461150e",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar01.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 41994,
+        "sha256": "18ba252d9ec7c06d32575a62bb71453360c909bf465abb37e92b31db95554de2"
+      },
+      "a44SourceSha256": "e0569e468545abfd2987ec0af5d3c51da3a9d478e37077aeaa1d715ddfc9941b",
+      "decodedPixelSha256": "95d753e830e25f156299e45c8476968ec7831b9aa64a0146665d8bc76ee19e5f"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-02",
+      "path": "apps/web/public/tarot/rws-1909/ar02.jpg",
+      "width": 1117,
+      "height": 1919,
+      "bytes": 830702,
+      "sha256": "e23a49e8d198e13f2e1a6e232e07767060efc661c80c1cc35f298cea63fccd81",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar02.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 46014,
+        "sha256": "8c257cc0bc90bc028c23a162dd2d409bb1610024d6883097e599263e7cf4d77b"
+      },
+      "a44SourceSha256": "0e87b5a22187a299334188c2e8fd178125151f9015c122f6946367489cfd252a",
+      "decodedPixelSha256": "3760eb8674fb1184eb3fb415134b54f3aa1054b7deac6b1c768ae614df82e99d"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-03",
+      "path": "apps/web/public/tarot/rws-1909/ar03.jpg",
+      "width": 1123,
+      "height": 1920,
+      "bytes": 888793,
+      "sha256": "a1eb3f2b62ee59f67575a4c17a3b007f79453d23ab2c908d6b449e3eda566ea5",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar03.webp",
+        "width": 257,
+        "height": 440,
+        "bytes": 52926,
+        "sha256": "0b662bfe894648fb740f3c01f45c093f4b626f45c47771bf23554daa085d1dd0"
+      },
+      "a44SourceSha256": "2f0a9885c4f4e68bbca4cb40d3d5f42d4c7559f914bb5b3765ee429c74c142df",
+      "decodedPixelSha256": "0c973c64f2b00ccb7ecb66c76f583aa1095775590a811bb324ed7731c7555525"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-04",
+      "path": "apps/web/public/tarot/rws-1909/ar04.jpg",
+      "width": 1117,
+      "height": 1919,
+      "bytes": 880865,
+      "sha256": "3052b128b314cc9d86ca4a522805f80c230bcaa04955dee0e3d0980b060d93e7",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar04.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 48818,
+        "sha256": "0d6b4c8c0c15921ed9b03576ade721b66fea9a64b78298f1a4de12aaae36b4a5"
+      },
+      "a44SourceSha256": "7a800b57c5b7da7b493e6968da31325327134e98083e95ee75b3db6eaef7e868",
+      "decodedPixelSha256": "27d485df5b6892770ca57764dfb46db0b5bc358e84d3294eb7ac5ca29d872625"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-05",
+      "path": "apps/web/public/tarot/rws-1909/ar05.jpg",
+      "width": 1114,
+      "height": 1919,
+      "bytes": 845687,
+      "sha256": "8c1318486a0f74d6c42cd6c40a73841c8d47b3a9e17d4122e5289e1203024d3b",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar05.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 50040,
+        "sha256": "99bf21b871d825dd4f9fee37e00b7c712d1a40263c4cd4ea84315b35259dd565"
+      },
+      "a44SourceSha256": "68faba7f016b2d76b2fc2200f834279a0b08b7228767ae744fcdc70f9402699d",
+      "decodedPixelSha256": "bd0aa9785da58efff8b49cbebb580815c8bd7cf86d4f4443699e3b4678b2f57b"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-06",
+      "path": "apps/web/public/tarot/rws-1909/ar06.jpg",
+      "width": 1122,
+      "height": 1920,
+      "bytes": 932979,
+      "sha256": "238ea23aab15dc050d0d5e4f54a2e0a73d425dcfbd89657c63dfba7f0d8eb254",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar06.webp",
+        "width": 257,
+        "height": 440,
+        "bytes": 51982,
+        "sha256": "1194ffce1fe2e69e804e7a0d795cae48f1e23a3296d312588b2c59427993ce2e"
+      },
+      "a44SourceSha256": "5a24e337a146568ebbbfa9783fa451d22c02bccd3cb7fe518afdb3ff396487fe",
+      "decodedPixelSha256": "ed1995cb8e23253d8f91473a5c4acbcbe51b089a7862ac7ba549a6cbca76ee2c"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-07",
+      "path": "apps/web/public/tarot/rws-1909/ar07.jpg",
+      "width": 1111,
+      "height": 1919,
+      "bytes": 807796,
+      "sha256": "8a716b14ad41501f89e03d038ea6bf91ae36abc1eaac72f2c8a2d5327637338c",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar07.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 48244,
+        "sha256": "dacd0c6d7d50c1811f9b402a9353243363dd63b6bc4ec2e4c478f7cb0eeb03e2"
+      },
+      "a44SourceSha256": "3906e01a159d3b7f1696e9094080e0a4ae95b2f4d4ca8b084131aba6ad133dd8",
+      "decodedPixelSha256": "bd8979a2c1e5c509a805b915d2093d87907983ea5de336b8cd6414cbfcd91f74"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-08",
+      "path": "apps/web/public/tarot/rws-1909/ar08.jpg",
+      "width": 1114,
+      "height": 1919,
+      "bytes": 761757,
+      "sha256": "d9c7c26e916e23cd457031b881180cc710d346de504ccb7ea33e65e0ec46a98d",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar08.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 39118,
+        "sha256": "57e2036d294ea485d64f36d1753c384dd3e764b127f7b1626e121f8c4c2b599f"
+      },
+      "a44SourceSha256": "b222f1799b8dc46944d28f6079b1551011691dc439740371126e874fcf0c768f",
+      "decodedPixelSha256": "22543b7d9b291862a0b63a3a994243e665f39661e1a0059435091de7fd76e8d0"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-09",
+      "path": "apps/web/public/tarot/rws-1909/ar09.jpg",
+      "width": 1123,
+      "height": 1920,
+      "bytes": 697401,
+      "sha256": "12838d6ef552a43d4a9b51de9f0061c59b548afd84bfdac563c200c7b8cf3b5b",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar09.webp",
+        "width": 257,
+        "height": 440,
+        "bytes": 32564,
+        "sha256": "48c9dff4738504453cdecb8556bc0d3ef95c740cc39f0d784981f3e39417617f"
+      },
+      "a44SourceSha256": "0f86ac4560e598ced039665e21023d329e7a7e58872c46b3e9a9d85bb6cb2a50",
+      "decodedPixelSha256": "71e92200aa8df822ea3005e09bfe533652b6a39080eeea6cf9864feae48fd0d0"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-10",
+      "path": "apps/web/public/tarot/rws-1909/ar10.jpg",
+      "width": 1104,
+      "height": 1920,
+      "bytes": 1087517,
+      "sha256": "bb460b6e865af51bafda6f63470c40c84985e90a375b5cd945f520e5d149e29c",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar10.webp",
+        "width": 253,
+        "height": 440,
+        "bytes": 45882,
+        "sha256": "615ca643e3af70e12518d278f84461f97aced6bceee52e7ca485f620153a35ea"
+      },
+      "a44SourceSha256": "2979bea7530572f408739757c87200772f6171a5249684cc9ee2a379108b3657",
+      "decodedPixelSha256": "7fcbba121c30859e4a2c060e3a5f78818849050c2db70d8ba193f6de835349a0"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-11",
+      "path": "apps/web/public/tarot/rws-1909/ar11.jpg",
+      "width": 1114,
+      "height": 1919,
+      "bytes": 840960,
+      "sha256": "29e71e6e4e316ce1d486a2239b63fa58134ac1edf2c5b23694b62570103e7c0c",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar11.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 48412,
+        "sha256": "6caa3520f4a7522c52b257205c763de0712f7b827476e97d9993ef0d0698dbb9"
+      },
+      "a44SourceSha256": "028645f4ed40a82035c410f4b7b5b00adbdcdf1c21ffd706cddeaf9227e0151d",
+      "decodedPixelSha256": "a9479dee16023a942a552807bd60922a70e79db4501b1da1b1848226a2d77347"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-12",
+      "path": "apps/web/public/tarot/rws-1909/ar12.jpg",
+      "width": 1092,
+      "height": 1920,
+      "bytes": 1058581,
+      "sha256": "a0e987c5ff897d52b58a095ec6d1fb5c4a34a341757d3bee7600d66eaae595f5",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar12.webp",
+        "width": 250,
+        "height": 440,
+        "bytes": 36762,
+        "sha256": "4d14cf8f3cf401ba68d5227e46b5842eb872aa2be939b76cd0ff790991dfcbbb"
+      },
+      "a44SourceSha256": "0eacf7afe48e4b51c5405a8354ecb867a4d8868151137434ef84621e4d56359c",
+      "decodedPixelSha256": "7eefb2733bff19324cf1864b60cbda19ae9a56c60be385e296884c1a3d89d65b"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-13",
+      "path": "apps/web/public/tarot/rws-1909/ar13.jpg",
+      "width": 1111,
+      "height": 1919,
+      "bytes": 863446,
+      "sha256": "09d397f72f2566eef5b76065504353deb96d641f5dbebbc9f434abc7e6a8e55c",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar13.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 49544,
+        "sha256": "314d1ef4e1f56dcdc3e4040ea8f57bc75b860e595d554b823912ed185fadc3fe"
+      },
+      "a44SourceSha256": "9e9cdd41a4d975691e79acc2358b45f4f2c58661431c3113a5ccf27477356a66",
+      "decodedPixelSha256": "b49d09c1dc21da9c33e6f9ee99d0c7888883fbb80ec934b294b503003aee1ba9"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-14",
+      "path": "apps/web/public/tarot/rws-1909/ar14.jpg",
+      "width": 1106,
+      "height": 1920,
+      "bytes": 897816,
+      "sha256": "1d9deb423d2b74cd9be054e7e20e6157d2acbf3c52af3c5cfb26742f9d5b25e5",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar14.webp",
+        "width": 253,
+        "height": 440,
+        "bytes": 50484,
+        "sha256": "fa1d0e979d581e924fdba1ac3599ad044a0ddf445547f4e4a040a2258c5ca0af"
+      },
+      "a44SourceSha256": "a306b373f8ff18270a2daabe3d89967eadd428e460c39ed717bda7bd38a1f009",
+      "decodedPixelSha256": "759543f342b18a7c48efc0e2e6c3511ccf5cb0e462b602c556852e70861af4c2"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-15",
+      "path": "apps/web/public/tarot/rws-1909/ar15.jpg",
+      "width": 1090,
+      "height": 1920,
+      "bytes": 732449,
+      "sha256": "59e1bffc2c5e6ed95e7557e63c3ad7897fd224b83a8c4808e238bee55f7b0d94",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar15.webp",
+        "width": 250,
+        "height": 440,
+        "bytes": 39036,
+        "sha256": "397a62cfcb32a184e050a311508b08e47698c9d02646512d1b2e8f6f560ff14d"
+      },
+      "a44SourceSha256": "f8e37102cbf2120270c0ed8c3e193b260d2f79dd5908bc9acbd48e8335083cf8",
+      "decodedPixelSha256": "62e748c09449e2a1f85109e449cc1e47d1fc8960bcf7b95494c7cd311dea583a"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-16",
+      "path": "apps/web/public/tarot/rws-1909/ar16.jpg",
+      "width": 1109,
+      "height": 1920,
+      "bytes": 715761,
+      "sha256": "6876803bbb2eb42095cddc76bb76045fe8c6737da7ed83fa13157472f2514db2",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar16.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 39228,
+        "sha256": "07f3e2496988e182eab1f7d71f866cc68597e6e0a655a580af7d549e4df38048"
+      },
+      "a44SourceSha256": "ab5ce9bf29f32b9cf61720b375fe35f23ce7e116ee1c648a9bf6832e17241163",
+      "decodedPixelSha256": "77eb761210f4ef7beb9eab9ab36c77676fdba9e7fd9af32351f9fc6bde4cef3e"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-17",
+      "path": "apps/web/public/tarot/rws-1909/ar17.jpg",
+      "width": 1114,
+      "height": 1919,
+      "bytes": 802456,
+      "sha256": "ae41aed36a78c60a1bab3c71b8d169d5d235049c9250512c507ff5dd06e11209",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar17.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 43232,
+        "sha256": "cfcaff8d883c887645fff48e00238180a1e3ab901c98b6910b9fd5e5b6db7ba1"
+      },
+      "a44SourceSha256": "20bb3e04c1655cc318031d94a024d84199cfeae2ca55e80d2d341c2d30435ac7",
+      "decodedPixelSha256": "d85f3aebdd4255e73d979df1871ed586495d832be5a72fe0b5c1deb68aeaeeb0"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-18",
+      "path": "apps/web/public/tarot/rws-1909/ar18.jpg",
+      "width": 1111,
+      "height": 1919,
+      "bytes": 808574,
+      "sha256": "ea5038053f0948c64322ab9d33c6476175c593b766bae8c26e9aea9da58cb315",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar18.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 43882,
+        "sha256": "2cb25221d560e9a879a53dea66b6b56245e2e9abcee216217243fab1fc1f58e5"
+      },
+      "a44SourceSha256": "866474dc3de02bf3817495fd75d254dac2b9f36470f2f29ecb54de572f9dc70e",
+      "decodedPixelSha256": "4ea10d1c5b804f27c5c951f4d5616fef7f54cd751f07fc8630f92ad113378cc1"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-19",
+      "path": "apps/web/public/tarot/rws-1909/ar19.jpg",
+      "width": 1114,
+      "height": 1919,
+      "bytes": 878660,
+      "sha256": "c99eb0ea2482abd96fc16197231d300d2606a8458f43223aaf0abd72cf19bce1",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar19.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 51724,
+        "sha256": "483ddf2e24d0a549ea114d4f481c69c5e19a51d0b87ce852b782b2ece7f7d2d7"
+      },
+      "a44SourceSha256": "6c21ef99fef3807bafb26cd467464c8efc59e7312a688ae66285968e364c6450",
+      "decodedPixelSha256": "ab9da6d0fbc76126e537b5446bfe5e615db8f178488dc18d27b5dfae86233458"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-20",
+      "path": "apps/web/public/tarot/rws-1909/ar20.jpg",
+      "width": 1115,
+      "height": 1920,
+      "bytes": 877564,
+      "sha256": "59cd3bb306a082168f301f76d64c659da2ca31245f2b52e2115c1f46ca844e7c",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar20.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 49446,
+        "sha256": "776c87bdcebf545821b280f4cd94aaa351c95767cdfbf6225a5b1c74f4aa0f9b"
+      },
+      "a44SourceSha256": "1d670d30e651554051f1a04708a11c57583a92a2cc370b8c0fc54fb82f2ffbd3",
+      "decodedPixelSha256": "7b634165445911043b53dd2b772c63922adb0cf124637c8f0fe2b43dc5d93c2b"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "major-21",
+      "path": "apps/web/public/tarot/rws-1909/ar21.jpg",
+      "width": 1112,
+      "height": 1920,
+      "bytes": 1098903,
+      "sha256": "11006bf44d9271981fa0fae746a4fca7633f099d92afe6cf31d588f7a362955e",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/ar21.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 48744,
+        "sha256": "5194687297ff941f278fd176a81ee70911401e3aa36e995529a75c9425b6a61d"
+      },
+      "a44SourceSha256": "f866b87a3c4422f96074080024860f46b5b3f456fcad74ca7aefdb5263bf0e69",
+      "decodedPixelSha256": "d715d1b8859bf66553b6e86bf80e00973b4f4b5474760725455fd1173c97aaf5"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "wands-01",
+      "path": "apps/web/public/tarot/rws-1909/wa01.jpg",
+      "width": 1106,
+      "height": 1920,
+      "bytes": 801041,
+      "sha256": "51e69435964d8119628db66b5dfbae99a5cb07f3ead324a1882d1fa3bff401b5",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/wa01.webp",
+        "width": 253,
+        "height": 440,
+        "bytes": 34724,
+        "sha256": "2467096f4140ca38845e992c71b3a18408a58712502c5e712a28142df6e55bda"
+      },
+      "a44SourceSha256": "c29a4231878072d66be3aa344b348ea77cf12617571db4836a270730ae5a04e0",
+      "decodedPixelSha256": "7391ed51f9568261fc79ddfae4ca1033070978b510e285b77ce31622af701314"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "wands-02",
+      "path": "apps/web/public/tarot/rws-1909/wa02.jpg",
+      "width": 1115,
+      "height": 1920,
+      "bytes": 801895,
+      "sha256": "4b27e27e90d83e86cbdd15a4c5774d8521e68cb18ca38fdcca47c12c703f0056",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/wa02.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 37106,
+        "sha256": "88a3c7c8f0a6a1c8a63f6c201d44d91c757b64eaa5f65c837219a5d1f9d376bd"
+      },
+      "a44SourceSha256": "b715689f6097b32884678d52f946df0fafdd225ed8ead3979307f455a88e8e80",
+      "decodedPixelSha256": "9960a02540e279712bb5913d5c07517ed0c9d6d9295fe184abc0698a4745a397"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "wands-03",
+      "path": "apps/web/public/tarot/rws-1909/wa03.jpg",
+      "width": 1103,
+      "height": 1920,
+      "bytes": 888679,
+      "sha256": "e2688274b64a85dcd6cc16a3c1b745d0629789b5ee54e7334fe1fc53e8c13c2e",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/wa03.webp",
+        "width": 253,
+        "height": 440,
+        "bytes": 39372,
+        "sha256": "0cf2d8d712a26bf97f8df77a1b97b773093a215dd5164cfad1ee82eb1be50c08"
+      },
+      "a44SourceSha256": "1177316634bf3990c95ccb908b7e5a6759ec0356039d896e6ee0bbb8796e958a",
+      "decodedPixelSha256": "dc361948f9af99afd57f40f1c26fa43d2288e9130a2435b71b7869faa9f24fe3"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "wands-04",
+      "path": "apps/web/public/tarot/rws-1909/wa04.jpg",
+      "width": 1108,
+      "height": 1920,
+      "bytes": 752048,
+      "sha256": "c258e4281efb565aa8b68806e502235bab8abc02d79d5820ff076c03b61150c2",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/wa04.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 38868,
+        "sha256": "edc192bde8f0f658b79d93038755cf08532360158ba46cef91735292eedfe2bf"
+      },
+      "a44SourceSha256": "9850a241100dd084bacab39a8e87baaa13d1de1a590dc0dde013b92aa783af7e",
+      "decodedPixelSha256": "31840b03673bb7ed06a21808aa8564913b89418858240996f0b1f91086ce6bd3"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "wands-05",
+      "path": "apps/web/public/tarot/rws-1909/wa05.jpg",
+      "width": 1108,
+      "height": 1920,
+      "bytes": 794169,
+      "sha256": "5b4409092b4ac3b88e02cc6cc5ca47bb47fbbeb3a331639be7937e4c17de6f9c",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/wa05.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 40224,
+        "sha256": "0edb7c10f1b4a6d499b68c5d0d5dcf1561e21b88a0c46293220e876741685b92"
+      },
+      "a44SourceSha256": "6298f82e6ce5e7524041bb608852471b03e29d528f6a5b52b2b44a8ff1f06bba",
+      "decodedPixelSha256": "dafeee1f7281e0b0a59db39aafbe56bbc3fe6f096965ce28b8ceec856a5fc2a4"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "wands-06",
+      "path": "apps/web/public/tarot/rws-1909/wa06.jpg",
+      "width": 1118,
+      "height": 1920,
+      "bytes": 827201,
+      "sha256": "8d1a0d60ceff08c3ffb3012f0c42bb8942c112ec8d07a8f58fe69fd406657495",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/wa06.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 42232,
+        "sha256": "441a214e5202d83e572c9f4b12ca22163ed1aeaa0c8315ea281647858e7d1513"
+      },
+      "a44SourceSha256": "249a1eaa2de24dc9c1095e953b9577ca613fcda4b4b884dab2a1964c686dad72",
+      "decodedPixelSha256": "3bb07e1cdff5d0eecfe4e961cdc3bf5094b12613accffee6ac72c78e11b89495"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "wands-07",
+      "path": "apps/web/public/tarot/rws-1909/wa07.jpg",
+      "width": 1109,
+      "height": 1920,
+      "bytes": 721991,
+      "sha256": "eba11f8068e2636206a2c81cd36e1188b82998beb27c367c8ef5a79f7b85d9e4",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/wa07.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 34876,
+        "sha256": "16d2a93b59e7dac803fd1966ff4f0e6a22e23442a2f72ad9f5a2e5ec741db7d1"
+      },
+      "a44SourceSha256": "0117736a1c9d543960bb94c73d20a587e9ec877dfc2120b7d5ee0255c40dd731",
+      "decodedPixelSha256": "f057dc5ca2d4abe3084b7668f425155d7eddce2144f5d5523cf3b5998ffca0a0"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "wands-08",
+      "path": "apps/web/public/tarot/rws-1909/wa08.jpg",
+      "width": 1115,
+      "height": 1920,
+      "bytes": 726234,
+      "sha256": "bd499d3e57c177546b71d5991b6d124e2a872003e98958f9a981d3cd20e4b913",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/wa08.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 35474,
+        "sha256": "caee8ea024f9543a8bfa689d3a7b79724052fb079f1cdd4454a0ed6bcd591210"
+      },
+      "a44SourceSha256": "fbf01153074154c6b0e130e0690e00320e9293daaf9c84fe4a37804f02145cd6",
+      "decodedPixelSha256": "57fac7fe6539126ca7ef6d6ed9eba60666422025b65c464d5f9fc6902f74ee86"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "wands-09",
+      "path": "apps/web/public/tarot/rws-1909/wa09.jpg",
+      "width": 1114,
+      "height": 1919,
+      "bytes": 830323,
+      "sha256": "27cb063a784003e91a1d7224407ad230748bad25ee60fc8b0e7ee8c961992819",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/wa09.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 41866,
+        "sha256": "9d8ef0a3dc20703799872982928765803f56779d8f28624bc1fcc12d7af7eaf2"
+      },
+      "a44SourceSha256": "f0edfe460b1ba3fdd2cb0d0e82786a84bcdcaf97bb2e1a2ffaf4c82ed235b469",
+      "decodedPixelSha256": "de42160876ef9c687d40d5f92ebd8c6bd6d863ac1994ce4ce4e3399773874d8d"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "wands-10",
+      "path": "apps/web/public/tarot/rws-1909/wa10.jpg",
+      "width": 1101,
+      "height": 1920,
+      "bytes": 775194,
+      "sha256": "2596f82605312ed7b86008922985ec50401054b62687fc851305daf456a67d8a",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/wa10.webp",
+        "width": 252,
+        "height": 440,
+        "bytes": 36204,
+        "sha256": "dc2fe991a7cd5e071023ecc08d74e6d67a9b17027cfdd25ac2e10ce8adbb157b"
+      },
+      "a44SourceSha256": "64c10fe7ba527498547bb3bf85a4a5c5fc687ba2209b8d38ffe5722d25810685",
+      "decodedPixelSha256": "283b7ec99b19b56a3d32e6e2a2851eb806da1d5e4843e56a07c43542a08c6a6b"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "wands-11",
+      "path": "apps/web/public/tarot/rws-1909/wa11.jpg",
+      "width": 1109,
+      "height": 1920,
+      "bytes": 899236,
+      "sha256": "87f0bd2d12db22576eeb66946cc77c901cdac8bd276f6df478ef556562dfabbe",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/wa11.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 40634,
+        "sha256": "85dc23e53916d7bd08ac117345be3f24c4dfae233dad5b4a3a11939604f0b897"
+      },
+      "a44SourceSha256": "ecb79ab9035c43d322cbef211e8028fc175e220a764db7fcb566c4e44d1842bb",
+      "decodedPixelSha256": "b33b3a4af0f589399e61ca3f0bfc58fd56d327520c249b262a5d884e8d15cae6"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "wands-12",
+      "path": "apps/web/public/tarot/rws-1909/wa12.jpg",
+      "width": 1115,
+      "height": 1920,
+      "bytes": 932130,
+      "sha256": "b83f62a2d628927b32930e9bdf58d11efacd6fc04bf1e712e944e4c8a2b2bd09",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/wa12.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 43492,
+        "sha256": "d484671ce0d118723f7d5af7216b8d1fa0fd29936371746dcd34f941baae6b7f"
+      },
+      "a44SourceSha256": "00dd859cf067753c5ed009ac0ab8a0673cb8e5bdf5677fb3c7d4b04c93c0e025",
+      "decodedPixelSha256": "3f3f8e4251bff5caf913b6e887b338875774b23d61327c694fcd0a9b5b73c12f"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "wands-13",
+      "path": "apps/web/public/tarot/rws-1909/wa13.jpg",
+      "width": 1118,
+      "height": 1920,
+      "bytes": 913674,
+      "sha256": "f5a2e8288b010e98da2e57268e05164b30788f0ae832172505e9002f9f76048b",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/wa13.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 48944,
+        "sha256": "615a2f0873fb9a554765a49cf60d67831ca96d22288896d973f7286f00f40e40"
+      },
+      "a44SourceSha256": "f1646c86efe388dfff3d4a1fc8e5a5c7bb60a5605d3e4b67c1157216c773202d",
+      "decodedPixelSha256": "12b922249e4c89fec878a89c31a905946f5c88baff0bfa591df41258de38f43b"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "wands-14",
+      "path": "apps/web/public/tarot/rws-1909/wa14.jpg",
+      "width": 1104,
+      "height": 1920,
+      "bytes": 924626,
+      "sha256": "cb0c0481dd4ee72fef2c4c17bcecbb4034331c44a2389c4f0fe20ab2351a0ec5",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/wa14.webp",
+        "width": 253,
+        "height": 440,
+        "bytes": 45688,
+        "sha256": "ad65d2548ee6b93abc6b1379e3a1746d85fc80c768a8c41ca5e655b05915ea90"
+      },
+      "a44SourceSha256": "671c7c53329fa99e309f101a2ee093503a5d3bad137cb626a588dc74f4f0506f",
+      "decodedPixelSha256": "b49b09aae4bfb1f18226b071dd15327d3a61a197be2d3aea5e554084b2f89a75"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "cups-01",
+      "path": "apps/web/public/tarot/rws-1909/cu01.jpg",
+      "width": 1112,
+      "height": 1920,
+      "bytes": 867274,
+      "sha256": "0f5a8413bfcc1fa4deda47161a5792fb04a9715c3502dcec465834421f08a12d",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/cu01.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 40220,
+        "sha256": "2b1780501378b3b74116eba39914b2c50c6ce6cbe70a40bc45d7f37a16763105"
+      },
+      "a44SourceSha256": "fd157290a61bd075e837879275b811c86c32d3ea2beadb2b24327d133c5fb5f9",
+      "decodedPixelSha256": "51628cc41ded8a5443341be6cb464e89c20988160d6a69a512fb61da4cf1af39"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "cups-02",
+      "path": "apps/web/public/tarot/rws-1909/cu02.jpg",
+      "width": 1109,
+      "height": 1920,
+      "bytes": 1068554,
+      "sha256": "50eb7250950da161ee2b8d8d0a197d636f193e39f6f2e363b6a72199496add38",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/cu02.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 39166,
+        "sha256": "732872c640eea61c3b825c73323b5f6dcacbe8529421eebcd875fdce7d4c1627"
+      },
+      "a44SourceSha256": "5d1f09a9b69784e6006a9b662496f0664b26b15740062ac2285e77eadf3b36e4",
+      "decodedPixelSha256": "01517a76d74aceeddb685670b963f115f1fbc17a1fd0924404fea1a95609c936"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "cups-03",
+      "path": "apps/web/public/tarot/rws-1909/cu03.jpg",
+      "width": 1117,
+      "height": 1919,
+      "bytes": 1080154,
+      "sha256": "dc5af4f8ea4b43549e2a5b53522c5f3a62a3be3549d443cb5bd04874a1302378",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/cu03.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 45920,
+        "sha256": "6cb18d3b21adb612bb2df9e9ec7fec9a3a9728da7ee40af8dfb32402f9b1236e"
+      },
+      "a44SourceSha256": "25bfd4dbc2917a5a33b34c56579facffca464df0f4b4a0b4f00d9c9e96d9be0e",
+      "decodedPixelSha256": "3c1a475f0f523d94a9cd866850fbd4e731506c3f57c2390bfa1ce4381738b943"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "cups-04",
+      "path": "apps/web/public/tarot/rws-1909/cu04.jpg",
+      "width": 1118,
+      "height": 1920,
+      "bytes": 757758,
+      "sha256": "e474c941d790a1eb5c6dddb6ace4a7b6ab436bd2e59c3f1e47cd78a3cc64552c",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/cu04.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 38616,
+        "sha256": "52c77ebc2bca697c2e1f300f42fc398d666a371ba635cf33580708273f05992d"
+      },
+      "a44SourceSha256": "92097fe69d21dd0a0c9d5ece68ed465fa4a53d5107509cde3689840b67ed3f13",
+      "decodedPixelSha256": "6819657aacf33abd8f35186ed909ad58654f6266607606d8b24666aaa6ee83a2"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "cups-05",
+      "path": "apps/web/public/tarot/rws-1909/cu05.jpg",
+      "width": 1121,
+      "height": 1920,
+      "bytes": 666541,
+      "sha256": "6000b44592f7012afa8e6418ecee8ac0e008807777c75280e16fcba03dd6e826",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/cu05.webp",
+        "width": 257,
+        "height": 440,
+        "bytes": 26478,
+        "sha256": "c0740f8ff0e6d3e8a29f963a3f7fadf6c36d303da4bbc4216d09c0cf303d2ab4"
+      },
+      "a44SourceSha256": "07d2354d331f8a9397c407cea0b2bcc1544b134eab526b9262ececb3d0a57166",
+      "decodedPixelSha256": "a8521512571d59e3cfc6fd2ae08571b4ca9e511819a974441fb4b8315da68e35"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "cups-06",
+      "path": "apps/web/public/tarot/rws-1909/cu06.jpg",
+      "width": 1115,
+      "height": 1920,
+      "bytes": 924059,
+      "sha256": "9400c72735c5fd25acee86f30080fb6b0450ac4515b00bb13f19daf59492a751",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/cu06.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 48936,
+        "sha256": "baf97694fbff806e3397a4285240c884f7f5fbc146c89fb3751fb2a67ad27a3b"
+      },
+      "a44SourceSha256": "bb6fb5b6de8c22811e0c9057a05e46cd0014984e3d43160844bd5c395e8973bf",
+      "decodedPixelSha256": "40ac37a22561879830e1a09af4784962d9fe6032edb1aefaff631698f505ce08"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "cups-07",
+      "path": "apps/web/public/tarot/rws-1909/cu07.jpg",
+      "width": 1109,
+      "height": 1920,
+      "bytes": 760912,
+      "sha256": "382edf57f68913485109db8f33c5fab5107a98234c4ffa0efa1bac5e8c277b5b",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/cu07.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 42378,
+        "sha256": "5db64b39280e4e3e3900ac483e7d2d9000edcca2102acabdeb2a9bf84a908407"
+      },
+      "a44SourceSha256": "3c9d1d310ca3f4303a2e4beb872d998f7b45fbd26ee361ee48fadb366cf3b3a7",
+      "decodedPixelSha256": "c587b6933686b6421f6386aeb6c47bcdff3ff0423296e3f0c20c1c1c821f1bc6"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "cups-08",
+      "path": "apps/web/public/tarot/rws-1909/cu08.jpg",
+      "width": 1114,
+      "height": 1919,
+      "bytes": 782144,
+      "sha256": "b4d05cff81e81faccc82d80ced1627fc1ae1544577607f4b3154a179879f40c7",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/cu08.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 34422,
+        "sha256": "992d41bf0d06453f906b33f0452f33a885c7e27c9b545e03c4881717b9ac6ec9"
+      },
+      "a44SourceSha256": "727c07c60753aa7925c9421ca3a93e80eaadd0053018e68c819b2ac5e6562312",
+      "decodedPixelSha256": "c86c0866e8f36f81d0ea8e1890d090a94803a8200b75291dfc3980abeac965f8"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "cups-09",
+      "path": "apps/web/public/tarot/rws-1909/cu09.jpg",
+      "width": 1114,
+      "height": 1919,
+      "bytes": 776105,
+      "sha256": "25dbbdb9b69a7f2763da9e627661a76e674123d24e5eb962d8e02ca345ad5b3d",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/cu09.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 45348,
+        "sha256": "d7fbf5ccbbac6b5928ef2dec4404894ff970f5bca87007c556b0d26084cc4e49"
+      },
+      "a44SourceSha256": "5d0704e0dc1de8ab59da38230b609a5aeeceaf61473ca5271f48049976f3cb6f",
+      "decodedPixelSha256": "845e713da2e8dd077e4334b7f6d94d1e2c6d28a4a49eca5f02fa8bd7b0b7552a"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "cups-10",
+      "path": "apps/web/public/tarot/rws-1909/cu10.jpg",
+      "width": 1109,
+      "height": 1920,
+      "bytes": 900873,
+      "sha256": "41eb0cae1da020d7acafbf116a30b2aa6f344603a560bfdcc86bcea6f353473a",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/cu10.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 39940,
+        "sha256": "432eb0079e596312097a0c70fa84bd12f41a9c71b5e1a5e079079512c8410454"
+      },
+      "a44SourceSha256": "ac33d5a07ac63e10301cd632cedc020aca25a0d8a3e64f58fbd9e221b39fa261",
+      "decodedPixelSha256": "92b3956a104013592590c82f78137503a0e7f95c01a746c7434cb3ce72ea2c6e"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "cups-11",
+      "path": "apps/web/public/tarot/rws-1909/cu11.jpg",
+      "width": 1115,
+      "height": 1920,
+      "bytes": 888593,
+      "sha256": "c824dd33291b2c0fd324e24d2638185a9c400e9cebdc7a44ba9e37b038461368",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/cu11.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 37550,
+        "sha256": "7a120d42ff2670aaa10a900e8e1b4b699cfb574eefb64d00fd3bcf04743dcbdb"
+      },
+      "a44SourceSha256": "c6000e0ec6cf784ec75ac3a9fa8971e9ba56c8072c899cc0d44dece6acafc526",
+      "decodedPixelSha256": "4203dd67c3ce95728c8eb31b91e0163383585f9968e14a2c02d4e2a572b1d49b"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "cups-12",
+      "path": "apps/web/public/tarot/rws-1909/cu12.jpg",
+      "width": 1109,
+      "height": 1920,
+      "bytes": 855751,
+      "sha256": "5bc9be70fa0ff7d16472bbc49ffddd24245cd06dde1a89a3706d0241cef6ec65",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/cu12.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 39218,
+        "sha256": "656fabdb7f3567a4c72bd36a9b0f730b6abf77754cab3485c5fb11ee489d0a86"
+      },
+      "a44SourceSha256": "99a7b7c91da744cb03a3741c4bac674ef91adbb5b22aca53404f3467d1ea8e65",
+      "decodedPixelSha256": "cd0d2037165f1545d7e27c4925b402c542b1fbcf6f14e40f230d942036895a51"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "cups-13",
+      "path": "apps/web/public/tarot/rws-1909/cu13.jpg",
+      "width": 1114,
+      "height": 1919,
+      "bytes": 814686,
+      "sha256": "c253a44d72776ec73f42d2c2685483629a34c0ff9626d6811d517526b8e9ea1c",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/cu13.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 45202,
+        "sha256": "651244d0ccb0d80a24600d50f529393f6eadfe84deb5ca667061379c221f48d8"
+      },
+      "a44SourceSha256": "a1732a137bfc441a68703e3c8c14653f22452a287e790b9d5047035afc374b2a",
+      "decodedPixelSha256": "4f04a2d691cf9df8d5baf79ed75694f498359e62de0eb246cba5a610bb7ece25"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "cups-14",
+      "path": "apps/web/public/tarot/rws-1909/cu14.jpg",
+      "width": 1121,
+      "height": 1920,
+      "bytes": 849901,
+      "sha256": "3e6bd6b62a907bbf8198753e8c0246d8562cfe8b906e0237a38426b34d7eac4e",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/cu14.webp",
+        "width": 257,
+        "height": 440,
+        "bytes": 42928,
+        "sha256": "5c8b026e19a3d51ef3e6de043f56e4a944c66103d1567476066a32808ad06e34"
+      },
+      "a44SourceSha256": "79ae249016aaafb01279007e2da5ad00dffd6dc7d3017526853cfa6efc989372",
+      "decodedPixelSha256": "3470aa86c18ee33e3469cccdf390fd076c6fbe5408f8d9eeabc8ef2d2538377d"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "swords-01",
+      "path": "apps/web/public/tarot/rws-1909/sw01.jpg",
+      "width": 1109,
+      "height": 1920,
+      "bytes": 801793,
+      "sha256": "414d8f0038bed647092ec15420a3902935778a02117c187a6413a6de950231c5",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/sw01.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 35020,
+        "sha256": "8a67e1f3e1f390e5f5e21a199ac35d182f299dbab14700c582774945e94c4100"
+      },
+      "a44SourceSha256": "32f0f932346a25b6ec3753ff95d3e4a7481cb5c3582205ba76c53356a496f15a",
+      "decodedPixelSha256": "a170dbf3c91f77cf89a7044e6d989bba67f363e27ef5fcbb476c230cf9ae0945"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "swords-02",
+      "path": "apps/web/public/tarot/rws-1909/sw02.jpg",
+      "width": 1121,
+      "height": 1920,
+      "bytes": 766302,
+      "sha256": "cd49504ec00fa176340334ba65e210b22d9203c799226c19ebffd65f62732a3d",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/sw02.webp",
+        "width": 257,
+        "height": 440,
+        "bytes": 33022,
+        "sha256": "416b91564c729c0c6e56b082eee5e23e0e78409ceba40297a4cbb7fbb61b67be"
+      },
+      "a44SourceSha256": "a44b7e2b454db3dc1ff42f70107fb15750babf659f5750892de4b5be721ec380",
+      "decodedPixelSha256": "a196c1b496a90ef05329c6f899e159e9cfd5d69e7ccbc0fff84ce6f22760fdef"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "swords-03",
+      "path": "apps/web/public/tarot/rws-1909/sw03.jpg",
+      "width": 1103,
+      "height": 1920,
+      "bytes": 687714,
+      "sha256": "8beac34de11a166bbfda63af26c481e1169a323b71b8d595f640293deae5d5f0",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/sw03.webp",
+        "width": 253,
+        "height": 440,
+        "bytes": 30494,
+        "sha256": "89a5f734603dd272cb6b555078432c1a9fa37a8da016b9b45d72426d741156ca"
+      },
+      "a44SourceSha256": "4fdf7db3e7611561831af32b5c886f9862c7d90a851965cddf71298047da1dee",
+      "decodedPixelSha256": "1cfcf21a164c6312d16fb723da5ae7d20cc70404f299405fe0029a8d3ac51d5c"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "swords-04",
+      "path": "apps/web/public/tarot/rws-1909/sw04.jpg",
+      "width": 1117,
+      "height": 1919,
+      "bytes": 807710,
+      "sha256": "5a94aee029b5c1101152e93524307e4bdbd448664e4ff57c344b43a2ff35e606",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/sw04.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 38076,
+        "sha256": "dd5a222e2329ec1feeb87a75dbbc3ca6e616c53fdb853830c85f4f6919af0a3c"
+      },
+      "a44SourceSha256": "d4f9dad59b25daf3c9e98e50107dd692e9682f058cdc8424ce61fd448e941a78",
+      "decodedPixelSha256": "9cfe6b04b88c63ba6a34ec92a17918e8e80e315787565aa6da4b9bbd3fc51b54"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "swords-05",
+      "path": "apps/web/public/tarot/rws-1909/sw05.jpg",
+      "width": 1109,
+      "height": 1920,
+      "bytes": 839622,
+      "sha256": "b0658829b168f029bfa36f57dd1c2fdc2b52d82c78b02c0bfbe2444c9fe188cc",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/sw05.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 41794,
+        "sha256": "40c569f1f3eb41c38c8f728cc167a77605d103036acedaddf22e6afef8a34f97"
+      },
+      "a44SourceSha256": "e4fc379d7ce3f7675f474ec9b3c2c8e4be7bdc0af2f2186eb2e2de4643b0a0bf",
+      "decodedPixelSha256": "a3153ccdd5749a179ca09018a330cb874b7fef0438b04f22e7403a8809926acf"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "swords-06",
+      "path": "apps/web/public/tarot/rws-1909/sw06.jpg",
+      "width": 1111,
+      "height": 1919,
+      "bytes": 879061,
+      "sha256": "6ff9ea8d7baa85ccd79a7681ce905d6ed5ef23873062e48266c242230cbd7dcf",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/sw06.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 39012,
+        "sha256": "262b744fa63a53d175febe93e7a09ce9461b155e5d462fe64904e689aa9b0b13"
+      },
+      "a44SourceSha256": "25279d7133301f59748f9ec0c6517a56fc4b8f76477ecfb4495f039adbc9aed5",
+      "decodedPixelSha256": "757902724dd39e2514d5a66cae079f0bd6849be598499b2169150ef55df98786"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "swords-07",
+      "path": "apps/web/public/tarot/rws-1909/sw07.jpg",
+      "width": 1114,
+      "height": 1919,
+      "bytes": 750242,
+      "sha256": "ff5e6b747d56b3cfc5a7646ef1ebf76e9d826ae16495bc3eca01655f2acb26ba",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/sw07.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 37572,
+        "sha256": "caba5a0d2a41ae331d451fa0fe3e4cbb96eeeb875364d3794b76a8b640259bcf"
+      },
+      "a44SourceSha256": "6204a31b5949937c95ea47ed47bae0cdd86ba112cb0c933935efbfc294033ea6",
+      "decodedPixelSha256": "cdacda3d2ad3a3296b053775f52e57a960b121d1833520f2d437456dcd93b2e8"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "swords-08",
+      "path": "apps/web/public/tarot/rws-1909/sw08.jpg",
+      "width": 1114,
+      "height": 1919,
+      "bytes": 847694,
+      "sha256": "20badd4789e09b2ee33fa4b6f5c7dcfe6be73e37d9ec21404e0ee04156acc494",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/sw08.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 39992,
+        "sha256": "b17ca6c4c67ac8eb156fc366f5d854084845aec010a00323c3112ebfc48b841a"
+      },
+      "a44SourceSha256": "019acbe3faff292c48c2744c42df052d7c7440a896f1cac42930e8c727d983b6",
+      "decodedPixelSha256": "ac2b729e0ce6080cda022a188a31543e86e6d871547be0a12fde66b4723970a7"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "swords-09",
+      "path": "apps/web/public/tarot/rws-1909/sw09.jpg",
+      "width": 1114,
+      "height": 1919,
+      "bytes": 744397,
+      "sha256": "a16258079b7062a0375dc20eb5b3b901f889f380513232693c9f53950236824f",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/sw09.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 38070,
+        "sha256": "6bda44ecb3b4ab25466c8ac244e713e5210f0aa2f9a74e463804cdf7d7a003dd"
+      },
+      "a44SourceSha256": "b592a2ebe7fca2b648c12d42ec1d5edd4da60d60b0ec7e548e7115c977c485fb",
+      "decodedPixelSha256": "7447bb053e45c7903b2a271053cb02e24469208c9791d783a70bbe581cae0e02"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "swords-10",
+      "path": "apps/web/public/tarot/rws-1909/sw10.jpg",
+      "width": 1107,
+      "height": 1920,
+      "bytes": 691353,
+      "sha256": "29fdbf92840b631ce6a8d4181b7764d74a96afaa29dfa10ed5582467ea17e6dd",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/sw10.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 35908,
+        "sha256": "6313b5a59d15ec90327da69837606184e70ae67d9c986fc083ce3fa969c0cb33"
+      },
+      "a44SourceSha256": "10d0b161d115dc340c6c54a274a9f0a21547584b9bd20dbd61fb12e78885043f",
+      "decodedPixelSha256": "c08aabd7cda78713425c7c6816631da0fdd2971f38c4684fd8b676f8fa8ebef9"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "swords-11",
+      "path": "apps/web/public/tarot/rws-1909/sw11.jpg",
+      "width": 1108,
+      "height": 1920,
+      "bytes": 820775,
+      "sha256": "69004bd028d04c9c27524c94710de37dcfaf8d3ae2129c841aa8e50c0a939242",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/sw11.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 41300,
+        "sha256": "d0d7de60e0487914ad3825d291dedb8ef1ce1750ab382a209afbcb65afda735b"
+      },
+      "a44SourceSha256": "ac69cec7c4b763fe229b3bc43214d5c81e573abe0584a13691970ab65be351ad",
+      "decodedPixelSha256": "6540f0d92e6e4a2762008eb42052711b7c6a8128a89acc048ec5eb2f4e44f966"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "swords-12",
+      "path": "apps/web/public/tarot/rws-1909/sw12.jpg",
+      "width": 1112,
+      "height": 1920,
+      "bytes": 802711,
+      "sha256": "e916ccb36f6fa5acbac65aefc07e0e1aaa959ed3afd8a866e819c3207460faa8",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/sw12.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 44852,
+        "sha256": "b6d3131f4f80fca5c593b61da383e6e97c0670a00c616fc934ac3312d08efed4"
+      },
+      "a44SourceSha256": "b38c1618eb6b5eca33d5bfebfddf8739773fb4ec8918a8946b4df2790d95db4e",
+      "decodedPixelSha256": "2839cc5012474b044950637455ce525f789c2e73100961436adb4ab686cee3cb"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "swords-13",
+      "path": "apps/web/public/tarot/rws-1909/sw13.jpg",
+      "width": 1104,
+      "height": 1920,
+      "bytes": 771783,
+      "sha256": "a8c018245cd71931a8ca7658961ba3ff1d934380526a964a39cc9c0a9ffbba7c",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/sw13.webp",
+        "width": 253,
+        "height": 440,
+        "bytes": 38622,
+        "sha256": "7cb45884f9b0eb31f49e553c77a497b0560a99e6219826f56e80c34820d80850"
+      },
+      "a44SourceSha256": "55854543540d12f9c201197537f4521b22379b84d0955149621755601ce6da90",
+      "decodedPixelSha256": "10ca477f84a6111db605e4d56a0d486e49b77bfb0c53bf132ee756f9e35f9655"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "swords-14",
+      "path": "apps/web/public/tarot/rws-1909/sw14.jpg",
+      "width": 1117,
+      "height": 1919,
+      "bytes": 880110,
+      "sha256": "cc44d156defa36be7691b90e207fe00420e824b5839f5fad3bc898c5954b5ef7",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/sw14.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 43090,
+        "sha256": "ec316968e0947b22d314213a505a60972679e1e6007d601b197787cdd5fa681f"
+      },
+      "a44SourceSha256": "5307da08322c8ccf2bc748aec5fe919e16849568fda3986225a921bf2cac9cee",
+      "decodedPixelSha256": "13aed2a3f4ea98de93909671140ce14a084ab95ffcf83fd5c1a0e94b815b1d17"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "pentacles-01",
+      "path": "apps/web/public/tarot/rws-1909/pe01.jpg",
+      "width": 1109,
+      "height": 1920,
+      "bytes": 816279,
+      "sha256": "7548c3f2e87f43dc3bc8ee80283b7f9bdf07cc013636313ae13ea1ca9cd8f477",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/pe01.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 37988,
+        "sha256": "a63d2200c8dd587dbc5d6a348a07eb22523b387db64aa7e4f6141821b644658b"
+      },
+      "a44SourceSha256": "fd6ddf90ead3062dd3696856e9771356dd9a2527048dab19417ee7ad79e28464",
+      "decodedPixelSha256": "e1b40b277f4d136006bc721de9df7ee312785bab896ebf06731514e94fb33d60"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "pentacles-02",
+      "path": "apps/web/public/tarot/rws-1909/pe02.jpg",
+      "width": 1112,
+      "height": 1920,
+      "bytes": 867749,
+      "sha256": "59f2a52a9e17f45504ee5ce006182b34a83ad08954e974efece9da170100377d",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/pe02.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 36092,
+        "sha256": "636f45c18264eab1081cbac90f861d04b1702dbdf5ad532123240cf90bd46e3f"
+      },
+      "a44SourceSha256": "1ee94470d0a0d53f867b5f6616bfe9e672b5693ba7c1d0a0c29303b2a1c08a88",
+      "decodedPixelSha256": "a52e459c1e9cbde041423ff175b876bfff402ef218d7cff7aebb5f95257cfde6"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "pentacles-03",
+      "path": "apps/web/public/tarot/rws-1909/pe03.jpg",
+      "width": 1117,
+      "height": 1919,
+      "bytes": 838453,
+      "sha256": "5ef4512553b32644dd5e54a0bef45a88c2c1a7a11720fa158686882078860dc1",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/pe03.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 46842,
+        "sha256": "6b4ce77bb6f84bf035fd02c8f387cab34ec02463e5b96493c769a95ab2e7739f"
+      },
+      "a44SourceSha256": "a8d826b099c0920329be52de5b96c0b2e5ddcfb45b8d109490e9ab74ae6f9eaa",
+      "decodedPixelSha256": "ca8e970f97195574a46428c892e9fb825630a036a43c8c5c383fb3e303c2938d"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "pentacles-04",
+      "path": "apps/web/public/tarot/rws-1909/pe04.jpg",
+      "width": 1110,
+      "height": 1920,
+      "bytes": 768773,
+      "sha256": "ae478443b90190d579a0ad9f9f6935a754d683023958299234fe3381e3876503",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/pe04.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 29004,
+        "sha256": "aa032bfa138cbb266176162650e126e88fcf9fde710a7bac4ad635dadba563ea"
+      },
+      "a44SourceSha256": "37e44050b8ac86dc7db3c1bb00e80154e97986b028a1499504ab89c5612e5989",
+      "decodedPixelSha256": "abcdd7be0eb1d1885aa2b08ab8208550d5822fc2bbc9103afb4ee123bc72e720"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "pentacles-05",
+      "path": "apps/web/public/tarot/rws-1909/pe05.jpg",
+      "width": 1112,
+      "height": 1920,
+      "bytes": 842378,
+      "sha256": "53f3b2ded3e6643f3a54ea50c7cea3ba1a4940d4b703794342482aa1a7aa2a0b",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/pe05.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 53310,
+        "sha256": "8cdaefbcd9d8b57a0fd04e2ddf7ee8e8644d1ec4f3a2b9d34bb46a623c359f6a"
+      },
+      "a44SourceSha256": "5a6705ba00c102c9e66a716b182e195f17c1bcf94a8d1b5163e2ce7195166938",
+      "decodedPixelSha256": "1108464afddc1a711789ca3ff5f93c64ab8740a7fee704841bf75123305089b8"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "pentacles-06",
+      "path": "apps/web/public/tarot/rws-1909/pe06.jpg",
+      "width": 1109,
+      "height": 1920,
+      "bytes": 821013,
+      "sha256": "cf63330a745110656810993513e3e369a82517c78dee2ca70e84b651ab108eb1",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/pe06.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 38012,
+        "sha256": "6b721d9b69a916411b3b088c43aa2c08d28ba489f44d296392bd8b08c40fbfeb"
+      },
+      "a44SourceSha256": "d9d67638f7f4075b42b03ee80ca9bf3817d2406cda647618504140b85ab3ca6b",
+      "decodedPixelSha256": "0c06677e993699106970639f3615bf1f5df4bc9de95bcf008ad27683b7522033"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "pentacles-07",
+      "path": "apps/web/public/tarot/rws-1909/pe07.jpg",
+      "width": 1114,
+      "height": 1919,
+      "bytes": 883300,
+      "sha256": "7099d45d5f930ce54ddbde44e966236ab964887380fdc226e1d8f33112f4fcd8",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/pe07.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 41322,
+        "sha256": "55aee1c097c76f6c8a527b25491f29f9b630d1f85efa123a08d759f83caeb42b"
+      },
+      "a44SourceSha256": "78a9d4965ce497192e5186737a44d73b4e94aa8a4092b49b374879ed22b138ab",
+      "decodedPixelSha256": "da1de2c46e99d4d656f087bdc52821b455432f132443691a06946986ff1e2f3d"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "pentacles-08",
+      "path": "apps/web/public/tarot/rws-1909/pe08.jpg",
+      "width": 1117,
+      "height": 1920,
+      "bytes": 840701,
+      "sha256": "19ea6a6c43aa9f06bd1b2ae8ef799ead1af75a2f3ac2753ada7adfd2eba27350",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/pe08.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 36670,
+        "sha256": "88d6fa5343098f725f3d7812d95e33d31580e5b01c20145272ada6a2f22afdc6"
+      },
+      "a44SourceSha256": "13c82cbdec9ce101f157ee502663eb38bbd8117cec5e019b8400474056caebd9",
+      "decodedPixelSha256": "166d32cdf9d65366cd9cedc813014bd83b5c672681cdbd0da2f00b9a0d235982"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "pentacles-09",
+      "path": "apps/web/public/tarot/rws-1909/pe09.jpg",
+      "width": 1108,
+      "height": 1920,
+      "bytes": 803316,
+      "sha256": "8dc3aaff2886e9d91e66158ba199ee2ee9583ba0c3fa3382f66b8c0cf569e025",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/pe09.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 44850,
+        "sha256": "4eac78cd554ae154044097df458a05b0c7cc825b2b13860d4759b9fa710bed53"
+      },
+      "a44SourceSha256": "e491630d7291a34266f2d227f4085602cb9a000e31346402773a653e07b48f32",
+      "decodedPixelSha256": "1939468283ae2fee0cbe591e8cacad4adcf9497838b9f63482621d387cc6167f"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "pentacles-10",
+      "path": "apps/web/public/tarot/rws-1909/pe10.jpg",
+      "width": 1115,
+      "height": 1920,
+      "bytes": 903594,
+      "sha256": "e89e82e8a56bdea8bb6ea3b413c0cd973e1c46a693196e6f0ad43eabc62f885a",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/pe10.webp",
+        "width": 256,
+        "height": 440,
+        "bytes": 53228,
+        "sha256": "80a7446450d1c57c009e95646f43e8acfa5e7f50aafa8598595ce0e51c0833b6"
+      },
+      "a44SourceSha256": "e14d5029ff2151a5ef53218c853382828dd0940bfd3a608d72ec59a967f97809",
+      "decodedPixelSha256": "8537618aac0e0e702f2436422bc4517b7fa646ca1f4e4d329de42e19fc466917"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "pentacles-11",
+      "path": "apps/web/public/tarot/rws-1909/pe11.jpg",
+      "width": 1112,
+      "height": 1920,
+      "bytes": 727205,
+      "sha256": "b1db19dca7706f9e8baca5d758916895b8ede7134cc0600ce3cde53b83e29128",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/pe11.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 37708,
+        "sha256": "16c994381c6519b1eb603c39f0eef028b0def457fc51a8efba5ed0671409d022"
+      },
+      "a44SourceSha256": "d2c3cb2f6a602e62748f873eca72acfab06b64a6de50cf3499e6197d650b6fe9",
+      "decodedPixelSha256": "a5e4ab653219c8fa9e96db59db4d7eaca2ede23331ab09d99a5190e81662d1b5"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "pentacles-12",
+      "path": "apps/web/public/tarot/rws-1909/pe12.jpg",
+      "width": 1111,
+      "height": 1919,
+      "bytes": 671568,
+      "sha256": "ed88ec933cdf06c0de29bc7914e2d05d0986192a35502f41ad8169ca21a2ead1",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/pe12.webp",
+        "width": 255,
+        "height": 440,
+        "bytes": 34776,
+        "sha256": "91321ee81cd1cb01770bd9ce3411ee3ebc496426c80445dc0fc95c10becb4b42"
+      },
+      "a44SourceSha256": "6a652fbf447b7d0c78145627749c87806d1c356e96e73ca365d2618d9b255e9f",
+      "decodedPixelSha256": "5ed3a1df65d74ab134602c4d1043c8e304ef1e8de5b618ec6f652898ff829f88"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "pentacles-13",
+      "path": "apps/web/public/tarot/rws-1909/pe13.jpg",
+      "width": 1109,
+      "height": 1920,
+      "bytes": 1119300,
+      "sha256": "7dc4f3e39c48a8f222003ba61c8c522ef9e8569d7e2b8d64f1063e6cdb95d1e2",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/pe13.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 56102,
+        "sha256": "ccc2ec1b64b93f9900a0242774d4f5bfddc150140653635e4a2a1ed9b1c6f017"
+      },
+      "a44SourceSha256": "051a9a46a806910754969d806b3cf1e1621d30f51225b0a3db9b5474e222a877",
+      "decodedPixelSha256": "18ae3e98dd9d3af81c16a10c53d8aba9af1e4dcf59e2561a1785e67d393278cf"
+    },
+    {
+      "deck": "rws-1909",
+      "id": "pentacles-14",
+      "path": "apps/web/public/tarot/rws-1909/pe14.jpg",
+      "width": 1107,
+      "height": 1920,
+      "bytes": 773234,
+      "sha256": "f0370c27198c25ce9d43ea7a215cee46db484e99e2767038d808a374370e8038",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/rws-1909/pe14.webp",
+        "width": 254,
+        "height": 440,
+        "bytes": 47218,
+        "sha256": "961adb65e59ddeee4ea278578644dc38ad376036760828b094c5070ae8fe1d1b"
+      },
+      "a44SourceSha256": "887b31bb3a9213e9f97dd6fd9c0f8b421c24735f3a0efd1d087fadfb600b0020",
+      "decodedPixelSha256": "1c491cc5c1602c5186d1695faa55d56df79368cb06dde1c6a3c7e4891eb266de"
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-00",
+      "path": "apps/web/public/tarot/gearberry-modern/m00.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 169436,
+      "sha256": "00d32731430c43732fc8f7cbc748370f454c019efcf5a467a8ca57a027d99546",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m00.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 35286,
+        "sha256": "bbddf8bae78c8470d0923f7f01de3701ee61391da8e7e9a410a4dde0c1b964dc"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-01",
+      "path": "apps/web/public/tarot/gearberry-modern/m01.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 212252,
+      "sha256": "284df64a28db43c63bcdbb2033bf0d293e23b2165442eba0a7821ffcdf465d5c",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m01.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 42764,
+        "sha256": "8ba67fd2afce492d474ea65a40df01f23b640f48e07c0e326c0aa27fd8d78d5e"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-02",
+      "path": "apps/web/public/tarot/gearberry-modern/m02.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 141000,
+      "sha256": "21f432315e7125685ae5a36f6a948a697b45dbf595228a46dc6c7af0956b2b88",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m02.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 29498,
+        "sha256": "1fed418a0190c72d15063e1bcc05d2308d7b4e328d508c5b6c119cacb467526d"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-03",
+      "path": "apps/web/public/tarot/gearberry-modern/m03.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 197408,
+      "sha256": "9efa34376c0aa1fa5324106bf6aca6cd415bc2126f5ec5139599eff342e98014",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m03.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 39190,
+        "sha256": "df5a1821682c7d87e5dc077fe19f7913128b8375152948b577616ea0341a9805"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-04",
+      "path": "apps/web/public/tarot/gearberry-modern/m04.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 201476,
+      "sha256": "3c116c73181d85254702f139adb56b378b561fe25cf22a611ac5548e8555a8d3",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m04.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 40970,
+        "sha256": "80115021cd2b8ec9e04ef324b84406759c5d62b651d1b22256e95e790740cd26"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-05",
+      "path": "apps/web/public/tarot/gearberry-modern/m05.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 181994,
+      "sha256": "7185214c5814799447487cfa4cf9e6c8acd1359477e03c5a82fc5fc373da6927",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m05.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 36520,
+        "sha256": "3d9e7dc1195e369dfdce11e2d24aca5209576c51c9f4a1438a26fc301d868159"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-06",
+      "path": "apps/web/public/tarot/gearberry-modern/m06.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 221456,
+      "sha256": "cd77fe5e799d8d086fa7042ce3fafc83e88ea63a92c1ff7f4b50d5e293629723",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m06.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 45092,
+        "sha256": "0f29e796baf35c8a8c6a4166ff2a4dc0e7b2c44637ff62667c9279a806402f51"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-07",
+      "path": "apps/web/public/tarot/gearberry-modern/m07.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 161814,
+      "sha256": "3975aae14c9bb27976b5da71cca887c2ab035b63f51b055b42d8f4a92e4d2bc9",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m07.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 34976,
+        "sha256": "d1d802d1a8bb42ce7453e2f94ab9dfce5e3d0f94dbcab5c82e6d0af16d77f514"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-08",
+      "path": "apps/web/public/tarot/gearberry-modern/m11.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 193984,
+      "sha256": "b7ebf4686809999258f4716785dc6a731936a5923290ab08e46f4198d1491261",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m11.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 36404,
+        "sha256": "691c107647a0bfa5be346565a0fbea966aef1797e40dad51796c415363a6495f"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-09",
+      "path": "apps/web/public/tarot/gearberry-modern/m09.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 186640,
+      "sha256": "b403a3bbddf430d8fdf803c294b0d601c27ce145057b8bcf6821259934216ba8",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m09.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 37620,
+        "sha256": "592f3be26c6be61e8878bd5fe9e82f75b87f6ec04a145b8cad4e974ea297d551"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-10",
+      "path": "apps/web/public/tarot/gearberry-modern/m10.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 229858,
+      "sha256": "259997847044d06f6550688d9f6f09b4c288492de590f9e109ec4b59a14fb383",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m10.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 45226,
+        "sha256": "8fe7c4fb8e72e8df09265d85e8620754ee457c9261bbddf00c8aea2bb62388db"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-11",
+      "path": "apps/web/public/tarot/gearberry-modern/m08.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 173570,
+      "sha256": "557d84e267b8176854989a86423a729152f9fe3893b3fdd4be31ae45d36240ed",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m08.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 36008,
+        "sha256": "aec22e77d0aa8cfaeb1de0ceb33e1cc2f486e5648b44ec8057fe32ad4ab6a628"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-12",
+      "path": "apps/web/public/tarot/gearberry-modern/m12.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 155938,
+      "sha256": "6985ea8c5081173768aaa70a6d1ac4326fbedea289184a5dc0d8d397ea4340a3",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m12.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 33020,
+        "sha256": "036dfcc52699b32297d484c5be185d409bf17805c3ddd5785d682de1721761cb"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-13",
+      "path": "apps/web/public/tarot/gearberry-modern/m13.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 184316,
+      "sha256": "50d792af7488e1813caab8f8f3f7fa6dcb065a95b3d58e0aa85784d9151c7f54",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m13.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 38738,
+        "sha256": "e6aa897dd834994779f488ac6fd09e5f9385b45f021d8cefb1b1a2a127bba172"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-14",
+      "path": "apps/web/public/tarot/gearberry-modern/m14.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 144724,
+      "sha256": "6d2f841ae206ef4fc64f6fd2097d7b38c28248d10f1137f6c829bf765b5f2265",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m14.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 32430,
+        "sha256": "e08b6a01da3cb1f7597baf9696c2f190e6bbffb74df263653fa25dfb8cf1cd47"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-15",
+      "path": "apps/web/public/tarot/gearberry-modern/m15.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 171964,
+      "sha256": "c700cf0ab189c126c3d1960e99f94865950075aaf17749d05f37777a3201be6f",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m15.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 37292,
+        "sha256": "ff7072efd4df06d4523b5bd3e71e12babfa0a6a0fb5ca0e2bc0e6b3ad1764077"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-16",
+      "path": "apps/web/public/tarot/gearberry-modern/m16.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 136508,
+      "sha256": "a7d86d71a4c7a947f9fdbbf7eda805c514dc0c1f68a9c3966867c598cc933826",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m16.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 31440,
+        "sha256": "adaa527f2db9245b2b899e98e3db0f02bd905a77e26d6e37b67d8351b388c42b"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-17",
+      "path": "apps/web/public/tarot/gearberry-modern/m17.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 159982,
+      "sha256": "6a57e03bdd355f37f7cafd238a389acd7883e0602416edfceb70a13d2c59d3f2",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m17.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 34756,
+        "sha256": "a0023cfa5553a3553b1b748afffc980301d08efd74812115bfcf037389530a28"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-18",
+      "path": "apps/web/public/tarot/gearberry-modern/m18.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 181808,
+      "sha256": "8caa299c5bf5b54b2e0eee60f96275a63ca15b43294e5d814926a4ee3e898ff1",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m18.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 36028,
+        "sha256": "161e9fdf8296dbfad48867d659971df781c78ec1e3a1003b7f597604e45ce39a"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-19",
+      "path": "apps/web/public/tarot/gearberry-modern/m19.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 167644,
+      "sha256": "60c056e4eedbab630b68b300652dc25b65b39d25f84bd68684f9cf0235bfbea1",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m19.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 36418,
+        "sha256": "8c661a33507c8b6de16007cb63ffa5385cb1ed6d904941853b86465a1d475442"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-20",
+      "path": "apps/web/public/tarot/gearberry-modern/m20.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 121346,
+      "sha256": "975f4c6a8282460f91703b4302a44946f603c968f6b5336659dc3998d4371897",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m20.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 26638,
+        "sha256": "0882eb976f2ea25934fe0ce64f80e1514f2392cb3ebed22fbd2d6c05e0cd940b"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "major-21",
+      "path": "apps/web/public/tarot/gearberry-modern/m21.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 173308,
+      "sha256": "3bb0d62950035aa902834692ed26783598dab1cafff5a4619ab1c12646759584",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/m21.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 38998,
+        "sha256": "36c0c7492e65e721f746a535dd3c4fe4c5473233b546224e61ca4d3cc510dce6"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "wands-01",
+      "path": "apps/web/public/tarot/gearberry-modern/w01.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 134290,
+      "sha256": "69269d0ae59fb756ec5a17561674aca1350214509b4b5f5cd7c184d87f6b754f",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/w01.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 28802,
+        "sha256": "408778449985f1d0d0293ee8194d5e50a45a98ef4d5e3366b098dee35cc83a82"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "wands-02",
+      "path": "apps/web/public/tarot/gearberry-modern/w02.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 156972,
+      "sha256": "a49dbca95deba7f397a687fa63a922a767bc0a8798504c48f0ded2fb43705d65",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/w02.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 34668,
+        "sha256": "35e089841cb654d880ff529803ec0a5665953e0398a91e30fcf6fe9bef2ad2ef"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "wands-03",
+      "path": "apps/web/public/tarot/gearberry-modern/w03.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 167202,
+      "sha256": "8f25f10a726f4b0d047afbd24221c3361511edb2b20639b14311cbe558892fb3",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/w03.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 34584,
+        "sha256": "01900fd6ef5280569148c2143b23814755a652d3e63363fb228e94f0b9853862"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "wands-04",
+      "path": "apps/web/public/tarot/gearberry-modern/w04.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 164062,
+      "sha256": "7103b596a4ca83a7c28927c34bc11628468e042ea062284433427e9292243d9f",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/w04.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 35678,
+        "sha256": "4c2aa3cc966338097027555ce887bec3c9e7de8d93dae4d54f67413b3bdd01a3"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "wands-05",
+      "path": "apps/web/public/tarot/gearberry-modern/w05.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 141996,
+      "sha256": "36e921638786a8d359d8736ae1b6277ed22f6a2f497fd401f150956b9b242c53",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/w05.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 31204,
+        "sha256": "96e877e58d98dc4611769ba7e13db6cdf58ab91fbeca2f5d5f1b39944ff09afd"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "wands-06",
+      "path": "apps/web/public/tarot/gearberry-modern/w06.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 146948,
+      "sha256": "1992908c73900dd7ca3d08d1b3ebdbb69fd45fbb7b062da294dc8024d6665305",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/w06.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 34276,
+        "sha256": "5fca61b1bb6ea028baa826b5b25b15459c4299d13c2d800dec7361cd1b14436d"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "wands-07",
+      "path": "apps/web/public/tarot/gearberry-modern/w07.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 152752,
+      "sha256": "4fac58cc12bc156d482f02e588c231aa479d3a08d72a929f5f3302d6e9ffe01d",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/w07.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 33880,
+        "sha256": "36d863739f25748b053dbb5f1c1d54dd641679a6df596aa4bb01fb251a4070fb"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "wands-08",
+      "path": "apps/web/public/tarot/gearberry-modern/w08.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 138328,
+      "sha256": "6a5ecdba95e3c6d1fde0a660efa8573b307f2e72dace9e3cd0951c9616c21227",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/w08.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 31000,
+        "sha256": "aa753693413038d3a730468da3f0918f09864a684927b40bac29db6ea8d75f40"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "wands-09",
+      "path": "apps/web/public/tarot/gearberry-modern/w09.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 129742,
+      "sha256": "a3c1bbea0000cb3e53e14fe3f899b3325d750582b4b8473acf5c1e7ec79204f8",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/w09.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 28104,
+        "sha256": "d2994aeb3d2d455fd480eeb581c23e805d40fff495feeb87b465e7aa0c84e137"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "wands-10",
+      "path": "apps/web/public/tarot/gearberry-modern/w10.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 133724,
+      "sha256": "c8d3a4938bdf9030c936f71c1845f3dae88987b39939d708175901b524563154",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/w10.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 28096,
+        "sha256": "19af185e582c53eb7a4f2021d63c866073d699fc31ea3a029b176f3deae12235"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "wands-11",
+      "path": "apps/web/public/tarot/gearberry-modern/w11.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 182812,
+      "sha256": "a11968b425935d9b156c33d7058f06899f1615e6665e4f9aed60aa879b6c8488",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/w11.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 36980,
+        "sha256": "fe02d7a867fca54fd5c0990249ebca94a845f22f232eacccbb353553f3d37410"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "wands-12",
+      "path": "apps/web/public/tarot/gearberry-modern/w12.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 162384,
+      "sha256": "c2577e16612ccf713be7b60bdc5713e63897300c85a2fdb62769275d1e1b5aec",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/w12.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 34642,
+        "sha256": "9a794523fe2a5cff797dd34c1f2f0776a0ac49c2d994ebd3041ace09482a30e2"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "wands-13",
+      "path": "apps/web/public/tarot/gearberry-modern/w13.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 168700,
+      "sha256": "45dbd147d2860e6461f0978ac0cea70f2f2c4d9171bfaf6ad1c7b9336e56a3ce",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/w13.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 37334,
+        "sha256": "bb0f915fdcaa2eb4d4f29aae6a902baa89b281da667918119f0490c7bbe64521"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "wands-14",
+      "path": "apps/web/public/tarot/gearberry-modern/w14.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 156244,
+      "sha256": "2a2087786bfd8e67a49bdae8f54936c07d9b19437f79036177361977e3ca786f",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/w14.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 35108,
+        "sha256": "ca069287860bbb242579ebbda99326af3d98572831061f0b5ab9b93501cee27d"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "cups-01",
+      "path": "apps/web/public/tarot/gearberry-modern/c01.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 149908,
+      "sha256": "c916609296ca31ccf795f819345ab3fce61a214ab8f7e01c1e7d75c3b7164eb6",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/c01.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 34862,
+        "sha256": "17d599cb1918056400bd01a198f84445a633699b0dfc766c1be17afd7282e3b0"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "cups-02",
+      "path": "apps/web/public/tarot/gearberry-modern/c02.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 151458,
+      "sha256": "4ea3a38897fa583c07444e194a289d364354902ff3a21e5021cd0709f50daff7",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/c02.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 33296,
+        "sha256": "d99ca80837fb96d62bfc89d75ecd052f48e870b3631d4b945ede83d89dca305c"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "cups-03",
+      "path": "apps/web/public/tarot/gearberry-modern/c03.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 192430,
+      "sha256": "9d926e24d8c2a17590fb5f0f8b8804d51075d47ba3f4690ea9ac075aa4d727e9",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/c03.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 39142,
+        "sha256": "c4d679f5990ab528d6ffa1b86274f5603137d8ec355ee8114aebc28bad24b018"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "cups-04",
+      "path": "apps/web/public/tarot/gearberry-modern/c04.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 161278,
+      "sha256": "3083d6c8cc8cd00b7f24655e6fa28e24663501ccb18e5bcfe965dd7903646b10",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/c04.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 34012,
+        "sha256": "529e30f2102e33910cc13fddc4a1196f67e552aa431e716d144d78418a2d912d"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "cups-05",
+      "path": "apps/web/public/tarot/gearberry-modern/c05.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 158482,
+      "sha256": "6169c67a3b2bdf01a51c5d645243df5063efedb617aa4298d0a3bbbbdec89b6b",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/c05.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 33272,
+        "sha256": "ab0dcb13c01084d79e06c7fc7b31a0197e4aa9245293620f3051f8de6f4bea17"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "cups-06",
+      "path": "apps/web/public/tarot/gearberry-modern/c06.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 142082,
+      "sha256": "980fed3e6e14ced268ba354a8feaa63decda3150aa89807ef286679dc8151e0d",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/c06.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 31482,
+        "sha256": "875f642977f5936ed290d37aee982491e45cb9e248f030eabbe5a5a43f839338"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "cups-07",
+      "path": "apps/web/public/tarot/gearberry-modern/c07.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 166902,
+      "sha256": "bd53c243f85d405c1c4af4a5538709699b8f814c70f2c3a0fa3ee406f4e1a7ec",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/c07.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 34818,
+        "sha256": "99ee7cf321d632b6a696e25449bc29b5d7f54ef1b52b208e3a1b1a3f4876d79e"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "cups-08",
+      "path": "apps/web/public/tarot/gearberry-modern/c08.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 170258,
+      "sha256": "4ee8ec8199279c1d803ac9ce600b34a48b6f86c3f050f5f84fa0d4a6ac64c922",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/c08.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 34404,
+        "sha256": "5b51cf2174e1ba200667232729d190a55fdd0d1de8ac1371a77667b87f5f2697"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "cups-09",
+      "path": "apps/web/public/tarot/gearberry-modern/c09.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 166042,
+      "sha256": "f033d526af4c3dbe51e66fdfbf8a2bbdeb7ced235c9b77c18c59948213f248d6",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/c09.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 35028,
+        "sha256": "107149e597bf6722bfe66803aba06734152848a18c89e8c1017681b10abf62c6"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "cups-10",
+      "path": "apps/web/public/tarot/gearberry-modern/c10.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 167140,
+      "sha256": "d6bbb5d10872ad4c152d2ce064a457110c997bcc2cecff4e9e8f7705e56f4bc0",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/c10.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 36734,
+        "sha256": "358aa1ce74d0d95aac53357deb8843e01a002f38b2b8c5f08a8b7b597115980b"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "cups-11",
+      "path": "apps/web/public/tarot/gearberry-modern/c11.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 145966,
+      "sha256": "e936feceb62d471099c938c168fd318afba3752606d3e03fdd29e690d02dcb4f",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/c11.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 31590,
+        "sha256": "76ede13130599bb6312f1c519566094f4d94add4b4626dd499e2c37cce51fcf4"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "cups-12",
+      "path": "apps/web/public/tarot/gearberry-modern/c12.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 163514,
+      "sha256": "f6352fefa4c4801e68aa38d248a487fa51de3f9e1cb3391e640b92a62268198e",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/c12.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 33604,
+        "sha256": "ed7078e5d2f1dbdbe891688951a033da419555d05ed01fd357f33f935c68dc59"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "cups-13",
+      "path": "apps/web/public/tarot/gearberry-modern/c13.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 193756,
+      "sha256": "5751701e3840962ec5cf606e7b2ed0582efdcd9c2a025c8fcf86f379137a80a8",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/c13.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 38430,
+        "sha256": "2b015ecc07a933c7ab9da9348cd16135470b520a5b16ea0bd78a4508996ffd7e"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "cups-14",
+      "path": "apps/web/public/tarot/gearberry-modern/c14.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 144894,
+      "sha256": "41c300a7b6a67dbada302e3fb7f27a03ba2a79876618475b95854d4bdfe15a02",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/c14.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 31576,
+        "sha256": "6d4137c3d22de23f82e1f994a78c1e64532eb0be954e050375f7d915e1986eca"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "swords-01",
+      "path": "apps/web/public/tarot/gearberry-modern/s01.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 148976,
+      "sha256": "722f541f8694936d59b18bf7f674fbcc841a897acb305e572112884c07cb5e30",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/s01.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 31416,
+        "sha256": "2805cd0deaa4245d28cb1db29053444c6db867d4298a54e53f8e7d8f284f852e"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "swords-02",
+      "path": "apps/web/public/tarot/gearberry-modern/s02.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 161074,
+      "sha256": "7d0230f86db1425c86c34ea623db1d81202849c9b6559066cb16e377bd81735e",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/s02.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 33190,
+        "sha256": "183b4cd9c8d292191194258336bcdbd27eb071721ab15628b81aef0cd51b0c79"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "swords-03",
+      "path": "apps/web/public/tarot/gearberry-modern/s03.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 156556,
+      "sha256": "93819dcf5bf1468e8b8bd36d4871bb34cd4705371832d626ba4d517578687907",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/s03.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 32738,
+        "sha256": "0bcf813542c9a86b5080cf7ca6c67e63341974cd423835fdb65cc21074ce890c"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "swords-04",
+      "path": "apps/web/public/tarot/gearberry-modern/s04.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 145050,
+      "sha256": "7fe24dee1d7200b40d3515c941b5b4506ab5c165d354cc846dde30d57246b7b0",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/s04.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 29992,
+        "sha256": "feeee95edb9a86fe95373ec48f5a3746fe98ff20c5af0b370b02a1d1ddeb5f89"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "swords-05",
+      "path": "apps/web/public/tarot/gearberry-modern/s05.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 148318,
+      "sha256": "21eabf760fa069d5614f0f2371153e5a1fc664ce2000214c6244fefa64c02510",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/s05.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 32578,
+        "sha256": "bf004a062ad7ca9db95540a29d87974ce46f7bc76f29125bf5f536dc6e8b9418"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "swords-06",
+      "path": "apps/web/public/tarot/gearberry-modern/s06.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 146796,
+      "sha256": "23caa7a12c5cc64c93858c6d3d4bbd71099d9c0a609f563fa24923c8361341a2",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/s06.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 28296,
+        "sha256": "6a53fca78d46c470e514d90c84f88944fea61aba4e231c3ec5a1142faaa61bef"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "swords-07",
+      "path": "apps/web/public/tarot/gearberry-modern/s07.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 147246,
+      "sha256": "7cac8d8d162621e3f25049dcc97bce1b37a408a5c09610b75267181b6f2e39f6",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/s07.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 32456,
+        "sha256": "bb4db6fde67c19496df62efd0155dd62a25085cb30b20656f95e20503a47d618"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "swords-08",
+      "path": "apps/web/public/tarot/gearberry-modern/s08.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 144842,
+      "sha256": "13affd7ce561cf0d454992234f4aa2ff0e1184d7859fe0196ea943113f4c32d3",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/s08.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 30652,
+        "sha256": "68417bdbbe23112931c9fe33f451bc346ce697b3bbd9888712b8bff4ddbc3cbb"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "swords-09",
+      "path": "apps/web/public/tarot/gearberry-modern/s09.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 143888,
+      "sha256": "877717e358b5127806bf7f72b286a3a7f7a8192781508ff8d7ec1dc4fd700cec",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/s09.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 29628,
+        "sha256": "01c2bf4b622de2b17e7406ec2f37a8db310f09af14457aee18576e71c223eb8d"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "swords-10",
+      "path": "apps/web/public/tarot/gearberry-modern/s10.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 147480,
+      "sha256": "967c2ac147b43e1ba94493264d351d625458e128b3cfaee8d25ce4589fe328a5",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/s10.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 29874,
+        "sha256": "418fcf9fc150d106db08f521b5c26e7343e2262ca4975dab61e5098b14b984cb"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "swords-11",
+      "path": "apps/web/public/tarot/gearberry-modern/s11.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 158580,
+      "sha256": "1f47f9904f3a7f03e58a26b7094538e9517231dcbb8f6a9283da73b563435281",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/s11.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 34682,
+        "sha256": "a4f0295e6ec6c55389c89364cb8fd011be923c6cdcba597d075e29b04a52cba2"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "swords-12",
+      "path": "apps/web/public/tarot/gearberry-modern/s12.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 180112,
+      "sha256": "91154ecd0886aa0a0e73b9fba66e7320614c385d596f635dd5aaf4435ba3191c",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/s12.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 35890,
+        "sha256": "b9114aa2eee35fc1ad4e81bebaf599cc1f59b9cce28604593035310810757475"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "swords-13",
+      "path": "apps/web/public/tarot/gearberry-modern/s13.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 156192,
+      "sha256": "aaf9d0a99338b94bff4afbe6b5c2a0f04a1e69963f18ec34c6a1c0ff903f2639",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/s13.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 33438,
+        "sha256": "41e24c9120ca7250fb94fd346f7f3960b1d10d3dc54a1acd5d575ba8825e6288"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "swords-14",
+      "path": "apps/web/public/tarot/gearberry-modern/s14.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 158508,
+      "sha256": "87b5c74d20a287ab481b0c40d7351bbdd067c8ce050cfa1fec07c4aea6e77e32",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/s14.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 35002,
+        "sha256": "8f6505020b743bb1be6d3e08d2057644760a2aada9b16c4990370acc90c845f6"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "pentacles-01",
+      "path": "apps/web/public/tarot/gearberry-modern/p01.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 180320,
+      "sha256": "0ac2a9d94a67b7660c473e3bd8b6c06a16c8976eaeb619fc93a0011a033f5df5",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/p01.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 39610,
+        "sha256": "c90b3f791573292d45105811e276729d0d1f2083ff1ff4d4772159c953b74e4a"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "pentacles-02",
+      "path": "apps/web/public/tarot/gearberry-modern/p02.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 167556,
+      "sha256": "1fff885d8ffe00a387feaa3ba3d2bdf1df7ff30d6a5e1f8210b33c3fceef1658",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/p02.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 36114,
+        "sha256": "c69963e4f69bde0d5a3d0c6c5e938db848375c6a17f599a35d0d7bcc35f9d0bf"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "pentacles-03",
+      "path": "apps/web/public/tarot/gearberry-modern/p03.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 158738,
+      "sha256": "2a7850f652c23f76b13e5b5c27c63573498de7e551bf0ee97b1679e285861526",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/p03.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 33150,
+        "sha256": "03b11b1324042e8fae013d2c478ccda38bab0c4aeac378d59b72c9533400256d"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "pentacles-04",
+      "path": "apps/web/public/tarot/gearberry-modern/p04.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 183876,
+      "sha256": "609fdc4c6b7efbd860a113f5e37b172537cbeeef5500da3647d977e493021763",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/p04.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 36158,
+        "sha256": "381e8f49a5ea906d5d2f359de4143644a9e18014e3f373f0762039e902676517"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "pentacles-05",
+      "path": "apps/web/public/tarot/gearberry-modern/p05.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 162240,
+      "sha256": "493de7b3db13d521b00ab2aabe7da4dd5acbe56ba9d026a5847f646b5a118ef9",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/p05.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 34300,
+        "sha256": "f555715f234aedf6c5d28472a7d127563988a8ee8593de7e2e85db0706fe0ccb"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "pentacles-06",
+      "path": "apps/web/public/tarot/gearberry-modern/p06.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 173322,
+      "sha256": "902e4d081eb47603e8d809bf4a879b0717e7e1e87064ae0d9a3903da72101185",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/p06.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 36508,
+        "sha256": "5aafcdc32e752c138d3b673b97cd570916ff5525659e806564d216a806495306"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "pentacles-07",
+      "path": "apps/web/public/tarot/gearberry-modern/p07.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 184214,
+      "sha256": "392577d89dae52bb5b21e4f70a230c46c7c86040a22943a3ddbe97b90a08ee5e",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/p07.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 38510,
+        "sha256": "e1fe8279f132bb24955a2d136f8934c69a64c3cf023bb112b112e8c138b1e2e7"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "pentacles-08",
+      "path": "apps/web/public/tarot/gearberry-modern/p08.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 151042,
+      "sha256": "a398085f099f8f95978dad0f25593b0880d770fb04713aa3090cdcd2e867f39d",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/p08.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 33158,
+        "sha256": "6cb1a6c426f97494f8dc801b47fb7e9b621bd20c7880954ce2e97a5d013ff3e1"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "pentacles-09",
+      "path": "apps/web/public/tarot/gearberry-modern/p09.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 212948,
+      "sha256": "d39594dd3c09d515920d3586037fdafdae7bae2985ae0b116426d7cc1681edb1",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/p09.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 41018,
+        "sha256": "bb06a1ff8fea5673ce4f0124ef965f058545bcad6954b9c5a8c258f9e353120e"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "pentacles-10",
+      "path": "apps/web/public/tarot/gearberry-modern/p10.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 188734,
+      "sha256": "cc6dde96a24d8c5ff0a624ecf376a60bf80321bff5a25c3353ca06308a66d011",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/p10.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 37488,
+        "sha256": "132765c447c347d35ca469701a6ef8f4167285f952f67e99530e1e6018221c05"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "pentacles-11",
+      "path": "apps/web/public/tarot/gearberry-modern/p11.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 188178,
+      "sha256": "2934b3cc5bae63f48ee57d769f5db13b50e3ae0d9211180428b9f336da01544a",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/p11.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 39228,
+        "sha256": "1e67db6d71095c4e99c4e0c51092f61dcd0c677ed79e7fe8b75d7b2b2c044ee6"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "pentacles-12",
+      "path": "apps/web/public/tarot/gearberry-modern/p12.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 157422,
+      "sha256": "14059445a35152c1f66c1fa6b49ea7cd4108877f9d804e5c5cd00ebaf9bcfb81",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/p12.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 33082,
+        "sha256": "21fc8e2a5afa7d4f6ae590c07c98717fc024bda360051b5fca8f7123d8c37bd4"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "pentacles-13",
+      "path": "apps/web/public/tarot/gearberry-modern/p13.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 169318,
+      "sha256": "c19da98975cb9733cc98b1abab498c0ee2952730203606adeb565ae26a2686c4",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/p13.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 37548,
+        "sha256": "a7f8356bf8161d7505a6b3dc769a6266e9a5f0d15f58d89ab274e5aec840219a"
+      }
+    },
+    {
+      "deck": "gearberry-modern",
+      "id": "pentacles-14",
+      "path": "apps/web/public/tarot/gearberry-modern/p14.webp",
+      "width": 848,
+      "height": 1264,
+      "bytes": 183620,
+      "sha256": "69bf18f4785cf9e906afc781ccd1760b10946cceba09cae8a49101a89968864f",
+      "thumbnail": {
+        "path": "apps/web/public/tarot/thumbnails/gearberry-modern/p14.webp",
+        "width": 264,
+        "height": 394,
+        "bytes": 36958,
+        "sha256": "d68fd52625b5632cc809fee1cf47ec1fbac34211d9afe8954831e43721b2a8e8"
+      }
+    }
+  ],
+  "version": "V11.164.72",
+  "scope": "156 actual image files; IDs and 8/11 name mapping unchanged; publication/license acceptance remains operator review",
+  "optimization": {
+    "method": "jpegtran 2.1.5 -copy all -optimize -progressive",
+    "scope": "78 RWS JPEGs; exact decoded RGB pixels, dimensions, ICC, EXIF and DPI preserved against A44",
+    "beforeBytes": 69581943,
+    "afterBytes": 65517218
+  }
+}

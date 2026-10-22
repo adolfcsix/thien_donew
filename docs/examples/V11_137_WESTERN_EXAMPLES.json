@@ -1,0 +1,702 @@
+{
+  "method": "v11.137-western-esoterica",
+  "numerology": {
+    "method": "pythagorean-advanced-comparison-v1",
+    "baseMethod": "pythagorean-segmented-v1",
+    "input": {
+      "method": "pythagorean-segmented-v1",
+      "name": "Ada Lovelace",
+      "date": "1980-10-22",
+      "year": 2026,
+      "yMode": "consonant",
+      "masters": true
+    },
+    "lifePathComparison": {
+      "segmented": {
+        "value": 5,
+        "steps": [
+          32,
+          5
+        ],
+        "parts": [
+          {
+            "value": 1,
+            "steps": [
+              10,
+              1
+            ]
+          },
+          {
+            "value": 22,
+            "steps": [
+              22
+            ]
+          },
+          {
+            "value": 9,
+            "steps": [
+              1980,
+              18,
+              9
+            ]
+          }
+        ]
+      },
+      "allDigits": {
+        "value": 5,
+        "steps": [
+          23,
+          5
+        ]
+      },
+      "agrees": true,
+      "note": "Hai phép rút được hiển thị song song; không đổi phương pháp chính của hồ sơ Pythagoras."
+    },
+    "maturity": {
+      "value": 5,
+      "steps": [
+        14,
+        5
+      ]
+    },
+    "nameFrequency": {
+      "counts": {
+        "1": 3,
+        "2": 0,
+        "3": 3,
+        "4": 2,
+        "5": 2,
+        "6": 1,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "hiddenPassion": [
+        1,
+        3
+      ],
+      "missingNumbers": [
+        2,
+        7,
+        8,
+        9
+      ]
+    },
+    "personalMonths": [
+      {
+        "month": 1,
+        "value": 7,
+        "steps": [
+          2059,
+          16,
+          7
+        ]
+      },
+      {
+        "month": 2,
+        "value": 8,
+        "steps": [
+          2060,
+          8
+        ]
+      },
+      {
+        "month": 3,
+        "value": 9,
+        "steps": [
+          2061,
+          9
+        ]
+      },
+      {
+        "month": 4,
+        "value": 1,
+        "steps": [
+          2062,
+          10,
+          1
+        ]
+      },
+      {
+        "month": 5,
+        "value": 2,
+        "steps": [
+          2063,
+          11,
+          2
+        ]
+      },
+      {
+        "month": 6,
+        "value": 3,
+        "steps": [
+          2064,
+          12,
+          3
+        ]
+      },
+      {
+        "month": 7,
+        "value": 4,
+        "steps": [
+          2065,
+          13,
+          4
+        ]
+      },
+      {
+        "month": 8,
+        "value": 5,
+        "steps": [
+          2066,
+          14,
+          5
+        ]
+      },
+      {
+        "month": 9,
+        "value": 6,
+        "steps": [
+          2067,
+          15,
+          6
+        ]
+      },
+      {
+        "month": 10,
+        "value": 7,
+        "steps": [
+          2068,
+          16,
+          7
+        ]
+      },
+      {
+        "month": 11,
+        "value": 8,
+        "steps": [
+          2069,
+          17,
+          8
+        ]
+      },
+      {
+        "month": 12,
+        "value": 9,
+        "steps": [
+          2070,
+          9
+        ]
+      }
+    ],
+    "exampleDate": {
+      "date": "2026-01-01",
+      "personalYear": {
+        "value": 6,
+        "steps": [
+          2058,
+          15,
+          6
+        ]
+      },
+      "personalMonth": {
+        "value": 7,
+        "steps": [
+          7
+        ]
+      },
+      "personalDay": {
+        "value": 8,
+        "steps": [
+          8
+        ]
+      }
+    },
+    "limitations": [
+      "Chỉ dùng bảng chữ Latin Pythagoras và quy tắc Y do người dùng chọn.",
+      "Tên đã chuyển tự sẽ tạo kết quả khác; không hỗ trợ tự động chuyển bảng Chaldean.",
+      "Mọi ý nghĩa là thực hành biểu tượng, không phải phát hiện thực nghiệm."
+    ]
+  },
+  "major8": {
+    "id": "major-08",
+    "rws": {
+      "name": "Strength",
+      "number": 8
+    },
+    "marseille": {
+      "number": 8,
+      "name": "Justice"
+    },
+    "thoth": {
+      "number": 8,
+      "name": "Adjustment"
+    },
+    "comparisonOnly": false,
+    "caveat": "Tên và số thứ tự có thể khác nhau; không đồng nhất toàn bộ biểu tượng."
+  },
+  "major11": {
+    "id": "major-11",
+    "rws": {
+      "name": "Justice",
+      "number": 11
+    },
+    "marseille": {
+      "number": 11,
+      "name": "La Force (Strength)"
+    },
+    "thoth": {
+      "number": 11,
+      "name": "Lust"
+    },
+    "comparisonOnly": false,
+    "caveat": "Tên và số thứ tự có thể khác nhau; không đồng nhất toàn bộ biểu tượng."
+  },
+  "minorCourt": {
+    "id": "wands-14",
+    "rws": {
+      "name": "King of Wands",
+      "number": 14
+    },
+    "marseille": {
+      "number": 14,
+      "name": "Roi de Bâtons"
+    },
+    "thoth": {
+      "number": 14,
+      "name": "Knight of Wands"
+    },
+    "comparisonOnly": true,
+    "caveat": "Court cards không được mặc định là cùng phẩm vị/chức năng giữa các truyền thống."
+  },
+  "goldenDawn": {
+    "system": "golden-dawn",
+    "cardId": "major-04",
+    "path": {
+      "id": 15,
+      "letter": "ה",
+      "letterName": "He",
+      "gematria": 5,
+      "from": 2,
+      "to": 6,
+      "rwsCardId": "major-04",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    "connected": true,
+    "warning": "Tương ứng Golden Dawn cuối thế kỷ XIX; không phải cách diễn giải bắt buộc của Kabbalah Do Thái."
+  },
+  "crowley": {
+    "system": "crowley-thoth",
+    "cardId": "major-04",
+    "path": {
+      "id": 28,
+      "letter": "צ",
+      "letterName": "Tsadi",
+      "gematria": 90,
+      "from": 7,
+      "to": 9,
+      "rwsCardId": "major-17",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    "connected": true,
+    "warning": "Biến thể Heh/Tzaddi theo Crowley: nghiên cứu riêng, không mặc định đường nối và hệ quy chiếu giống Golden Dawn."
+  },
+  "jewish": {
+    "system": "jewish-source-only",
+    "cardId": "major-04",
+    "connected": false,
+    "reason": "Kabbalah Do Thái truyền thống không gán Tarot vào hệ Sephirot theo bảng Golden Dawn."
+  },
+  "sephirot": [
+    {
+      "id": 1,
+      "name": "Keter",
+      "hebrew": "כתר",
+      "gloss": "Vương miện"
+    },
+    {
+      "id": 2,
+      "name": "Chokhmah",
+      "hebrew": "חכמה",
+      "gloss": "Minh triết"
+    },
+    {
+      "id": 3,
+      "name": "Binah",
+      "hebrew": "בינה",
+      "gloss": "Thấu hiểu"
+    },
+    {
+      "id": 4,
+      "name": "Chesed",
+      "hebrew": "חסד",
+      "gloss": "Nhân từ"
+    },
+    {
+      "id": 5,
+      "name": "Gevurah",
+      "hebrew": "גבורה",
+      "gloss": "Nghiêm lực"
+    },
+    {
+      "id": 6,
+      "name": "Tiferet",
+      "hebrew": "תפארת",
+      "gloss": "Hài hòa"
+    },
+    {
+      "id": 7,
+      "name": "Netzach",
+      "hebrew": "נצח",
+      "gloss": "Bền vững"
+    },
+    {
+      "id": 8,
+      "name": "Hod",
+      "hebrew": "הוד",
+      "gloss": "Huy hoàng"
+    },
+    {
+      "id": 9,
+      "name": "Yesod",
+      "hebrew": "יסוד",
+      "gloss": "Nền tảng"
+    },
+    {
+      "id": 10,
+      "name": "Malkhut",
+      "hebrew": "מלכות",
+      "gloss": "Vương quốc"
+    }
+  ],
+  "paths": [
+    {
+      "id": 11,
+      "letter": "א",
+      "letterName": "Aleph",
+      "gematria": 1,
+      "from": 1,
+      "to": 2,
+      "rwsCardId": "major-00",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 12,
+      "letter": "ב",
+      "letterName": "Bet",
+      "gematria": 2,
+      "from": 1,
+      "to": 3,
+      "rwsCardId": "major-01",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 13,
+      "letter": "ג",
+      "letterName": "Gimel",
+      "gematria": 3,
+      "from": 1,
+      "to": 6,
+      "rwsCardId": "major-02",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 14,
+      "letter": "ד",
+      "letterName": "Dalet",
+      "gematria": 4,
+      "from": 2,
+      "to": 3,
+      "rwsCardId": "major-03",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 15,
+      "letter": "ה",
+      "letterName": "He",
+      "gematria": 5,
+      "from": 2,
+      "to": 6,
+      "rwsCardId": "major-04",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 16,
+      "letter": "ו",
+      "letterName": "Vav",
+      "gematria": 6,
+      "from": 2,
+      "to": 4,
+      "rwsCardId": "major-05",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 17,
+      "letter": "ז",
+      "letterName": "Zayin",
+      "gematria": 7,
+      "from": 3,
+      "to": 6,
+      "rwsCardId": "major-06",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 18,
+      "letter": "ח",
+      "letterName": "Het",
+      "gematria": 8,
+      "from": 3,
+      "to": 5,
+      "rwsCardId": "major-07",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 19,
+      "letter": "ט",
+      "letterName": "Tet",
+      "gematria": 9,
+      "from": 4,
+      "to": 5,
+      "rwsCardId": "major-08",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 20,
+      "letter": "י",
+      "letterName": "Yod",
+      "gematria": 10,
+      "from": 4,
+      "to": 6,
+      "rwsCardId": "major-09",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 21,
+      "letter": "כ",
+      "letterName": "Kaf",
+      "gematria": 20,
+      "from": 4,
+      "to": 7,
+      "rwsCardId": "major-10",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 22,
+      "letter": "ל",
+      "letterName": "Lamed",
+      "gematria": 30,
+      "from": 5,
+      "to": 6,
+      "rwsCardId": "major-11",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 23,
+      "letter": "מ",
+      "letterName": "Mem",
+      "gematria": 40,
+      "from": 5,
+      "to": 8,
+      "rwsCardId": "major-12",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 24,
+      "letter": "נ",
+      "letterName": "Nun",
+      "gematria": 50,
+      "from": 6,
+      "to": 7,
+      "rwsCardId": "major-13",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 25,
+      "letter": "ס",
+      "letterName": "Samekh",
+      "gematria": 60,
+      "from": 6,
+      "to": 9,
+      "rwsCardId": "major-14",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 26,
+      "letter": "ע",
+      "letterName": "Ayin",
+      "gematria": 70,
+      "from": 6,
+      "to": 8,
+      "rwsCardId": "major-15",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 27,
+      "letter": "פ",
+      "letterName": "Pe",
+      "gematria": 80,
+      "from": 7,
+      "to": 8,
+      "rwsCardId": "major-16",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 28,
+      "letter": "צ",
+      "letterName": "Tsadi",
+      "gematria": 90,
+      "from": 7,
+      "to": 9,
+      "rwsCardId": "major-17",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 29,
+      "letter": "ק",
+      "letterName": "Qof",
+      "gematria": 100,
+      "from": 7,
+      "to": 10,
+      "rwsCardId": "major-18",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 30,
+      "letter": "ר",
+      "letterName": "Resh",
+      "gematria": 200,
+      "from": 8,
+      "to": 9,
+      "rwsCardId": "major-19",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 31,
+      "letter": "ש",
+      "letterName": "Shin",
+      "gematria": 300,
+      "from": 8,
+      "to": 10,
+      "rwsCardId": "major-20",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    },
+    {
+      "id": 32,
+      "letter": "ת",
+      "letterName": "Tav",
+      "gematria": 400,
+      "from": 9,
+      "to": 10,
+      "rwsCardId": "major-21",
+      "tradition": "hermetic-golden-dawn-kircher-v1"
+    }
+  ],
+  "deckProfiles": [
+    {
+      "id": "rws-1909",
+      "name": "Rider–Waite–Smith",
+      "period": "1909",
+      "origin": "Anh",
+      "system": "RWS · 22 Ẩn chính / 56 Ẩn phụ",
+      "artStatus": "Không nhúng tranh ảnh; chỉ có danh mục và biểu tượng do Thiên Đồ dựng.",
+      "status": "reading-engine-existing"
+    },
+    {
+      "id": "marseille-pattern",
+      "name": "Tarot de Marseille",
+      "period": "Thế kỷ XVII–XVIII, nhiều truyền bản",
+      "origin": "Pháp và Bắc Ý",
+      "system": "Pip cards · Strength XI, Justice VIII",
+      "artStatus": "Không mặc định ảnh từ bất kỳ bản in nào; từng ấn bản cần xác minh quyền sử dụng.",
+      "status": "comparative-atlas-only"
+    },
+    {
+      "id": "thoth-1943",
+      "name": "Thoth (Crowley–Harris)",
+      "period": "Hoàn thành tranh 1943; ấn hành về sau",
+      "origin": "Anh",
+      "system": "Thelema · Lust XI, Adjustment VIII; court và suits riêng",
+      "artStatus": "Không phân phối hình tranh Thoth có bản quyền.",
+      "status": "comparative-atlas-only"
+    }
+  ],
+  "legend": [
+    {
+      "id": "hebrew",
+      "label": "Chữ Hebrew",
+      "tradition": "Jewish-language",
+      "examples": [
+        "Aleph א",
+        "Bet ב",
+        "Shin ש"
+      ],
+      "boundary": "Bảng chữ và giá trị số; việc gán Tarot là lớp Hermetic về sau."
+    },
+    {
+      "id": "tree",
+      "label": "Cây Sự Sống",
+      "tradition": "Jewish-kabbalistic-and-later-hermetic-diagrams",
+      "examples": [
+        "10 Sephirot",
+        "các sơ đồ đường nối khác nhau"
+      ],
+      "boundary": "Không có một cách đánh số 22 đường duy nhất xuyên mọi truyền thống."
+    },
+    {
+      "id": "tarot-rws",
+      "label": "Tarot RWS",
+      "tradition": "rws-1909",
+      "examples": [
+        "Strength VIII",
+        "Justice XI"
+      ],
+      "boundary": "RWS có hệ tranh Ẩn phụ riêng, khác Marseille."
+    },
+    {
+      "id": "tarot-marseille",
+      "label": "Tarot Marseille",
+      "tradition": "marseille-pattern",
+      "examples": [
+        "Justice VIII",
+        "La Force XI",
+        "Pip minors"
+      ],
+      "boundary": "Có nhiều họ bản in; không gán cùng bộ nghĩa RWS."
+    },
+    {
+      "id": "tarot-thoth",
+      "label": "Tarot Thoth",
+      "tradition": "thelemic-thoth",
+      "examples": [
+        "Adjustment VIII",
+        "Lust XI",
+        "Disks"
+      ],
+      "boundary": "Không sao chép tranh hiện đại hoặc mặc định tương đương bài Court."
+    },
+    {
+      "id": "astrological",
+      "label": "Biểu tượng thiên văn/chiêm tinh",
+      "tradition": "western-astrology",
+      "examples": [
+        "Mặt Trời ☉",
+        "Mặt Trăng ☽",
+        "Sao Kim ♀"
+      ],
+      "boundary": "Đặt tầng biểu tượng cạnh phép đo thiên văn; không đồng nhất với dữ kiện khoa học."
+    },
+    {
+      "id": "alchemy",
+      "label": "Biểu tượng giả kim",
+      "tradition": "historical-alchemy",
+      "examples": [
+        "Sulfur",
+        "Mercury",
+        "Salt"
+      ],
+      "boundary": "Không xây dựng phép tiên đoán hay hiệu quả hóa học từ nhãn biểu tượng."
+    }
+  ],
+  "interpretationPolicy": "Các phép số là mô hình quy ước; atlas biểu tượng là tư liệu tham khảo, không chứng minh sự kiện tương lai.",
+  "referenceStatus": "Bảng chữ Hebrew 22, sơ đồ Kircher/Hermetic và Tarot chỉ được ghi ở dạng đối chiếu nghiên cứu; không phải bảng chuẩn duy nhất của mọi Kabbalah."
+}

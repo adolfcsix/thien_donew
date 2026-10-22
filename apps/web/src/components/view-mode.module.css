@@ -1,0 +1,17 @@
+.intro,.teaser{border:1px solid rgba(158,130,79,.35);border-radius:16px;padding:clamp(16px,2.2vw,24px);margin:16px 0 24px;background:linear-gradient(128deg,rgba(24,80,69,.09),rgba(177,143,74,.08));color:inherit}
+.introHead{display:flex;flex-direction:column;gap:5px}
+.kicker{font-size:.71rem;font-weight:800;letter-spacing:.105em;color:#b59a5d}
+.intro h2,.teaser h2{font-family:inherit;font-size:clamp(1rem,1.55vw,1.25rem);margin:3px 0 6px}
+.intro p,.teaser p{margin:7px 0;line-height:1.7;font-size:.91rem;max-width:80ch}
+.liveSummary{border-left:3px solid #b59a5d;padding-left:12px}
+.introFooter{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;padding-top:12px;border-top:1px solid rgba(158,130,79,.2);font-size:.84rem;line-height:1.65}
+.introFooter>span{flex:1 1 260px}
+.intro button,.teaser button{background:rgba(173,140,83,.12);border:1px solid rgba(178,150,94,.42);border-radius:11px;color:inherit;font:inherit;font-size:.83rem;font-weight:700;padding:9px 13px;min-height:40px;cursor:pointer}
+.intro button:hover,.teaser button:hover{background:rgba(173,140,83,.26)}
+.intro button:focus-visible,.teaser button:focus-visible{outline:3px solid #af985d;outline-offset:3px}
+.teaser{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.teaser>div{flex:1 1 320px}
+@media(max-width:650px){.teaser button,.introFooter button{width:100%}}
+
+.expertRegion[hidden]{display:none!important}
+.expertRegion:not([hidden]){display:contents}

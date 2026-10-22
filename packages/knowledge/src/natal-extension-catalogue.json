@@ -1,0 +1,33 @@
+{
+  "edition": "v11.14.0",
+  "scope": "Ba sao an theo Can Chi, không phải toàn bộ danh mục Tử Vi",
+  "records": [
+    {
+      "name": "Quốc Ấn",
+      "group": "Phụ tinh theo can năm sinh",
+      "motif": "Quy cách, trách nhiệm và sự công nhận",
+      "natal": true,
+      "placementRuleSet": "additional-natal-three-v11.14.0",
+      "referenceKey": "loc-ton-cung-thu-chin",
+      "expertReviewed": false
+    },
+    {
+      "name": "Kiếp Sát",
+      "group": "Tạp tinh theo chi năm sinh",
+      "motif": "Tính bất ngờ và cách ứng phó khi biến động",
+      "natal": true,
+      "placementRuleSet": "additional-natal-three-v11.14.0",
+      "referenceKey": "tam-hop-chi-nam",
+      "expertReviewed": false
+    },
+    {
+      "name": "Phá Toái",
+      "group": "Tạp tinh theo chi năm sinh",
+      "motif": "Trở ngại nhỏ và việc điều chỉnh kế hoạch",
+      "natal": true,
+      "placementRuleSet": "additional-natal-three-v11.14.0",
+      "referenceKey": "tu-chinh-tu-sinh-tu-mo",
+      "expertReviewed": false
+    }
+  ]
+}

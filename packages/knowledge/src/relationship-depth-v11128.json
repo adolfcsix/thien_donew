@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "edition": "11.128.0",
+  "editorialNotice": "Đọc tương tác phản tư; không chấm điểm hợp nhau, không đoán suy nghĩ hoặc tương lai của người khác. Không đồng nhất Synastry với Composite hay Davison.",
+  "contexts": {
+    "general": {
+      "name": "Tổng quan tương tác",
+      "prompt": "Mỗi bên tự xác nhận trải nghiệm của mình; dùng các câu hỏi để mở đối thoại, không thay sự đồng thuận."
+    },
+    "partnership": {
+      "name": "Quan hệ tình cảm",
+      "prompt": "Làm rõ nhu cầu, ranh giới và cách trao đổi; một góc hợp không quyết định nên yêu, chia tay hoặc mức độ chung thủy."
+    },
+    "collaboration": {
+      "name": "Hợp tác / công việc",
+      "prompt": "Đối chiếu với vai trò, nguồn lực và trách nhiệm thật; không suy năng lực hoặc chọn cộng sự bằng điểm hợp nhau."
+    },
+    "friendship": {
+      "name": "Bạn bè / gia đình",
+      "prompt": "Xem mỗi người mong đợi gì ở việc đồng hành, hỗ trợ và khoảng riêng."
+    }
+  },
+  "aspects": [
+    {
+      "angle": 0,
+      "name": "Đồng vị",
+      "synastry": "Đặt hai chức năng của hai người cạnh nhau để thấy phần giao nhau và nhu cầu riêng.",
+      "composite": "Hai chủ đề ở gần nhau trong mô hình chung; thử tách vai trò của mỗi chủ đề.",
+      "question": "Cả hai có đang dùng cùng một từ nhưng hiểu khác nghĩa?"
+    },
+    {
+      "angle": 60,
+      "name": "Lục hợp",
+      "synastry": "Một khả năng phối hợp cần điều kiện và hành động từ hai phía.",
+      "composite": "Khả năng nối hai chủ đề chung cần được chuyển thành cách làm cụ thể.",
+      "question": "Mỗi bên có thể chủ động đóng góp bước nhỏ nào?"
+    },
+    {
+      "angle": 90,
+      "name": "Vuông",
+      "synastry": "Hai ưu tiên có thể đòi hỏi cách xử lý khác nhau; không tự gán lỗi cho một người.",
+      "composite": "Mô hình đặt hai chủ đề vào quan hệ cần điều chỉnh.",
+      "question": "Có thể phân bổ trách nhiệm thay vì buộc một phía nhường hết?"
+    },
+    {
+      "angle": 120,
+      "name": "Tam hợp",
+      "synastry": "Tìm cách vận dụng một liên kết thuận trong biểu tượng, rồi kiểm tra bằng trải nghiệm.",
+      "composite": "Hai chủ đề chung có thể dùng cùng nhịp xử lý; không mặc định mọi việc tự diễn ra.",
+      "question": "Sự thuận tiện có đang khiến một nhu cầu bị xem là hiển nhiên?"
+    },
+    {
+      "angle": 180,
+      "name": "Đối đỉnh",
+      "synastry": "Nghe hai phía trên một trục; mỗi người vẫn có quyền giữ góc nhìn riêng.",
+      "composite": "Hai chủ đề của mô hình cần được nhìn cùng nhau.",
+      "question": "Cần thỏa thuận gì để cả hai phía được ghi nhận?"
+    }
+  ],
+  "sources": [
+    {
+      "id": "astro-composite",
+      "title": "Astrodienst · Composite Chart, Midpoint-method",
+      "url": "https://www.astro.com/cgi/h.cgi?f=gch&h=gch621",
+      "checkedOn": "2026-10-14",
+      "scope": "Định nghĩa trung điểm hành tinh/trục/cusp, phân biệt reference-place. Đã đọc toàn mục. Quy tắc đối điểm và lựa chọn Whole Sign của Thiên Đồ được nêu riêng."
+    },
+    {
+      "id": "astro-synastry",
+      "title": "Astrodienst · Overview chart types",
+      "url": "https://www.astro.com/faq/fq_fh_owtype_e.htm",
+      "checkedOn": "2026-10-14",
+      "scope": "Nội dung lập chỉ mục: hai vòng lá số và bảng inter-aspects. Không coi mọi biến thể là một phương pháp."
+    }
+  ],
+  "limits": [
+    "Hai lá số Natal vẫn theo tropical/địa tâm/Whole Sign, vĩ độ ±65°.",
+    "Composite là cấu trúc hình học, không có thời điểm sinh chung hoặc tốc độ địa tâm thật.",
+    "Không có Davison, midpoint time/place, tiến triển hoặc applying/separating liên lá số.",
+    "Sai số giờ: đối chiếu ba mẫu từng bên và chín tổ hợp khi được yêu cầu, không quét toàn khoảng."
+  ]
+}

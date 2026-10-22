@@ -1,0 +1,95 @@
+/* THIÊN ĐỒ V11 · Phase 3 — available-width layout and optional left navigation.
+   A fixed-width 940px/1000px grid causes unneeded sideways dragging on laptops.
+   This layer intentionally overrides chart-atlas + chart-heritage after both load. */
+.chart-navigation-toggle{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  padding:8px 12px;min-height:39px;border-radius:7px;
+  border:1px solid var(--line-strong);color:var(--gold);
+  background:var(--panel);font:650 12px/1.4 var(--font-ui);
+  white-space:nowrap;transition:background .18s ease,border-color .18s ease;
+}
+.chart-navigation-toggle:hover{background:var(--panel-alt);border-color:var(--gold)}
+.chart-navigation-toggle span:first-child{font-size:18px;line-height:1}
+@media (min-width:971px){
+  .site[data-chart-sidebar="collapsed"] .sidebar{
+    transform:translateX(-102%);visibility:hidden;pointer-events:none;
+  }
+  .site[data-chart-sidebar="collapsed"] .app-area{margin-left:0}
+  .site[data-chart-sidebar="collapsed"] .main-content{width:min(1680px,100%)}
+  .site[data-chart-sidebar] .sidebar{transition:transform .22s ease,visibility .22s ease}
+  .site[data-chart-sidebar] .app-area{transition:margin-left .22s ease}
+}
+@media (max-width:970px){.chart-navigation-toggle{display:none}}
+
+/* Board is fluid, not a 940px viewport inside a smaller chart canvas. */
+.chart-atlas-workspace,.chart-atlas-workspace .result-panel,
+.chart-room-layout,.chart-room-canvas,.board-scroll{min-width:0;max-width:100%}
+.chart-room-layout[data-board-skin] .board-scroll{
+  width:100%;max-width:100%;overflow-x:clip;overflow-y:visible;
+  scrollbar-gutter:auto;
+}
+.chart-room-layout[data-board-skin] .atlas-grid{
+  width:100%;max-width:100%;min-width:0;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-template-rows:repeat(4,minmax(210px,auto));
+}
+/* The study dock drops under the map when side-by-side would squeeze the cells. */
+@media(max-width:1399px){
+  .chart-room-layout[data-dock-open="true"]{grid-template-columns:minmax(0,1fr)}
+  .chart-room-layout[data-dock-open="true"] .chart-insight-dock{position:static;max-height:none}
+}
+/* A generous paper map is still possible on mid-size tablets without a rail. */
+@media(max-width:1060px){
+  .chart-room-layout[data-board-skin] .atlas-grid{grid-template-rows:repeat(4,minmax(215px,auto))}
+  .chart-room-layout[data-board-skin] .atlas-house-header{padding-inline:7px}
+  .chart-room-layout[data-board-skin] .atlas-house-content{padding-inline:7px}
+  .chart-room-layout[data-board-skin] .atlas-main-star-list{grid-template-columns:minmax(0,1fr)}
+  .chart-room-layout[data-board-skin] .atlas-house-assist{grid-template-columns:minmax(0,1fr)}
+  .chart-room-layout[data-board-skin] .atlas-star{overflow-wrap:anywhere}
+}
+/* Charts < 760px across are overview-only; the reading list remains the
+   default on touch widths, where a 12-tile board cannot be legible. */
+@media(max-width:760px){
+  .chart-room-layout[data-board-skin] .atlas-grid{}
+  .chart-room-layout[data-board-skin] .atlas-house-header{gap:2px}
+  .chart-room-layout[data-board-skin] .atlas-house-content{}
+  .chart-room-layout[data-board-skin] .atlas-house-bottom{}
+  .chart-room-layout[data-board-skin] .atlas-house-header strong{font-size:clamp(9px,1.6vw,13px);margin-left:0}
+  .chart-room-layout[data-board-skin] .atlas-house-header .atlas-branch{font-size:9px}
+  .chart-room-layout[data-board-skin] .atlas-main-star-entry strong{font-size:10px}
+  .chart-room-layout[data-board-skin] .atlas-star{font-size:9px}
+  .chart-room-layout[data-board-skin] .atlas-group-label{font-size:8px;letter-spacing:0}
+  .chart-room-layout[data-board-skin] .atlas-age{font-size:8px;white-space:normal}
+  .chart-room-layout[data-board-skin] .atlas-age b{font-size:9px}
+  .chart-room-layout[data-board-skin] .atlas-center.board-center{padding:9px 7px}
+  .chart-room-layout[data-board-skin] .atlas-center-seal{display:none}
+  .chart-room-layout[data-board-skin] .atlas-center h3{font-size:clamp(13px,3vw,20px);letter-spacing:.08em}
+  .chart-room-layout[data-board-skin] .atlas-center-upper p{letter-spacing:0}
+  .chart-room-layout[data-board-skin] .atlas-center-data{grid-template-columns:1fr}
+  .chart-room-layout[data-board-skin] .atlas-center-data>div{padding:4px 2px;border-right:0}
+  .chart-room-layout[data-board-skin] .atlas-center-data>div:nth-child(odd){border-right:0}
+  .chart-room-layout[data-board-skin] .atlas-center-data strong{}
+  .chart-room-layout[data-board-skin] .atlas-center-data span{}
+  .chart-room-layout[data-board-skin] .atlas-center-foot{padding:5px 2px}
+  .chart-room-layout[data-board-skin] .atlas-center-disclaimer{}
+}
+@media(max-width:500px){
+  .chart-room-layout[data-board-skin] .atlas-grid{padding:2px}
+  .chart-room-layout[data-board-skin] .atlas-house.house{}
+  .chart-room-layout[data-board-skin] .atlas-house-header{min-height:0!important;flex-direction:column;align-items:flex-start}
+  .chart-room-layout[data-board-skin] .atlas-house-assist{display:none}
+  .chart-room-layout[data-board-skin] .atlas-house .atlas-cycle-pills{display:none}
+  .chart-room-layout[data-board-skin] .atlas-center-overline{font-size:7px!important;letter-spacing:0!important}
+  .chart-room-layout[data-board-skin] .atlas-center-foot{display:none}
+  .chart-room-layout[data-board-skin] .atlas-center-disclaimer{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .site[data-chart-sidebar] .sidebar,.site[data-chart-sidebar] .app-area,
+  .chart-navigation-toggle{transition:none}
+}
+
+.chart-compact-reading-note{display:none}
+@media(max-width:760px){
+  .chart-compact-reading-note{display:block;margin:8px 0;padding:10px 12px;border:1px solid var(--line-strong);background:var(--panel-alt);border-radius:6px;color:var(--muted);font-size:12px;line-height:1.6}
+  .chart-compact-reading-note strong{color:var(--gold)}
+}

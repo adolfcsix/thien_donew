@@ -1,0 +1,61 @@
+/* Thiên Đồ V11.103: responsive polish and opt-in methodology notes.
+   Kept separate from protected stylesheet baselines for safe rollback. */
+.site, .app-area, .main-content { min-width: 0; }
+.site :where(.workspace,.entry-panel,.result-panel,.chart-room-layout,.chart-room-canvas) { min-width: 0; }
+.site :where(input,select,textarea) { max-width:100%; }
+.chart-method-details, .chart-form-help {
+  color:var(--muted);font-size:12px;line-height:1.65;
+  border-top:1px solid var(--line);margin-top:12px;padding-top:10px;
+}
+.chart-method-details summary, .chart-form-help summary {cursor:pointer; width:fit-content; color:var(--muted);font-size:12px;}
+.chart-method-details[open] summary,.chart-form-help[open] summary {color:var(--gold);}
+.chart-method-details p,.chart-form-help p {max-width:78ch; margin:8px 0 2px;}
+.chart-atlas-workspace .entry-panel form > .chart-form-help {grid-column:1/-1;}
+/* Six form columns have a combined minimum width above 1,000px; reduce
+   them before the sidebar steals enough desktop width to trigger overflow. */
+@media(min-width:1201px) and (max-width:1600px){
+  .chart-atlas-workspace .entry-panel form {grid-template-columns:repeat(3,minmax(0,1fr));}
+}
+/* A small screen must never crop toolbar controls or hide the account entry. */
+@media(max-width:970px){
+  .topbar {gap:10px;}
+  .topbar-name {flex:1 1 auto;min-width:0;gap:8px;}
+  .toolbar {flex:0 0 auto;min-width:0;gap:8px;}
+}
+@media(max-width:480px){
+  .topbar {padding-inline:10px;gap:7px;}
+  .toolbar {gap:5px;}
+  .topbar-name {gap:5px;}
+  .mode-switch {padding:2px;}
+  .mode-switch button {padding:7px 6px;font-size:10px;white-space:nowrap;}
+  .quick-search-trigger {min-width:32px;width:32px;min-height:32px;}
+  .topbar .icon-button,.topbar .avatar-button {width:32px;height:32px;flex-shrink:0;}
+  .chart-atlas-workspace .entry-panel form {grid-template-columns:repeat(2,minmax(0,1fr));}
+  .chart-atlas-workspace .entry-panel form > .chart-birth-preview,
+  .chart-atlas-workspace .entry-panel form > .chart-birth-input-hint,
+  .chart-atlas-workspace .entry-panel form > .chart-form-help {grid-column:1/-1;}
+  .chart-atlas-workspace .entry-panel :where(.choice-row,.input-pair) {min-width:0;}
+  .result-actions {display:flex;flex-wrap:wrap;gap:7px;}
+  .result-actions .btn {max-width:100%;white-space:normal;}
+  .command-panel {max-width:calc(100vw - 16px);}
+}
+@media(max-width:370px){
+  .topbar {padding-inline:7px;gap:5px;}
+  .toolbar {gap:3px;}
+  .topbar-name {gap:3px;flex:0 0 auto;}
+  .mode-switch button {font-size:10px;padding:8px 4px;min-height:40px;}
+  .topbar .icon-button,.topbar .avatar-button {width:40px;height:40px;}
+  .quick-search-trigger {min-width:40px;width:40px;}
+  .chart-atlas-workspace .entry-panel {padding-inline:10px;}
+  .chart-atlas-workspace .entry-panel form {grid-template-columns:minmax(0,1fr);}
+  .chart-atlas-workspace .entry-panel form > * {grid-column:1/-1;}
+}
+/* Board zooming on touch devices is avoided; a compact reading view is provided by chart board. */
+@media(max-width:760px){
+  .chart-atlas-workspace .board-scroll {max-width:100%;}
+  .chart-compact-reading-note {font-size:11px;}
+  .page-heading h1 {overflow-wrap:anywhere;}
+}
+@media(prefers-reduced-motion:reduce){
+  .site * {scroll-behavior:auto;}
+}

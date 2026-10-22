@@ -1,0 +1,104 @@
+.panel{border:1px solid rgba(164,139,89,.32);border-radius:18px;background:linear-gradient(135deg,rgba(93,122,101,.11),rgba(109,84,48,.06));padding:clamp(18px,3vw,30px);margin:18px 0;color:inherit}
+.hero{display:grid;gap:10px}.hero h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.2;margin:0}.hero p{max-width:75ch;margin:0}.eyebrow{letter-spacing:.12em;text-transform:uppercase;font-size:.75rem;color:#bfa473}
+.primary{border:1px solid #c3a26a;background:#ad8a4f;color:#171711;border-radius:9px;font-weight:700;padding:10px 16px;cursor:pointer}
+.secondary{border:1px solid rgba(186,163,119,.55);background:transparent;color:inherit;border-radius:9px;padding:9px 13px;cursor:pointer}
+.primary:disabled,.secondary:disabled{opacity:.55;cursor:not-allowed}
+.saveBar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:20px 0;padding:15px;border:1px solid rgba(171,139,84,.4);border-radius:14px;background:rgba(133,104,60,.08)}
+.saveBar a,.actions a,.link{color:inherit;text-decoration:underline;text-underline-offset:4px}
+.saveBar span{font-size:.9rem}
+.toolbar{display:grid;grid-template-columns:minmax(170px,2fr) repeat(2,minmax(140px,1fr));gap:12px;margin:18px 0}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field span{font-size:.85rem;opacity:.85}
+.field input,.field select,.field textarea{width:100%;box-sizing:border-box;border:1px solid rgba(173,149,107,.5);border-radius:9px;background:rgba(0,0,0,.12);color:inherit;padding:11px;font:inherit}.field select option{background:#202823;color:#fff}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:16px;margin-top:16px}.card{display:grid;gap:9px;border:1px solid rgba(174,145,103,.35);border-radius:16px;padding:19px;background:rgba(129,109,78,.055);min-width:0}.card h2{font-size:1.3rem;margin:0}.card p{margin:0;overflow-wrap:anywhere}.muted{opacity:.7;font-size:.91rem}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.actions button{border:1px solid rgba(175,146,105,.5);border-radius:9px;background:transparent;color:inherit;cursor:pointer;padding:7px 11px}
+.actions button:disabled{opacity:.5;cursor:not-allowed}
+.edit{display:grid;gap:12px;margin-top:12px}.newForm{display:grid;gap:14px;max-width:800px}.formGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tag{display:inline-block;border:1px solid rgba(171,141,94,.55);border-radius:50px;padding:3px 10px;font-size:.75rem;margin-right:6px}
+.status{margin:12px 0;padding:10px;border-left:3px solid #bda06d}.stats{display:flex;flex-wrap:wrap;gap:14px;font-size:.88rem}
+.primary:focus-visible,.secondary:focus-visible,.actions button:focus-visible,.saveBar a:focus-visible{outline:3px solid #d7bc86;outline-offset:3px}
+@media(max-width:660px){.toolbar,.formGrid{grid-template-columns:1fr}.panel{padding:16px}.cards{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.primary,.secondary{scroll-behavior:auto;transition:none}}
+/* V11.138 comparison table: scroll locally on compact screens, never clip a column. */
+.comparisonScroll{width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+.compareTable{border-collapse:collapse;width:100%;min-width:580px;font-size:.91rem}
+.compareTable th,.compareTable td{padding:12px 14px;text-align:left;border-bottom:1px solid rgba(171,141,94,.35);vertical-align:top;overflow-wrap:anywhere;min-width:110px}
+.compareTable th{font-weight:650}.compareTable th small{display:block;font-weight:400;opacity:.65;margin-top:4px}
+
+/* V11.164.18: a distinct personal study desk, sharing the AI/research art direction. */
+.panel {
+  border-color:var(--td-study-edge,rgba(164,139,89,.32));
+  border-radius:var(--td-radius-card,18px);
+  background:var(--td-study-surface,rgba(21,35,29,.94));
+  box-shadow:var(--td-card-elevation);
+}
+.hero {
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  min-height:180px;
+  justify-content:start;
+  justify-items:start;
+  text-align:start;
+  padding:clamp(22px,3vw,36px);
+  margin:-3px -3px 20px;
+  border-radius:clamp(15px,2vw,23px);
+  border:1px solid var(--td-study-edge,rgba(164,139,89,.32));
+  background-image:linear-gradient(100deg,rgba(10,37,29,.96),rgba(12,40,32,.84) 65%,rgba(17,50,40,.52)),url('/theme/thap-nhi-dia-chi.jpeg');
+  background-size:cover;
+  background-position:center,center 48%;
+  color:#fbf1db;
+}
+.hero .eyebrow{color:#e2c58d}
+.hero p {color:inherit}
+.hero a{color:#edd39c}
+:global(.site.light) .hero {
+  color:#243b31;
+}
+:global(.site.light) .hero .eyebrow,:global(.site.light) .hero a{color:#79592d}
+.card,.saveBar {border-color:var(--td-study-edge,rgba(164,139,89,.32));background:var(--td-study-surface-soft,rgba(129,109,78,.055));border-radius:var(--td-radius-card,18px)}
+.primary {
+  min-height:44px;
+  border-radius:var(--td-radius-control,13px);
+  border-color:rgba(137,100,46,.3);
+  color:var(--td-primary-text,#1a2c22);
+  background:var(--td-primary-gradient);
+  box-shadow:var(--td-button-elevation);
+}
+.secondary,.actions button{min-height:42px;border-radius:var(--td-radius-control,13px)}
+.field input,.field select,.field textarea{
+  background:var(--td-field-bg);
+  color:var(--text);
+  border-color:var(--td-field-border);
+  border-radius:var(--td-radius-control,13px);
+}
+@media(max-width:680px){.hero{padding:21px 18px;margin:0 0 17px;min-height:160px}.panel{margin:12px 0}}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .primary:not(:disabled):hover,.secondary:not(:disabled):hover{transform:translateY(-2px);box-shadow:var(--td-button-elevation)}
+}
+@media print{.hero{background:#fff;color:#000}.panel,.card{background:#fff;box-shadow:none}}
+
+/* V11.164.18.1 — same opacity-only light layer as Huyền Giải. */
+.hero::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:0;
+  transform:scale(1.035);
+  background-image:linear-gradient(108deg,rgba(252,249,237,.97),rgba(248,247,232,.89) 66%,rgba(247,247,235,.62)),url('/theme/cuon-thu-ngoc.jpeg');
+  background-size:cover;
+  background-position:center 48%;
+}
+.hero > * { position:relative; z-index:1; }
+:global(.site.light) .hero::before { opacity:1; transform:scale(1); }
+@media (prefers-reduced-motion:no-preference) {
+  :global(.site[data-theme-ready="true"]) .hero::before {
+    transition:opacity 960ms cubic-bezier(.25,.68,.22,1),transform 1100ms cubic-bezier(.2,.72,.27,1);
+  }
+  :global(.site[data-theme-ready="true"]) .hero {transition:color 760ms ease,border-color 760ms ease;}
+}
+@media (prefers-reduced-motion:reduce) {.hero::before{transition:none;transform:none}}
+@media print {.hero::before{display:none!important}}
+
+.hero{min-width:0}.hero > *{min-width:0;overflow-wrap:anywhere}.field select option{background:var(--panel);color:var(--text)}

@@ -1,0 +1,36 @@
+{
+  "release": "11.143.0",
+  "fixtureKind": "manually-transcribed-published-examples-not-independent-chart",
+  "reviewedOn": "2026-10-14",
+  "sourceId": "starlin-tuong",
+  "url": "https://www.108s.tw/article/info/101",
+  "methodScope": "Star Lin study method, never universal Tử Vi standard",
+  "cases": [
+    {
+      "example": "1976 丙辰 example stated in source",
+      "birthCycleIndex": 52,
+      "annualBranch": 0,
+      "layer": "birth",
+      "name": "Tướng Tinh",
+      "expectedBranch": "Tý"
+    },
+    {
+      "example": "戌 annual year example stated in source",
+      "birthCycleIndex": 0,
+      "annualBranch": 10,
+      "layer": "annual",
+      "name": "Tướng Tinh",
+      "expectedBranch": "Ngọ"
+    },
+    {
+      "example": "戌 annual year example stated in source, 指背 at 寅",
+      "birthCycleIndex": 0,
+      "annualBranch": 10,
+      "layer": "annual",
+      "name": "Chỉ Bối",
+      "expectedBranch": "Dần"
+    }
+  ],
+  "independentChartFixture": false,
+  "notice": "Các ví dụ được trích thành expected thủ công từ cùng nguồn giảng dạy; không phải lá số độc lập hay thẩm định chuyên gia."
+}

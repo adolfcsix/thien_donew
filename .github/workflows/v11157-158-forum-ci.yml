@@ -1,0 +1,79 @@
+name: Thiên Đồ V11.157–V11.158 — Luận Đàn acceptance
+on:
+  push:
+    branches: [audit/v11.157-158]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-forum:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: thiendo
+          POSTGRES_PASSWORD: thiendo_ci_only
+          POSTGRES_DB: thiendo_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U thiendo -d thiendo_test"
+          --health-interval 5s --health-timeout 5s --health-retries 15
+    env:
+      CI: 'true'
+      DATABASE_URL: postgresql://thiendo:thiendo_ci_only@127.0.0.1:5432/thiendo_test
+      E2E_LOCAL_DB_CONFIRM: 'YES'
+      WEB_ORIGIN: http://127.0.0.1:3000
+      API_INTERNAL_URL: http://127.0.0.1:8080
+      API_BASE_URL: http://127.0.0.1:8080
+      API_HOST: 127.0.0.1
+      API_PORT: '8080'
+      COOKIE_SECURE: 'false'
+      THIENDO_BROWSER_ACCEPTANCE: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Registry and source invariants
+        run: |
+          npm run check:lockfile
+          npm run check:source
+          npm run audit:architecture
+      - name: Locked clean dependency installation
+        run: npm ci --no-audit --no-fund
+      - name: Source typecheck and frontend/backend build
+        run: |
+          npm run typecheck
+          npm run build
+      - name: Forum abuse, privacy, RBAC and migration-contract regressions
+        run: |
+          npm run test:forum:157-158
+          node --test tests/v11149-1-restore-schema-contract.test.cjs
+      - name: Run all existing project regression tests
+        run: npm test
+      - name: Validate isolated database target before migration
+        run: npm run check:e2e-pre-migrate
+      - name: Apply 25 migrations twice
+        run: |
+          npm run db:migrate
+          npm run db:migrate
+          npm run check:e2e-target
+          npm run check:e2e-db
+      - name: Live Next/Nest/PostgreSQL E2E including forum ownership and moderator RBAC
+        run: bash infrastructure/scripts/run-ci-http.sh
+      - name: Production dependency security advisories
+        if: always()
+        run: npm audit --omit=dev --audit-level=high
+      - name: Preserve diagnostic logs (never secrets)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: forum-v11157-v11158-http-diagnostics
+          path: |
+            ${{ runner.temp }}/thiendo-ci-logs.*/*.log
+          if-no-files-found: ignore
+          retention-days: 5

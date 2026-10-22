@@ -1,0 +1,32 @@
+{
+  "edition": "v11.63.0",
+  "scope": "editorial-classical-family-review",
+  "expertReviewed": false,
+  "notice": "Bảng điều kiện để học và phản biện các bộ chính tinh. Các trạng thái chỉ phản ánh chứng cứ vị trí trong lá số gốc, không xác nhận cách cục cổ điển hay dự báo sự kiện.",
+  "profiles": {
+    "tu-phu-vu-tuong": {
+      "question": "Tử Vi, Thiên Phủ, Vũ Khúc và Thiên Tướng phân bố tại những cung nào trong Tứ chính của Mệnh, và chính tinh nào thực sự tọa Mệnh?",
+      "interpretiveFrame": "Tách ba câu hỏi: ai tọa Mệnh, các sao còn lại hội từ Tài–Quan–Di ra sao, và vị trí nào có chính tinh chưa xác minh độ sáng. Đặt dấu ấn về quản trị, duy trì và thực thi như chủ đề nghiên cứu, không biến thành cam kết quyền lực hoặc tài lộc.",
+      "counterexample": "Chỉ nhìn thấy Vũ Khúc ở Quan Lộc không đủ để gọi là đủ Tử Phủ Vũ Tướng. Một lá số có cả bốn tên nhưng trùng vị trí ghi dữ liệu cũng không đủ chứng cứ sạch để xét tiếp.",
+      "practice": "Tô bốn cung vị, ghi đủ bốn tên sao và độ sáng; kiểm tra sao tọa Mệnh, Tuần/Triệt, Hóa Kỵ. Chỉ sau đó mới so sánh phụ/sát tinh, không tự suy ra nghề nghiệp."
+    },
+    "co-nguyet-dong-luong": {
+      "question": "Thiên Cơ, Thái Âm, Thiên Đồng và Thiên Lương thực sự nằm ở các nhánh tam phương hay xung chiếu nào của Mệnh?",
+      "interpretiveFrame": "Thử đọc riêng trục suy xét–thích ứng ở từng cung, phân biệt sao hội chiếu với sao tọa thủ. Kiểm tra độ sáng và bối cảnh Tứ Hóa của đúng sao nhận Hóa trước khi diễn giải.",
+      "counterexample": "Có Thái Âm và Thiên Đồng trong Tứ chính nhưng thiếu Thiên Cơ hoặc Thiên Lương thì chỉ là tín hiệu thành phần; không được gộp thành bộ bốn sao hoặc suy đoán nghề công chức.",
+      "practice": "Viết hai diễn giải cạnh nhau: khi thiếu một sao và khi đủ bốn sao trên dữ liệu hợp lệ; chỉ ra dữ liệu nào thực sự làm thay đổi tư cách ứng viên khảo sát."
+    },
+    "sat-pha-tham": {
+      "question": "Thất Sát, Phá Quân, Tham Lang hội về Mệnh từ các cung nào, và có điểm tựa chính tinh hợp lệ tại Mệnh không?",
+      "interpretiveFrame": "Chủ đề nghiên cứu là tương quan thay đổi, thúc đẩy và định hướng; không mặc định biến động là tốt hoặc xấu. Phải xét chính tinh tọa Mệnh, cường độ biểu tượng qua độ sáng, cùng phụ/sát và án ngữ theo vị trí.",
+      "counterexample": "Ba sao cùng được ghi tên nhưng một sao chỉ nằm trong dữ liệu lưu niên, hoặc bị nhân đôi tại hai cung, không tạo thành chứng cứ bản mệnh đáng tin cậy.",
+      "practice": "Ghi một phát biểu có điều kiện về sự thay đổi và ít nhất hai cách giải thích thay thế; nêu rõ vì sao thiếu/nhầm lớp sao làm hỏng căn cứ."
+    },
+    "cu-nhat": {
+      "question": "Cự Môn và Thái Dương nằm ở tọa, tam hợp hay đối cung, và cả hai có trạng thái độ sáng hợp lệ không?",
+      "interpretiveFrame": "Đặt câu hỏi về biểu đạt và sự rõ ràng như những hình tượng để nghiên cứu; so sánh bối cảnh cung tọa với cung hội. Hóa Kỵ hoặc Tuần/Triệt, nếu được ghi nhận, là yếu tố cần đối chiếu chứ không phải phép phủ quyết máy móc.",
+      "counterexample": "Một lá số chỉ có Thái Dương ở Mệnh mà Cự Môn nằm ngoài Tứ chính không khớp tiêu chí khảo sát; dữ liệu thiếu độ sáng cũng không cho phép nhận định về mạnh/yếu.",
+      "practice": "So vị trí, độ sáng và Tứ Hóa của hai sao; thử viết lại một nhận định quá chắc chắn thành câu hỏi có điều kiện, chỉ sử dụng chứng cứ thực sự quan sát được."
+    }
+  }
+}

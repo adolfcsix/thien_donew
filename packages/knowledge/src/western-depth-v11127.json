@@ -1,0 +1,545 @@
+{
+  "schemaVersion": 1,
+  "edition": "11.127.0",
+  "editorialNotice": "Biên soạn phản tư nguyên bản của Thiên Đồ; nguồn dùng đối chiếu thuật ngữ, không chứng nhận luận đoán. Không đồng nhất nhà với cung; không chấm điểm tính cách hoặc quan hệ.",
+  "planets": [
+    {
+      "body": "Sun",
+      "name": "Mặt Trời",
+      "glyph": "☉",
+      "theme": "Định hướng, bản sắc",
+      "practice": "Chọn một việc thể hiện giá trị bạn muốn theo đuổi.",
+      "question": "Điều nào bạn muốn chủ động xây dựng?",
+      "caution": "Không biến nhu cầu được ghi nhận thành thước đo giá trị duy nhất.",
+      "sourceIds": [
+        "reid-planets"
+      ]
+    },
+    {
+      "body": "Moon",
+      "name": "Mặt Trăng",
+      "glyph": "☽",
+      "theme": "Nhu cầu, nhịp sống",
+      "practice": "Ghi lại khi nào bạn cảm thấy được nghỉ ngơi và hỗ trợ.",
+      "question": "Bạn cần điều gì để thấy an toàn?",
+      "caution": "Phản ứng quen thuộc không nhất thiết phù hợp với hoàn cảnh mới.",
+      "sourceIds": [
+        "reid-planets"
+      ]
+    },
+    {
+      "body": "Mercury",
+      "name": "Sao Thủy",
+      "glyph": "☿",
+      "theme": "Học hỏi, trao đổi",
+      "practice": "Thử viết lại một ý khó bằng lời đơn giản và hỏi người nghe hiểu gì.",
+      "question": "Bạn kiểm tra thông tin như thế nào?",
+      "caution": "Tách suy đoán khỏi điều đã quan sát.",
+      "sourceIds": [
+        "reid-planets"
+      ]
+    },
+    {
+      "body": "Venus",
+      "name": "Sao Kim",
+      "glyph": "♀",
+      "theme": "Giá trị, kết nối",
+      "practice": "Nói rõ một điều bạn trân trọng và một giới hạn cần tôn trọng.",
+      "question": "Bạn muốn trao và nhận điều gì?",
+      "caution": "Sự đồng thuận cần có tiếng nói của cả hai phía.",
+      "sourceIds": [
+        "reid-planets"
+      ]
+    },
+    {
+      "body": "Mars",
+      "name": "Sao Hỏa",
+      "glyph": "♂",
+      "theme": "Hành động, quyết tâm",
+      "practice": "Chia mục tiêu thành một bước thử nhỏ có thời hạn.",
+      "question": "Bạn đang dùng nỗ lực cho việc nào?",
+      "caution": "Nhìn rõ chi phí trước khi hành động theo xung lực.",
+      "sourceIds": [
+        "reid-planets"
+      ]
+    },
+    {
+      "body": "Jupiter",
+      "name": "Sao Mộc",
+      "glyph": "♃",
+      "theme": "Mở rộng, niềm tin",
+      "practice": "Chọn một giả định lớn và tìm ví dụ phản bác nó.",
+      "question": "Điều gì giúp bạn mở rộng góc nhìn?",
+      "caution": "Đối chiếu kỳ vọng với nguồn lực thực tế.",
+      "sourceIds": [
+        "reid-planets"
+      ]
+    },
+    {
+      "body": "Saturn",
+      "name": "Sao Thổ",
+      "glyph": "♄",
+      "theme": "Cấu trúc, trách nhiệm",
+      "practice": "Xác định trách nhiệm thuộc về bạn và phần cần chia sẻ.",
+      "question": "Giới hạn nào hữu ích, giới hạn nào cần xét lại?",
+      "caution": "Một chuẩn mực không cần trở thành quy tắc bất biến.",
+      "sourceIds": [
+        "reid-planets"
+      ]
+    },
+    {
+      "body": "Uranus",
+      "name": "Thiên Vương",
+      "glyph": "♅",
+      "theme": "Đổi mới, khác biệt",
+      "practice": "Thử thay đổi một bước của quy trình và ghi nhận kết quả.",
+      "question": "Bạn muốn làm khác ở đâu và vì sao?",
+      "caution": "Cung của thiên thể chậm thường được nhiều người cùng thế hệ chia sẻ.",
+      "sourceIds": [
+        "reid-planets"
+      ]
+    },
+    {
+      "body": "Neptune",
+      "name": "Hải Vương",
+      "glyph": "♆",
+      "theme": "Tưởng tượng, lý tưởng",
+      "practice": "Phác một ý tưởng rồi tách điều đã biết khỏi điều mong muốn.",
+      "question": "Bạn cần làm rõ ranh giới nào giữa hình dung và thực tế?",
+      "caution": "Không suy đặc điểm cá nhân chỉ từ vị trí theo thế hệ.",
+      "sourceIds": [
+        "reid-planets"
+      ]
+    },
+    {
+      "body": "Pluto",
+      "name": "Diêm Vương",
+      "glyph": "♇",
+      "theme": "Biến đổi, quyền lực",
+      "practice": "Xem lại một cam kết và quyền quyết định của từng người liên quan.",
+      "question": "Điều gì cần thay đổi để quyền lựa chọn được tôn trọng?",
+      "caution": "Không dùng biểu tượng để gán nhãn tổn thương hoặc dự đoán biến cố.",
+      "sourceIds": [
+        "reid-planets"
+      ]
+    }
+  ],
+  "signs": [
+    {
+      "index": 0,
+      "name": "Bạch Dương",
+      "glyph": "♈",
+      "element": "fire",
+      "modality": "cardinal",
+      "traditionalRuler": "Mars",
+      "modernAlternative": null,
+      "style": "khởi động trực tiếp",
+      "question": "Khi nào nên bắt đầu, khi nào nên chờ thêm dữ kiện?",
+      "sourceIds": [
+        "reid-elements",
+        "reid-modes",
+        "rulers"
+      ]
+    },
+    {
+      "index": 1,
+      "name": "Kim Ngưu",
+      "glyph": "♉",
+      "element": "earth",
+      "modality": "fixed",
+      "traditionalRuler": "Venus",
+      "modernAlternative": null,
+      "style": "xây dựng từng bước",
+      "question": "Điều gì cần giữ, điều gì có thể thay đổi?",
+      "sourceIds": [
+        "reid-elements",
+        "reid-modes",
+        "rulers"
+      ]
+    },
+    {
+      "index": 2,
+      "name": "Song Tử",
+      "glyph": "♊",
+      "element": "air",
+      "modality": "mutable",
+      "traditionalRuler": "Mercury",
+      "modernAlternative": null,
+      "style": "trao đổi nhiều hướng",
+      "question": "Thông tin nào hữu ích nhất lúc này?",
+      "sourceIds": [
+        "reid-elements",
+        "reid-modes",
+        "rulers"
+      ]
+    },
+    {
+      "index": 3,
+      "name": "Cự Giải",
+      "glyph": "♋",
+      "element": "water",
+      "modality": "cardinal",
+      "traditionalRuler": "Moon",
+      "modernAlternative": null,
+      "style": "nuôi dưỡng điều quen thuộc",
+      "question": "Điều quen thuộc có đang đáp ứng nhu cầu hiện tại?",
+      "sourceIds": [
+        "reid-elements",
+        "reid-modes",
+        "rulers"
+      ]
+    },
+    {
+      "index": 4,
+      "name": "Sư Tử",
+      "glyph": "♌",
+      "element": "fire",
+      "modality": "fixed",
+      "traditionalRuler": "Sun",
+      "modernAlternative": null,
+      "style": "thể hiện sáng tạo",
+      "question": "Bạn muốn thể hiện điều gì bằng hành động cụ thể?",
+      "sourceIds": [
+        "reid-elements",
+        "reid-modes",
+        "rulers"
+      ]
+    },
+    {
+      "index": 5,
+      "name": "Xử Nữ",
+      "glyph": "♍",
+      "element": "earth",
+      "modality": "mutable",
+      "traditionalRuler": "Mercury",
+      "modernAlternative": null,
+      "style": "kiểm tra chi tiết",
+      "question": "Chi tiết nào thực sự cải thiện kết quả?",
+      "sourceIds": [
+        "reid-elements",
+        "reid-modes",
+        "rulers"
+      ]
+    },
+    {
+      "index": 6,
+      "name": "Thiên Bình",
+      "glyph": "♎",
+      "element": "air",
+      "modality": "cardinal",
+      "traditionalRuler": "Venus",
+      "modernAlternative": null,
+      "style": "cân nhắc hai phía",
+      "question": "Thỏa thuận nào giúp các bên cùng có tiếng nói?",
+      "sourceIds": [
+        "reid-elements",
+        "reid-modes",
+        "rulers"
+      ]
+    },
+    {
+      "index": 7,
+      "name": "Bọ Cạp",
+      "glyph": "♏",
+      "element": "water",
+      "modality": "fixed",
+      "traditionalRuler": "Mars",
+      "modernAlternative": "Pluto",
+      "style": "đi sâu và giữ ranh giới",
+      "question": "Bạn cần giới hạn rõ ở đâu?",
+      "sourceIds": [
+        "reid-elements",
+        "reid-modes",
+        "rulers"
+      ]
+    },
+    {
+      "index": 8,
+      "name": "Nhân Mã",
+      "glyph": "♐",
+      "element": "fire",
+      "modality": "mutable",
+      "traditionalRuler": "Jupiter",
+      "modernAlternative": null,
+      "style": "mở rộng qua trải nghiệm",
+      "question": "Trải nghiệm nào giúp kiểm chứng niềm tin?",
+      "sourceIds": [
+        "reid-elements",
+        "reid-modes",
+        "rulers"
+      ]
+    },
+    {
+      "index": 9,
+      "name": "Ma Kết",
+      "glyph": "♑",
+      "element": "earth",
+      "modality": "cardinal",
+      "traditionalRuler": "Saturn",
+      "modernAlternative": null,
+      "style": "lập kế hoạch có cấu trúc",
+      "question": "Kế hoạch cần bước nhỏ nào để khả thi?",
+      "sourceIds": [
+        "reid-elements",
+        "reid-modes",
+        "rulers"
+      ]
+    },
+    {
+      "index": 10,
+      "name": "Bảo Bình",
+      "glyph": "♒",
+      "element": "air",
+      "modality": "fixed",
+      "traditionalRuler": "Saturn",
+      "modernAlternative": "Uranus",
+      "style": "thử góc nhìn khác",
+      "question": "Một cách làm mới có thể thử an toàn ở đâu?",
+      "sourceIds": [
+        "reid-elements",
+        "reid-modes",
+        "rulers"
+      ]
+    },
+    {
+      "index": 11,
+      "name": "Song Ngư",
+      "glyph": "♓",
+      "element": "water",
+      "modality": "mutable",
+      "traditionalRuler": "Jupiter",
+      "modernAlternative": "Neptune",
+      "style": "kết nối qua hình dung",
+      "question": "Làm thế nào đưa ý tưởng thành điều quan sát được?",
+      "sourceIds": [
+        "reid-elements",
+        "reid-modes",
+        "rulers"
+      ]
+    }
+  ],
+  "houses": [
+    {
+      "number": 1,
+      "area": "Cách xuất hiện",
+      "question": "Bạn muốn bước vào một hoàn cảnh mới như thế nào?",
+      "emptyNotice": "Nhà không có thiên thể vẫn có cung đầu nhà và chủ tinh; không suy rằng lĩnh vực này vắng mặt.",
+      "sourceIds": [
+        "reid-houses"
+      ]
+    },
+    {
+      "number": 2,
+      "area": "Nguồn lực riêng",
+      "question": "Bạn đang có nguồn lực nào và muốn phân bổ chúng ra sao?",
+      "emptyNotice": "Nhà không có thiên thể vẫn có cung đầu nhà và chủ tinh; không suy rằng lĩnh vực này vắng mặt.",
+      "sourceIds": [
+        "reid-houses"
+      ]
+    },
+    {
+      "number": 3,
+      "area": "Học và giao tiếp gần",
+      "question": "Có điều gì cần trao đổi rõ với người quanh bạn?",
+      "emptyNotice": "Nhà không có thiên thể vẫn có cung đầu nhà và chủ tinh; không suy rằng lĩnh vực này vắng mặt.",
+      "sourceIds": [
+        "reid-houses"
+      ]
+    },
+    {
+      "number": 4,
+      "area": "Nền tảng riêng tư",
+      "question": "Môi trường nào giúp bạn nghỉ ngơi và có chỗ dựa?",
+      "emptyNotice": "Nhà không có thiên thể vẫn có cung đầu nhà và chủ tinh; không suy rằng lĩnh vực này vắng mặt.",
+      "sourceIds": [
+        "reid-houses"
+      ]
+    },
+    {
+      "number": 5,
+      "area": "Sáng tạo và niềm vui",
+      "question": "Hoạt động nào đáng làm vì chính trải nghiệm của nó?",
+      "emptyNotice": "Nhà không có thiên thể vẫn có cung đầu nhà và chủ tinh; không suy rằng lĩnh vực này vắng mặt.",
+      "sourceIds": [
+        "reid-houses"
+      ]
+    },
+    {
+      "number": 6,
+      "area": "Nhịp làm việc thường ngày",
+      "question": "Quy trình nào cần điều chỉnh để phù hợp sức lực thực tế?",
+      "emptyNotice": "Nhà không có thiên thể vẫn có cung đầu nhà và chủ tinh; không suy rằng lĩnh vực này vắng mặt.",
+      "sourceIds": [
+        "reid-houses"
+      ]
+    },
+    {
+      "number": 7,
+      "area": "Quan hệ một đối một",
+      "question": "Hai bên cần thỏa thuận điều gì để hợp tác rõ ràng?",
+      "emptyNotice": "Nhà không có thiên thể vẫn có cung đầu nhà và chủ tinh; không suy rằng lĩnh vực này vắng mặt.",
+      "sourceIds": [
+        "reid-houses"
+      ]
+    },
+    {
+      "number": 8,
+      "area": "Nguồn lực chung",
+      "question": "Quyền, trách nhiệm và giới hạn của nguồn lực chung đã rõ chưa?",
+      "emptyNotice": "Nhà không có thiên thể vẫn có cung đầu nhà và chủ tinh; không suy rằng lĩnh vực này vắng mặt.",
+      "sourceIds": [
+        "reid-houses"
+      ]
+    },
+    {
+      "number": 9,
+      "area": "Tầm nhìn và học rộng",
+      "question": "Bạn muốn kiểm chứng một quan điểm bằng cách nào?",
+      "emptyNotice": "Nhà không có thiên thể vẫn có cung đầu nhà và chủ tinh; không suy rằng lĩnh vực này vắng mặt.",
+      "sourceIds": [
+        "reid-houses"
+      ]
+    },
+    {
+      "number": 10,
+      "area": "Vai trò công khai",
+      "question": "Bạn muốn đóng góp điều gì và được đánh giá bằng tiêu chí nào?",
+      "emptyNotice": "Nhà không có thiên thể vẫn có cung đầu nhà và chủ tinh; không suy rằng lĩnh vực này vắng mặt.",
+      "sourceIds": [
+        "reid-houses"
+      ]
+    },
+    {
+      "number": 11,
+      "area": "Cộng đồng và mục tiêu chung",
+      "question": "Bạn muốn tham gia nhóm nào và giữ vai trò gì?",
+      "emptyNotice": "Nhà không có thiên thể vẫn có cung đầu nhà và chủ tinh; không suy rằng lĩnh vực này vắng mặt.",
+      "sourceIds": [
+        "reid-houses"
+      ]
+    },
+    {
+      "number": 12,
+      "area": "Khoảng riêng và điều chưa rõ",
+      "question": "Điều gì cần thêm thời gian, sự riêng tư hoặc thông tin?",
+      "emptyNotice": "Nhà không có thiên thể vẫn có cung đầu nhà và chủ tinh; không suy rằng lĩnh vực này vắng mặt.",
+      "sourceIds": [
+        "reid-houses"
+      ]
+    }
+  ],
+  "aspects": [
+    {
+      "angle": 0,
+      "name": "Đồng vị",
+      "reading": "Đặt hai chức năng cạnh nhau để xem chúng đang hòa vào hay tranh chỗ.",
+      "question": "Làm sao nhận ra nhu cầu riêng của từng phía?",
+      "sourceIds": [
+        "reid-aspects"
+      ]
+    },
+    {
+      "angle": 60,
+      "name": "Lục hợp",
+      "reading": "Xem một khả năng phối hợp cần được chủ động thử.",
+      "question": "Bạn có thể tạo điều kiện kết nối bằng bước nào?",
+      "sourceIds": [
+        "reid-aspects"
+      ]
+    },
+    {
+      "angle": 90,
+      "name": "Vuông",
+      "reading": "Đối chiếu hai ưu tiên đang đòi hỏi cách giải quyết khác nhau.",
+      "question": "Có cách nào phân bổ thời gian thay vì buộc một phía thắng?",
+      "sourceIds": [
+        "reid-aspects"
+      ]
+    },
+    {
+      "angle": 120,
+      "name": "Tam hợp",
+      "reading": "Tìm cách vận dụng một liên kết tương đối thuận giữa hai chức năng.",
+      "question": "Điều dễ làm có đang được biến thành hành động cụ thể?",
+      "sourceIds": [
+        "reid-aspects"
+      ]
+    },
+    {
+      "angle": 180,
+      "name": "Đối đỉnh",
+      "reading": "Nhìn hai phía trên cùng một trục và kiểm tra điểm cân bằng.",
+      "question": "Mỗi phía cần được ghi nhận điều gì?",
+      "sourceIds": [
+        "reid-aspects"
+      ]
+    }
+  ],
+  "contexts": {
+    "general": {
+      "name": "Tổng quan",
+      "prompt": "Chọn một điều thực tế để đối chiếu, thay vì tìm một kết luận cho toàn bộ bản thân."
+    },
+    "work": {
+      "name": "Công việc / học tập",
+      "prompt": "Đối chiếu với nhiệm vụ, nguồn lực và phản hồi thực tế; không dùng bản đồ để quyết định nghề thay bạn."
+    },
+    "relationship": {
+      "name": "Quan hệ",
+      "prompt": "Xem nhu cầu và cách trao đổi của bạn; không gán suy nghĩ của người khác từ một lá số."
+    },
+    "resources": {
+      "name": "Nguồn lực",
+      "prompt": "Làm rõ quyền sử dụng, thời gian và trách nhiệm; không suy khả năng đầu tư từ vị trí hành tinh."
+    }
+  },
+  "motions": {
+    "direct": "Chuyển động thuận là nhãn thiên văn; không tự đồng nghĩa với dễ dàng.",
+    "retrograde": "Chuyển động lùi là biểu kiến theo kinh độ. Có thể dùng như câu hỏi về việc xét lại cách làm, không phải lỗi hay điềm xấu.",
+    "near-stationary": "Tốc độ xấp xỉ gần ngưỡng 0; không xác định thời điểm đứng chính xác bằng sai phân ±12 giờ."
+  },
+  "sources": [
+    {
+      "id": "reid-planets",
+      "title": "Linda Reid · Lesson 2: Planets",
+      "url": "https://www.skyscript.co.uk/begin2.html",
+      "checkedOn": "2026-10-14",
+      "scope": "Thuật ngữ và cấu trúc; không sao chép bài luận, không chứng nhận nội dung phản tư."
+    },
+    {
+      "id": "reid-elements",
+      "title": "Linda Reid · Lesson 3: Elements",
+      "url": "https://www.skyscript.co.uk/begin3.html",
+      "checkedOn": "2026-10-14",
+      "scope": "Thuật ngữ và cấu trúc; không sao chép bài luận, không chứng nhận nội dung phản tư."
+    },
+    {
+      "id": "reid-modes",
+      "title": "Linda Reid · Lesson 8: Modes",
+      "url": "https://www.skyscript.co.uk/begin8.html",
+      "checkedOn": "2026-10-14",
+      "scope": "Thuật ngữ và cấu trúc; không sao chép bài luận, không chứng nhận nội dung phản tư."
+    },
+    {
+      "id": "reid-houses",
+      "title": "Linda Reid · Lesson 5: Houses",
+      "url": "https://www.skyscript.co.uk/begin5.html",
+      "checkedOn": "2026-10-14",
+      "scope": "Thuật ngữ và cấu trúc; không sao chép bài luận, không chứng nhận nội dung phản tư."
+    },
+    {
+      "id": "reid-aspects",
+      "title": "Linda Reid · Lesson 6: Aspects",
+      "url": "https://www.skyscript.co.uk/begin6.html",
+      "checkedOn": "2026-10-14",
+      "scope": "Thuật ngữ và cấu trúc; không sao chép bài luận, không chứng nhận nội dung phản tư."
+    },
+    {
+      "id": "rulers",
+      "title": "Bảng chủ tinh truyền thống · Astrodienst/Skyscript",
+      "url": "https://www.astro.com/astrowiki/en/Sign_Ruler",
+      "checkedOn": "2026-10-14",
+      "scope": "Bảng 7 chủ tinh và ba lựa chọn hiện đại đối chiếu qua nội dung đã lập chỉ mục; truy cập toàn trang bị chặn. Không dùng làm nguồn cho thuật toán thiên văn."
+    }
+  ]
+}

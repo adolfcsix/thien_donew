@@ -1,0 +1,287 @@
+{
+  "schemaVersion": "1.0.0",
+  "edition": "11.164.0",
+  "researchOnly": true,
+  "engineIntegrationsAllowed": false,
+  "disclaimer": "Hồ sơ là các đề xuất nghiên cứu đang chờ nguồn độc lập và chuyên gia thẩm định; không phải danh sách trường phái đã được chứng nhận.",
+  "schools": [
+    {
+      "id": "tu-vi-vietnamese-reference",
+      "name": "Tử Vi Việt Nam — bảng sao bổ trợ",
+      "field": "Tử Vi Đẩu Số",
+      "scope": "Nghiên cứu các bảng an sao mở rộng được ghi nhận trong tài liệu tham khảo Việt Nam; không tuyên bố đại diện mọi trường phái.",
+      "caution": "Không lấy can năm sinh để suy vị trí sao lưu theo năm xem nếu bảng gốc không nói như vậy.",
+      "accredited": false,
+      "expertReviewed": false
+    },
+    {
+      "id": "bat-tu-tu-tru-reference",
+      "name": "Bát Tự — thần sát theo can ngày",
+      "field": "Bát Tự / Tứ Trụ",
+      "scope": "Đối chiếu riêng thần sát theo can ngày với cách xem can năm; không gộp Bát Tự và Tử Vi.",
+      "caution": "Không áp dụng bảng thần sát Bát Tự lên lá số Tử Vi.",
+      "accredited": false,
+      "expertReviewed": false
+    },
+    {
+      "id": "tue-tien-12-reference",
+      "name": "Tuế Tiền Thập Nhị Thần",
+      "field": "Tử Vi — vòng thần sát",
+      "scope": "So thứ tự 12 thần sát và mốc địa chi năm tham chiếu; làm rõ dị bản năm sinh/năm xem.",
+      "caution": "Không tự đồng nhất tên gần giống nhau với vòng Tướng Tiền, Thái Tuế hoặc Quan Phù.",
+      "accredited": false,
+      "expertReviewed": false
+    },
+    {
+      "id": "tu-vi-structural-research",
+      "name": "Tử Vi — nghiên cứu cấu trúc lá số",
+      "field": "Tử Vi Đẩu Số",
+      "scope": "Phân tích Tứ chính, cặp phụ tinh và ví dụ vị trí; phục vụ giải thích dữ liệu, chưa xác nhận chuẩn trường phái.",
+      "caution": "Bằng chứng hiện diện sao khác hoàn toàn khẳng định thành cách cục hoặc kết quả cuộc sống.",
+      "accredited": false,
+      "expertReviewed": false
+    }
+  ],
+  "records": [
+    {
+      "id": "rule-luu-nien-van-tinh-natal-stem",
+      "schoolId": "tu-vi-vietnamese-reference",
+      "reference": {
+        "kind": "method-profile",
+        "id": "luu-nien-van-tinh-natal-stem"
+      },
+      "title": "Lưu Niên Văn Tinh — Thiên can năm sinh",
+      "question": "Tên có chữ Lưu Niên không có nghĩa sao được an lại theo năm đang xem.",
+      "limitation": "Bảng tra tham khảo chưa kiểm chứng độc lập; không sử dụng để an sao chính.",
+      "reviewStage": "research-draft",
+      "sourceReview": "not-independently-verified",
+      "review": {
+        "bibliography": [],
+        "independentComparisonCases": [],
+        "variantDecision": null,
+        "expertSignoff": null
+      },
+      "engineEnabled": false
+    },
+    {
+      "id": "rule-hong-diem-bazi-day-stem",
+      "schoolId": "bat-tu-tu-tru-reference",
+      "reference": {
+        "kind": "method-profile",
+        "id": "hong-diem-bazi-day-stem"
+      },
+      "title": "Hồng Diễm — Thiên can ngày sinh",
+      "question": "Không áp dụng bảng Bát Tự theo can ngày vào engine Tử Vi dùng can năm sinh.",
+      "limitation": "Bảng tra tham khảo chưa kiểm chứng độc lập; không sử dụng để an sao chính.",
+      "reviewStage": "research-draft",
+      "sourceReview": "not-independently-verified",
+      "review": {
+        "bibliography": [],
+        "independentComparisonCases": [],
+        "variantDecision": null,
+        "expertSignoff": null
+      },
+      "engineEnabled": false
+    },
+    {
+      "id": "rule-quan-sach-sui-qian-branch",
+      "schoolId": "tue-tien-12-reference",
+      "reference": {
+        "kind": "method-profile",
+        "id": "quan-sach-sui-qian-branch"
+      },
+      "title": "Quán Sách — Địa chi năm tham chiếu",
+      "question": "Phải chọn rõ chi năm sinh hay chi lưu niên theo hệ nghiên cứu, không tự gộp với Quan Phù hoặc Quan Phủ.",
+      "limitation": "Bảng tra tham khảo chưa kiểm chứng độc lập; không sử dụng để an sao chính.",
+      "reviewStage": "research-draft",
+      "sourceReview": "not-independently-verified",
+      "review": {
+        "bibliography": [],
+        "independentComparisonCases": [],
+        "variantDecision": null,
+        "expertSignoff": null
+      },
+      "engineEnabled": false
+    },
+    {
+      "id": "family-tu-phu-vu-tuong",
+      "schoolId": "tu-vi-structural-research",
+      "reference": {
+        "kind": "four-court-family",
+        "id": "tu-phu-vu-tuong"
+      },
+      "title": "Bộ Tử Phủ Vũ Tướng",
+      "question": "Phân biệt vai trò của Tử Vi, Thiên Phủ, Vũ Khúc và Thiên Tướng trong mạng lưới Mệnh – Tài Bạch – Quan Lộc – Thiên Di; không gộp bốn hình tượng thành một phẩm chất duy nhất.",
+      "limitation": "Ghi nhận riêng từng bằng chứng; không gộp tất cả thành nhãn cát hoặc hung.",
+      "reviewStage": "research-draft",
+      "sourceReview": "not-independently-verified",
+      "review": {
+        "bibliography": [],
+        "independentComparisonCases": [],
+        "variantDecision": null,
+        "expertSignoff": null
+      },
+      "engineEnabled": false
+    },
+    {
+      "id": "family-co-nguyet-dong-luong",
+      "schoolId": "tu-vi-structural-research",
+      "reference": {
+        "kind": "four-court-family",
+        "id": "co-nguyet-dong-luong"
+      },
+      "title": "Bộ Cơ Nguyệt Đồng Lương",
+      "question": "Phân tích riêng Thiên Cơ (biến chuyển), Thái Âm (tiếp nhận), Thiên Đồng (thích nghi) và Thiên Lương (nguyên tắc) thay vì suy thẳng ra nghề nghiệp hay học lực.",
+      "limitation": "Đặt câu hỏi cụ thể về chính tinh nhận tác động, không gọi đó là một sự kiện trong đời.",
+      "reviewStage": "research-draft",
+      "sourceReview": "not-independently-verified",
+      "review": {
+        "bibliography": [],
+        "independentComparisonCases": [],
+        "variantDecision": null,
+        "expertSignoff": null
+      },
+      "engineEnabled": false
+    },
+    {
+      "id": "family-sat-pha-tham",
+      "schoolId": "tu-vi-structural-research",
+      "reference": {
+        "kind": "four-court-family",
+        "id": "sat-pha-tham"
+      },
+      "title": "Bộ Sát Phá Tham",
+      "question": "Khảo sát mối quan hệ giữa Thất Sát, Phá Quân và Tham Lang trong chủ đề thay đổi và thích ứng; tuyệt đối không quy các sao này thành tính cách bạo lực hay biến cố tất yếu.",
+      "limitation": "Phân loại bằng chứng và kiểm tra trùng sao trước khi viết bất kỳ diễn giải nào.",
+      "reviewStage": "research-draft",
+      "sourceReview": "not-independently-verified",
+      "review": {
+        "bibliography": [],
+        "independentComparisonCases": [],
+        "variantDecision": null,
+        "expertSignoff": null
+      },
+      "engineEnabled": false
+    },
+    {
+      "id": "family-cu-nhat",
+      "schoolId": "tu-vi-structural-research",
+      "reference": {
+        "kind": "four-court-family",
+        "id": "cu-nhat"
+      },
+      "title": "Bộ Cự Nhật",
+      "question": "Đọc Cự Môn và Thái Dương như hai góc nghiên cứu về ngôn từ và tính hiển lộ; không suy tự động ra danh tiếng, phát ngôn hay sức khỏe.",
+      "limitation": "Giữ trạng thái chưa rõ khi thiếu bản ghi, không đưa ra nhận định danh tiếng hoặc sức khỏe.",
+      "reviewStage": "research-draft",
+      "sourceReview": "not-independently-verified",
+      "review": {
+        "bibliography": [],
+        "independentComparisonCases": [],
+        "variantDecision": null,
+        "expertSignoff": null
+      },
+      "engineEnabled": false
+    },
+    {
+      "id": "pair-ta-huu",
+      "schoolId": "tu-vi-structural-research",
+      "reference": {
+        "kind": "natal-pair",
+        "id": "ta-huu"
+      },
+      "title": "Tả Phụ – Hữu Bật",
+      "question": "Hai sao hỗ trợ xuất hiện tại cùng cung, tại hai cung hội chiếu hay đứng ở hai cung giáp? Vai trò của từng cung có khác nhau không?",
+      "limitation": "Đọc chính tinh tọa từng vị trí trước khi đối chiếu ý nghĩa phối hợp, trợ lực; không suy ra sẽ có quý nhân.",
+      "reviewStage": "research-draft",
+      "sourceReview": "not-independently-verified",
+      "review": {
+        "bibliography": [],
+        "independentComparisonCases": [],
+        "variantDecision": null,
+        "expertSignoff": null
+      },
+      "engineEnabled": false
+    },
+    {
+      "id": "pair-xuong-khuc",
+      "schoolId": "tu-vi-structural-research",
+      "reference": {
+        "kind": "natal-pair",
+        "id": "xuong-khuc"
+      },
+      "title": "Văn Xương – Văn Khúc",
+      "question": "Xương và Khúc cùng một cung hay liên hệ các cung khác nhau? Có chính tinh nào đồng cung với từng sao?",
+      "limitation": "Phân biệt biểu tượng học hỏi, diễn đạt và bối cảnh cung; không đồng nhất với kết quả học hành thực tế.",
+      "reviewStage": "research-draft",
+      "sourceReview": "not-independently-verified",
+      "review": {
+        "bibliography": [],
+        "independentComparisonCases": [],
+        "variantDecision": null,
+        "expertSignoff": null
+      },
+      "engineEnabled": false
+    },
+    {
+      "id": "pair-khoi-viet",
+      "schoolId": "tu-vi-structural-research",
+      "reference": {
+        "kind": "natal-pair",
+        "id": "khoi-viet"
+      },
+      "title": "Thiên Khôi – Thiên Việt",
+      "question": "Hai sao chỉ dẫn xuất hiện ở vị trí nào và sự liên hệ ấy có thuộc đúng phạm vi đang xét hay không?",
+      "limitation": "Đối chiếu tên cung cùng các chính tinh trước, không suy ra sự kiện được giúp đỡ hay danh vị.",
+      "reviewStage": "research-draft",
+      "sourceReview": "not-independently-verified",
+      "review": {
+        "bibliography": [],
+        "independentComparisonCases": [],
+        "variantDecision": null,
+        "expertSignoff": null
+      },
+      "engineEnabled": false
+    },
+    {
+      "id": "exercise-menh-hoa",
+      "schoolId": "tu-vi-structural-research",
+      "reference": {
+        "kind": "worked-case",
+        "id": "menh-hoa"
+      },
+      "title": "Ví dụ Mệnh",
+      "question": "Phân biệt Tứ Hóa gắn vào chính tinh Mệnh với Hóa cùng cung nhưng sao đích không phải chính tinh.",
+      "limitation": "Chỉ ra chính tinh, trạng thái sáng và nhãn Hóa thực sự cùng sao đích; không suy diễn vận mệnh từ một chỉ báo.",
+      "reviewStage": "research-draft",
+      "sourceReview": "not-independently-verified",
+      "review": {
+        "bibliography": [],
+        "independentComparisonCases": [],
+        "variantDecision": null,
+        "expertSignoff": null
+      },
+      "engineEnabled": false
+    },
+    {
+      "id": "exercise-phu-mau-doi",
+      "schoolId": "tu-vi-structural-research",
+      "reference": {
+        "kind": "worked-case",
+        "id": "phu-mau-doi"
+      },
+      "title": "Ví dụ Phụ Mẫu",
+      "question": "Vì sao một cung đối thiếu chính tinh đã xác minh không thể coi là bằng chứng phản chiếu đã đầy đủ?",
+      "limitation": "Chỉ rõ cung đối, chính tinh còn thiếu và tác động của dữ liệu độ sáng chưa xác minh.",
+      "reviewStage": "research-draft",
+      "sourceReview": "not-independently-verified",
+      "review": {
+        "bibliography": [],
+        "independentComparisonCases": [],
+        "variantDecision": null,
+        "expertSignoff": null
+      },
+      "engineEnabled": false
+    }
+  ]
+}

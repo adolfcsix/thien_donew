@@ -1,0 +1,12 @@
+import type {NatalInput,NatalPlanet,NatalAspect,NatalReadingMetadata} from '../../astrology-engine/src/western-natal.cjs';
+export interface PlanetProfile {body:string;name:string;glyph:string;theme:string;practice:string;question:string;caution:string;sourceIds:string[]}
+export interface SignProfile {index:number;name:string;glyph:string;element:string;modality:string;traditionalRuler:string;modernAlternative:string|null;style:string;question:string;sourceIds:string[]}
+export interface HouseProfile {number:number;area:string;question:string;emptyNotice:string;sourceIds:string[]}
+export interface AspectProfile {angle:number;name:string;reading:string;question:string;sourceIds:string[]}
+export interface DispositorChain {path:{body:string;sign:string;house:number;ruler:string}[];cycle:string[];termination:string;notice:string}
+export interface WesternStudy {format:string;version:number;method:NatalReadingMetadata;input:NatalInput;utc:string;context:{name:string;prompt:string};legacy:boolean;notice:string;sensitivity:unknown;planets:(NatalPlanet&{profile:PlanetProfile;signProfile:SignProfile;houseProfile:HouseProfile;motionReading:string;reading:string;questions:string[];dispositor:DispositorChain})[];houses:{number:number;sign:string;cuspLongitude:number;signIndex:number;profile:HouseProfile;ruler:{body:string;name:string;sign:string;house:number};occupants:string[]}[];aspects:(NatalAspect&{firstName:string;secondName:string;guide:AspectProfile;reading:string;notice:string})[];axes:{ascendant:{longitude:number;sign:string;ruler:string};midheaven:{longitude:number;sign:string;house:number};chartRuler:{body:string;name:string;sign:string;house:number;chain:DispositorChain};notice:string};distribution:{elements:Record<string,number>;modalities:Record<string,number>;count:number;scope:string;notice:string};sources:{id:string;title:string;url:string;checkedOn:string;scope:string}[]}
+export function readingMetadata(context?:string):NatalReadingMetadata;
+export function validateReadingMetadata(raw:unknown):NatalReadingMetadata;
+export function studyWesternInput(raw:unknown):WesternStudy;
+export function exportWesternStudy(report:WesternStudy,options?:{includeBirthData?:boolean}):unknown;
+export function getWesternKnowledge():{edition:string;editorialNotice:string;planets:PlanetProfile[];signs:SignProfile[];houses:HouseProfile[];aspects:AspectProfile[];contexts:Record<string,{name:string;prompt:string}>;motions:Record<string,string>;sources:WesternStudy['sources']};

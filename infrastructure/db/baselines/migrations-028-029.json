@@ -1,0 +1,8 @@
+{
+  "sourceVersion": "11.163.0",
+  "policy": "Freeze V11.161 and V11.163 migration bytes to prevent schema drift.",
+  "migrations": {
+    "028_billing_reconciliation_policy.sql": "931e1b2c0cd8abca639a8c2ae4d824e44a6dbbfa9327f8dc8483d6d9fc0268b6",
+    "029_guides_policies_cms.sql": "fd83d7f06d19dca8bae9f3a51745abfc00f287363f439d4e3f29bb36a2d45601"
+  }
+}

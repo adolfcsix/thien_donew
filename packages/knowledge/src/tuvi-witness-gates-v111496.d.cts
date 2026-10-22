@@ -1,0 +1,2 @@
+export declare const REQUIRED:readonly string[];
+export declare function auditWitnesses(data?:unknown):{status:'BLOCKED'|'RESEARCH_LOCKED';errors:string[];records:readonly {name:string;kind:string;school:string;sourceIds:readonly string[];missingGates:readonly string[];status:string;canPlaceAutomatically:false;canMergeAlias:false;requiresIndependentFixture:boolean;requiresExpertReview:boolean}[];counts:{missing:number;aliases:number;automaticNewPlacements:0;independentApproved:number}};

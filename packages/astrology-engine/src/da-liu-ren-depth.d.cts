@@ -1,0 +1,12 @@
+export const RULESET: string;
+export const LEGACY_RULESET: string;
+export const BRANCHES: ReadonlyArray<string>;
+export const STEMS: ReadonlyArray<string>;
+export const GENERALS: ReadonlyArray<string>;
+export const GATE_NAMES: Readonly<Record<string,string>>;
+export const GUIREN: Readonly<Record<string,ReadonlyArray<string>>>;
+export const DAY_NIGHT: Readonly<Record<string,string>>;
+export function buildDepth(input:{dayStem:string;dayBranch:string;monthGeneral:string;divinationHour:string;dayNight:'manual'|'hour-mao-shen';manualPeriod:'day'|'night'|null}):any;
+export function buildDepthByMethod(input:Parameters<typeof buildDepth>[0],method:string):any;
+export function makeGenerals(input:{plate:any;dayStem:string;divinationHour:string;dayNight:'manual'|'hour-mao-shen';manualPeriod:'day'|'night'|null}):any;
+export function validateDaLiuRenSnapshot(raw:unknown): Readonly<{method:string;dayStem:string;dayBranch:string;monthGeneral:string;divinationHour:string;dayNight:'manual'|'hour-mao-shen';manualPeriod:'day'|'night'|null;source?:string}>;

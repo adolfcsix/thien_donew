@@ -1,0 +1,103 @@
+{
+  "edition": "v11.46.0",
+  "status": "editorial-study-only",
+  "expertReviewed": false,
+  "profiles": {
+    "Mệnh": {
+      "focus": "Tự nhận thức và cách ứng xử",
+      "questions": [
+        "Điều gì được sao tọa thủ mô tả như một biểu tượng, và thông tin nào còn chưa đủ để diễn giải?",
+        "Đối cung Thiên Di có những chính tinh nào, đối chiếu ra sao với cung Mệnh?",
+        "Năm xem có dấu hạn tại Mệnh hay không, và phần nào chỉ thuộc lớp lưu niên?"
+      ]
+    },
+    "Phụ Mẫu": {
+      "focus": "Quan hệ và ranh giới giữa các thế hệ",
+      "questions": [
+        "Chỉ xét sao gốc tọa cung, không suy đoán sức khỏe hay nhân cách của cha mẹ.",
+        "Cung đối cho thêm góc nhìn nào về giao tiếp và trách nhiệm gia đình?",
+        "Dữ liệu lưu niên có trùng vị trí với cung này không, và có cần loại bản ghi sai?"
+      ]
+    },
+    "Phúc Đức": {
+      "focus": "Giá trị sống và văn hóa gia đình",
+      "questions": [
+        "Sao tọa cung có nguồn biên soạn rõ hay còn thiếu hồ sơ?",
+        "Đối cung cung cấp thêm góc nhìn biểu tượng nào về các mối quan hệ?",
+        "Cần phân biệt mô tả nền tảng với biến thiên của năm xem như thế nào?"
+      ]
+    },
+    "Điền Trạch": {
+      "focus": "Không gian sống và sự gắn bó",
+      "questions": [
+        "Những sao nào thực sự tọa Điền Trạch, có bị lẫn dấu năm xem không?",
+        "Tương quan với cung đối cho thấy những câu hỏi nào về sự ổn định và nhu cầu di chuyển?",
+        "Có dấu hạn hay sao lưu đã kiểm tra tại cung này không?"
+      ]
+    },
+    "Quan Lộc": {
+      "focus": "Vai trò và hành trình học nghề",
+      "questions": [
+        "Sao tọa cung gợi mở hướng tự quan sát nào về cách học và làm việc?",
+        "Những sao ở đối cung có thể mở rộng câu hỏi về vai trò xã hội ra sao?",
+        "Thông tin năm xem có đủ để ghi nhận biến động dữ liệu, nhưng không dự báo thăng tiến?"
+      ]
+    },
+    "Nô Bộc": {
+      "focus": "Hợp tác và mạng lưới xã hội",
+      "questions": [
+        "Phân biệt biểu tượng của sao tọa cung với nhận định về một cá nhân cụ thể.",
+        "Đối cung gợi thêm câu hỏi về ranh giới, sự hỗ trợ và tương tác thế nào?",
+        "Sao lưu đã lọc có liên hệ vị trí cung này không?"
+      ]
+    },
+    "Thiên Di": {
+      "focus": "Bối cảnh bên ngoài và sự thích nghi",
+      "questions": [
+        "Có chính tinh tọa cung không, hay phải xét đối cung khi vô chính diệu?",
+        "Đối cung Mệnh giúp đối chiếu hình ảnh cá nhân với bối cảnh xã hội thế nào?",
+        "Các dấu lưu niên tại cung này có thể ghi nhận mà không dự đoán đi xa không?"
+      ]
+    },
+    "Tật Ách": {
+      "focus": "Sinh hoạt và chăm sóc bản thân",
+      "questions": [
+        "Chỉ đọc biểu tượng sao tọa cung; không dùng để chẩn đoán bệnh.",
+        "Đối cung có gì giúp đặt câu hỏi về khả năng điều chỉnh thói quen?",
+        "Loại bỏ kết luận sức khỏe từ các sao lưu hoặc Tứ Hóa chưa xác minh."
+      ]
+    },
+    "Tài Bạch": {
+      "focus": "Quan niệm về nguồn lực và lựa chọn",
+      "questions": [
+        "Sao tại cung chỉ là tư liệu thảo luận, không phải dự đoán thu nhập.",
+        "Cung đối giúp nêu câu hỏi nào về ưu tiên nguồn lực?",
+        "Những dấu hạn hợp lệ nào có thể được nhận diện, không chuyển thành khuyến nghị đầu tư?"
+      ]
+    },
+    "Tử Tức": {
+      "focus": "Chăm sóc, nuôi dưỡng và trách nhiệm",
+      "questions": [
+        "Không từ sao tọa suy đoán khả năng sinh sản hay cuộc đời trẻ em.",
+        "Đối cung đem lại câu hỏi nào về vai trò hỗ trợ và trách nhiệm?",
+        "Tách mọi sao lưu khỏi đặc điểm cố định của lá số khi xem cung này."
+      ]
+    },
+    "Phu Thê": {
+      "focus": "Giao tiếp, hợp tác trong quan hệ thân thiết",
+      "questions": [
+        "Biểu tượng sao tọa cung không dùng để phán xét bạn đời.",
+        "Đối cung cho phép đối chiếu kỳ vọng và cách giao tiếp ra sao?",
+        "Đánh dấu dữ liệu lưu niên hợp lệ mà không dự đoán hôn nhân, chia tay."
+      ]
+    },
+    "Huynh Đệ": {
+      "focus": "Vai trò và kết nối giữa anh chị em",
+      "questions": [
+        "Chính tinh có mặt thực tế là gì, và phần nào thiếu giải thích?",
+        "Đối cung có thể gợi ra góc nhìn khác về hỗ trợ qua lại không?",
+        "Chỉ dùng sao lưu năm xem làm dữ liệu nghiên cứu vị trí, không quy kết cho người thân."
+      ]
+    }
+  }
+}

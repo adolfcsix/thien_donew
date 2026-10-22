@@ -1,0 +1,61 @@
+{
+  "source": "梅花易數 · quyển I · Wikisource transcription",
+  "retrieved": "2026-10-14",
+  "url": "https://zh.wikisource.org/wiki/梅花易數/卷一",
+  "scope": "Three arithmetic/hexagram fixtures derived directly from source examples, not validation of narrated events or predictive claims.",
+  "cases": [
+    {
+      "name": "觀梅占",
+      "input": {
+        "mode": "time",
+        "yearBranch": 5,
+        "lunarMonth": 12,
+        "lunarDay": 17,
+        "hourBranch": 9
+      },
+      "upperSeed": 34,
+      "lowerSeed": 43,
+      "movingSeed": 43,
+      "original": 49,
+      "line": 1,
+      "transformed": 31,
+      "nuclearUpper": "qian",
+      "nuclearLower": "xun"
+    },
+    {
+      "name": "牡丹占",
+      "input": {
+        "mode": "time",
+        "yearBranch": 6,
+        "lunarMonth": 3,
+        "lunarDay": 16,
+        "hourBranch": 4
+      },
+      "upperSeed": 25,
+      "lowerSeed": 29,
+      "movingSeed": 29,
+      "original": 44,
+      "line": 5,
+      "transformed": 50,
+      "nuclearUpper": "qian",
+      "nuclearLower": "qian"
+    },
+    {
+      "name": "鄰夜扣門借物占",
+      "input": {
+        "mode": "sound-hour",
+        "first": 1,
+        "second": 5,
+        "hourBranch": 10
+      },
+      "upperSeed": 1,
+      "lowerSeed": 5,
+      "movingSeed": 16,
+      "original": 44,
+      "line": 4,
+      "transformed": 57,
+      "nuclearUpper": "qian",
+      "nuclearLower": "qian"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+/* THIÊN ĐỒ V11.6: supplementary positional layers. Inherits chart skin. */
+.atlas-void-markers {display:flex;flex-wrap:wrap;gap:5px;padding:0 9px 7px;}
+.atlas-void-markers span {border:1px solid rgba(159,97,69,.54);background:rgba(159,97,69,.08);color:#96593e;font-size:11px;font-weight:750;letter-spacing:.04em;border-radius:3px;padding:3px 7px;line-height:1.45;}
+.atlas-grid[data-chart-skin="jade"] .atlas-void-markers span,
+.site:not(.light) .atlas-grid .atlas-void-markers span {color:#e7b898;border-color:rgba(222,165,119,.55);background:rgba(222,165,119,.10);}
+.atlas-void-detail small {font-size:12px;line-height:1.65;color:var(--muted);}
+@media print {.atlas-void-markers span {color:#774d37!important;background:#f6eee0!important;}}

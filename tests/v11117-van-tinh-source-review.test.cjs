@@ -1,0 +1,5 @@
+'use strict';
+const {test}=require('node:test');const assert=require('node:assert/strict');
+const review=require('../packages/knowledge/src/luu-nien-van-tinh-source-review.json');
+test('source comparison retains four disputed stems instead of synthesizing a universal table',()=>{const different=review.stems.filter((s,i)=>review.sources[0].positions[i]!==review.sources[1].positions[i]);assert.deepEqual(different,['Đinh','Kỷ','Tân','Nhâm']);assert.deepEqual(different,review.disputedStems);assert.equal(review.sources[0].positions.length,10);assert.equal(review.sources[1].positions.length,10);});
+test('OCR contradiction and visual-review scope remain explicit; placement is still disabled',()=>{assert.equal(review.transcriptionConflict.stem,'Giáp');assert.equal(review.transcriptionConflict.table,'Tý');assert.equal(review.transcriptionConflict.verse,'Tỵ');assert.equal(review.automaticPlacement,false);assert.equal(review.layer,'natal-year-stem');assert.ok(review.sources[0].review.includes('ảnh trang'));assert.ok(review.sources[1].review.includes('chưa đọc scan'));assert.equal(review.next.length,4);});

@@ -1,0 +1,11 @@
+.cloth{position:relative;isolation:isolate;min-width:0;padding:clamp(18px,3vw,34px);margin:22px 0;border:1px solid color-mix(in srgb,var(--gold) 63%,var(--line));border-radius:22px;overflow:hidden;background:radial-gradient(ellipse at 50% 18%,#5a41622e,transparent 68%),linear-gradient(145deg,var(--tarot-cloth-top,#251d36),var(--tarot-cloth-bottom,#151c2c));box-shadow:inset 0 0 0 6px #ffffff04,inset 0 0 0 7px #cbb38b24,0 14px 35px #070a1417;color:var(--text)}
+.cloth::after{content:"";position:absolute;inset:11px;border:1px solid color-mix(in srgb,var(--gold) 27%,transparent);border-radius:13px;pointer-events:none;z-index:0}
+.embroidery{position:absolute;inset:0;width:100%;height:100%;color:var(--tarot-embroidery,#ddc095);opacity:.21;pointer-events:none;z-index:-1}
+.seal{transform-origin:500px 375px;animation:cloth-reveal 1.1s ease-out both}
+.content{position:relative;min-width:0;z-index:1}
+:global(html[data-thiendo-theme=light]) .cloth{--tarot-cloth-top:#e8dfcf;--tarot-cloth-bottom:#f4ecdd;--tarot-embroidery:#6a467b;box-shadow:inset 0 0 0 6px #ffffff38,inset 0 0 0 7px #86643b28,0 12px 30px #4431240c}
+:global(html[data-thiendo-theme=light]) .embroidery{opacity:.19}
+@keyframes cloth-reveal{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
+@media(max-width:640px){.cloth{padding:17px;margin:18px 0;border-radius:16px}.cloth::after{inset:7px;border-radius:10px}.embroidery{opacity:.16}}
+@media(prefers-reduced-motion:reduce){.seal{animation:none}}
+@media print{.cloth{box-shadow:none;background:white;color:#222}.embroidery{display:none}}

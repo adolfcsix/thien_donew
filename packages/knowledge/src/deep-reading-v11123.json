@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "edition": "11.123.0",
+  "status": "editorial-unreviewed",
+  "method": "Tổng hợp theo các phép an hiện hành của Thiên Đồ; giữ riêng bản mệnh và năm âm lịch. Không áp dụng Phi Hóa cung can hay tự hóa.",
+  "provenance": [
+    {
+      "id": "palace",
+      "title": "Hồ sơ 12 cung và chính tinh theo cung",
+      "path": "packages/knowledge/src/primary-star-palace-guidance.json"
+    },
+    {
+      "id": "geometry",
+      "title": "Sổ đọc tứ chính và bộ sao bản mệnh",
+      "path": "packages/knowledge/src/four-court-reading-ledger.json"
+    },
+    {
+      "id": "pairs",
+      "title": "Đối chiếu các cặp sao theo vị trí",
+      "path": "packages/knowledge/src/natal-pair-research.json"
+    },
+    {
+      "id": "hoa",
+      "title": "Diễn nghĩa Tứ Hóa có điều kiện",
+      "path": "packages/knowledge/src/combination-rules.json"
+    }
+  ],
+  "profiles": {
+    "Mệnh": {
+      "theme": "Cách chủ động lựa chọn",
+      "tension": "Tự quyết và khả năng tiếp nhận phản hồi",
+      "temporalFocus": "ưu tiên, cách ra quyết định và phản ứng khi kế hoạch đổi",
+      "question": "Một lựa chọn gần đây do bạn tự quyết hay do kỳ vọng bên ngoài?",
+      "counterexample": "Việc đổi môi trường có thể giải thích thay đổi hành vi mà không cần viện đến sao."
+    },
+    "Phụ Mẫu": {
+      "theme": "Quan hệ với người dẫn dắt",
+      "tension": "Tiếp nhận hướng dẫn và giữ quyền tự quyết",
+      "temporalFocus": "vai trò người lớn, cách trao đổi và ranh giới trách nhiệm",
+      "question": "Bạn nhận lời khuyên nào, và tiêu chí chấp nhận là gì?",
+      "counterexample": "Tuổi tác, khoảng cách địa lý và điều kiện sống ảnh hưởng quan hệ gia đình; không gán động cơ cho cha mẹ từ lá số."
+    },
+    "Phúc Đức": {
+      "theme": "Nền tảng tinh thần và giá trị",
+      "tension": "Giữ truyền thống và xây dựng hệ giá trị riêng",
+      "temporalFocus": "nguồn nâng đỡ tinh thần, thói quen nghỉ ngơi và điều có ý nghĩa",
+      "question": "Hoạt động nào giúp bạn hồi phục mà không tạo thêm nghĩa vụ?",
+      "counterexample": "Mạng lưới hỗ trợ và trải nghiệm sống có thể giải thích cảm giác an tâm; không suy công đức hay số phận dòng họ."
+    },
+    "Điền Trạch": {
+      "theme": "Không gian sống và điểm tựa",
+      "tension": "Ổn định chỗ ở và linh hoạt sử dụng nguồn lực",
+      "temporalFocus": "cách tổ chức không gian, nhu cầu an cư và nghĩa vụ chung",
+      "question": "Không gian hiện tại phục vụ nhu cầu nào và còn bất tiện nào?",
+      "counterexample": "Hợp đồng, điều kiện kinh tế và lựa chọn thực tế quyết định chuyện nhà ở; sao không xác nhận quyền sở hữu."
+    },
+    "Quan Lộc": {
+      "theme": "Vai trò và cách làm việc",
+      "tension": "Theo đuổi hiệu quả và đáp ứng kỳ vọng tổ chức",
+      "temporalFocus": "phân công, tiêu chí đánh giá và trách nhiệm nghề nghiệp",
+      "question": "Trách nhiệm đang nhận có đi cùng quyền quyết định và nguồn lực?",
+      "counterexample": "Kỹ năng, tổ chức và thị trường có thể giải thích tiến triển công việc; không chọn nghề hoặc suy thăng chức từ bộ sao."
+    },
+    "Nô Bộc": {
+      "theme": "Mạng lưới hợp tác",
+      "tension": "Tin cậy và giữ ranh giới phối hợp",
+      "temporalFocus": "vai trò cộng tác, giao việc và cơ chế phản hồi",
+      "question": "Một cam kết hợp tác có được ghi rõ người làm, thời hạn và kết quả?",
+      "counterexample": "Chất lượng hợp tác phụ thuộc hành vi và thỏa thuận; không phán xét bạn bè hay cộng sự qua sao."
+    },
+    "Thiên Di": {
+      "theme": "Ứng xử trong môi trường bên ngoài",
+      "tension": "Thích nghi và duy trì bản sắc",
+      "temporalFocus": "cách xuất hiện trước người khác, di chuyển và tiếp nhận môi trường",
+      "question": "Điều gì thay đổi khi bạn chuyển từ nơi quen thuộc sang môi trường mới?",
+      "counterexample": "Bối cảnh xã hội và cơ hội thực tế tác động việc đi xa; không suy chắc chắn xuất ngoại hoặc gặp quý nhân."
+    },
+    "Tật Ách": {
+      "theme": "Nhịp sống và khả năng tự chăm sóc",
+      "tension": "Gánh trách nhiệm và phục hồi sức lực",
+      "temporalFocus": "thói quen sinh hoạt, nghỉ ngơi và khả năng nhận biết giới hạn",
+      "question": "Nhịp sinh hoạt nào làm bạn quá tải và điều gì có thể điều chỉnh?",
+      "counterexample": "Triệu chứng và chẩn đoán cần dữ kiện y khoa; không dùng sao, Hóa Kỵ hay sát tinh để suy bệnh, tai nạn hoặc tuổi thọ."
+    },
+    "Tài Bạch": {
+      "theme": "Cách sử dụng nguồn lực",
+      "tension": "Tích lũy và phân bổ cho nhu cầu hiện tại",
+      "temporalFocus": "ngân sách, công sức, thời gian và ưu tiên sử dụng nguồn lực",
+      "question": "Khoản dành cho ưu tiên dài hạn có được cân đối với chi phí thiết yếu?",
+      "counterexample": "Thu nhập, chi phí và quyết định tài chính thực tế là dữ kiện cần đối chiếu; không suy số tiền, lợi nhuận hay vận đầu tư."
+    },
+    "Tử Tức": {
+      "theme": "Nuôi dưỡng và truyền đạt",
+      "tension": "Định hướng và tôn trọng sự phát triển độc lập",
+      "temporalFocus": "vai trò chăm sóc, việc hướng dẫn và dự án cần nuôi dưỡng",
+      "question": "Một người hoặc dự án bạn hỗ trợ có khoảng tự chủ phù hợp?",
+      "counterexample": "Hoàn cảnh chăm sóc và lựa chọn cá nhân giải thích nhiều khác biệt; không suy số con, khả năng sinh sản hay số phận trẻ."
+    },
+    "Phu Thê": {
+      "theme": "Quan hệ gắn bó và cam kết",
+      "tension": "Kỳ vọng chung và nhu cầu riêng",
+      "temporalFocus": "thỏa thuận, phân chia trách nhiệm và cách xử lý bất đồng",
+      "question": "Hai bên đã diễn đạt kỳ vọng về thời gian, trách nhiệm và ranh giới chưa?",
+      "counterexample": "Giao tiếp và lựa chọn của hai người là dữ kiện cần xét; không kết luận thời điểm kết hôn, ngoại tình hay đổ vỡ."
+    },
+    "Huynh Đệ": {
+      "theme": "Quan hệ gần gũi và sự hỗ trợ",
+      "tension": "Chia sẻ nguồn lực và giữ tính độc lập",
+      "temporalFocus": "thói quen hỗ trợ, khác biệt vai trò và cách duy trì kết nối",
+      "question": "Việc hỗ trợ có cân bằng khả năng của mỗi bên và nhu cầu thực tế?",
+      "counterexample": "Khoảng cách, tuổi tác và điều kiện sống ảnh hưởng quan hệ; không suy số anh chị em hay nhân cách của họ."
+    }
+  },
+  "pairAngles": {
+    "ta-huu": "Đặt biểu tượng phối hợp vào vai trò của từng cung: hỗ trợ tại chính cung khác hỗ trợ từ tam hợp hay hai phía giáp cung.",
+    "xuong-khuc": "Đối chiếu học hỏi và diễn đạt: hai sao đồng cung tạo một bối cảnh chung; hai cung khác nhau cần giải thích từng vai trò trước khi liên kết.",
+    "khoi-viet": "Khảo sát biểu tượng chỉ dẫn và sự ghi nhận cùng chính tinh tại từng vị trí, rồi đối chiếu điều kiện hỗ trợ thực tế.",
+    "kinh-da": "Đối chiếu sức ép và nhịp xử lý trở ngại ở hai vị trí; ghi rõ trợ lực đồng cung thay vì coi hai sao là một kết luận hung.",
+    "hoa-linh": "Khảo sát cường độ phản ứng và cách điều tiết theo từng cung; quan hệ hình học không tự xác nhận tính khí.",
+    "khong-kiep": "Đặt câu hỏi về bất định và nền tảng ở từng cung; sự hỗ trợ và Tuần/Triệt là dữ kiện bổ sung, không phải phép triệt tiêu."
+  },
+  "limitations": [
+    "Nội dung biểu tượng do biên soạn, chưa thẩm định độc lập theo trường phái.",
+    "Năm xem là năm âm lịch; Tiểu hạn theo dị bản hiện hành của máy tính, Đại hạn dùng tuổi mụ theo cục.",
+    "Lớp năm gồm 12 lưu tinh và 4 Lưu Tứ Hóa; chưa phải luận lưu niên đầy đủ.",
+    "Không triển khai Phi Hóa cung can, tự hóa, Đại hạn Tứ Hóa hoặc chồng thêm Lưu nguyệt/ngày/giờ trong bài luận này.",
+    "11 tên sao thiếu và các dị danh đang nghiên cứu không được đưa vào chứng cứ an sao."
+  ]
+}

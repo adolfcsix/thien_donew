@@ -1,0 +1,11 @@
+import type {BaseFormation} from './formation.cjs';
+import type {RotatingHourPlate} from './hour-plate.cjs';
+export type MonthState='vượng'|'tướng'|'hưu'|'tù'|'tử'|'phế';
+export type MonthRule='five-elements-month'|'baojian-star-month';
+export type MonthContext={termIndex:number;term:string;branch:string;element:string;basis:'solar-term-branch-month'};
+export type MonthObservation={status:'computed'|'not-computed'|'convention';symbol:string|null;element:string|null;rule:MonthRule|null;state:MonthState|null;relation:string|null};
+export type MonthEntry={number:number;trigram:string;status:'computed'|'not-computed'|'convention';door:MonthObservation;stem:MonthObservation;stars:readonly (MonthObservation&{lodged:boolean})[];lodgedStarHost:number|null};
+export type MonthReport={kind:'month-strength-observations';status:'research-only'|'not-computed';profile:{id:string;status:'research-only';starRule:MonthRule;genericRule:MonthRule;earthMonths:string;sources:readonly {title:string;url:string}[];limits:readonly string[]};month:MonthContext;entries:readonly MonthEntry[];byPalace:Readonly<Record<number,MonthEntry>>;interpretation:null};
+export declare function monthFromTerm(index:number):MonthContext;
+export declare function strengthForElement(element:string,monthElement:string,rule?:MonthRule):Readonly<{state:MonthState;relation:string}>;
+export declare function analyzeMonthStrength(base:BaseFormation,plate?:RotatingHourPlate|null):MonthReport;

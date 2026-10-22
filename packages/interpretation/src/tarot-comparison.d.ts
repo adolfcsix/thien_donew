@@ -1,0 +1,3 @@
+import type {TarotSnapshot} from '../../astrology-engine/src/tarot-rws.cjs';
+export interface TarotComparison {format:string;version:1;readingCount:number;methods:{id:string;version:number;knowledgeEdition:string;name:string;context:string|null;legacy:boolean;notice?:string}[];contexts:(string|null)[];positionsAligned:boolean;rows:{index:number;label:string;cards:{readingIndex:number;id:string;name:string;reversed:boolean}[]}[];shared:{id:string;name:string;occurrences:{readingIndex:number;position:number;reversed:boolean;label:string}[];changedOrientation:boolean}[];summaries:{index:number;cards:number;reversed:number;method:string}[];notice:string;limit:string;}
+export function compareTarotSnapshots(snapshots:TarotSnapshot[]):TarotComparison;

@@ -1,0 +1,64 @@
+/* Chart room explorer — view-only enhancements, no astrology rule overrides. */
+.chart-basic-hint { display:none; }
+.chart-explorer { display:grid; gap:8px; padding:13px 15px; margin-bottom:10px; border:1px solid var(--line); background:var(--panel-alt); }
+.chart-explorer-top { display:flex; align-items:end; flex-wrap:wrap; justify-content:space-between; gap:12px; }
+.chart-palace-search { display:grid; gap:7px; color:var(--gold); font-size:11px; font-weight:700; flex:1 1 260px; max-width:530px; }
+.chart-palace-search input { width:100%; min-height:42px; background:var(--body); color:var(--text); border:1px solid var(--line-strong); border-radius:7px; padding:10px 13px; font-size:13px; }
+.chart-palace-search input::placeholder {color:var(--faint);}
+.chart-view-tabs { display:flex; gap:6px; padding:4px; border:1px solid var(--line); border-radius:8px; }
+.chart-view-tabs button { border:1px solid transparent; background:transparent; color:var(--muted); padding:9px 13px; min-height:38px; border-radius:5px; font-size:11px; white-space:nowrap; }
+.chart-view-tabs button.active { border-color:var(--line-strong); background:var(--panel); color:var(--gold); }
+.chart-explorer-footer { display:flex; align-items:center; justify-content:space-between; gap:10px; color:var(--muted); font-size:11px; min-height:20px; }
+.chart-clear-search { color:var(--gold); background:transparent; border:0; padding:4px; text-decoration:underline; font-size:11px; }
+.house.search-match-house { outline:2px solid var(--gold); outline-offset:-2px; }
+.house.search-muted-house { opacity:.44; filter:saturate(.4); }
+.house.selected.search-muted-house { opacity:1; filter:none; }
+.chart-palace-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; padding:7px; border:1px solid var(--line); background:var(--body); }
+.chart-palace-list-item { display:flex; align-items:center; text-align:left; min-width:0; gap:12px; padding:13px; color:var(--text); background:var(--panel); border:1px solid var(--line); border-radius:6px; transition:background .15s ease,border-color .15s ease; }
+.chart-palace-list-item:hover,.chart-palace-list-item.selected { background:var(--panel-alt); border-color:var(--gold); }
+.chart-list-branch { color:var(--gold); width:55px; flex-shrink:0; font-size:11px; }
+.chart-list-content { display:grid; min-width:0; gap:4px; flex:1; }
+.chart-list-content strong { font-size:13px; }
+.chart-list-content small { line-height:1.5; color:var(--muted); overflow-wrap:anywhere; font-size:11px; }
+.chart-list-tags { color:var(--gold); font-size:10px; white-space:normal; max-width:80px; }
+.chart-no-matches { text-align:center; color:var(--muted); padding:26px 12px; grid-column:1/-1; }
+.chart-detail-nav { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:13px; border:1px solid var(--line); border-bottom:0; margin-top:16px; padding:12px 16px; background:var(--panel); }
+.chart-detail-nav>div:first-child { display:grid; gap:3px; }
+.chart-detail-nav strong { font-size:12px; color:var(--gold); }
+.chart-detail-nav span { color:var(--muted); font-size:10px; }
+.chart-step-actions { display:flex; align-items:center; gap:6px; }
+.chart-step-actions button,.chart-step-actions select { min-height:40px; background:var(--panel-alt); border:1px solid var(--line-strong); border-radius:5px; color:var(--text); padding:8px 10px; font-size:11px; }
+.chart-step-actions button:hover { border-color:var(--gold); }
+.chart-step-actions select { min-width:128px; max-width:220px; }
+.chart-detail-nav + div .palace-detail { margin-top:0; }
+.house { min-height:0; }
+.house-head, .house-stars, .house-minor, .house-tuhoa, .annual-overlays { overflow-wrap:anywhere; }
+/* The display modes really differ, while the selected palace remains fully inspectable. */
+.site[data-mode="basic"] .chart-basic-hint {display:block; max-width:350px; line-height:1.5;}
+.site[data-mode="basic"] .board-options, .site[data-mode="basic"] .annual-layer-summary, .site[data-mode="basic"] .house-minor,
+.site[data-mode="basic"] .house-footer, .site[data-mode="basic"] .annual-overlays {display:none;}
+.site[data-mode="basic"] .house {gap:10px;}
+@media(max-width:850px) {
+  .chart-palace-list {grid-template-columns:1fr;}
+}
+@media(max-width:600px) {
+  .chart-explorer { padding:11px; }
+  .chart-view-tabs {width:100%;}
+  .chart-view-tabs button {flex:1;}
+  .chart-detail-nav {align-items:stretch;}
+  .chart-step-actions {width:100%;}
+  .chart-step-actions button {flex:0 0 auto;}
+  .chart-step-actions select {min-width:0;flex:1;}
+  .chart-palace-list-item {min-height:72px;}
+  .details-grid {grid-template-columns:1fr;}
+  .board-scroll {overscroll-behavior-x:contain;}
+}
+@media(max-width:370px) {
+  .chart-list-branch {width:44px;}
+  .chart-step-actions button {padding:7px;}
+  .chart-step-actions select {padding:7px 3px; font-size:10px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .chart-palace-list-item {transition:none;}
+}
+.chart-palace-list[hidden], .board-scroll[hidden] {display:none !important;}

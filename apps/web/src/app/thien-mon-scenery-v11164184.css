@@ -1,0 +1,230 @@
+/* V11.164.18.4 — exact approved 天 / Thiên Môn artwork, not a generic logo stock image.
+   Scenery is decoration, text is rendered live, never baked into a login form.
+   Theme synchronizes with the existing .site.light control; no additional JS state.
+*/
+.site {
+  --tm-brand-scene-base: #10241d;
+  --tm-brand-title: #fff2cf;
+  --tm-brand-detail: #d7e1d0;
+  --tm-brand-label: #edcf94;
+}
+.site.light {
+  --tm-brand-scene-base: #e8eee4;
+  --tm-brand-title: #193a2d;
+  --tm-brand-detail: #355b49;
+  --tm-brand-label: #6f542f;
+}
+.site .brand-seal {
+  display: grid;place-items:center;
+  overflow: hidden; flex-shrink:0;
+  padding:0;border-radius:17px;width:64px;height:64px;aspect-ratio:1;
+  --tm-logo-bg: rgba(14,40,30,.80);
+}
+.site .thien-mon-approved-icon {
+  display:block;width:100%;height:100%;border-radius:inherit;
+  background: url('/brand/thien-mon-icon-dark.webp') 50% 72% / 122% auto no-repeat;
+  box-shadow:inset 0 0 0 1px rgba(242,211,154,.13);
+}
+.site.light .thien-mon-approved-icon {
+  background-image:url('/brand/thien-mon-icon-light.webp');
+}
+/* Larger left-side sanctuary; input field widths stay constrained on the right. */
+.modal.account-modal.thien-mon-branded {
+  width:min(1030px,100%);
+  min-height:min(675px,86dvh);
+  max-height:min(94dvh,940px);
+  grid-template-columns:minmax(0,47%) minmax(0,53%);
+}
+.modal.account-modal.thien-mon-branded .account-dialog-content {padding-inline:clamp(24px,3.4vw,44px);}
+.modal.account-modal.thien-mon-branded .thien-mon-auth-art {
+  position:relative;isolation:isolate;
+  display:flex;align-items:flex-start;justify-content:flex-end;flex-direction:column;
+  overflow:hidden;padding:clamp(25px,3vw,39px);
+  background:var(--tm-brand-scene-base);
+  border-right:1px solid var(--td-glass-edge);
+  transition:background-color 850ms ease;
+}
+.thien-mon-auth-art::before {
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to bottom,
+    rgba(4,23,16,.03) 0%,rgba(4,23,16,.0) 29%,
+    rgba(6,24,18,.08) 52%,rgba(9,27,21,.80) 83%,rgba(9,27,21,.98) 100%);
+}
+html[data-thiendo-theme="light"] .thien-mon-auth-art::before {
+  background:linear-gradient(to bottom,
+    rgba(246,248,238,0) 0%,rgba(239,245,232,0) 35%,
+    rgba(235,241,229,.22) 52%,rgba(235,241,228,.85) 83%,#e8eee4 100%);
+}
+.thien-mon-auth-art::after {
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.44;
+  background:radial-gradient(ellipse at 52% 48%,transparent 31%,rgba(5,27,20,.33) 100%);
+}
+html[data-thiendo-theme="light"] .thien-mon-auth-art::after {opacity:.16;}
+.thien-mon-art-scene {
+  position:absolute;inset:0 0 9%;pointer-events:none;
+  background-position:center 4%;background-size:cover;background-repeat:no-repeat;
+  -webkit-mask-image:linear-gradient(#000 0 65%,rgba(0,0,0,.5) 80%,transparent 100%);
+  mask-image:linear-gradient(#000 0 65%,rgba(0,0,0,.5) 80%,transparent 100%);
+  transform:scale(1.02);opacity:0;
+}
+.thien-mon-art-scene--dark {background-image:url('/brand/thien-mon-scene-dark.webp');opacity:1;}
+.thien-mon-art-scene--light {background-image:url('/brand/thien-mon-scene-light.webp');}
+html[data-thiendo-theme="light"] .thien-mon-art-scene--dark {opacity:0;transform:scale(1.055);}
+html[data-thiendo-theme="light"] .thien-mon-art-scene--light {opacity:1;transform:scale(1.02);}
+html[data-thiendo-theme] .thien-mon-art-scene {
+  transition:opacity 850ms cubic-bezier(.22,.7,.22,1),transform 1150ms ease;
+}
+.thien-mon-auth-art .account-art-caption {
+  position:relative;z-index:2;max-width:365px;margin-top:auto;
+  text-shadow:none;
+}
+.thien-mon-auth-art .account-art-caption > span {color:var(--tm-brand-label);font-size:11px;letter-spacing:.21em;margin-bottom:13px;}
+.thien-mon-auth-art .account-art-caption strong {
+  color:var(--tm-brand-title);
+  font:400 clamp(29px,3.25vw,42px)/1.16 var(--font-display);
+  text-wrap:balance;
+}
+.thien-mon-auth-art .account-art-caption p {
+  color:var(--tm-brand-detail);max-width:32ch;
+  font-size:13px;line-height:1.8;margin-top:15px;
+}
+/* Homepage: the approved landscape fills the whole hero rectangle. Copy is
+   live and sits above the quiet left side; there is no nested logo card. */
+.site [data-home] .thien-mon-home-hero {
+  --home-scene-base:#0a211c;--home-scene-text:#fff5dd;
+  --home-scene-detail:#e0e8d9;--home-scene-gold:#efd39b;
+  display:block;position:relative;isolation:isolate;min-height:510px;
+  padding:clamp(30px,4vw,58px);background:var(--home-scene-base);
+  border:1px solid var(--td-glass-edge);overflow:hidden;
+}
+.site.light [data-home] .thien-mon-home-hero {
+  --home-scene-base:#f7f3e8;--home-scene-text:#173c30;
+  --home-scene-detail:#294d3d;--home-scene-gold:#775322;
+}
+.site [data-home] .thien-mon-home-art {
+  display:block;position:absolute;inset:0;z-index:0;min-height:0;
+  width:100%;height:100%;aspect-ratio:auto;margin:0;
+  border:0;border-radius:0;box-shadow:none;background:transparent;
+  pointer-events:none;
+}
+.site [data-home] .thien-mon-home-art::after {
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,
+    color-mix(in srgb,var(--home-scene-base) 94%,transparent) 0%,
+    color-mix(in srgb,var(--home-scene-base) 80%,transparent) 43%,
+    color-mix(in srgb,var(--home-scene-base) 40%,transparent) 55%,transparent 70%);
+}
+.site [data-home] .thien-mon-home-scene {
+  position:absolute;inset:0;opacity:0;transform:scale(1.005);
+  background-position:66% center;background-size:cover;background-repeat:no-repeat;
+  pointer-events:none;
+}
+.site [data-home] .thien-mon-home-scene--dark {background-image:url('/brand/thien-mon-hero-dark.webp');opacity:1;}
+.site [data-home] .thien-mon-home-scene--light {background-image:url('/brand/thien-mon-hero-light.webp');}
+.site.light [data-home] .thien-mon-home-scene--dark {opacity:0;transform:scale(1.005);}
+.site.light [data-home] .thien-mon-home-scene--light {opacity:1;}
+.site[data-theme-ready='true'] [data-home] .thien-mon-home-scene {transition:opacity 850ms ease;}
+.site [data-home] .thien-mon-home-copy {position:relative;z-index:2;width:min(53%,620px);min-width:0;}
+.site [data-home] .thien-mon-home-copy h1 {color:var(--home-scene-text);font-size:clamp(36px,4.1vw,60px);}
+.site [data-home] .thien-mon-home-copy h1 em,
+.site [data-home] .thien-mon-home-copy>span:first-child {color:var(--home-scene-gold);}
+.site [data-home] .thien-mon-home-copy>p,
+.site [data-home] .thien-mon-home-copy>span:last-child {color:var(--home-scene-detail);}
+@media(max-width:1100px) {
+  .site [data-home] .thien-mon-home-hero {min-height:750px;padding:30px 26px 340px;}
+  .site [data-home] .thien-mon-home-copy {width:100%;max-width:620px;}
+  .site [data-home] .thien-mon-home-copy h1 {font-size:clamp(35px,4.8vw,52px);}
+  .site [data-home] .thien-mon-home-scene {background-size:auto 64%;background-position:68% bottom;transform:none;}
+  .site [data-home] .thien-mon-home-art::after {background:linear-gradient(180deg,var(--home-scene-base) 0% 30%,color-mix(in srgb,var(--home-scene-base) 94%,transparent) 38%,transparent 62%);}
+}
+@media(max-width:680px) {
+  .site [data-home] .thien-mon-home-hero {padding:28px 22px 330px;min-height:780px;}
+  .site [data-home] .thien-mon-home-scene {background-size:auto 58%;}
+  .site [data-home] .thien-mon-home-copy h1 {font-size:clamp(34px,8vw,46px);}
+}
+/* /login destination page still looks finished after the modal is dismissed. */
+.site .thien-mon-login-landing {
+  width:min(1050px,100%);max-width:1050px;min-height:clamp(470px,64vh,640px);
+  padding-left:clamp(410px,51%,550px);
+  border-color:var(--td-glass-edge);
+  background:linear-gradient(105deg,var(--tm-brand-scene-base) 0 45%,var(--td-reading-surface) 45%);
+}
+.site .thien-mon-login-landing::before,
+.site .thien-mon-login-landing::after {content:'';position:absolute;pointer-events:none;}
+.site .thien-mon-login-landing::before {
+  z-index:0;inset:0 51% 0 0;width:auto;height:auto;transform:none;
+  border:0;border-radius:0;box-shadow:none;opacity:1;
+  background:url('/brand/thien-mon-scene-dark.webp') center / cover no-repeat;
+  -webkit-mask-image:linear-gradient(to right,#000 62%,transparent 100%);
+  mask-image:linear-gradient(to right,#000 62%,transparent 100%);
+}
+.site.light .thien-mon-login-landing::before {background-image:url('/brand/thien-mon-scene-light.webp');opacity:1;}
+.site .thien-mon-login-landing::after {content:none;}
+.site .thien-mon-login-landing > * {z-index:1;}
+/* Responsive uses a short, atmospheric banner so all inputs remain visible and usable. */
+@media (max-width:860px) {
+  .modal.account-modal.thien-mon-branded {
+    grid-template-columns:minmax(0,1fr);width:min(620px,100%);
+    display:block;min-height:0;max-height:min(96dvh,900px);overflow-y:auto;
+  }
+  .modal.account-modal.thien-mon-branded .thien-mon-auth-art {
+    min-height:clamp(170px,31vw,245px);height:clamp(170px,31vw,245px);
+    padding:clamp(15px,3vw,24px);border-right:0;
+    border-bottom:1px solid var(--td-glass-edge);
+  }
+  .modal.account-modal.thien-mon-branded .thien-mon-art-scene {inset:0;background-position:center 46%;}
+  .modal.account-modal.thien-mon-branded .thien-mon-auth-art::before {
+    background:linear-gradient(90deg,rgba(7,28,21,.80),rgba(8,27,20,.38) 43%,transparent 76%);
+  }
+  html[data-thiendo-theme="light"] .modal.account-modal.thien-mon-branded .thien-mon-auth-art::before {
+    background:linear-gradient(90deg,rgba(242,247,234,.91),rgba(240,247,235,.42) 44%,transparent 85%);
+  }
+  .thien-mon-auth-art .account-art-caption {max-width:230px;}
+  .thien-mon-auth-art .account-art-caption strong {font-size:clamp(21px,3vw,29px);}
+  .thien-mon-auth-art .account-art-caption p {display:none;}
+  .site .thien-mon-login-landing {padding-left:clamp(22px,5vw,40px);padding-top:clamp(250px,36vw,335px);}
+  .site .thien-mon-login-landing::before {inset:0 0 auto;height:clamp(235px,34vw,315px);mask-image:linear-gradient(#000 72%,transparent);}
+}
+@media (max-width:680px) {
+  .modal.account-modal.thien-mon-branded .account-dialog-content {padding:22px 20px 24px;}
+  .modal.account-modal.thien-mon-branded .thien-mon-auth-art {height:168px;min-height:168px;padding:17px 18px;}
+  .thien-mon-auth-art .account-art-caption > span {font-size:9px;margin-bottom:5px;}
+  .thien-mon-auth-art .account-art-caption strong {font-size:21px;max-width:220px;}
+  .site .thien-mon-login-landing {padding-top:235px;}
+  .site .thien-mon-login-landing::before {height:225px;}
+}
+@media (max-width:385px) {
+  .modal.account-modal.thien-mon-branded .thien-mon-auth-art {height:135px;min-height:135px;}
+  .thien-mon-auth-art .account-art-caption strong {font-size:18px;}
+}
+@media (prefers-reduced-motion:reduce) {
+  .thien-mon-art-scene,.site [data-home] .thien-mon-home-scene {transition:none!important;transform:none!important;}
+}
+@media print {
+  .thien-mon-auth-art,.site [data-home] .thien-mon-home-art {background-image:none;}
+  .thien-mon-art-scene,.site [data-home] .thien-mon-home-scene {display:none;}
+}
+
+/* The account overlay is a sibling of .site: its theme needs independent tokens. */
+.modal.account-modal.thien-mon-branded {
+  --tm-brand-scene-base:#10241d;--tm-brand-title:#fff2cf;
+  --tm-brand-detail:#d7e1d0;--tm-brand-label:#edcf94;
+}
+html[data-thiendo-theme="light"] .modal.account-modal.thien-mon-branded {
+  --tm-brand-scene-base:#e8eee4;--tm-brand-title:#193a2d;
+  --tm-brand-detail:#355b49;--tm-brand-label:#6f542f;
+  --account-bg:#f5f0e6;--account-surface:#ebe4d6;
+  --account-field:#fffbf2;--account-text:#22382d;
+  --account-muted:#5c7064;--account-line:rgba(49,79,59,.20);
+  --account-highlight:#775b30;--account-focus:rgba(80,111,77,.22);
+  border-color:rgba(63,88,67,.23);
+}
+html[data-thiendo-theme="light"] .modal.account-modal.thien-mon-branded .error {color:#9f3030;}
+html[data-thiendo-theme="light"] .modal.account-modal.thien-mon-branded .account-success {color:#285e37;}
+/* In light mode the backdrop softly matches the jade/ivory editorial scenery. */
+html[data-thiendo-theme="light"] .modal-backdrop.account-backdrop {
+  background:rgba(17,41,30,.57);
+}
+
+/* Compact navigation uses the same square fit, with no empty bottom/top strip. */
+.site[data-navigation="compact"] .brand-seal{width:54px;height:54px;flex-basis:54px;aspect-ratio:1}

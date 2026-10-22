@@ -1,0 +1,120 @@
+name: Thiên Đồ V11.164 - V12.0 Technical Release Candidate Gate
+on:
+  push:
+    branches: [audit/v11.164]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: v11164-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  release-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: thiendo
+          POSTGRES_PASSWORD: thiendo_ci_only
+          POSTGRES_DB: thiendo_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U thiendo -d thiendo_test"
+          --health-interval 5s --health-timeout 5s --health-retries 15
+    env:
+      CI: 'true'
+      NODE_ENV: test
+      E2E_LOCAL_DB_CONFIRM: 'YES'
+      DATABASE_URL: postgresql://thiendo:thiendo_ci_only@127.0.0.1:5432/thiendo_test
+      WEB_ORIGIN: http://127.0.0.1:3000
+      NEXT_BASE_URL: http://127.0.0.1:3000
+      API_BASE_URL: http://127.0.0.1:8080
+      API_INTERNAL_URL: http://127.0.0.1:8080
+      API_HOST: 127.0.0.1
+      API_PORT: '8080'
+      COOKIE_SECURE: 'false'
+      BOOK_PRIVATE_STORAGE_DIR: /tmp/thiendo-ci-private-books-v11164
+      THIENDO_BROWSER_ACCEPTANCE: '1'
+      THIENDO_BROWSER_REPORT_DIR: browser-evidence
+      THIENDO_QIMEN_BROWSER: '1'
+      THIENDO_V11164_RELEASE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Source and immutable migration gates
+        run: |
+          node infrastructure/scripts/v11164-acceptance.mjs run source -- bash -euo pipefail -c '
+            npm run check:lockfile
+            npm run check:source
+            npm run audit:architecture
+            npm run audit:migration-chain
+            npm run audit:release-metadata
+            npm run audit:css-baseline
+            node --test tests/v11164-release-acceptance.test.cjs'
+      - name: Locked dependency install
+        run: node infrastructure/scripts/v11164-acceptance.mjs run install -- npm ci --no-audit --no-fund
+      - name: Typecheck and clean build
+        run: |
+          node infrastructure/scripts/v11164-acceptance.mjs run build -- bash -euo pipefail -c '
+            npm run typecheck
+            npm run build'
+      - name: Complete legacy and current regression suite
+        run: node infrastructure/scripts/v11164-acceptance.mjs run regression -- npm test
+      - name: Security audit and threat regression
+        run: |
+          node infrastructure/scripts/v11164-acceptance.mjs run security -- bash -euo pipefail -c '
+            npm audit --omit=dev --audit-level=high
+            node infrastructure/scripts/v11164-secret-scan.mjs
+            node --test tests/v83-security.test.cjs tests/v11115-account-security.test.cjs tests/v11151-totp-security.test.cjs tests/v111545-huyen-giai.test.cjs tests/v11157-v11158-forum-security.test.cjs tests/v11161-finance-policy.test.cjs tests/v11163-guides-policy-security.test.cjs'
+      - name: Install PostgreSQL client for disposable recovery proof
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-client
+      - name: Migrate twice and run DB authorization/payment integration contracts
+        run: |
+          node infrastructure/scripts/v11164-acceptance.mjs run database -- bash -euo pipefail -c '
+            npm run check:e2e-pre-migrate
+            npm run db:migrate
+            npm run db:migrate
+            npm run check:e2e-db
+            node tests/v11161-finance-postgres.test.mjs
+            node tests/v11163-portal-postgres.test.mjs'
+      - name: Proof of backup, isolated recovery and volatile credential purge
+        run: node infrastructure/scripts/v11164-acceptance.mjs run restore -- node infrastructure/scripts/v11164-restore-ci.mjs
+      - name: Install Chromium into isolated temporary directory
+        run: |
+          npm install --prefix "$RUNNER_TEMP/thiendo-ci-browser" --no-save --no-package-lock --ignore-scripts playwright@1.56.1
+          node "$RUNNER_TEMP/thiendo-ci-browser/node_modules/playwright/cli.js" install --with-deps chromium
+          echo "THIENDO_PLAYWRIGHT_MODULE=$RUNNER_TEMP/thiendo-ci-browser/node_modules/playwright/index.mjs" >> "$GITHUB_ENV"
+      - name: Built Next/Nest HTTP E2E, auth boundaries, responsive, load smoke
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('infrastructure/scripts/run-ci-http.sh')
+          source=p.read_text()
+          needle="printf 'PASS: live Next -> Nest -> dedicated PostgreSQL HTTP E2E.\\n'"
+          assert source.count(needle)==1,'STOP: original harness changed, manual review required'
+          extra='node --test tests/v11163-portal-http.mjs\nnode tests/v11162-responsive-browser.mjs\nnode tests/v11163-guides-browser.mjs\nnode infrastructure/scripts/v11164-live-smoke.mjs\n'
+          p.write_text(source.replace(needle,extra+needle))
+          PY
+          node infrastructure/scripts/v11164-acceptance.mjs run live -- bash infrastructure/scripts/run-ci-http.sh
+      - name: Only full eight-gate evidence produces a technical RC record
+        run: node infrastructure/scripts/v11164-acceptance.mjs finalize
+      - name: Preserve evidence even if acceptance is blocked
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v11164-technical-release-evidence
+          path: |
+            verification/v11164/evidence/*.json
+            browser-evidence/**/*
+            ${{ runner.temp }}/thiendo-ci-logs.*/*.log
+            docs/reports/**/*
+          if-no-files-found: ignore
+          retention-days: 14

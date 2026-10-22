@@ -1,0 +1,77 @@
+{
+  "project": "thien-do",
+  "node": "v22.16.0",
+  "lockfileVersion": 3,
+  "groups": [
+    {
+      "name": "astrology-engine",
+      "entries": [
+        {
+          "module": "astronomy-engine",
+          "declared": true,
+          "lockEntry": true,
+          "resolved": false
+        },
+        {
+          "module": "moment-timezone",
+          "declared": true,
+          "lockEntry": true,
+          "resolved": false
+        }
+      ]
+    },
+    {
+      "name": "api",
+      "entries": [
+        {
+          "module": "@nestjs/common",
+          "declared": true,
+          "lockEntry": true,
+          "resolved": false
+        },
+        {
+          "module": "@nestjs/core",
+          "declared": true,
+          "lockEntry": true,
+          "resolved": false
+        },
+        {
+          "module": "pg",
+          "declared": true,
+          "lockEntry": true,
+          "resolved": false
+        },
+        {
+          "module": "typescript",
+          "declared": true,
+          "lockEntry": true,
+          "resolved": true
+        }
+      ]
+    },
+    {
+      "name": "web",
+      "entries": [
+        {
+          "module": "next",
+          "declared": true,
+          "lockEntry": true,
+          "resolved": false
+        },
+        {
+          "module": "react",
+          "declared": true,
+          "lockEntry": true,
+          "resolved": false
+        },
+        {
+          "module": "typescript",
+          "declared": true,
+          "lockEntry": true,
+          "resolved": true
+        }
+      ]
+    }
+  ],
+  "missing": 7
+}

@@ -1,0 +1,7 @@
+{
+  "name": "@thiendo/knowledge",
+  "version": "11.40.0",
+  "private": true,
+  "main": "src/index.cjs",
+  "types": "src/index.d.ts"
+}

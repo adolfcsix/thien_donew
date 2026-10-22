@@ -1,0 +1,155 @@
+name: Production acceptance
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  workflow_call:
+permissions: {contents: read}
+concurrency:
+  group: production-acceptance-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  artifact-and-operations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: npm}
+      - run: npm ci --no-audit --no-fund
+      - run: npm run audit:stability:150 && node --test tests/v11150-stability.test.cjs
+      - run: npm run check:lockfile && npm run check:source && npm run typecheck
+      - run: npm run build
+      - run: npm run check:production:smoke
+      - run: npm run check:system:routes
+      - run: npm run audit:release-metadata && npm run audit:architecture && npm run audit:css-dedupe
+      - run: node --test tests/production/*.test.cjs tests/v111645-private-file-writes.test.cjs tests/v111645-readiness-chain.test.cjs
+      - name: SQL integration in isolated PGlite runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/thiendo-sql" --no-save --ignore-scripts --no-audit --no-fund @electric-sql/pglite@0.5.10
+          THIENDO_SQL_TEST_MODULE="$RUNNER_TEMP/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js" npm run test:account:sql
+      - name: React login and tool-access lifecycle (DOM harness)
+        run: |
+          npm install --prefix "$RUNNER_TEMP/thiendo-dom" --no-save --ignore-scripts --no-audit --no-fund jsdom@30.1.2
+          THIENDO_DOM_TEST_MODULE="$RUNNER_TEMP/thiendo-dom/node_modules/jsdom/lib/api.js" npm run test:access:dom
+      - name: Admin, private files and eighteen ranks in a real browser (PGlite)
+        run: |
+          npm install --prefix "$RUNNER_TEMP/thiendo-browser" --no-audit --no-fund --save-exact playwright@1.62.1
+          node "$RUNNER_TEMP/thiendo-browser/node_modules/playwright/cli.js" install --with-deps chromium
+          THIENDO_PLAYWRIGHT_MODULE="$RUNNER_TEMP/thiendo-browser/node_modules/playwright" THIENDO_SQL_TEST_MODULE="$RUNNER_TEMP/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js" THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-v111645-browser" node tests/v111645-admin-storage-ranks.browser.cjs 2>&1 | tee "$RUNNER_TEMP/thiendo-v111645-browser.log"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: admin-files-ranks-browser-evidence
+          path: |
+            ${{ runner.temp }}/thiendo-v111645-browser
+            ${{ runner.temp }}/thiendo-v111645-browser.log
+          retention-days: 14
+      - name: Reject insecure production operation scripts
+        run: for script in infrastructure/production/*.sh; do bash -n "$script" || exit; done
+  immutable-web-image-layout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build actual production web image
+        run: docker build --target web -t thiendo-web-layout-test -f infrastructure/production/Dockerfile .
+      - name: Verify standalone server and packed browser bundles
+        run: |
+          docker run --rm --entrypoint /bin/sh thiendo-web-layout-test -ec '
+            test -s /app/apps/web/server.js
+            test -d /app/apps/web/.next/static
+            test -n "$(find /app/apps/web/.next/static -type f -name "*.js" -print -quit)"
+            test -n "$(find /app/apps/web/.next/static -type f -name "*.css" -print -quit)"
+          '
+  ingress-configuration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Nginx syntax in the reference image
+        run: >-
+          docker run --rm
+          -v "$PWD/infrastructure/production/nginx.conf:/etc/nginx/nginx.conf:ro"
+          -v "$PWD/infrastructure/production/proxy-api.conf:/etc/nginx/proxy-api.conf:ro"
+          nginx:stable-alpine nginx -t
+      - name: Validate Caddy configuration without requesting a certificate
+        run: >-
+          docker run --rm -e THIEN_DO_DOMAIN=ci.example.invalid -e ACME_EMAIL=ci@example.invalid
+          -v "$PWD/infrastructure/production/Caddyfile:/etc/caddy/Caddyfile:ro"
+          caddy:2-alpine caddy validate --config /etc/caddy/Caddyfile
+  complete-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: npm}
+      - run: npm ci --no-audit --no-fund
+      - run: npm run test:sharded
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: complete-regression-evidence
+          path: docs/reports/test-files-*/
+          retention-days: 7
+  database-http:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env: {POSTGRES_USER: thiendo, POSTGRES_PASSWORD: ci_disposable_password, POSTGRES_DB: thiendo_test}
+        ports: ['5432:5432']
+        options: --health-cmd "pg_isready -U thiendo -d thiendo_test" --health-interval 5s --health-timeout 5s --health-retries 15
+    env:
+      DATABASE_URL: postgresql://thiendo:ci_disposable_password@127.0.0.1:5432/thiendo_test
+      E2E_LOCAL_DB_CONFIRM: 'YES'
+      WEB_ORIGIN: http://127.0.0.1:3000
+      API_HOST: 127.0.0.1
+      API_PORT: '8080'
+      COOKIE_SECURE: 'false'
+      NEXT_BASE_URL: http://127.0.0.1:3000
+      API_BASE_URL: http://127.0.0.1:3000
+      API_INTERNAL_URL: http://127.0.0.1:8080
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: npm}
+      - run: npm ci --no-audit --no-fund
+      - run: npm run typecheck && npm run build
+      - run: npm run check:e2e-pre-migrate
+      - run: npm run db:migrate && npm run db:migrate
+      - name: Install isolated Chromium browser test tools
+        run: |
+          npm install --prefix "$RUNNER_TEMP/thiendo-browser-tools" --no-audit --no-fund --save-exact playwright@1.62.1
+          node "$RUNNER_TEMP/thiendo-browser-tools/node_modules/playwright/cli.js" install --with-deps chromium
+          echo "THIENDO_PLAYWRIGHT_MODULE=$RUNNER_TEMP/thiendo-browser-tools/node_modules/playwright/index.mjs" >> "$GITHUB_ENV"
+      - name: First-party HTTP E2E plus responsive browser acceptance
+        env:
+          THIENDO_BROWSER_ACCEPTANCE: '1'
+        run: bash infrastructure/scripts/run-ci-http.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-acceptance-evidence
+          path: docs/reports/browser-v*/
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Native PostgreSQL logical backup and isolated restore drill
+        env:
+          PG_CONTAINER: '${{ job.services.postgres.id }}'
+        run: |
+          docker exec "$PG_CONTAINER" psql -U thiendo -d thiendo_test -v ON_ERROR_STOP=1 -c "INSERT INTO users(id,email,password_hash,salt) VALUES('00000000-0000-4000-8000-000000000140','restore-fixture@example.invalid','','')"
+          docker exec "$PG_CONTAINER" pg_dump -U thiendo -d thiendo_test -Fc --no-owner --no-acl > "$RUNNER_TEMP/thiendo-ci.dump"
+          docker exec "$PG_CONTAINER" createdb -U thiendo thiendo_restore_ci
+          docker exec -i "$PG_CONTAINER" pg_restore -U thiendo -d thiendo_restore_ci --no-owner --no-acl --exit-on-error --single-transaction < "$RUNNER_TEMP/thiendo-ci.dump"
+          restored=$(docker exec "$PG_CONTAINER" psql -U thiendo -d thiendo_restore_ci -tAc "SELECT count(*) FROM users WHERE id='00000000-0000-4000-8000-000000000140'")
+          test "$restored" = 1
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: production-http-failure-logs
+          path: |
+            ${{ runner.temp }}/thiendo-ci-logs.*/*.log
+          retention-days: 7

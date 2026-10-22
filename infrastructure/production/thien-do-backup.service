@@ -1,0 +1,13 @@
+[Unit]
+Description=Thien Do encrypted offsite database and private-file backup
+OnFailure=thien-do-alert@%n.service
+After=docker.service network-online.target
+Requires=docker.service
+[Service]
+Type=oneshot
+User=root
+UMask=0077
+Environment=THIENDO_CONFIG_DIR=/opt/thien-do/production
+EnvironmentFile=/opt/thien-do/private/backup.env
+ExecStart=/opt/thien-do/production/backup.sh --quiesce
+TimeoutStartSec=1800

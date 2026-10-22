@@ -1,0 +1,43 @@
+node_modules/
+.next/
+dist/
+*.tsbuildinfo
+.env
+.env.local
+.env.e2e
+.env.production
+*.sqlite*
+*.db
+*.log
+*.zip
+.DS_Store
+
+# Local diagnostic reports; do not commit potentially sensitive logs
+docs/reports/build-diagnostics-*
+
+# Private configuration and common credential files (GitHub build bootstrap)
+.env.*
+!.env.example
+!.env.e2e.example
+.npmrc
+*.pem
+*.p12
+*.pfx
+*.key
+id_rsa*
+id_ed25519*
+docs/reports/
+
+# Auto-generated visual smoke-test artifacts are packaged separately.
+/previews/*.png
+/previews/*.jpg
+/previews/*.webp
+/v91-desktop.png
+/v91-mobile.png
+
+# Current QA output, not source versions
+/reports/
+/.qa-web-*/
+
+# Local isolated build location (contains no source deliverable)
+/.build-isolated.json

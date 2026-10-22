@@ -1,0 +1,8 @@
+/* Birth-input safety: compact verification before committing to a calculated chart. */
+.chart-birth-input-hint {grid-column:1/-1;margin:0;color:var(--muted);font-size:12px;line-height:1.65}
+.chart-birth-error {color:#e1a493;font-size:12px;line-height:1.6;margin:5px 0}
+.chart-birth-preview {grid-column:1/-1;min-width:0;padding:13px 15px;background:var(--panel-alt);border:1px solid var(--line-strong);border-left:3px solid var(--gold);border-radius:6px}
+.chart-birth-preview>strong {display:block;font-size:13px;color:var(--gold);margin-bottom:6px}
+.chart-birth-preview p {font-size:13px;line-height:1.8;color:var(--text);margin:0 0 4px;overflow-wrap:anywhere}
+.chart-birth-preview b {color:var(--gold);font-weight:650}
+.chart-birth-preview small {color:var(--muted);line-height:1.65;display:block;font-size:11px}

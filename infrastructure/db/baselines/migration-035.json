@@ -1,0 +1,5 @@
+{
+  "migrations": {
+    "035_admin_trusted_devices.sql": "cb26bc571d925d19b520f2fd1fe3fec609d97f63413c4ced726e9d1d76fcad59"
+  }
+}

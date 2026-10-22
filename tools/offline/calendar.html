@@ -1,0 +1,359 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>THIÊN ĐỒ V9.1 • Lịch Vạn Niên</title><style>
+:root{--ink:#111916;--jade:#173f36;--jade2:#214e43;--gold:#c5a16a;--paper:#f4ede0;--body:#111c19;--panel:#16231e;--panel-alt:#1b2b25;--line:rgba(206,187,145,.16);--line-strong:rgba(206,187,145,.35);--text:#f3ebdb;--muted:#aebbb2;--faint:#809188;--glow:rgba(197,161,106,.14);--shadow:0 20px 70px rgba(0,0,0,.23);color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;font:14px system-ui,sans-serif;color:var(--text);background:radial-gradient(circle at 80% 0%,#1b4b3b 0%,var(--body) 50%);min-height:100vh}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:3px}button:disabled{opacity:.5;cursor:not-allowed}.serif{font-family:Georgia,'Times New Roman',serif;font-weight:normal}.eyebrow{color:var(--gold);letter-spacing:.19em;font-size:10px;font-weight:700}.frame{min-height:100vh;display:grid;grid-template-columns:232px minmax(0,1fr)}.sidebar{padding:34px 20px;background:linear-gradient(#142f25,#13211b);border-right:1px solid var(--line-strong)}.brand{display:flex;align-items:center;gap:13px;color:var(--text)}.seal{width:42px;height:46px;display:grid;place-items:center;border:1px solid var(--gold);color:var(--gold);font:27px Georgia}.brand b{letter-spacing:.24em}.brand small{display:block;margin-top:8px;font-size:8px;letter-spacing:.1em;color:var(--muted)}.sidebar-desc{margin-top:55px;color:var(--muted);font-size:12px;line-height:2}.sidebar-links{margin-top:30px;border-top:1px solid var(--line);padding-top:15px}.sidebar-links a{display:block;padding:16px 10px;color:var(--text);text-decoration:none;border-radius:9px}.sidebar-links a.active{color:var(--gold);background:var(--glow)}.app main{padding:45px clamp(15px,3.3vw,54px)}.topbar{height:72px;display:flex;justify-content:space-between;align-items:center;padding:0 30px;border-bottom:1px solid var(--line);background:rgba(17,28,25,.88);backdrop-filter:blur(10px)}.topbar span{color:var(--muted);font-size:11px;letter-spacing:.15em}.topbar strong{color:var(--gold)}.page-heading{max-width:730px;margin-bottom:27px}.page-heading h1{font:normal clamp(35px,4.5vw,54px) Georgia;margin:12px 0}.page-heading p{color:var(--muted);line-height:1.8}.btn{border-radius:8px;padding:12px 17px}.btn.gold{background:var(--gold);color:#10211a;border:0;font-weight:600}.notice{max-width:1000px;color:var(--muted);font-size:12px;line-height:1.9;margin-top:22px}
+.calendar-page{max-width:1450px;margin:0 auto}
+.calendar-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(288px,.92fr);gap:20px;align-items:start}
+.calendar-pane,.calendar-detail,.calendar-converter{border:1px solid var(--line-strong);background:linear-gradient(135deg,var(--panel),var(--panel-alt));border-radius:17px;box-shadow:var(--shadow);overflow:hidden}
+.calendar-pane{padding:24px}.calendar-bar{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:1px 3px 22px}.calendar-bar h2{font-size:29px;margin:10px 0 0;color:var(--text)}.calendar-bar h2 span{color:var(--gold)}
+.calendar-controls{display:flex;gap:6px;align-items:center}.calendar-controls button{border:1px solid var(--line-strong);color:var(--text);background:var(--panel-alt);border-radius:8px;min-width:35px;min-height:35px;padding:7px 12px}.calendar-controls button:hover:not(:disabled){border-color:var(--gold)}
+.calendar-weekdays,.calendar-matrix{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.calendar-weekdays{margin-bottom:6px}.calendar-weekdays span{text-align:center;padding:8px 0;color:var(--muted);font-size:11px}.calendar-weekdays span:last-child{color:var(--gold)}
+.calendar-date,.calendar-blank{position:relative;min-height:89px;border-radius:8px}.calendar-date{background:var(--body);border:1px solid var(--line);color:var(--text);text-align:left;padding:10px;display:flex;flex-direction:column;justify-content:space-between;gap:4px;transition:background .18s,border-color .18s}
+.calendar-date:hover{border-color:var(--gold);background:var(--panel-alt)}.calendar-date strong{font-size:17px;font-weight:520}.calendar-date span{color:var(--muted);font-size:11px}.calendar-date i{position:absolute;right:9px;top:8px;color:var(--gold);font-style:normal;font-size:10px}.calendar-date.today strong{color:var(--gold)}.calendar-date.chosen{border-color:var(--gold);background:linear-gradient(135deg,rgba(197,161,106,.20),rgba(23,63,54,.28));box-shadow:inset 0 0 0 1px rgba(197,161,106,.25)}
+.calendar-blank{background:var(--panel)}.calendar-key{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;color:var(--muted);font-size:11px}.calendar-key span{display:inline-flex;align-items:center;gap:7px}.key-ring,.key-gold{display:inline-block;width:11px;height:11px;border:1px solid var(--gold);border-radius:3px}.key-gold{background:var(--gold)}
+.calendar-side{display:grid;gap:18px}.calendar-detail,.calendar-converter{padding:24px}.calendar-daynum{font:normal 73px Georgia,serif;line-height:1;margin:20px 0 10px;color:var(--gold)}.calendar-daynum small{font:normal 18px system-ui,sans-serif;color:var(--muted)}.calendar-primary-lunar{font:normal 22px Georgia,serif;border-bottom:1px solid var(--line-strong);padding-bottom:20px}.calendar-facts{margin:16px 0 0}.calendar-facts>div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.calendar-facts dt{color:var(--muted);font-size:12px}.calendar-facts dd{color:var(--text);margin:0;font-weight:550}.calendar-festival{margin-top:18px;border:1px solid var(--line-strong);border-radius:8px;color:var(--gold);padding:11px;background:var(--glow)}
+.calendar-converter h3{font-size:23px;margin:8px 0 19px}.calendar-converter label{display:block;color:var(--muted);font-size:12px}.calendar-converter input:not([type=checkbox]),.calendar-converter select{display:block;width:100%;min-width:0;margin-top:7px;padding:10px 9px;color:var(--text);background:var(--body);border:1px solid var(--line-strong);border-radius:8px;color-scheme:inherit}.calendar-subheading{font-size:12px;color:var(--muted);margin:18px 0 12px}.calendar-inputs{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px}.calendar-checkbox{display:flex!important;align-items:center;gap:7px;margin:18px 0!important}.calendar-convert{width:100%;text-align:center}.calendar-success,.calendar-error{font-size:12px;padding:10px;border-radius:7px;margin-top:12px;line-height:1.7}.calendar-success{background:rgba(73,154,108,.15);color:var(--text)}.calendar-error{background:rgba(201,77,77,.15);color:#ffb6a5}
+.calendar-disclaimer{font-size:12px;line-height:1.75;color:var(--muted);max-width:1000px;margin:24px 0}
+@media(max-width:1170px){.calendar-layout{grid-template-columns:1fr}.calendar-side{grid-template-columns:1fr 1fr}.calendar-date{min-height:77px}}
+@media(max-width:700px){.calendar-side{grid-template-columns:1fr}.calendar-pane{padding:10px}.calendar-bar{padding:14px 6px 20px;flex-wrap:wrap}.calendar-bar h2{font-size:23px}.calendar-date,.calendar-blank{min-height:65px}.calendar-date{padding:7px 6px}.calendar-date strong{font-size:15px}.calendar-date span{font-size:9px}.calendar-date i{font-size:8px;right:4px;top:4px}.calendar-weekdays span{font-size:9px}.calendar-weekdays,.calendar-matrix{gap:3px}.calendar-key{padding:5px 6px 13px}.calendar-detail,.calendar-converter{padding:18px}.calendar-daynum{font-size:55px}}
+@media(max-width:370px){.calendar-date,.calendar-blank{min-height:56px}.calendar-date{padding:6px 4px}.calendar-date strong{font-size:13px}}
+
+/* V9.1 — Hour windows and solar-term boundary notices */
+.calendar-boundary-note{border-left:3px solid var(--gold);background:var(--glow);padding:10px 12px;color:var(--muted);font-size:12px;line-height:1.65}
+.calendar-hours{padding-top:18px}.calendar-hour-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
+.calendar-hour{display:flex;align-items:center;justify-content:space-between;gap:6px;border:1px solid var(--line);border-radius:8px;padding:11px 10px;background:var(--body)}
+.calendar-hour strong{color:var(--gold);font-size:14px}.calendar-hour span{font-size:11px;color:var(--muted);text-align:right}
+.calendar-hours>p{font-size:11px;color:var(--muted);line-height:1.6;margin-top:12px}
+@media(max-width:370px){.calendar-hour-grid{grid-template-columns:1fr}}
+
+.calendar-term-list{border-top:1px solid var(--line);margin-top:20px;padding:15px 3px 2px}
+.calendar-term-list>div{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.calendar-term-list>div>span{padding:8px 11px;border:1px solid var(--line-strong);border-radius:99px;color:var(--text);font-size:12px;background:var(--glow)}
+
+@media(max-width:1100px){.frame{grid-template-columns:1fr}.sidebar{display:none}.app main{padding:25px 18px}.topbar{height:62px}}
+@media(max-width:470px){.topbar{padding:0 16px}.topbar span{font-size:9px}}
+.calendar-rule-note{font-size:11px;line-height:1.7;color:var(--muted);padding:10px 12px;border:1px solid var(--line);border-radius:8px;margin:14px 0}.calendar-status-good{color:#98d6b3;font-weight:700}.calendar-status-bad{color:#e8a39f;font-weight:700}
+</style></head><body>
+<div class="frame"><aside class="sidebar"><div class="brand"><span class="seal">天</span><span><b>THIÊN ĐỒ</b><small>ĐÔNG PHƯƠNG HUYỀN HỌC</small></span></div><p class="sidebar-desc">Minh triết xưa, công nghệ mới.<br>Truy cứu lịch pháp như một hành trình học hỏi.</p><nav class="sidebar-links"><a class="active" href="#calendar">◷ &nbsp; Lịch vạn niên</a><a href="#day-detail">◈ &nbsp; Thẻ ngày</a><a href="#converter">☯ &nbsp; Đổi âm – dương</a></nav></aside><div class="app"><header class="topbar"><span>THƯ PHÒNG / <strong>LỊCH VẠN NIÊN</strong></span><span>V9.2 · NGỌC BÍCH</span></header><main><div class="calendar-page" id="calendar"><div class="page-heading"><div class="eyebrow">LỊCH VẠN NIÊN · MÚI GIỜ VIỆT NAM</div><h1 class="serif">Dòng chảy âm dương</h1><p>Tra âm–dương, tiết khí, Thập Nhị Trực, Hoàng/Hắc đạo và Nhị Thập Bát Tú (chu kỳ 28 ngày). Giao diện chạy trực tiếp không cần máy chủ.</p></div><div class="calendar-layout"><section class="calendar-pane"><header class="calendar-bar"><div><div class="eyebrow">THÁNG DƯƠNG LỊCH</div><h2 class="serif" id="month-title"></h2></div><div class="calendar-controls"><button id="prev" aria-label="Tháng trước">←</button><button id="today">Hôm nay</button><button id="next" aria-label="Tháng sau">→</button></div></header><div class="calendar-weekdays"><span>Thứ 2</span><span>Thứ 3</span><span>Thứ 4</span><span>Thứ 5</span><span>Thứ 6</span><span>Thứ 7</span><span>CN</span></div><div id="dates" class="calendar-matrix" role="grid" aria-label="Lịch tháng"></div><div class="calendar-term-list"><span class="eyebrow">TIẾT KHÍ TRONG THÁNG</span><div id="terms"></div></div><div class="calendar-key"><span><i class="key-ring"></i>Ngày được chọn</span><span><i class="key-gold"></i>Ngày lễ truyền thống</span><span>Ngày lớn: dương lịch • Ngày nhỏ: âm lịch</span></div></section><aside class="calendar-side"><section class="calendar-detail" id="day-detail"><div class="eyebrow">THẺ NGÀY · CHI TIẾT</div><div id="detail"></div></section><section class="calendar-converter" id="converter"><div class="eyebrow">CÔNG CỤ CHUYỂN ĐỔI</div><h3 class="serif">Âm lịch ↔ Dương lịch</h3><label>Ngày dương đang chọn<input id="solar-date" type="date" min="1900-01-01" max="2100-12-31"></label><p class="calendar-subheading">Tìm ngày dương từ ngày âm</p><div class="calendar-inputs"><label>Ngày<input id="ld" type="number" min="1" max="30" value="1"></label><label>Tháng<select id="lm"></select></label><label>Năm<input id="ly" type="number" min="1900" max="2100" value="2026"></label></div><label class="calendar-checkbox"><input id="ll" type="checkbox"> Tháng nhuận</label><button id="convert" class="btn gold calendar-convert">Chuyển sang dương lịch ↗</button><p id="result" aria-live="polite"></p></section></aside></div><p class="notice">Dùng thuật toán âm dương theo UTC+7, giới hạn 1900–2100. Tiết khí là kết quả ước tính vào 12h trưa tại Việt Nam, không phải thời điểm chuyển tiết chính xác. Giờ hoàng đạo theo quy tắc dân gian. Bộ quy tắc Thập Nhị Trực, Hoàng/Hắc đạo và 28 Tú chỉ để tham khảo; các nguồn có thể khác nhau, chưa tính đánh giá tốt/xấu theo mục đích và không luận đoán vận mệnh. Chỉ dùng để tra cứu, đối chiếu nguồn chính thức khi cần độ chính xác chuyên môn.</p></div></main></div></div>
+<script>
+/*
+ * THIÊN ĐỒ — Vietnamese astronomical lunisolar arithmetic (1900–2100, UTC+7).
+ * Independently written implementation of published new-moon, solar-longitude,
+ * and Julian-day formulae associated with the Hồ Ngọc Đức approach.
+ * Interpret results as a calendrical implementation requiring further external
+ * ephemeris comparison before use in critical applications.
+ * No dependencies; supports browser + Node CommonJS.
+ */
+(function (root) {
+    'use strict';
+    const PI = Math.PI, FLOOR = Math.floor, TZ = 7;
+    function validSolar(y, m, d) { return Number.isInteger(y) && y >= 1900 && y <= 2100 && Number.isInteger(m) && m >= 1 && m <= 12 && Number.isInteger(d) && d >= 1 && d <= 31 && new Date(Date.UTC(y, m - 1, d)).toISOString().slice(0, 10) === `${y.toString().padStart(4, '0')}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`; }
+    function jd(d, m, y) {
+        let a = FLOOR((14 - m) / 12), yy = y + 4800 - a, mm = m + 12 * a - 3;
+        let j = d + FLOOR((153 * mm + 2) / 5) + 365 * yy + FLOOR(yy / 4) - FLOOR(yy / 100) + FLOOR(yy / 400) - 32045;
+        if (j < 2299161)
+            j = d + FLOOR((153 * mm + 2) / 5) + 365 * yy + FLOOR(yy / 4) - 32083;
+        return j;
+    }
+    function jdToDate(j) {
+        let a, b, c;
+        if (j > 2299160) {
+            a = j + 32044;
+            b = FLOOR((4 * a + 3) / 146097);
+            c = a - FLOOR(b * 146097 / 4);
+        }
+        else {
+            b = 0;
+            c = j + 32082;
+        }
+        const d = FLOOR((4 * c + 3) / 1461), e = c - FLOOR(1461 * d / 4), m = FLOOR((5 * e + 2) / 153);
+        const day = e - FLOOR((153 * m + 2) / 5) + 1, month = m + 3 - 12 * FLOOR(m / 10), year = b * 100 + d - 4800 + FLOOR(m / 10);
+        return { year, month, day };
+    }
+    function newMoonDay(k, tz = TZ) {
+        const T = k / 1236.85, T2 = T * T, T3 = T2 * T, dr = PI / 180;
+        const j1 = 2415020.75933 + 29.53058868 * k + 0.0001178 * T2 - 0.000000155 * T3;
+        const j2 = j1 + 0.00033 * Math.sin((166.56 + 132.87 * T - 0.009173 * T2) * dr);
+        const M = 359.2242 + 29.10535608 * k - 0.0000333 * T2 - 0.00000347 * T3;
+        const Mp = 306.0253 + 385.81691806 * k + 0.0107306 * T2 + 0.00001236 * T3;
+        const F = 21.2964 + 390.67050646 * k - 0.0016528 * T2 - 0.00000239 * T3;
+        let corr = (0.1734 - 0.000393 * T) * Math.sin(M * dr) + 0.0021 * Math.sin(2 * M * dr) - 0.4068 * Math.sin(Mp * dr) + 0.0161 * Math.sin(2 * Mp * dr) - 0.0004 * Math.sin(3 * Mp * dr)
+            + 0.0104 * Math.sin(2 * F * dr) - 0.0051 * Math.sin((M + Mp) * dr) - 0.0074 * Math.sin((M - Mp) * dr) + 0.0004 * Math.sin((2 * F + M) * dr)
+            - 0.0004 * Math.sin((2 * F - M) * dr) - 0.0006 * Math.sin((2 * F + Mp) * dr) + 0.0010 * Math.sin((2 * F - Mp) * dr) + 0.0005 * Math.sin((2 * Mp + M) * dr);
+        const delta = T < -11 ? 0.001 + 0.000839 * T + 0.0002261 * T2 - 0.00000845 * T3 - 0.000000081 * T * T3 : -0.000278 + 0.000265 * T + 0.000262 * T2;
+        return FLOOR(j2 + corr - delta + 0.5 + tz / 24);
+    }
+    function solarSector(j, tz = TZ) {
+        const t = (j - 2451545.5 - tz / 24) / 36525, t2 = t * t, dr = PI / 180;
+        const M = 357.52910 + 35999.05030 * t - 0.0001559 * t2 - 0.00000048 * t * t2;
+        const L0 = 280.46645 + 36000.76983 * t + 0.0003032 * t2;
+        const dl = (1.914600 - 0.004817 * t - 0.000014 * t2) * Math.sin(dr * M) + (0.019993 - 0.000101 * t) * Math.sin(dr * 2 * M) + 0.000290 * Math.sin(dr * 3 * M);
+        const L = ((L0 + dl) % 360 + 360) % 360;
+        return FLOOR(L / 30);
+    }
+    function month11(y, tz = TZ) { const k = FLOOR((jd(31, 12, y) - 2415021) / 29.530588853); let nm = newMoonDay(k, tz); if (solarSector(nm, tz) >= 9)
+        nm = newMoonDay(k - 1, tz); return nm; }
+    function leapOffset(a11, tz = TZ) {
+        const k = FLOOR(0.5 + (a11 - 2415021.076998695) / 29.530588853);
+        let old = -1, i = 1, sector = solarSector(newMoonDay(k + i, tz), tz);
+        do {
+            old = sector;
+            i++;
+            sector = solarSector(newMoonDay(k + i, tz), tz);
+        } while (sector !== old && i < 14);
+        return i - 1;
+    }
+    function solarToLunar(year, month, day) {
+        if (!validSolar(year, month, day))
+            throw new RangeError('Ngày dương không hợp lệ hoặc ngoài 1900–2100');
+        const dayNumber = jd(day, month, year), k = FLOOR((dayNumber - 2415021.076998695) / 29.530588853);
+        let cursor = k + 1, start = newMoonDay(cursor);
+        // Astronomical approximations may put the initial lunation index one off.
+        for (let n = 0; start > dayNumber && n < 3; n++) {
+            cursor--;
+            start = newMoonDay(cursor);
+        }
+        for (let n = 0; newMoonDay(cursor + 1) <= dayNumber && n < 3; n++) {
+            cursor++;
+            start = newMoonDay(cursor);
+        }
+        let a11 = month11(year), b11 = a11, lunarYear;
+        if (a11 >= start) {
+            lunarYear = year;
+            a11 = month11(year - 1);
+        }
+        else {
+            lunarYear = year + 1;
+            b11 = month11(year + 1);
+        }
+        const lunarDay = dayNumber - start + 1, diff = FLOOR((start - a11) / 29);
+        let lunarMonth = diff + 11, leap = false;
+        if (b11 - a11 > 365) {
+            const p = leapOffset(a11);
+            if (diff >= p) {
+                lunarMonth = diff + 10;
+                if (diff === p)
+                    leap = true;
+            }
+        }
+        if (lunarMonth > 12)
+            lunarMonth -= 12;
+        if (lunarMonth >= 11 && diff < 4)
+            lunarYear--;
+        return { year: lunarYear, month: lunarMonth, day: lunarDay, leap };
+    }
+    function lunarToSolar(year, month, day, leap = false) {
+        if (!Number.isInteger(year) || year < 1899 || year > 2101 || !Number.isInteger(month) || month < 1 || month > 12 || !Number.isInteger(day) || day < 1 || day > 30)
+            throw new RangeError('Ngày âm không hợp lệ hoặc ngoài 1900–2100');
+        let a11, b11;
+        if (month < 11) {
+            a11 = month11(year - 1);
+            b11 = month11(year);
+        }
+        else {
+            a11 = month11(year);
+            b11 = month11(year + 1);
+        }
+        let off = month - 11;
+        if (off < 0)
+            off += 12;
+        if (b11 - a11 > 365) {
+            const p = leapOffset(a11), leapMonth = (p + 10) % 12 || 12;
+            if (leap && month !== leapMonth)
+                throw new RangeError('Tháng nhuận không tồn tại trong năm được chọn');
+            if (leap || off >= p)
+                off++;
+        }
+        else if (leap) {
+            throw new RangeError('Năm âm này không có tháng nhuận');
+        }
+        const k = FLOOR(0.5 + (a11 - 2415021.076998695) / 29.530588853), start = newMoonDay(k + off), out = jdToDate(start + day - 1);
+        if (!validSolar(out.year, out.month, out.day))
+            throw new RangeError('Kết quả ngoài giới hạn hỗ trợ');
+        const round = solarToLunar(out.year, out.month, out.day);
+        if (round.year !== year || round.month !== month || round.day !== day || round.leap !== Boolean(leap))
+            throw new RangeError('Ngày âm vượt số ngày trong tháng hoặc tháng nhuận không hợp lệ');
+        return out;
+    }
+    const api = Object.freeze({ solarToLunar, lunarToSolar, jd, validSolar });
+    if (typeof module !== 'undefined' && module.exports)
+        module.exports = api;
+    root.ThienDoLunar = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+/* THIÊN ĐỒ V9.2 — Vietnamese calendar, solar-term approximation, and traditional auspicious hours.
+ * Pure deterministic calendar calculations; do not equate with auspicious-day predictions.
+ * Delegates astronomical conversion to the existing versioned lunar module.
+ */
+(function(root){
+'use strict';
+const Lunar = (typeof module !== 'undefined' && module.exports) ? require('./lunar.js') : root.ThienDoLunar;
+const STEMS = Object.freeze(['Giáp','Ất','Bính','Đinh','Mậu','Kỷ','Canh','Tân','Nhâm','Quý']);
+const BRANCHES = Object.freeze(['Tý','Sửu','Dần','Mão','Thìn','Tỵ','Ngọ','Mùi','Thân','Dậu','Tuất','Hợi']);
+const pad = n => String(n).padStart(2, '0');
+const mod = (n, m) => ((n % m) + m) % m;
+const RULESET = 'almanac-calendar-utc7-v9.2';
+const FIXED_EVENTS = Object.freeze({
+  '1-1': 'Tết Nguyên đán', '1-15': 'Rằm tháng Giêng',
+  '3-10': 'Giỗ Tổ Hùng Vương (âm lịch)', '5-5': 'Tết Đoan Ngọ',
+  '7-15': 'Lễ Vu Lan', '8-15': 'Tết Trung Thu',
+  '12-23': 'Ông Công Ông Táo'
+});
+
+// 24 solar terms in ascending ecliptic longitude, 0° = vernal equinox.
+// Daily lookup is at 12:00 Vietnam time (05:00 UTC), NOT an exact ingress time.
+const SOLAR_TERMS = Object.freeze([
+ 'Xuân Phân','Thanh Minh','Cốc Vũ','Lập Hạ','Tiểu Mãn','Mang Chủng',
+ 'Hạ Chí','Tiểu Thử','Đại Thử','Lập Thu','Xử Thử','Bạch Lộ',
+ 'Thu Phân','Hàn Lộ','Sương Giáng','Lập Đông','Tiểu Tuyết','Đại Tuyết',
+ 'Đông Chí','Tiểu Hàn','Đại Hàn','Lập Xuân','Vũ Thủy','Kinh Trập'
+]);
+// Six traditional auspicious-hour patterns for pairs of day branches (Tý/Ngọ, etc.).
+const AUSPICIOUS_HOURS = Object.freeze([
+ [0,1,3,6,8,9], [2,3,5,8,10,11], [0,1,4,5,7,10],
+ [0,2,3,6,7,9], [2,4,5,8,9,11], [1,4,6,7,10,11]
+]);
+function solarLongitudeAtNoon(year, month, day) {
+  if (!Lunar.validSolar(year,month,day)) throw new RangeError('Ngày không hợp lệ');
+  // Meeus low-precision solar apparent ecliptic longitude; ~day-level lookup only.
+  const jd = Date.UTC(year,month-1,day,5,0,0)/86400000 + 2440587.5;
+  const t = (jd-2451545.0)/36525, r=Math.PI/180;
+  const l0 = 280.46646 + 36000.76983*t + 0.0003032*t*t;
+  const m = 357.52911 + 35999.05029*t - 0.0001537*t*t;
+  const c = (1.914602 - 0.004817*t - 0.000014*t*t)*Math.sin(m*r)
+    + (0.019993 - 0.000101*t)*Math.sin(2*m*r) + 0.000289*Math.sin(3*m*r);
+  const omega = 125.04 - 1934.136*t;
+  return mod(l0+c-0.00569-0.00478*Math.sin(omega*r),360);
+}
+function solarTermInfo(year,month,day){
+  const longitude=solarLongitudeAtNoon(year,month,day);
+  const index=Math.floor(longitude/15)%24;
+  const offset=longitude%15;
+  return {name:SOLAR_TERMS[index], longitudeDeg:Number(longitude.toFixed(2)),
+    nearBoundary:offset<1.2 || offset>13.8,
+    method:'apparent-sun-longitude-at-12-vn-approx',
+    note:'Tên tiết khí ước tính vào 12:00 giờ Việt Nam; ngày chuyển tiết có thể khác trong cùng ngày.'};
+}
+// Tiết khởi tháng at 315° (Lập Xuân) plus 30° per subsequent month.
+// The Can Chi month applies to solar-term year, which differs from lunar year before/around Tet.
+function solarMonthCanChi(year,month,day){
+  const longitude=solarLongitudeAtNoon(year,month,day);
+  const monthIndex=Math.floor(mod(longitude-315,360)/30); // Dần=0, Mão=1, ... Sửu=11
+  const branchIndex=mod(monthIndex+2,12);
+  const solarYear=month===1 || (month===2 && longitude<315) ? year-1 : year;
+  const yearStem=mod(solarYear-4,10);
+  const stemIndex=mod((yearStem%5)*2+2+monthIndex,10);
+  const boundaryDistance=mod(longitude-315,30);
+  return {name:`${STEMS[stemIndex]} ${BRANCHES[branchIndex]}`, solarYear,
+    nearBoundary:boundaryDistance<1.2 || boundaryDistance>28.8,
+    method:'year-from-lap-xuan-month-from-solar-term-approx'};
+}
+function auspiciousHours(dayBranchIndex){
+  if(!Number.isInteger(dayBranchIndex)||dayBranchIndex<0||dayBranchIndex>11)
+    throw new RangeError('Chi ngày phải từ 0 đến 11');
+  const allowed=AUSPICIOUS_HOURS[dayBranchIndex%6];
+  return allowed.map(i=>({branch:BRANCHES[i],index:i,
+    time:i===0?'23:00–01:00 (qua ngày)':`${pad(2*i-1)}:00–${pad(2*i+1)}:00`}));
+}
+
+// V9.2: Historical calendar ALMANAC layers: different schools may shift conventions.
+// Thập Nhị Trực: month Branch uses the approximate solar-term month (Lập Xuân based).
+const TWELVE_TRUC = Object.freeze(['Kiến','Trừ','Mãn','Bình','Định','Chấp','Phá','Nguy','Thành','Thu','Khai','Bế']);
+const TWELVE_DAY_SPIRITS = Object.freeze(['Thanh Long','Minh Đường','Thiên Hình','Chu Tước','Kim Quỹ','Kim Đường','Bạch Hổ','Ngọc Đường','Thiên Lao','Huyền Vũ','Tư Mệnh','Câu Trần']);
+const GOOD_SPIRITS = Object.freeze([0,1,4,5,7,10]);
+// Thanh Long starts on branches Tý, Dần, Thìn, Ngọ, Thân, Tuất for lunar months 1/7, 2/8, ... 6/12.
+// This is a LUNAR-month convention, not the solar-term month used for Twelve Truc.
+function daySpirit(lunarMonth, dayBranchIndex){
+  if(!Number.isInteger(lunarMonth)||lunarMonth<1||lunarMonth>12) throw new RangeError('Tháng âm phải từ 1 đến 12');
+  if(!Number.isInteger(dayBranchIndex)||dayBranchIndex<0||dayBranchIndex>11) throw new RangeError('Chi ngày phải từ 0 đến 11');
+  const start=mod(2*((lunarMonth-1)%6),12);
+  const index=mod(dayBranchIndex-start,12);
+  return {name:TWELVE_DAY_SPIRITS[index],status:GOOD_SPIRITS.includes(index)?'hoang-dao':'hac-dao',
+    label:GOOD_SPIRITS.includes(index)?'Hoàng đạo':'Hắc đạo',ruleSet:'12-day-spirits-lunar-month-start-v1',
+    note:'Theo bảng Thanh Long khởi theo tháng âm; có dị bản giữa các hệ lịch, không phải đánh giá tổng hợp ngày tốt/xấu.'};
+}
+function twelveTruc(dayBranchIndex, solarMonthBranchIndex){
+  if(!Number.isInteger(dayBranchIndex)||dayBranchIndex<0||dayBranchIndex>11||!Number.isInteger(solarMonthBranchIndex)||solarMonthBranchIndex<0||solarMonthBranchIndex>11)
+    throw new RangeError('Chi ngày và Chi tháng phải thuộc 0–11');
+  const index=mod(dayBranchIndex-solarMonthBranchIndex,12);
+  return {name:TWELVE_TRUC[index],index,ruleSet:'12-truc-solar-term-month-v1',
+   note:'Tháng theo tiết khí ước tính lúc 12h Việt Nam; ngày sát chuyển tiết cần kiểm chứng giờ thực.'};
+}
+// 28-day index reference: 2026-10-10 = Liễu, 2026-10-08 = Tỉnh.
+// This is the 28-DAY ALMANAC ROTATION, not the real-time astronomical lunar mansion.
+// Anchoring to a published reference can disagree with calendars using another epoch/rule.
+const TWENTY_EIGHT_TU = Object.freeze(['Giác','Cang','Đê','Phòng','Tâm','Vĩ','Cơ','Đẩu','Ngưu','Nữ','Hư','Nguy','Thất','Bích','Khuê','Lâu','Vị','Mão','Tất','Chủy','Sâm','Tỉnh','Quỷ','Liễu','Tinh','Trương','Dực','Chẩn']);
+const TU_ANCHOR = Date.UTC(2026,9,10)/86400000;
+function twentyEightTu(year,month,day){
+  if(!Lunar.validSolar(year,month,day)) throw new RangeError('Ngày dương không hợp lệ');
+  const delta=Date.UTC(year,month-1,day)/86400000-TU_ANCHOR;
+  const index=mod(23+delta,28);
+  return {name:TWENTY_EIGHT_TU[index],index,group:['Thanh Long','Huyền Vũ','Bạch Hổ','Chu Tước'][Math.floor(index/7)],
+   ruleSet:'28-tu-28day-anchored-2026-10-10-v1',referenceDate:'2026-10-10',
+   note:'Sao luân phiên theo chu kỳ 28 ngày, mốc Liễu 10/10/2026; đây là lịch pháp tham khảo, KHÔNG phải vị trí thiên văn thực của Mặt Trăng.'};
+}
+function dayInfo(year, month, day) {
+  if (!Lunar.validSolar(year,month,day)) throw new RangeError('Ngày dương phải hợp lệ trong khoảng 1900–2100');
+  const lunar = Lunar.solarToLunar(year,month,day);
+  const jdn = Lunar.jd(day,month,year);
+  const dayCanChi = `${STEMS[mod(jdn+9,10)]} ${BRANCHES[mod(jdn+1,12)]}`;
+  const yearCanChi = `${STEMS[mod(lunar.year-4,10)]} ${BRANCHES[mod(lunar.year-4,12)]}`;
+  const event = lunar.leap ? null : (FIXED_EVENTS[`${lunar.month}-${lunar.day}`] || null);
+  const dayBranchIndex=mod(jdn+1,12);
+  const solarTerm=solarTermInfo(year,month,day);
+  const monthCanChi=solarMonthCanChi(year,month,day);
+  const auspiciousHourList=auspiciousHours(dayBranchIndex);
+  const solarBranchIndex=BRANCHES.findIndex(branch=>monthCanChi.name.endsWith(' '+branch));
+  const truc=twelveTruc(dayBranchIndex,solarBranchIndex);
+  const dayStatus=daySpirit(lunar.month,dayBranchIndex);
+  const moonMansion=twentyEightTu(year,month,day);
+  return {
+    solar:{year,month,day,iso:`${year}-${pad(month)}-${pad(day)}`},
+    lunar, dayCanChi, yearCanChi, monthCanChi, solarTerm, auspiciousHours:auspiciousHourList,
+    truc, dayStatus, moonMansion, event,
+    isFirstDay:lunar.day===1, isFullMoon:lunar.day===15,
+    ruleSet:RULESET
+  };
+}
+function monthView(year,month) {
+  if (!Number.isInteger(year) || year<1900 || year>2100 || !Number.isInteger(month) || month<1 || month>12)
+    throw new RangeError('Tháng dương phải nằm trong 1900–2100, tháng 1–12');
+  const count = new Date(Date.UTC(year,month,0)).getUTCDate();
+  const mondayStart = mod(new Date(Date.UTC(year,month-1,1)).getUTCDay()+6,7);
+  const days=Array.from({length:count},(_,i)=>dayInfo(year,month,i+1));
+  // Term markers are daily noon snapshots, not astronomical ingress timestamps.
+  const terms=days.filter((entry,index)=>{
+    if(index>0) return entry.solarTerm.name!==days[index-1].solarTerm.name;
+    if(year===1900 && month===1) return false;
+    const earlier=new Date(Date.UTC(year,month-1,0));
+    return entry.solarTerm.name!==solarTermInfo(earlier.getUTCFullYear(),earlier.getUTCMonth()+1,earlier.getUTCDate()).name;
+  }).map(entry=>({day:entry.solar.day,name:entry.solarTerm.name}));
+  return {year,month,startOffset:mondayStart,days,terms,ruleSet:RULESET};
+}
+function convertLunarToSolar(year,month,day,leap=false) {
+  const solar=Lunar.lunarToSolar(year,month,day,leap);
+  return dayInfo(solar.year,solar.month,solar.day);
+}
+const api=Object.freeze({RULESET,dayInfo,monthView,convertLunarToSolar,solarLongitudeAtNoon,solarTermInfo,solarMonthCanChi,auspiciousHours,SOLAR_TERMS,twelveTruc,daySpirit,twentyEightTu,TWELVE_TRUC,TWELVE_DAY_SPIRITS,TWENTY_EIGHT_TU});
+if (typeof module !== 'undefined' && module.exports) module.exports=api;
+root.ThienDoAlmanac=api;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+</script>
+<script>
+(()=>{
+const e=window.ThienDoAlmanac;const $=id=>document.getElementById(id);
+const fmt=(y,m,d)=>`${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+const parts=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Ho_Chi_Minh',year:'numeric',month:'numeric',day:'numeric'}).formatToParts(new Date());
+const t=k=>Number(parts.find(p=>p.type===k).value);const initial={year:t('year'),month:t('month'),day:t('day')};
+let year=initial.year,month=initial.month,selected=fmt(year,month,initial.day);
+$('lm').innerHTML=Array.from({length:12},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join('');$('ly').value=year;
+function setMonth(delta){const d=new Date(Date.UTC(year,month-1+delta,1));const y=d.getUTCFullYear();if(y<1900||y>2100)return;const oldDay=Number(selected.split('-')[2]);year=y;month=d.getUTCMonth()+1;const maxDay=new Date(Date.UTC(year,month,0)).getUTCDate();selected=fmt(year,month,Math.min(oldDay,maxDay));render()}
+function show(iso){selected=iso;const [y,m,d]=iso.split('-').map(Number);const item=e.dayInfo(y,m,d);$('detail').innerHTML=`<p class="calendar-daynum">${String(d).padStart(2,'0')}<small>/${String(m).padStart(2,'0')}/${y}</small></p><div class="calendar-primary-lunar">${item.lunar.day} tháng ${item.lunar.month}${item.lunar.leap?' nhuận':''} · ${item.lunar.year}</div><dl class="calendar-facts"><div><dt>Can Chi ngày</dt><dd>${item.dayCanChi}</dd></div><div><dt>Can Chi năm</dt><dd>${item.yearCanChi}</dd></div><div><dt>Trạng thái</dt><dd>${item.isFirstDay?'Mùng một':item.isFullMoon?'Ngày rằm':'Ngày thường'}</dd></div><div><dt>Can Chi tháng (tiết khí)</dt><dd>${item.monthCanChi.name}</dd></div><div><dt>Tiết khí lúc 12h VN</dt><dd>${item.solarTerm.name}</dd></div><div><dt>Thập Nhị Trực</dt><dd>${item.truc.name}</dd></div><div><dt>Hoàng/Hắc đạo (tháng âm)</dt><dd><span class="${item.dayStatus.status==='hoang-dao'?'calendar-status-good':'calendar-status-bad'}">${item.dayStatus.label}</span> · ${item.dayStatus.name}</dd></div><div><dt>Nhị Thập Bát Tú</dt><dd>${item.moonMansion.name} · ${item.moonMansion.group}</dd></div></dl><div class="calendar-rule-note">Thập Nhị Trực dùng tháng tiết khí xấp xỉ; Hoàng/Hắc đạo theo tháng âm; 28 Tú chu kỳ 28 ngày neo 10/10/2026 (sao Liễu). Các lịch có dị bản: không dùng một nhãn để kết luận toàn bộ ngày tốt/xấu.</div>${item.solarTerm.nearBoundary||item.monthCanChi.nearBoundary?`<p class="calendar-boundary-note">Gần mốc chuyển tiết: kết quả ước tính tại 12h Việt Nam, hãy đối chiếu giờ chuyển tiết thực.</p>`:''}<div class="calendar-hours"><div class="eyebrow">6 GIỜ HOÀNG ĐẠO THEO CHI NGÀY</div><div class="calendar-hour-grid">${item.auspiciousHours.map(h=>`<div class="calendar-hour"><strong>${h.branch}</strong><span>${h.time}</span></div>`).join('')}</div><p>Phân loại lịch pháp truyền thống, không phải bảo đảm tốt/xấu.</p></div>${item.event?`<div class="calendar-festival">✦ ${item.event}</div>`:''}`;$('solar-date').value=iso;for(const el of document.querySelectorAll('.calendar-date')){el.classList.toggle('chosen',el.dataset.iso===selected);el.setAttribute('aria-selected',String(el.dataset.iso===selected))}}
+function render(){$('month-title').textContent=`Tháng ${String(month).padStart(2,'0')} · ${year}`;const cal=e.monthView(year,month);$('terms').innerHTML=cal.terms.map(t=>`<span>${String(t.day).padStart(2,'0')}/${String(month).padStart(2,'0')} · ${t.name}</span>`).join('');$('prev').disabled=year===1900&&month===1;$('next').disabled=year===2100&&month===12;$('dates').innerHTML='';for(let i=0;i<cal.startOffset;i++){$('dates').insertAdjacentHTML('beforeend','<div class="calendar-blank"></div>')};for(const d of cal.days){const b=document.createElement('button');b.className='calendar-date'+(d.solar.iso===selected?' chosen':'')+(d.event?' holiday':'')+((d.solar.iso===fmt(initial.year,initial.month,initial.day))?' today':'');b.type='button';b.setAttribute('role','gridcell');b.setAttribute('aria-selected',String(d.solar.iso===selected));b.setAttribute('aria-label',`Ngày ${d.solar.day} tháng ${d.solar.month}, ngày ${d.lunar.day} tháng ${d.lunar.month} âm lịch`);b.dataset.iso=d.solar.iso;b.innerHTML=`<strong>${d.solar.day}</strong><span>${d.lunar.day===1?`${d.lunar.day}/${d.lunar.month}`:d.lunar.day}${d.lunar.leap?'N':''}</span>${d.event?'<i aria-label="ngày lễ">✦</i>':''}`;b.addEventListener('click',()=>show(d.solar.iso));$('dates').appendChild(b)}show(selected)}
+$('prev').onclick=()=>setMonth(-1);$('next').onclick=()=>setMonth(1);
+$('today').onclick=()=>{year=initial.year;month=initial.month;selected=fmt(year,month,initial.day);render()};
+$('solar-date').onchange=ev=>{const iso=ev.target.value;try{const [y,m,d]=iso.split('-').map(Number);e.dayInfo(y,m,d);year=y;month=m;selected=iso;render();$('result').textContent=''}catch(ex){$('result').textContent=ex.message}};
+$('convert').onclick=()=>{try{const y=Number($('ly').value),m=Number($('lm').value),d=Number($('ld').value),leap=$('ll').checked;const r=e.convertLunarToSolar(y,m,d,leap);year=r.solar.year;month=r.solar.month;selected=r.solar.iso;render();$('result').className='calendar-success';$('result').textContent=`${d}/${m}${leap?' nhuận':''}/${y} âm = ${r.solar.day}/${r.solar.month}/${r.solar.year} dương`;}catch(ex){$('result').className='calendar-error';$('result').textContent=ex.message}}
+render();
+})();
+</script></body></html>

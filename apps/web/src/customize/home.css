@@ -1,0 +1,11 @@
+/* LÀN GIAO DIỆN TRANG CHỦ: thay giá trị px, không cần sửa JSX.
+   Chỉ ảnh hưởng trang chủ. Màu toàn hệ thống vẫn ở app/globals.css và experience.css.
+   Ví dụ: đổi --home-hero-radius từ 16px thành 20px rồi lưu file. */
+[data-home] {
+  --home-hero-radius: 16px;
+  --home-card-radius: 13px;
+  --home-section-gap: 40px;
+}
+@media (max-width: 680px) {
+  [data-home] { --home-section-gap: 28px; }
+}

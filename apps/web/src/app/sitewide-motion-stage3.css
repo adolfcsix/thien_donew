@@ -1,0 +1,47 @@
+/* Stage 3: shared motion/material polish. Restrict to shell chrome and avoid
+   specialist charts, route cards, semantic star colors, and business logic. */
+.site {
+  --td3-glass-shine: rgba(255, 255, 255, .13);
+  --td3-glass-shadow: 0 12px 32px rgba(0, 0, 0, .20);
+  --td3-glass-blur: 14px;
+}
+.site.light {
+  --td3-glass-shine: rgba(255, 255, 255, .72);
+  --td3-glass-shadow: 0 12px 30px rgba(30, 49, 39, .12);
+}
+/* Navigation is present on every route, including account and admin routes.
+   Opaque fallback backgrounds protect contrast if backdrop-filter is missing. */
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site :is(.topbar, .bottom-nav, #thiendo-sidebar) {
+    -webkit-backdrop-filter: blur(var(--td3-glass-blur)) saturate(1.12);
+    backdrop-filter: blur(var(--td3-glass-blur)) saturate(1.12);
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .site :is(.topbar, .bottom-nav, #thiendo-sidebar) :is(a, button):not(:disabled) {
+    transition: color 220ms var(--td2-ease), background-color 220ms var(--td2-ease),
+      border-color 220ms var(--td2-ease), box-shadow 220ms var(--td2-ease),
+      filter 220ms var(--td2-ease);
+  }
+  .site :is(.topbar, .bottom-nav, #thiendo-sidebar) :is(a, button):not(:disabled):hover {
+    box-shadow: inset 0 1px 0 var(--td3-glass-shine);
+  }
+}
+/* Do not fade text independently from its backdrop while changing theme. */
+.site :is(.topbar, .bottom-nav, #thiendo-sidebar, .command-panel, .modal.account-modal) {
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: var(--td2-normal);
+  transition-timing-function: var(--td2-ease);
+}
+@media (prefers-reduced-motion: reduce), (prefers-contrast: more) {
+  .site :is(.topbar, .bottom-nav, #thiendo-sidebar, .command-panel, .modal.account-modal) {
+    animation: none !important;
+    transition: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+html[data-thiendo-effects="reduced"] .site :is(.topbar, .bottom-nav, #thiendo-sidebar) {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}

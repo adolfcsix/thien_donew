@@ -1,0 +1,928 @@
+[
+  {
+    "slug": "doc-dia-ban-12-cung",
+    "title": "Đọc địa bàn và 12 cung",
+    "lead": "Hiểu sự khác nhau giữa địa chi cố định trên bàn và tên cung biến đổi theo lá số.",
+    "level": "Nhập môn",
+    "minutes": 12,
+    "sections": [
+      {
+        "heading": "Hai lớp phải tách biệt",
+        "body": "Một địa bàn thường có 12 ô địa chi Tý, Sửu, Dần, Mão, Thìn, Tỵ, Ngọ, Mùi, Thân, Dậu, Tuất, Hợi. Tên cung như Mệnh, Phụ Mẫu, Phúc Đức không cố định vào một địa chi: chúng được xác định từ dữ liệu sinh và quy tắc an Mệnh. Vì thế, cùng một ô Tý có thể mang tên cung khác nhau trên hai lá số."
+      },
+      {
+        "heading": "Tại sao chọn cung Mệnh trước",
+        "body": "Trong bộ quy tắc Tam Hợp của Thiên Đồ, cung Mệnh được xác định từ tháng âm lịch và giờ sinh quy về địa chi. Từ điểm Mệnh, tên 12 cung được phân bổ theo thứ tự xác định. Đây là phép sắp xếp dữ liệu truyền thống, không phải một đánh giá tính cách hay sức khỏe."
+      },
+      {
+        "heading": "Một cung có nhiều lớp thông tin",
+        "body": "Trong mỗi ô, tách tên cung, can chi, chính tinh, phụ tinh, các sao năm sinh, Tứ Hóa, vòng sao và hạn. Người mới nên đọc tên cung và chính tinh trước, rồi bật các lớp còn lại để đối chiếu. Không xem một ngôi sao đơn lẻ như kết luận cho toàn bộ cung."
+      },
+      {
+        "heading": "Đọc thực tế trên Thiên Đồ",
+        "body": "Mở Phòng lập lá số, chọn một cung trên địa bàn và xem bảng nghiên cứu bên cạnh. Dùng bộ lọc Một cung để hiểu thông tin gốc; sau đó thử Tam hợp và Bốn cung để nhìn cách những ô khác liên hệ với cung đang xét."
+      }
+    ],
+    "example": "Giả sử trên một lá số, cung Mệnh đặt tại Dần. Dần là địa chi của ô; “Mệnh” là chức năng của ô ở chính lá số ấy. Không có quy tắc rằng Mệnh luôn phải nằm tại Dần.",
+    "pitfalls": [
+      "Đánh đồng vị trí địa chi với tên cung.",
+      "Cộng gộp mọi sao trong cùng ô thành một phán đoán chắc chắn."
+    ],
+    "quiz": [
+      {
+        "question": "Tên cung Mệnh có luôn cố định ở ô Tý không?",
+        "choices": [
+          "Có, trên mọi lá số",
+          "Không, tùy phép an theo dữ liệu sinh",
+          "Chỉ khi xem lưu niên"
+        ],
+        "correct": 1,
+        "reason": "Tên cung được an theo dữ liệu sinh; Tý là một địa chi cố định trên địa bàn."
+      },
+      {
+        "question": "Bước đầu tiên phù hợp cho người mới là gì?",
+        "choices": [
+          "Đọc mọi sao và hạn đồng thời",
+          "Xác định cung và chính tinh trước",
+          "Đưa ra kết luận vận mệnh"
+        ],
+        "correct": 1,
+        "reason": "Phân tầng dữ liệu giúp tránh quá tải và suy diễn."
+      }
+    ],
+    "reference": "packages/astrology-engine/src/tuvi.js — BRANCHES, HOUSES, branchesOfChart, houses",
+    "route": "/chart",
+    "sources": []
+  },
+  {
+    "slug": "can-chi-gio-sinh",
+    "title": "Can Chi, giờ sinh và lịch âm",
+    "lead": "Làm quen hệ 10 Thiên Can, 12 Địa Chi, quy tắc giờ Tý và điểm nhạy cảm khi đổi lịch.",
+    "level": "Nhập môn",
+    "minutes": 14,
+    "sections": [
+      {
+        "heading": "Mười Can và mười hai Chi",
+        "body": "Mười Thiên Can gồm Giáp, Ất, Bính, Đinh, Mậu, Kỷ, Canh, Tân, Nhâm, Quý; mười hai Địa Chi gồm Tý đến Hợi. Ghép tuần tự Can và Chi theo thứ tự hợp lệ tạo chu kỳ 60 hoa giáp. Tên Can Chi là ký hiệu lịch pháp, không tự nó là một phép dự đoán."
+      },
+      {
+        "heading": "Giờ được quy về địa chi",
+        "body": "Mỗi địa chi giờ chiếm khoảng hai giờ đồng hồ. Bộ quy tắc Thiên Đồ dùng phép quy đổi giờ địa phương: ví dụ 08:30 nằm trong giờ Thìn, 09:30 ở giờ Tỵ. Giờ Tý ở gần ranh giới ngày nên có dị biệt cách tính ngày đối với thời điểm 23:00–23:59."
+      },
+      {
+        "heading": "Âm lịch, tháng nhuận và múi giờ",
+        "body": "Ngày dương và ngày âm là hai cách biểu diễn thời điểm khác nhau. Nếu nhập âm lịch phải chỉ rõ tháng nhuận khi có; việc bỏ qua tháng nhuận có thể đổi kết quả. Dữ liệu thời điểm quá khứ cũng cần chú ý lịch sử múi giờ, nhất là trước khi Việt Nam thống nhất sử dụng UTC+7."
+      },
+      {
+        "heading": "Một phép kiểm tra trước khi lập lá số",
+        "body": "Kiểm tra định dạng ngày, giờ và phút sinh, loại lịch, tháng nhuận và múi giờ nơi sinh. Nếu giờ sinh chỉ được nhớ tương đối, hãy ghi rõ mức không chắc chắn trước khi xem các tầng suy luận tiếp theo."
+      }
+    ],
+    "example": "Một người sinh 08:30 và một người sinh 09:30 cùng ngày có thể nhận hai địa chi giờ khác nhau. Trước khi so sánh lá số, xác nhận rằng đồng hồ ghi thời gian địa phương tại nơi sinh.",
+    "pitfalls": [
+      "Dùng ngày âm để nhập vào biểu mẫu đang chọn ngày dương.",
+      "Bỏ qua cảnh báo thời điểm 23 giờ hoặc tháng âm nhuận."
+    ],
+    "quiz": [
+      {
+        "question": "08:30 theo quy ước giờ của Thiên Đồ thuộc giờ nào?",
+        "choices": [
+          "Thìn",
+          "Tỵ",
+          "Mão"
+        ],
+        "correct": 0,
+        "reason": "Khoảng 07:00–08:59 được gọi là giờ Thìn trong quy ước này."
+      },
+      {
+        "question": "Khi sinh vào tháng âm nhuận, điều cần làm là gì?",
+        "choices": [
+          "Bỏ dấu nhuận",
+          "Chỉ rõ tháng nhuận nếu biểu mẫu hỗ trợ",
+          "Tự chuyển sang tháng sau"
+        ],
+        "correct": 1,
+        "reason": "Phần chọn tháng nhuận là thông tin bắt buộc để quy đổi đúng lịch."
+      }
+    ],
+    "reference": "packages/astrology-engine/src/tuvi.js — STEMS, BRANCHES, hourBranch và warnings",
+    "route": "/calendar",
+    "sources": []
+  },
+  {
+    "slug": "menh-than-va-ngu-hanh-cuc",
+    "title": "Mệnh, Thân và Ngũ Hành Cục",
+    "lead": "Hiểu các đầu vào của phép an sao và phân biệt ngũ hành cục với những cách gọi “mệnh” khác.",
+    "level": "Cơ bản",
+    "minutes": 15,
+    "sections": [
+      {
+        "heading": "Cung Mệnh khác cung Thân",
+        "body": "Cung Mệnh và cung Thân là hai vị trí được tính từ tháng âm lịch và giờ địa chi theo hai chiều khác nhau trong quy tắc đã chọn. Chúng có thể trùng hoặc khác ô địa chi. Nhãn “cung Thân” trong lá số không liên quan đến địa chi Thân một cách bắt buộc."
+      },
+      {
+        "heading": "Ngũ Hành Cục dùng để làm gì",
+        "body": "Thiên Đồ xác định Cục theo Can của cung Mệnh và hệ nạp âm thuộc chu kỳ 60 hoa giáp. Giá trị Cục là một trong 2, 3, 4, 5, 6; trong bộ quy tắc hiện dùng là Thủy Nhị, Mộc Tam, Kim Tứ, Thổ Ngũ hoặc Hỏa Lục Cục."
+      },
+      {
+        "heading": "Cục là tham số của phép an",
+        "body": "Số Cục tham gia xác định vị trí sao Tử Vi theo ngày âm lịch và điểm khởi của Đại hạn. Vì thế muốn kiểm tra phép tính, cần biết ngày âm, Can Chi và Cục. Không nên coi con số Cục là “điểm tốt xấu” hoặc chỉ số thành công."
+      },
+      {
+        "heading": "Kiểm chứng từng lớp",
+        "body": "Khi nhìn kết quả, ghi lại tháng âm, giờ địa chi, Mệnh, Thân và tên Cục. Đối chiếu phần thông tin nguồn trong công cụ nghiên cứu; nếu thay trường phái hoặc cách tính giờ Tý, hãy xem bộ quy tắc có còn tương đương không."
+      }
+    ],
+    "example": "Với Thủy Nhị Cục, số 2 là tham số an sao và Đại hạn trong bộ quy tắc, không có nghĩa lá số “được 2 điểm” hoặc người đó có hai năm thuận lợi.",
+    "pitfalls": [
+      "Nhầm Ngũ Hành Cục với nạp âm của năm sinh.",
+      "Giải thích con số Cục như xác suất hay mức may mắn."
+    ],
+    "quiz": [
+      {
+        "question": "Số Cục được dùng trực tiếp vào phép tính nào?",
+        "choices": [
+          "Vị trí sao Tử Vi",
+          "Màu giao diện",
+          "Tên tài khoản"
+        ],
+        "correct": 0,
+        "reason": "Engine lấy số Cục cùng ngày âm để an vị trí Tử Vi."
+      },
+      {
+        "question": "Cung Thân có bắt buộc nằm tại địa chi Thân?",
+        "choices": [
+          "Có",
+          "Không"
+        ],
+        "correct": 1,
+        "reason": "Cung Thân và địa chi Thân là hai khái niệm khác nhau."
+      }
+    ],
+    "reference": "packages/astrology-engine/src/tuvi.js — branchesOfChart, cucFromMenh, ziWeiPosition",
+    "route": "/chart",
+    "sources": []
+  },
+  {
+    "slug": "he-thong-14-chinh-tinh",
+    "title": "14 chính tinh và cách tra cứu",
+    "lead": "Nhận diện nhóm sao chính và đọc bảng mức Miếu – Vượng – Đắc – Bình – Hãm đúng ngữ cảnh.",
+    "level": "Cơ bản",
+    "minutes": 16,
+    "sections": [
+      {
+        "heading": "Mười bốn tên sao chủ đạo",
+        "body": "Bộ chính tinh Thiên Đồ có Tử Vi, Thiên Cơ, Thái Dương, Vũ Khúc, Thiên Đồng, Liêm Trinh, Thiên Phủ, Thái Âm, Tham Lang, Cự Môn, Thiên Tướng, Thiên Lương, Thất Sát, Phá Quân. Một ô có thể có nhiều chính tinh hoặc không có sao chính trong bộ phân bổ này."
+      },
+      {
+        "heading": "Phân bố sao dựa trên vị trí Tử Vi",
+        "body": "Engine trước tiên tính vị trí Tử Vi từ ngày âm và Cục. Những chính tinh còn lại được đặt bằng dịch chuyển địa chi theo bảng quy tắc đang dùng, bao gồm nhóm Tử Vi và nhóm Thiên Phủ. Người nghiên cứu có thể kiểm chứng thứ tự dịch chuyển mà không cần “đoán” từng ngôi sao."
+      },
+      {
+        "heading": "Mức sáng là dữ liệu bảng, không phải một kết luận",
+        "body": "Bảng Miếu – Vượng – Đắc – Bình – Hãm cho biết mức độ quy ước của một sao tại từng địa chi theo bộ tư liệu cụ thể. Các trường phái có bảng khác nhau. Không thể biến mức “Miếu” hay “Hãm” riêng lẻ thành kết luận chắc chắn cho toàn lá số."
+      },
+      {
+        "heading": "Liên kết từ thư viện về thực hành",
+        "body": "Tại bảng tra 14 chính tinh, chọn một sao, chọn địa chi và đọc câu hỏi nghiên cứu. Trở lại địa bàn thực, xem sao này đi với các sao đồng cung, chiếu về từ tam hợp và Tứ Hóa nào, rồi mới ghi giả thuyết cần xác minh."
+      }
+    ],
+    "example": "Khi tra Thái Dương ở hai địa chi khác nhau, bạn có thể thấy hai trạng thái khác nhau trong bảng. Đó là hai ô dữ liệu theo quy ước đã chọn, chưa phải hai kết quả tốt/xấu của con người.",
+    "pitfalls": [
+      "Đọc trạng thái sao mà không ghi nguồn và phiên bản bảng.",
+      "Áp một tính từ của sao thành tính cách chắc chắn của người xem."
+    ],
+    "quiz": [
+      {
+        "question": "Bảng 14 × 12 có bao nhiêu vị trí dữ liệu?",
+        "choices": [
+          "26",
+          "168",
+          "144"
+        ],
+        "correct": 1,
+        "reason": "14 chính tinh nhân 12 địa chi bằng 168 ô tra cứu."
+      },
+      {
+        "question": "Trạng thái Miếu/Hãm phản ánh điều gì?",
+        "choices": [
+          "Một bảng quy ước của trường phái",
+          "Một chứng cứ khoa học về số phận"
+        ],
+        "correct": 0,
+        "reason": "Đó là các mô tả theo hệ quy tắc truyền thống, có dị bản."
+      }
+    ],
+    "reference": "packages/astrology-engine/src/tuvi.js — majorStars; src/star-strength.js — lookup",
+    "route": "/star-atlas",
+    "sources": []
+  },
+  {
+    "slug": "phu-tinh-va-cac-vong-sao",
+    "title": "Phụ tinh, sao năm sinh và vòng sao",
+    "lead": "Tách nguồn của các lớp sao trước khi xét các mối quan hệ.",
+    "level": "Trung cấp",
+    "minutes": 15,
+    "sections": [
+      {
+        "heading": "Một lá số có nhiều danh mục sao",
+        "body": "Các sao được chia thành chính tinh, phụ tinh, nhóm theo năm sinh, sao bổ sung và các vòng sao. Đó là các trường dữ liệu độc lập trong từng cung. Nếu gộp tất cả vào một danh sách không nhãn, bạn sẽ khó kiểm tra lý do một sao xuất hiện."
+      },
+      {
+        "heading": "Nguồn phụ thuộc vào thông số sinh",
+        "body": "Có sao phụ theo Can năm, theo tháng âm, theo giờ địa chi; một số lớp khác dựa trên Chi năm hoặc sao đã an trước đó. Điều quan trọng nhất khi học là đặt câu hỏi “sao này đến từ tham số nào?” thay vì ghi nhớ một danh sách thiếu ngữ cảnh."
+      },
+      {
+        "heading": "Vòng sao được tổ chức riêng",
+        "body": "Những vòng như Thái Tuế, Bác Sĩ, Tràng Sinh trong Thiên Đồ là các lớp có thuộc tính vị trí riêng. Một số quy tắc có dị bản về chiều an hoặc điểm khởi; engine hiện ghi cảnh báo ở các trường hợp quan trọng, ví dụ quy ước vòng Tràng Sinh."
+      },
+      {
+        "heading": "Phương pháp kiểm tra",
+        "body": "Bật lần lượt từng lớp trong phần nghiên cứu cung, chụp lại trạng thái địa bàn nếu cần, rồi đối chiếu các trường `auxiliaryStars`, `yearStars`, `additionalStars` và `cycleStars` trong dữ liệu xuất JSON. Dữ liệu nguồn được kiểm tra dễ hơn nhận định diễn giải."
+      }
+    ],
+    "example": "Nếu một sao xuất hiện trong `yearStars` nhưng không có trong `auxiliaryStars`, điều đó không phải lỗi: đây là hai lớp an sao được tính bằng các phép khác nhau.",
+    "pitfalls": [
+      "Đếm trùng sao chỉ vì hai nhóm có cách hiển thị gần giống.",
+      "Không phân biệt sao theo giờ, tháng và năm."
+    ],
+    "quiz": [
+      {
+        "question": "Trường nào lưu các sao bổ sung trong mỗi cung?",
+        "choices": [
+          "additionalStars",
+          "gender",
+          "solar"
+        ],
+        "correct": 0,
+        "reason": "Các sao bổ sung là lớp riêng biệt trong dữ liệu cung."
+      },
+      {
+        "question": "Khi gặp dị bản về vòng sao nên làm gì?",
+        "choices": [
+          "Ẩn cảnh báo",
+          "Ghi lại rule set và đối chiếu trường phái"
+        ],
+        "correct": 1,
+        "reason": "Khác nhau về quy ước cần được nêu rõ, không che đi."
+      }
+    ],
+    "reference": "packages/astrology-engine/src/auxiliary.js; src/year-stars.js; src/cycles.js",
+    "route": "/chart",
+    "sources": []
+  },
+  {
+    "slug": "tu-hoa-va-bang-quy-tac",
+    "title": "Tứ Hóa: dữ liệu và dị bản",
+    "lead": "Phân biệt bốn nhãn Hóa Lộc – Quyền – Khoa – Kỵ với phán đoán tùy ý.",
+    "level": "Trung cấp",
+    "minutes": 16,
+    "sections": [
+      {
+        "heading": "Tứ Hóa được an từ Thiên Can",
+        "body": "Theo quy tắc đang dùng, một Can năm liên hệ với các sao được gắn nhãn Hóa Lộc, Hóa Quyền, Hóa Khoa, Hóa Kỵ. Engine gán những nhãn này lên các sao tương ứng rồi xác định chúng nằm ở cung nào của địa bàn."
+      },
+      {
+        "heading": "Bốn nhãn không đồng nghĩa bốn kết luận",
+        "body": "Trong truyền thống, Tứ Hóa thường được dùng làm lớp gợi ý về biến chuyển. Nhưng “có Hóa Kỵ” không đủ để kết luận chắc chắn một việc bất lợi, và “có Hóa Lộc” không chứng minh một người sẽ có tiền. Cần đặt sao, cung và tương quan vào cùng một khung kiểm tra."
+      },
+      {
+        "heading": "Những nơi có dị bản",
+        "body": "Bảng Tứ Hóa không đồng nhất giữa mọi phái. Bộ quy tắc hiện tại của Thiên Đồ có cảnh báo rõ về bất đồng ở một số Thiên Can, đặc biệt Canh/Nhâm. Khi so sánh hai trang khác nhau, trước tiên xác nhận chúng có dùng cùng bảng không."
+      },
+      {
+        "heading": "Luôn theo dõi nguồn tính",
+        "body": "Trong phần dữ liệu xuất JSON, mỗi cung có `tuHoa` gồm tên hóa và sao nhận hóa. Đó là bằng chứng về cách engine gắn dữ liệu; nội dung diễn giải ở bảng nghiên cứu là lớp học thuật riêng, không phải kết quả tất yếu của bộ tính."
+      }
+    ],
+    "example": "Hai công cụ có thể đặt Hóa Khoa khác nhau trên cùng một năm do chọn bảng Tứ Hóa khác phái. Trước khi gọi một bên “sai”, so sánh rõ bảng nguồn, Can năm và các sao liên quan.",
+    "pitfalls": [
+      "Đọc Tứ Hóa không phân biệt nguyên tắc an hay năm đang xét.",
+      "Đồng nhất bất kỳ nhãn Hóa nào với một sự kiện chắc chắn."
+    ],
+    "quiz": [
+      {
+        "question": "Tứ Hóa của năm sinh được gắn chủ yếu từ yếu tố nào?",
+        "choices": [
+          "Thiên Can năm",
+          "Màu nền",
+          "Tháng dương bất kỳ"
+        ],
+        "correct": 0,
+        "reason": "Bộ quy tắc hiện dùng lấy Can năm để chọn bảng gán Tứ Hóa."
+      },
+      {
+        "question": "Khi hai website có kết quả khác nhau, bước đầu tiên?",
+        "choices": [
+          "So bảng trường phái và rule set",
+          "Khẳng định trang kia sai"
+        ],
+        "correct": 0,
+        "reason": "Các bộ bảng Tứ Hóa có dị bản, cần truy nguồn."
+      }
+    ],
+    "reference": "packages/astrology-engine/src/tuhoa.js — calculate, RULESET",
+    "route": "/chart",
+    "sources": []
+  },
+  {
+    "slug": "tam-phuong-tu-chinh",
+    "title": "Tam phương Tứ chính và phép đối chiếu cung",
+    "lead": "Thực hành xem một cung trong quan hệ với các cung liên hệ, tránh lối đọc một ô riêng lẻ.",
+    "level": "Trung cấp",
+    "minutes": 14,
+    "sections": [
+      {
+        "heading": "Một cung không đứng một mình",
+        "body": "Khi đang xem một cung trên địa bàn, Tam phương Tứ chính là cách đặt cung đó cạnh hai cung tam hợp và cung đối diện. Đó là một hệ bốn vị trí trên vòng 12 địa chi, thuận tiện để nhóm dữ liệu liên quan khi nghiên cứu."
+      },
+      {
+        "heading": "Nhóm địa chi theo phép tính",
+        "body": "Nếu đánh số 12 địa chi từ Tý bằng 0, các chi tam hợp được cách nhau 4 và 8 vị trí, còn đối cung cách 6 vị trí. Với một cung ở Tý, nhóm tam hợp là Thìn, Thân và đối cung là Ngọ. Các tên cung chức tại những địa chi ấy thay đổi theo lá số cụ thể."
+      },
+      {
+        "heading": "Cách đọc trong phòng nghiên cứu",
+        "body": "Chọn phạm vi Một cung trước, sau đó bật Tam hợp để xem hai cung liên hệ; cuối cùng chọn Bốn cung để thêm Đối cung. So sánh vị trí sao, Tứ Hóa và các hạn trên từng ô. Đọc cả sự khác biệt thay vì cố tìm một câu chuyện duy nhất."
+      },
+      {
+        "heading": "Dữ liệu và lời giải thích",
+        "body": "Sơ đồ liên hệ địa chi có thể kiểm chứng bằng toán học; ý nghĩa truyền thống gắn với từng mối liên hệ là nội dung văn hóa có nhiều cách đọc. Thiên Đồ cố ý phân tách hai tầng này trong sổ tay nghiên cứu."
+      }
+    ],
+    "example": "Đặt một cung ở Tý: hai vị trí tam hợp là Thìn và Thân, đối cung là Ngọ. Đây là ví dụ kiểm tra quan hệ chỉ số, không phải dự báo về một cá nhân.",
+    "pitfalls": [
+      "Cho rằng mọi sao trong bốn cung đều có cùng ý nghĩa.",
+      "Nhầm hai cung tam hợp với cung đối diện."
+    ],
+    "quiz": [
+      {
+        "question": "Đối cung của Tý theo vòng 12 địa chi là?",
+        "choices": [
+          "Thìn",
+          "Ngọ",
+          "Thân"
+        ],
+        "correct": 1,
+        "reason": "Từ Tý cộng sáu vị trí trên vòng 12 sẽ tới Ngọ."
+      },
+      {
+        "question": "Tam phương Tứ chính gồm tổng số mấy vị trí?",
+        "choices": [
+          "3",
+          "4",
+          "6"
+        ],
+        "correct": 1,
+        "reason": "Gồm cung đang xét, hai cung tam hợp và một cung đối diện."
+      }
+    ],
+    "reference": "apps/web/src/features/chart/lib/palace-relations.ts và palace-focus.ts",
+    "route": "/chart",
+    "sources": []
+  },
+  {
+    "slug": "dai-han-luu-nien",
+    "title": "Đại hạn, Tiểu hạn và lớp năm xem",
+    "lead": "Phân biệt dữ liệu gốc của lá số với các lớp đọc theo chu kỳ và năm tham chiếu.",
+    "level": "Nâng cao",
+    "minutes": 17,
+    "sections": [
+      {
+        "heading": "Lá số gốc không phải toàn bộ dữ liệu",
+        "body": "Thông tin ngày giờ sinh lập nên các lớp gốc. Phần Đại hạn, Tiểu hạn và Lưu niên là những lớp quy tắc bổ sung để hiển thị chu kỳ, tuổi và năm đang xét. Khi thay năm xem, không nên để người học hiểu nhầm các cung gốc đã được tính lại từ đầu."
+      },
+      {
+        "heading": "Đại hạn theo chu kỳ mười năm",
+        "body": "Đại hạn được phân bố trên vòng cung theo Cục, giới tính và quy tắc thuận/nghịch đang dùng. Tuổi bắt đầu chu kỳ trong engine là tuổi mụ của phép an truyền thống, không phải một mốc sinh nhật dương lịch chính xác."
+      },
+      {
+        "heading": "Tiểu hạn và lưu niên có trường quy tắc riêng",
+        "body": "Khi đổi năm xem, Thiên Đồ gọi lớp tổng quan năm để tính các vị trí liên quan. Trong giao diện, bạn có thể chọn năm khác để so sánh dữ liệu. Nên ghi rõ “năm xem” bên cạnh giá trị, và không suy diễn rằng một lớp dữ liệu là sự kiện đã hoặc sẽ xảy ra."
+      },
+      {
+        "heading": "Giới hạn khi đọc năm gần biên tiết khí",
+        "body": "Trong Bát Tự và các phép liên quan tiết khí, mốc chuyển năm/tháng không nhất thiết trùng ngày đầu năm dương lịch. Khi gặp trường hợp gần biên, phải kiểm tra loại lịch và tiêu chuẩn tính trước khi so sánh hai hệ thống."
+      }
+    ],
+    "example": "Khi chuyển năm xem từ 2026 sang 2027, ngày giờ sinh gốc vẫn giữ nguyên. Thay đổi hợp lệ là các lớp được định nghĩa theo năm tham chiếu, không phải tùy ý đổi sao gốc.",
+    "pitfalls": [
+      "Gọi tuổi Đại hạn là tuổi dương lịch chính xác.",
+      "Xem việc đổi năm là tính lại dữ liệu ngày sinh."
+    ],
+    "quiz": [
+      {
+        "question": "Đại hạn thường là chu kỳ bao nhiêu năm trong bộ quy tắc?",
+        "choices": [
+          "5",
+          "10",
+          "12"
+        ],
+        "correct": 1,
+        "reason": "Đại hạn trong engine là chu kỳ mười năm."
+      },
+      {
+        "question": "Chuyển năm xem nên làm thay đổi điều gì?",
+        "choices": [
+          "Dữ liệu sinh gốc",
+          "Các lớp phụ thuộc năm xem"
+        ],
+        "correct": 1,
+        "reason": "Dữ liệu gốc được giữ cố định, lớp năm xem được cập nhật."
+      }
+    ],
+    "reference": "packages/astrology-engine/src/cycles.js; src/annual.js; src/annual-layers.js",
+    "route": "/chart",
+    "sources": []
+  },
+  {
+    "slug": "truy-vet-luan-cu",
+    "title": "Phân biệt dữ liệu tính và lời luận giải",
+    "lead": "Đọc vết nguồn, lập phiếu luận cứ và nhận diện ranh giới giữa phép an với kiến giải.",
+    "level": "Nâng cao",
+    "minutes": 16,
+    "sections": [
+      {
+        "heading": "Ba lớp của một kết luận",
+        "body": "Lớp một là thông tin đầu vào như ngày, giờ và quy ước lịch; lớp hai là dữ liệu do engine tính như vị trí sao hoặc Can Chi; lớp ba là phần giải thích văn hóa về ý nghĩa. Chỉ hai lớp đầu có thể kiểm tra bằng thao tác tính toán một cách trực tiếp."
+      },
+      {
+        "heading": "Một phiếu luận cứ tối thiểu",
+        "body": "Ghi lại cung đang xem, sao hoặc dấu mốc liên quan, trường dữ liệu nguồn (ví dụ `houses[index].stars`), phiên bản rule set và ghi chú về phạm vi áp dụng. Khi có dị bản, đánh dấu cần đối chiếu thay vì xóa sự khác biệt."
+      },
+      {
+        "heading": "Công cụ sẵn có trên Thiên Đồ",
+        "body": "Bảng Đối chiếu Thập nhị cung cho phép tìm và lọc các lớp sao, so sánh hai cung và xuất CSV. Phòng đọc cung sao cung cấp thêm các câu hỏi học tập và xuất ghi chú Markdown. Phiếu luận cứ có thể được sao chép để người nghiên cứu kiểm tra lại đường dẫn nguồn."
+      },
+      {
+        "heading": "Tránh khẳng định vượt quá dữ liệu",
+        "body": "Một ô dữ liệu chứng minh rằng bộ quy tắc đã đặt sao tại vị trí cụ thể, không chứng minh sự kiện trong đời sống. Đối với sức khỏe, tài chính, quan hệ và các quyết định quan trọng, không dùng lời giải đoán như kết luận thực chứng."
+      }
+    ],
+    "example": "“Tử Vi ở địa chi X theo rule set Y” là một mô tả dữ liệu có thể kiểm lại. “Vì vậy chắc chắn sẽ thăng chức” là dự báo không được phép suy ra từ riêng dữ liệu ấy.",
+    "pitfalls": [
+      "Không ghi phiên bản quy tắc khi chia sẻ kết quả.",
+      "Đồng nhất vết nguồn an sao với bằng chứng khoa học của một lời dự báo."
+    ],
+    "quiz": [
+      {
+        "question": "Một phiếu luận cứ đáng kiểm tra cần có gì?",
+        "choices": [
+          "Đường dẫn dữ liệu và rule set",
+          "Chỉ một tính từ tốt/xấu"
+        ],
+        "correct": 0,
+        "reason": "Cần biết kết quả bắt nguồn từ dữ liệu nào và bộ quy tắc nào."
+      },
+      {
+        "question": "Dữ liệu an sao có đủ để chứng minh sự kiện đời sống không?",
+        "choices": [
+          "Có",
+          "Không"
+        ],
+        "correct": 1,
+        "reason": "Phép tính vị trí không chứng minh quan hệ nhân quả với sự kiện đời sống."
+      }
+    ],
+    "reference": "packages/astrology-engine/src/palace-research.js; src/traceable-findings.js",
+    "route": "/chart",
+    "sources": []
+  },
+  {
+    "slug": "nhap-mon-bat-tu",
+    "title": "Nhập môn Bát Tự – Tứ Trụ",
+    "lead": "Biết đọc bốn trụ Can Chi, Nhật chủ và giới hạn của phép chuyển tiết khí.",
+    "level": "Mở rộng",
+    "minutes": 14,
+    "sections": [
+      {
+        "heading": "Bốn trụ là bốn cặp Can Chi",
+        "body": "Bát Tự biểu diễn trụ Năm, Tháng, Ngày và Giờ, mỗi trụ gồm một Can và một Chi. Người mới nên học cách tách trụ và nhận diện Nhật chủ (Thiên Can của trụ Ngày) trước khi xét các nhãn Thập thần hay quan hệ hợp xung."
+      },
+      {
+        "heading": "Tiết khí ảnh hưởng trụ tháng và năm",
+        "body": "Bộ tính Bát Tự của Thiên Đồ dùng các mốc tiết khí, trong đó năm Bát Tự xét theo Lập Xuân. Do đó, người sinh sát đầu năm dương lịch hoặc Tết âm không nên đoán trụ năm chỉ từ năm trên giấy tờ."
+      },
+      {
+        "heading": "Ẩn Can và Thập thần",
+        "body": "Các Địa Chi còn được mô tả với nhóm tàng Can/ẩn Can theo quy tắc đang chọn. Những nhãn như Thập thần là quan hệ của các Can với Nhật chủ trong hệ phân loại truyền thống; chúng không phải phép đo lường tính cách theo tâm lý học."
+      },
+      {
+        "heading": "Cách đối chiếu đúng",
+        "body": "Nhập thời điểm sinh, xem bốn trụ và cảnh báo gần điểm chuyển tiết khí. Nếu có sự khác biệt với công cụ khác, kiểm tra múi giờ, định nghĩa ranh ngày Tý, mốc Lập Xuân và phương pháp xác định trụ tháng trước khi so sánh phần diễn giải."
+      }
+    ],
+    "example": "Một ngày sinh gần Lập Xuân có thể rơi vào hai cách gán năm khác nhau nếu một công cụ lấy Tết âm làm mốc và công cụ kia lấy Lập Xuân. Trước tiên so sánh quy ước, không so lời đoán.",
+    "pitfalls": [
+      "Xem năm âm lịch dân sự luôn trùng trụ năm Bát Tự.",
+      "Quên kiểm tra giờ địa phương và điểm chuyển ngày."
+    ],
+    "quiz": [
+      {
+        "question": "Nhật chủ trong Bát Tự là gì?",
+        "choices": [
+          "Thiên Can của trụ Ngày",
+          "Địa Chi của trụ Năm"
+        ],
+        "correct": 0,
+        "reason": "Nhật chủ là Can ngày trong biểu diễn bốn trụ."
+      },
+      {
+        "question": "Mốc năm Bát Tự Thiên Đồ đang sử dụng?",
+        "choices": [
+          "Ngày 1 tháng 1",
+          "Tết âm",
+          "Lập Xuân"
+        ],
+        "correct": 2,
+        "reason": "Bát Tự lấy Lập Xuân làm điểm tham chiếu đổi năm."
+      }
+    ],
+    "reference": "packages/astrology-engine/src/bazi.js — baziCalculate và solar term",
+    "route": "/bazi",
+    "sources": []
+  },
+  {
+    "slug": "mai-hoa-tu-phep-so-den-the-dung",
+    "title": "Mai Hoa: từ phép số đến Thể và Dụng",
+    "lead": "Tự kiểm tra từng số dư, vị trí hào động và chiều quan hệ Thể–Dụng trước khi đọc hình tượng quẻ.",
+    "level": "Cơ bản",
+    "minutes": 18,
+    "route": "/mai-hoa",
+    "sections": [
+      {
+        "heading": "Chốt phương pháp trước kết quả",
+        "body": "Thiên Đồ tách ba profile: lịch âm theo năm chi/tháng/ngày/giờ; hai số giản lược; Hậu Thiên theo vật tượng/phương vị/chi giờ. Bạn cần chọn profile trước khi khởi quẻ và ghi lại đầu vào. Đổi profile sau khi thấy một kết quả không vừa ý sẽ phá tính tái lập của bài đối chiếu, dù phần mềm vẫn tính đúng công thức mới."
+      },
+      {
+        "heading": "Kiểm tra số dư và quái trên dưới",
+        "body": "Số chọn thượng quái và hạ quái chia cho tám, dư không quy về quái số tám. Số chọn hào động chia cho sáu, dư không quy về hào sáu. Đọc ba phép tính riêng, không mặc định tổng dùng cho hạ quái luôn là tổng chọn hào. Với hai số, mỗi số chọn một quái; tổng hai số mới chọn hào động. Hạ quái được ghi bằng ba hào dưới, thượng quái bằng ba hào trên."
+      },
+      {
+        "heading": "Hào động quyết định Thể và Dụng",
+        "body": "Đếm hào từ dưới lên. Hào một đến ba ở hạ quái, hào bốn đến sáu ở thượng quái. Quái chứa hào động là Dụng, quái không chứa hào động là Thể. Đây là vai trò trong phép so sánh, không tự chứng minh Thể chính là người hỏi ngoài đời. Nếu gán Thể/Dụng trước khi xác định hào động, bạn có thể đọc ngược toàn bộ quan hệ ngũ hành."
+      },
+      {
+        "heading": "Đọc quan hệ có chiều",
+        "body": "Quan hệ Thể sinh Dụng khác Dụng sinh Thể; Thể khắc Dụng khác Dụng khắc Thể. Hãy viết nguyên câu có chủ thể thay vì ghi một chữ sinh hoặc khắc. Công cụ giữ quan hệ có chiều và không đổi chúng thành điểm số. Điều muốn kiểm chứng tiếp là cách áp dụng vào đối tượng hỏi, thời điểm và truyền bản, chứ không phải đếm bao nhiêu quan hệ sinh để suy tỷ lệ thành công."
+      }
+    ],
+    "example": "Chọn hai số 3 và 8: thượng Ly, hạ Khôn; tổng 11 chia sáu cho hào động 5. Hào 5 ở thượng quái nên Ly là Dụng, Khôn là Thể. Quẻ chủ có sáu hào từ dưới lên 000101; chỉ đảo hào 5 thành 000111. Hãy tự kiểm lại từng bước rồi mở hồ sơ Mai Hoa để xem căn cứ.",
+    "pitfalls": [
+      "Đếm hào từ trên xuống và chọn nhầm quái chứa hào động.",
+      "Đảo chủ thể sinh/khắc hoặc đổi profile sau khi xem kết quả."
+    ],
+    "quiz": [
+      {
+        "question": "Với hai số 3 và 8, quái nào là Thể theo profile đang dùng?",
+        "choices": [
+          "Ly ở thượng quái",
+          "Khôn ở hạ quái",
+          "Cả hai đều là Thể"
+        ],
+        "correct": 1,
+        "reason": "Tổng 11 lấy hào động 5 ở thượng quái Ly; hạ quái Khôn không chứa hào động nên là Thể."
+      },
+      {
+        "question": "Khi tổng chọn hào chia sáu dư không, dùng hào nào?",
+        "choices": [
+          "Hào 0",
+          "Hào 1",
+          "Hào 6"
+        ],
+        "correct": 2,
+        "reason": "Sáu hào đánh số 1–6; số dư không được quy về hào sáu trong profile này."
+      }
+    ],
+    "reference": "Hồ sơ phương pháp Thiên Đồ và bản chép số tác phẩm cổ; chưa thẩm định ảnh bản in.",
+    "sources": [
+      {
+        "title": "Mai Hoa Dịch Số · quyển I",
+        "url": "https://zh.wikisource.org/wiki/梅花易數/卷一"
+      },
+      {
+        "title": "Mai Hoa Dịch Số · quyển II",
+        "url": "https://zh.wikisource.org/wiki/梅花易數/卷二"
+      }
+    ]
+  },
+  {
+    "slug": "mai-hoa-ho-bien-va-phan-kiem",
+    "title": "Mai Hoa: hỗ, biến và phép phản kiểm",
+    "lead": "Phân biệt dữ kiện của quẻ chủ, hỗ quẻ và quẻ biến; kiểm tra dị bản thay vì đọc các tầng như một dự báo lịch thời gian.",
+    "level": "Trung cấp",
+    "minutes": 20,
+    "route": "/mai-hoa",
+    "sections": [
+      {
+        "heading": "Hỗ quẻ lấy đúng hào ở đâu",
+        "body": "Phép mặc định của công cụ lấy hạ hỗ từ hào 2–3–4 và thượng hỗ từ hào 3–4–5 của quẻ chủ. Các hào ba và bốn xuất hiện ở cả hai quái hỗ vì hai cửa sổ chồng nhau. Hỗ quẻ không được tạo bằng cách tự đảo hào động rồi mới cắt, trừ khi bạn đang xét một dị bản đã khai báo khác. Ghi rõ nguồn của sáu hào được dùng là bước kiểm đầu tiên."
+      },
+      {
+        "heading": "Quẻ biến và bất biến của Thể",
+        "body": "Quẻ biến đảo đúng một hào đã được profile chọn; năm hào còn lại phải giữ nguyên. Vì Thể là quái không chứa hào động nên quái Thể được giữ trong quẻ biến. Bạn có thể so sáu vị trí trước/sau để kiểm bất biến này. Nếu Thể đổi dù chỉ một hào của Dụng được đảo, kết quả hoặc cách gán Thể/Dụng đã không nhất quán và chưa nên diễn giải."
+      },
+      {
+        "heading": "Bốn lớp không phải bốn mốc ngày",
+        "body": "Hồ sơ so Thể với Dụng ban đầu, Hỗ Thể, Hỗ Dụng và quái động sau biến. Các nhãn ban đầu, trung gian và sau biến giúp theo dõi cấu trúc; công cụ chưa xác định chúng xảy ra vào ngày nào, hoặc có chắc xảy ra ngoài đời. Khi hai lớp cho quan hệ khác nhau, giữ sự khác nhau đó trong hồ sơ thay vì chọn một lớp thuận giả thuyết và bỏ các lớp khác."
+      },
+      {
+        "heading": "Quẻ thuần và dị bản cần giữ riêng",
+        "body": "Bản chép Mai Hoa Dịch Số quyển I nêu một cách xử lý Càn/Khôn liên quan hỗ của quẻ biến. Thiên Đồ hiện giữ phép cắt hào 2–5 từ quẻ chủ và hiển thị cảnh báo dị bản ở quẻ thuần. Đây là chỗ cần thẩm định theo truyền bản, không phải lý do âm thầm đổi thuật toán cho vài trường hợp. Muốn áp dụng khác phải có profile, ví dụ đối chiếu và bảng kỳ vọng riêng."
+      }
+    ],
+    "example": "Lập cùng cặp vật tượng/phương vị bằng hai số rồi bằng Hậu Thiên cộng chi giờ. Quẻ chủ có thể giống nhưng hào động khác. Ghi lại quẻ biến, vị trí Thể/Dụng và từng quan hệ. Nếu chúng khác, kết luận đúng là hai profile đã cho hai cấu trúc khác nhau; chưa kết luận profile nào dự đoán đúng.",
+    "pitfalls": [
+      "Gắn nhãn trung gian thành một số ngày cụ thể khi chưa có phép định ứng kỳ.",
+      "Âm thầm gộp dị bản quẻ thuần vào phép hỗ mặc định."
+    ],
+    "quiz": [
+      {
+        "question": "Hạ hỗ của phép mặc định lấy những hào nào trong quẻ chủ?",
+        "choices": [
+          "1–2–3",
+          "2–3–4",
+          "4–5–6"
+        ],
+        "correct": 1,
+        "reason": "Hạ hỗ lấy 2–3–4; thượng hỗ lấy 3–4–5, đều theo quẻ chủ trong profile mặc định."
+      },
+      {
+        "question": "Cùng quẻ chủ nhưng khác hào động có chứng minh cùng Thể/Dụng không?",
+        "choices": [
+          "Có",
+          "Không",
+          "Chỉ khi có hỗ quẻ"
+        ],
+        "correct": 1,
+        "reason": "Vai trò Thể/Dụng phụ thuộc quái chứa hào động nên có thể đổi khi hào động đổi."
+      }
+    ],
+    "reference": "Hồ sơ phương pháp Thiên Đồ và bản chép số tác phẩm cổ; chưa thẩm định ảnh bản in.",
+    "sources": [
+      {
+        "title": "Mai Hoa Dịch Số · quyển I",
+        "url": "https://zh.wikisource.org/wiki/梅花易數/卷一"
+      },
+      {
+        "title": "Mai Hoa Dịch Số · quyển II",
+        "url": "https://zh.wikisource.org/wiki/梅花易數/卷二"
+      }
+    ]
+  },
+  {
+    "slug": "ky-mon-doc-ba-lop-va-nguon",
+    "title": "Kỳ Môn: đọc ba lớp và nguồn của từng dấu",
+    "lead": "Phân biệt địa bàn, thời bàn và lớp đối chiếu; đọc đúng cung, chiều quan hệ và quy ước ký trước khi ghép các dấu.",
+    "level": "Cơ bản",
+    "minutes": 18,
+    "route": "/ky-mon",
+    "sections": [
+      {
+        "heading": "Khởi cục và thời bàn là hai việc",
+        "body": "Địa bàn Tam Kỳ–Lục Nghi được dựng theo tiết khí, Tam nguyên và Âm/Dương độn. Khi có giờ hợp lệ, Chuyển Bàn mới đặt Thiên Can, sao, môn và thần theo quy ước hiện có. Nếu bỏ giờ, bạn không được dùng sao/môn bản vị để thay các lớp thời bàn. Chọn cung và đọc tên lớp ngay cạnh biểu tượng giúp tránh lỗi lấy đúng ký hiệu từ nhầm một tầng dữ liệu."
+      },
+      {
+        "heading": "Trung cung và ký cung không được giấu",
+        "body": "Trung 5 giữ Địa Can nhưng không biểu diễn Thiên Can, Môn hoặc Thần riêng trong bộ dựng này. Thiên Cầm ký cùng Thiên Nhuế ở cung ký được hiển thị rõ. Một Can ở Trung 5 chưa được biểu diễn ký trên Thiên bàn phải ghi chưa biểu diễn, không phải không có dấu. Điều chưa tính, quy ước riêng và điều kiện không khớp là ba trạng thái khác nhau."
+      },
+      {
+        "heading": "Môn Bách và Nhập Mộ theo bảng riêng",
+        "body": "Môn Bách được nhận diện theo chiều Môn khắc cung đã chọn. Cung khắc Môn là chiều khác và không được đổi tên thành cùng một dấu. Tam Kỳ Nhập Mộ dùng bảng Diễn Nghĩa Ất ở 2, Bính ở 6, Đinh ở 8; Bảo Giám có dị bản Đinh ở 6. Giữ nguồn của từng bảng ngay trong hồ sơ giúp thấy quy ước nào đang áp dụng và điều gì chưa được ghép."
+      },
+      {
+        "heading": "Dụng thần phải do người nghiên cứu xác nhận",
+        "body": "Chủ đề câu hỏi không tự chọn một biểu tượng Dụng thần. Bạn chọn Môn, Can, Sao hoặc Thần phù hợp phương pháp rồi xác nhận. Hồ sơ định vị biểu tượng trên thời bàn, ghi cung tham chiếu nếu bạn đã biết căn cứ và đối cung hình học. Đổi giờ, chủ đề, câu hỏi hoặc lựa chọn làm mất xác nhận; quay lại giá trị cũ không được tự khôi phục hiệu lực của xác nhận trước."
+      }
+    ],
+    "example": "Nhập một thời bàn đã đối chiếu, chọn một Môn làm Dụng thần và mở cung ứng. Ghi bốn việc: Môn đang ở lớp nào; Môn sinh hay khắc cung theo chiều nào; Can nào đang ở Thiên bàn; có Can bị chưa biểu diễn ở Trung 5 không. Sau đó tắt giờ: các lớp thời bàn phải chuyển về chưa tính.",
+    "pitfalls": [
+      "Lấy sao/môn bản vị thay cho biểu tượng đã chuyển theo giờ.",
+      "Ghi chưa biểu diễn thành không có dấu hoặc trộn bảng Đinh 6/8."
+    ],
+    "quiz": [
+      {
+        "question": "Khi thiếu giờ, có được dùng Môn bản vị thay Môn thời bàn không?",
+        "choices": [
+          "Có",
+          "Không",
+          "Chỉ tại cung 1"
+        ],
+        "correct": 1,
+        "reason": "Thiếu giờ không có lớp Môn thời bàn; dùng bản vị thay thế sẽ tạo chứng cứ từ sai tầng dữ liệu."
+      },
+      {
+        "question": "Trong bảng đang chọn, Đinh Nhập Mộ quy chiếu cung nào?",
+        "choices": [
+          "Cấn 8",
+          "Càn 6",
+          "Cả 6 và 8 đồng thời"
+        ],
+        "correct": 0,
+        "reason": "Công cụ dùng Đinh tại Cấn 8 theo bảng Diễn Nghĩa, ghi Đinh 6 là dị bản Bảo Giám chưa áp dụng cho dấu này."
+      }
+    ],
+    "reference": "Hồ sơ phương pháp Thiên Đồ và bản chép số tác phẩm cổ; chưa thẩm định ảnh bản in.",
+    "sources": [
+      {
+        "title": "Độn Giáp Diễn Nghĩa · bản chép 2082234",
+        "url": "https://zh.wikisource.org/w/index.php?title=遁甲演義&oldid=2082234"
+      },
+      {
+        "title": "Bảo Giám Ngự Định · bản chép 2353651",
+        "url": "https://zh.wikisource.org/w/index.php?title=奇门宝鉴御定&oldid=2353651"
+      }
+    ]
+  },
+  {
+    "slug": "ky-mon-nguyet-khi-khong-cong-diem",
+    "title": "Kỳ Môn: nguyệt khí và đối chiếu nhiều lớp",
+    "lead": "Đọc vượng suy của đúng biểu tượng, phân biệt hai bảng khí và giữ các dấu cấu trúc độc lập trong hồ sơ câu hỏi.",
+    "level": "Trung cấp",
+    "minutes": 22,
+    "route": "/ky-mon",
+    "sections": [
+      {
+        "heading": "Nguyệt lệnh khác hành của cung",
+        "body": "Nguyệt lệnh trong công cụ là Chi tháng tiết khí quy từ tiết khí của bàn. Nó không phải tháng âm lịch, tháng dương lịch hoặc ngũ hành cung đang chọn. Lấy hành Môn, Can hoặc Sao so với hành tháng; hành cung chỉ dùng khi đang xét quan hệ cung. Giữ ba danh tính riêng: biểu tượng, cung chứa biểu tượng và tháng; cùng một Môn ở cung khác vẫn có cùng hành Môn."
+      },
+      {
+        "heading": "Vì sao Cửu Tinh dùng bảng khác",
+        "body": "Cửu Tinh dùng bảng Bảo Giám: sao sinh tháng là Vượng, đồng hành là Tướng, sao khắc tháng là Hưu, tháng khắc sao là Tù và tháng sinh sao là Phế. Môn/Can dùng bảng ngũ hành thông thường theo quyết định nghiên cứu. Vì vậy cùng một hành Mộc trong tháng Mộc có thể được ghi Vượng cho Môn/Can nhưng Tướng cho sao. Khác tên ở đây chưa phải lỗi dữ liệu."
+      },
+      {
+        "heading": "Đặt dấu cạnh nhau để kiểm tra",
+        "body": "Hồ sơ theo Dụng thần đặt nguyệt khí cạnh Môn Bách, Nhập Mộ và cặp Thiên/Địa Can ở cung ứng, cung tham chiếu và đối cung. Không để một nhãn Vượng che mất dấu cấu trúc hoặc thiếu dữ kiện lịch pháp. Các lớp không có cùng ý nghĩa và không được cộng thành số điểm. Hai nhóm thuận/nghịch của quan hệ cung không trở thành kết luận kết quả chỉ vì thêm một trạng thái nguyệt khí."
+      },
+      {
+        "heading": "Giữ giới hạn của tháng và truyền bản",
+        "body": "Thìn/Tuất/Sửu/Mùi hiện được xét hành Thổ toàn tháng chi. Phân nhật tư lệnh hoặc Thổ 18 ngày cuối mùa chưa được triển khai. Bát Thần chưa có bảng vượng suy được dùng trong hồ sơ này. Khi Dụng thần thuộc Bát Thần, hệ thống phải giữ trạng thái ngoài phạm vi thay vì lấy khí của Môn hoặc Sao cùng cung để lấp chỗ trống. Mốc giao tiết vẫn cần xác minh riêng."
+      }
+    ],
+    "example": "Ở tháng Dần hành Mộc, chọn một Môn hành Mộc và một sao hành Mộc trên cùng bàn. Hồ sơ Môn ghi Vượng, hồ sơ sao ghi Tướng theo hai bảng riêng. Sau đó chọn Bát Thần: phần nguyệt khí phải báo ngoài phạm vi. Bài kiểm này xác nhận dùng đúng bảng theo lớp, chưa chứng minh kết quả câu hỏi tốt hoặc xấu.",
+    "pitfalls": [
+      "Lấy khí của Môn/Sao cùng cung thay cho Bát Thần chưa có bảng.",
+      "Cộng số dấu hoặc gán Tử/Phế thành dự báo tử vong, vận hạn."
+    ],
+    "quiz": [
+      {
+        "question": "Hành Mộc trong tháng Mộc được ghi thế nào cho sao theo Bảo Giám?",
+        "choices": [
+          "Vượng",
+          "Tướng",
+          "Phế"
+        ],
+        "correct": 1,
+        "reason": "Trong bảng Cửu Tinh Bảo Giám đang chọn, đồng hành với tháng là Tướng; bảng ngũ hành Môn/Can dùng nhãn khác."
+      },
+      {
+        "question": "Nếu Dụng thần là Bát Thần, nguyệt khí hiện được xử lý thế nào?",
+        "choices": [
+          "Mượn khí của Môn",
+          "Tự cho trạng thái Vượng",
+          "Báo ngoài phạm vi"
+        ],
+        "correct": 2,
+        "reason": "Chưa có bảng nguyệt khí Bát Thần được triển khai; không được mượn khí của một lớp khác để lấp dữ kiện."
+      }
+    ],
+    "reference": "Hồ sơ phương pháp Thiên Đồ và bản chép số tác phẩm cổ; chưa thẩm định ảnh bản in.",
+    "sources": [
+      {
+        "title": "Độn Giáp Diễn Nghĩa · bản chép 2082234",
+        "url": "https://zh.wikisource.org/w/index.php?title=遁甲演義&oldid=2082234"
+      },
+      {
+        "title": "Bảo Giám Ngự Định · bản chép 2353651",
+        "url": "https://zh.wikisource.org/w/index.php?title=奇门宝鉴御定&oldid=2353651"
+      }
+    ]
+  },
+  {
+    "slug": "luc-hao-tu-luc-than-den-ung-vien",
+    "title": "Lục Hào: từ Lục Thân đến các ứng viên",
+    "lead": "Chọn đúng phạm vi đề tài, xác nhận Lục Thân và giữ đủ hào hiện/Phục Thần trước khi nghiên cứu Dụng Thần.",
+    "level": "Cơ bản",
+    "minutes": 20,
+    "route": "/luc-hao",
+    "sections": [
+      {
+        "heading": "Phạm vi hẹp giúp tránh chọn bừa",
+        "body": "Hồ sơ dùng năm đề tài có đối tượng rõ: tài sản người hỏi, giấy tờ, chức vụ, con cháu và anh chị em đồng bối. Mỗi đề tài chỉ gợi một họ Lục Thân để bạn xác nhận, không chọn một hào Dụng Thần. Một câu hỏi rộng về công việc có thể bao gồm chức vụ, hợp đồng hoặc tiền; không được tự ép mọi câu hỏi ấy vào một danh mục duy nhất."
+      },
+      {
+        "heading": "Ứng viên hiện được giữ đầy đủ",
+        "body": "Các hào hiện cùng Lục Thân được lấy từ bảng Nạp Giáp của quẻ chủ. Nếu có nhiều hào, giữ từng vị trí, Nạp Giáp, động/tĩnh và các dấu lịch pháp riêng. Hào động không tự thắng hào tĩnh trong mọi trường hợp. Hệ thống không xóa ứng viên kém thuận với giả thuyết, không tự xếp hạng hoặc âm thầm chọn một hào để trả kết quả."
+      },
+      {
+        "heading": "Phục Thần là phép tra có nguồn",
+        "body": "Khi Lục Thân đang khảo sát không hiển lộ, phép hiện có tra quẻ thuần của bản cung và lấy hào cùng vị trí. Nếu có nhiều hào phù hợp trong quẻ thuần, giữ đủ ứng viên. Phi Thần là hào hiện tại cùng vị trí trên quẻ chủ. Các quan hệ Phi sinh Phục hoặc Phục khắc Phi được ghi theo đúng chiều; có Phục Thần tham chiếu không chứng minh đã xuất phục."
+      },
+      {
+        "heading": "Xác nhận thuộc trạng thái hiện tại",
+        "body": "Hồ sơ chỉ mở khi bạn xác nhận đúng Lục Thân cho quẻ, lịch pháp và phạm vi hiện tại. Đổi một hào, nguồn lịch, ngày/tháng hoặc đề tài phải xác nhận lại. Nhập lại giá trị trước cũng không được khôi phục xác nhận cũ. Xuất hồ sơ là thao tác chủ động, giữ căn cứ và điều chưa rõ thay vì tạo một kết luận đã hoàn tất."
+      }
+    ],
+    "example": "Mở quẻ sáu hào, chọn phạm vi giấy tờ và xác nhận Phụ Mẫu. Ghi lại toàn bộ ứng viên. Nếu không hiển lộ, kiểm tra bản cung/quẻ thuần và Phi Thần cùng vị trí. Đổi một hào từ 7 thành 9 rồi quay lại 7: xác nhận trước phải mất hiệu lực để bạn thẩm định lại hồ sơ hiện tại.",
+    "pitfalls": [
+      "Ánh xạ câu hỏi phức hợp vào một Lục Thân mà không làm rõ đối tượng.",
+      "Gọi Phục Thần là hào động vì Phi Thần ở cùng vị trí đang động."
+    ],
+    "quiz": [
+      {
+        "question": "Khi có nhiều hào cùng Lục Thân, công cụ làm gì?",
+        "choices": [
+          "Giữ đủ ứng viên",
+          "Chọn hào động đầu tiên",
+          "Xóa các hào tĩnh"
+        ],
+        "correct": 0,
+        "reason": "Hồ sơ giữ đủ các ứng viên và tín hiệu riêng; chọn duy nhất Dụng Thần cần phương pháp phân xử thêm."
+      },
+      {
+        "question": "Phục Thần tham chiếu hiện được lấy ở đâu khi Lục Thân vắng?",
+        "choices": [
+          "Quẻ biến ngẫu nhiên",
+          "Hào cùng vị trí trong quẻ thuần bản cung",
+          "Hào cao nhất của quẻ chủ"
+        ],
+        "correct": 1,
+        "reason": "Phép tra hiện có lấy hào tương ứng trong quẻ thuần bản cung, không tự tạo hoặc đổi vị trí theo ý muốn."
+      }
+    ],
+    "reference": "Hồ sơ phương pháp Thiên Đồ và bản chép số tác phẩm cổ; chưa thẩm định ảnh bản in.",
+    "sources": [
+      {
+        "title": "Bốc Phệ Chính Tông · phân loại Dụng thần",
+        "url": "https://www.quanxue.cn/qt_mingxiang/boshi/boshi26.html"
+      },
+      {
+        "title": "Tăng San Bốc Dịch · Lưỡng Hiện",
+        "url": "https://www.shidianguji.com/book/XYXZSBY/chapter/1lzxsny7db6rt"
+      }
+    ]
+  },
+  {
+    "slug": "luc-hao-nhat-nguyet-da-hien",
+    "title": "Lục Hào: Nhật–Nguyệt, đa hiện và phản chứng",
+    "lead": "Tách thiếu lịch khỏi không có dấu; phân biệt Nhật xung, Nguyệt Phá và Tuần Không trước khi nghiên cứu mạnh yếu hoặc ứng kỳ.",
+    "level": "Trung cấp",
+    "minutes": 22,
+    "route": "/luc-hao",
+    "sections": [
+      {
+        "heading": "Thiếu dữ kiện không phải không có dấu",
+        "body": "Không có lịch pháp thì các cột Tuần Không, Nhật xung và Nguyệt Phá phải ghi chưa có dữ kiện. Một dấu không được tính chưa thể coi là vắng. Với lịch trưa dân dụng gần đúng, Nhật có thể được đối chiếu theo quy ước hiện có nhưng Nguyệt Kiến chưa được nâng thành tháng nhập tiết đã nghiệm chuẩn; hồ sơ không lấy tháng gần đúng để khẳng định Nguyệt Phá."
+      },
+      {
+        "heading": "Ba phép đối chiếu phải giữ riêng",
+        "body": "Tuần Không lấy từ Can Chi ngày thuộc vòng lục thập. Nhật xung xét quan hệ lục xung với Nhật Chi. Nguyệt Phá trong hồ sơ là lục xung với Nguyệt Kiến đã cung cấp đủ điều kiện. Nhật xung không tự chứng minh Nhật Phá hoặc Ám động; tên gọi ấy còn cần xét động/tĩnh, mạnh yếu và truyền bản. Một nhãn phá cũng không đồng nghĩa ứng viên hoàn toàn vô dụng."
+      },
+      {
+        "heading": "Đa hiện và điều kiện khác nhau",
+        "body": "Sổ đa hiện so từng cặp ứng viên ở bốn dấu: động/tĩnh, Tuần Không, Nguyệt Phá và Nhật xung. Khác tín hiệu là điểm phải phân xử, không phải một bảng xếp hạng. Nếu không khác ở bốn dấu đang xét, cũng chưa kết luận hai hào tương đương trong mọi tầng. Hãy giữ vai trò Thế/Ứng, Phi/Phục, câu hỏi và những điều chưa được tổng hợp trong hồ sơ của bạn."
+      },
+      {
+        "heading": "Mốc UTC và vùng giao tiết",
+        "body": "Mốc UTC tùy chọn dùng để đối chiếu tháng đã nhập với bảng Jie 2025–2027. Bảng được ghi là tham chiếu thứ cấp tới phút, chặn vùng cộng trừ 60 giây quanh giao tiết. Ngoài phạm vi hoặc mâu thuẫn tháng thì hồ sơ phải dừng. Khớp bảng chỉ xác nhận nhất quán giữa dữ liệu được dùng, không chứng minh bảng đã đối chiếu từng mốc với ephemeris gốc."
+      }
+    ],
+    "example": "Đầu tiên mở hồ sơ khi chưa chọn ngày: các dấu lịch phải ghi chưa có dữ kiện. Sau đó nhập Giáp Tý và một Nguyệt Kiến đã đối chiếu, ghi lại những dấu thật được tính. Thử Giáp Mão: cặp Can–Chi này không thuộc vòng lục thập và phải bị chặn. Nếu dùng mốc UTC, cố tình nhập tháng không khớp bảng để kiểm rằng hệ thống dừng hồ sơ.",
+    "pitfalls": [
+      "Đồng nhất Nhật xung với Nhật Phá/Ám động khi chưa có phân xử.",
+      "Dùng tháng gần đúng hoặc cặp Can–Chi không hợp lệ làm căn cứ lịch pháp."
+    ],
+    "quiz": [
+      {
+        "question": "Khi chưa có Can Chi ngày, cột Tuần Không nên hiện gì?",
+        "choices": [
+          "Không có dấu",
+          "Có dấu",
+          "Chưa có dữ kiện"
+        ],
+        "correct": 2,
+        "reason": "Chưa tính vì thiếu ngày phải giữ là chưa có dữ kiện; không được biến trạng thái chưa biết thành không có dấu."
+      },
+      {
+        "question": "Nhật xung có tự chứng minh Nhật Phá hay Ám động không?",
+        "choices": [
+          "Có",
+          "Không",
+          "Chỉ khi hào ở trên cùng"
+        ],
+        "correct": 1,
+        "reason": "Nhật Phá và Ám động cần thêm tình trạng hào, mạnh yếu và quy tắc trường phái; riêng lục xung chưa đủ."
+      }
+    ],
+    "reference": "Hồ sơ phương pháp Thiên Đồ và bản chép số tác phẩm cổ; chưa thẩm định ảnh bản in.",
+    "sources": [
+      {
+        "title": "Bốc Phệ Chính Tông · phân loại Dụng thần",
+        "url": "https://www.quanxue.cn/qt_mingxiang/boshi/boshi26.html"
+      },
+      {
+        "title": "Tăng San Bốc Dịch · Lưỡng Hiện",
+        "url": "https://www.shidianguji.com/book/XYXZSBY/chapter/1lzxsny7db6rt"
+      }
+    ]
+  }
+]

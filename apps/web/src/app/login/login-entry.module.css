@@ -1,0 +1,105 @@
+/* V11.164.17 — a complete, calm entry surface when the account dialog is
+   closed. Account fields, session flow and password handling are unchanged. */
+.landing {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: min(940px, 100%);
+  max-width: 940px;
+  min-width: 0;
+  min-height: clamp(380px, 57vh, 560px);
+  margin: clamp(16px, 4vw, 54px) auto;
+  padding: clamp(30px, 6vw, 76px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border: 1px solid var(--td-card-edge, var(--line-strong));
+  border-radius: var(--td-radius-dialog, 24px);
+  background:
+    radial-gradient(ellipse at 94% 13%, rgba(192, 162, 100, .19), transparent 43%),
+    linear-gradient(125deg, var(--panel) 0%, var(--panel-alt) 100%);
+  box-shadow: var(--td-card-elevation, var(--shadow));
+}
+.landing::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: clamp(280px, 41vw, 465px);
+  aspect-ratio: 1;
+  top: 50%;
+  right: clamp(-245px, -10vw, -60px);
+  transform: translateY(-50%) rotate(-15deg);
+  border: 1px solid color-mix(in srgb, var(--gold) 36%, transparent);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 38px color-mix(in srgb, var(--gold) 5%, transparent),
+    0 0 0 78px color-mix(in srgb, var(--gold) 4%, transparent),
+    inset 0 0 0 46px color-mix(in srgb, var(--gold) 5%, transparent),
+    inset 0 0 0 47px color-mix(in srgb, var(--gold) 23%, transparent),
+    inset 0 0 0 100px color-mix(in srgb, var(--gold) 2%, transparent),
+    inset 0 0 0 101px color-mix(in srgb, var(--gold) 22%, transparent);
+  opacity: .76;
+}
+.landing::after {
+  content: '天';
+  position: absolute;
+  z-index: -1;
+  right: clamp(20px, 10vw, 124px);
+  top: 50%;
+  transform: translateY(-50%);
+  color: color-mix(in srgb, var(--gold) 35%, transparent);
+  font: normal clamp(70px, 10vw, 130px)/1 var(--font-han);
+  pointer-events: none;
+}
+.landing > :is(h1,p,div) { position: relative; z-index: 1; }
+.landing h1 { max-width: 16ch; font-size: clamp(34px, 4vw, 55px); margin: 12px 0 18px; }
+.landing > p { max-width: 420px; color: var(--muted); font-size: 14px; line-height: 1.85; overflow-wrap: break-word; }
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 23px 0 22px;
+}
+.actions > button { min-height: 44px; max-width: 100%; }
+.recovery {
+  color: var(--gold);
+  background: transparent;
+  border: 0;
+  border-radius: var(--td-radius-control, 13px);
+  padding: 12px;
+  font: 600 13px/1.5 var(--font-ui);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.recovery:hover { color: var(--text); }
+.recovery:disabled { opacity: .55; cursor: not-allowed; }
+.links { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; font-size: 12px !important; }
+.links a { color: var(--muted); text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 4px; }
+.links a:hover { color: var(--text); text-decoration-color: var(--gold); }
+:global(.site.light) .landing {
+  background:
+    radial-gradient(ellipse at 90% 15%, rgba(151, 122, 75, .14), transparent 43%),
+    linear-gradient(126deg, #fffaf0, var(--panel-alt));
+}
+@media (max-width: 720px) {
+  .landing { min-height: 0; padding: clamp(26px, 6vw, 46px); margin: 16px auto; }
+  .landing::before { opacity: .35; right: -235px; }
+  .landing::after { opacity: .5; right: 18px; }
+}
+@media (max-width: 420px) {
+  .landing { border-radius: 16px; padding: 27px 21px; }
+  .landing h1 { font-size: clamp(30px, 9vw, 40px); }
+  .landing::before { right: -265px; }
+  .landing::after { right: -3px; opacity: .25; }
+  .actions { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; }
+  .actions > button { width: 100%; }
+  .links { font-size: 11px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing :is(button,a) { transition: none !important; }
+}

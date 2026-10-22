@@ -1,0 +1,6 @@
+'use client';
+import {useEffect,useState} from 'react';
+import {PremiumGate} from '@/features/community-hub/premium';
+import {api} from '@/lib/api';
+export default function Advanced(){return <PremiumGate path="/research/advanced"><Content/></PremiumGate>;}
+function Content(){const [chapters,setChapters]=useState<{title:string;body:string}[]>([]),[error,setError]=useState(''),[retry,setRetry]=useState(0);useEffect(()=>{const c=new AbortController();api<{chapters:{title:string;body:string}[]}>('/api/community/advanced-research',{signal:c.signal,timeoutMs:15000}).then(r=>{if(!c.signal.aborted)setChapters(r.chapters)}).catch(e=>{if(!c.signal.aborted)setError(e.message)});return()=>c.abort()},[retry]);return <div className="hub-page"><header className="hub-hero"><span>PRO · PHƯƠNG PHÁP</span><h1>Xưởng nghiên cứu chuyên sâu</h1><p>Quy trình đặt câu hỏi, phân tích độ nhạy và lưu hồ sơ có căn cứ. Áp dụng cùng công cụ và dữ liệu hiện có.</p></header>{error&&<div role="alert"><p>{error}</p><button onClick={()=>setRetry(x=>x+1)}>Tải lại nội dung</button></div>}{!chapters.length&&!error&&<p role="status">Đang tải nội dung được cấp quyền…</p>}{chapters.map((c,i)=><article className="hub-panel" key={c.title}><h2>{i+1}. {c.title}</h2><p>{c.body}</p></article>)}</div>;}

@@ -1,0 +1,33 @@
+/* THIÊN ĐỒ V9.5 | BaZi, fluid Neo-Oriental Luxury */
+.bz-page{max-width:1380px;margin:0 auto}.bz-layout{display:grid;grid-template-columns:minmax(280px,360px) minmax(0,1fr);gap:20px;align-items:start}.bz-card{border:1px solid var(--line-strong);border-radius:18px;background:linear-gradient(135deg,var(--panel),var(--panel-alt));box-shadow:var(--shadow);padding:28px}.bz-input h2,.bz-head h2{font-size:29px;color:var(--paper);margin:12px 0 23px}.bz-input label{font-size:12px;color:var(--muted);display:block;margin:15px 0 8px}.bz-input input,.bz-input select{width:100%;height:46px;padding:10px 12px;color:var(--text);background:var(--body);border:1px solid var(--line-strong);border-radius:10px;color-scheme:dark}.bz-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.bz-hint{color:var(--muted);font-size:12px;line-height:1.6;margin:15px 0}.bz-action{display:flex;justify-content:space-between;width:100%;background:var(--gold);border:1px solid var(--gold);border-radius:10px;color:#14221b;padding:13px 15px;font-weight:700}.bz-action:hover{filter:brightness(1.08)}.bz-error{color:#ffbaa5;font-size:12px}.bz-head{margin-bottom:20px}.bz-pillars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.bz-pillar{text-align:center;border:1px solid var(--line-strong);border-radius:13px;min-width:0;background:var(--body);padding:18px 8px}.bz-day{border-color:var(--gold);box-shadow:inset 0 0 0 1px rgba(197,161,106,.22)}.bz-pillar-label{font-size:11px;color:var(--muted);min-height:32px}.bz-stem{font-family:var(--font-display);font-size:clamp(28px,3vw,44px);color:var(--gold);margin:9px 0}.bz-branch{font-family:var(--font-display);font-size:clamp(24px,2.7vw,40px);color:var(--text);margin:9px 0}.bz-element{font-size:11px;color:var(--muted);padding-top:8px;border-top:1px solid var(--line)}.bz-master{font-size:13px;color:var(--muted);margin:20px 0 0}.bz-master strong{color:var(--gold)}.bz-details h3{font-size:15px;color:var(--paper);margin:0 0 16px}.bz-element-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.bz-element-grid div{border:1px solid var(--line);border-radius:12px;padding:13px 5px;display:flex;flex-direction:column;text-align:center;gap:7px}.bz-element-grid b{color:var(--gold);font-size:23px;font-family:var(--font-display);font-weight:400}.bz-element-grid span{color:var(--muted);font-size:12px}.bz-details h3:not(:first-child){margin-top:25px}.bz-details ul{padding-left:19px}.bz-details li{color:var(--muted);line-height:1.7;font-size:12px;margin:10px 0}.bz-rule{font-size:11px;color:var(--muted);line-height:1.8;overflow-wrap:anywhere;border-top:1px solid var(--line);padding-top:14px}.bz-footer{font-size:12px;max-width:950px;color:var(--muted);line-height:1.8;margin:24px 0}@media(max-width:1050px){.bz-layout{grid-template-columns:1fr}.bz-result{min-width:0}}@media(max-width:580px){.bz-card{padding:17px}.bz-pillars{gap:6px}.bz-pillar{padding:11px 4px}.bz-pillar-label{font-size:10px}.bz-stem{font-size:27px}.bz-branch{font-size:24px}.bz-element{font-size:10px}.bz-element-grid{gap:5px}.bz-element-grid div{padding:11px 2px}.bz-element-grid span{font-size:10px}}@media(max-width:360px){.bz-pillars{grid-template-columns:repeat(2,1fr)}.bz-stem{font-size:35px}.bz-branch{font-size:32px}}
+
+/* V9.6: hidden stems and Ten Gods, responsive across four-pillar grid. */
+.bz-god{font-size:12px;color:var(--gold);margin:9px 0 13px;font-weight:600;min-height:20px}
+.bz-hidden-label{font-size:10px;letter-spacing:.13em;color:var(--muted);padding-top:13px;border-top:1px solid var(--line)}
+.bz-hidden-stems{display:flex;justify-content:center;flex-wrap:wrap;gap:5px;margin-top:8px;min-height:57px}
+.bz-hidden-item{display:flex;flex-direction:column;align-items:center;min-width:0;max-width:100%;border:1px solid var(--line);border-radius:8px;background:var(--panel-alt);padding:5px 7px;gap:3px}
+.bz-hidden-item span{font-size:16px;font-family:var(--font-display);color:var(--text)}
+.bz-hidden-item small{font-size:10px;color:var(--muted);white-space:normal;overflow-wrap:anywhere;line-height:1.3}
+@media(max-width:700px){.bz-hidden-stems{flex-direction:column;align-items:stretch}.bz-hidden-item{flex-direction:row;justify-content:center;flex-wrap:wrap}}
+@media(max-width:360px){.bz-hidden-stems{flex-direction:row}}
+
+/* V9.7: symbolic contacts; no automatic strength/fortune ranking */
+.bz-relations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.bz-relation-group{border:1px solid var(--line);border-radius:12px;padding:15px;min-width:0;background:var(--body)}
+.bz-relation-group h4{font-size:13px;margin:0 0 9px;color:var(--gold)}
+.bz-relation-group h4 span{font-weight:400;color:var(--muted)}
+.bz-relation-group p,.bz-relation-group li{font-size:12px;line-height:1.6;color:var(--muted);overflow-wrap:anywhere}
+.bz-relation-group p{margin:0}.bz-relation-group ul{margin:0;padding-left:16px}.bz-relation-group li{margin:5px 0}
+.bz-relation-group b{color:var(--text)}
+@media(max-width:650px){.bz-relations{grid-template-columns:1fr}}
+
+/* V9.8 Đại Vận: calm horizontal rhythm, compact on narrow screens */
+.bz-luck-summary{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:15px}
+.bz-luck-summary span{padding:10px 13px;background:var(--body);border:1px solid var(--line);border-radius:12px;font-size:12px;color:var(--muted);line-height:1.6}
+.bz-luck-summary strong{color:var(--gold)}
+.bz-luck-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.bz-luck-item{min-width:0;background:var(--body);border:1px solid var(--line-strong);border-radius:12px;padding:14px 9px;display:flex;align-items:center;text-align:center;flex-direction:column;gap:7px}
+.bz-luck-item small{font-size:10px;letter-spacing:.1em;color:var(--muted)}
+.bz-luck-item strong{font-family:var(--font-display);font-size:22px;color:var(--gold)}
+.bz-luck-item span{font-size:11px;color:var(--muted);overflow-wrap:anywhere}
+@media(max-width:630px){.bz-luck-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

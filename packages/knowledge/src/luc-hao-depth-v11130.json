@@ -1,0 +1,52 @@
+{
+  "version": "11.130",
+  "method": "luc-hao-jingfang-evidence-v1",
+  "sources": [
+    {
+      "id": "roles",
+      "title": "Tăng San Bốc Dịch · chương 9",
+      "url": "https://zh.wikisource.org/w/index.php?title=增刪卜易/9&oldid=2100299",
+      "scope": "Định nghĩa Dụng/Nguyên/Kỵ và fixture Càn → Tiểu Súc, chỉ kiểm cấu trúc."
+    },
+    {
+      "id": "conditions",
+      "title": "Tăng San Bốc Dịch · chương 10",
+      "url": "https://zh.wikisource.org/w/index.php?title=增刪卜易/10&oldid=2100301",
+      "scope": "Sinh/khắc tiềm năng không đồng nhất với có lực; động, hợp, Nhật–Nguyệt và các điều kiện khác cần xét riêng."
+    },
+    {
+      "id": "spirits",
+      "title": "Tăng San Bốc Dịch · chương 18",
+      "url": "https://zh.wikisource.org/w/index.php?title=增刪卜易/18&oldid=2101727",
+      "scope": "Thứ tự Lục Thú theo Nhật can; không dùng riêng Lục Thú để phán kết quả."
+    },
+    {
+      "id": "hidden",
+      "title": "Hồ sơ Phục thần Kinh Phòng V11.97",
+      "url": "https://ctext.org/wiki.pl?chapter=157683&if=en",
+      "scope": "Nguồn đã ghi trong module nền; truy cập lại ngày 2026-10-14 bị 403, không gắn nhãn đã đối chiếu mới."
+    }
+  ],
+  "roles": {
+    "selected": "Dụng do người dùng chọn theo câu hỏi và ghi lý do. Nếu có nhiều hào cùng Lục Thân, giữ toàn bộ để đối chiếu.",
+    "generator": "Nguyên thần: hành của hào sinh hành Dụng. Đây là vai trò ngũ hành tiềm năng, cần xét động/tĩnh, hồi đầu, hợp, Tuần Không và Nhật–Nguyệt trước khi bàn có lực.",
+    "controller": "Kỵ thần: hành của hào khắc hành Dụng. Quan hệ khắc chưa đủ để kết luận hào đó gây hại trong bối cảnh thực tế.",
+    "same": "Hào cùng hành với Dụng là tỷ hòa về hành; không tự trở thành Dụng đã chọn.",
+    "outward": "Dụng sinh hoặc khắc hào đối chiếu là chiều đi ra; không được đảo thành Nguyên/Kỵ."
+  },
+  "spirits": {
+    "Thanh Long": "Khảo sát sự thuận hòa, phát triển và trợ lực đã quan sát.",
+    "Chu Tước": "Khảo sát giao tiếp, lời nói và thông tin cần kiểm chứng.",
+    "Câu Trần": "Khảo sát việc tồn đọng, nền tảng và quy trình cần làm rõ.",
+    "Đằng Xà": "Khảo sát điều chưa rõ và giả định cần phản kiểm.",
+    "Bạch Hổ": "Khảo sát áp lực, va chạm và giới hạn cần đối chiếu.",
+    "Huyền Vũ": "Khảo sát thông tin kín hoặc thiếu dữ liệu; không suy gian dối từ nhãn."
+  },
+  "limits": [
+    "Vai trò Nguyên/Kỵ là tiềm năng ngũ hành, chưa kết luận có lực hoặc vô lực.",
+    "Phục thần chỉ tra Lục Thân vắng trên quẻ chủ, cùng vị trí ở quẻ thuần bản cung; không tự phán xuất phục.",
+    "Hào hóa giữ hành bản cung quẻ chủ để tính Lục Thân; hào tĩnh không được gắn hóa tại vị trí đó.",
+    "Nguyệt kiến dân dụng là gợi ý gần đúng, chưa cấp nhãn Nguyệt xác minh trong profile này.",
+    "Chưa xét tổng hợp vượng suy, mộ tuyệt, tiến thoái, ám động, hóa tán, tam hợp/hình/hại hoặc ứng kỳ."
+  ]
+}

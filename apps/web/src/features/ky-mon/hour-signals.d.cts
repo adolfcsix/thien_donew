@@ -1,0 +1,11 @@
+import type {BaseFormation} from './formation.cjs';
+import type {RotatingHourPlate} from './hour-plate.cjs';
+export type HorseEvidence={basisBranch:string;group:string;horseBranch:string;palaceNumber:number;direction:string;rule:string;kind:'positional-reference'};
+export type StrikingEvidence={xun:string;instrument:string;palace:number;relation:string;heavenStem:string;kind:'positional-match';conclusion:string};
+export type PalaceSignals={palaceNumber:number;hourHorse:boolean;dayHorse:boolean;strikingInstruments:readonly string[]};
+export type QimenSignals={method:string;status:'research-only';hourName:string;dayName:string;hourHorse:HorseEvidence;dayHorse:HorseEvidence;horseBasis:'hour';striking:readonly StrikingEvidence[];byPalace:Readonly<Record<number,PalaceSignals>>;limits:readonly string[]};
+export declare const HORSE_GROUPS:readonly {members:readonly string[];horse:string;palace:number;group:string}[];
+export declare const STRIKING_POSITIONS:readonly {xun:string;instrument:string;palace:number;relation:string}[];
+export declare function horseFromBranch(branch:string):HorseEvidence;
+export declare function positionMatches(plate:RotatingHourPlate):readonly StrikingEvidence[];
+export declare function analyzeHourSignals(base:BaseFormation,plate:RotatingHourPlate):QimenSignals;

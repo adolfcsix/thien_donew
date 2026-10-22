@@ -1,0 +1,97 @@
+/* Stage 5 — sitewide theme synchrony and safe glass contrast.
+ * All routes inherit Shell. Account modal is rendered outside .site by AuthProvider.
+ * This file only touches shared chrome, overlay controls and keyboard focus;
+ * specialist chart/star/rank palettes and layout geometry are intentionally excluded. */
+.site {
+  --td5-glass-solid: #18352b;
+  --td5-glass-ink: #f3f0e5;
+  --td5-glass-subtle: #d2ded2;
+  --td5-glass-border: #9bad9d;
+  --td5-glass-focus: #ffe0a6;
+  --td5-glass-glow: rgba(244,220,167,.16);
+}
+.site.light {
+  --td5-glass-solid: #fffdf7;
+  --td5-glass-ink: #20392e;
+  --td5-glass-subtle: #405448;
+  --td5-glass-border: #668471;
+  --td5-glass-focus: #20543e;
+  --td5-glass-glow: rgba(46,92,67,.10);
+}
+/* The account dialog is NOT a descendant of .site. Apply its palette through
+ * the existing html data attribute, keeping the two themes in sync. */
+html[data-thiendo-theme="dark"] .modal.account-modal {
+  --td5-glass-solid: #18352b;
+  --td5-glass-ink: #f3f0e5;
+  --td5-glass-subtle: #d2ded2;
+  --td5-glass-border: #9bad9d;
+  --td5-glass-focus: #ffe0a6;
+}
+html[data-thiendo-theme="light"] .modal.account-modal {
+  --td5-glass-solid: #fffdf7;
+  --td5-glass-ink: #20392e;
+  --td5-glass-subtle: #405448;
+  --td5-glass-border: #668471;
+  --td5-glass-focus: #20543e;
+}
+/* Form fields must remain readable against photographic and moving backdrops.
+ * Keep selectors specific to shared overlays rather than changing route forms. */
+html[data-thiendo-theme] .modal.account-modal :is(input:not([type="checkbox"]):not([type="radio"]),textarea,select),
+.site .command-panel :is(input:not([type="checkbox"]):not([type="radio"]),textarea,select) {
+  background-color: var(--td5-glass-solid);
+  color: var(--td5-glass-ink);
+  border-color: var(--td5-glass-border);
+  caret-color: var(--td5-glass-ink);
+}
+html[data-thiendo-theme] .modal.account-modal :is(input,textarea)::placeholder,
+.site .command-panel :is(input,textarea)::placeholder {
+  color: var(--td5-glass-subtle);
+  opacity: 1;
+}
+html[data-thiendo-theme] .modal.account-modal :is(a,button,input,select,textarea,[role="button"]):focus-visible,
+.site :is(.main-content,.thiendo-legal-footer) :is(a,button,input,select,textarea,[role="button"]):focus-visible {
+  outline: 3px solid var(--td5-glass-focus);
+  outline-offset: 3px;
+}
+/* Ambient glass sheen, never applied to data tables or specialist diagrams. */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+  .site :is(.topbar,#thiendo-sidebar,.bottom-nav) :is(a,button):not(:disabled):hover {
+    box-shadow: inset 0 1px 0 var(--td3-glass-shine), 0 3px 12px var(--td5-glass-glow);
+  }
+}
+@media (prefers-contrast:more) {
+  html[data-thiendo-theme] .modal.account-modal :is(input,textarea,select),
+  .site .command-panel :is(input,textarea,select) { border-width: 2px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html[data-thiendo-theme] .modal.account-modal,
+  html[data-thiendo-theme] .modal.account-modal :is(input,button,a),
+  .site :is(.topbar,#thiendo-sidebar,.bottom-nav) :is(a,button) { transition: none !important; animation: none !important; }
+}
+@media (forced-colors:active) {
+  html[data-thiendo-theme] .modal.account-modal :is(a,button,input,select,textarea):focus-visible,
+  .site :is(.main-content,.thiendo-legal-footer) :is(a,button,input,select,textarea):focus-visible {
+    outline: 2px solid Highlight;
+  }
+}
+/* A foreground/background pair must switch atomically: interpolating both
+ * through opposite palettes crosses low-contrast midtones. Keep the scenic
+ * crossfade and spatial/hover motion, but never tween shared readable colors.
+ * Include descendants because legacy breadcrumb rules fade for 740ms while
+ * their backing surface settles after 280ms. */
+.site[data-theme-ready="true"] :is(.topbar,#thiendo-sidebar,.bottom-nav,.command-panel),
+.site[data-theme-ready="true"] :is(.topbar,#thiendo-sidebar,.bottom-nav,.command-panel) *,
+html[data-thiendo-theme] .modal.account-modal,
+html[data-thiendo-theme] .modal.account-modal * {
+  transition-property: transform, translate, scale, rotate, opacity, box-shadow, filter !important;
+}
+
+/* Profile hints/tabs appear on the raised surface, not only the modal base. */
+html[data-thiendo-theme="light"] .modal.account-modal.thien-mon-branded{--account-muted:#4d6255}
+
+/* A palette commit is atomic. Spatial motion resumes after the two-frame fence. */
+html[data-thiendo-theme-changing] *,
+html[data-thiendo-theme-changing] *::before,
+html[data-thiendo-theme-changing] *::after {
+  transition: none !important;
+}

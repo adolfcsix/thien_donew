@@ -1,0 +1,6 @@
+/* V11.65: editorial verification cards; separate from historical CSS baseline. */
+.research-verification{border-top:1px solid var(--line);padding-top:12px}
+.research-verification summary{font-size:12px;line-height:1.7;color:var(--gold);font-weight:650;cursor:pointer}
+.research-star .research-verification p{font-size:12px;line-height:1.8;margin:10px 0 0}
+.research-verification p b{color:var(--text)}
+.research-star .research-verification-pending{border-left:2px solid var(--gold);background:var(--panel-alt);padding:9px 12px}

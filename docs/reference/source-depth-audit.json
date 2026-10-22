@@ -1,0 +1,1010 @@
+{
+  "schemaVersion": 1,
+  "version": "11.147.0",
+  "baseline": "11.146.0",
+  "scope": "static-source-inventory-not-an-expert-review-or-a-runtime-test",
+  "sourceEvidenceOnly": true,
+  "summary": {
+    "matrixRecords": 22,
+    "declaredRoutes": 20,
+    "availableRouteFiles": 20,
+    "evidencePaths": 85,
+    "missingEvidence": 0,
+    "recordsWithCandidateTests": 21,
+    "testsExecutedThisAudit": 0,
+    "priorities": {
+      "P0": 2,
+      "P1": 14,
+      "P2": 5,
+      "P3": 1
+    },
+    "registryCapabilities": 27,
+    "editorialRecords": 15
+  },
+  "records": [
+    {
+      "id": "tu-vi",
+      "name": "Tử Vi Đẩu Số",
+      "family": "east",
+      "priority": "P1",
+      "action": "Phân xử 11 sao và 4 dị danh bằng bảng an theo trường phái và lá số đối chứng độc lập; rà tiếp Phi Hóa, vận hạn.",
+      "declared": {
+        "library": "partial",
+        "calculator": "available",
+        "analysis": "partial"
+      },
+      "route": {
+        "path": "/chart",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 7,
+        "present": 7,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v11143-star-candidate-preview.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        },
+        {
+          "path": "tests/v11126-complete-chart.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": "tu-vi",
+        "exists": true,
+        "boundary": "Chưa xác minh toàn bộ quy tắc an sao theo từng phái; không suy sự kiện đời sống từ một tên sao."
+      },
+      "limits": "V11.123 tổng hợp 12 cung, tứ chính, diễn nghĩa chính tinh theo cung, 6 cặp/6 nhóm sao, Tứ Hóa năm sinh và lưu, Đại hạn/Tiểu hạn/Lưu Thái Tuế theo năm âm lịch. Nội dung biên soạn chưa thẩm định độc lập; không luận lưu niên đầy đủ, Phi Hóa/tự hóa hay Đại hạn Tứ Hóa. Giữ 104 tên hiện hành; 11 tên thiếu và dị danh tiếp tục nghiên cứu.",
+      "next": "Đối chứng độc lập các bài luận theo trường phái, bổ sung fixture cho 11 sao chưa an; duyệt nguồn trước mở rộng quy tắc vận hạn.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "mai-hoa",
+      "name": "Mai Hoa Dịch Số",
+      "family": "east",
+      "priority": "P1",
+      "action": "Đối chứng các cách khởi quẻ, Thể–Dụng, hỗ/biến, lịch tháng nhuận và ứng kỳ với ca phản ví dụ.",
+      "declared": {
+        "library": "partial",
+        "calculator": "available",
+        "analysis": "partial"
+      },
+      "route": {
+        "path": "/mai-hoa",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 6,
+        "present": 6,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v11129-mai-hoa-depth.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": "mai-hoa",
+        "exists": true,
+        "boundary": "Có ba profile năm chi/tháng ngày âm/giờ, hai số giản lược và Hậu Thiên vật tượng/phương vị; hồ sơ Thể/Dụng/hỗ/biến có phản kiểm. Chưa giải quyết mọi dị bản tháng nhuận hoặc ứng kỳ."
+      },
+      "limits": "V11.129: 5 profile, Thể/Dụng/hỗ/biến, dị bản hỗ Càn/Khôn, 10 quan hệ, chi thời lệnh thủ công, thời ứng tổng số quái chủ và nhóm chi hành, 5 chứng cứ lưu theo phiên bản. Chưa thẩm định chuyên gia; chưa lịch thời ứng thực, tự nhận vật/chữ/âm, hoặc tổng hợp vượng tướng hưu tù tử.",
+      "next": "Đối chứng dị bản và luận giải chuyên gia, bổ sung lịch thời lệnh và mẫu ứng kỳ độc lập trước mở dự báo.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "luc-hao",
+      "name": "Lục Hào",
+      "family": "east",
+      "priority": "P1",
+      "action": "Đối chứng Nguyệt kiến, Nhật thần, Dụng/Nguyên/Kỵ/Phục và trường hợp đa hiện trước khi tự luận ứng kỳ.",
+      "declared": {
+        "library": "partial",
+        "calculator": "available",
+        "analysis": "partial"
+      },
+      "route": {
+        "path": "/luc-hao",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 4,
+        "present": 4,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v11130-luc-hao-depth.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": "luc-hao",
+        "exists": true,
+        "boundary": "Có Bát Cung/Nạp Giáp/Thế Ứng, Nhật/Nguyệt và hồ sơ hiện/phục/đa hiện có xác nhận; chưa chọn duy nhất Dụng Thần, xuất phục, cường nhược hoặc ứng kỳ."
+      },
+      "limits": "V11.130 chọn Dụng hiện/Phục có lý do, Nguyên/Kỵ tiềm năng, Phi/Phục, Lục Thân/Lục Thú, động biến theo cung gốc, Nhật/Nguyệt thủ công và nguồn dân dụng có cổng tháng. Chưa kết luận có lực/vượng suy, xuất phục, ám động hay ứng kỳ tổng hợp.",
+      "next": "Thẩm định chuyên gia, bổ sung lịch Nguyệt kiến chính xác và điều kiện tổng hợp có lực/ứng kỳ với đối chứng độc lập.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "luc-nham",
+      "name": "Lục Nhâm Đại Độn",
+      "family": "east",
+      "priority": "P1",
+      "action": "Điều tra lệch 1 ca trong thống kê 720, xác nhận từng nhánh Thiệp Hại/Phản Ngâm từ truyền bản, kiểm giờ/Nguyệt tướng và test đọc bàn.",
+      "declared": {
+        "library": "partial",
+        "calculator": "research",
+        "analysis": "research"
+      },
+      "route": {
+        "path": "/dai-luc-nham",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 5,
+        "present": 5,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v11144-shehai-depth.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        },
+        {
+          "path": "tests/v11132-da-liu-ren-depth.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": "luc-nham",
+        "exists": true,
+        "boundary": "V11.144 có engine Thiệp Hại/Phản Ngâm tính Tam Truyền theo một truyền bản và 27 ví dụ đối chiếu đã ghi; thống kê 720 ca vẫn lệch 1 nhánh so với số liệu sách, chưa kết luận toàn bộ phép định truyền bản đúng. Ngày Can Chi/Nguyệt Tướng có nhánh cần dữ liệu nhập hoặc đối chứng; không xem kết quả như dự báo thực nghiệm."
+      },
+      "limits": "Có trang nghiên cứu Thiên–Địa bàn, Tứ Khóa, Tam Truyền/Cửu Tông Môn, 12 Thiên Tướng và nguyệt tướng Trung khí theo phạm vi nguồn. Không coi Thiệp Hại còn thiếu đối chứng hoặc mọi khóa/phái là đã được thẩm định.",
+      "next": "Đối chứng độc lập Thiệp Hại và các khóa đặc biệt; hoàn thiện corpus nguyệt tướng/giờ chiếm, luận theo câu hỏi và ranh giới từng phái.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "thai-at",
+      "name": "Thái Ất Thần Số",
+      "family": "east",
+      "priority": "P1",
+      "action": "Đối chứng bảng 72 cục Chủ–Khách và phép tích kỳ; hoàn thiện riêng nguyệt, nhật, thời kế và bộ thần.",
+      "declared": {
+        "library": "partial",
+        "calculator": "research",
+        "analysis": "planned"
+      },
+      "route": {
+        "path": "/thai-at",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 4,
+        "present": 4,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v11133-taiyi-depth.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": "thai-at",
+        "exists": true,
+        "boundary": "Có Tuế kế Âm/Dương, bảng lập thành 72 cục, chủ/khách, bàn cung và nhật ký; Nguyệt/Nhật chỉ có phép cung theo tích kỳ thủ công, Thời kế cần kiểm chứng và chưa lập toàn bàn."
+      },
+      "limits": "Đã có niên bàn nghiên cứu và từng phần nguyệt/nhật; còn thiếu thời kế và các hệ thần độc lập.",
+      "next": "Thẩm định bảng 72 với bản in độc lập, triển khai thuật toán đếm Chủ–Khách từ 16 thần, kiểm chứng lịch pháp.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "tu-binh",
+      "name": "Tử Bình / Bát Tự chuyên sâu",
+      "family": "east",
+      "priority": "P1",
+      "action": "Nghiệm thu snapshot PostgreSQL của V11.142; đối chứng tiết khí/múi giờ lịch sử, cách cục, dụng thần, đại vận theo phái.",
+      "declared": {
+        "library": "partial",
+        "calculator": "available",
+        "analysis": "partial"
+      },
+      "route": {
+        "path": "/bazi",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 1,
+        "present": 1,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v11142-bazi-snapshot.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        },
+        {
+          "path": "tests/v11134-ziping-trachnhat-depth.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": "bat-tu",
+        "exists": true,
+        "boundary": "Tiết khí và ranh giới giờ Tý có dị bản; kết luận tài vận hoặc sức khỏe không dựa trên một thần sát."
+      },
+      "limits": "Có Tứ Trụ và các lớp nghiên cứu; chưa đủ cách cục, tòng hóa, dụng thần được thẩm định.",
+      "next": "Múi giờ lịch sử và tiết khí độc lập; chọn phái, kiểm chứng nguyệt lệnh, dụng thần và đại vận.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "don-giap",
+      "name": "Độn Giáp nâng cao",
+      "family": "east",
+      "priority": "P1",
+      "action": "Đối chứng Chai Bổ/chuyển bàn, Môn Bách–Nhập Mộ và giờ tiết khí; xác nhận hướng luận từng câu hỏi.",
+      "declared": {
+        "library": "partial",
+        "calculator": "available",
+        "analysis": "partial"
+      },
+      "route": {
+        "path": "/ky-mon",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 1,
+        "present": 1,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v11131-qimen-depth.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": "ky-mon",
+        "exists": true,
+        "boundary": "Có Chai Bổ–Chuyển Bàn, Môn Bách/Tam Kỳ Nhập Mộ, cặp Can, nguyệt khí và hồ sơ tại Dụng thần; chưa luận tổ hợp tổng thể, ứng kỳ hay kiểm định thiên văn mọi thời điểm."
+      },
+      "limits": "Đang có Chai Bổ–Chuyển Bàn; chưa đồng nhất Phi Bàn, chủ/khách, ứng kỳ.",
+      "next": "Tách từng phái; lập bảng nguồn độc lập và phép tổng hợp Dụng thần có phản chứng.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "trach-nhat",
+      "name": "Trạch Nhật",
+      "family": "east",
+      "priority": "P1",
+      "action": "Tách lịch Can Chi theo nơi/chính xác giờ, ngày cát theo phương pháp và ngoại lệ kiêng kỵ, cần ví dụ đối chứng.",
+      "declared": {
+        "library": "partial",
+        "calculator": "available",
+        "analysis": "partial"
+      },
+      "route": {
+        "path": "/good-days",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 1,
+        "present": 1,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v11134-ziping-trachnhat-depth.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": null,
+        "exists": false,
+        "boundary": null
+      },
+      "limits": "Công cụ ngày dân gian không đại diện toàn bộ Trạch Nhật chuyên sâu.",
+      "next": "Chốt hệ quy tắc theo mục đích, ngày/giờ, xung đột và điều kiện áp dụng; không cho điểm tuyệt đối.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "phong-thuy",
+      "name": "Phong thủy hiện có",
+      "family": "east",
+      "priority": "P1",
+      "action": "Kiểm tọa–hướng, 24 sơn, Bát Trạch, phi tinh tam bàn và quy tắc đổi vận bằng ca chuẩn độc lập.",
+      "declared": {
+        "library": "partial",
+        "calculator": "available",
+        "analysis": "partial"
+      },
+      "route": {
+        "path": "/phong-thuy",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 1,
+        "present": 1,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v1135-feng-shui-depth.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": "phong-thuy",
+        "exists": true,
+        "boundary": "Đã có tra la bàn 24 sơn tọa–hướng, phân khu Bát Trạch, Phi Tinh tam bàn Hạ quái (Vận/Sơn/Hướng tinh) và sao năm theo dữ liệu người dùng nhập. Chưa có Thế quái, mặt bằng theo tỷ lệ thực, đo hướng tự động, phân tích hình thế chuyên gia hoặc thẩm định đầy đủ các trường phái."
+      },
+      "limits": "Có 24 sơn/Bát Trạch/Phi tinh hạ quái; thiếu khảo sát, Thế quái và nghiệm thu bố trí thực địa.",
+      "next": "Đối chứng tọa/hướng và biên sơn, vận nhà; tách hình thế khỏi lý khí.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "huyen-khong-dai-quai",
+      "name": "Huyền Không Đại Quái",
+      "family": "east",
+      "priority": "P1",
+      "action": "Đối chứng thứ tự 64 quẻ, phân kim, ngũ hành quẻ và thời vận; giữ riêng Huyền Không Phi Tinh và Đại Quái.",
+      "declared": {
+        "library": "partial",
+        "calculator": "partial",
+        "analysis": "research"
+      },
+      "route": {
+        "path": "/phong-thuy",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 4,
+        "present": 4,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v1135-feng-shui-depth.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": null,
+        "exists": false,
+        "boundary": null
+      },
+      "limits": "Có atlas vòng 64 quẻ, Quái khí/Quái vận và 384 phân đoạn hình học, kiểm tra sai số và biên hướng. Phân đoạn góc chưa phải phép lấy/đổi hào truyền thống; chưa trừu hào hoán tượng hoặc hòa các dị bản.",
+      "next": "Đối chứng độc lập vòng quẻ và quái khí/quái vận; xác định phương pháp trừu hào hoán tượng, nguồn/phái trước mở rộng luận hào.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "ha-lac",
+      "name": "Hà Lạc Lý Số",
+      "family": "east",
+      "priority": "P1",
+      "action": "Bổ sung ca độc lập cho Tam Nguyên số 5, quẻ thuần/tiết chí, Nguyên Đường và vận hạn; chưa tự suy nhánh thiếu dữ kiện.",
+      "declared": {
+        "library": "partial",
+        "calculator": "partial",
+        "analysis": "research-only"
+      },
+      "route": {
+        "path": "/ha-lac",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 5,
+        "present": 5,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v11145-heluo-minggua.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": "ha-lac",
+        "exists": true,
+        "boundary": "V11.145 chỉ dựng quẻ theo quy tắc nguồn; quẻ thuần/tiết chí và tính Tam Nguyên chưa tự động, chưa suy vận hạn/cát hung. 3 ví dụ có văn bản không chứng minh đầy đủ các trường phái."
+      },
+      "limits": "V11.145 đã dựng ứng viên Tiên Thiên/Nguyên Đường/Hậu Thiên theo tài liệu và có hồ sơ lưu; quẻ thuần cần ngoại lệ chí tiết, Tam Nguyên cần chứng bản, vận hạn chưa đối chứng độc lập.",
+      "next": "Xác minh Tam Nguyên theo chu kỳ lịch sử và chí tiết; đối chiếu thêm ca nguồn cho mệnh quẻ, rồi mới lập đại vận.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "thiet-ban",
+      "name": "Thiết Bản Thần Số",
+      "family": "east",
+      "priority": "P1",
+      "action": "Thu thập chứng bản hợp pháp, trang quy tắc định điều và ca trọn đầu vào–kết quả trước khi tính tự động số điều.",
+      "declared": {
+        "library": "partial",
+        "calculator": "research-only",
+        "analysis": "research-only"
+      },
+      "route": {
+        "path": "/thiet-ban",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 5,
+        "present": 5,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v11146-tieban-critical-ledger.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": "thiet-ban",
+        "exists": true,
+        "boundary": "Có sổ khảo chứng, phân phần và đối chiếu; chưa có công thức định điều được thẩm định, không xác thực dự báo hoặc cung cấp kho 12.000 điều."
+      },
+      "limits": "V11.146 có sổ khảo chứng nguồn, dòng truyền bản và liên kết chứng bản với phần giờ (8/12), không có bảng phép định điều/định số chứng thực, không có kho điều văn được cấp quyền.",
+      "next": "Khảo sát ảnh trang sách và giấy phép, kiểm tra chứng bản độc lập và ca phản ví dụ trước khi xây phép định điều riêng từng truyền bản.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "lich-phap",
+      "name": "Hệ thống lịch pháp truyền thống",
+      "family": "east",
+      "priority": "P1",
+      "action": "Chạy đối chứng chuyển đổi âm–dương, tháng nhuận, tiết khí và vùng giờ lịch sử ngoài khung tham chiếu hiện tại.",
+      "declared": {
+        "library": "partial",
+        "calculator": "available",
+        "analysis": "partial"
+      },
+      "route": {
+        "path": "/calendar",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 4,
+        "present": 4,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v1136-heluo-tieban-calendar.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        },
+        {
+          "path": "tests/v90-calendar.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": "lich-phap",
+        "exists": true,
+        "boundary": "Độ chính xác lịch không thể chỉ suy ra từ việc chuyển đổi nội bộ thành công."
+      },
+      "limits": "Có vòng Can Chi 60, đổi ngày Tý sơ/dân dụng, so lịch Julius/Gregory; chưa có bảng tiết khí thiên văn đủ giai đoạn hay cải lịch theo từng địa phương.",
+      "next": "Khảo đính giờ chuyển tiết chính xác, hiệu chỉnh thời gian địa phương lịch sử, nguồn đại vận và lịch triều đại.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "western",
+      "name": "Chiêm tinh học phương Tây",
+      "family": "west",
+      "priority": "P1",
+      "action": "Đối chứng kinh độ thiên văn, múi giờ, Whole Sign, Synastry/Composite; tách scope Placidus/Transit/Davison.",
+      "declared": {
+        "library": "partial",
+        "calculator": "available",
+        "analysis": "partial"
+      },
+      "route": {
+        "path": "/western-astrology",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 7,
+        "present": 7,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v11127-western-depth.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        },
+        {
+          "path": "tests/v11128-relationship.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": "astrology-western",
+        "exists": true,
+        "boundary": "Có Natal tropical, địa tâm, Whole Sign với fixture thiên văn; có IANA 2026e và ba mẫu sai số giờ sinh; chưa các hệ nhà khác hoặc kỹ thuật thời gian/đôi."
+      },
+      "limits": "V11.128 bổ sung Synastry 10 thiên thể + ASC/MC tùy chọn, chồng nhà hai chiều và Composite trung điểm với hai quy tắc nhà, đối điểm giữ chưa xác định. Có lưu hai đầu vào, phiên bản tri thức, đồ họa hai vòng/Composite, bộ đọc phản tư và tối đa 9 mẫu sai số giờ sinh. Natal chuyên sâu V11.127 giữ nguyên. Chưa Davison, Placidus/sidereal, Transit/Progression, dignity đầy đủ/applying-separating và đối chứng chuyên gia cho diễn giải.",
+      "next": "Đối chứng lịch sử địa phương trước 1970, mở rộng độ nhạy liên tục; các hệ nhà và kỹ thuật thời gian/đôi tách rõ phương pháp.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "numerology",
+      "name": "Thần số học Pythagoras",
+      "family": "numbers",
+      "priority": "P2",
+      "action": "Kiểm chữ có dấu, quy tắc Y, phép rút và dữ liệu đa ngôn ngữ; không suy rộng sang trường phái Chaldean.",
+      "declared": {
+        "library": "partial",
+        "calculator": "available",
+        "analysis": "partial"
+      },
+      "route": {
+        "path": "/numerology",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 3,
+        "present": 3,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v11116-numerology.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": "numerology",
+        "exists": true,
+        "boundary": "V11.137 có chỉ số nền, tính nâng cao và đối chiếu nội bộ Pythagoras; chưa có engine Chaldean; chữ Hebrew/gematria thuộc atlas lịch sử riêng, không gán chung một bộ số."
+      },
+      "limits": "V11.137 có phép đối chiếu hai cách rút đường đời, số trưởng thành, tần suất bảng tên và 12 tháng cá nhân. Chaldean, đối chứng dữ liệu liên văn hóa và thẩm định ý nghĩa chưa có.",
+      "next": "Bổ sung bảng Chaldean độc lập có nguồn; kiểm thử tên nhiều ngôn ngữ, ngày sinh biên và tùy chọn văn bản chuyển tự.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "tarot",
+      "name": "Tarot 78 lá",
+      "family": "symbols",
+      "priority": "P2",
+      "action": "Đối chiếu 78 thẻ RWS, mapping Marseille/Thoth, bản quyền hình, thao tác mobile và trình bày giới hạn diễn giải.",
+      "declared": {
+        "library": "available",
+        "calculator": "available",
+        "analysis": "partial"
+      },
+      "route": {
+        "path": "/tarot",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 11,
+        "present": 11,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v11120-tarot-rws.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        },
+        {
+          "path": "tests/v11125-tarot-spreads.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": "tarot",
+        "exists": true,
+        "boundary": "Engine trải bài chỉ có RWS; V11.137 thêm atlas đối chiếu Marseille/Thoth đủ 78 mã, không tải ảnh Thoth có bản quyền và không giả định các court cards tương đương."
+      },
+      "limits": "V11.137 có atlas chỉ mục ba bộ RWS, Marseille, Thoth đủ 78 mã và nhận diện khác biệt VIII–XI/court; engine đọc trải chỉ RWS. Không cấp quyền tranh Thoth; không gộp nghĩa ba truyền thống.",
+      "next": "Khảo cứu theo từng ấn bản và nguồn có bản quyền hợp lệ trước khi phát triển engine/ảnh cho bộ mới.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "kabbalah",
+      "name": "Kabbalah",
+      "family": "symbols",
+      "priority": "P2",
+      "action": "Giữ atlas/tri thức biểu tượng tách khỏi engine thần số học; xác minh quyền sử dụng và ý nghĩa văn bản.",
+      "declared": {
+        "library": "available",
+        "calculator": "planned",
+        "analysis": "research"
+      },
+      "route": {
+        "path": "/western-symbols",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 2,
+        "present": 2,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v1137-western-esoterica.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": null,
+        "exists": false,
+        "boundary": null
+      },
+      "limits": "V11.137 có atlas Sephirot 10, 22 chữ Hebrew và tuyến Kircher/Golden Dawn; lớp đối chiếu Tarot chỉ dành cho Hermetic Qabalah. Chưa làm gematria chữ văn bản Hebrew, nghiên cứu sơ đồ không-Kircher hoặc thuật toán tiên đoán.",
+      "next": "Đối chứng nguồn Sefer Yetzirah, các sơ đồ truyền thống và học giả; không lẫn diễn giải Hermetic với Kabbalah Do Thái.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "rune",
+      "name": "Rune Bắc Âu",
+      "family": "symbols",
+      "priority": "P3",
+      "action": "Chưa triển khai; quyết định phạm vi/nguồn Rune riêng trước khi tạo công cụ, không tính là tính năng hiện hữu.",
+      "declared": {
+        "library": "planned",
+        "calculator": "planned",
+        "analysis": "planned"
+      },
+      "route": {
+        "path": null,
+        "sourcePresent": false,
+        "notApplicable": true
+      },
+      "evidence": {
+        "declared": 0,
+        "present": 0,
+        "missing": []
+      },
+      "candidateTests": [],
+      "editorial": {
+        "catalogueId": null,
+        "exists": false,
+        "boundary": null
+      },
+      "limits": "Chưa triển khai; không trộn Elder/Younger Futhark.",
+      "next": "Học lịch sử chữ viết và chứng tích trước thư viện biểu tượng hiện đại; chốt bộ ký tự riêng.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "comparison",
+      "name": "Đối chiếu đa bộ môn",
+      "family": "shared",
+      "priority": "P2",
+      "action": "Đối chiếu kết quả liên môn mà không nhập chung thuật toán; bổ sung provenance và lưu so sánh có phiên bản.",
+      "declared": {
+        "library": "partial",
+        "calculator": "partial",
+        "analysis": "research"
+      },
+      "route": {
+        "path": "/study/compare",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 4,
+        "present": 4,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v11138-unified-workspace.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": null,
+        "exists": false,
+        "boundary": null
+      },
+      "limits": "Có hồ sơ sinh chung và đối chiếu 2–3 bản nghiên cứu theo dữ liệu/quy ước riêng. Chưa có tổng hợp luận đa môn được thẩm định hoặc đối chiếu mọi trường phái; không quy thành điểm vận mệnh chung.",
+      "next": "Bổ sung ca đối chứng đầu vào/method/version giữa các môn và UI browser; mở rộng luận đa môn chỉ khi có phương pháp và phản chứng rõ ràng.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "account",
+      "name": "Tài khoản và lưu kết quả",
+      "family": "shared",
+      "priority": "P0",
+      "action": "Xác thực migration 001–014, lưu/mở/import/export hồ sơ, OAuth/OTP, quyền sở hữu và khôi phục backup trên PostgreSQL test riêng.",
+      "declared": {
+        "library": "partial",
+        "calculator": "available",
+        "analysis": "partial"
+      },
+      "route": {
+        "path": "/study",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 5,
+        "present": 5,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v11142-bazi-snapshot.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        },
+        {
+          "path": "tests/v11138-owner-isolation.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": null,
+        "exists": false,
+        "boundary": null
+      },
+      "limits": "Có hồ sơ sinh chung, liên kết theo quyền sở hữu và snapshot Bát Tự typed V11.142 theo phương pháp lịch dân sự UTC+7; migration 014 chưa qua native PostgreSQL E2E, Google/email thật chưa nghiệm thu.",
+      "next": "Nghiệm thu migration001–014, role và HTTP trên PostgreSQL native; kiểm thử thực tế Bát Tự save–reopen–import/export, OAuth/email/session và giới hạn đối chứng tiết khí.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "search-library",
+      "name": "Tìm kiếm và thư viện chung",
+      "family": "shared",
+      "priority": "P2",
+      "action": "Kiểm index, tìm kiếm, bộ lọc, phân quyền dữ liệu và liên kết Thư phòng–Thư viện trên dữ liệu thật.",
+      "declared": {
+        "library": "partial",
+        "calculator": "available",
+        "analysis": "partial"
+      },
+      "route": {
+        "path": "/library",
+        "sourcePresent": true,
+        "notApplicable": false
+      },
+      "evidence": {
+        "declared": 2,
+        "present": 2,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v1183-exploration.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": null,
+        "exists": false,
+        "boundary": null
+      },
+      "limits": "Tìm nhanh điều hướng/từ điển; chưa full-text liên tài liệu/kết quả riêng hoặc thư mục sách hoàn chỉnh.",
+      "next": "Phân loại theo văn hóa/phái; nguồn/ấn bản; phân quyền kết quả cá nhân và chỉ mục full-text.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    },
+    {
+      "id": "runtime",
+      "name": "Vận hành và triển khai",
+      "family": "shared",
+      "priority": "P0",
+      "action": "Khôi phục npm ci, chạy typecheck, production build, PostgreSQL E2E, trình duyệt thật và dry-run rollback; lưu log/commit SHA; chưa triển khai công khai.",
+      "declared": {
+        "library": "partial",
+        "calculator": "available",
+        "analysis": "partial"
+      },
+      "route": {
+        "path": null,
+        "sourcePresent": false,
+        "notApplicable": true
+      },
+      "evidence": {
+        "declared": 3,
+        "present": 3,
+        "missing": []
+      },
+      "candidateTests": [
+        {
+          "path": "tests/v1154-release-integrity.test.cjs",
+          "sourcePresent": true,
+          "executedThisAudit": false
+        }
+      ],
+      "editorial": {
+        "catalogueId": null,
+        "exists": false,
+        "boundary": null
+      },
+      "limits": "Cổng phần mềm cục bộ, build, toàn bộ hồi quy, SQL WASM, smoke và SSR có bằng chứng. Native pool/TCP, Docker, browser, domain/TLS, backup vận hành, cảnh báo, rollback và tải còn chờ môi trường thật.",
+      "next": "Chạy các cổng native PostgreSQL, browser và diễn tập production/staging; đo tải và RPO/RTO trước khi ký GO.",
+      "verification": {
+        "structure": "SOURCE_PRESENT",
+        "independentMethod": "NOT_INDEPENDENTLY_VERIFIED",
+        "typecheckBuild": "NOT_RUNTIME_VERIFIED",
+        "databaseE2E": "NOT_RUNTIME_VERIFIED",
+        "browserE2E": "NOT_RUNTIME_VERIFIED"
+      }
+    }
+  ],
+  "issues": [],
+  "verdict": "SOURCE_INVENTORY_PASS",
+  "explicitlyNotVerified": [
+    "methodological agreement with original editions",
+    "all branches of astrology engines",
+    "production typecheck/build",
+    "PostgreSQL and authentication E2E",
+    "real browser responsiveness, performance, accessibility"
+  ]
+}

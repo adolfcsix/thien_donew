@@ -1,0 +1,371 @@
+{
+  "schemaVersion": "1.0.0",
+  "edition": "V11.37",
+  "researchOnly": true,
+  "scope": "Dữ liệu nghiên cứu tên sao và sự khác biệt truyền thống, không phải quy tắc an sao hoặc luận đoán.",
+  "circle": {
+    "id": "tuong-tien-12",
+    "name": "Tướng Tiền Thập Nhị Thần",
+    "hanzi": "將前十二神",
+    "orderedNames": [
+      "Tướng Tinh",
+      "Phan An",
+      "Tuế Dịch",
+      "Tức Thần",
+      "Hoa Cái",
+      "Kiếp Sát",
+      "Tai Sát",
+      "Thiên Sát",
+      "Chỉ Bối",
+      "Hàm Trì",
+      "Nguyệt Sát",
+      "Vong Thần"
+    ],
+    "algorithmImplemented": false,
+    "sourceNamesNotIn121Crosswalk": [
+      "Tuế Dịch",
+      "Hàm Trì"
+    ],
+    "separateFrom": [
+      "Vòng Thái Tuế",
+      "Vòng Bác Sĩ",
+      "Vòng Tràng Sinh"
+    ],
+    "studyNote": "Hai tên Hoa Cái và Kiếp Sát đã xuất hiện ở engine như sao gốc khác nhóm; chỉ so tên không đủ xác nhận đồng vị trí theo cùng vòng."
+  },
+  "records": [
+    {
+      "id": "study-tuong-tinh",
+      "name": "Tướng Tinh",
+      "researchSystem": "tướng-tiền-12",
+      "state": "research-only-no-placement",
+      "expertReviewed": false,
+      "placementEnabled": false,
+      "placementInputsToVerify": "Địa chi năm sinh, nhóm tam hợp và vị trí khởi vòng Tướng Tiền",
+      "readingContext": "Điểm xuất phát của hệ Tướng Tiền; về mặt biểu tượng được dùng để đặt câu hỏi về vai trò điều phối, trách nhiệm và cách dẫn dắt.",
+      "verificationExercise": "Ghi rõ tam hợp của chi năm và thứ tự 12 vị trí; sau đó so kết quả với ba lá số cùng một tam hợp, không tự dùng vị trí sao Thiên Tướng thay thế.",
+      "commonMisreading": "Tưởng Tướng Tinh là chính tinh Thiên Tướng hoặc kết luận chắc chắn có chức quyền.",
+      "reviewGates": [
+        "Xác nhận đúng trường phái và văn bản gốc",
+        "Đối chiếu độc lập bảng hoặc biểu thức an sao",
+        "Đối chiếu ít nhất 12 địa chi hoặc 10 thiên can theo đầu vào thích hợp",
+        "Kiểm thử lá số mẫu và trường hợp biên",
+        "Chuyên gia duyệt trước khi tích hợp engine"
+      ]
+    },
+    {
+      "id": "study-phan-an",
+      "name": "Phan An",
+      "researchSystem": "tướng-tiền-12",
+      "state": "research-only-no-placement",
+      "expertReviewed": false,
+      "placementEnabled": false,
+      "placementInputsToVerify": "Chi năm sinh, vị trí liền sau Tướng Tinh trong vòng khảo sát",
+      "readingContext": "Hình tượng trang bị yên ngựa và chuẩn bị phương tiện trước khi dịch chuyển, thuận để khảo sát năng lực chuẩn bị nguồn lực cho một trách nhiệm.",
+      "verificationExercise": "So thứ tự Phan An với Tướng Tinh và Tuế Dịch trên mô hình vòng; cần đối chiếu văn bản chữ Hán 攀鞍 với các cách phiên âm tiếng Việt.",
+      "commonMisreading": "Gộp Phan An với Thiên Mã hoặc hiểu tên sao như bảo đảm sự nghiệp hanh thông.",
+      "reviewGates": [
+        "Xác nhận đúng trường phái và văn bản gốc",
+        "Đối chiếu độc lập bảng hoặc biểu thức an sao",
+        "Đối chiếu ít nhất 12 địa chi hoặc 10 thiên can theo đầu vào thích hợp",
+        "Kiểm thử lá số mẫu và trường hợp biên",
+        "Chuyên gia duyệt trước khi tích hợp engine"
+      ]
+    },
+    {
+      "id": "study-tue-dich",
+      "name": "Tuế Dịch",
+      "researchSystem": "tướng-tiền-12",
+      "state": "research-only-no-placement",
+      "expertReviewed": false,
+      "placementEnabled": false,
+      "placementInputsToVerify": "Chi năm sinh và thứ tự thứ ba trong vòng Tướng Tiền",
+      "readingContext": "Hình tượng dịch chuyển, thay đổi bối cảnh; được phân tích cùng các biểu tượng chuyển động khác nhưng phải giữ hệ quy tắc riêng.",
+      "verificationExercise": "Kiểm tra vị trí thứ ba của vòng, sau đó đối chiếu riêng với Thiên Mã nếu cùng có mặt; hai tên không mặc nhiên đồng nhất.",
+      "commonMisreading": "Thay Tuế Dịch bằng Thiên Mã vì cùng gợi dịch chuyển, hoặc dự đoán chắc chắn chuyển nhà, xuất ngoại.",
+      "reviewGates": [
+        "Xác nhận đúng trường phái và văn bản gốc",
+        "Đối chiếu độc lập bảng hoặc biểu thức an sao",
+        "Đối chiếu ít nhất 12 địa chi hoặc 10 thiên can theo đầu vào thích hợp",
+        "Kiểm thử lá số mẫu và trường hợp biên",
+        "Chuyên gia duyệt trước khi tích hợp engine"
+      ]
+    },
+    {
+      "id": "study-tuc-than",
+      "name": "Tức Thần",
+      "researchSystem": "tướng-tiền-12",
+      "state": "research-only-no-placement",
+      "expertReviewed": false,
+      "placementEnabled": false,
+      "placementInputsToVerify": "Chi năm sinh và thứ tự thứ tư trong vòng Tướng Tiền",
+      "readingContext": "Hình tượng ngắt nhịp, điều tiết, dừng lại để hồi sức hoặc xem xét; không mang nghĩa kết luận về bệnh tật.",
+      "verificationExercise": "Xác nhận vị trí sau Tuế Dịch và trước Hoa Cái; mô tả chức năng biểu tượng trong tổng thể 12 vị trí chứ không tách riêng làm cát/hung.",
+      "commonMisreading": "Suy thẳng chữ Tức thành nguy hiểm về sức khỏe hoặc khẳng định sự kiện bất lợi.",
+      "reviewGates": [
+        "Xác nhận đúng trường phái và văn bản gốc",
+        "Đối chiếu độc lập bảng hoặc biểu thức an sao",
+        "Đối chiếu ít nhất 12 địa chi hoặc 10 thiên can theo đầu vào thích hợp",
+        "Kiểm thử lá số mẫu và trường hợp biên",
+        "Chuyên gia duyệt trước khi tích hợp engine"
+      ]
+    },
+    {
+      "id": "study-hoa-cai",
+      "name": "Hoa Cái",
+      "researchSystem": "tướng-tiền-12",
+      "state": "engine-name-other-group-needs-rule-equivalence-review",
+      "expertReviewed": false,
+      "placementEnabled": false,
+      "placementInputsToVerify": "Chi năm sinh và mối quan hệ với Hoa Cái đã có trong engine",
+      "readingContext": "Tên Hoa Cái cũng đã xuất hiện ở engine như phụ tinh; cần chứng minh hai quy tắc an có thật sự đồng nhất trong trường phái đã chọn trước khi tái sử dụng.",
+      "verificationExercise": "Đối chiếu bản ghi natal:year_branch:hoa-cai với vị trí thứ năm của vòng Tướng Tiền ở 12 chi; ghi rõ trường hợp khớp và không khớp.",
+      "commonMisreading": "Đếm trùng Hoa Cái thành hai sao trên lá số hoặc khẳng định hai hệ luôn tương đương.",
+      "reviewGates": [
+        "Xác nhận đúng trường phái và văn bản gốc",
+        "Đối chiếu độc lập bảng hoặc biểu thức an sao",
+        "Đối chiếu ít nhất 12 địa chi hoặc 10 thiên can theo đầu vào thích hợp",
+        "Kiểm thử lá số mẫu và trường hợp biên",
+        "Chuyên gia duyệt trước khi tích hợp engine"
+      ]
+    },
+    {
+      "id": "study-kiep-sat",
+      "name": "Kiếp Sát",
+      "researchSystem": "tướng-tiền-12",
+      "state": "engine-name-other-group-needs-rule-equivalence-review",
+      "expertReviewed": false,
+      "placementEnabled": false,
+      "placementInputsToVerify": "Chi năm sinh và mối quan hệ với Kiếp Sát đã có trong engine",
+      "readingContext": "Tên Kiếp Sát đồng thời có trong engine phụ tinh; muốn dùng theo vòng Tướng Tiền phải xác minh cùng mốc khởi và quy tắc, không chỉ giống chính tả.",
+      "verificationExercise": "Lập 12 phép thử cho chi năm; so hệ natal_extensions với vị trí thứ sáu của vòng, chụp kết quả khác biệt để chuyên gia xem xét.",
+      "commonMisreading": "Gộp mọi Kiếp Sát cùng tên hoặc quy đoán về tai nạn, mất mát từ một sao.",
+      "reviewGates": [
+        "Xác nhận đúng trường phái và văn bản gốc",
+        "Đối chiếu độc lập bảng hoặc biểu thức an sao",
+        "Đối chiếu ít nhất 12 địa chi hoặc 10 thiên can theo đầu vào thích hợp",
+        "Kiểm thử lá số mẫu và trường hợp biên",
+        "Chuyên gia duyệt trước khi tích hợp engine"
+      ]
+    },
+    {
+      "id": "study-tai-sat",
+      "name": "Tai Sát",
+      "researchSystem": "tướng-tiền-12",
+      "state": "research-only-no-placement",
+      "expertReviewed": false,
+      "placementEnabled": false,
+      "placementInputsToVerify": "Chi năm sinh và thứ tự thứ bảy của vòng Tướng Tiền",
+      "readingContext": "Một nhãn thần sát trong hệ tuần hoàn biểu tượng truyền thống; dùng để đặt câu hỏi về phương án phòng ngừa rủi ro, không phải công cụ dự báo tai nạn.",
+      "verificationExercise": "Kiểm chứng chữ Hán 災煞, cách ghi Tai Sát/Tai Sát và thứ tự sau Kiếp Sát, trước Thiên Sát trên cả vòng.",
+      "commonMisreading": "Đọc “Tai” như bằng chứng sẽ gặp tai họa hoặc dùng kết luận làm người xem sợ hãi.",
+      "reviewGates": [
+        "Xác nhận đúng trường phái và văn bản gốc",
+        "Đối chiếu độc lập bảng hoặc biểu thức an sao",
+        "Đối chiếu ít nhất 12 địa chi hoặc 10 thiên can theo đầu vào thích hợp",
+        "Kiểm thử lá số mẫu và trường hợp biên",
+        "Chuyên gia duyệt trước khi tích hợp engine"
+      ]
+    },
+    {
+      "id": "study-thien-sat",
+      "name": "Thiên Sát",
+      "researchSystem": "tướng-tiền-12",
+      "state": "research-only-no-placement",
+      "expertReviewed": false,
+      "placementEnabled": false,
+      "placementInputsToVerify": "Chi năm sinh và thứ tự thứ tám của vòng Tướng Tiền",
+      "readingContext": "Một mục trong vòng Tướng Tiền, nên phân tích như thành phần phụ trợ theo trường phái, tránh dùng riêng tên gọi hung để diễn giải.",
+      "verificationExercise": "Đối chiếu vị trí với Tai Sát và Chỉ Bối, kiểm tra nghĩa chữ 煞 trong từng hệ tài liệu trước khi lập điều kiện hội chiếu.",
+      "commonMisreading": "Dựa vào nhãn Thiên Sát để kết luận vận xấu chắc chắn hoặc gộp với mọi sao có chữ Sát.",
+      "reviewGates": [
+        "Xác nhận đúng trường phái và văn bản gốc",
+        "Đối chiếu độc lập bảng hoặc biểu thức an sao",
+        "Đối chiếu ít nhất 12 địa chi hoặc 10 thiên can theo đầu vào thích hợp",
+        "Kiểm thử lá số mẫu và trường hợp biên",
+        "Chuyên gia duyệt trước khi tích hợp engine"
+      ]
+    },
+    {
+      "id": "study-chi-boi",
+      "name": "Chỉ Bối",
+      "researchSystem": "tướng-tiền-12",
+      "state": "research-only-no-placement",
+      "expertReviewed": false,
+      "placementEnabled": false,
+      "placementInputsToVerify": "Chi năm sinh và thứ tự thứ chín của vòng Tướng Tiền",
+      "readingContext": "Hình tượng chỉ trỏ sau lưng trong văn bản truyền thống có thể gợi chủ đề nhận xét, trao đổi và hiểu lầm; diễn giải nên dựa vào bối cảnh giao tiếp.",
+      "verificationExercise": "Xác nhận chữ Hán 指背 và vị trí vòng; phân biệt với Quan Phù, Quan Phủ là các danh xưng ở hệ vòng khác.",
+      "commonMisreading": "Quy kết có người phản bội hoặc nói xấu dựa trên một ký hiệu; cũng không được nhập nhằng Chỉ Bối với Quan Phù và Quan Phủ thuộc những hệ khác.",
+      "reviewGates": [
+        "Xác nhận đúng trường phái và văn bản gốc",
+        "Đối chiếu độc lập bảng hoặc biểu thức an sao",
+        "Đối chiếu ít nhất 12 địa chi hoặc 10 thiên can theo đầu vào thích hợp",
+        "Kiểm thử lá số mẫu và trường hợp biên",
+        "Chuyên gia duyệt trước khi tích hợp engine"
+      ]
+    },
+    {
+      "id": "study-ham-tri",
+      "name": "Hàm Trì",
+      "researchSystem": "tướng-tiền-12",
+      "state": "research-only-no-placement",
+      "expertReviewed": false,
+      "placementEnabled": false,
+      "placementInputsToVerify": "Chi năm sinh, thứ tự thứ mười; kiểm tra quan hệ với Đào Hoa riêng",
+      "readingContext": "Hàm Trì trong một số nguồn được liên hệ với ý niệm đào hoa; cần phân biệt nhãn vòng với sao Đào Hoa đã có trong engine.",
+      "verificationExercise": "Đối chiếu chữ 咸池, thứ tự sau Chỉ Bối và trước Nguyệt Sát; không tái sử dụng công thức Đào Hoa nếu chưa chứng minh đồng vị trí.",
+      "commonMisreading": "Tự chuyển Hàm Trì thành Đào Hoa hoặc đánh giá đời sống riêng tư một người từ tên sao.",
+      "reviewGates": [
+        "Xác nhận đúng trường phái và văn bản gốc",
+        "Đối chiếu độc lập bảng hoặc biểu thức an sao",
+        "Đối chiếu ít nhất 12 địa chi hoặc 10 thiên can theo đầu vào thích hợp",
+        "Kiểm thử lá số mẫu và trường hợp biên",
+        "Chuyên gia duyệt trước khi tích hợp engine"
+      ]
+    },
+    {
+      "id": "study-nguyet-sat",
+      "name": "Nguyệt Sát",
+      "researchSystem": "tướng-tiền-12",
+      "state": "research-only-no-placement",
+      "expertReviewed": false,
+      "placementEnabled": false,
+      "placementInputsToVerify": "Chi năm sinh và vị trí thứ mười một trong vòng",
+      "readingContext": "Thần sát phụ trợ được xem trong cấu trúc tuần hoàn Tướng Tiền, không phải một công cụ định thời gian theo tháng mặc dù có chữ Nguyệt.",
+      "verificationExercise": "Kiểm chứng thứ tự sau Hàm Trì và trước Vong Thần; tách khỏi các sao lưu nguyệt vốn cần hệ quy tắc theo tháng.",
+      "commonMisreading": "Tưởng Nguyệt Sát là sao tự lưu chuyển mỗi tháng vì tên có chữ Nguyệt.",
+      "reviewGates": [
+        "Xác nhận đúng trường phái và văn bản gốc",
+        "Đối chiếu độc lập bảng hoặc biểu thức an sao",
+        "Đối chiếu ít nhất 12 địa chi hoặc 10 thiên can theo đầu vào thích hợp",
+        "Kiểm thử lá số mẫu và trường hợp biên",
+        "Chuyên gia duyệt trước khi tích hợp engine"
+      ]
+    },
+    {
+      "id": "study-vong-than",
+      "name": "Vong Thần",
+      "researchSystem": "tướng-tiền-12",
+      "state": "research-only-no-placement",
+      "expertReviewed": false,
+      "placementEnabled": false,
+      "placementInputsToVerify": "Chi năm sinh, tam hợp tương ứng, hướng đi thuận và vị trí thứ mười hai kết thúc vòng Tướng Tiền trước khi quay về Tướng Tinh.",
+      "readingContext": "Hình tượng thất lạc/đứt mạch trong từ nguyên của thần sát, dùng để so sánh những cách đọc truyền thống, không dự báo mất người hay mất tài sản.",
+      "verificationExercise": "Kiểm tra vị trí thứ mười hai và vòng quay về Tướng Tinh; rà soát các bản dịch 亡神 tránh dịch thành một loại vong linh có tác động thực nghiệm.",
+      "commonMisreading": "Diễn dịch tên Vong Thần thành dự báo tử vong hoặc vận hạn không thể tránh.",
+      "reviewGates": [
+        "Xác nhận đúng trường phái và văn bản gốc",
+        "Đối chiếu độc lập bảng hoặc biểu thức an sao",
+        "Đối chiếu ít nhất 12 địa chi hoặc 10 thiên can theo đầu vào thích hợp",
+        "Kiểm thử lá số mẫu và trường hợp biên",
+        "Chuyên gia duyệt trước khi tích hợp engine"
+      ]
+    },
+    {
+      "id": "study-luu-nien-van-tinh",
+      "name": "Lưu Niên Văn Tinh",
+      "researchSystem": "văn-tinh",
+      "state": "research-only-no-placement",
+      "expertReviewed": false,
+      "placementEnabled": false,
+      "placementInputsToVerify": "Can năm sinh trong một số hệ an; không suy từ tên thành can năm xem",
+      "readingContext": "Văn tinh phụ trợ về chủ đề học tập, khoa danh trong cách đọc truyền thống; cần so với Văn Xương và Văn Khúc nhưng không tự coi cùng một sao.",
+      "verificationExercise": "Thu thập bảng can năm sinh → địa chi từ hai nguồn độc lập, đối chiếu quan hệ khoảng cách với Lộc Tồn, rồi quyết định cố định nguyên bàn hay lưu theo năm.",
+      "commonMisreading": "Tạo overlay lưu niên vì chữ Lưu Niên, hoặc suy ra kết quả thi cử chắc chắn.",
+      "reviewGates": [
+        "Xác nhận đúng trường phái và văn bản gốc",
+        "Đối chiếu độc lập bảng hoặc biểu thức an sao",
+        "Đối chiếu ít nhất 12 địa chi hoặc 10 thiên can theo đầu vào thích hợp",
+        "Kiểm thử lá số mẫu và trường hợp biên",
+        "Chuyên gia duyệt trước khi tích hợp engine"
+      ]
+    },
+    {
+      "id": "study-hong-diem",
+      "name": "Hồng Diễm",
+      "researchSystem": "đa-hệ",
+      "state": "research-only-no-placement",
+      "expertReviewed": false,
+      "placementEnabled": false,
+      "placementInputsToVerify": "Một số hệ Tử Vi dùng can năm sinh, tài liệu Bát Tự thường dùng can ngày",
+      "readingContext": "Biểu tượng liên quan đến sức hút trong các nguồn mệnh lý truyền thống; không được dùng để phán xét phẩm hạnh hay xu hướng tình cảm cá nhân.",
+      "verificationExercise": "Lưu hai hồ sơ công thức riêng: natal-year-stem/Tử Vi và day-stem/Bát Tự, có khóa trường phái rõ ràng; so kết quả trước khi tích hợp.",
+      "commonMisreading": "Sao chép bảng an theo can ngày của Bát Tự sang nguyên bàn Tử Vi hoặc lấy hình tượng hấp dẫn làm đánh giá về phẩm hạnh, đời sống cá nhân.",
+      "reviewGates": [
+        "Xác nhận đúng trường phái và văn bản gốc",
+        "Đối chiếu độc lập bảng hoặc biểu thức an sao",
+        "Đối chiếu ít nhất 12 địa chi hoặc 10 thiên can theo đầu vào thích hợp",
+        "Kiểm thử lá số mẫu và trường hợp biên",
+        "Chuyên gia duyệt trước khi tích hợp engine"
+      ]
+    },
+    {
+      "id": "study-quan-sach",
+      "name": "Quán Sách",
+      "researchSystem": "tuế-tiền-12",
+      "state": "research-only-no-placement",
+      "expertReviewed": false,
+      "placementEnabled": false,
+      "placementInputsToVerify": "Một số bảng dùng theo địa chi và vòng Tuế Tiền, không thuộc vòng Tướng Tiền",
+      "readingContext": "Tên đối chiếu chữ 貫索 trong nhóm Tuế Tiền; gợi chủ đề ràng buộc hoặc thủ tục theo cách diễn giải truyền thống, không khẳng định có kiện tụng.",
+      "verificationExercise": "Xác minh cách đọc Quán Sách/Quán Tác, chữ Hán và vị trí tương quan trong Tuế Tiền; không gộp Quan Phù hay Quan Phủ.",
+      "commonMisreading": "Xếp Quán Sách vào vòng Tướng Tinh hoặc kết luận sẽ bị ràng buộc pháp lý.",
+      "reviewGates": [
+        "Xác nhận đúng trường phái và văn bản gốc",
+        "Đối chiếu độc lập bảng hoặc biểu thức an sao",
+        "Đối chiếu ít nhất 12 địa chi hoặc 10 thiên can theo đầu vào thích hợp",
+        "Kiểm thử lá số mẫu và trường hợp biên",
+        "Chuyên gia duyệt trước khi tích hợp engine"
+      ]
+    }
+  ],
+  "aliases": [
+    {
+      "name": "Trường Sinh",
+      "candidate": "Tràng Sinh",
+      "issue": "Chữ Trường/Tràng là cách ghi không thống nhất của 長生; không được nhân đôi vị trí trong vòng 12 trạng thái.",
+      "resolution": "So chữ Hán, nguồn quy ước đặt tên và cách an theo Cục; chọn một ID kỹ thuật nhưng cho phép tên tìm kiếm nếu đã được duyệt."
+    },
+    {
+      "name": "Thai Phụ",
+      "candidate": "Thái Phụ",
+      "issue": "Phiên âm 台輔 dễ bị viết khác; hiện là dị danh nghi vấn chứ chưa đủ chứng cứ tự động gộp.",
+      "resolution": "Đối chiếu trực tiếp chữ Hán và tên trong tài liệu/engine; sau duyệt mới thêm alias tìm kiếm."
+    },
+    {
+      "name": "Tuần Không",
+      "candidate": "Tuần",
+      "issue": "Một số tài liệu dùng Tuần Không để chỉ yếu tố Tuần, nhưng cần phân biệt Tuần, Tuần Trung Không Vong, Tuần Không và các loại Tuần khác.",
+      "resolution": "Chỉ ánh xạ khi đã xác nhận cùng định nghĩa vị trí trong cùng hệ an Tuần/Triệt."
+    },
+    {
+      "name": "Triệt Không",
+      "candidate": "Triệt",
+      "issue": "Triệt có thể được gọi là Triệt Lộ Không Vong; không vì có chữ Không mà đồng nghĩa với Tuần.",
+      "resolution": "Xác minh công thức tính Triệt độc lập rồi mới thiết lập tên đồng nghĩa cho mục tra cứu."
+    }
+  ],
+  "internalSources": [
+    {
+      "url": "https://tianjihq.com/zh-TW/learn/books/digest-ziwei/6",
+      "use": "Định danh và thứ tự Tướng Tiền 12; chưa độc lập thẩm định thuật toán"
+    },
+    {
+      "url": "https://thienco.vn/vong-tuong-tinh-trong-tu-vi.html",
+      "use": "Phụ khảo tiếng Việt về tên nhóm và cách đọc"
+    },
+    {
+      "url": "https://thienco.vn/luu-nien-van-tinh-trong-tu-vi.html",
+      "use": "Phân biệt Lưu Niên Văn Tinh nguyên bàn"
+    },
+    {
+      "url": "https://thayungkhiem.vn/than-sat-hong-diem",
+      "use": "Bát Tự: cách an Hồng Diễm theo can ngày"
+    },
+    {
+      "url": "https://thayungkhiem.vn/tu-dien/sao-hong-diem",
+      "use": "Tử Vi: cách an Hồng Diễm theo can năm sinh"
+    }
+  ]
+}

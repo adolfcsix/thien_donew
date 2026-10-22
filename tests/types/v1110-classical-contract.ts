@@ -1,0 +1,13 @@
+import type {AstrologyResult} from '@thiendo/shared-types';
+import {classicalFamilies} from '../../packages/knowledge/src/index';
+import {buildPalaceReading,matchClassicalFamilies} from '../../packages/interpretation/src/index';
+declare const chart:AstrologyResult;
+const matches=matchClassicalFamilies(chart,0);
+const reading=buildPalaceReading({chart,branchIndex:0});
+const titles:string[]=matches.map(r=>r.title);
+const positions:number[]=reading.classicalMatches.flatMap(r=>r.evidence.placements.map(p=>p.branchIndex));
+const signalTypes:string[]=reading.classicalMatches.flatMap(r=>r.evidence.reviewSignals.map(s=>s.type));
+const count:number=reading.coverage.classicalFamiliesReviewed;
+const confirmed:boolean=reading.coverage.classicalFamiliesConfirmed;
+const familyNames:string[]=classicalFamilies.map(r=>r.title);
+void titles;void positions;void signalTypes;void count;void confirmed;void familyNames;

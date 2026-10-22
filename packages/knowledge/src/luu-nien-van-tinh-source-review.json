@@ -1,0 +1,79 @@
+{
+  "release": "11.119.0",
+  "name": "Lưu Niên Văn Tinh",
+  "layer": "natal-year-stem",
+  "status": "conflicting-sources-not-integrated",
+  "automaticPlacement": false,
+  "stems": [
+    "Giáp",
+    "Ất",
+    "Bính",
+    "Đinh",
+    "Mậu",
+    "Kỷ",
+    "Canh",
+    "Tân",
+    "Nhâm",
+    "Quý"
+  ],
+  "sources": [
+    {
+      "id": "lap-giai-pdf",
+      "title": "Lập và giải tử vi — Vũ Đức Huynh, bản PDF tại Huyền học Việt Nam",
+      "url": "https://www.huyenhocvietnam.vn/upload/attach/hhvn202172310234xcs1WJ.pdf",
+      "location": "Trang PDF73 (index72), mục21. An sao Lưu Niên Văn Tinh",
+      "review": "Đã đọc văn bản, ảnh trang PDF73 và bìa ghi Vũ Đức Huynh; metadata cùng ghi tác giả này. Chưa xác định năm/ấn bản xuất bản. V11.119 đính chính việc ghi nhầm Ngọc Phúc ở V11.117.",
+      "positions": [
+        "Tỵ",
+        "Ngọ",
+        "Thân",
+        "Dần",
+        "Thân",
+        "Dần",
+        "Hợi",
+        "Mão",
+        "Dậu",
+        "Mão"
+      ],
+      "sha256": "8be2550a7defea0c970b9778c15ddad8362b7e574fb369d4820b8c566c6c4ccf",
+      "pages": 149
+    },
+    {
+      "id": "ao-bi-transcription",
+      "title": "Tử Vi Áo Bí Biện Chứng Học — Hà Lạc Dã Phu Việt Viêm Tử, bản chép Dokumen",
+      "url": "https://dokumen.pub/tu-vi-ao-bi-bien-chung-hoc.html",
+      "location": "Đoạn Văn Tinh giữa nhãn trang91 và92 trong bản chép; chưa xác nhận phân trang bản scan gốc.",
+      "review": "Chỉ đối chiếu bản chép; chưa đọc scan gốc. Dòng bảng ghi Giáp ở Tý, câu quyết ghi Tỵ; cần kiểm tra lỗi chép/OCR.",
+      "positions": [
+        "Tỵ",
+        "Ngọ",
+        "Thân",
+        "Dậu",
+        "Thân",
+        "Dậu",
+        "Hợi",
+        "Tý",
+        "Dần",
+        "Mão"
+      ]
+    }
+  ],
+  "disputedStems": [
+    "Đinh",
+    "Kỷ",
+    "Tân",
+    "Nhâm"
+  ],
+  "transcriptionConflict": {
+    "stem": "Giáp",
+    "table": "Tý",
+    "verse": "Tỵ"
+  },
+  "next": [
+    "Xác minh tác giả/ấn bản và scan gốc của cả hai tài liệu",
+    "Ghi từng bảng như một biến thể; không hợp nhất theo số nguồn tìm được",
+    "Thẩm định nguyên bàn theo can năm sinh, không nhầm overlay can năm xem",
+    "Chốt phương pháp cụ thể và fixture lá số độc lập trước tích hợp"
+  ],
+  "notice": "Khác biệt chứng minh chưa đủ căn cứ chọn một quy tắc chung, không tự chứng minh một tài liệu sai. Nội dung truyền thống không phải dự báo khoa học."
+}

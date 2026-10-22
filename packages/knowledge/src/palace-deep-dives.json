@@ -1,0 +1,397 @@
+{
+  "edition": "11.55.0",
+  "scope": "educational-interpretation-deep-dive",
+  "expertReviewed": false,
+  "notice": "Liên kết theo chủ đề không đồng nghĩa quan hệ hình học Tam hợp, Đối cung hay giáp. Các ví dụ là kỹ thuật đọc dữ liệu biểu tượng, không phải dự báo có căn cứ khoa học.",
+  "profiles": {
+    "Mệnh": [
+      {
+        "id": "dive-1",
+        "title": "Mệnh – Thân",
+        "relatedPalaces": [
+          "Mệnh",
+          "Thiên Di"
+        ],
+        "discussion": "Mệnh diễn tả điểm khởi đầu của cách đọc bản mệnh, trong khi Thân là vị trí cần nhận diện riêng trước khi bàn đến bối cảnh hậu vận theo truyền thống. Nếu Mệnh và Thân không đồng cung, không được suy diễn chúng là hai tính cách tách biệt; hãy ghi rõ cung chứa Thân và so sánh sao thực tế tại hai vị trí.",
+        "question": "Mệnh và Thân có đồng vị trí không; nếu khác, sao nào đang thực sự tọa cung Thân?"
+      },
+      {
+        "id": "dive-2",
+        "title": "Tam phương Mệnh–Tài–Quan",
+        "relatedPalaces": [
+          "Mệnh",
+          "Tài Bạch",
+          "Quan Lộc"
+        ],
+        "discussion": "Bộ ba cung Mệnh, Tài Bạch, Quan Lộc thường được đặt cạnh nhau khi khảo sát mối liên hệ giữa cách ứng xử, nguồn lực và vai trò xã hội. Một bộ sao tại Quan không thể thay thế chứng cứ tại Mệnh; đánh dấu rõ chính tinh và Tứ Hóa của từng cung trước khi diễn giải.",
+        "question": "Ba cung có cùng khuynh hướng sao hay có tín hiệu cần đối chiếu trái chiều?"
+      },
+      {
+        "id": "dive-3",
+        "title": "Mệnh và ngoại cảnh",
+        "relatedPalaces": [
+          "Mệnh",
+          "Thiên Di"
+        ],
+        "discussion": "Trục Mệnh–Thiên Di cho phép đối chiếu tượng trưng giữa điểm nhìn bên trong và các tình huống bên ngoài. Với Mệnh vô chính diệu, cần mô tả sao ở Thiên Di như dữ kiện đối cung thay vì chuyển chúng sang Mệnh; đồng thời xem có Tuần/Triệt hay dấu hiệu khiến phép so sánh chưa thể kết luận.",
+        "question": "Những sao nào chỉ nằm tại đối cung và có bị mô tả nhầm thành tọa thủ?"
+      }
+    ],
+    "Phụ Mẫu": [
+      {
+        "id": "dive-1",
+        "title": "Giao tiếp giữa các thế hệ",
+        "relatedPalaces": [
+          "Phụ Mẫu",
+          "Tật Ách"
+        ],
+        "discussion": "Trục Phụ Mẫu–Tật Ách trong bố cục 12 cung giúp người học xét các hình tượng quan hệ, giới hạn và cách ứng xử với áp lực. Không biến biểu tượng sao thành phát biểu về bệnh lý, tuổi thọ hoặc đạo đức thực của cha mẹ; chỉ ghi nhận tương quan sao trong hai cung.",
+        "question": "Các sao đang mô tả quan hệ, hay người đọc đang suy đoán về sức khỏe người khác?"
+      },
+      {
+        "id": "dive-2",
+        "title": "Sự hỗ trợ và kỳ vọng",
+        "relatedPalaces": [
+          "Phụ Mẫu",
+          "Phúc Đức"
+        ],
+        "discussion": "Phụ Mẫu và Phúc Đức có thể được so sánh theo chủ đề kỳ vọng gia đình và nền tảng giá trị, nhưng không mặc nhiên là quan hệ tam hợp. Khi diễn giải phải giữ nguyên vị trí cung, nêu rõ đâu là kết nối chủ đề và đâu là liên hệ hình học.",
+        "question": "Kết nối đang nói đến chủ đề gia đình hay thực sự là hội chiếu sao?"
+      },
+      {
+        "id": "dive-3",
+        "title": "Ranh giới suy luận",
+        "relatedPalaces": [
+          "Phụ Mẫu",
+          "Nô Bộc"
+        ],
+        "discussion": "Những sao được gọi là quý nhân, trợ lực hoặc sát tinh tại Phụ Mẫu không đủ để kết luận cha mẹ sẽ giúp hay làm khó. Hãy đọc cùng chính tinh và bối cảnh các cung xã hội, ghi lại điều kiện thiếu thay vì chỉ cho kết quả tốt–xấu.",
+        "question": "Có sao hỗ trợ hoặc gây căng thẳng nào được ghi nhận đúng cung chưa?"
+      }
+    ],
+    "Phúc Đức": [
+      {
+        "id": "dive-1",
+        "title": "Nền tảng và nếp nhà",
+        "relatedPalaces": [
+          "Phúc Đức",
+          "Điền Trạch"
+        ],
+        "discussion": "Phúc Đức thường được liên hệ với truyền thống gia đình, giá trị tinh thần và môi trường hình thành thói quen. So sánh Điền Trạch để mở rộng chủ đề nếp sống; không coi sự xuất hiện của sao sát là bằng chứng nghiệp báo hoặc chuyện của tổ tiên.",
+        "question": "Giữa giá trị tinh thần và không gian sống có dấu hiệu sao nào cần đối chiếu?"
+      },
+      {
+        "id": "dive-2",
+        "title": "Trục Phúc–Tài",
+        "relatedPalaces": [
+          "Phúc Đức",
+          "Tài Bạch"
+        ],
+        "discussion": "Trong bố cục cung, Phúc Đức và Tài Bạch là cặp đối cung. Có thể xem tương quan giữa nguồn lực bên ngoài và cảm nhận đầy đủ trong hệ quy chiếu cổ truyền; không từ đây suy ra giàu nghèo hoặc phúc phận đã định.",
+        "question": "Sao tại mỗi đầu trục nằm ở đâu, và có thông tin về trạng thái chính tinh không?"
+      },
+      {
+        "id": "dive-3",
+        "title": "Đời sống bên trong",
+        "relatedPalaces": [
+          "Phúc Đức",
+          "Mệnh"
+        ],
+        "discussion": "Nếu diễn giải nội tâm từ Phúc Đức, phải kiểm tra trước chủ đề Mệnh và các chính tinh có thật, tránh khái quát hành vi của cả một cá nhân chỉ từ một sao tại Phúc. Tứ Hóa và dấu án ngữ được ghi nhận như điều kiện bổ sung cần đọc, không gán ngay tính chất may rủi.",
+        "question": "Đâu là phần phân tích biểu tượng, đâu là phát biểu vượt ngoài dữ kiện lá số?"
+      }
+    ],
+    "Điền Trạch": [
+      {
+        "id": "dive-1",
+        "title": "Không gian sống",
+        "relatedPalaces": [
+          "Điền Trạch",
+          "Thiên Di"
+        ],
+        "discussion": "Điền Trạch gợi chủ đề an cư và cảm nhận về nơi ở, còn Thiên Di dùng để đặt câu hỏi về môi trường bên ngoài. Hai cung này chỉ kết nối theo chủ đề, không mặc nhiên tạo thành thế xung chiếu; cần kiểm tra hình học trước khi dùng thuật ngữ cách cục.",
+        "question": "Mối liên hệ đang mô tả là tương quan ý nghĩa hay thế sao được xác nhận?"
+      },
+      {
+        "id": "dive-2",
+        "title": "Trục Điền–Tử",
+        "relatedPalaces": [
+          "Điền Trạch",
+          "Tử Tức"
+        ],
+        "discussion": "Điền Trạch đối cung Tử Tức, cho phép khảo sát tượng trưng sự ổn định không gian và trách nhiệm chăm sóc, truyền đạt. Không dự đoán sở hữu tài sản hay số con; phải đọc song song điều kiện ở cả hai đầu trục.",
+        "question": "Vị trí chính tinh hai đầu trục có đầy đủ dữ liệu hay đang có cung vô chính diệu?"
+      },
+      {
+        "id": "dive-3",
+        "title": "Tích lũy và tài nguyên",
+        "relatedPalaces": [
+          "Điền Trạch",
+          "Tài Bạch",
+          "Phúc Đức"
+        ],
+        "discussion": "Các khái niệm nhà cửa, tài chính và phúc đức dễ bị gộp thành câu nói về bất động sản. Phần luận giải tốt phải phân biệt từng cung; sự hiện diện Hóa Lộc tại một cung không tự động chứng minh có nhà đất hoặc sinh lợi.",
+        "question": "Người đọc có tách rõ bằng chứng tại Điền, Tài và Phúc không?"
+      }
+    ],
+    "Quan Lộc": [
+      {
+        "id": "dive-1",
+        "title": "Mệnh–Tài–Quan",
+        "relatedPalaces": [
+          "Quan Lộc",
+          "Mệnh",
+          "Tài Bạch"
+        ],
+        "discussion": "Quan Lộc không nên được luận tách khỏi Mệnh và Tài Bạch, nhất là khi cần khảo sát câu chuyện nghề nghiệp theo quan niệm Tử Vi. Trước tiên xác định chính tinh thực tế ở ba cung, rồi mới ghi nhận sao trợ lực, sát tinh, Tứ Hóa và những yếu tố phản chứng.",
+        "question": "Vai trò của sao tại Quan có được đối chiếu với Mệnh và Tài thay vì phán một nghề duy nhất?"
+      },
+      {
+        "id": "dive-2",
+        "title": "Trục Quan–Phu",
+        "relatedPalaces": [
+          "Quan Lộc",
+          "Phu Thê"
+        ],
+        "discussion": "Quan Lộc đối cung Phu Thê. Có thể đặt câu hỏi về cách một người cân bằng trách nhiệm công việc và quan hệ thân thiết trong ngôn ngữ biểu tượng, nhưng không nên biến sao ở Phu Thê thành lời đoán nghề nghiệp hoặc tình trạng hôn nhân.",
+        "question": "Hai đầu trục có chính tinh và Tứ Hóa nào; cái gì chỉ là giả thuyết diễn giải?"
+      },
+      {
+        "id": "dive-3",
+        "title": "Sao phụ và điều kiện nghề",
+        "relatedPalaces": [
+          "Quan Lộc",
+          "Nô Bộc"
+        ],
+        "discussion": "Tả Hữu, Xương Khúc hay Khôi Việt thường được nhắc trong các diễn giải liên quan hợp tác, học hỏi hoặc cơ hội. Cần chỉ ra chúng ở Quan, Nô hay cung hội, không dùng tên sao làm bảo chứng năng lực, bằng cấp hoặc thăng chức.",
+        "question": "Có sao nào bị gọi là đồng cung dù thực tế chỉ hội hoặc xung chiếu?"
+      }
+    ],
+    "Nô Bộc": [
+      {
+        "id": "dive-1",
+        "title": "Bạn bè và đối tác",
+        "relatedPalaces": [
+          "Nô Bộc",
+          "Huynh Đệ"
+        ],
+        "discussion": "Nô Bộc được dùng để thảo luận mạng lưới cộng tác, còn Huynh Đệ gợi các quan hệ gần gũi, thân thuộc. Hai nhóm có thể hỗ trợ nhau trong giải thích chủ đề xã hội nhưng không thể quy tội trung thành hay phản bội cho người thật từ sao tại một cung.",
+        "question": "Sao nào tại Nô, sao nào tại Huynh, và quan hệ hình học giữa chúng là gì?"
+      },
+      {
+        "id": "dive-2",
+        "title": "Trục Nô–Huynh",
+        "relatedPalaces": [
+          "Nô Bộc",
+          "Huynh Đệ"
+        ],
+        "discussion": "Nô Bộc đối cung Huynh Đệ. Nên nhìn trục này như hai góc độ kết nối xã hội thay vì đánh giá tốt–xấu cố định. Khi có sát tinh hoặc Hóa Kỵ, ghi rõ bối cảnh sao chính và các biến thể trường phái, tránh suy thành biến cố quan hệ.",
+        "question": "Đang quan sát biểu tượng mối quan hệ hay suy luận người khác sẽ làm điều gì?"
+      },
+      {
+        "id": "dive-3",
+        "title": "Lực hỗ trợ và giới hạn",
+        "relatedPalaces": [
+          "Nô Bộc",
+          "Quan Lộc"
+        ],
+        "discussion": "Nô Bộc thường xuất hiện trong các cuộc thảo luận về đội nhóm làm việc, nhưng sao ở Quan Lộc không mặc nhiên chiếu về Nô. Phải kiểm tra cấu trúc của lá số và chú thích đây chỉ là chủ đề hợp tác nếu không có hội chiếu thực tế.",
+        "question": "Có tách được sự liên hệ chủ đề khỏi phép kiểm tra vị trí không?"
+      }
+    ],
+    "Thiên Di": [
+      {
+        "id": "dive-1",
+        "title": "Mệnh–Di đối chiếu",
+        "relatedPalaces": [
+          "Thiên Di",
+          "Mệnh"
+        ],
+        "discussion": "Thiên Di đối cung Mệnh. Có thể so sánh sao tọa Di với cấu trúc Mệnh để hiểu hai phạm vi tượng trưng trong truyền thống. Không chuyển sao ở Mệnh sang Di hoặc ngược lại, đặc biệt khi một đầu trục là vô chính diệu.",
+        "question": "Các sao thuộc tọa cung, đối cung được ghi chép rõ ràng chưa?"
+      },
+      {
+        "id": "dive-2",
+        "title": "Môi trường bên ngoài",
+        "relatedPalaces": [
+          "Thiên Di",
+          "Nô Bộc"
+        ],
+        "discussion": "Khi nói về xã hội hoặc sự dịch chuyển, cần phân biệt Thiên Di với Nô Bộc. Sự có mặt của Thiên Mã hoặc các sao động tại Thiên Di chỉ là điều kiện để khảo sát biểu tượng di chuyển, không chứng nhận xuất ngoại hay đổi việc.",
+        "question": "Có bằng chứng sao nào tại chính Di thay vì suy từ cung xã hội khác?"
+      },
+      {
+        "id": "dive-3",
+        "title": "Hạn và chuyển cảnh",
+        "relatedPalaces": [
+          "Thiên Di",
+          "Mệnh",
+          "Quan Lộc"
+        ],
+        "discussion": "Nếu lớp lưu niên trùng Thiên Di, không được mặc định năm đó sẽ đi xa hoặc gặp tai nạn. Tách dữ liệu gốc khỏi năm xem rồi kiểm tra sự thay đổi của mốc hạn, cùng các cung Mệnh và Quan theo mục đích nghiên cứu.",
+        "question": "Sao lưu đã được xác minh nguồn năm xem hay còn lẫn với sao bản mệnh?"
+      }
+    ],
+    "Tật Ách": [
+      {
+        "id": "dive-1",
+        "title": "Không suy thành bệnh án",
+        "relatedPalaces": [
+          "Tật Ách",
+          "Phụ Mẫu"
+        ],
+        "discussion": "Theo ngôn ngữ cổ truyền, Tật Ách dùng để bàn về trở lực và chăm sóc bản thân. Đối cung Phụ Mẫu giúp nhìn thêm chủ đề trách nhiệm và giới hạn; tuyệt đối không từ đây chẩn đoán bệnh, tuổi thọ hay sức khỏe của người khác.",
+        "question": "Những từ ngữ nào đã vượt khỏi giải thích biểu tượng sang dự báo y tế?"
+      },
+      {
+        "id": "dive-2",
+        "title": "Kiểm tra bộ sát tinh",
+        "relatedPalaces": [
+          "Tật Ách",
+          "Mệnh"
+        ],
+        "discussion": "Kình Đà, Hỏa Linh, Không Kiếp cần được phân biệt rõ vị trí đồng cung, hội chiếu hay giáp cung. Không thể cộng số sát tinh rồi kết luận có tai nạn; điểm có thể kiểm chứng là vị trí sao và quan hệ với chính tinh.",
+        "question": "Bộ sao nào thực sự cùng cung; bộ nào chỉ liên hệ từ xa?"
+      },
+      {
+        "id": "dive-3",
+        "title": "Lưu hạn tại Tật",
+        "relatedPalaces": [
+          "Tật Ách",
+          "Thiên Di"
+        ],
+        "discussion": "Một sao lưu niên đến Tật Ách là dữ kiện thời gian, không phải thông báo tình trạng sức khỏe. Mọi phần luận nên nêu rõ năm xem và trạng thái xác minh phép an; thiếu dữ liệu ngày/giờ thì không tự thêm lớp hạn nhỏ.",
+        "question": "Có vô tình biến tên sao lưu thành cảnh báo bệnh tật cụ thể không?"
+      }
+    ],
+    "Tài Bạch": [
+      {
+        "id": "dive-1",
+        "title": "Nguồn lực – vai trò",
+        "relatedPalaces": [
+          "Tài Bạch",
+          "Mệnh",
+          "Quan Lộc"
+        ],
+        "discussion": "Tài Bạch cần được đọc cùng Mệnh và Quan Lộc khi nghiên cứu mô hình nguồn lực trong Tử Vi. Phân biệt Hóa Lộc, Lộc Tồn và những sao ở cung khác; một dấu Lộc ở tam hợp không đồng nghĩa nó tọa Tài.",
+        "question": "Những sao Lộc nằm đúng cung nào, có đủ điều kiện để ghép bộ sao chưa?"
+      },
+      {
+        "id": "dive-2",
+        "title": "Trục Tài–Phúc",
+        "relatedPalaces": [
+          "Tài Bạch",
+          "Phúc Đức"
+        ],
+        "discussion": "Tài Bạch đối cung Phúc Đức. Khi có hai đầu trục, có thể bàn theo truyền thống về cân bằng nhu cầu vật chất và điểm tựa tinh thần, nhưng không kết luận giàu nghèo hay đầu tư thành công.",
+        "question": "Có trường hợp sao ở đối cung bị diễn giải sai thành chính tinh tọa thủ Tài không?"
+      },
+      {
+        "id": "dive-3",
+        "title": "Hạn và quyết định kinh tế",
+        "relatedPalaces": [
+          "Tài Bạch",
+          "Điền Trạch"
+        ],
+        "discussion": "Các lớp Đại hạn, Tiểu hạn và lưu niên cần được hiển thị riêng, chỉ rõ cơ sở tính. Không dùng tổ hợp sao để đưa quyết định mua bán nhà, đầu tư hay dự báo lợi nhuận; chỉ nên trình bày điều kiện huyền học và giới hạn nguồn.",
+        "question": "Mốc thời gian nào đã được engine kiểm tra, mốc nào vẫn đang trong nghiên cứu?"
+      }
+    ],
+    "Tử Tức": [
+      {
+        "id": "dive-1",
+        "title": "Trách nhiệm chăm sóc",
+        "relatedPalaces": [
+          "Tử Tức",
+          "Điền Trạch"
+        ],
+        "discussion": "Tử Tức và Điền Trạch là hai đầu đối cung. Có thể khảo sát tượng trưng trách nhiệm nuôi dưỡng, không gian gia đình và sự tiếp nối, nhưng không dùng sao để đoán khả năng sinh sản, số con hay sức khỏe trẻ em.",
+        "question": "Có nhầm chủ đề chăm sóc với lời dự báo về con cái không?"
+      },
+      {
+        "id": "dive-2",
+        "title": "Giáo dưỡng và truyền đạt",
+        "relatedPalaces": [
+          "Tử Tức",
+          "Phúc Đức"
+        ],
+        "discussion": "Phúc Đức gợi các giá trị nền tảng, còn Tử Tức gợi câu chuyện truyền đạt giữa các thế hệ. Sự liên hệ là theo chủ đề nếu không có tam hợp hay xung chiếu; mọi phát biểu về sao cần giữ đúng vị trí của chúng.",
+        "question": "Dữ liệu nào thực tế tọa Tử, dữ liệu nào đang ở Phúc?"
+      },
+      {
+        "id": "dive-3",
+        "title": "Yếu tố trợ lực",
+        "relatedPalaces": [
+          "Tử Tức",
+          "Phụ Mẫu"
+        ],
+        "discussion": "Sao phụ như Xương Khúc hay Tả Hữu khi xuất hiện có thể dùng để đặt câu hỏi về học hỏi và hỗ trợ, nhưng không biến biểu tượng thành đánh giá về trí tuệ hoặc số phận của trẻ. Cần đối chiếu chính tinh trước.",
+        "question": "Mô tả có lấy tình huống giả định làm sự kiện chắc chắn không?"
+      }
+    ],
+    "Phu Thê": [
+      {
+        "id": "dive-1",
+        "title": "Trục Phu–Quan",
+        "relatedPalaces": [
+          "Phu Thê",
+          "Quan Lộc"
+        ],
+        "discussion": "Phu Thê đối cung Quan Lộc. Một người học Tử Vi có thể đặt hai chủ đề quan hệ thân thiết và vai trò công việc cạnh nhau để soi rõ điều kiện tương tác, nhưng không từ đó tuyên bố ly hôn, kết hôn hoặc thay đổi nghề.",
+        "question": "Có gọi đúng sao ở Phu và Quan thay vì gộp hai cung không?"
+      },
+      {
+        "id": "dive-2",
+        "title": "Duyên và thế Loan–Hỷ",
+        "relatedPalaces": [
+          "Phu Thê",
+          "Mệnh"
+        ],
+        "discussion": "Hồng Loan và Thiên Hỷ luôn xung chiếu theo bảng sao đang sử dụng; nếu một sao tọa Phu Thê thì sao kia ở cung đối, không cùng tọa. Đào Hoa dùng công thức an khác, vì vậy phải xem từng vị trí thực tế trước khi gọi chung bộ Đào–Hồng–Hỷ.",
+        "question": "Loan và Hỷ thực tế có tọa Phu không, hay chỉ hội chiếu từ cung khác?"
+      },
+      {
+        "id": "dive-3",
+        "title": "Tránh kết luận áp đặt",
+        "relatedPalaces": [
+          "Phu Thê",
+          "Nô Bộc"
+        ],
+        "discussion": "Các sao cô độc, sát tinh hoặc Hóa Kỵ ở Phu Thê trong các trường phái được hiểu theo nhiều lớp. Mô tả có trách nhiệm phải nhận biết chính tinh, tam phương, dữ liệu thiếu và dị bản, không gán tính cách hay lỗi lầm cho bạn đời.",
+        "question": "Phần đọc này có biến biểu tượng thành phán xét một người cụ thể không?"
+      }
+    ],
+    "Huynh Đệ": [
+      {
+        "id": "dive-1",
+        "title": "Trục Huynh–Nô",
+        "relatedPalaces": [
+          "Huynh Đệ",
+          "Nô Bộc"
+        ],
+        "discussion": "Huynh Đệ đối cung Nô Bộc. Hai chủ đề mạng lưới gần gũi và xã hội có thể được đối chiếu trong cùng một trục, nhưng không có cơ sở để suy ra anh chị em thân thiết hay mâu thuẫn chỉ vì tên một sao.",
+        "question": "Hai đầu trục có chính tinh thực tế hay một đầu vô chính diệu?"
+      },
+      {
+        "id": "dive-2",
+        "title": "Sự hỗ trợ trong gia đình",
+        "relatedPalaces": [
+          "Huynh Đệ",
+          "Phụ Mẫu"
+        ],
+        "discussion": "Phụ Mẫu và Huynh Đệ cùng thuộc nhóm chủ đề gia đình nhưng không mặc định cùng tam hợp. Khi giải thích sự hỗ trợ, cần ghi sao nào tọa cung nào, đồng thời phân biệt kết nối khái niệm và liên hệ hình học.",
+        "question": "Đâu là sao trực tiếp tại Huynh, đâu là dữ liệu từ Phụ Mẫu?"
+      },
+      {
+        "id": "dive-3",
+        "title": "Bộ sao gây áp lực",
+        "relatedPalaces": [
+          "Huynh Đệ",
+          "Mệnh"
+        ],
+        "discussion": "Nếu xuất hiện Kình Đà hay Hỏa Linh ở Huynh Đệ, chỉ được xem là hiện diện của những biểu tượng truyền thống, không dự báo xung đột hoặc nhân cách anh chị em. Hãy xét trạng thái chính tinh, Tuần/Triệt và điều kiện phản chứng trước.",
+        "question": "Phần giải thích có kiểm tra những điều kiện làm thay đổi cách đọc chưa?"
+      }
+    ]
+  }
+}

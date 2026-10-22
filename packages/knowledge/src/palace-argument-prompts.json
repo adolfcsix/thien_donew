@@ -1,0 +1,116 @@
+{
+  "edition": "11.61.0",
+  "scope": "conditional-natal-palace-arguments",
+  "expertReviewed": false,
+  "notice": "Đây là phương pháp đọc giả thuyết có điều kiện dựa vào sao bản mệnh đã an; không chứng minh cách cục hoặc dự báo sự kiện, chưa được thẩm định độc lập.",
+  "profiles": {
+    "Mệnh": {
+      "prompts": {
+        "toa-doi": "Khi Mệnh có chính tinh, khác biệt nào xuất hiện nếu đối cung Thiên Di mang nhóm chính tinh khác? Trường hợp vô chính diệu cần đọc đối cung ra sao mà không coi sao ấy tọa Mệnh?",
+        "hoi-tam-hop": "Hai cung Tài Bạch và Quan Lộc trong tam hợp Mệnh góp những vị trí sao nào để đối chiếu giữa định hướng cá nhân, công việc và cách sử dụng nguồn lực?",
+        "hoa-dich": "Nếu Tứ Hóa năm sinh gắn với một sao chính ở Tứ chính Mệnh, ta đã kiểm tra đúng sao đích, cung đích và độ sáng của sao đó chưa?",
+        "doi-trong": "Có đồng thời sao trợ lực và sát tinh hoặc Tuần/Triệt trong Tứ chính Mệnh không; vì sao không thể cộng trừ thành điểm số phẩm chất con người?"
+      },
+      "counterexample": "Một biểu tượng ở Mệnh không đủ để kết luận năng lực, đạo đức hay số phận của một người; yếu tố giáo dục và hoàn cảnh không hiện trong lá số."
+    },
+    "Phụ Mẫu": {
+      "prompts": {
+        "toa-doi": "Đối cung Tật Ách có chính tinh nào cần đối chiếu với Phụ Mẫu mà không suy thẳng ra tình trạng sức khỏe hay tính cách người thân?",
+        "hoi-tam-hop": "Khi mở hai cung tam hợp Phụ Mẫu, những vị trí sao nào khiến việc giải thích vai trò chăm sóc và kỳ vọng giữa các thế hệ cần thêm bối cảnh?",
+        "hoa-dich": "Tứ Hóa năm sinh chạm đến một chính tinh trong Tứ chính Phụ Mẫu ở đâu; đã tránh dùng nhãn lưu niên để gán cho quan hệ gia đình chưa?",
+        "doi-trong": "Có sao trợ lực, sát tinh và dấu án ngữ cùng được ghi nhận khi nghiên cứu Phụ Mẫu không; cần thu thập gì trước khi bàn về quan hệ thực tế?"
+      },
+      "counterexample": "Không dùng cung Phụ Mẫu để kết tội hay đoán tuổi thọ người thân; lời kể, hành vi và tình huống thực tế mới là dữ liệu của quan hệ."
+    },
+    "Phúc Đức": {
+      "prompts": {
+        "toa-doi": "Chính tinh ở Phúc Đức và đối cung Tài Bạch nằm ở những thế đối chiếu nào; không đồng nhất biểu tượng di sản tinh thần với khả năng tài chính?",
+        "hoi-tam-hop": "Trong tam hợp Phúc Đức, sao nào giúp đặt câu hỏi về hệ giá trị và nếp sống, và đâu chỉ là tên của vòng Thái Tuế?",
+        "hoa-dich": "Đã tách Tứ Hóa tại chính tinh trong Tứ chính Phúc Đức khỏi sao Phúc Đức thuộc vòng Thái Tuế khi phân tích chưa?",
+        "doi-trong": "Nếu trợ lực và dấu trở lực cùng hiện diện quanh Phúc Đức, đâu là phản chứng đối với kết luận giản đơn về phúc phần dòng họ?"
+      },
+      "counterexample": "Không xem mức độ cát hung của một nhóm sao là bằng chứng về phúc phần, nghiệp hay lịch sử dòng họ."
+    },
+    "Điền Trạch": {
+      "prompts": {
+        "toa-doi": "Chính tinh tại Điền Trạch và đối cung Tử Tức gợi ra sự đối chiếu nào giữa nơi ở và trách nhiệm chăm sóc, không suy ra sở hữu nhà đất?",
+        "hoi-tam-hop": "Tại hai cung tam hợp Điền Trạch, các sao nào đang hội theo vị trí thực và sao nào chỉ là tên được đưa ra trong sách luận?",
+        "hoa-dich": "Tứ Hóa năm sinh có thực sự gắn sao đích đã xác minh quanh Điền Trạch không, hay có nhầm với dấu hiệu của năm xem?",
+        "doi-trong": "Sao trợ lực và sát tinh hoặc Tuần/Triệt ở Tứ chính Điền Trạch yêu cầu phân biệt thay đổi môi trường với phán đoán tài sản ra sao?"
+      },
+      "counterexample": "Không suy đoán quyền sở hữu, giá bất động sản hay tình trạng tranh chấp từ ký hiệu sao."
+    },
+    "Quan Lộc": {
+      "prompts": {
+        "toa-doi": "Quan Lộc có chính tinh tọa thủ hay vô chính diệu, và đối cung Phu Thê cung cấp đối chiếu gì mà không suy ra nghề nghiệp bắt buộc?",
+        "hoi-tam-hop": "Hai cung Mệnh và Tài Bạch trong tam hợp Quan Lộc có đủ sao thực để khảo sát sự tương tác giữa năng lực, công việc và nguồn lực?",
+        "hoa-dich": "Một Hóa Quyền hay Hóa Khoa ở Tứ chính Quan Lộc đang gắn vào chính tinh đã có độ sáng được xác minh, hay mới là nhãn chưa đủ dữ liệu?",
+        "doi-trong": "Khi vừa có sao trợ lực vừa có sát tinh hoặc Tuần/Triệt quanh Quan Lộc, vì sao không thể kết luận ngay thăng chức hoặc thất nghiệp?"
+      },
+      "counterexample": "Sao hội chiếu không chứng minh thành công nghề nghiệp; chuyên môn, thị trường lao động và lựa chọn cá nhân là yếu tố độc lập."
+    },
+    "Nô Bộc": {
+      "prompts": {
+        "toa-doi": "Đối cung Huynh Đệ có các chính tinh nào để so sánh mối quan hệ gần gũi với hợp tác xã hội mà không phán xét một cá nhân cụ thể?",
+        "hoi-tam-hop": "Trong hai cung tam hợp Nô Bộc, chứng cứ sao thuộc những lớp nào và có tạo nên quan hệ tương hỗ về mặt cấu trúc hay không?",
+        "hoa-dich": "Tứ Hóa ở Tứ chính Nô Bộc có được xác minh cùng sao đích, không nhầm luân chuyển theo năm với nền tảng quan hệ?",
+        "doi-trong": "Có trợ tinh đồng thời với sát tinh hoặc án ngữ quanh Nô Bộc; vì sao không gắn nhãn tốt/xấu cho bạn bè từ số sao?"
+      },
+      "counterexample": "Không dùng dữ liệu sao để gán phẩm chất hoặc độ tin cậy cho bạn bè, đồng nghiệp. Cần kiểm tra hành vi hợp tác có thật trong hoàn cảnh cụ thể."
+    },
+    "Thiên Di": {
+      "prompts": {
+        "toa-doi": "Với Thiên Di, đối cung Mệnh mang những chính tinh gì; làm sao phân biệt hình tượng môi trường bên ngoài với bản sắc cá nhân?",
+        "hoi-tam-hop": "Tam hợp Thiên Di có sao nào để nghiên cứu các hoàn cảnh chuyển đổi, và sao nào thuộc lớp dữ liệu khác không thể tính chung?",
+        "hoa-dich": "Nếu Tứ Hóa năm sinh xuất hiện trong Tứ chính Thiên Di, sao đích nào đã được xác minh trước khi luận về thích nghi?",
+        "doi-trong": "Trợ tinh, sát tinh hoặc Tuần/Triệt ở Thiên Di được đối chiếu ra sao mà không dự đoán chắc chắn chuyện đi xa?"
+      },
+      "counterexample": "Các vị trí sao không đủ xác nhận chuyện xuất ngoại, định cư hoặc sự cố di chuyển. Nên đối chiếu kế hoạch thực tế và điều kiện di chuyển."
+    },
+    "Tật Ách": {
+      "prompts": {
+        "toa-doi": "Đối cung Phụ Mẫu của Tật Ách có chính tinh nào; tại sao vị trí này không đủ để xác định bệnh lý hoặc di truyền?",
+        "hoi-tam-hop": "Hai cung tam hợp Tật Ách có sao gì cần kiểm tra khi nghiên cứu biểu tượng nếp sống, trong giới hạn tuyệt đối không chẩn đoán?",
+        "hoa-dich": "Một nhãn Tứ Hóa ở Tứ chính Tật Ách đang gắn sao chính đã xác minh hay sao đích chưa rõ; làm thế nào tránh đưa ra lời khuyên y tế?",
+        "doi-trong": "Trợ tinh và sát tinh hoặc Tuần/Triệt có đồng thời không; vì sao không thể từ đó ấn định tuổi thọ hay tai nạn?"
+      },
+      "counterexample": "Không kết luận bệnh tật, chẩn đoán, tiên lượng hay tuổi thọ từ hình tượng truyền thống."
+    },
+    "Tài Bạch": {
+      "prompts": {
+        "toa-doi": "Tài Bạch đối chiếu Phúc Đức qua các chính tinh nào; vì sao không biến cấu trúc lá số thành dự báo lãi lỗ?",
+        "hoi-tam-hop": "Trong tam hợp Tài Bạch có Mệnh và Quan Lộc, những sao nào thực sự hội để thảo luận cách sử dụng nguồn lực có bối cảnh?",
+        "hoa-dich": "Tứ Hóa năm sinh ở Tứ chính Tài Bạch có sao đích và độ sáng hợp lệ không; đã tách khỏi dòng tiền thực tế chưa?",
+        "doi-trong": "Có sao trợ lực cùng sát tinh hoặc Tuần/Triệt quanh Tài Bạch, đâu là giới hạn trước khi nói đến rủi ro tài chính?"
+      },
+      "counterexample": "Không coi hội sao là lời khuyên đầu tư hoặc chứng cứ về thu nhập, nợ và khả năng sinh lời."
+    },
+    "Tử Tức": {
+      "prompts": {
+        "toa-doi": "Chính tinh tại Tử Tức và đối cung Điền Trạch cho phép so sánh những chủ đề chăm sóc nào mà không khẳng định khả năng sinh con?",
+        "hoi-tam-hop": "Tam hợp Tử Tức đang có những chính tinh và sao bổ trợ nào để đặt câu hỏi về trách nhiệm trong gia đình?",
+        "hoa-dich": "Tứ Hóa gắn vào sao chính quanh Tử Tức đã qua xác minh hay chỉ là dữ liệu không chắc chắn, và điều đó ảnh hưởng câu hỏi học tập ra sao?",
+        "doi-trong": "Sát tinh và án ngữ quanh Tử Tức có thể tạo ngộ nhận gì nếu dùng như dự báo số lượng hoặc số phận con cái?"
+      },
+      "counterexample": "Không suy số con, khả năng sinh sản, giới tính hoặc kết cục của con cái từ một tổ hợp."
+    },
+    "Phu Thê": {
+      "prompts": {
+        "toa-doi": "Đối cung Quan Lộc có chính tinh nào cần đặt bên cạnh Phu Thê khi đọc các hình tượng về trách nhiệm và kỳ vọng đôi bên?",
+        "hoi-tam-hop": "Hai cung tam hợp Phu Thê có sao nào được xác minh để đặt câu hỏi về giao tiếp và hỗ trợ, không tiên đoán kết cục hôn nhân?",
+        "hoa-dich": "Tứ Hóa năm sinh ở Tứ chính Phu Thê có xác minh cả tên nhãn lẫn sao đích trước khi so sánh những chủ đề quan hệ?",
+        "doi-trong": "Khi có trợ tinh và sát tinh hoặc Tuần/Triệt cùng xuất hiện, vì sao không thể gán chắc chắn chung thủy, đổ vỡ hoặc tính cách bạn đời?"
+      },
+      "counterexample": "Không phán đoán tính chung thủy, ly hôn hay ý định của bạn đời dựa vào các sao. Các mối quan hệ cần được đánh giá bằng giao tiếp và sự đồng thuận."
+    },
+    "Huynh Đệ": {
+      "prompts": {
+        "toa-doi": "Chính tinh Huynh Đệ và đối cung Nô Bộc gợi ra sự phân biệt nào giữa quan hệ thân tộc và quan hệ xã hội?",
+        "hoi-tam-hop": "Tại hai cung tam hợp Huynh Đệ, vị trí sao nào giúp nghiên cứu các cách hỗ trợ trong gia đình mà không khẳng định sự kiện?",
+        "hoa-dich": "Tứ Hóa năm sinh có gắn một sao chính hợp lệ ở Tứ chính Huynh Đệ không; cần kiểm tra gì khi tên sao lặp?",
+        "doi-trong": "Trợ tinh và sát tinh hoặc án ngữ quanh Huynh Đệ có làm phát sinh ngộ nhận về số lượng hay vận mệnh anh chị em không?"
+      },
+      "counterexample": "Không áp đặt vị trí sao thành kết luận về số anh chị em hay trách nhiệm từng người trong gia đình."
+    }
+  }
+}

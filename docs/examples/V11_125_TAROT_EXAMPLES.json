@@ -1,0 +1,716 @@
+{
+  "edition": "11.125.0",
+  "notice": "Dữ liệu minh họa; không phải trải bài của người dùng. Mỗi phần archives.* có thể nhập riêng tại /tarot.",
+  "archives": {
+    "celtic": {
+      "format": "thien-do.tarot-rws-reading",
+      "version": 1,
+      "exportedAt": "2026-10-13T16:19:12.094Z",
+      "snapshot": {
+        "version": 2,
+        "deck": "rider-waite-smith-1909",
+        "spread": "celtic-cross",
+        "includeReversed": true,
+        "question": "Điều gì cần xem xét khi điều chỉnh kế hoạch học tập?",
+        "draw": [
+          {
+            "id": "wands-10",
+            "reversed": true
+          },
+          {
+            "id": "cups-14",
+            "reversed": false
+          },
+          {
+            "id": "cups-04",
+            "reversed": true
+          },
+          {
+            "id": "cups-08",
+            "reversed": true
+          },
+          {
+            "id": "major-12",
+            "reversed": false
+          },
+          {
+            "id": "pentacles-13",
+            "reversed": true
+          },
+          {
+            "id": "swords-09",
+            "reversed": true
+          },
+          {
+            "id": "swords-07",
+            "reversed": true
+          },
+          {
+            "id": "swords-02",
+            "reversed": false
+          },
+          {
+            "id": "major-13",
+            "reversed": true
+          }
+        ],
+        "method": {
+          "id": "thien-do-rws-reflective",
+          "version": 2,
+          "knowledgeEdition": "11.124.0",
+          "knowledgeChecksum": "sha256:3b5c31e00d2e617273cc51c690f0b0203bfd7d03d8ef2d6704570f8d3487456f",
+          "deckCatalogChecksum": "sha256:611d58912ab21b85242d47b5fbde1ea8f80b3074aba35626cc00f2b897c5e9b4"
+        },
+        "context": "work",
+        "layout": {
+          "id": "celtic-waite-reflective-v1",
+          "version": 1,
+          "name": "Celtic Cross · Waite / phản tư",
+          "positions": [
+            {
+              "id": "p1",
+              "label": "Điều đang xét",
+              "role": "focus",
+              "prompt": "Mô tả trọng tâm hiện tại qua biểu tượng; đối chiếu điều đang xảy ra, không gán đặc điểm cố định.",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "id": "p2",
+              "label": "Điểm cần đối chiếu",
+              "role": "challenge",
+              "prompt": "Xét điều cản trở hoặc đặt vấn đề cho trọng tâm. Một lá xuôi vẫn có thể nói về thử thách ở vị trí này.",
+              "x": 1,
+              "y": 2,
+              "rotation": 90
+            },
+            {
+              "id": "p3",
+              "label": "Mục tiêu / lý tưởng",
+              "role": "aim",
+              "prompt": "Phân biệt điều mong đạt với điều đã đạt. Kiểm tra mục tiêu có phù hợp nguồn lực và giá trị hiện tại.",
+              "x": 1,
+              "y": 0,
+              "rotation": 0
+            },
+            {
+              "id": "p4",
+              "label": "Nền tảng",
+              "role": "basis",
+              "prompt": "Xem điều kiện và thói quen đang làm nền. Không biến lá bài thành bằng chứng về quá khứ.",
+              "x": 1,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "id": "p5",
+              "label": "Ảnh hưởng cũ",
+              "role": "past",
+              "prompt": "Đối chiếu trải nghiệm đã biết và ảnh hưởng đang qua; không suy một sự kiện quá khứ chỉ từ lá.",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "id": "p6",
+              "label": "Hướng diễn tiến",
+              "role": "next",
+              "prompt": "Khảo sát một khả năng nếu các điều kiện tiếp tục; nêu lựa chọn có thể thay đổi hướng ấy, không ấn định tương lai.",
+              "x": 2,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "id": "p7",
+              "label": "Cách tiếp cận của bạn",
+              "role": "self",
+              "prompt": "Xem thái độ và phần có thể chủ động trong việc đang hỏi, không gán nhân cách cố định.",
+              "x": 4,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "id": "p8",
+              "label": "Môi trường",
+              "role": "environment",
+              "prompt": "Đọc bối cảnh, thông tin và quan hệ bên ngoài. Không suy người khác nghĩ gì khi chưa có lời xác nhận.",
+              "x": 4,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "id": "p9",
+              "label": "Hy vọng / lo ngại",
+              "role": "hopes",
+              "prompt": "Tách điều mong muốn, điều sợ và điều có bằng chứng. Hai mặt có thể cùng tồn tại.",
+              "x": 4,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "id": "p10",
+              "label": "Tổng hợp có điều kiện",
+              "role": "synthesis",
+              "prompt": "Nối các vị trí trước thành giả thuyết có điều kiện và câu hỏi kiểm tra; đây không phải lời tiên đoán kết quả.",
+              "x": 4,
+              "y": 0,
+              "rotation": 0
+            }
+          ]
+        }
+      }
+    },
+    "celticSecond": {
+      "format": "thien-do.tarot-rws-reading",
+      "version": 1,
+      "exportedAt": "2026-10-13T16:19:12.095Z",
+      "snapshot": {
+        "version": 2,
+        "deck": "rider-waite-smith-1909",
+        "spread": "celtic-cross",
+        "includeReversed": true,
+        "question": "Những nguồn lực nào có thể hỗ trợ kế hoạch học tập?",
+        "draw": [
+          {
+            "id": "major-08",
+            "reversed": true
+          },
+          {
+            "id": "major-04",
+            "reversed": false
+          },
+          {
+            "id": "cups-04",
+            "reversed": true
+          },
+          {
+            "id": "swords-10",
+            "reversed": true
+          },
+          {
+            "id": "cups-02",
+            "reversed": false
+          },
+          {
+            "id": "pentacles-01",
+            "reversed": false
+          },
+          {
+            "id": "cups-10",
+            "reversed": false
+          },
+          {
+            "id": "wands-05",
+            "reversed": false
+          },
+          {
+            "id": "cups-09",
+            "reversed": false
+          },
+          {
+            "id": "pentacles-10",
+            "reversed": false
+          }
+        ],
+        "method": {
+          "id": "thien-do-rws-reflective",
+          "version": 2,
+          "knowledgeEdition": "11.124.0",
+          "knowledgeChecksum": "sha256:3b5c31e00d2e617273cc51c690f0b0203bfd7d03d8ef2d6704570f8d3487456f",
+          "deckCatalogChecksum": "sha256:611d58912ab21b85242d47b5fbde1ea8f80b3074aba35626cc00f2b897c5e9b4"
+        },
+        "context": "work",
+        "layout": {
+          "id": "celtic-waite-reflective-v1",
+          "version": 1,
+          "name": "Celtic Cross · Waite / phản tư",
+          "positions": [
+            {
+              "id": "p1",
+              "label": "Điều đang xét",
+              "role": "focus",
+              "prompt": "Mô tả trọng tâm hiện tại qua biểu tượng; đối chiếu điều đang xảy ra, không gán đặc điểm cố định.",
+              "x": 1,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "id": "p2",
+              "label": "Điểm cần đối chiếu",
+              "role": "challenge",
+              "prompt": "Xét điều cản trở hoặc đặt vấn đề cho trọng tâm. Một lá xuôi vẫn có thể nói về thử thách ở vị trí này.",
+              "x": 1,
+              "y": 2,
+              "rotation": 90
+            },
+            {
+              "id": "p3",
+              "label": "Mục tiêu / lý tưởng",
+              "role": "aim",
+              "prompt": "Phân biệt điều mong đạt với điều đã đạt. Kiểm tra mục tiêu có phù hợp nguồn lực và giá trị hiện tại.",
+              "x": 1,
+              "y": 0,
+              "rotation": 0
+            },
+            {
+              "id": "p4",
+              "label": "Nền tảng",
+              "role": "basis",
+              "prompt": "Xem điều kiện và thói quen đang làm nền. Không biến lá bài thành bằng chứng về quá khứ.",
+              "x": 1,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "id": "p5",
+              "label": "Ảnh hưởng cũ",
+              "role": "past",
+              "prompt": "Đối chiếu trải nghiệm đã biết và ảnh hưởng đang qua; không suy một sự kiện quá khứ chỉ từ lá.",
+              "x": 0,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "id": "p6",
+              "label": "Hướng diễn tiến",
+              "role": "next",
+              "prompt": "Khảo sát một khả năng nếu các điều kiện tiếp tục; nêu lựa chọn có thể thay đổi hướng ấy, không ấn định tương lai.",
+              "x": 2,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "id": "p7",
+              "label": "Cách tiếp cận của bạn",
+              "role": "self",
+              "prompt": "Xem thái độ và phần có thể chủ động trong việc đang hỏi, không gán nhân cách cố định.",
+              "x": 4,
+              "y": 6,
+              "rotation": 0
+            },
+            {
+              "id": "p8",
+              "label": "Môi trường",
+              "role": "environment",
+              "prompt": "Đọc bối cảnh, thông tin và quan hệ bên ngoài. Không suy người khác nghĩ gì khi chưa có lời xác nhận.",
+              "x": 4,
+              "y": 4,
+              "rotation": 0
+            },
+            {
+              "id": "p9",
+              "label": "Hy vọng / lo ngại",
+              "role": "hopes",
+              "prompt": "Tách điều mong muốn, điều sợ và điều có bằng chứng. Hai mặt có thể cùng tồn tại.",
+              "x": 4,
+              "y": 2,
+              "rotation": 0
+            },
+            {
+              "id": "p10",
+              "label": "Tổng hợp có điều kiện",
+              "role": "synthesis",
+              "prompt": "Nối các vị trí trước thành giả thuyết có điều kiện và câu hỏi kiểm tra; đây không phải lời tiên đoán kết quả.",
+              "x": 4,
+              "y": 0,
+              "rotation": 0
+            }
+          ]
+        }
+      }
+    },
+    "custom": {
+      "format": "thien-do.tarot-rws-reading",
+      "version": 1,
+      "exportedAt": "2026-10-13T16:19:12.095Z",
+      "snapshot": {
+        "version": 2,
+        "deck": "rider-waite-smith-1909",
+        "spread": "custom",
+        "includeReversed": true,
+        "question": "",
+        "draw": [
+          {
+            "id": "wands-08",
+            "reversed": true
+          },
+          {
+            "id": "pentacles-07",
+            "reversed": true
+          },
+          {
+            "id": "cups-01",
+            "reversed": false
+          },
+          {
+            "id": "swords-03",
+            "reversed": true
+          }
+        ],
+        "method": {
+          "id": "thien-do-rws-reflective",
+          "version": 2,
+          "knowledgeEdition": "11.124.0",
+          "knowledgeChecksum": "sha256:3b5c31e00d2e617273cc51c690f0b0203bfd7d03d8ef2d6704570f8d3487456f",
+          "deckCatalogChecksum": "sha256:611d58912ab21b85242d47b5fbde1ea8f80b3074aba35626cc00f2b897c5e9b4"
+        },
+        "context": "general",
+        "layout": {
+          "id": "custom-v1",
+          "version": 1,
+          "name": "Bốn góc kế hoạch",
+          "positions": [
+            {
+              "id": "p1",
+              "label": "Hiện trạng",
+              "role": "focus",
+              "prompt": "Điều nào cần nhìn rõ?",
+              "x": 0,
+              "y": 0,
+              "rotation": 0
+            },
+            {
+              "id": "p2",
+              "label": "Điểm cần đối chiếu",
+              "role": "challenge",
+              "prompt": "Giả định nào cần kiểm tra?",
+              "x": 1,
+              "y": 0,
+              "rotation": 0
+            },
+            {
+              "id": "p3",
+              "label": "Nguồn hỗ trợ",
+              "role": "support",
+              "prompt": "Có thể nhờ ai hoặc nguồn lực nào?",
+              "x": 0,
+              "y": 1,
+              "rotation": 0
+            },
+            {
+              "id": "p4",
+              "label": "Bước thử nghiệm",
+              "role": "action",
+              "prompt": "Bước nhỏ nào có thể thử?",
+              "x": 1,
+              "y": 1,
+              "rotation": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "sameMethod": {
+      "format": "thien-do.tarot-comparison",
+      "version": 1,
+      "readingCount": 2,
+      "methods": [
+        {
+          "id": "thien-do-rws-reflective",
+          "version": 2,
+          "knowledgeEdition": "11.124.0",
+          "knowledgeChecksum": "sha256:3b5c31e00d2e617273cc51c690f0b0203bfd7d03d8ef2d6704570f8d3487456f",
+          "deckCatalogChecksum": "sha256:611d58912ab21b85242d47b5fbde1ea8f80b3074aba35626cc00f2b897c5e9b4",
+          "layoutId": "celtic-waite-reflective-v1",
+          "layoutVersion": 1,
+          "name": "Celtic Cross · Waite / phản tư",
+          "context": "work",
+          "legacy": false
+        },
+        {
+          "id": "thien-do-rws-reflective",
+          "version": 2,
+          "knowledgeEdition": "11.124.0",
+          "knowledgeChecksum": "sha256:3b5c31e00d2e617273cc51c690f0b0203bfd7d03d8ef2d6704570f8d3487456f",
+          "deckCatalogChecksum": "sha256:611d58912ab21b85242d47b5fbde1ea8f80b3074aba35626cc00f2b897c5e9b4",
+          "layoutId": "celtic-waite-reflective-v1",
+          "layoutVersion": 1,
+          "name": "Celtic Cross · Waite / phản tư",
+          "context": "work",
+          "legacy": false
+        }
+      ],
+      "contexts": [
+        "work",
+        "work"
+      ],
+      "positionsAligned": true,
+      "rows": [
+        {
+          "index": 0,
+          "label": "Điều đang xét",
+          "cards": [
+            {
+              "readingIndex": 0,
+              "id": "wands-10",
+              "name": "Mười Gậy",
+              "reversed": true
+            },
+            {
+              "readingIndex": 1,
+              "id": "major-08",
+              "name": "Sức Mạnh",
+              "reversed": true
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "label": "Điểm cần đối chiếu",
+          "cards": [
+            {
+              "readingIndex": 0,
+              "id": "cups-14",
+              "name": "Quốc Vương Cốc",
+              "reversed": false
+            },
+            {
+              "readingIndex": 1,
+              "id": "major-04",
+              "name": "Hoàng Đế",
+              "reversed": false
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "label": "Mục tiêu / lý tưởng",
+          "cards": [
+            {
+              "readingIndex": 0,
+              "id": "cups-04",
+              "name": "Bốn Cốc",
+              "reversed": true
+            },
+            {
+              "readingIndex": 1,
+              "id": "cups-04",
+              "name": "Bốn Cốc",
+              "reversed": true
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "label": "Nền tảng",
+          "cards": [
+            {
+              "readingIndex": 0,
+              "id": "cups-08",
+              "name": "Tám Cốc",
+              "reversed": true
+            },
+            {
+              "readingIndex": 1,
+              "id": "swords-10",
+              "name": "Mười Kiếm",
+              "reversed": true
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "label": "Ảnh hưởng cũ",
+          "cards": [
+            {
+              "readingIndex": 0,
+              "id": "major-12",
+              "name": "Người Treo Ngược",
+              "reversed": false
+            },
+            {
+              "readingIndex": 1,
+              "id": "cups-02",
+              "name": "Hai Cốc",
+              "reversed": false
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "label": "Hướng diễn tiến",
+          "cards": [
+            {
+              "readingIndex": 0,
+              "id": "pentacles-13",
+              "name": "Hoàng Hậu Tiền",
+              "reversed": true
+            },
+            {
+              "readingIndex": 1,
+              "id": "pentacles-01",
+              "name": "Át Tiền",
+              "reversed": false
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "label": "Cách tiếp cận của bạn",
+          "cards": [
+            {
+              "readingIndex": 0,
+              "id": "swords-09",
+              "name": "Chín Kiếm",
+              "reversed": true
+            },
+            {
+              "readingIndex": 1,
+              "id": "cups-10",
+              "name": "Mười Cốc",
+              "reversed": false
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "label": "Môi trường",
+          "cards": [
+            {
+              "readingIndex": 0,
+              "id": "swords-07",
+              "name": "Bảy Kiếm",
+              "reversed": true
+            },
+            {
+              "readingIndex": 1,
+              "id": "wands-05",
+              "name": "Năm Gậy",
+              "reversed": false
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "label": "Hy vọng / lo ngại",
+          "cards": [
+            {
+              "readingIndex": 0,
+              "id": "swords-02",
+              "name": "Hai Kiếm",
+              "reversed": false
+            },
+            {
+              "readingIndex": 1,
+              "id": "cups-09",
+              "name": "Chín Cốc",
+              "reversed": false
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "label": "Tổng hợp có điều kiện",
+          "cards": [
+            {
+              "readingIndex": 0,
+              "id": "major-13",
+              "name": "Chuyển Hóa",
+              "reversed": true
+            },
+            {
+              "readingIndex": 1,
+              "id": "pentacles-10",
+              "name": "Mười Tiền",
+              "reversed": false
+            }
+          ]
+        }
+      ],
+      "shared": [
+        {
+          "id": "cups-04",
+          "name": "Bốn Cốc",
+          "occurrences": [
+            {
+              "readingIndex": 0,
+              "position": 2,
+              "reversed": true,
+              "label": "Mục tiêu / lý tưởng"
+            },
+            {
+              "readingIndex": 1,
+              "position": 2,
+              "reversed": true,
+              "label": "Mục tiêu / lý tưởng"
+            }
+          ],
+          "changedOrientation": false
+        }
+      ],
+      "summaries": [
+        {
+          "index": 0,
+          "cards": 10,
+          "reversed": 7,
+          "method": "Celtic Cross · Waite / phản tư"
+        },
+        {
+          "index": 1,
+          "cards": 10,
+          "reversed": 3,
+          "method": "Celtic Cross · Waite / phản tư"
+        }
+      ],
+      "notice": "So sánh theo vị trí có cùng định nghĩa đã lưu. Cùng lá hoặc đổi chiều chưa xác nhận một diễn tiến ngoài đời.",
+      "limit": "Tần suất trong các trải được chọn là số đếm mô tả; không phải xác suất, độ mạnh hoặc dấu hiệu kết quả chắc chắn."
+    },
+    "differentLayouts": {
+      "format": "thien-do.tarot-comparison",
+      "version": 1,
+      "readingCount": 2,
+      "methods": [
+        {
+          "id": "thien-do-rws-reflective",
+          "version": 2,
+          "knowledgeEdition": "11.124.0",
+          "knowledgeChecksum": "sha256:3b5c31e00d2e617273cc51c690f0b0203bfd7d03d8ef2d6704570f8d3487456f",
+          "deckCatalogChecksum": "sha256:611d58912ab21b85242d47b5fbde1ea8f80b3074aba35626cc00f2b897c5e9b4",
+          "layoutId": "celtic-waite-reflective-v1",
+          "layoutVersion": 1,
+          "name": "Celtic Cross · Waite / phản tư",
+          "context": "work",
+          "legacy": false
+        },
+        {
+          "id": "thien-do-rws-reflective",
+          "version": 2,
+          "knowledgeEdition": "11.124.0",
+          "knowledgeChecksum": "sha256:3b5c31e00d2e617273cc51c690f0b0203bfd7d03d8ef2d6704570f8d3487456f",
+          "deckCatalogChecksum": "sha256:611d58912ab21b85242d47b5fbde1ea8f80b3074aba35626cc00f2b897c5e9b4",
+          "layoutId": "custom-v1",
+          "layoutVersion": 1,
+          "name": "Bốn góc kế hoạch",
+          "context": "general",
+          "legacy": false
+        }
+      ],
+      "contexts": [
+        "work",
+        "general"
+      ],
+      "positionsAligned": false,
+      "rows": [],
+      "shared": [],
+      "summaries": [
+        {
+          "index": 0,
+          "cards": 10,
+          "reversed": 7,
+          "method": "Celtic Cross · Waite / phản tư"
+        },
+        {
+          "index": 1,
+          "cards": 4,
+          "reversed": 3,
+          "method": "Bốn góc kế hoạch"
+        }
+      ],
+      "notice": "Bố cục/phương pháp khác nhau: chỉ đối chiếu sự xuất hiện của lá, không ghép vị trí theo số thứ tự.",
+      "limit": "Tần suất trong các trải được chọn là số đếm mô tả; không phải xác suất, độ mạnh hoặc dấu hiệu kết quả chắc chắn."
+    }
+  }
+}

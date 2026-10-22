@@ -1,0 +1,1151 @@
+[
+  [
+    {
+      "branchIndex": 0,
+      "cell": 14,
+      "palace": "Tử Tức",
+      "stars": [
+        "Tham Lang"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 0,
+        "fromAge": 96,
+        "toAge": 105,
+        "index": 9,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Bát Tọa"
+      ]
+    },
+    {
+      "branchIndex": 1,
+      "cell": 13,
+      "palace": "Phu Thê",
+      "stars": [
+        "Thiên Đồng",
+        "Cự Môn"
+      ],
+      "auxiliaryStars": [
+        "Đà La",
+        "Thiên Khôi"
+      ],
+      "yearStars": [
+        "Thiên Hỷ"
+      ],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 1,
+        "fromAge": 106,
+        "toAge": 115,
+        "index": 10,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 2,
+      "cell": 12,
+      "palace": "Huynh Đệ",
+      "stars": [
+        "Vũ Khúc",
+        "Thiên Tướng"
+      ],
+      "auxiliaryStars": [
+        "Lộc Tồn"
+      ],
+      "yearStars": [
+        "Thiên Mã"
+      ],
+      "tuHoa": [
+        {
+          "name": "Hóa Khoa",
+          "star": "Vũ Khúc"
+        }
+      ],
+      "daiHan": {
+        "branch": 2,
+        "fromAge": 116,
+        "toAge": 125,
+        "index": 11,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Thiên Hình",
+        "Thiên Hư",
+        "Tam Thai"
+      ]
+    },
+    {
+      "branchIndex": 3,
+      "cell": 8,
+      "palace": "Mệnh",
+      "stars": [
+        "Thái Dương",
+        "Thiên Lương"
+      ],
+      "auxiliaryStars": [
+        "Kình Dương"
+      ],
+      "yearStars": [],
+      "tuHoa": [
+        {
+          "name": "Hóa Kỵ",
+          "star": "Thái Dương"
+        }
+      ],
+      "daiHan": {
+        "branch": 3,
+        "fromAge": 6,
+        "toAge": 15,
+        "index": 0,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 4,
+      "cell": 4,
+      "palace": "Phụ Mẫu",
+      "stars": [
+        "Thất Sát"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [
+        "Hoa Cái"
+      ],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 4,
+        "fromAge": 16,
+        "toAge": 25,
+        "index": 1,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 5,
+      "cell": 0,
+      "palace": "Phúc Đức",
+      "stars": [
+        "Thiên Cơ"
+      ],
+      "auxiliaryStars": [
+        "Hữu Bật"
+      ],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 5,
+        "fromAge": 26,
+        "toAge": 35,
+        "index": 2,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 6,
+      "cell": 1,
+      "palace": "Điền Trạch",
+      "stars": [
+        "Tử Vi"
+      ],
+      "auxiliaryStars": [
+        "Văn Xương"
+      ],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 6,
+        "fromAge": 36,
+        "toAge": 45,
+        "index": 3,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Thiên Riêu",
+        "Thiên Y"
+      ]
+    },
+    {
+      "branchIndex": 7,
+      "cell": 2,
+      "palace": "Quan Lộc",
+      "stars": [],
+      "auxiliaryStars": [
+        "Thiên Việt"
+      ],
+      "yearStars": [
+        "Hồng Loan"
+      ],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 7,
+        "fromAge": 46,
+        "toAge": 55,
+        "index": 4,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 8,
+      "cell": 3,
+      "palace": "Nô Bộc",
+      "stars": [
+        "Phá Quân"
+      ],
+      "auxiliaryStars": [
+        "Văn Khúc"
+      ],
+      "yearStars": [],
+      "tuHoa": [
+        {
+          "name": "Hóa Quyền",
+          "star": "Phá Quân"
+        }
+      ],
+      "daiHan": {
+        "branch": 8,
+        "fromAge": 56,
+        "toAge": 65,
+        "index": 5,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 9,
+      "cell": 7,
+      "palace": "Thiên Di",
+      "stars": [],
+      "auxiliaryStars": [
+        "Tả Phụ"
+      ],
+      "yearStars": [
+        "Đào Hoa"
+      ],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 9,
+        "fromAge": 66,
+        "toAge": 75,
+        "index": 6,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 10,
+      "cell": 11,
+      "palace": "Tật Ách",
+      "stars": [
+        "Liêm Trinh",
+        "Thiên Phủ"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [],
+      "tuHoa": [
+        {
+          "name": "Hóa Lộc",
+          "star": "Liêm Trinh"
+        }
+      ],
+      "daiHan": {
+        "branch": 10,
+        "fromAge": 76,
+        "toAge": 85,
+        "index": 7,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Thiên Khốc"
+      ]
+    },
+    {
+      "branchIndex": 11,
+      "cell": 15,
+      "palace": "Tài Bạch",
+      "stars": [
+        "Thái Âm"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 11,
+        "fromAge": 86,
+        "toAge": 95,
+        "index": 8,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    }
+  ],
+  [
+    {
+      "branchIndex": 0,
+      "cell": 14,
+      "palace": "Phu Thê",
+      "stars": [
+        "Vũ Khúc",
+        "Thiên Phủ"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 0,
+        "fromAge": 23,
+        "toAge": 32,
+        "index": 2,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Thiên Khốc",
+        "Thiên Hư"
+      ]
+    },
+    {
+      "branchIndex": 1,
+      "cell": 13,
+      "palace": "Huynh Đệ",
+      "stars": [
+        "Thái Dương",
+        "Thái Âm"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 1,
+        "fromAge": 13,
+        "toAge": 22,
+        "index": 1,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Thiên Riêu",
+        "Thiên Y"
+      ]
+    },
+    {
+      "branchIndex": 2,
+      "cell": 12,
+      "palace": "Mệnh",
+      "stars": [
+        "Tham Lang"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 2,
+        "fromAge": 3,
+        "toAge": 12,
+        "index": 0,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 3,
+      "cell": 8,
+      "palace": "Phụ Mẫu",
+      "stars": [
+        "Thiên Cơ",
+        "Cự Môn"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [
+        "Đào Hoa",
+        "Thiên Hỷ"
+      ],
+      "tuHoa": [
+        {
+          "name": "Hóa Quyền",
+          "star": "Thiên Cơ"
+        }
+      ],
+      "daiHan": {
+        "branch": 3,
+        "fromAge": 113,
+        "toAge": 122,
+        "index": 11,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 4,
+      "cell": 4,
+      "palace": "Phúc Đức",
+      "stars": [
+        "Tử Vi",
+        "Thiên Tướng"
+      ],
+      "auxiliaryStars": [
+        "Đà La",
+        "Tả Phụ",
+        "Văn Khúc"
+      ],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 4,
+        "fromAge": 103,
+        "toAge": 112,
+        "index": 10,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Tam Thai"
+      ]
+    },
+    {
+      "branchIndex": 5,
+      "cell": 0,
+      "palace": "Điền Trạch",
+      "stars": [
+        "Thiên Lương"
+      ],
+      "auxiliaryStars": [
+        "Lộc Tồn"
+      ],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 5,
+        "fromAge": 93,
+        "toAge": 102,
+        "index": 9,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 6,
+      "cell": 1,
+      "palace": "Quan Lộc",
+      "stars": [
+        "Thất Sát"
+      ],
+      "auxiliaryStars": [
+        "Kình Dương"
+      ],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 6,
+        "fromAge": 83,
+        "toAge": 92,
+        "index": 8,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 7,
+      "cell": 2,
+      "palace": "Nô Bộc",
+      "stars": [],
+      "auxiliaryStars": [],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 7,
+        "fromAge": 73,
+        "toAge": 82,
+        "index": 7,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 8,
+      "cell": 3,
+      "palace": "Thiên Di",
+      "stars": [
+        "Liêm Trinh"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [
+        "Thiên Mã"
+      ],
+      "tuHoa": [
+        {
+          "name": "Hóa Kỵ",
+          "star": "Liêm Trinh"
+        }
+      ],
+      "daiHan": {
+        "branch": 8,
+        "fromAge": 63,
+        "toAge": 72,
+        "index": 6,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 9,
+      "cell": 7,
+      "palace": "Tật Ách",
+      "stars": [],
+      "auxiliaryStars": [
+        "Thiên Việt"
+      ],
+      "yearStars": [
+        "Hồng Loan"
+      ],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 9,
+        "fromAge": 53,
+        "toAge": 62,
+        "index": 5,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Thiên Hình"
+      ]
+    },
+    {
+      "branchIndex": 10,
+      "cell": 11,
+      "palace": "Tài Bạch",
+      "stars": [
+        "Phá Quân"
+      ],
+      "auxiliaryStars": [
+        "Hữu Bật",
+        "Văn Xương"
+      ],
+      "yearStars": [
+        "Hoa Cái"
+      ],
+      "tuHoa": [
+        {
+          "name": "Hóa Khoa",
+          "star": "Văn Xương"
+        }
+      ],
+      "daiHan": {
+        "branch": 10,
+        "fromAge": 43,
+        "toAge": 52,
+        "index": 4,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Bát Tọa"
+      ]
+    },
+    {
+      "branchIndex": 11,
+      "cell": 15,
+      "palace": "Tử Tức",
+      "stars": [
+        "Thiên Đồng"
+      ],
+      "auxiliaryStars": [
+        "Thiên Khôi"
+      ],
+      "yearStars": [],
+      "tuHoa": [
+        {
+          "name": "Hóa Lộc",
+          "star": "Thiên Đồng"
+        }
+      ],
+      "daiHan": {
+        "branch": 11,
+        "fromAge": 33,
+        "toAge": 42,
+        "index": 3,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    }
+  ],
+  [
+    {
+      "branchIndex": 0,
+      "cell": 14,
+      "palace": "Huynh Đệ",
+      "stars": [
+        "Tham Lang"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [],
+      "tuHoa": [
+        {
+          "name": "Hóa Lộc",
+          "star": "Tham Lang"
+        }
+      ],
+      "daiHan": {
+        "branch": 0,
+        "fromAge": 14,
+        "toAge": 23,
+        "index": 1,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Thiên Riêu",
+        "Thiên Y"
+      ]
+    },
+    {
+      "branchIndex": 1,
+      "cell": 13,
+      "palace": "Mệnh",
+      "stars": [
+        "Thiên Đồng",
+        "Cự Môn"
+      ],
+      "auxiliaryStars": [
+        "Thiên Khôi"
+      ],
+      "yearStars": [
+        "Hồng Loan"
+      ],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 1,
+        "fromAge": 4,
+        "toAge": 13,
+        "index": 0,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 2,
+      "cell": 12,
+      "palace": "Phụ Mẫu",
+      "stars": [
+        "Vũ Khúc",
+        "Thiên Tướng"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 2,
+        "fromAge": 114,
+        "toAge": 123,
+        "index": 11,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 3,
+      "cell": 8,
+      "palace": "Phúc Đức",
+      "stars": [
+        "Thái Dương",
+        "Thiên Lương"
+      ],
+      "auxiliaryStars": [
+        "Tả Phụ"
+      ],
+      "yearStars": [
+        "Đào Hoa"
+      ],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 3,
+        "fromAge": 104,
+        "toAge": 113,
+        "index": 10,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 4,
+      "cell": 4,
+      "palace": "Điền Trạch",
+      "stars": [
+        "Thất Sát"
+      ],
+      "auxiliaryStars": [
+        "Đà La",
+        "Văn Khúc"
+      ],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 4,
+        "fromAge": 94,
+        "toAge": 103,
+        "index": 9,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Thiên Khốc"
+      ]
+    },
+    {
+      "branchIndex": 5,
+      "cell": 0,
+      "palace": "Quan Lộc",
+      "stars": [
+        "Thiên Cơ"
+      ],
+      "auxiliaryStars": [
+        "Lộc Tồn"
+      ],
+      "yearStars": [],
+      "tuHoa": [
+        {
+          "name": "Hóa Kỵ",
+          "star": "Thiên Cơ"
+        }
+      ],
+      "daiHan": {
+        "branch": 5,
+        "fromAge": 84,
+        "toAge": 93,
+        "index": 8,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 6,
+      "cell": 1,
+      "palace": "Nô Bộc",
+      "stars": [
+        "Tử Vi"
+      ],
+      "auxiliaryStars": [
+        "Kình Dương"
+      ],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 6,
+        "fromAge": 74,
+        "toAge": 83,
+        "index": 7,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 7,
+      "cell": 2,
+      "palace": "Thiên Di",
+      "stars": [],
+      "auxiliaryStars": [
+        "Thiên Việt"
+      ],
+      "yearStars": [
+        "Thiên Hỷ"
+      ],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 7,
+        "fromAge": 64,
+        "toAge": 73,
+        "index": 6,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Tam Thai",
+        "Bát Tọa"
+      ]
+    },
+    {
+      "branchIndex": 8,
+      "cell": 3,
+      "palace": "Tật Ách",
+      "stars": [
+        "Phá Quân"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [
+        "Thiên Mã"
+      ],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 8,
+        "fromAge": 54,
+        "toAge": 63,
+        "index": 5,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Thiên Hình",
+        "Thiên Hư"
+      ]
+    },
+    {
+      "branchIndex": 9,
+      "cell": 7,
+      "palace": "Tài Bạch",
+      "stars": [],
+      "auxiliaryStars": [],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 9,
+        "fromAge": 44,
+        "toAge": 53,
+        "index": 4,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 10,
+      "cell": 11,
+      "palace": "Tử Tức",
+      "stars": [
+        "Liêm Trinh",
+        "Thiên Phủ"
+      ],
+      "auxiliaryStars": [
+        "Văn Xương"
+      ],
+      "yearStars": [
+        "Hoa Cái"
+      ],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 10,
+        "fromAge": 34,
+        "toAge": 43,
+        "index": 3,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 11,
+      "cell": 15,
+      "palace": "Phu Thê",
+      "stars": [
+        "Thái Âm"
+      ],
+      "auxiliaryStars": [
+        "Hữu Bật"
+      ],
+      "yearStars": [],
+      "tuHoa": [
+        {
+          "name": "Hóa Quyền",
+          "star": "Thái Âm"
+        },
+        {
+          "name": "Hóa Khoa",
+          "star": "Hữu Bật"
+        }
+      ],
+      "daiHan": {
+        "branch": 11,
+        "fromAge": 24,
+        "toAge": 33,
+        "index": 2,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    }
+  ],
+  [
+    {
+      "branchIndex": 0,
+      "cell": 14,
+      "palace": "Quan Lộc",
+      "stars": [
+        "Thiên Cơ"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 0,
+        "fromAge": 42,
+        "toAge": 51,
+        "index": 4,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 1,
+      "cell": 13,
+      "palace": "Nô Bộc",
+      "stars": [
+        "Tử Vi",
+        "Phá Quân"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 1,
+        "fromAge": 52,
+        "toAge": 61,
+        "index": 5,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Thiên Riêu",
+        "Thiên Y"
+      ]
+    },
+    {
+      "branchIndex": 2,
+      "cell": 12,
+      "palace": "Thiên Di",
+      "stars": [],
+      "auxiliaryStars": [
+        "Thiên Việt"
+      ],
+      "yearStars": [
+        "Thiên Mã"
+      ],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 2,
+        "fromAge": 62,
+        "toAge": 71,
+        "index": 6,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Thiên Khốc"
+      ]
+    },
+    {
+      "branchIndex": 3,
+      "cell": 8,
+      "palace": "Tật Ách",
+      "stars": [
+        "Thiên Phủ"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 3,
+        "fromAge": 72,
+        "toAge": 81,
+        "index": 7,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 4,
+      "cell": 4,
+      "palace": "Tài Bạch",
+      "stars": [
+        "Thái Âm"
+      ],
+      "auxiliaryStars": [
+        "Tả Phụ",
+        "Văn Xương"
+      ],
+      "yearStars": [
+        "Hoa Cái"
+      ],
+      "tuHoa": [
+        {
+          "name": "Hóa Khoa",
+          "star": "Thái Âm"
+        }
+      ],
+      "daiHan": {
+        "branch": 4,
+        "fromAge": 82,
+        "toAge": 91,
+        "index": 8,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Tam Thai"
+      ]
+    },
+    {
+      "branchIndex": 5,
+      "cell": 0,
+      "palace": "Tử Tức",
+      "stars": [
+        "Liêm Trinh",
+        "Tham Lang"
+      ],
+      "auxiliaryStars": [],
+      "yearStars": [
+        "Thiên Hỷ"
+      ],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 5,
+        "fromAge": 92,
+        "toAge": 101,
+        "index": 9,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 6,
+      "cell": 1,
+      "palace": "Phu Thê",
+      "stars": [
+        "Cự Môn"
+      ],
+      "auxiliaryStars": [
+        "Thiên Khôi"
+      ],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 6,
+        "fromAge": 102,
+        "toAge": 111,
+        "index": 10,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 7,
+      "cell": 2,
+      "palace": "Huynh Đệ",
+      "stars": [
+        "Thiên Tướng"
+      ],
+      "auxiliaryStars": [
+        "Đà La"
+      ],
+      "yearStars": [],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 7,
+        "fromAge": 112,
+        "toAge": 121,
+        "index": 11,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 8,
+      "cell": 3,
+      "palace": "Mệnh",
+      "stars": [
+        "Thiên Đồng",
+        "Thiên Lương"
+      ],
+      "auxiliaryStars": [
+        "Lộc Tồn"
+      ],
+      "yearStars": [],
+      "tuHoa": [
+        {
+          "name": "Hóa Kỵ",
+          "star": "Thiên Đồng"
+        }
+      ],
+      "daiHan": {
+        "branch": 8,
+        "fromAge": 2,
+        "toAge": 11,
+        "index": 0,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    },
+    {
+      "branchIndex": 9,
+      "cell": 7,
+      "palace": "Phụ Mẫu",
+      "stars": [
+        "Vũ Khúc",
+        "Thất Sát"
+      ],
+      "auxiliaryStars": [
+        "Kình Dương"
+      ],
+      "yearStars": [
+        "Đào Hoa"
+      ],
+      "tuHoa": [
+        {
+          "name": "Hóa Quyền",
+          "star": "Vũ Khúc"
+        }
+      ],
+      "daiHan": {
+        "branch": 9,
+        "fromAge": 12,
+        "toAge": 21,
+        "index": 1,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Thiên Hình"
+      ]
+    },
+    {
+      "branchIndex": 10,
+      "cell": 11,
+      "palace": "Phúc Đức",
+      "stars": [
+        "Thái Dương"
+      ],
+      "auxiliaryStars": [
+        "Hữu Bật",
+        "Văn Khúc"
+      ],
+      "yearStars": [],
+      "tuHoa": [
+        {
+          "name": "Hóa Lộc",
+          "star": "Thái Dương"
+        }
+      ],
+      "daiHan": {
+        "branch": 10,
+        "fromAge": 22,
+        "toAge": 31,
+        "index": 2,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": [
+        "Thiên Hư",
+        "Bát Tọa"
+      ]
+    },
+    {
+      "branchIndex": 11,
+      "cell": 15,
+      "palace": "Điền Trạch",
+      "stars": [],
+      "auxiliaryStars": [],
+      "yearStars": [
+        "Hồng Loan"
+      ],
+      "tuHoa": [],
+      "daiHan": {
+        "branch": 11,
+        "fromAge": 32,
+        "toAge": 41,
+        "index": 3,
+        "basis": "tuoi-mu-theo-cuc"
+      },
+      "additionalStars": []
+    }
+  ]
+]

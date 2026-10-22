@@ -1,0 +1,76 @@
+/* THIÊN ĐỒ · V11.162 design system and visual accessibility.
+   Presentation only; no engine, database, role, or payment rules. */
+.site{
+  --ux-radius:12px;--ux-radius-sm:8px;
+  --ux-focus:#e5b46a;--ux-reading-width:76ch;
+  --background:var(--panel);--foreground:var(--text);--muted-foreground:var(--muted);
+  font-feature-settings:"kern" 1;overflow-wrap:normal;
+}
+.site.light{--ux-focus:#70440e;}
+.site :where(h1,h2,h3,h4){text-wrap:pretty;overflow-wrap:break-word}
+.site :where(p,li,dd,blockquote){overflow-wrap:break-word}
+.site :where(a,button,[role="button"],summary){touch-action:manipulation}
+.site :where(a,button,[role="button"],input,textarea,select,summary,[tabindex]):focus-visible{
+  outline:3px solid var(--ux-focus);outline-offset:3px;
+}
+.site :where(button,a[role="button"],input[type="submit"]):disabled{cursor:not-allowed}
+.site :where(button,input,textarea,select){accent-color:var(--gold)}
+.site .main-content{min-width:0;overflow-wrap:break-word}
+.site .main-content :where(img,svg,video,canvas){max-width:100%}
+.site .main-content :where(pre){max-width:100%;overflow-x:auto;tab-size:2;border-radius:var(--ux-radius-sm)}
+.site .main-content :where(p){line-height:1.75}
+.site .main-content :where(h1){letter-spacing:-.012em}
+.site .main-content :where(table){font-variant-numeric:tabular-nums}
+.site .main-content :where(.readable-table){scrollbar-gutter:stable}
+.site .main-content :where(.readable-table th){white-space:normal}
+.site .main-content :where(input,textarea,select){min-width:0;max-width:100%}
+.site .main-content :where(input[type="checkbox"],input[type="radio"]){min-width:18px;min-height:18px}
+.site :where(.route-feedback,.command-panel){max-inline-size:calc(100vw - 20px)}
+.site :where(.route-feedback,.command-panel) :where(button,a){min-height:44px}
+/* Chapter rhythm: Western tools use a softer night-blue accent and rounder cards,
+   while East Asian boards retain crisp compartment dividers. */
+.site[data-discipline="western"],.site[data-discipline="tarot"],.site[data-discipline="numerology"],.site[data-discipline="western-symbols"]{
+  --ux-radius:18px;
+}
+.site[data-discipline="western"] .main-content,
+.site[data-discipline="tarot"] .main-content,
+.site[data-discipline="numerology"] .main-content{
+  background-image:radial-gradient(circle at 95% 1%,color-mix(in srgb,var(--gold) 8%,transparent),transparent 44%);
+}
+/* Reading surfaces (Van Kho, Forum): repair old light-only CSS variables in both themes,
+   keep text contrast and restrict line-length without changing API-driven content. */
+.site .main-content :where(.route-feedback){overflow-wrap:anywhere}
+.site .main-content :where(article){min-width:0}
+.site .main-content :where(article p){text-wrap:pretty}
+.site .main-content :where(article a){text-underline-offset:3px}
+.site .main-content :where(.route-loading__line){contain:paint}
+.site .topbar{isolation:isolate}
+.site .bottom-nav{grid-template-columns:repeat(5,minmax(0,1fr))}
+.site .bottom-nav :where(a,button){min-width:0;padding-inline:2px}
+.site .bottom-nav small{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* Accessible mobile hit targets. Header may take two rows rather than hide controls. */
+@media(max-width:970px){
+  .site .sidebar{overflow-y:auto;overflow-x:hidden}
+  .site .bottom-nav :where(a,button){min-height:48px}
+}
+@media(max-width:680px){
+  .site .main-content{padding-bottom:calc(104px + env(safe-area-inset-bottom));}
+  .site .bottom-nav{grid-template-columns:repeat(5,minmax(0,1fr));height:calc(68px + env(safe-area-inset-bottom));}
+  .site .topbar :where(button){min-height:40px}
+  .site .topbar .mode-switch button{min-height:40px}
+  .site .main-content :where(input:not([type="checkbox"]):not([type="radio"]),textarea,select){font-size:16px}
+  .site .main-content :where(article,section){scroll-margin-top:95px}
+  .site .main-content :where(.readable-table){max-width:calc(100vw - 28px)}
+}
+@media(max-width:360px){
+  .site .bottom-nav small{font-size:9px;letter-spacing:-.01em}
+  .site .topbar .crumb{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+  .site,.site *,.site *::before,.site *::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+}
+@media(prefers-contrast:more){
+  .site{--line:rgba(234,220,184,.65);--line-strong:rgba(245,232,192,.78)}
+  .site.light{--line:rgba(30,61,48,.57);--line-strong:rgba(30,61,48,.78)}
+  .site .main-content :where(a){text-decoration-thickness:2px}
+}

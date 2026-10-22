@@ -1,0 +1,22 @@
+{
+  "protocol": "V11.110: manually entered Five-Phase palace relations; expected table independent of runtime function",
+  "direction": "fromPalace -> toPalace",
+  "cases": [
+    {"from":1,"to":3,"expected":"generates","text":"Thủy sinh Mộc"},
+    {"from":3,"to":9,"expected":"generates","text":"Mộc sinh Hỏa"},
+    {"from":9,"to":2,"expected":"generates","text":"Hỏa sinh Thổ"},
+    {"from":8,"to":7,"expected":"generates","text":"Thổ sinh Kim"},
+    {"from":6,"to":1,"expected":"generates","text":"Kim sinh Thủy"},
+    {"from":3,"to":8,"expected":"controls","text":"Mộc khắc Thổ"},
+    {"from":2,"to":1,"expected":"controls","text":"Thổ khắc Thủy"},
+    {"from":1,"to":9,"expected":"controls","text":"Thủy khắc Hỏa"},
+    {"from":9,"to":7,"expected":"controls","text":"Hỏa khắc Kim"},
+    {"from":7,"to":4,"expected":"controls","text":"Kim khắc Mộc"},
+    {"from":3,"to":4,"expected":"same","text":"Mộc đồng Mộc"},
+    {"from":6,"to":7,"expected":"same","text":"Kim đồng Kim"},
+    {"from":9,"to":1,"expected":"controlled-by","text":"Hỏa bị Thủy khắc"},
+    {"from":1,"to":2,"expected":"controlled-by","text":"Thủy bị Thổ khắc"},
+    {"from":9,"to":3,"expected":"generated-by","text":"Hỏa được Mộc sinh"},
+    {"from":7,"to":8,"expected":"generated-by","text":"Kim được Thổ sinh"}
+  ]
+}

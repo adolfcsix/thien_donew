@@ -1,0 +1,1155 @@
+{
+  "schemaVersion": "1.0.0",
+  "edition": "11.57.0",
+  "scope": "editorial-deep-dossiers-no-placement",
+  "expertReviewed": false,
+  "notice": "Đã có chuyên khảo biên tập cho 90 hồ sơ sao; 24 chuyên khảo được viết riêng ở V11.56, 66 mở rộng theo nhóm ở V11.57. Cách viết có khung sư phạm lặp lại nhưng ví dụ, trọng tâm và phản chứng gắn từng sao; chưa thẩm định chuyên gia, không can thiệp an sao.",
+  "profiles": {
+    "Lộc Tồn": {
+      "interpretiveAxis": "Khảo sát chủ đề giữ nguồn lực và tính bền vững, không đồng nhất một ngôi sao với tài sản. Trước hết xác nhận Lộc Tồn đang ở cung chức nào, rồi mới xét cung giáp và các sao cùng vị trí.",
+      "workedReading": "Nếu Lộc Tồn tại Tài Bạch, nên mô tả đây là một đầu mối đặt câu hỏi về bảo toàn nguồn lực. Kiểm tra chính tinh tọa thủ, bộ sao hội chiếu và vận đang chọn; không suy ra mức tiền hay thành tựu.",
+      "crossCheckStars": [
+        "Kình Dương",
+        "Đà La",
+        "Thiên Mã"
+      ],
+      "counterEvidence": "Kình Dương và Đà La an ở hai vị trí kề Lộc Tồn theo engine; không gộp chúng thành đồng cung với Lộc Tồn. Một cung có Lộc Tồn nhưng tam phương khác biệt sẽ không được đọc như cùng một cách.",
+      "practiceQuestion": "Từ lá số, ghi chi có Lộc Tồn rồi xác nhận hai cung giáp. Phân biệt yếu tố cố định bản mệnh với sao lưu của năm đang xem.",
+      "boundary": "Không diễn dịch trực tiếp thành giàu sang, bảo đảm tài chính hay khuyến nghị đầu tư."
+    },
+    "Kình Dương": {
+      "interpretiveAxis": "Biểu tượng của sức ép, tính quyết liệt và khả năng va chạm trong ngôn ngữ Tử Vi truyền thống; cần tách tính chất sao khỏi đánh giá con người.",
+      "workedReading": "Giả sử Kình Dương tọa Quan Lộc: hãy xác định vấn đề thuộc trục trách nhiệm, cạnh tranh hay điều tiết xung đột, rồi đối chiếu chính tinh, Tứ Hóa và trạng thái hạn.",
+      "crossCheckStars": [
+        "Đà La",
+        "Lộc Tồn",
+        "Hỏa Tinh"
+      ],
+      "counterEvidence": "Kình Dương và Đà La không đồng cung trong quy tắc an hiện tại. Vị trí kề Lộc Tồn là dữ liệu hình học, còn kết luận cát/hung cần một bộ điều kiện độc lập được thẩm định.",
+      "practiceQuestion": "Tìm Lộc Tồn, ghi cung Kình Dương và Đà La. Xem cung đang xét có thực sự nhận đồng cung, xung chiếu hay chỉ liên quan theo chủ đề.",
+      "boundary": "Không dùng một sao để đoán tai nạn, thương tích, hành vi bạo lực hoặc bệnh tật."
+    },
+    "Đà La": {
+      "interpretiveAxis": "Đặt trọng tâm vào trở lực dai dẳng, sự chậm trễ và yếu tố cần kiên trì theo hệ biểu tượng; không biến biểu tượng thành nhãn tính cách cố định.",
+      "workedReading": "Nếu Đà La ở Điền Trạch, câu hỏi nghiên cứu là những nút thắt về quản trị không gian sống hoặc thay đổi chỗ ở; phải đọc cùng chính tinh và cung Phúc Đức, không kết luận chuyện nhà đất.",
+      "crossCheckStars": [
+        "Kình Dương",
+        "Lộc Tồn",
+        "Địa Kiếp"
+      ],
+      "counterEvidence": "Không được lấy câu luận riêng của Kình Dương rồi thay tên thành Đà La. Cùng thuộc một cặp an sao nhưng hình tượng và điểm cần xét khác nhau; cũng không mặc định xung chiếu.",
+      "practiceQuestion": "Tìm hai cung giáp Lộc Tồn, xác nhận Đà La nằm bên nào theo chiều 12 chi và ghi các sao tọa tại chính cung đó.",
+      "boundary": "Không kết luận người xem chắc chắn trì trệ, bất động sản thất thoát hoặc gặp rủi ro cụ thể."
+    },
+    "Tả Phụ": {
+      "interpretiveAxis": "Hình tượng hỗ trợ, tổ chức và phối hợp; điều cần xét là hỗ trợ đó nằm trong bối cảnh cung chức nào và có điều kiện phát huy hay không.",
+      "workedReading": "Khi Tả Phụ ở Quan Lộc, có thể đặt câu hỏi về sự cộng tác và hệ thống hỗ trợ công việc. Đối chiếu chính tinh cung Quan và trục Mệnh–Tài–Quan; không tự suy là gặp cấp trên tốt.",
+      "crossCheckStars": [
+        "Hữu Bật",
+        "Thiên Khôi",
+        "Văn Xương"
+      ],
+      "counterEvidence": "Có Tả Phụ không đồng nghĩa có Hữu Bật đồng cung hoặc đủ bộ cát tinh hội chiếu. Phải chỉ rõ vị trí từng sao và quan hệ hình học thật.",
+      "practiceQuestion": "Ghi Tả Phụ nằm cung nào, Hữu Bật ở đâu; kiểm tra chúng có đồng cung, tam hợp, đối cung hay không thuộc quan hệ đang xét.",
+      "boundary": "Không cam kết được quý nhân giúp đỡ hoặc thắng lợi công danh chỉ từ một sao."
+    },
+    "Hữu Bật": {
+      "interpretiveAxis": "Dùng để nghiên cứu tính bổ trợ, điều hòa và sự phối hợp linh hoạt. Nội dung cần giữ sự khác biệt giữa vị trí an của Hữu Bật với Tả Phụ.",
+      "workedReading": "Ví dụ Hữu Bật ở Nô Bộc: phân tích chủ đề mạng lưới hỗ trợ, nhưng cần hỏi chất lượng quan hệ của chính tinh đồng cung và yếu tố hạn có thật.",
+      "crossCheckStars": [
+        "Tả Phụ",
+        "Thiên Việt",
+        "Văn Khúc"
+      ],
+      "counterEvidence": "Không thể tuyên bố mọi lá số đều có cặp Tả–Hữu hội về một cung. Hai sao có thể có các vị trí khác nhau tùy tháng sinh và hệ an dùng.",
+      "practiceQuestion": "Dùng lá số mẫu đánh dấu Tả và Hữu bằng hai màu khác nhau rồi so sánh các cung thực tế.",
+      "boundary": "Không đoán chắc có trợ lý, bạn tốt, quan hệ tình cảm hay thành công nghề nghiệp."
+    },
+    "Văn Xương": {
+      "interpretiveAxis": "Biểu tượng văn học, phương pháp diễn đạt và tổ chức tri thức. Nên dùng làm câu hỏi nghiên cứu về hình thức học hỏi thay vì phán định chỉ số thông minh.",
+      "workedReading": "Khi Văn Xương ở Mệnh, đối chiếu với chính tinh Mệnh, Văn Khúc, cung Quan Lộc và các sao hội chiếu trước khi xây dựng một giả thuyết học thuật.",
+      "crossCheckStars": [
+        "Văn Khúc",
+        "Tả Phụ",
+        "Thiên Khôi"
+      ],
+      "counterEvidence": "Có Văn Xương không có nghĩa người đó học giỏi hay nhất định có bằng cấp. Không gán nhãn “đủ Xương Khúc” nếu hai sao không cùng phạm vi quan hệ xác định.",
+      "practiceQuestion": "Đọc vị trí thực của Xương và Khúc, nêu rõ đang nói đồng cung, tam hợp hay chỉ là hai đầu mối độc lập.",
+      "boundary": "Không đánh giá năng lực học tập, nghề nghiệp hay thành tích thi cử từ lá số."
+    },
+    "Văn Khúc": {
+      "interpretiveAxis": "Tập trung vào năng lực thể hiện, sắc thái diễn ngôn và cảm thụ biểu tượng trong truyền thống; không gộp máy móc với Văn Xương.",
+      "workedReading": "Nếu Văn Khúc ở Phúc Đức, hãy xem những câu hỏi về giá trị văn hóa, thẩm mỹ hoặc đời sống tinh thần phù hợp chủ đề cung; đọc cả chính tinh Phúc và tam phương.",
+      "crossCheckStars": [
+        "Văn Xương",
+        "Hữu Bật",
+        "Thiên Việt"
+      ],
+      "counterEvidence": "Khi Khúc đi cùng sao trợ lực chưa đủ thành một định luận; sự khác biệt giữa sao đồng cung với hội chiếu và sao lưu phải được làm rõ.",
+      "practiceQuestion": "Thử đổi cung đang nghiên cứu giữa Mệnh và Phúc Đức, ghi những gì thay đổi ở chủ đề cung mà không đổi vị trí thật của sao.",
+      "boundary": "Không suy thành khả năng nghệ thuật chắc chắn hoặc phán đoán sức khỏe tinh thần."
+    },
+    "Thiên Khôi": {
+      "interpretiveAxis": "Một đầu mối biểu tượng về sự nâng đỡ và cơ hội được ghi nhận; phải kiểm tra vị trí Khôi thay vì dùng từ “quý nhân” như kết luận tuyệt đối.",
+      "workedReading": "Giả sử Thiên Khôi tại Thiên Di, thảo luận cách nhìn về cơ hội bên ngoài và điều kiện hội tụ của các cung đối, tam hợp, không hứa cơ hội sẽ xảy ra.",
+      "crossCheckStars": [
+        "Thiên Việt",
+        "Tả Phụ",
+        "Văn Xương"
+      ],
+      "counterEvidence": "Thiên Khôi và Thiên Việt theo bảng an thiên can đang dùng không đồng cung. Không được giới thiệu thành một bộ đồng cung trong công cụ.",
+      "practiceQuestion": "Đọc thiên can năm sinh, xác nhận vị trí Khôi–Việt từ engine và mô tả quan hệ vị trí có thật.",
+      "boundary": "Không dự báo thăng chức, gặp người giúp hoặc thi đỗ chắc chắn."
+    },
+    "Thiên Việt": {
+      "interpretiveAxis": "Hình tượng chỉ sự tiếp ứng, khích lệ và trợ duyên trong hệ cát tinh. Đây là một giả thuyết văn hóa cần đọc cùng cung và điều kiện liên cung.",
+      "workedReading": "Nếu Thiên Việt ở Phụ Mẫu, chủ đề nghiên cứu là nguồn lực hỗ trợ từ người lớn hoặc hệ thống chăm sóc; nhưng không suy đoán hành vi của cha mẹ.",
+      "crossCheckStars": [
+        "Thiên Khôi",
+        "Hữu Bật",
+        "Văn Khúc"
+      ],
+      "counterEvidence": "Khôi–Việt là cặp liên hệ khi đọc nhưng không đồng cung trong bảng thiên can hiện tại. Không lấy nhãn “quý nhân” che lấp dữ liệu ngược hoặc mâu thuẫn.",
+      "practiceQuestion": "Đánh dấu cung của Khôi và Việt trên lá số, thử xem quan hệ thực là gì theo từng năm can khác nhau.",
+      "boundary": "Không định tính tốt/xấu của một cá nhân hoặc cho rằng người ngoài sẽ cứu giúp vô điều kiện."
+    },
+    "Đào Hoa": {
+      "interpretiveAxis": "Dùng để thảo luận giao tiếp, sức hút xã hội và thẩm mỹ biểu tượng, không phán xét đạo đức hoặc đời sống riêng tư từ một tên sao.",
+      "workedReading": "Ví dụ Đào Hoa ở Nô Bộc: chủ đề phù hợp là phong cách giao tiếp trong mạng lưới quan hệ; cần xem sao bản mệnh đồng cung, Tứ Hóa và hạn.",
+      "crossCheckStars": [
+        "Hồng Loan",
+        "Thiên Hỷ",
+        "Thiên Riêu"
+      ],
+      "counterEvidence": "Đào Hoa không đồng nghĩa “đa tình” trong mọi bối cảnh. Tương quan với Loan–Hỷ phải xác nhận bằng dữ liệu chi và cung thực tế, không mặc định hợp bộ.",
+      "practiceQuestion": "Lựa chọn một lá số và phân biệt điều gì là thông tin vị trí sao, điều gì chỉ là giả thuyết diễn giải về xã hội.",
+      "boundary": "Không suy đoán xu hướng tính dục, hành vi tình cảm, sự chung thủy hay nhân phẩm."
+    },
+    "Thiên Hỷ": {
+      "interpretiveAxis": "Hình tượng của niềm vui, sự chia sẻ và dịp gặp gỡ; cần khảo sát vị trí thực cùng các điều kiện của cung chức thay vì nhân đôi ý nghĩa Hồng Loan.",
+      "workedReading": "Nếu Thiên Hỷ nằm Huynh Đệ, có thể nêu câu hỏi về sự gắn bó và chia sẻ trong quan hệ anh em, không tuyên bố một sự kiện vui cụ thể.",
+      "crossCheckStars": [
+        "Hồng Loan",
+        "Đào Hoa",
+        "Phượng Các"
+      ],
+      "counterEvidence": "Thiên Hỷ không đồng cung Hồng Loan trong bảng chi năm đang triển khai. Sao vui không đủ để bác bỏ các yếu tố khó khăn có mặt ở cung liên hệ.",
+      "practiceQuestion": "Từ địa chi có Thiên Hỷ kiểm tra đối cung và vị trí Hồng Loan, ghi lại các sao thực sự tọa từng cung.",
+      "boundary": "Không dự báo tin vui, ngày cưới hoặc kết quả tình cảm. hoặc thay thế việc quan sát mối quan hệ thực tế."
+    },
+    "Thiên Mã": {
+      "interpretiveAxis": "Biểu tượng chuyển động, dịch chuyển và thay đổi môi trường; cần xét Thiên Mã như một sao cụ thể chứ không tự đồng nhất mọi biến động với xuất ngoại.",
+      "workedReading": "Khi Thiên Mã ở Thiên Di, câu hỏi là nhịp biến chuyển của môi trường bên ngoài, đồng thời cần xem Mệnh và các cung liên hệ, chưa phải luận đoán đi xa.",
+      "crossCheckStars": [
+        "Lộc Tồn",
+        "Hỏa Tinh",
+        "Đào Hoa"
+      ],
+      "counterEvidence": "Trường hợp Mã đi cùng Lộc ở phạm vi nào phải kiểm tra từng lá số. Không đặt tên cách cục “Lộc Mã” nếu hai sao không đáp ứng quan hệ đã định nghĩa.",
+      "practiceQuestion": "Tìm vị trí Thiên Mã, Lộc Tồn rồi ghi rõ từng sao thuộc bản mệnh hay sao lưu và thuộc loại quan hệ nào.",
+      "boundary": "Không suy chắc du học, chuyển nhà, di cư hay thay đổi nghề nghiệp."
+    },
+    "Hồng Loan": {
+      "interpretiveAxis": "Biểu tượng về tình cảm, giao cảm và sự gắn kết theo văn hóa; không giới hạn ý nghĩa chỉ vào chuyện cưới hỏi.",
+      "workedReading": "Nếu Hồng Loan tại Phu Thê, đọc như đầu mối đặt câu hỏi về kỳ vọng trong quan hệ và mức độ hòa hợp giữa các chủ đề cung, không chốt thời điểm kết hôn.",
+      "crossCheckStars": [
+        "Thiên Hỷ",
+        "Đào Hoa",
+        "Thiên Riêu"
+      ],
+      "counterEvidence": "Hồng Loan và Thiên Hỷ ở hai cung xung nhau theo phép an hiện hành. Không được quảng bá “Loan Hỷ đồng cung”; phân biệt sao bản mệnh với lưu niên.",
+      "practiceQuestion": "Kiểm tra Hồng Loan và Thiên Hỷ cách nhau sáu chi; sau đó xem mỗi sao nằm cung chức nào.",
+      "boundary": "Không dùng sao này để đoán chắc kết hôn, sinh con hoặc tính chung thủy của người khác."
+    },
+    "Hoa Cái": {
+      "interpretiveAxis": "Biểu tượng về giá trị tinh thần, nghi thức, chiều sâu suy tư và sự chú tâm; không mặc định người có sao này sẽ theo một tôn giáo.",
+      "workedReading": "Nếu Hoa Cái ở Phúc Đức, có thể khảo sát chủ đề truyền thống văn hóa và định hướng giá trị; cần xem chính tinh, tam phương và các sao khác.",
+      "crossCheckStars": [
+        "Văn Xương",
+        "Văn Khúc",
+        "Thiên Khôi"
+      ],
+      "counterEvidence": "Hoa Cái có thể xuất hiện trong những bộ vòng nghiên cứu khác; trùng tên chưa chứng minh là cùng quy tắc. Tránh gộp “Hoa Cái” từ Tướng Tiền vào engine an sao nếu chưa đối chiếu.",
+      "practiceQuestion": "Đối chiếu tên Hoa Cái trong danh mục sao gốc và trong hồ sơ nghiên cứu Tướng Tiền, ghi rõ lớp nào đang hiển thị.",
+      "boundary": "Không gán tín ngưỡng, nghề nghiệp, trình độ học thuật hoặc phẩm chất cá nhân."
+    },
+    "Thiên Hình": {
+      "interpretiveAxis": "Gợi câu hỏi về chuẩn mực, kỷ luật, trách nhiệm và ranh giới. Đây là cách đọc biểu tượng, không phải dấu hiệu pháp lý hay bệnh lý.",
+      "workedReading": "Nếu Thiên Hình ở Quan Lộc, có thể bàn về chuẩn hóa quy trình và giới hạn trách nhiệm, nhưng không tự kết luận đương số làm ngành luật hoặc y.",
+      "crossCheckStars": [
+        "Kình Dương",
+        "Quốc Ấn",
+        "Thiên Quan"
+      ],
+      "counterEvidence": "Không diễn dịch “Hình” thành chắc chắn kiện tụng, thương tích. Cần phân biệt sao hiện diện thực tế với thành ngữ dùng trong một trường phái.",
+      "practiceQuestion": "Tìm chính tinh Quan Lộc, Thiên Hình và Quốc Ấn; ghi rõ mối quan hệ sao thay vì dùng công thức ghép sẵn.",
+      "boundary": "Không dự báo phạm pháp, kiện tụng, bệnh tật hay nghề nghiệp chắc chắn."
+    },
+    "Thiên Riêu": {
+      "interpretiveAxis": "Thiên Riêu được khảo sát như hình tượng độ nhạy và các khuynh hướng thu hút: phân biệt sức hấp dẫn, phản ứng cảm xúc và kỳ vọng ranh giới trong quan hệ. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Thiên Riêu xuất hiện tại Phu Thê trong một lá số được an hợp lệ, hãy đặt câu hỏi về phân biệt sức hấp dẫn, phản ứng cảm xúc và kỳ vọng ranh giới trong quan hệ. Thử đối chiếu với Đào Hoa, Hồng Loan theo vị trí thực trước khi diễn giải chủ đề Phu Thê; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Đào Hoa",
+        "Hồng Loan",
+        "Thiên Hình"
+      ],
+      "counterEvidence": "Không đánh đồng độ nhạy cảm với lăng nhăng; một sao không cho biết hành vi trung thực của hai người. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Thiên Riêu và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Thiên Riêu, ghi chính tinh ở cung đó và Đào Hoa, Hồng Loan ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Phu Thê.",
+      "boundary": "Không dùng riêng Thiên Riêu để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thiên Y": {
+      "interpretiveAxis": "Thiên Y được khảo sát như hình tượng chăm sóc và hồi phục: xem biểu tượng chăm sóc, hỗ trợ và khả năng phục hồi mà không nhầm với năng lực y khoa. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Thiên Y xuất hiện tại Tật Ách trong một lá số được an hợp lệ, hãy đặt câu hỏi về xem biểu tượng chăm sóc, hỗ trợ và khả năng phục hồi mà không nhầm với năng lực y khoa. Thử đối chiếu với Thiên Giải, Địa Giải theo vị trí thực trước khi diễn giải chủ đề Tật Ách; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thiên Giải",
+        "Địa Giải",
+        "Thiên Phúc"
+      ],
+      "counterEvidence": "Sự có mặt của Thiên Y không khẳng định tránh bệnh hoặc sẽ chữa khỏi; đối chiếu dữ liệu Tật Ách khác trước khi diễn giải. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Thiên Y và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Thiên Y, ghi chính tinh ở cung đó và Thiên Giải, Địa Giải ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Tật Ách.",
+      "boundary": "Không dùng riêng Thiên Y để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thiên Khốc": {
+      "interpretiveAxis": "Hình tượng chỉ sự nhạy cảm và phản ứng trước trải nghiệm khó; diễn giải như chất liệu văn hóa chứ không làm mô hình đánh giá tâm trạng.",
+      "workedReading": "Giả sử Thiên Khốc ở Phúc Đức, đặt câu hỏi về cách gia đình truyền tải cảm xúc và niềm tin; không gán cho cả gia đình số phận buồn khổ.",
+      "crossCheckStars": [
+        "Thiên Hư",
+        "Tang Môn",
+        "Thiên Giải"
+      ],
+      "counterEvidence": "Khốc–Hư phải kiểm tra vị trí mỗi sao và quan hệ thật. Tên sao mang nghĩa cảm xúc không chứng minh sự kiện tang thương hoặc một chẩn đoán.",
+      "practiceQuestion": "Chọn hai lá số có khác giờ sinh, quan sát vị trí Thiên Khốc có thay đổi theo đầu vào engine hay không và không tự sửa bảng an.",
+      "boundary": "Không suy về trầm cảm, mất mát người thân hoặc tiên đoán tang sự."
+    },
+    "Thiên Hư": {
+      "interpretiveAxis": "Biểu tượng về khoảng cách giữa kỳ vọng và thực tế; khi luận phải tách sự hoài nghi, nhu cầu kiểm chứng khỏi một kết luận bi quan.",
+      "workedReading": "Nếu Thiên Hư ở Thiên Di, nêu câu hỏi về sự kỳ vọng khi bước ra môi trường khác. Đọc cùng chính tinh Thiên Di, Mệnh đối cung và các sao có thực.",
+      "crossCheckStars": [
+        "Thiên Khốc",
+        "Địa Không",
+        "Long Đức"
+      ],
+      "counterEvidence": "Không thay câu luận Thiên Khốc cho Thiên Hư; cũng không cho rằng sao ở cung nào thì toàn bộ lĩnh vực ấy tất yếu xấu.",
+      "practiceQuestion": "Ghi các sao cùng cung với Thiên Hư, tra cung đối diện và xác định sao nào hiện hữu trước khi mô tả điều cần thận trọng.",
+      "boundary": "Không suy diễn biến cố, thất bại hoặc sức khỏe tinh thần. chỉ vì một tên sao."
+    },
+    "Tam Thai": {
+      "interpretiveAxis": "Tam Thai được khảo sát như hình tượng cấu trúc và bước đệm: đọc các tầng bước đệm, vị trí phụ trợ và sự hình thành vai trò qua thời gian. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Tam Thai xuất hiện tại Quan Lộc trong một lá số được an hợp lệ, hãy đặt câu hỏi về đọc các tầng bước đệm, vị trí phụ trợ và sự hình thành vai trò qua thời gian. Thử đối chiếu với Bát Tọa, Tả Phụ theo vị trí thực trước khi diễn giải chủ đề Quan Lộc; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Bát Tọa",
+        "Tả Phụ",
+        "Quốc Ấn"
+      ],
+      "counterEvidence": "Không gọi là danh vị, cấp bậc hay con đường thăng tiến đã chắc chắn; xem rõ Bát Tọa có hiện diện cùng phạm vi quan hệ không. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Tam Thai và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Tam Thai, ghi chính tinh ở cung đó và Bát Tọa, Tả Phụ ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Quan Lộc.",
+      "boundary": "Không dùng riêng Tam Thai để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Bát Tọa": {
+      "interpretiveAxis": "Bát Tọa được khảo sát như hình tượng điểm tựa và sự ổn định: phân tích điểm tựa, kết cấu ổn định và các điều kiện duy trì một môi trường. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Bát Tọa xuất hiện tại Điền Trạch trong một lá số được an hợp lệ, hãy đặt câu hỏi về phân tích điểm tựa, kết cấu ổn định và các điều kiện duy trì một môi trường. Thử đối chiếu với Tam Thai, Lộc Tồn theo vị trí thực trước khi diễn giải chủ đề Điền Trạch; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Tam Thai",
+        "Lộc Tồn",
+        "Long Trì"
+      ],
+      "counterEvidence": "Không tự coi Bát Tọa đồng cung Tam Thai, cũng không suy từ điểm tựa biểu tượng thành sở hữu nhà đất thực tế. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Bát Tọa và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Bát Tọa, ghi chính tinh ở cung đó và Tam Thai, Lộc Tồn ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Điền Trạch.",
+      "boundary": "Không dùng riêng Bát Tọa để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Địa Không": {
+      "interpretiveAxis": "Một biểu tượng thường được đặt trong bối cảnh gián đoạn, khoảng trống hoặc phá vỡ kỳ vọng; nên chú ý sự khác biệt giữa dữ liệu và lối đọc mang tính cảnh báo.",
+      "workedReading": "Khi Địa Không hiện ở Tài Bạch, nên khảo sát những câu hỏi về khả năng thích ứng trước thiếu hụt nguồn lực; phải xem đồng cung, đối cung và hạn nếu được xác minh.",
+      "crossCheckStars": [
+        "Địa Kiếp",
+        "Kình Dương",
+        "Lộc Tồn"
+      ],
+      "counterEvidence": "Không gom Địa Không và Địa Kiếp làm một sao hoặc tự nói cả hai đồng cung. Sát tinh không đủ để đưa ra kết luận tiêu cực đơn lẻ.",
+      "practiceQuestion": "Ghi vị trí riêng của Địa Không và Địa Kiếp; xác nhận đang là đồng cung, tam hợp hay không hội tụ.",
+      "boundary": "Không đoán phá sản, nguy hiểm, bệnh lý hay tổn thất thực tế."
+    },
+    "Địa Kiếp": {
+      "interpretiveAxis": "Hình tượng về sự biến động, mất cân bằng và quá trình tái cấu trúc; cần đọc khác Địa Không ngay cả khi hai sao cùng được xếp nhóm sát tinh.",
+      "workedReading": "Giả sử Địa Kiếp ở Điền Trạch, đặt câu hỏi về việc thay đổi môi trường sống và cách thích ứng, không biến thành kết luận mất nhà.",
+      "crossCheckStars": [
+        "Địa Không",
+        "Đà La",
+        "Hỏa Tinh"
+      ],
+      "counterEvidence": "Bất kỳ nhãn “Không Kiếp” nào cũng cần gắn bằng chứng hình học từ lá số. Không cộng trừ cát/hung như phép tính số học và bỏ qua chính tinh.",
+      "practiceQuestion": "Đánh dấu cả Địa Không, Địa Kiếp và chính tinh của cung đang xét rồi phân loại vị trí liên hệ.",
+      "boundary": "Không dùng để đưa khuyến nghị tài chính, y tế hay kết luận về sự an toàn cá nhân."
+    },
+    "Hỏa Tinh": {
+      "interpretiveAxis": "Thể hiện nhịp nhanh, tính khẩn cấp và sức bật tượng trưng; trong cách luận truyền thống vị trí sao và cấu trúc hỗ trợ có thể thay đổi cách đọc.",
+      "workedReading": "Nếu Hỏa Tinh tọa Quan Lộc, khảo sát chủ đề áp lực tiến độ và phản ứng với thay đổi; đối chiếu chính tinh, Linh Tinh và Tứ Hóa nếu có.",
+      "crossCheckStars": [
+        "Linh Tinh",
+        "Kình Dương",
+        "Thiên Mã"
+      ],
+      "counterEvidence": "Không thể suy rằng cứ có Hỏa Tinh là “phát” hoặc “hại”. Những tên cách cục Hỏa–Linh cần điều kiện rõ ràng và không được áp cho mọi vị trí.",
+      "practiceQuestion": "Ghi cung Hỏa Tinh và Linh Tinh; phân biệt hai vị trí an sao, sau đó xác nhận tương quan địa chi.",
+      "boundary": "Không suy đoán tai nạn, nóng giận, bạo lực hoặc rủi ro cụ thể."
+    },
+    "Linh Tinh": {
+      "interpretiveAxis": "Đại diện cho sức ép tiềm ẩn và sự biến đổi có tính tích tụ trong hệ biểu tượng; nội dung không nên chỉ thay tên Hỏa Tinh bằng Linh Tinh.",
+      "workedReading": "Khi Linh Tinh ở Tật Ách, chỉ nên đặt câu hỏi về cách cá nhân nhận diện căng thẳng và hỗ trợ bản thân, không diễn giải thành bệnh.",
+      "crossCheckStars": [
+        "Hỏa Tinh",
+        "Đà La",
+        "Địa Không"
+      ],
+      "counterEvidence": "Linh Tinh không được tự ghép với Hỏa Tinh thành đồng cung. Không thể suy từ một sao rằng sẽ xảy ra sự kiện có hại hay biến chuyển tiêu cực.",
+      "practiceQuestion": "Tìm Linh Tinh và Hỏa Tinh trên hai nhóm dữ liệu sao bản mệnh, kiểm tra chúng có thực hội chiếu với cung được chọn.",
+      "boundary": "Không dùng để chẩn đoán, dự báo tai ương hoặc gán tính cách bất biến."
+    },
+    "Thái Tuế": {
+      "interpretiveAxis": "Trong Vòng Thái Tuế, Thái Tuế là nhịp 1/12, biểu đạt vai trò cá nhân trước bối cảnh tập thể và cách phát ngôn khi có bất đồng. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Thái Tuế thuộc cung Mệnh trên một lá số, hãy bắt đầu từ chủ đề Mệnh, rồi nghiên cứu vai trò cá nhân trước bối cảnh tập thể và cách phát ngôn khi có bất đồng. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Trực Phù",
+        "Thiếu Dương",
+        "Tuế Phá"
+      ],
+      "counterEvidence": "Không lấy sao Thái Tuế để gọi vận năm hiện tại; đây là vị trí trong vòng theo chi năm sinh. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Thái Tuế trên một lá số, tìm nhịp 1 (Thái Tuế) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Mệnh có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Thái Tuế của Vòng Thái Tuế.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thiếu Dương": {
+      "interpretiveAxis": "Trong Vòng Thái Tuế, Thiếu Dương là nhịp 2/12, biểu đạt một cơ hội quan sát mới, cách thử nghiệm mà không vội khẳng định kết quả. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Thiếu Dương thuộc cung Quan Lộc trên một lá số, hãy bắt đầu từ chủ đề Quan Lộc, rồi nghiên cứu một cơ hội quan sát mới, cách thử nghiệm mà không vội khẳng định kết quả. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Thái Tuế",
+        "Tang Môn",
+        "Long Đức"
+      ],
+      "counterEvidence": "Thiếu Dương không đồng nghĩa luôn gặp may; quan sát các sao đồng cung trước khi gọi là thuận. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Thái Tuế trên một lá số, tìm nhịp 2 (Thiếu Dương) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Quan Lộc có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Thiếu Dương của Vòng Thái Tuế.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Tang Môn": {
+      "interpretiveAxis": "Trong Vòng Thái Tuế, Tang Môn là nhịp 3/12, biểu đạt quá trình khép lại một kỳ vọng và việc nhìn nhận mất mát biểu tượng. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Tang Môn thuộc cung Phúc Đức trên một lá số, hãy bắt đầu từ chủ đề Phúc Đức, rồi nghiên cứu quá trình khép lại một kỳ vọng và việc nhìn nhận mất mát biểu tượng. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Thiếu Dương",
+        "Thiếu Âm",
+        "Bạch Hổ"
+      ],
+      "counterEvidence": "Tang Môn không có nghĩa báo tang thật; không dự đoán cái chết, bệnh tật của gia đình. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Thái Tuế trên một lá số, tìm nhịp 3 (Tang Môn) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Phúc Đức có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Tang Môn của Vòng Thái Tuế.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thiếu Âm": {
+      "interpretiveAxis": "Trong Vòng Thái Tuế, Thiếu Âm là nhịp 4/12, biểu đạt sự chú tâm bên trong và phương pháp điều chỉnh phản ứng cá nhân. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Thiếu Âm thuộc cung Mệnh trên một lá số, hãy bắt đầu từ chủ đề Mệnh, rồi nghiên cứu sự chú tâm bên trong và phương pháp điều chỉnh phản ứng cá nhân. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Tang Môn",
+        "Quan Phù",
+        "Phúc Đức"
+      ],
+      "counterEvidence": "Thiếu Âm không làm mất các dữ kiện căng thẳng khác; một tên sao không định được tâm lý. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Thái Tuế trên một lá số, tìm nhịp 4 (Thiếu Âm) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Mệnh có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Thiếu Âm của Vòng Thái Tuế.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Quan Phù": {
+      "interpretiveAxis": "Trong Vòng Thái Tuế, Quan Phù là nhịp 5/12, biểu đạt chủ đề quy chuẩn, giấy tờ và bất đồng về nguyên tắc. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Quan Phù thuộc cung Quan Lộc trên một lá số, hãy bắt đầu từ chủ đề Quan Lộc, rồi nghiên cứu chủ đề quy chuẩn, giấy tờ và bất đồng về nguyên tắc. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Thiếu Âm",
+        "Tử Phù",
+        "Điếu Khách"
+      ],
+      "counterEvidence": "Quan Phù không tự khẳng định kiện tụng pháp lý; phân biệt với Quan Phủ thuộc vòng Bác Sĩ. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Thái Tuế trên một lá số, tìm nhịp 5 (Quan Phù) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Quan Lộc có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Quan Phù của Vòng Thái Tuế.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Tử Phù": {
+      "interpretiveAxis": "Trong Vòng Thái Tuế, Tử Phù là nhịp 6/12, biểu đạt cam kết, chi phí cơ hội và trách nhiệm sau một quyết định. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Tử Phù thuộc cung Tài Bạch trên một lá số, hãy bắt đầu từ chủ đề Tài Bạch, rồi nghiên cứu cam kết, chi phí cơ hội và trách nhiệm sau một quyết định. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Quan Phù",
+        "Tuế Phá",
+        "Trực Phù"
+      ],
+      "counterEvidence": "Tử Phù không phải sao Tử của vòng Tràng Sinh; không suy thành tang chế hoặc phá sản. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Thái Tuế trên một lá số, tìm nhịp 6 (Tử Phù) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Tài Bạch có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Tử Phù của Vòng Thái Tuế.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Tuế Phá": {
+      "interpretiveAxis": "Trong Vòng Thái Tuế, Tuế Phá là nhịp 7/12, biểu đạt góc nhìn đối lập và mức độ cần điều chỉnh khi va vào quy tắc tập thể. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Tuế Phá thuộc cung Thiên Di trên một lá số, hãy bắt đầu từ chủ đề Thiên Di, rồi nghiên cứu góc nhìn đối lập và mức độ cần điều chỉnh khi va vào quy tắc tập thể. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Tử Phù",
+        "Long Đức",
+        "Thái Tuế"
+      ],
+      "counterEvidence": "Tuế Phá không tất yếu chỉ thị phi hay bị chống đối; xem đây là một vị trí trong vòng. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Thái Tuế trên một lá số, tìm nhịp 7 (Tuế Phá) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Thiên Di có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Tuế Phá của Vòng Thái Tuế.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Long Đức": {
+      "interpretiveAxis": "Trong Vòng Thái Tuế, Long Đức là nhịp 8/12, biểu đạt thiện chí, mạng lưới hỗ trợ và khả năng hòa giải khác biệt. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Long Đức thuộc cung Phúc Đức trên một lá số, hãy bắt đầu từ chủ đề Phúc Đức, rồi nghiên cứu thiện chí, mạng lưới hỗ trợ và khả năng hòa giải khác biệt. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Tuế Phá",
+        "Bạch Hổ",
+        "Thiếu Dương"
+      ],
+      "counterEvidence": "Long Đức không tự triệt tiêu toàn bộ sao đối nghịch; đừng nhầm với Thiên Đức. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Thái Tuế trên một lá số, tìm nhịp 8 (Long Đức) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Phúc Đức có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Long Đức của Vòng Thái Tuế.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Bạch Hổ": {
+      "interpretiveAxis": "Trong Vòng Thái Tuế, Bạch Hổ là nhịp 9/12, biểu đạt áp lực, khả năng tự bảo vệ và cách nhận biết giới hạn hoạt động. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Bạch Hổ thuộc cung Tật Ách trên một lá số, hãy bắt đầu từ chủ đề Tật Ách, rồi nghiên cứu áp lực, khả năng tự bảo vệ và cách nhận biết giới hạn hoạt động. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Long Đức",
+        "Phúc Đức",
+        "Tang Môn"
+      ],
+      "counterEvidence": "Bạch Hổ không cho phép kết luận chảy máu, phẫu thuật hay tai nạn ngoài đời. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Thái Tuế trên một lá số, tìm nhịp 9 (Bạch Hổ) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Tật Ách có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Bạch Hổ của Vòng Thái Tuế.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Phúc Đức": {
+      "interpretiveAxis": "Trong Vòng Thái Tuế, Phúc Đức là nhịp 10/12, biểu đạt giá trị nền, ứng xử tử tế và khả năng duy trì kết nối lâu dài. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Phúc Đức thuộc cung Phúc Đức trên một lá số, hãy bắt đầu từ chủ đề Phúc Đức, rồi nghiên cứu giá trị nền, ứng xử tử tế và khả năng duy trì kết nối lâu dài. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Bạch Hổ",
+        "Điếu Khách",
+        "Thiếu Âm"
+      ],
+      "counterEvidence": "Phúc Đức ở đây là tên sao thuộc vòng, khác với cung chức Phúc Đức trên lá số. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Thái Tuế trên một lá số, tìm nhịp 10 (Phúc Đức) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Phúc Đức có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Phúc Đức của Vòng Thái Tuế.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Điếu Khách": {
+      "interpretiveAxis": "Trong Vòng Thái Tuế, Điếu Khách là nhịp 11/12, biểu đạt đối thoại, giao tế và chi phí tinh thần của lời nói. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Điếu Khách thuộc cung Nô Bộc trên một lá số, hãy bắt đầu từ chủ đề Nô Bộc, rồi nghiên cứu đối thoại, giao tế và chi phí tinh thần của lời nói. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Phúc Đức",
+        "Trực Phù",
+        "Quan Phù"
+      ],
+      "counterEvidence": "Điếu Khách không xác nhận tang lễ hay thị phi; cần xem ngữ cảnh và các sao khác. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Thái Tuế trên một lá số, tìm nhịp 11 (Điếu Khách) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Nô Bộc có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Điếu Khách của Vòng Thái Tuế.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Trực Phù": {
+      "interpretiveAxis": "Trong Vòng Thái Tuế, Trực Phù là nhịp 12/12, biểu đạt tính nhất quán giữa quy trình, cam kết và quyết định. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Trực Phù thuộc cung Quan Lộc trên một lá số, hãy bắt đầu từ chủ đề Quan Lộc, rồi nghiên cứu tính nhất quán giữa quy trình, cam kết và quyết định. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Điếu Khách",
+        "Thái Tuế",
+        "Tử Phù"
+      ],
+      "counterEvidence": "Trực Phù không đồng nghĩa Quan Phù hoặc Quan Phủ dù cùng gợi quy tắc. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Thái Tuế trên một lá số, tìm nhịp 12 (Trực Phù) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Quan Lộc có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Trực Phù của Vòng Thái Tuế.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Bác Sĩ": {
+      "interpretiveAxis": "Trong Vòng Bác Sĩ, Bác Sĩ là nhịp 1/12, biểu đạt năng lực ghi nhận, học hỏi phương pháp và truyền đạt kinh nghiệm. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Bác Sĩ thuộc cung Quan Lộc trên một lá số, hãy bắt đầu từ chủ đề Quan Lộc, rồi nghiên cứu năng lực ghi nhận, học hỏi phương pháp và truyền đạt kinh nghiệm. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Quan Phủ",
+        "Lực Sĩ",
+        "Phi Liêm"
+      ],
+      "counterEvidence": "Bác Sĩ là tên sao, không phải danh hiệu y khoa hoặc bằng cấp thật. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Bác Sĩ trên một lá số, tìm nhịp 1 (Bác Sĩ) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Quan Lộc có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Bác Sĩ của Vòng Bác Sĩ.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Lực Sĩ": {
+      "interpretiveAxis": "Trong Vòng Bác Sĩ, Lực Sĩ là nhịp 2/12, biểu đạt sức bền trong thực hành, nhịp duy trì nỗ lực dài hạn. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Lực Sĩ thuộc cung Mệnh trên một lá số, hãy bắt đầu từ chủ đề Mệnh, rồi nghiên cứu sức bền trong thực hành, nhịp duy trì nỗ lực dài hạn. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Bác Sĩ",
+        "Thanh Long",
+        "Hỷ Thần"
+      ],
+      "counterEvidence": "Lực Sĩ không đo được sức khỏe thể chất hay năng lực thể thao. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Bác Sĩ trên một lá số, tìm nhịp 2 (Lực Sĩ) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Mệnh có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Lực Sĩ của Vòng Bác Sĩ.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thanh Long": {
+      "interpretiveAxis": "Trong Vòng Bác Sĩ, Thanh Long là nhịp 3/12, biểu đạt khoảnh khắc khởi sắc trong cách quản trị nguồn lực và động lực. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Thanh Long thuộc cung Tài Bạch trên một lá số, hãy bắt đầu từ chủ đề Tài Bạch, rồi nghiên cứu khoảnh khắc khởi sắc trong cách quản trị nguồn lực và động lực. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Lực Sĩ",
+        "Tiểu Hao",
+        "Bệnh Phù"
+      ],
+      "counterEvidence": "Thanh Long không đảm bảo tiền tài hoặc cơ hội thực tế. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Bác Sĩ trên một lá số, tìm nhịp 3 (Thanh Long) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Tài Bạch có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Thanh Long của Vòng Bác Sĩ.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Tiểu Hao": {
+      "interpretiveAxis": "Trong Vòng Bác Sĩ, Tiểu Hao là nhịp 4/12, biểu đạt những khoản tiêu hao nhỏ, phân bổ thời gian và sự chú ý. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Tiểu Hao thuộc cung Tài Bạch trên một lá số, hãy bắt đầu từ chủ đề Tài Bạch, rồi nghiên cứu những khoản tiêu hao nhỏ, phân bổ thời gian và sự chú ý. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Thanh Long",
+        "Tướng Quân",
+        "Đại Hao"
+      ],
+      "counterEvidence": "Tiểu Hao không xác nhận mất tiền; cần tách với Đại Hao khi đọc phạm vi hao tổn. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Bác Sĩ trên một lá số, tìm nhịp 4 (Tiểu Hao) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Tài Bạch có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Tiểu Hao của Vòng Bác Sĩ.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Tướng Quân": {
+      "interpretiveAxis": "Trong Vòng Bác Sĩ, Tướng Quân là nhịp 5/12, biểu đạt cách đảm nhận vai trò dẫn dắt và gánh trách nhiệm nhóm. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Tướng Quân thuộc cung Quan Lộc trên một lá số, hãy bắt đầu từ chủ đề Quan Lộc, rồi nghiên cứu cách đảm nhận vai trò dẫn dắt và gánh trách nhiệm nhóm. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Tiểu Hao",
+        "Tấu Thư",
+        "Phục Binh"
+      ],
+      "counterEvidence": "Tướng Quân không tự biến thành chức tước và khác Tướng Tinh chưa có engine. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Bác Sĩ trên một lá số, tìm nhịp 5 (Tướng Quân) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Quan Lộc có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Tướng Quân của Vòng Bác Sĩ.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Tấu Thư": {
+      "interpretiveAxis": "Trong Vòng Bác Sĩ, Tấu Thư là nhịp 6/12, biểu đạt văn bản, báo cáo và sự chính xác khi truyền đạt thẩm quyền. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Tấu Thư thuộc cung Quan Lộc trên một lá số, hãy bắt đầu từ chủ đề Quan Lộc, rồi nghiên cứu văn bản, báo cáo và sự chính xác khi truyền đạt thẩm quyền. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Tướng Quân",
+        "Phi Liêm",
+        "Quan Phủ"
+      ],
+      "counterEvidence": "Tấu Thư không bảo đảm thi đỗ hay thăng chức; đừng nhầm với Văn Xương. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Bác Sĩ trên một lá số, tìm nhịp 6 (Tấu Thư) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Quan Lộc có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Tấu Thư của Vòng Bác Sĩ.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Phi Liêm": {
+      "interpretiveAxis": "Trong Vòng Bác Sĩ, Phi Liêm là nhịp 7/12, biểu đạt tốc độ dịch chuyển thông tin và rủi ro bỏ qua chi tiết. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Phi Liêm thuộc cung Thiên Di trên một lá số, hãy bắt đầu từ chủ đề Thiên Di, rồi nghiên cứu tốc độ dịch chuyển thông tin và rủi ro bỏ qua chi tiết. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Tấu Thư",
+        "Hỷ Thần",
+        "Bác Sĩ"
+      ],
+      "counterEvidence": "Phi Liêm không phải lời tiên đoán di chuyển nguy hiểm; kiểm tra khác biệt với Thiên Mã. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Bác Sĩ trên một lá số, tìm nhịp 7 (Phi Liêm) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Thiên Di có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Phi Liêm của Vòng Bác Sĩ.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Hỷ Thần": {
+      "interpretiveAxis": "Trong Vòng Bác Sĩ, Hỷ Thần là nhịp 8/12, biểu đạt sự hân hoan trong kết nối và cách ứng xử khi gặp dịp vui. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Hỷ Thần thuộc cung Phu Thê trên một lá số, hãy bắt đầu từ chủ đề Phu Thê, rồi nghiên cứu sự hân hoan trong kết nối và cách ứng xử khi gặp dịp vui. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Phi Liêm",
+        "Bệnh Phù",
+        "Lực Sĩ"
+      ],
+      "counterEvidence": "Hỷ Thần không đồng nhất với Thiên Hỷ ở lớp sao theo năm sinh. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Bác Sĩ trên một lá số, tìm nhịp 8 (Hỷ Thần) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Phu Thê có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Hỷ Thần của Vòng Bác Sĩ.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Bệnh Phù": {
+      "interpretiveAxis": "Trong Vòng Bác Sĩ, Bệnh Phù là nhịp 9/12, biểu đạt tín hiệu cần điều tiết sức lực và thực hành tự chăm sóc. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Bệnh Phù thuộc cung Tật Ách trên một lá số, hãy bắt đầu từ chủ đề Tật Ách, rồi nghiên cứu tín hiệu cần điều tiết sức lực và thực hành tự chăm sóc. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Hỷ Thần",
+        "Đại Hao",
+        "Thanh Long"
+      ],
+      "counterEvidence": "Bệnh Phù không thể dùng để chẩn đoán sức khỏe hoặc xác định bệnh sẽ xảy ra. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Bác Sĩ trên một lá số, tìm nhịp 9 (Bệnh Phù) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Tật Ách có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Bệnh Phù của Vòng Bác Sĩ.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Đại Hao": {
+      "interpretiveAxis": "Trong Vòng Bác Sĩ, Đại Hao là nhịp 10/12, biểu đạt tổn hao ở quy mô đáng kể như một câu hỏi biểu tượng về cân đối. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Đại Hao thuộc cung Tài Bạch trên một lá số, hãy bắt đầu từ chủ đề Tài Bạch, rồi nghiên cứu tổn hao ở quy mô đáng kể như một câu hỏi biểu tượng về cân đối. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Bệnh Phù",
+        "Phục Binh",
+        "Tiểu Hao"
+      ],
+      "counterEvidence": "Đại Hao không suy ra phá sản; cần đọc riêng Tiểu Hao và toàn bộ cung Tài. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Bác Sĩ trên một lá số, tìm nhịp 10 (Đại Hao) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Tài Bạch có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Đại Hao của Vòng Bác Sĩ.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Phục Binh": {
+      "interpretiveAxis": "Trong Vòng Bác Sĩ, Phục Binh là nhịp 11/12, biểu đạt thông tin mập mờ, sự dè dặt và nhu cầu minh bạch trong hợp tác. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Phục Binh thuộc cung Nô Bộc trên một lá số, hãy bắt đầu từ chủ đề Nô Bộc, rồi nghiên cứu thông tin mập mờ, sự dè dặt và nhu cầu minh bạch trong hợp tác. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Đại Hao",
+        "Quan Phủ",
+        "Tướng Quân"
+      ],
+      "counterEvidence": "Phục Binh không xác nhận có kẻ thù, người phản bội hay âm mưu thật. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Bác Sĩ trên một lá số, tìm nhịp 11 (Phục Binh) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Nô Bộc có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Phục Binh của Vòng Bác Sĩ.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Quan Phủ": {
+      "interpretiveAxis": "Trong Vòng Bác Sĩ, Quan Phủ là nhịp 12/12, biểu đạt quy trình xử lý trách nhiệm và các nghĩa vụ bị bỏ qua. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Quan Phủ thuộc cung Quan Lộc trên một lá số, hãy bắt đầu từ chủ đề Quan Lộc, rồi nghiên cứu quy trình xử lý trách nhiệm và các nghĩa vụ bị bỏ qua. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Phục Binh",
+        "Bác Sĩ",
+        "Tấu Thư"
+      ],
+      "counterEvidence": "Quan Phủ thuộc vòng Bác Sĩ, khác Quan Phù thuộc vòng Thái Tuế; không tự kết luận kiện tụng. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Bác Sĩ trên một lá số, tìm nhịp 12 (Quan Phủ) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Quan Lộc có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Quan Phủ của Vòng Bác Sĩ.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Tràng Sinh": {
+      "interpretiveAxis": "Trong Vòng Tràng Sinh, Tràng Sinh là nhịp 1/12, biểu đạt thời điểm bắt đầu một nhịp hình thành và tiềm năng chưa được kiểm chứng. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Tràng Sinh thuộc cung Mệnh trên một lá số, hãy bắt đầu từ chủ đề Mệnh, rồi nghiên cứu thời điểm bắt đầu một nhịp hình thành và tiềm năng chưa được kiểm chứng. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Dưỡng",
+        "Mộc Dục",
+        "Bệnh"
+      ],
+      "counterEvidence": "Tràng Sinh là giai đoạn trong chu kỳ, không phải lời bảo đảm trường thọ. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Tràng Sinh trên một lá số, tìm nhịp 1 (Tràng Sinh) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Mệnh có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Tràng Sinh của Vòng Tràng Sinh.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Mộc Dục": {
+      "interpretiveAxis": "Trong Vòng Tràng Sinh, Mộc Dục là nhịp 2/12, biểu đạt giai đoạn chỉnh sửa nếp sinh hoạt và hình thức biểu đạt bản thân. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Mộc Dục thuộc cung Phu Thê trên một lá số, hãy bắt đầu từ chủ đề Phu Thê, rồi nghiên cứu giai đoạn chỉnh sửa nếp sinh hoạt và hình thức biểu đạt bản thân. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Tràng Sinh",
+        "Quan Đới",
+        "Tử"
+      ],
+      "counterEvidence": "Mộc Dục không đồng nghĩa hành vi tình dục hay đạo đức cá nhân. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Tràng Sinh trên một lá số, tìm nhịp 2 (Mộc Dục) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Phu Thê có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Mộc Dục của Vòng Tràng Sinh.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Quan Đới": {
+      "interpretiveAxis": "Trong Vòng Tràng Sinh, Quan Đới là nhịp 3/12, biểu đạt bước xây dựng danh phận, quy cách và vai trò xã hội. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Quan Đới thuộc cung Quan Lộc trên một lá số, hãy bắt đầu từ chủ đề Quan Lộc, rồi nghiên cứu bước xây dựng danh phận, quy cách và vai trò xã hội. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Mộc Dục",
+        "Lâm Quan",
+        "Mộ"
+      ],
+      "counterEvidence": "Quan Đới không xác nhận chức vụ đã có; cần xem chính tinh Quan Lộc. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Tràng Sinh trên một lá số, tìm nhịp 3 (Quan Đới) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Quan Lộc có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Quan Đới của Vòng Tràng Sinh.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Lâm Quan": {
+      "interpretiveAxis": "Trong Vòng Tràng Sinh, Lâm Quan là nhịp 4/12, biểu đạt giai đoạn đảm đương trách nhiệm và hành động rõ ràng. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Lâm Quan thuộc cung Quan Lộc trên một lá số, hãy bắt đầu từ chủ đề Quan Lộc, rồi nghiên cứu giai đoạn đảm đương trách nhiệm và hành động rõ ràng. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Quan Đới",
+        "Đế Vượng",
+        "Tuyệt"
+      ],
+      "counterEvidence": "Lâm Quan không phải xác nhận lên chức, thi đỗ hoặc tuổi nào phát tài. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Tràng Sinh trên một lá số, tìm nhịp 4 (Lâm Quan) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Quan Lộc có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Lâm Quan của Vòng Tràng Sinh.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Đế Vượng": {
+      "interpretiveAxis": "Trong Vòng Tràng Sinh, Đế Vượng là nhịp 5/12, biểu đạt điểm cường độ cao của một chu trình, kèm nhu cầu điều tiết. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Đế Vượng thuộc cung Tài Bạch trên một lá số, hãy bắt đầu từ chủ đề Tài Bạch, rồi nghiên cứu điểm cường độ cao của một chu trình, kèm nhu cầu điều tiết. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Lâm Quan",
+        "Suy",
+        "Thai"
+      ],
+      "counterEvidence": "Đế Vượng không đảm bảo địa vị hoặc sự thịnh vượng vô hạn. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Tràng Sinh trên một lá số, tìm nhịp 5 (Đế Vượng) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Tài Bạch có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Đế Vượng của Vòng Tràng Sinh.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Suy": {
+      "interpretiveAxis": "Trong Vòng Tràng Sinh, Suy là nhịp 6/12, biểu đạt giai đoạn hạ nhịp, rà soát và lựa chọn phương án phù hợp. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Suy thuộc cung Quan Lộc trên một lá số, hãy bắt đầu từ chủ đề Quan Lộc, rồi nghiên cứu giai đoạn hạ nhịp, rà soát và lựa chọn phương án phù hợp. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Đế Vượng",
+        "Bệnh",
+        "Dưỡng"
+      ],
+      "counterEvidence": "Suy trong chu kỳ không phải bản án sa sút hay mất sức khỏe. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Tràng Sinh trên một lá số, tìm nhịp 6 (Suy) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Quan Lộc có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Suy của Vòng Tràng Sinh.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Bệnh": {
+      "interpretiveAxis": "Trong Vòng Tràng Sinh, Bệnh là nhịp 7/12, biểu đạt thời kỳ cần giảm tải, quan sát giới hạn và chăm sóc cân bằng. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Bệnh thuộc cung Tật Ách trên một lá số, hãy bắt đầu từ chủ đề Tật Ách, rồi nghiên cứu thời kỳ cần giảm tải, quan sát giới hạn và chăm sóc cân bằng. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Suy",
+        "Tử",
+        "Tràng Sinh"
+      ],
+      "counterEvidence": "Bệnh là tên giai đoạn khí vận, không phải chẩn đoán bệnh. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Tràng Sinh trên một lá số, tìm nhịp 7 (Bệnh) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Tật Ách có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Bệnh của Vòng Tràng Sinh.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Tử": {
+      "interpretiveAxis": "Trong Vòng Tràng Sinh, Tử là nhịp 8/12, biểu đạt giai đoạn kết thúc một nhịp để sắp xếp lại ưu tiên. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Tử thuộc cung Phúc Đức trên một lá số, hãy bắt đầu từ chủ đề Phúc Đức, rồi nghiên cứu giai đoạn kết thúc một nhịp để sắp xếp lại ưu tiên. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Bệnh",
+        "Mộ",
+        "Mộc Dục"
+      ],
+      "counterEvidence": "Tử trong vòng không báo cái chết của người xem hoặc thân nhân. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Tràng Sinh trên một lá số, tìm nhịp 8 (Tử) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Phúc Đức có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Tử của Vòng Tràng Sinh.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Mộ": {
+      "interpretiveAxis": "Trong Vòng Tràng Sinh, Mộ là nhịp 9/12, biểu đạt giai đoạn gom giữ, tích tụ và bảo tồn những gì đã hình thành. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Mộ thuộc cung Điền Trạch trên một lá số, hãy bắt đầu từ chủ đề Điền Trạch, rồi nghiên cứu giai đoạn gom giữ, tích tụ và bảo tồn những gì đã hình thành. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Tử",
+        "Tuyệt",
+        "Quan Đới"
+      ],
+      "counterEvidence": "Mộ trong vòng Tràng Sinh không dự báo mồ mả, tang lễ hay bất động sản. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Tràng Sinh trên một lá số, tìm nhịp 9 (Mộ) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Điền Trạch có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Mộ của Vòng Tràng Sinh.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Tuyệt": {
+      "interpretiveAxis": "Trong Vòng Tràng Sinh, Tuyệt là nhịp 10/12, biểu đạt khoảnh khắc đứt nhịp và cơ hội tái định hướng chu kỳ. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Tuyệt thuộc cung Thiên Di trên một lá số, hãy bắt đầu từ chủ đề Thiên Di, rồi nghiên cứu khoảnh khắc đứt nhịp và cơ hội tái định hướng chu kỳ. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Mộ",
+        "Thai",
+        "Lâm Quan"
+      ],
+      "counterEvidence": "Tuyệt không có nghĩa tuyệt mệnh, vô sinh hoặc thất bại không hồi phục. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Tràng Sinh trên một lá số, tìm nhịp 10 (Tuyệt) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Thiên Di có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Tuyệt của Vòng Tràng Sinh.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thai": {
+      "interpretiveAxis": "Trong Vòng Tràng Sinh, Thai là nhịp 11/12, biểu đạt mầm khả năng đang hình thành và cần thời gian trước khi thể hiện. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Thai thuộc cung Tử Tức trên một lá số, hãy bắt đầu từ chủ đề Tử Tức, rồi nghiên cứu mầm khả năng đang hình thành và cần thời gian trước khi thể hiện. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Tuyệt",
+        "Dưỡng",
+        "Đế Vượng"
+      ],
+      "counterEvidence": "Thai là pha chu kỳ, không phải chẩn đoán mang thai hay tiên đoán sinh con. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Tràng Sinh trên một lá số, tìm nhịp 11 (Thai) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Tử Tức có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Thai của Vòng Tràng Sinh.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Dưỡng": {
+      "interpretiveAxis": "Trong Vòng Tràng Sinh, Dưỡng là nhịp 12/12, biểu đạt khâu chăm bón, tích lũy điều kiện cho khởi đầu sắp tới. Không tách nhịp này khỏi toàn vòng, chính tinh tọa thủ và các quan hệ cung thực có trên địa bàn.",
+      "workedReading": "Nếu Dưỡng thuộc cung Phúc Đức trên một lá số, hãy bắt đầu từ chủ đề Phúc Đức, rồi nghiên cứu khâu chăm bón, tích lũy điều kiện cho khởi đầu sắp tới. So sánh nhịp ngay trước và sau trong cùng vòng để không biến một giai đoạn thành định đoán độc lập; kiểm chứng vị trí qua engine.",
+      "crossCheckStars": [
+        "Thai",
+        "Tràng Sinh",
+        "Suy"
+      ],
+      "counterEvidence": "Dưỡng không đảm bảo được người khác nuôi dưỡng hoặc bảo vệ. Không đánh đồng tên vị trí trong vòng với chứng cứ đồng cung, tam hợp hoặc xung chiếu của các sao khác; mọi quan hệ phải xác định từ vị trí thực tế.",
+      "practiceQuestion": "Đánh dấu đủ 12 vị trí của Vòng Tràng Sinh trên một lá số, tìm nhịp 12 (Dưỡng) rồi ghi thứ tự hai nhịp kề. Kiểm tra tại Phúc Đức có chính tinh nào và có liên quan với năm xem hay không.",
+      "boundary": "Không dự báo bệnh tật, tử vong, tài vận hoặc sự kiện đời sống từ nhịp Dưỡng của Vòng Tràng Sinh.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Long Trì": {
+      "interpretiveAxis": "Long Trì được khảo sát như hình tượng nề nếp, sự trang nhã: khảo sát khuôn phép, sự trang nhã và cách nề nếp ảnh hưởng tới không gian sống. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Long Trì xuất hiện tại Điền Trạch trong một lá số được an hợp lệ, hãy đặt câu hỏi về khảo sát khuôn phép, sự trang nhã và cách nề nếp ảnh hưởng tới không gian sống. Thử đối chiếu với Phượng Các, Thiên Đức theo vị trí thực trước khi diễn giải chủ đề Điền Trạch; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Phượng Các",
+        "Thiên Đức",
+        "Bát Tọa"
+      ],
+      "counterEvidence": "Không dùng nhãn cát tinh để bỏ qua chính tinh khó khăn hoặc kết luận gia đình chắc thuận hòa. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Long Trì và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Long Trì, ghi chính tinh ở cung đó và Phượng Các, Thiên Đức ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Điền Trạch.",
+      "boundary": "Không dùng riêng Long Trì để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Phượng Các": {
+      "interpretiveAxis": "Phượng Các được khảo sát như hình tượng cảm quan thẩm mỹ, sự trang trọng: đọc cảm quan nghi thức, vẻ đẹp và những tiêu chuẩn văn hóa được truyền lại. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Phượng Các xuất hiện tại Phúc Đức trong một lá số được an hợp lệ, hãy đặt câu hỏi về đọc cảm quan nghi thức, vẻ đẹp và những tiêu chuẩn văn hóa được truyền lại. Thử đối chiếu với Long Trì, Văn Khúc theo vị trí thực trước khi diễn giải chủ đề Phúc Đức; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Long Trì",
+        "Văn Khúc",
+        "Thiên Quý"
+      ],
+      "counterEvidence": "Không tự cho rằng có tài nghệ thiên phú hay người thân có địa vị; xem vị trí Long Trì trước khi gọi thành bộ. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Phượng Các và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Phượng Các, ghi chính tinh ở cung đó và Long Trì, Văn Khúc ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Phúc Đức.",
+      "boundary": "Không dùng riêng Phượng Các để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Giải Thần": {
+      "interpretiveAxis": "Giải Thần được khảo sát như hình tượng điều hòa và tháo gỡ: tìm dấu hiệu biểu tượng về khả năng điều hòa bế tắc và tự điều chỉnh thói quen. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Giải Thần xuất hiện tại Tật Ách trong một lá số được an hợp lệ, hãy đặt câu hỏi về tìm dấu hiệu biểu tượng về khả năng điều hòa bế tắc và tự điều chỉnh thói quen. Thử đối chiếu với Thiên Giải, Địa Giải theo vị trí thực trước khi diễn giải chủ đề Tật Ách; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thiên Giải",
+        "Địa Giải",
+        "Thiên Y"
+      ],
+      "counterEvidence": "Giải Thần không xóa tác dụng của sát tinh theo công thức cơ học và không có chức năng bảo vệ sức khỏe thực tế. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Giải Thần và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Giải Thần, ghi chính tinh ở cung đó và Thiên Giải, Địa Giải ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Tật Ách.",
+      "boundary": "Không dùng riêng Giải Thần để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Cô Thần": {
+      "interpretiveAxis": "Được dùng trong ngữ cảnh tính độc lập và khoảng cách giao tiếp; cần bảo vệ ranh giới đạo đức khi đề cập đến hôn nhân và quan hệ.",
+      "workedReading": "Nếu Cô Thần tại Phu Thê, chỉ nên xem đây là đầu mối thảo luận khác biệt nhu cầu riêng tư, phải xét toàn cung và người trong quan hệ.",
+      "crossCheckStars": [
+        "Quả Tú",
+        "Hồng Loan",
+        "Thiên Hỷ"
+      ],
+      "counterEvidence": "Có Cô Thần không đủ để kết luận cô độc hay ly hôn. Cặp Cô–Quả là chủ đề đọc đối chiếu, không phải mặc nhiên đồng cung.",
+      "practiceQuestion": "Đánh dấu Cô Thần và Quả Tú, rồi chỉ ra tại sao việc “có cả hai sao” chưa tương đương một lời luận đoán.",
+      "boundary": "Không xác định tình trạng hôn nhân, khả năng sinh con hay số phận cô đơn."
+    },
+    "Quả Tú": {
+      "interpretiveAxis": "Gợi ý nhu cầu tự chủ và cách một người giữ khoảng riêng trong đời sống xã hội; lối đọc cần tránh định kiến về giới và hôn nhân.",
+      "workedReading": "Khi Quả Tú ở Nô Bộc, hãy đặt câu hỏi về cân bằng tương tác xã hội và độc lập, không diễn giải thành “không có bạn”.",
+      "crossCheckStars": [
+        "Cô Thần",
+        "Đào Hoa",
+        "Thiên Khôi"
+      ],
+      "counterEvidence": "Quả Tú không quyết định tính chất quan hệ nếu bỏ qua cung chức, chính tinh và sao liên quan. Không dùng một cặp tên sao để gán nhãn tiêu cực.",
+      "practiceQuestion": "Đọc riêng hai cung chứa Cô Thần và Quả Tú, ghi bối cảnh từng cung và chỉ ra ít nhất một kết luận không có đủ chứng cứ.",
+      "boundary": "Không tiên đoán cô đơn, chia tay, vô sinh hoặc chuyện gia đình."
+    },
+    "Thiên Quan": {
+      "interpretiveAxis": "Thiên Quan được khảo sát như hình tượng tinh thần hỗ trợ và trách nhiệm: đọc chủ đề trách nhiệm, quy chuẩn và vai trò phụ trợ trong công việc. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Thiên Quan xuất hiện tại Quan Lộc trong một lá số được an hợp lệ, hãy đặt câu hỏi về đọc chủ đề trách nhiệm, quy chuẩn và vai trò phụ trợ trong công việc. Thử đối chiếu với Thiên Phúc, Quốc Ấn theo vị trí thực trước khi diễn giải chủ đề Quan Lộc; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thiên Phúc",
+        "Quốc Ấn",
+        "Thiên Khôi"
+      ],
+      "counterEvidence": "Không dự báo được bổ nhiệm, ân huệ từ người trên hay tính chính trực từ một sao riêng lẻ. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Thiên Quan và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Thiên Quan, ghi chính tinh ở cung đó và Thiên Phúc, Quốc Ấn ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Quan Lộc.",
+      "boundary": "Không dùng riêng Thiên Quan để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thiên Phúc": {
+      "interpretiveAxis": "Thiên Phúc được khảo sát như hình tượng phúc thiện và lòng quan tâm: khảo sát tinh thần nâng đỡ, chia sẻ và hệ giá trị thiện chí trong phạm vi Phúc. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Thiên Phúc xuất hiện tại Phúc Đức trong một lá số được an hợp lệ, hãy đặt câu hỏi về khảo sát tinh thần nâng đỡ, chia sẻ và hệ giá trị thiện chí trong phạm vi Phúc. Thử đối chiếu với Thiên Quan, Nguyệt Đức theo vị trí thực trước khi diễn giải chủ đề Phúc Đức; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thiên Quan",
+        "Nguyệt Đức",
+        "Ân Quang"
+      ],
+      "counterEvidence": "Không dùng khái niệm phúc để khẳng định nghiệp báo hay miễn trừ rủi ro trong cuộc sống. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Thiên Phúc và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Thiên Phúc, ghi chính tinh ở cung đó và Thiên Quan, Nguyệt Đức ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Phúc Đức.",
+      "boundary": "Không dùng riêng Thiên Phúc để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Ân Quang": {
+      "interpretiveAxis": "Ân Quang được khảo sát như hình tượng sự ghi nhận và lòng biết ơn: thảo luận sự ghi nhận đóng góp, lòng biết ơn và hình thức hỗ trợ qua thế hệ. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Ân Quang xuất hiện tại Phụ Mẫu trong một lá số được an hợp lệ, hãy đặt câu hỏi về thảo luận sự ghi nhận đóng góp, lòng biết ơn và hình thức hỗ trợ qua thế hệ. Thử đối chiếu với Thiên Quý, Thiên Phúc theo vị trí thực trước khi diễn giải chủ đề Phụ Mẫu; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thiên Quý",
+        "Thiên Phúc",
+        "Thiên Việt"
+      ],
+      "counterEvidence": "Không cho rằng sao này chứng minh cha mẹ tốt hay bản thân sẽ được đền đáp xứng đáng. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Ân Quang và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Ân Quang, ghi chính tinh ở cung đó và Thiên Quý, Thiên Phúc ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Phụ Mẫu.",
+      "boundary": "Không dùng riêng Ân Quang để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thiên Quý": {
+      "interpretiveAxis": "Thiên Quý được khảo sát như hình tượng trân trọng và sự nâng đỡ: xét thái độ trân trọng, cách tiếp nhận giúp đỡ và tiêu chuẩn chọn cộng sự. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Thiên Quý xuất hiện tại Nô Bộc trong một lá số được an hợp lệ, hãy đặt câu hỏi về xét thái độ trân trọng, cách tiếp nhận giúp đỡ và tiêu chuẩn chọn cộng sự. Thử đối chiếu với Ân Quang, Thiên Khôi theo vị trí thực trước khi diễn giải chủ đề Nô Bộc; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Ân Quang",
+        "Thiên Khôi",
+        "Hữu Bật"
+      ],
+      "counterEvidence": "Không xem tên sao là bằng chứng có quý nhân; cần kiểm tra Ân Quang đang ở đâu và loại quan hệ thật. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Thiên Quý và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Thiên Quý, ghi chính tinh ở cung đó và Ân Quang, Thiên Khôi ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Nô Bộc.",
+      "boundary": "Không dùng riêng Thiên Quý để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thái Phụ": {
+      "interpretiveAxis": "Thái Phụ được khảo sát như hình tượng nghi thức và khả năng thể hiện: phân biệt nghi thức, năng lực trình bày và việc được giao trách nhiệm. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Thái Phụ xuất hiện tại Quan Lộc trong một lá số được an hợp lệ, hãy đặt câu hỏi về phân biệt nghi thức, năng lực trình bày và việc được giao trách nhiệm. Thử đối chiếu với Phong Cáo, Quốc Ấn theo vị trí thực trước khi diễn giải chủ đề Quan Lộc; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Phong Cáo",
+        "Quốc Ấn",
+        "Văn Xương"
+      ],
+      "counterEvidence": "Không gán thành quyền lực thực tế hay học vị; cần đối chiếu Phong Cáo, Quốc Ấn theo vị trí đúng. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Thái Phụ và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Thái Phụ, ghi chính tinh ở cung đó và Phong Cáo, Quốc Ấn ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Quan Lộc.",
+      "boundary": "Không dùng riêng Thái Phụ để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Phong Cáo": {
+      "interpretiveAxis": "Phong Cáo được khảo sát như hình tượng quy cách và sự công nhận: khảo sát quy cách, sự công nhận và mối quan hệ giữa hình thức và trách nhiệm. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Phong Cáo xuất hiện tại Phụ Mẫu trong một lá số được an hợp lệ, hãy đặt câu hỏi về khảo sát quy cách, sự công nhận và mối quan hệ giữa hình thức và trách nhiệm. Thử đối chiếu với Thái Phụ, Quốc Ấn theo vị trí thực trước khi diễn giải chủ đề Phụ Mẫu; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thái Phụ",
+        "Quốc Ấn",
+        "Thiên Quan"
+      ],
+      "counterEvidence": "Không coi Phong Cáo là giấy chứng nhận hoặc chức vụ sẽ phát sinh ngoài đời. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Phong Cáo và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Phong Cáo, ghi chính tinh ở cung đó và Thái Phụ, Quốc Ấn ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Phụ Mẫu.",
+      "boundary": "Không dùng riêng Phong Cáo để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Quốc Ấn": {
+      "interpretiveAxis": "Quốc Ấn được khảo sát như hình tượng trách nhiệm và sự công nhận: nghiên cứu đại diện tập thể, quyền hạn gắn trách nhiệm và khả năng tổ chức. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Quốc Ấn xuất hiện tại Quan Lộc trong một lá số được an hợp lệ, hãy đặt câu hỏi về nghiên cứu đại diện tập thể, quyền hạn gắn trách nhiệm và khả năng tổ chức. Thử đối chiếu với Thái Phụ, Phong Cáo theo vị trí thực trước khi diễn giải chủ đề Quan Lộc; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thái Phụ",
+        "Phong Cáo",
+        "Tướng Quân"
+      ],
+      "counterEvidence": "Không đoán đỗ đạt công quyền hay quyền sở hữu con dấu chỉ nhờ một tên sao. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Quốc Ấn và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Quốc Ấn, ghi chính tinh ở cung đó và Thái Phụ, Phong Cáo ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Quan Lộc.",
+      "boundary": "Không dùng riêng Quốc Ấn để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Kiếp Sát": {
+      "interpretiveAxis": "Kiếp Sát được khảo sát như hình tượng biến động và sự chủ động ứng phó: xem biểu tượng tình huống đột ngột, phản ứng phòng ngừa và giới hạn kiểm soát. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Kiếp Sát xuất hiện tại Thiên Di trong một lá số được an hợp lệ, hãy đặt câu hỏi về xem biểu tượng tình huống đột ngột, phản ứng phòng ngừa và giới hạn kiểm soát. Thử đối chiếu với Địa Kiếp, Thiên Hình theo vị trí thực trước khi diễn giải chủ đề Thiên Di; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Địa Kiếp",
+        "Thiên Hình",
+        "Phá Toái"
+      ],
+      "counterEvidence": "Không dự báo tai nạn, hành hung hoặc phá sản; phải phân biệt Kiếp Sát với Địa Kiếp. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Kiếp Sát và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Kiếp Sát, ghi chính tinh ở cung đó và Địa Kiếp, Thiên Hình ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Thiên Di.",
+      "boundary": "Không dùng riêng Kiếp Sát để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Phá Toái": {
+      "interpretiveAxis": "Phá Toái được khảo sát như hình tượng khó khăn nhỏ và điều chỉnh: nhận diện những vướng mắc vụn, nhu cầu sửa chữa quy trình và chi phí không nhìn thấy. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Phá Toái xuất hiện tại Điền Trạch trong một lá số được an hợp lệ, hãy đặt câu hỏi về nhận diện những vướng mắc vụn, nhu cầu sửa chữa quy trình và chi phí không nhìn thấy. Thử đối chiếu với Kiếp Sát, Tiểu Hao theo vị trí thực trước khi diễn giải chủ đề Điền Trạch; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Kiếp Sát",
+        "Tiểu Hao",
+        "Đà La"
+      ],
+      "counterEvidence": "Không tự chuyển sự khó chịu biểu tượng thành hư hỏng tài sản hay đổ vỡ quan hệ chắc chắn. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Phá Toái và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Phá Toái, ghi chính tinh ở cung đó và Kiếp Sát, Tiểu Hao ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Điền Trạch.",
+      "boundary": "Không dùng riêng Phá Toái để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thiên Đức": {
+      "interpretiveAxis": "Thiên Đức được khảo sát như hình tượng nhân hòa và điều tiết: xét sự bao dung, khả năng tìm giải pháp mềm và thái độ trước mâu thuẫn. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Thiên Đức xuất hiện tại Phúc Đức trong một lá số được an hợp lệ, hãy đặt câu hỏi về xét sự bao dung, khả năng tìm giải pháp mềm và thái độ trước mâu thuẫn. Thử đối chiếu với Nguyệt Đức, Long Đức theo vị trí thực trước khi diễn giải chủ đề Phúc Đức; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Nguyệt Đức",
+        "Long Đức",
+        "Thiên Giải"
+      ],
+      "counterEvidence": "Không coi sao Đức là cơ chế hóa giải tất cả hung tinh; Thiên Đức và Nguyệt Đức cần đối chiếu riêng. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Thiên Đức và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Thiên Đức, ghi chính tinh ở cung đó và Nguyệt Đức, Long Đức ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Phúc Đức.",
+      "boundary": "Không dùng riêng Thiên Đức để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Nguyệt Đức": {
+      "interpretiveAxis": "Nguyệt Đức được khảo sát như hình tượng khoan dung và hòa giải: thảo luận năng lực hòa giải, sự mềm mỏng và giới hạn của lòng nhường nhịn. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Nguyệt Đức xuất hiện tại Phu Thê trong một lá số được an hợp lệ, hãy đặt câu hỏi về thảo luận năng lực hòa giải, sự mềm mỏng và giới hạn của lòng nhường nhịn. Thử đối chiếu với Thiên Đức, Phúc Đức theo vị trí thực trước khi diễn giải chủ đề Phu Thê; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thiên Đức",
+        "Phúc Đức",
+        "Hồng Loan"
+      ],
+      "counterEvidence": "Không kết luận hôn nhân hạnh phúc hay đối tác có đạo đức từ một dấu hiệu. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Nguyệt Đức và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Nguyệt Đức, ghi chính tinh ở cung đó và Thiên Đức, Phúc Đức ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Phu Thê.",
+      "boundary": "Không dùng riêng Nguyệt Đức để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thiên Giải": {
+      "interpretiveAxis": "Thiên Giải được khảo sát như hình tượng tháo gỡ và ứng biến: đặt câu hỏi về hành động tháo gỡ, nguồn trợ giúp và lựa chọn giải pháp. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Thiên Giải xuất hiện tại Tật Ách trong một lá số được an hợp lệ, hãy đặt câu hỏi về đặt câu hỏi về hành động tháo gỡ, nguồn trợ giúp và lựa chọn giải pháp. Thử đối chiếu với Địa Giải, Giải Thần theo vị trí thực trước khi diễn giải chủ đề Tật Ách; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Địa Giải",
+        "Giải Thần",
+        "Thiên Y"
+      ],
+      "counterEvidence": "Không đồng nhất tên Giải với chữa bệnh hoặc triệt tiêu hậu quả từ sát tinh. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Thiên Giải và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Thiên Giải, ghi chính tinh ở cung đó và Địa Giải, Giải Thần ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Tật Ách.",
+      "boundary": "Không dùng riêng Thiên Giải để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Địa Giải": {
+      "interpretiveAxis": "Địa Giải được khảo sát như hình tượng ổn định và tháo gỡ: quan sát phương án ổn định chỗ ở, xử lý nút thắt tại môi trường sống. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Địa Giải xuất hiện tại Điền Trạch trong một lá số được an hợp lệ, hãy đặt câu hỏi về quan sát phương án ổn định chỗ ở, xử lý nút thắt tại môi trường sống. Thử đối chiếu với Thiên Giải, Giải Thần theo vị trí thực trước khi diễn giải chủ đề Điền Trạch; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thiên Giải",
+        "Giải Thần",
+        "Lộc Tồn"
+      ],
+      "counterEvidence": "Không khẳng định thắng tranh chấp đất đai hay tránh thiệt hại vật chất. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Địa Giải và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Địa Giải, ghi chính tinh ở cung đó và Thiên Giải, Giải Thần ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Điền Trạch.",
+      "boundary": "Không dùng riêng Địa Giải để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thiên La": {
+      "interpretiveAxis": "Thiên La được khảo sát như hình tượng giới hạn và kiên nhẫn: đọc cấu trúc ràng buộc tại địa chi Thìn, phân biệt dấu vị trí với cung chức thay đổi. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Thiên La xuất hiện tại Phúc Đức trong một lá số được an hợp lệ, hãy đặt câu hỏi về đọc cấu trúc ràng buộc tại địa chi Thìn, phân biệt dấu vị trí với cung chức thay đổi. Thử đối chiếu với Địa Võng, Trực Phù theo vị trí thực trước khi diễn giải chủ đề Phúc Đức; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Địa Võng",
+        "Trực Phù",
+        "Thiên Hình"
+      ],
+      "counterEvidence": "Thiên La đóng tại chi Thìn trong engine hiện tại, không phải cứ nhắc tới Phúc Đức là được an về Phúc Đức. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Thiên La và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Thiên La, ghi chính tinh ở cung đó và Địa Võng, Trực Phù ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Phúc Đức.",
+      "boundary": "Không dùng riêng Thiên La để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Địa Võng": {
+      "interpretiveAxis": "Địa Võng được khảo sát như hình tượng khuôn khổ và trách nhiệm: đọc khuôn lưới ràng buộc tại chi Tuất và sức ép từ những giới hạn tự nhận. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Địa Võng xuất hiện tại Phúc Đức trong một lá số được an hợp lệ, hãy đặt câu hỏi về đọc khuôn lưới ràng buộc tại chi Tuất và sức ép từ những giới hạn tự nhận. Thử đối chiếu với Thiên La, Quan Phù theo vị trí thực trước khi diễn giải chủ đề Phúc Đức; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thiên La",
+        "Quan Phù",
+        "Đà La"
+      ],
+      "counterEvidence": "Địa Võng chỉ tại chi Tuất theo lớp an này; không được đảo La–Võng theo cảm tính hoặc coi là định mệnh. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Địa Võng và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Địa Võng, ghi chính tinh ở cung đó và Thiên La, Quan Phù ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Phúc Đức.",
+      "boundary": "Không dùng riêng Địa Võng để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thiên Thương": {
+      "interpretiveAxis": "Thiên Thương được khảo sát như hình tượng tương tác và ranh giới xã hội: quan sát ranh giới xã hội, tương tác người khác và chủ đề trách nhiệm trong cộng tác. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Thiên Thương xuất hiện tại Nô Bộc trong một lá số được an hợp lệ, hãy đặt câu hỏi về quan sát ranh giới xã hội, tương tác người khác và chủ đề trách nhiệm trong cộng tác. Thử đối chiếu với Thiên Sứ, Phục Binh theo vị trí thực trước khi diễn giải chủ đề Nô Bộc; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thiên Sứ",
+        "Phục Binh",
+        "Quan Phủ"
+      ],
+      "counterEvidence": "Thiên Thương an theo cung chức Nô Bộc; không an theo chi cố định và không kết luận bị người khác hãm hại. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Thiên Thương và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Thiên Thương, ghi chính tinh ở cung đó và Thiên Sứ, Phục Binh ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Nô Bộc.",
+      "boundary": "Không dùng riêng Thiên Thương để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thiên Sứ": {
+      "interpretiveAxis": "Thiên Sứ được khảo sát như hình tượng sự cân bằng và tự chăm sóc: đọc yêu cầu tự chăm sóc và cách duy trì cân bằng trong bối cảnh cung Tật Ách. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Thiên Sứ xuất hiện tại Tật Ách trong một lá số được an hợp lệ, hãy đặt câu hỏi về đọc yêu cầu tự chăm sóc và cách duy trì cân bằng trong bối cảnh cung Tật Ách. Thử đối chiếu với Thiên Thương, Thiên Y theo vị trí thực trước khi diễn giải chủ đề Tật Ách; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thiên Thương",
+        "Thiên Y",
+        "Bệnh Phù"
+      ],
+      "counterEvidence": "Thiên Sứ an tại cung chức Tật Ách, không phải chỉ dấu chẩn đoán hoặc lời báo trước về bệnh tật. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Thiên Sứ và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Thiên Sứ, ghi chính tinh ở cung đó và Thiên Thương, Thiên Y ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Tật Ách.",
+      "boundary": "Không dùng riêng Thiên Sứ để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thiên Tài": {
+      "interpretiveAxis": "Thiên Tài được khảo sát như hình tượng khả năng và sự học hỏi: khảo sát kỹ năng học hỏi, sự tập luyện và điều kiện phát triển năng lực. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Thiên Tài xuất hiện tại Mệnh trong một lá số được an hợp lệ, hãy đặt câu hỏi về khảo sát kỹ năng học hỏi, sự tập luyện và điều kiện phát triển năng lực. Thử đối chiếu với Thiên Thọ, Văn Xương theo vị trí thực trước khi diễn giải chủ đề Mệnh; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thiên Thọ",
+        "Văn Xương",
+        "Bác Sĩ"
+      ],
+      "counterEvidence": "Không suy ra trí thông minh bẩm sinh; phép an phụ thuộc Mệnh và năm sinh chứ không phải sao nào cũng cố định tại Mệnh. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Thiên Tài và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Thiên Tài, ghi chính tinh ở cung đó và Thiên Thọ, Văn Xương ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Mệnh.",
+      "boundary": "Không dùng riêng Thiên Tài để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thiên Thọ": {
+      "interpretiveAxis": "Thiên Thọ được khảo sát như hình tượng sự bền bỉ và nhịp độ trưởng thành: đặt câu hỏi về duy trì nhịp sống, bền bỉ và góc nhìn trưởng thành. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Thiên Thọ xuất hiện tại Phúc Đức trong một lá số được an hợp lệ, hãy đặt câu hỏi về đặt câu hỏi về duy trì nhịp sống, bền bỉ và góc nhìn trưởng thành. Thử đối chiếu với Thiên Tài, Thiên Phúc theo vị trí thực trước khi diễn giải chủ đề Phúc Đức; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thiên Tài",
+        "Thiên Phúc",
+        "Dưỡng"
+      ],
+      "counterEvidence": "Không lấy tên Thọ để suy tuổi thọ sinh học; phép an dựa Thân và năm sinh nên cần xác nhận vị trí thật. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Thiên Thọ và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Thiên Thọ, ghi chính tinh ở cung đó và Thiên Tài, Thiên Phúc ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Phúc Đức.",
+      "boundary": "Không dùng riêng Thiên Thọ để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Đường Phù": {
+      "interpretiveAxis": "Đường Phù được khảo sát như hình tượng nề nếp và sự tổ chức: nghiên cứu khả năng tổ chức, văn thư và khung quy trình liên quan tới trách nhiệm. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Đường Phù xuất hiện tại Quan Lộc trong một lá số được an hợp lệ, hãy đặt câu hỏi về nghiên cứu khả năng tổ chức, văn thư và khung quy trình liên quan tới trách nhiệm. Thử đối chiếu với Lộc Tồn, Quan Phủ theo vị trí thực trước khi diễn giải chủ đề Quan Lộc; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Lộc Tồn",
+        "Quan Phủ",
+        "Tấu Thư"
+      ],
+      "counterEvidence": "Không cho là đường công danh thông thuận; vị trí phái sinh từ Lộc Tồn nên phải kiểm tra trước khi đọc. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Đường Phù và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Đường Phù, ghi chính tinh ở cung đó và Lộc Tồn, Quan Phủ ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Quan Lộc.",
+      "boundary": "Không dùng riêng Đường Phù để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thiên Trù": {
+      "interpretiveAxis": "Thiên Trù được khảo sát như hình tượng sự nuôi dưỡng, hưởng dụng và nguồn lực đời sống: quan sát nhu cầu nuôi dưỡng, cách phân phối nguồn lực và đời sống thường nhật. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Thiên Trù xuất hiện tại Điền Trạch trong một lá số được an hợp lệ, hãy đặt câu hỏi về quan sát nhu cầu nuôi dưỡng, cách phân phối nguồn lực và đời sống thường nhật. Thử đối chiếu với Thiên Y, Lộc Tồn theo vị trí thực trước khi diễn giải chủ đề Điền Trạch; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thiên Y",
+        "Lộc Tồn",
+        "Đại Hao"
+      ],
+      "counterEvidence": "Không suy ra giàu có, hưởng thụ xa hoa hoặc lối sống ăn uống ngoài đời chỉ từ sao Trù. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Thiên Trù và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Thiên Trù, ghi chính tinh ở cung đó và Thiên Y, Lộc Tồn ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Điền Trạch.",
+      "boundary": "Không dùng riêng Thiên Trù để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Lưu Hà": {
+      "interpretiveAxis": "Lưu Hà được khảo sát như hình tượng dòng chảy, giao tiếp và sự biến động: đặt câu hỏi về sự chuyển động của thông tin, giao tiếp và trạng thái thay đổi. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Lưu Hà xuất hiện tại Thiên Di trong một lá số được an hợp lệ, hãy đặt câu hỏi về đặt câu hỏi về sự chuyển động của thông tin, giao tiếp và trạng thái thay đổi. Thử đối chiếu với Thiên Mã, Đẩu Quân theo vị trí thực trước khi diễn giải chủ đề Thiên Di; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thiên Mã",
+        "Đẩu Quân",
+        "Phi Liêm"
+      ],
+      "counterEvidence": "Lưu Hà là sao bản mệnh trong bảng này, đừng nhầm chữ Lưu với sao lưu niên; cũng không dự báo tai nạn sông nước. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Lưu Hà và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Lưu Hà, ghi chính tinh ở cung đó và Thiên Mã, Đẩu Quân ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Thiên Di.",
+      "boundary": "Không dùng riêng Lưu Hà để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    },
+    "Thiên Không": {
+      "interpretiveAxis": "Dùng như biểu tượng nhắc đến tính vô thường, hụt hẫng kỳ vọng hoặc nhu cầu xét lại kế hoạch; không đồng nhất với Địa Không.",
+      "workedReading": "Khi Thiên Không ở Phúc Đức, chỉ nên hỏi về chuyển biến hệ giá trị và khả năng chấp nhận thay đổi; cần đối chiếu sao tọa thật ở Phúc và tam hợp.",
+      "crossCheckStars": [
+        "Địa Không",
+        "Địa Kiếp",
+        "Thiên Hư"
+      ],
+      "counterEvidence": "“Thiên Không” có quy ước an khác nhau tùy hệ phái; định danh này không thể tự coi tương đương mọi tên gọi có chữ Không, nhất là Tuần Không.",
+      "practiceQuestion": "Đọc mô tả quy tắc engine của Thiên Không, ghi lại dữ liệu sinh làm đầu vào rồi kiểm tra khác biệt nếu dùng tài liệu phái khác.",
+      "boundary": "Không dự đoán mất mát, sự cố hay khủng hoảng tâm lý từ tên sao."
+    },
+    "Đẩu Quân": {
+      "interpretiveAxis": "Đẩu Quân được khảo sát như hình tượng nhịp điều tiết và mốc tháng: đọc nhịp chuyển tháng và tính biến thiên trong một cấu trúc an theo năm tháng giờ. Trước khi bàn ý nghĩa, xác nhận tầng an sao và các chính tinh thật tại cung đang đọc; tránh đánh tráo tên và quan hệ sao.",
+      "workedReading": "Nếu Đẩu Quân xuất hiện tại Thiên Di trong một lá số được an hợp lệ, hãy đặt câu hỏi về đọc nhịp chuyển tháng và tính biến thiên trong một cấu trúc an theo năm tháng giờ. Thử đối chiếu với Thái Tuế, Tràng Sinh theo vị trí thực trước khi diễn giải chủ đề Thiên Di; không giả định chúng đồng cung.",
+      "crossCheckStars": [
+        "Thái Tuế",
+        "Tràng Sinh",
+        "Thiên Mã"
+      ],
+      "counterEvidence": "Đẩu Quân không phải lưu nguyệt được kiểm chứng; không dựng luận hạn từng tháng chỉ từ sự có mặt của sao này. Việc gặp một sao liên hệ trong danh mục chỉ là gợi ý tìm kiếm, chưa xác nhận quan hệ hình học với Đẩu Quân và cũng không đủ để công nhận một cách cục.",
+      "practiceQuestion": "Từ lá số thử, tìm vị trí Đẩu Quân, ghi chính tinh ở cung đó và Thái Tuế, Tràng Sinh ở cung nào. Hãy nêu điều kiện còn thiếu nếu muốn phân tích trường hợp Thiên Di.",
+      "boundary": "Không dùng riêng Đẩu Quân để phán đoán tính cách cố định, sức khỏe, hôn nhân, tài sản hay một kết quả tương lai của cá nhân.",
+      "editorialLevel": "guided-structure-not-independent-review"
+    }
+  }
+}

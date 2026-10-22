@@ -1,0 +1,215 @@
+{
+  "version": "11.34.0",
+  "basis": "V11.33 CSS source exact restoration; same selector+at-rule+property+importance+value in later imported file",
+  "removedDeclarations": 17,
+  "files": {
+    "chart-atlas.css": {
+      "sha256Before": "dd1a208cfa92951320a6931e8dfbb9aed91ef46aa2e5db6ea61306259088ba5e",
+      "sha256After": "82f2ba7bde987b002d7289502c252885a1fcec56fe13655f551a38e067a8fcd4",
+      "removed": [
+        {
+          "offsetAfter": 7757,
+          "removed": "font-size:10px!important;",
+          "selector": ".atlas-center-overline",
+          "context": [],
+          "property": "font-size",
+          "value": "10px",
+          "important": true,
+          "laterFile": "typography-refinement.css"
+        },
+        {
+          "offsetAfter": 8735,
+          "removed": "font-size:12px;",
+          "selector": ".atlas-center-data strong",
+          "context": [],
+          "property": "font-size",
+          "value": "12px",
+          "important": false,
+          "laterFile": "typography-refinement.css"
+        },
+        {
+          "offsetAfter": 8753,
+          "removed": "overflow-wrap:anywhere;",
+          "selector": ".atlas-center-data strong",
+          "context": [],
+          "property": "overflow-wrap",
+          "value": "anywhere",
+          "important": false,
+          "laterFile": "typography-refinement.css"
+        }
+      ]
+    },
+    "palace-insight-dock.css": {
+      "sha256Before": "e96def781cf1933af61df65989298d907f22de902bccfefdfa104763596b2509",
+      "sha256After": "c0fbb27364341b01a605368299cdc8e87b37e052e6d9bd2468ed22f99aaa0f73",
+      "removed": [
+        {
+          "offsetAfter": 6458,
+          "removed": "font-size:12px;",
+          "selector": ".chart-room-control",
+          "context": [],
+          "property": "font-size",
+          "value": "12px",
+          "important": false,
+          "laterFile": "typography-refinement.css"
+        },
+        {
+          "offsetAfter": 7569,
+          "removed": "opacity:.88",
+          "selector": ".chart-relation-path path",
+          "context": [],
+          "property": "opacity",
+          "value": ".88",
+          "important": false,
+          "laterFile": "typography-refinement.css"
+        },
+        {
+          "offsetAfter": 7666,
+          "removed": "stroke:#79c5a0",
+          "selector": ".chart-relation-tam-hop path",
+          "context": [],
+          "property": "stroke",
+          "value": "#79c5a0",
+          "important": false,
+          "laterFile": "typography-refinement.css"
+        },
+        {
+          "offsetAfter": 7743,
+          "removed": "stroke:#8baee3;",
+          "selector": ".chart-relation-doi-cung path",
+          "context": [],
+          "property": "stroke",
+          "value": "#8baee3",
+          "important": false,
+          "laterFile": "typography-refinement.css"
+        }
+      ]
+    },
+    "chart-fit.css": {
+      "sha256Before": "33c9af71b36a61c154f4ced51dcb110ad4c159f7ca653c5aba500a77ddb8d76a",
+      "sha256After": "9dc6d92807ea4f4d55af3a56d19a948995d52869cbd6e2c11b969ce711f008e5",
+      "removed": [
+        {
+          "offsetAfter": 2982,
+          "removed": "grid-template-rows:repeat(4,minmax(165px,auto))",
+          "selector": ".chart-room-layout[data-board-skin] .atlas-grid",
+          "context": [
+            "@media (max-width:760px)"
+          ],
+          "property": "grid-template-rows",
+          "value": "repeat(4,minmax(165px,auto))",
+          "important": false,
+          "laterFile": "chart-readability.css"
+        },
+        {
+          "offsetAfter": 3042,
+          "removed": "padding:5px 4px;",
+          "selector": ".chart-room-layout[data-board-skin] .atlas-house-header",
+          "context": [
+            "@media (max-width:760px)"
+          ],
+          "property": "padding",
+          "value": "5px 4px",
+          "important": false,
+          "laterFile": "chart-readability.css"
+        },
+        {
+          "offsetAfter": 3110,
+          "removed": "padding:5px 4px;",
+          "selector": ".chart-room-layout[data-board-skin] .atlas-house-content",
+          "context": [
+            "@media (max-width:760px)"
+          ],
+          "property": "padding",
+          "value": "5px 4px",
+          "important": false,
+          "laterFile": "chart-readability.css"
+        },
+        {
+          "offsetAfter": 3110,
+          "removed": "gap:5px",
+          "selector": ".chart-room-layout[data-board-skin] .atlas-house-content",
+          "context": [
+            "@media (max-width:760px)"
+          ],
+          "property": "gap",
+          "value": "5px",
+          "important": false,
+          "laterFile": "chart-readability.css"
+        },
+        {
+          "offsetAfter": 3170,
+          "removed": "padding:5px 4px",
+          "selector": ".chart-room-layout[data-board-skin] .atlas-house-bottom",
+          "context": [
+            "@media (max-width:760px)"
+          ],
+          "property": "padding",
+          "value": "5px 4px",
+          "important": false,
+          "laterFile": "chart-readability.css"
+        },
+        {
+          "offsetAfter": 4430,
+          "removed": "font-size:9px",
+          "selector": ".chart-room-layout[data-board-skin] .atlas-center-data strong",
+          "context": [
+            "@media (max-width:760px)"
+          ],
+          "property": "font-size",
+          "value": "9px",
+          "important": false,
+          "laterFile": "chart-readability.css"
+        },
+        {
+          "offsetAfter": 4494,
+          "removed": "font-size:8px!important",
+          "selector": ".chart-room-layout[data-board-skin] .atlas-center-data span",
+          "context": [
+            "@media (max-width:760px)"
+          ],
+          "property": "font-size",
+          "value": "8px",
+          "important": true,
+          "laterFile": "chart-readability.css"
+        },
+        {
+          "offsetAfter": 4633,
+          "removed": "font-size:8px!important",
+          "selector": ".chart-room-layout[data-board-skin] .atlas-center-disclaimer",
+          "context": [
+            "@media (max-width:760px)"
+          ],
+          "property": "font-size",
+          "value": "8px",
+          "important": true,
+          "laterFile": "chart-readability.css"
+        },
+        {
+          "offsetAfter": 4712,
+          "removed": "grid-template-rows:repeat(4,minmax(145px,auto));",
+          "selector": ".chart-room-layout[data-board-skin] .atlas-grid",
+          "context": [
+            "@media (max-width:500px)"
+          ],
+          "property": "grid-template-rows",
+          "value": "repeat(4,minmax(145px,auto))",
+          "important": false,
+          "laterFile": "chart-readability.css"
+        },
+        {
+          "offsetAfter": 4782,
+          "removed": "min-height:145px",
+          "selector": ".chart-room-layout[data-board-skin] .atlas-house.house",
+          "context": [
+            "@media (max-width:500px)"
+          ],
+          "property": "min-height",
+          "value": "145px",
+          "important": false,
+          "laterFile": "chart-readability.css"
+        }
+      ]
+    }
+  }
+}

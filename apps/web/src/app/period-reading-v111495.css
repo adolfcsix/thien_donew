@@ -1,0 +1,10 @@
+/* V11.149.4 and V11.149.5: additive reading/evidence styles. Baseline period-timeline.css stays byte-identical. */
+/* V11.149.4: phân biệt chứng cứ sao gốc, vòng sao và sao lưu tại mỗi cung. */
+.period-house-detail .period-reading-note{color:#526457;font-size:12px;line-height:1.55}
+.period-house-detail .period-reading-note b{color:#2a5545}
+
+.period-evidence-source{border:1px solid #c8d5c7;border-radius:10px;background:#eef3e9;margin:16px 0;padding:10px 14px;overflow-wrap:anywhere}
+.period-evidence-source summary{cursor:pointer;color:#274e3d;font-weight:700;font-size:13px;min-height:32px;align-content:center}
+.period-evidence-source summary:focus-visible{outline:3px solid #b88d47;outline-offset:3px}
+.period-evidence-source p{line-height:1.55;font-size:12px;color:#4d6457;margin:8px 0}
+@media(max-width:620px){.period-evidence-source{padding:9px 11px}}

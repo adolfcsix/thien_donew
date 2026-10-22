@@ -1,0 +1,94 @@
+name: Thiên Đồ V11.162 — UX Accessibility and Responsive
+on:
+  push:
+    branches: [audit/v11.162]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ux-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: thiendo
+          POSTGRES_PASSWORD: thiendo_ci_only
+          POSTGRES_DB: thiendo_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U thiendo -d thiendo_test"
+          --health-interval 5s --health-timeout 5s --health-retries 15
+    env:
+      CI: 'true'
+      E2E_LOCAL_DB_CONFIRM: 'YES'
+      DATABASE_URL: postgresql://thiendo:thiendo_ci_only@127.0.0.1:5432/thiendo_test
+      WEB_ORIGIN: http://127.0.0.1:3000
+      NEXT_BASE_URL: http://127.0.0.1:3000
+      API_INTERNAL_URL: http://127.0.0.1:8080
+      API_BASE_URL: http://127.0.0.1:8080
+      API_HOST: 127.0.0.1
+      API_PORT: '8080'
+      COOKIE_SECURE: 'false'
+      THIENDO_BROWSER_ACCEPTANCE: '0'
+      THIENDO_BROWSER_REPORT_DIR: browser-evidence
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fail closed on workspace, import, CSS baseline and release integrity
+        run: |
+          npm run check:lockfile
+          npm run check:source
+          npm run audit:architecture
+          npm run audit:css-baseline
+          npm run audit:migration-chain
+          npm run audit:release-metadata
+      - name: Locked install in clean runner
+        run: npm ci --no-audit --no-fund
+      - name: Typecheck and build the existing Next/Nest stack
+        run: |
+          npm run typecheck
+          npm run build
+      - name: UX contracts and full regression
+        run: |
+          npm run test:ux:162
+          npm test
+      - name: Install isolated Chromium without editing the application lockfile
+        run: |
+          npm install --prefix "$RUNNER_TEMP/thiendo-ui-browser" --no-save --no-package-lock --ignore-scripts playwright@1.56.1
+          node "$RUNNER_TEMP/thiendo-ui-browser/node_modules/playwright/cli.js" install --with-deps chromium
+          echo "THIENDO_PLAYWRIGHT_MODULE=$RUNNER_TEMP/thiendo-ui-browser/node_modules/playwright/index.mjs" >> "$GITHUB_ENV"
+      - name: Apply migrations only to verified disposable CI database
+        run: |
+          npm run check:e2e-pre-migrate
+          npm run db:migrate
+          npm run db:migrate
+          npm run check:e2e-db
+      - name: HTTP E2E plus Chromium 7-viewport acceptance with temporary CI-only entry point
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('infrastructure/scripts/run-ci-http.sh')
+          source=p.read_text()
+          needle="printf 'PASS: live Next -> Nest -> dedicated PostgreSQL HTTP E2E.\\n'"
+          assert source.count(needle)==1,'STOP: the HTTP harness changed unexpectedly'
+          source=source.replace(needle, 'node tests/v11162-responsive-browser.mjs\n'+needle)
+          p.write_text(source)
+          print('PASS: appended V11.162 UX matrix only inside isolated CI runner')
+          PY
+          bash infrastructure/scripts/run-ci-http.sh
+      - name: Store browser audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v11162-responsive-audit
+          path: |
+            browser-evidence/**/*
+            ${{ runner.temp }}/thiendo-ci-logs.*/*.log
+          if-no-files-found: ignore
+          retention-days: 14

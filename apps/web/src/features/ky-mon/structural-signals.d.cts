@@ -1,0 +1,11 @@
+import type {BaseFormation} from './formation.cjs';
+import type {RotatingHourPlate} from './hour-plate.cjs';
+export type StructuralStatus='present'|'absent'|'out-of-scope'|'not-computed'|'not-represented'|'convention';
+export type StructuralObservation={status:StructuralStatus;explanation:string;sourceIds:readonly string[];door?:string|null;relation?:string|null;doorElement?:string|null;palaceElement?:string|null;stem?:string|null;targetPalace?:number|null;branch?:string|null};
+export type StructuralProfile={id:string;status:string;placementConvention:string;structureConvention:string;lineageCertification:boolean;doorDefinition:string;graveScope:string;doorElements:Readonly<Record<string,string>>;threeWonderGraves:readonly {stem:string;palace:number;branch:string;source:string}[];variants:readonly {id:string;source:string;stem?:string;palace?:number;branch?:string;doorDefinition?:string;applied:boolean}[];sources:readonly {id:string;title:string;displayTitle:string;displayLocators:readonly string[];url:string;revisionUrl?:string;locators:readonly string[];type:string;opened:string;facsimileVerified:boolean}[]};
+export type StructuralEntry={number:number;trigram:string;direction:string;door:StructuralObservation;grave:StructuralObservation};
+export type StructuralReport={kind:'structural-observations';status:'research-only'|'not-computed';profileId:string;profile:StructuralProfile;entries:readonly StructuralEntry[];byPalace:Readonly<Record<number,StructuralEntry>>;graveCoverage:readonly {stem:string;status:StructuralStatus;palaceNumber:number|null;targetPalace:number;explanation:string}[];interpretation:null;limits:readonly string[]};
+export declare const RULE_PROFILE:StructuralProfile;
+export declare function doorObservation(door:string|null,number:number):StructuralObservation;
+export declare function graveObservation(stem:string|null,number:number):StructuralObservation;
+export declare function analyzeStructuralSignals(base:BaseFormation,plate?:RotatingHourPlate|null):StructuralReport;

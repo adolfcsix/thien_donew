@@ -1,0 +1,80 @@
+/* THIÊN ĐỒ V11.4 · Enlarged palace reading. Native <dialog> is a top-layer,
+   keyboard-managed surface; the source 12-palace grid stays untouched. */
+.palace-reader-dialog{
+  --body:#f1e9d9;--panel:#faf6eb;--panel-alt:#f1e9d9;
+  --text:#253b30;--muted:#596f60;--faint:#667c6c;
+  --gold:#856333;--line:rgba(91,105,79,.21);--line-strong:rgba(91,105,79,.38);
+  width:min(960px,calc(100vw - 24px));max-width:calc(100vw - 24px);
+  max-height:calc(100dvh - 24px);padding:0;overflow-y:auto;overflow-x:hidden;
+  border:1px solid #aa9879;border-radius:12px;
+  background:var(--panel);color:var(--text);
+  box-shadow:0 30px 110px rgba(3,23,15,.48);color-scheme:light;
+  scrollbar-color:#9da994 #eee6d7;overscroll-behavior:contain;
+}
+.palace-reader-dialog::backdrop{background:rgba(5,19,14,.78);backdrop-filter:blur(5px)}
+.palace-reader-dialog[data-reader-skin="jade"]{
+  --body:#111e19;--panel:#192a22;--panel-alt:#20352a;
+  --text:#f1ebdb;--muted:#b1c2b5;--faint:#94aa99;
+  --gold:#cfb07c;--line:rgba(212,195,152,.20);--line-strong:rgba(212,195,152,.36);
+  border-color:#5b6654;color-scheme:dark;
+}
+.palace-reader-header{
+  position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;gap:18px;
+  align-items:flex-start;padding:20px 25px 18px;
+  background:linear-gradient(110deg,#244b3c,#17362e);color:#f6edd9;
+  border-bottom:2px solid #b49763;
+}
+.palace-reader-header>div{min-width:0}
+.palace-reader-eyebrow{display:block;color:#d7c396;font:700 10px/1.6 var(--font-ui);letter-spacing:.13em}
+.palace-reader-header h2{font:600 clamp(24px,3vw,34px)/1.25 var(--font-display);margin:7px 0 5px}
+.palace-reader-header h2 small{font:500 14px/1.6 var(--font-ui);color:#d5bf8c;margin-left:8px;white-space:nowrap}
+.palace-reader-header p{margin:0;font-size:12px;line-height:1.65;color:#d9e2d7}
+.palace-reader-close{flex:none;display:flex;align-items:center;gap:8px;min-height:40px;padding:6px 12px;border:1px solid #8fa59a;border-radius:7px;background:rgba(255,255,255,.07);color:#fff;font-size:23px;line-height:1}
+.palace-reader-close span{font-size:12px}
+.palace-reader-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:15px 24px 10px;border-bottom:1px solid var(--line)}
+.palace-reader-toolbar button{padding:9px 12px;min-height:42px;border-radius:7px;border:1px solid var(--line-strong);background:var(--panel-alt);color:var(--text);font:650 12px/1.4 var(--font-ui)}
+.palace-reader-toolbar button:hover{border-color:var(--gold)}
+.palace-reader-toolbar button[aria-pressed="true"]{border-color:var(--gold);color:var(--gold)}
+.palace-reader-current{font:600 15px/1.4 var(--font-display);color:var(--gold);text-align:center;min-width:100px;flex:1}
+.palace-reader-overview{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:9px;padding:16px 24px}
+.palace-reader-overview>span{min-width:0;display:grid;align-content:start;gap:5px;border:1px solid var(--line);padding:11px 12px;background:var(--panel-alt)}
+.palace-reader-overview small{font:700 10px/1.4 var(--font-ui);letter-spacing:.06em;color:var(--gold)}
+.palace-reader-overview strong{font:600 14px/1.55 var(--font-ui);overflow-wrap:anywhere}
+.palace-reader-content{padding:0 23px 16px}
+.palace-reader-content .atlas-detail.palace-detail{margin:0;padding:15px 0 0;border:0;background:transparent}
+.palace-reader-content .atlas-detail-heading h3{color:var(--text)}
+.palace-reader-content .atlas-details-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.palace-reader-content .atlas-detail-card{min-width:0;border-color:var(--line);background:var(--panel-alt);padding:15px;gap:13px}
+.palace-reader-content .atlas-star,.palace-reader-content .atlas-detail-card .atlas-star{font-size:13px;line-height:1.75;overflow-wrap:break-word}
+.palace-reader-content .atlas-main .atlas-star{font-size:16px;font-weight:700}
+.palace-reader-content .atlas-detail-card .atlas-group-label{font-size:11px;line-height:1.65;color:var(--gold)}
+.palace-reader-content .atlas-detail-sub,.palace-reader-content .atlas-detail-note{font-size:12px;line-height:1.8;color:var(--muted)}
+.palace-reader-content .atlas-rule-legend{grid-template-columns:repeat(2,minmax(0,1fr))}
+.palace-reader-dialog[data-reader-font="large"] .palace-reader-content .atlas-star,
+.palace-reader-dialog[data-reader-font="large"] .palace-reader-content .atlas-detail-card .atlas-star{font-size:16px;line-height:1.9}
+.palace-reader-dialog[data-reader-font="large"] .palace-reader-content .atlas-main .atlas-star{font-size:19px}
+.palace-reader-dialog[data-reader-font="large"] .palace-reader-content .atlas-detail-note,
+.palace-reader-dialog[data-reader-font="large"] .palace-reader-content .atlas-detail-sub{font-size:15px}
+.palace-reader-footer{padding:14px 24px 20px;font:400 11px/1.8 var(--font-ui);border-top:1px solid var(--line);color:var(--muted)}
+.palace-reader-dialog button:focus-visible,.palace-reader-dialog a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(max-width:650px){
+  .palace-reader-dialog{width:calc(100vw - 12px);max-width:calc(100vw - 12px);max-height:calc(100dvh - 12px);border-radius:8px}
+  .palace-reader-header{padding:16px 15px;gap:8px}
+  .palace-reader-header h2{font-size:24px}
+  .palace-reader-header h2 small{display:block;margin-left:0}
+  .palace-reader-close{padding:6px 10px}
+  .palace-reader-close span{display:none}
+  .palace-reader-toolbar{padding:12px;gap:6px}
+  .palace-reader-toolbar button{flex:1 1 125px}
+  .palace-reader-current{order:-1;flex-basis:100%;text-align:left}
+  .palace-reader-overview{grid-template-columns:1fr;gap:7px;padding:12px}
+  .palace-reader-content{padding:0 11px 12px}
+  .palace-reader-content .atlas-details-grid{grid-template-columns:1fr}
+  .palace-reader-content .atlas-detail-card{padding:13px}
+  .palace-reader-content .atlas-detail-heading h3{font-size:23px}
+}
+@media(prefers-reduced-motion:reduce){.palace-reader-dialog{scroll-behavior:auto}}
+
+/* Magnification trigger lives beside other board controls. */
+.chart-room-control.chart-reader-trigger{border-color:rgba(197,161,106,.66);background:linear-gradient(120deg,rgba(197,161,106,.16),transparent),var(--panel);color:var(--gold)}
+.chart-room-control.chart-reader-trigger:hover{border-color:var(--gold);box-shadow:0 4px 15px rgba(0,0,0,.1)}

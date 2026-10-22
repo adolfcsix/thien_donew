@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "release": "11.122.0",
+  "scope": "research-only-source-tables",
+  "automaticPlacement": false,
+  "input": "birth-year-stem",
+  "stems": ["Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý"],
+  "hongDiem": {
+    "sourceId": "ung-khiem-hong-diem",
+    "url": "https://thayungkhiem.vn/sao-hong-diem",
+    "checkedOn": "2026-10-13",
+    "location": "Mục 2, bảng mười can năm sinh; vị trí công bố từ thuật toán của tác giả.",
+    "positions": ["Ngọ", "Thân", "Dần", "Mùi", "Thìn", "Thìn", "Ngọ", "Dậu", "Tý", "Thân"],
+    "evidenceLevel": "author-published-algorithm-table-not-independent-chart",
+    "notice": "Bảng ứng viên của một nguồn Tử Vi đang công bố. Chưa đọc ấn bản gốc/phái hoặc đối chứng lá số độc lập; không an vào lá số hiện hành."
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "edition": "v11.9.0",
+  "classification": "Mẫu đối chiếu phân bố sao — không xác nhận cách cục cổ điển",
+  "rules": [
+    {
+      "id": "phu-bat-hoi-tam-hop",
+      "title": "Tả – Hữu hội Tam hợp",
+      "conditions": {
+        "scope": "tam-hop",
+        "all": [
+          "Tả Phụ",
+          "Hữu Bật"
+        ],
+        "minDistinctPalaces": 2,
+        "requiresFocusPresence": true
+      },
+      "interpretation": "Hai sao hỗ trợ Phụ–Bật xuất hiện tại những cung khác nhau trong Tam hợp của cung đang xét. Đây là dữ kiện để so sánh vai trò điều phối và hậu thuẫn giữa các cung liên hệ, không phải khẳng định một cách cục tốt.",
+      "caution": "Không đồng nhất hội chiếu với đồng cung, không dự báo có quý nhân."
+    },
+    {
+      "id": "xuong-khuc-hoi-tam-hop",
+      "title": "Xương – Khúc hội Tam hợp",
+      "conditions": {
+        "scope": "tam-hop",
+        "all": [
+          "Văn Xương",
+          "Văn Khúc"
+        ],
+        "minDistinctPalaces": 2,
+        "requiresFocusPresence": true
+      },
+      "interpretation": "Văn Xương và Văn Khúc nằm tại các cung khác nhau trong bộ Tam hợp. Có thể đối chiếu biểu tượng học hỏi, cấu trúc tri thức và biểu đạt với chủ đề của từng cung.",
+      "caution": "Không coi đây là bằng chứng thành tích học tập hay năng lực thực tế."
+    },
+    {
+      "id": "khoi-viet-hoi-tam-hop",
+      "title": "Khôi – Việt hội Tam hợp",
+      "conditions": {
+        "scope": "tam-hop",
+        "all": [
+          "Thiên Khôi",
+          "Thiên Việt"
+        ],
+        "minDistinctPalaces": 2,
+        "requiresFocusPresence": true
+      },
+      "interpretation": "Khôi và Việt nằm tại hai vị trí khác nhau trong Tam hợp, tạo điều kiện khảo sát các hình tượng chỉ dẫn và học hỏi qua nhiều chủ đề cung.",
+      "caution": "Không suy ra may mắn, người giúp đỡ hay sự kiện cụ thể."
+    },
+    {
+      "id": "khong-kiep-hoi-tam-hop",
+      "title": "Không – Kiếp hội Tam hợp",
+      "conditions": {
+        "scope": "tam-hop",
+        "all": [
+          "Địa Không",
+          "Địa Kiếp"
+        ],
+        "minDistinctPalaces": 2,
+        "requiresFocusPresence": true
+      },
+      "interpretation": "Địa Không và Địa Kiếp hiện diện ở các cung khác nhau trong Tam hợp. Khi đọc truyền thống có thể lưu ý những biểu tượng đứt gãy và tái tổ chức, đồng thời kiểm tra sự hiện diện của sao bổ trợ.",
+      "caution": "Không coi cấu hình này là dự báo rủi ro, bệnh tật hay tai họa."
+    },
+    {
+      "id": "hoa-linh-hoi-tam-hop",
+      "title": "Hỏa – Linh hội Tam hợp",
+      "conditions": {
+        "scope": "tam-hop",
+        "all": [
+          "Hỏa Tinh",
+          "Linh Tinh"
+        ],
+        "minDistinctPalaces": 2,
+        "requiresFocusPresence": true
+      },
+      "interpretation": "Hỏa Tinh và Linh Tinh trải trên hai cung Tam hợp khác nhau. Có thể nghiên cứu cách biểu tượng về cường độ và biến chuyển được nhấn mạnh trong mạng lưới cung.",
+      "caution": "Không suy đoán hành vi bạo lực, tai nạn hay vận xấu."
+    },
+    {
+      "id": "phu-bat-loc-hoi-tu-chinh",
+      "title": "Phụ – Bật – Lộc hội Tứ chính",
+      "conditions": {
+        "scope": "tu-chinh",
+        "all": [
+          "Tả Phụ",
+          "Hữu Bật",
+          "Lộc Tồn"
+        ],
+        "minDistinctPalaces": 2,
+        "requiresFocusPresence": true
+      },
+      "interpretation": "Ba sao về phối hợp và tích lũy cùng hiện diện trong mạng lưới Tam phương Tứ chính. Cần xác định chính xác cung chứa từng sao, rồi đối chiếu vai trò của chúng thay vì cộng nghĩa cơ học.",
+      "caution": "Đây là mẫu đối chiếu ba sao, không phải quy tắc định danh cách cục hay kết luận tài lộc."
+    },
+    {
+      "id": "xuong-khuc-khoi-hoi-tu-chinh",
+      "title": "Xương – Khúc – Khôi hội Tứ chính",
+      "conditions": {
+        "scope": "tu-chinh",
+        "all": [
+          "Văn Xương",
+          "Văn Khúc",
+          "Thiên Khôi"
+        ],
+        "minDistinctPalaces": 2,
+        "requiresFocusPresence": true
+      },
+      "interpretation": "Ba biểu tượng về tri thức, biểu đạt và chỉ dẫn xuất hiện trong Tứ chính. Hãy so sánh vị trí sao trong cung đang xét, Tam hợp và Đối cung trước khi diễn giải.",
+      "caution": "Không suy ra học vị, thi cử hay kết quả nghề nghiệp từ bộ ba sao."
+    },
+    {
+      "id": "khoi-viet-xuong-khuc-tu-chinh",
+      "title": "Khôi – Việt – Xương – Khúc hội Tứ chính",
+      "conditions": {
+        "scope": "tu-chinh",
+        "all": [
+          "Thiên Khôi",
+          "Thiên Việt",
+          "Văn Xương",
+          "Văn Khúc"
+        ],
+        "minDistinctPalaces": 3,
+        "requiresFocusPresence": true
+      },
+      "interpretation": "Cả bốn sao của hai cặp Khôi–Việt và Xương–Khúc xuất hiện tại tối thiểu ba cung khác nhau trong Tứ chính. Đây là một mạng lưới biểu tượng đáng nghiên cứu sâu theo vị trí thực tế.",
+      "caution": "Không mặc định thuộc một cách cục cổ điển cụ thể hay cam kết thành đạt."
+    },
+    {
+      "id": "sat-tinh-bon-sao-tu-chinh",
+      "title": "Bốn sát tinh hội Tứ chính",
+      "conditions": {
+        "scope": "tu-chinh",
+        "all": [
+          "Địa Không",
+          "Địa Kiếp",
+          "Hỏa Tinh",
+          "Linh Tinh"
+        ],
+        "minDistinctPalaces": 3,
+        "requiresFocusPresence": true
+      },
+      "interpretation": "Bốn sao Địa Không, Địa Kiếp, Hỏa Tinh, Linh Tinh phân bố qua ít nhất ba cung thuộc Tứ chính. Đây chỉ là phép kiểm tra sự đồng hiện trong mạng cung để đặt câu hỏi đọc sâu.",
+      "caution": "Không phán đoán hạn nạn hoặc diễn giải thành một dự báo định mệnh."
+    },
+    {
+      "id": "co-nguyet-dong-luong-tu-chinh",
+      "title": "Nhóm Cơ – Nguyệt – Đồng – Lương trong Tứ chính",
+      "conditions": {
+        "scope": "tu-chinh",
+        "all": [
+          "Thiên Cơ",
+          "Thái Âm",
+          "Thiên Đồng",
+          "Thiên Lương"
+        ],
+        "minDistinctPalaces": 2,
+        "requiresFocusPresence": true
+      },
+      "interpretation": "Bốn chính tinh Thiên Cơ, Thái Âm, Thiên Đồng và Thiên Lương cùng xuất hiện trong Tứ chính. Đây mới là dấu hiệu về phân bố sao, chưa tự động xác lập cách cục Cơ Nguyệt Đồng Lương theo mọi hệ phái.",
+      "caution": "Xác nhận cách cục truyền thống đòi hỏi thêm các điều kiện trường phái, trạng thái sao và cấu trúc cung Mệnh."
+    }
+  ]
+}

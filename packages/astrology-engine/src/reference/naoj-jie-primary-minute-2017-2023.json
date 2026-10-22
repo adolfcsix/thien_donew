@@ -1,0 +1,444 @@
+{
+  "tableVersion": "NAOJ-ASTRONOMICAL-JIE-2017-2023-V11.149.9",
+  "sourceOrganization": "National Astronomical Observatory of Japan (NAOJ)",
+  "sourcePageTitle": "24 Solar Terms (Equinoxes, Solstices) Long Term Edition",
+  "referenceTimezone": "Asia/Tokyo",
+  "utcOffsetMinutes": 540,
+  "publishedPrecision": "minute",
+  "boundaryGuardSeconds": 120,
+  "researchOnly": true,
+  "allowAutomaticPillarPromotion": false,
+  "sources": {
+    "2017": "https://eco.mtk.nao.ac.jp/cgi-bin/koyomi/cande/phenomena_sy_en.cgi?year=2017",
+    "2018": "https://eco.mtk.nao.ac.jp/cgi-bin/koyomi/cande/phenomena_sy_en.cgi?year=2018",
+    "2019": "https://eco.mtk.nao.ac.jp/cgi-bin/koyomi/cande/phenomena_sy_en.cgi?year=2019",
+    "2020": "https://eco.mtk.nao.ac.jp/cgi-bin/koyomi/cande/phenomena_sy_en.cgi?year=2020",
+    "2021": "https://eco.mtk.nao.ac.jp/cgi-bin/koyomi/cande/phenomena_sy_en.cgi?year=2021",
+    "2022": "https://eco.mtk.nao.ac.jp/cgi-bin/koyomi/cande/phenomena_sy_en.cgi?year=2022",
+    "2023": "https://eco.mtk.nao.ac.jp/cgi-bin/koyomi/cande/phenomena_sy_en.cgi?year=2023"
+  },
+  "crossCheckSource": "https://www.hko.gov.hk/en/gts/time/conversion.htm",
+  "notes": "NAOJ modern calculation, local Japan Standard Time (JST = UTC+9) transcribed to published minute. Convert to Hong Kong time (HKT = UTC+8) by subtracting one hour; HKO day-only ledger used as independent civil-date witness. Not an exact-second ephemeris, not certified traditional school rules. ΔT and modern ephemeris choice can differ slightly between authorities.",
+  "records": [
+    {
+      "year": 2017,
+      "month": 1,
+      "localJst": "2017-01-05T12:56:00+09:00"
+    },
+    {
+      "year": 2017,
+      "month": 2,
+      "localJst": "2017-02-04T00:34:00+09:00"
+    },
+    {
+      "year": 2017,
+      "month": 3,
+      "localJst": "2017-03-05T18:33:00+09:00"
+    },
+    {
+      "year": 2017,
+      "month": 4,
+      "localJst": "2017-04-04T23:17:00+09:00"
+    },
+    {
+      "year": 2017,
+      "month": 5,
+      "localJst": "2017-05-05T16:31:00+09:00"
+    },
+    {
+      "year": 2017,
+      "month": 6,
+      "localJst": "2017-06-05T20:37:00+09:00"
+    },
+    {
+      "year": 2017,
+      "month": 7,
+      "localJst": "2017-07-07T06:51:00+09:00"
+    },
+    {
+      "year": 2017,
+      "month": 8,
+      "localJst": "2017-08-07T16:40:00+09:00"
+    },
+    {
+      "year": 2017,
+      "month": 9,
+      "localJst": "2017-09-07T19:39:00+09:00"
+    },
+    {
+      "year": 2017,
+      "month": 10,
+      "localJst": "2017-10-08T11:22:00+09:00"
+    },
+    {
+      "year": 2017,
+      "month": 11,
+      "localJst": "2017-11-07T14:38:00+09:00"
+    },
+    {
+      "year": 2017,
+      "month": 12,
+      "localJst": "2017-12-07T07:33:00+09:00"
+    },
+    {
+      "year": 2018,
+      "month": 1,
+      "localJst": "2018-01-05T18:49:00+09:00"
+    },
+    {
+      "year": 2018,
+      "month": 2,
+      "localJst": "2018-02-04T06:28:00+09:00"
+    },
+    {
+      "year": 2018,
+      "month": 3,
+      "localJst": "2018-03-06T00:28:00+09:00"
+    },
+    {
+      "year": 2018,
+      "month": 4,
+      "localJst": "2018-04-05T05:13:00+09:00"
+    },
+    {
+      "year": 2018,
+      "month": 5,
+      "localJst": "2018-05-05T22:25:00+09:00"
+    },
+    {
+      "year": 2018,
+      "month": 6,
+      "localJst": "2018-06-06T02:29:00+09:00"
+    },
+    {
+      "year": 2018,
+      "month": 7,
+      "localJst": "2018-07-07T12:42:00+09:00"
+    },
+    {
+      "year": 2018,
+      "month": 8,
+      "localJst": "2018-08-07T22:31:00+09:00"
+    },
+    {
+      "year": 2018,
+      "month": 9,
+      "localJst": "2018-09-08T01:30:00+09:00"
+    },
+    {
+      "year": 2018,
+      "month": 10,
+      "localJst": "2018-10-08T17:15:00+09:00"
+    },
+    {
+      "year": 2018,
+      "month": 11,
+      "localJst": "2018-11-07T20:32:00+09:00"
+    },
+    {
+      "year": 2018,
+      "month": 12,
+      "localJst": "2018-12-07T13:26:00+09:00"
+    },
+    {
+      "year": 2019,
+      "month": 1,
+      "localJst": "2019-01-06T00:39:00+09:00"
+    },
+    {
+      "year": 2019,
+      "month": 2,
+      "localJst": "2019-02-04T12:14:00+09:00"
+    },
+    {
+      "year": 2019,
+      "month": 3,
+      "localJst": "2019-03-06T06:10:00+09:00"
+    },
+    {
+      "year": 2019,
+      "month": 4,
+      "localJst": "2019-04-05T10:51:00+09:00"
+    },
+    {
+      "year": 2019,
+      "month": 5,
+      "localJst": "2019-05-06T04:03:00+09:00"
+    },
+    {
+      "year": 2019,
+      "month": 6,
+      "localJst": "2019-06-06T08:06:00+09:00"
+    },
+    {
+      "year": 2019,
+      "month": 7,
+      "localJst": "2019-07-07T18:21:00+09:00"
+    },
+    {
+      "year": 2019,
+      "month": 8,
+      "localJst": "2019-08-08T04:13:00+09:00"
+    },
+    {
+      "year": 2019,
+      "month": 9,
+      "localJst": "2019-09-08T07:17:00+09:00"
+    },
+    {
+      "year": 2019,
+      "month": 10,
+      "localJst": "2019-10-08T23:06:00+09:00"
+    },
+    {
+      "year": 2019,
+      "month": 11,
+      "localJst": "2019-11-08T02:24:00+09:00"
+    },
+    {
+      "year": 2019,
+      "month": 12,
+      "localJst": "2019-12-07T19:18:00+09:00"
+    },
+    {
+      "year": 2020,
+      "month": 1,
+      "localJst": "2020-01-06T06:30:00+09:00"
+    },
+    {
+      "year": 2020,
+      "month": 2,
+      "localJst": "2020-02-04T18:03:00+09:00"
+    },
+    {
+      "year": 2020,
+      "month": 3,
+      "localJst": "2020-03-05T11:57:00+09:00"
+    },
+    {
+      "year": 2020,
+      "month": 4,
+      "localJst": "2020-04-04T16:38:00+09:00"
+    },
+    {
+      "year": 2020,
+      "month": 5,
+      "localJst": "2020-05-05T09:51:00+09:00"
+    },
+    {
+      "year": 2020,
+      "month": 6,
+      "localJst": "2020-06-05T13:58:00+09:00"
+    },
+    {
+      "year": 2020,
+      "month": 7,
+      "localJst": "2020-07-07T00:14:00+09:00"
+    },
+    {
+      "year": 2020,
+      "month": 8,
+      "localJst": "2020-08-07T10:06:00+09:00"
+    },
+    {
+      "year": 2020,
+      "month": 9,
+      "localJst": "2020-09-07T13:08:00+09:00"
+    },
+    {
+      "year": 2020,
+      "month": 10,
+      "localJst": "2020-10-08T04:55:00+09:00"
+    },
+    {
+      "year": 2020,
+      "month": 11,
+      "localJst": "2020-11-07T08:14:00+09:00"
+    },
+    {
+      "year": 2020,
+      "month": 12,
+      "localJst": "2020-12-07T01:09:00+09:00"
+    },
+    {
+      "year": 2021,
+      "month": 1,
+      "localJst": "2021-01-05T12:23:00+09:00"
+    },
+    {
+      "year": 2021,
+      "month": 2,
+      "localJst": "2021-02-03T23:59:00+09:00"
+    },
+    {
+      "year": 2021,
+      "month": 3,
+      "localJst": "2021-03-05T17:54:00+09:00"
+    },
+    {
+      "year": 2021,
+      "month": 4,
+      "localJst": "2021-04-04T22:35:00+09:00"
+    },
+    {
+      "year": 2021,
+      "month": 5,
+      "localJst": "2021-05-05T15:47:00+09:00"
+    },
+    {
+      "year": 2021,
+      "month": 6,
+      "localJst": "2021-06-05T19:52:00+09:00"
+    },
+    {
+      "year": 2021,
+      "month": 7,
+      "localJst": "2021-07-07T06:05:00+09:00"
+    },
+    {
+      "year": 2021,
+      "month": 8,
+      "localJst": "2021-08-07T15:54:00+09:00"
+    },
+    {
+      "year": 2021,
+      "month": 9,
+      "localJst": "2021-09-07T18:53:00+09:00"
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "localJst": "2021-10-08T10:39:00+09:00"
+    },
+    {
+      "year": 2021,
+      "month": 11,
+      "localJst": "2021-11-07T13:59:00+09:00"
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "localJst": "2021-12-07T06:57:00+09:00"
+    },
+    {
+      "year": 2022,
+      "month": 1,
+      "localJst": "2022-01-05T18:14:00+09:00"
+    },
+    {
+      "year": 2022,
+      "month": 2,
+      "localJst": "2022-02-04T05:51:00+09:00"
+    },
+    {
+      "year": 2022,
+      "month": 3,
+      "localJst": "2022-03-05T23:44:00+09:00"
+    },
+    {
+      "year": 2022,
+      "month": 4,
+      "localJst": "2022-04-05T04:20:00+09:00"
+    },
+    {
+      "year": 2022,
+      "month": 5,
+      "localJst": "2022-05-05T21:26:00+09:00"
+    },
+    {
+      "year": 2022,
+      "month": 6,
+      "localJst": "2022-06-06T01:26:00+09:00"
+    },
+    {
+      "year": 2022,
+      "month": 7,
+      "localJst": "2022-07-07T11:38:00+09:00"
+    },
+    {
+      "year": 2022,
+      "month": 8,
+      "localJst": "2022-08-07T21:29:00+09:00"
+    },
+    {
+      "year": 2022,
+      "month": 9,
+      "localJst": "2022-09-08T00:32:00+09:00"
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "localJst": "2022-10-08T16:22:00+09:00"
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "localJst": "2022-11-07T19:45:00+09:00"
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "localJst": "2022-12-07T12:46:00+09:00"
+    },
+    {
+      "year": 2023,
+      "month": 1,
+      "localJst": "2023-01-06T00:05:00+09:00"
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "localJst": "2023-02-04T11:43:00+09:00"
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "localJst": "2023-03-06T05:36:00+09:00"
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "localJst": "2023-04-05T10:13:00+09:00"
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "localJst": "2023-05-06T03:19:00+09:00"
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "localJst": "2023-06-06T07:18:00+09:00"
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "localJst": "2023-07-07T17:31:00+09:00"
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "localJst": "2023-08-08T03:23:00+09:00"
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "localJst": "2023-09-08T06:27:00+09:00"
+    },
+    {
+      "year": 2023,
+      "month": 10,
+      "localJst": "2023-10-08T22:16:00+09:00"
+    },
+    {
+      "year": 2023,
+      "month": 11,
+      "localJst": "2023-11-08T01:36:00+09:00"
+    },
+    {
+      "year": 2023,
+      "month": 12,
+      "localJst": "2023-12-07T18:33:00+09:00"
+    }
+  ]
+}

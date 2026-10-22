@@ -1,0 +1,2 @@
+export const stems:readonly string[];
+export function stemStudy(index:number):{scope:string;automaticPlacement:false;input:string;stem:string;hongDiem:{name:string;branch:string;sourceId:string;url:string;evidenceLevel:string};vanTinh:{name:string;branch:string;sourceId:string;url:string}[];vanTinhTableDisagrees:boolean;transcriptionConflict:{stem:string;table:string;verse:string}|null;notice:string};

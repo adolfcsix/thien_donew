@@ -1,0 +1,55 @@
+{
+  "edition": "11.42.0",
+  "status": "editorial-research-not-expert-validated",
+  "notice": "Đối chiếu vị trí sao bản mệnh để đặt câu hỏi nghiên cứu; không kết luận cách cục, tính cách, cát hung hoặc biến cố.",
+  "pairs": [
+    {
+      "id": "ta-huu",
+      "title": "Tả Phụ – Hữu Bật",
+      "category": "sao hỗ trợ",
+      "stars": ["Tả Phụ", "Hữu Bật"],
+      "question": "Hai sao hỗ trợ xuất hiện tại cùng cung, tại hai cung hội chiếu hay đứng ở hai cung giáp? Vai trò của từng cung có khác nhau không?",
+      "nextStep": "Đọc chính tinh tọa từng vị trí trước khi đối chiếu ý nghĩa phối hợp, trợ lực; không suy ra sẽ có quý nhân."
+    },
+    {
+      "id": "xuong-khuc",
+      "title": "Văn Xương – Văn Khúc",
+      "category": "văn tinh",
+      "stars": ["Văn Xương", "Văn Khúc"],
+      "question": "Xương và Khúc cùng một cung hay liên hệ các cung khác nhau? Có chính tinh nào đồng cung với từng sao?",
+      "nextStep": "Phân biệt biểu tượng học hỏi, diễn đạt và bối cảnh cung; không đồng nhất với kết quả học hành thực tế."
+    },
+    {
+      "id": "khoi-viet",
+      "title": "Thiên Khôi – Thiên Việt",
+      "category": "quý tinh",
+      "stars": ["Thiên Khôi", "Thiên Việt"],
+      "question": "Hai sao chỉ dẫn xuất hiện ở vị trí nào và sự liên hệ ấy có thuộc đúng phạm vi đang xét hay không?",
+      "nextStep": "Đối chiếu tên cung cùng các chính tinh trước, không suy ra sự kiện được giúp đỡ hay danh vị."
+    },
+    {
+      "id": "kinh-da",
+      "title": "Kình Dương – Đà La",
+      "category": "sát tinh",
+      "stars": ["Kình Dương", "Đà La"],
+      "question": "Kình và Đà hội nhau, đối nhau, giáp cung hay không thuộc quan hệ đang khảo sát?",
+      "nextStep": "Ghi đúng thế đứng hai sao và so với các sao khác; không coi vị trí là lời dự báo tai nạn hay tai họa."
+    },
+    {
+      "id": "hoa-linh",
+      "title": "Hỏa Tinh – Linh Tinh",
+      "category": "sát tinh",
+      "stars": ["Hỏa Tinh", "Linh Tinh"],
+      "question": "Hai sao về cường độ cùng cung hay ở hai vị trí liên hệ? Có dữ liệu bản mệnh hay chỉ có sao lưu?",
+      "nextStep": "Kiểm tra lớp sao và chính tinh đi cùng từng vị trí; không kết luận mức rủi ro của cá nhân."
+    },
+    {
+      "id": "khong-kiep",
+      "title": "Địa Không – Địa Kiếp",
+      "category": "sát tinh",
+      "stars": ["Địa Không", "Địa Kiếp"],
+      "question": "Không và Kiếp thuộc cùng cung, tam hợp, đối cung hay giáp cung; có chồng lặp địa chi nào không?",
+      "nextStep": "Nêu rõ vị trí và trạng thái dữ liệu, không lấy biểu tượng đứt gãy làm dự báo mất mát trong đời."
+    }
+  ]
+}

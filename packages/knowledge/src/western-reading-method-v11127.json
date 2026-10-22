@@ -1,0 +1,13 @@
+{
+  "id": "western-reflective-whole-sign",
+  "version": 1,
+  "knowledgeEdition": "11.127.0",
+  "knowledgeChecksum": "sha256:0de5640cfc4d7f5bcb9e8722ee37f775bc4e725b4d47891aeb5b8bf53eed8b3a",
+  "rulerPolicy": "traditional-seven",
+  "contexts": [
+    "general",
+    "work",
+    "relationship",
+    "resources"
+  ]
+}

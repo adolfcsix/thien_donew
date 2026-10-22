@@ -1,0 +1,15 @@
+{
+  "edition": "v11.8.0",
+  "records": {
+    "Tuần": {
+      "motif": "Khoảng ngắt trong tiến trình",
+      "context": "Tuần được an như dấu án ngữ một cặp cung, không phải sao riêng nằm trong một ô. Khi diễn giải, cần xem sự hiện diện của dấu này cùng toàn bộ sao tọa thủ và quy tắc của trường phái đang dùng.",
+      "caution": "Không mặc định Tuần xóa sạch hay đảo ngược mọi ý nghĩa của cung."
+    },
+    "Triệt": {
+      "motif": "Sự phân định và giới hạn",
+      "context": "Triệt là dấu án ngữ một cặp cung trong một số cách an truyền thống. Khi đọc, cần xét vị trí của dấu và nội dung các sao tại cả hai cung liên quan, không đổi kết quả an sao.",
+      "caution": "Không xem Triệt như một dự báo chắc chắn về mất mát hoặc bế tắc."
+    }
+  }
+}

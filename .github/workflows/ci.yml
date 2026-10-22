@@ -1,0 +1,114 @@
+name: THIEN DO Full Stack - strict lockfile
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: thiendo
+          POSTGRES_PASSWORD: thiendo_dev
+          POSTGRES_DB: thiendo_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U thiendo -d thiendo_test"
+          --health-interval 5s --health-timeout 5s --health-retries 15
+    env:
+      DATABASE_URL: postgresql://thiendo:thiendo_dev@localhost:5432/thiendo_test
+      WEB_ORIGIN: http://127.0.0.1:3000
+      COOKIE_SECURE: 'false'
+      API_PORT: '8080'
+      API_HOST: 127.0.0.1
+      E2E_LOCAL_DB_CONFIRM: 'YES'
+      NEXT_BASE_URL: http://127.0.0.1:3000
+      API_BASE_URL: http://127.0.0.1:3000
+      API_INTERNAL_URL: http://127.0.0.1:8080
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Require committed npm lockfile
+        run: |
+          test -f package-lock.json || (echo 'BLOCKED: package-lock.json is missing. Run bootstrap-lockfile.yml, inspect the downloaded lockfile, and commit it before this strict gate can pass.' && exit 1)
+      - name: Validate committed npm lockfile
+        run: npm run check:lockfile
+      - name: V11.150 migration immutability and operating-security source gate
+        run: npm run audit:stability:150 && node --test tests/v11150-stability.test.cjs
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Verify installed workspace CLI packages (read-only)
+        run: node infrastructure/scripts/dependency-install-check.mjs
+      - name: Validate deployment configuration
+        run: npm run check:preflight
+      - name: Source import and syntax checks
+        run: npm run check:source
+      - name: Module architecture boundaries
+        run: npm run audit:architecture
+      - name: Editorial and research-scope consistency
+        run: npm run audit:content
+      - name: HKO day-only Jie and disputed-star evidence gate (V11.149.6)
+        run: |
+          npm run audit:star-jie-witness:1496
+          node --test tests/v111496-jie-day-star-witness.test.cjs
+      - name: NAOJ minute solar terms cross-checked against HKO and Tử Vi gates (V11.149.9)
+        run: |
+          npm run audit:naoj-jie:1499
+          node --test tests/v111499-naoj-jie-witness.test.cjs
+      - name: Official HKO 2017–2023 Jie calendar days (V11.149.8)
+        run: |
+          npm run audit:hko-jie-days:1498
+          node --test tests/v111498-hko-official-days.test.cjs
+      - name: Official HKO 2013–2016 Jie minutes (V11.149.7)
+        run: |
+          npm run audit:hko-jie-primary:1497
+          node --test tests/v111497-hko-primary-jie.test.cjs
+      - name: Audit star / palace / annual provenance (V11.149.5)
+        run: npm run audit:star-period:1495
+      - name: Historical CSS baseline and additive stylesheet integrity
+        run: npm run audit:css-dedupe
+      - name: Regression suite
+        run: npm run test:sharded
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Build API and web
+        run: npm run build
+      - name: Verify disposable database is empty BEFORE any migration
+        run: npm run check:e2e-pre-migrate
+      - name: Migrate schema twice (idempotency)
+        run: npm run db:migrate && npm run db:migrate
+      - name: Prove dedicated local E2E target
+        run: npm run check:e2e-target
+      - name: Verify live disposable database is migrated and EMPTY
+        run: npm run check:e2e-db
+      - name: Install pinned browser tools outside project dependencies
+        run: |
+          npm install --prefix "$RUNNER_TEMP/thiendo-browser-tools" --no-audit --no-fund --save-exact playwright@1.62.1
+          node "$RUNNER_TEMP/thiendo-browser-tools/node_modules/playwright/cli.js" install --with-deps chromium
+          echo "THIENDO_PLAYWRIGHT_MODULE=$RUNNER_TEMP/thiendo-browser-tools/node_modules/playwright/index.mjs" >> "$GITHUB_ENV"
+      - name: Live first-party Next/Nest/PostgreSQL HTTP E2E
+        env:
+          THIENDO_QIMEN_BROWSER: '1'
+        run: bash infrastructure/scripts/run-ci-http.sh
+      - name: Publish server logs on CI failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: thien-do-fullstack-failed-server-logs
+          path: |
+            ${{ runner.temp }}/thiendo-ci-logs.*/*.log
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Publish regression file diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: thien-do-per-file-regression
+          path: docs/reports/test-files-*/
+          if-no-files-found: ignore
+          retention-days: 7

@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "edition": "11.125.0",
+  "method": {
+    "id": "thien-do-rws-reflective",
+    "version": 2,
+    "knowledgeEdition": "11.124.0",
+    "knowledgeChecksum": "sha256:3b5c31e00d2e617273cc51c690f0b0203bfd7d03d8ef2d6704570f8d3487456f",
+    "deckCatalogChecksum": "sha256:611d58912ab21b85242d47b5fbde1ea8f80b3074aba35626cc00f2b897c5e9b4"
+  },
+  "contexts": [
+    "general",
+    "work",
+    "relationship",
+    "resources"
+  ],
+  "roles": {
+    "focus": {
+      "label": "Điều đang xét",
+      "guidance": "Mô tả trọng tâm hiện tại qua biểu tượng; đối chiếu điều đang xảy ra, không gán đặc điểm cố định."
+    },
+    "challenge": {
+      "label": "Điểm cần đối chiếu",
+      "guidance": "Xét điều cản trở hoặc đặt vấn đề cho trọng tâm. Một lá xuôi vẫn có thể nói về thử thách ở vị trí này."
+    },
+    "aim": {
+      "label": "Mục tiêu / lý tưởng",
+      "guidance": "Phân biệt điều mong đạt với điều đã đạt. Kiểm tra mục tiêu có phù hợp nguồn lực và giá trị hiện tại."
+    },
+    "basis": {
+      "label": "Nền tảng",
+      "guidance": "Xem điều kiện và thói quen đang làm nền. Không biến lá bài thành bằng chứng về quá khứ."
+    },
+    "past": {
+      "label": "Ảnh hưởng cũ",
+      "guidance": "Đối chiếu trải nghiệm đã biết và ảnh hưởng đang qua; không suy một sự kiện quá khứ chỉ từ lá."
+    },
+    "next": {
+      "label": "Hướng diễn tiến",
+      "guidance": "Khảo sát một khả năng nếu các điều kiện tiếp tục; nêu lựa chọn có thể thay đổi hướng ấy, không ấn định tương lai."
+    },
+    "self": {
+      "label": "Cách tiếp cận của bạn",
+      "guidance": "Xem thái độ và phần có thể chủ động trong việc đang hỏi, không gán nhân cách cố định."
+    },
+    "environment": {
+      "label": "Môi trường",
+      "guidance": "Đọc bối cảnh, thông tin và quan hệ bên ngoài. Không suy người khác nghĩ gì khi chưa có lời xác nhận."
+    },
+    "hopes": {
+      "label": "Hy vọng / lo ngại",
+      "guidance": "Tách điều mong muốn, điều sợ và điều có bằng chứng. Hai mặt có thể cùng tồn tại."
+    },
+    "synthesis": {
+      "label": "Tổng hợp có điều kiện",
+      "guidance": "Nối các vị trí trước thành giả thuyết có điều kiện và câu hỏi kiểm tra; đây không phải lời tiên đoán kết quả."
+    },
+    "action": {
+      "label": "Bước thử",
+      "guidance": "Đặt một bước nhỏ có thể kiểm tra và điều kiện dừng; chiều ngược không buộc làm ngược lại."
+    },
+    "support": {
+      "label": "Nguồn hỗ trợ",
+      "guidance": "Tìm sự hỗ trợ có thể xác minh và cách tiếp nhận phù hợp, không hứa chắc sẽ có người giúp."
+    }
+  },
+  "layouts": [
+    {
+      "id": "one-reflective-v2",
+      "version": 1,
+      "name": "Một lá",
+      "positions": [
+        {
+          "id": "p1",
+          "label": "Điều cần nhìn rõ",
+          "role": "focus",
+          "prompt": "Mô tả trọng tâm hiện tại qua biểu tượng; đối chiếu điều đang xảy ra, không gán đặc điểm cố định.",
+          "x": 0,
+          "y": 0,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": "three-reflective-v2",
+      "version": 1,
+      "name": "Ba lá",
+      "positions": [
+        {
+          "id": "p1",
+          "label": "Bối cảnh",
+          "role": "basis",
+          "prompt": "Xem điều kiện và thói quen đang làm nền. Không biến lá bài thành bằng chứng về quá khứ.",
+          "x": 0,
+          "y": 0,
+          "rotation": 0
+        },
+        {
+          "id": "p2",
+          "label": "Góc nhìn bổ sung",
+          "role": "support",
+          "prompt": "Tìm sự hỗ trợ có thể xác minh và cách tiếp nhận phù hợp, không hứa chắc sẽ có người giúp.",
+          "x": 1,
+          "y": 0,
+          "rotation": 0
+        },
+        {
+          "id": "p3",
+          "label": "Hướng hành động",
+          "role": "action",
+          "prompt": "Đặt một bước nhỏ có thể kiểm tra và điều kiện dừng; chiều ngược không buộc làm ngược lại.",
+          "x": 2,
+          "y": 0,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": "celtic-waite-reflective-v1",
+      "version": 1,
+      "name": "Celtic Cross · Waite / phản tư",
+      "positions": [
+        {
+          "id": "p1",
+          "label": "Điều đang xét",
+          "role": "focus",
+          "prompt": "Mô tả trọng tâm hiện tại qua biểu tượng; đối chiếu điều đang xảy ra, không gán đặc điểm cố định.",
+          "x": 1,
+          "y": 2,
+          "rotation": 0
+        },
+        {
+          "id": "p2",
+          "label": "Điểm cần đối chiếu",
+          "role": "challenge",
+          "prompt": "Xét điều cản trở hoặc đặt vấn đề cho trọng tâm. Một lá xuôi vẫn có thể nói về thử thách ở vị trí này.",
+          "x": 1,
+          "y": 2,
+          "rotation": 90
+        },
+        {
+          "id": "p3",
+          "label": "Mục tiêu / lý tưởng",
+          "role": "aim",
+          "prompt": "Phân biệt điều mong đạt với điều đã đạt. Kiểm tra mục tiêu có phù hợp nguồn lực và giá trị hiện tại.",
+          "x": 1,
+          "y": 0,
+          "rotation": 0
+        },
+        {
+          "id": "p4",
+          "label": "Nền tảng",
+          "role": "basis",
+          "prompt": "Xem điều kiện và thói quen đang làm nền. Không biến lá bài thành bằng chứng về quá khứ.",
+          "x": 1,
+          "y": 4,
+          "rotation": 0
+        },
+        {
+          "id": "p5",
+          "label": "Ảnh hưởng cũ",
+          "role": "past",
+          "prompt": "Đối chiếu trải nghiệm đã biết và ảnh hưởng đang qua; không suy một sự kiện quá khứ chỉ từ lá.",
+          "x": 0,
+          "y": 2,
+          "rotation": 0
+        },
+        {
+          "id": "p6",
+          "label": "Hướng diễn tiến",
+          "role": "next",
+          "prompt": "Khảo sát một khả năng nếu các điều kiện tiếp tục; nêu lựa chọn có thể thay đổi hướng ấy, không ấn định tương lai.",
+          "x": 2,
+          "y": 2,
+          "rotation": 0
+        },
+        {
+          "id": "p7",
+          "label": "Cách tiếp cận của bạn",
+          "role": "self",
+          "prompt": "Xem thái độ và phần có thể chủ động trong việc đang hỏi, không gán nhân cách cố định.",
+          "x": 4,
+          "y": 6,
+          "rotation": 0
+        },
+        {
+          "id": "p8",
+          "label": "Môi trường",
+          "role": "environment",
+          "prompt": "Đọc bối cảnh, thông tin và quan hệ bên ngoài. Không suy người khác nghĩ gì khi chưa có lời xác nhận.",
+          "x": 4,
+          "y": 4,
+          "rotation": 0
+        },
+        {
+          "id": "p9",
+          "label": "Hy vọng / lo ngại",
+          "role": "hopes",
+          "prompt": "Tách điều mong muốn, điều sợ và điều có bằng chứng. Hai mặt có thể cùng tồn tại.",
+          "x": 4,
+          "y": 2,
+          "rotation": 0
+        },
+        {
+          "id": "p10",
+          "label": "Tổng hợp có điều kiện",
+          "role": "synthesis",
+          "prompt": "Nối các vị trí trước thành giả thuyết có điều kiện và câu hỏi kiểm tra; đây không phải lời tiên đoán kết quả.",
+          "x": 4,
+          "y": 0,
+          "rotation": 0
+        }
+      ]
+    }
+  ],
+  "celticSource": {
+    "title": "A. E. Waite, The Pictorial Key to the Tarot, Part III §7",
+    "url": "https://www.globalgreyebooks.com/online-ebooks/arthur-edward-waite_pictorial-key-to-the-tarot_complete-text.html",
+    "convention": "Thứ tự 1 trọng tâm, 2 điểm đối chiếu, 3 mục tiêu, 4 nền tảng, 5 ảnh hưởng cũ, 6 hướng diễn tiến, 7 cách tiếp cận, 8 môi trường, 9 hy vọng/lo ngại, 10 tổng hợp.",
+    "adaptation": "Bản phản tư 10 lá, không dùng Significator ngoài bộ 10. Trái là ảnh hưởng cũ, phải là hướng diễn tiến; không đổi theo nhân vật nhìn trái/phải. Lá 2 đặt ngang là bố cục, không có nghĩa tự động ngược. Không kế thừa việc chọn Significator theo giới/tuổi/màu da hoặc dự đoán kết quả."
+  },
+  "customLimits": {
+    "cards": 16,
+    "columns": 5,
+    "rows": 8,
+    "labelCharacters": 60,
+    "promptCharacters": 160,
+    "snapshotBytes": 12288
+  },
+  "legacy": {
+    "version": 1,
+    "method": "rws-reflection-v1",
+    "baseKnowledgeEdition": "11.120.0",
+    "deepKnowledgeEdition": "11.124.0",
+    "notice": "Hồ sơ cũ không ghi phiên bản luận sâu/bối cảnh. Giữ nguyên mã, chiều và nhãn 1/3 lá; luận sâu dùng bộ 11.124 đang hỗ trợ, không tự đổi thành hồ sơ v2."
+  }
+}

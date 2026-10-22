@@ -1,0 +1,31 @@
+name: Thiên Đồ V11.150 Audit
+on:
+  workflow_dispatch:
+  push:
+    branches: ["audit/v11.150"]
+permissions:
+  contents: read
+jobs:
+  static-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Lockfile verification
+        run: npm run check:lockfile
+      - name: Install exact dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Lint if present
+        run: npm run lint --if-present
+      - name: Build
+        run: npm run build
+      - name: Unit and integration tests
+        run: npm test
+      - name: Stability audit
+        run: npm run audit:stability:150

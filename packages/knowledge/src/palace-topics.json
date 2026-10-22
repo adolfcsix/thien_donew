@@ -1,0 +1,149 @@
+{
+  "edition": "v11.7.0",
+  "topics": {
+    "Mệnh": {
+      "id": "Mệnh",
+      "title": "Bản sắc và cách ứng xử",
+      "context": "Trong truyền thống Tử Vi, cung Mệnh được dùng để bàn về bản sắc và cách ứng xử. Đây là góc nhìn biểu tượng để suy ngẫm, không phải kết luận đã được kiểm chứng về cuộc đời.",
+      "reflection": "Quan sát cách bạn định hình ưu tiên, chủ động lựa chọn và phản ứng trước thay đổi.",
+      "boundary": "Không thể dùng riêng cung Mệnh để khẳng định tính cách, năng lực hoặc tương lai của một người.",
+      "guidance": [
+        "Đọc chính tinh tọa thủ cùng trạng thái hiển thị, nếu có.",
+        "Đối chiếu phụ tinh và Tứ Hóa đã an trong chính cung.",
+        "Mở rộng sang Tam hợp và Đối cung; cân nhắc vận hạn như lớp tham khảo riêng."
+      ]
+    },
+    "Phụ Mẫu": {
+      "id": "Phụ Mẫu",
+      "title": "Mối quan hệ với thế hệ trước",
+      "context": "Trong truyền thống Tử Vi, cung Phụ Mẫu được dùng để bàn về mối quan hệ với thế hệ trước. Đây là góc nhìn biểu tượng để suy ngẫm, không phải kết luận đã được kiểm chứng về cuộc đời.",
+      "reflection": "Đặt câu hỏi về sự lắng nghe, giao tiếp và ranh giới lành mạnh trong gia đình.",
+      "boundary": "Không suy diễn phẩm chất, sức khỏe hoặc số phận của cha mẹ từ lá số.",
+      "guidance": [
+        "Đọc chính tinh tọa thủ cùng trạng thái hiển thị, nếu có.",
+        "Đối chiếu phụ tinh và Tứ Hóa đã an trong chính cung.",
+        "Mở rộng sang Tam hợp và Đối cung; cân nhắc vận hạn như lớp tham khảo riêng."
+      ]
+    },
+    "Phúc Đức": {
+      "id": "Phúc Đức",
+      "title": "Giá trị sống và điểm tựa tinh thần",
+      "context": "Trong truyền thống Tử Vi, cung Phúc Đức được dùng để bàn về giá trị sống và điểm tựa tinh thần. Đây là góc nhìn biểu tượng để suy ngẫm, không phải kết luận đã được kiểm chứng về cuộc đời.",
+      "reflection": "Tìm hiểu nếp sống, những giá trị được nuôi dưỡng và cảm giác thuộc về một cộng đồng.",
+      "boundary": "Không coi khái niệm phúc đức là phép đo nghiệp báo hay mức độ may rủi.",
+      "guidance": [
+        "Đọc chính tinh tọa thủ cùng trạng thái hiển thị, nếu có.",
+        "Đối chiếu phụ tinh và Tứ Hóa đã an trong chính cung.",
+        "Mở rộng sang Tam hợp và Đối cung; cân nhắc vận hạn như lớp tham khảo riêng."
+      ]
+    },
+    "Điền Trạch": {
+      "id": "Điền Trạch",
+      "title": "Không gian sống và sự ổn định",
+      "context": "Trong truyền thống Tử Vi, cung Điền Trạch được dùng để bàn về không gian sống và sự ổn định. Đây là góc nhìn biểu tượng để suy ngẫm, không phải kết luận đã được kiểm chứng về cuộc đời.",
+      "reflection": "Quan sát cách tổ chức nơi ở, sự gắn bó với môi trường sống và nhu cầu riêng tư.",
+      "boundary": "Không kết luận việc sở hữu bất động sản hay thời điểm mua bán nhà.",
+      "guidance": [
+        "Đọc chính tinh tọa thủ cùng trạng thái hiển thị, nếu có.",
+        "Đối chiếu phụ tinh và Tứ Hóa đã an trong chính cung.",
+        "Mở rộng sang Tam hợp và Đối cung; cân nhắc vận hạn như lớp tham khảo riêng."
+      ]
+    },
+    "Quan Lộc": {
+      "id": "Quan Lộc",
+      "title": "Vai trò, công việc và khả năng phát triển",
+      "context": "Trong truyền thống Tử Vi, cung Quan Lộc được dùng để bàn về vai trò, công việc và khả năng phát triển. Đây là góc nhìn biểu tượng để suy ngẫm, không phải kết luận đã được kiểm chứng về cuộc đời.",
+      "reflection": "Đối chiếu những động lực học nghề, cách làm việc và sự phối hợp trong tập thể.",
+      "boundary": "Không lấy sao làm cơ sở quyết định chọn nghề, tuyển dụng hoặc thăng chức.",
+      "guidance": [
+        "Đọc chính tinh tọa thủ cùng trạng thái hiển thị, nếu có.",
+        "Đối chiếu phụ tinh và Tứ Hóa đã an trong chính cung.",
+        "Mở rộng sang Tam hợp và Đối cung; cân nhắc vận hạn như lớp tham khảo riêng."
+      ]
+    },
+    "Nô Bộc": {
+      "id": "Nô Bộc",
+      "title": "Quan hệ cộng tác và mạng lưới xã hội",
+      "context": "Trong truyền thống Tử Vi, cung Nô Bộc được dùng để bàn về quan hệ cộng tác và mạng lưới xã hội. Đây là góc nhìn biểu tượng để suy ngẫm, không phải kết luận đã được kiểm chứng về cuộc đời.",
+      "reflection": "Suy nghĩ về độ tin cậy, sự hỗ trợ qua lại và giới hạn cần có trong các mối quan hệ.",
+      "boundary": "Không phán xét người khác trung thành hay phản bội dựa vào một cung.",
+      "guidance": [
+        "Đọc chính tinh tọa thủ cùng trạng thái hiển thị, nếu có.",
+        "Đối chiếu phụ tinh và Tứ Hóa đã an trong chính cung.",
+        "Mở rộng sang Tam hợp và Đối cung; cân nhắc vận hạn như lớp tham khảo riêng."
+      ]
+    },
+    "Thiên Di": {
+      "id": "Thiên Di",
+      "title": "Khả năng thích nghi với môi trường bên ngoài",
+      "context": "Trong truyền thống Tử Vi, cung Thiên Di được dùng để bàn về khả năng thích nghi với môi trường bên ngoài. Đây là góc nhìn biểu tượng để suy ngẫm, không phải kết luận đã được kiểm chứng về cuộc đời.",
+      "reflection": "Khám phá sự khác biệt giữa hình ảnh cá nhân và cách bạn tương tác với xã hội.",
+      "boundary": "Không mặc định sẽ đi xa, xuất ngoại hoặc gặp tai nạn.",
+      "guidance": [
+        "Đọc chính tinh tọa thủ cùng trạng thái hiển thị, nếu có.",
+        "Đối chiếu phụ tinh và Tứ Hóa đã an trong chính cung.",
+        "Mở rộng sang Tam hợp và Đối cung; cân nhắc vận hạn như lớp tham khảo riêng."
+      ]
+    },
+    "Tật Ách": {
+      "id": "Tật Ách",
+      "title": "Thói quen chăm sóc bản thân và ứng phó",
+      "context": "Trong truyền thống Tử Vi, cung Tật Ách được dùng để bàn về thói quen chăm sóc bản thân và ứng phó. Đây là góc nhìn biểu tượng để suy ngẫm, không phải kết luận đã được kiểm chứng về cuộc đời.",
+      "reflection": "Gợi ý nhìn lại thói quen sinh hoạt, cách tìm sự trợ giúp và xử lý căng thẳng.",
+      "boundary": "Không dùng Tử Vi để chẩn đoán, dự phòng hoặc điều trị bệnh.",
+      "guidance": [
+        "Đọc chính tinh tọa thủ cùng trạng thái hiển thị, nếu có.",
+        "Đối chiếu phụ tinh và Tứ Hóa đã an trong chính cung.",
+        "Mở rộng sang Tam hợp và Đối cung; cân nhắc vận hạn như lớp tham khảo riêng."
+      ]
+    },
+    "Tài Bạch": {
+      "id": "Tài Bạch",
+      "title": "Nguồn lực và thói quen quản lý",
+      "context": "Trong truyền thống Tử Vi, cung Tài Bạch được dùng để bàn về nguồn lực và thói quen quản lý. Đây là góc nhìn biểu tượng để suy ngẫm, không phải kết luận đã được kiểm chứng về cuộc đời.",
+      "reflection": "Suy nghĩ về mục tiêu tài chính, việc tạo giá trị và cách cân bằng chi tiêu với tích lũy.",
+      "boundary": "Không dự báo lợi nhuận, tài sản hay thay thế quyết định đầu tư.",
+      "guidance": [
+        "Đọc chính tinh tọa thủ cùng trạng thái hiển thị, nếu có.",
+        "Đối chiếu phụ tinh và Tứ Hóa đã an trong chính cung.",
+        "Mở rộng sang Tam hợp và Đối cung; cân nhắc vận hạn như lớp tham khảo riêng."
+      ]
+    },
+    "Tử Tức": {
+      "id": "Tử Tức",
+      "title": "Chăm sóc, giáo dưỡng và tiếp nối",
+      "context": "Trong truyền thống Tử Vi, cung Tử Tức được dùng để bàn về chăm sóc, giáo dưỡng và tiếp nối. Đây là góc nhìn biểu tượng để suy ngẫm, không phải kết luận đã được kiểm chứng về cuộc đời.",
+      "reflection": "Xem xét tinh thần nuôi dưỡng, truyền đạt kinh nghiệm và trách nhiệm với thế hệ sau.",
+      "boundary": "Không suy đoán khả năng sinh sản, số con hoặc sức khỏe trẻ em.",
+      "guidance": [
+        "Đọc chính tinh tọa thủ cùng trạng thái hiển thị, nếu có.",
+        "Đối chiếu phụ tinh và Tứ Hóa đã an trong chính cung.",
+        "Mở rộng sang Tam hợp và Đối cung; cân nhắc vận hạn như lớp tham khảo riêng."
+      ]
+    },
+    "Phu Thê": {
+      "id": "Phu Thê",
+      "title": "Quan hệ gắn bó và hợp tác thân mật",
+      "context": "Trong truyền thống Tử Vi, cung Phu Thê được dùng để bàn về quan hệ gắn bó và hợp tác thân mật. Đây là góc nhìn biểu tượng để suy ngẫm, không phải kết luận đã được kiểm chứng về cuộc đời.",
+      "reflection": "Đặt câu hỏi về giao tiếp, kỳ vọng, sự chia sẻ và khả năng cùng giải quyết khác biệt.",
+      "boundary": "Không quyết định kết hôn, ly hôn hay đánh giá chung thủy từ lá số.",
+      "guidance": [
+        "Đọc chính tinh tọa thủ cùng trạng thái hiển thị, nếu có.",
+        "Đối chiếu phụ tinh và Tứ Hóa đã an trong chính cung.",
+        "Mở rộng sang Tam hợp và Đối cung; cân nhắc vận hạn như lớp tham khảo riêng."
+      ]
+    },
+    "Huynh Đệ": {
+      "id": "Huynh Đệ",
+      "title": "Quan hệ anh chị em và người đồng hành",
+      "context": "Trong truyền thống Tử Vi, cung Huynh Đệ được dùng để bàn về quan hệ anh chị em và người đồng hành. Đây là góc nhìn biểu tượng để suy ngẫm, không phải kết luận đã được kiểm chứng về cuộc đời.",
+      "reflection": "Khảo sát khả năng hỗ trợ, tương tác và xây dựng ranh giới giữa những người gần gũi.",
+      "boundary": "Không tiên đoán sự kiện hoặc phán xét tính cách anh chị em.",
+      "guidance": [
+        "Đọc chính tinh tọa thủ cùng trạng thái hiển thị, nếu có.",
+        "Đối chiếu phụ tinh và Tứ Hóa đã an trong chính cung.",
+        "Mở rộng sang Tam hợp và Đối cung; cân nhắc vận hạn như lớp tham khảo riêng."
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "western-relationship-midpoint-v1",
+  "version": 1,
+  "knowledgeEdition": "11.128.0",
+  "knowledgeChecksum": "sha256:a2a13a0d15604b46d4efd9c0b89c6f83da8832f7949b0e648bb9c7ed88d299e0",
+  "natalKnowledgeChecksum": "sha256:0de5640cfc4d7f5bcb9e8722ee37f775bc4e725b4d47891aeb5b8bf53eed8b3a",
+  "antipodalToleranceDegrees": 1e-07,
+  "crossAspectAngles": [
+    0,
+    60,
+    90,
+    120,
+    180
+  ],
+  "orbPolicy": "one-shared-orb-in-degrees",
+  "compositeHouses": [
+    "midpoint-cusps",
+    "whole-sign-from-midpoint-asc"
+  ],
+  "contexts": [
+    "general",
+    "partnership",
+    "collaboration",
+    "friendship"
+  ]
+}

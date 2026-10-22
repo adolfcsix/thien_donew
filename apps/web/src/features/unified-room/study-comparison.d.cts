@@ -1,0 +1,2 @@
+export type ComparisonResult={sameDiscipline:boolean;sameMethod:boolean;entries:Array<{id:string;title:string;discipline:string;tags:string[];summary:string;updatedAt:string}>;fields:Array<{key:string;values:string[];match:boolean}>};
+export function compareStudyEntries(entries:Array<{id:string;title:string;discipline:string;summary?:string;tags?:string[];updatedAt:string;snapshot:Record<string,unknown>}>):ComparisonResult;

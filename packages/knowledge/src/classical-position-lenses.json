@@ -1,0 +1,155 @@
+{
+  "edition": "11.64.0",
+  "scope": "editorial-position-lenses",
+  "schoolReviewed": false,
+  "classification": "pedagogical-competing-position-tests",
+  "notice": "Ba phép kiểm tra phạm vi hội chiếu chỉ là công cụ so sánh cách đọc theo giả định. Chưa thể coi là ba trường phái được xác minh. Không kết luận thành cách, phá cách, tính cách, sự nghiệp hay vận hạn.",
+  "editorialPolicy": {
+    "labelsNotClaims": true,
+    "noAutomaticVetoForObstruction": true,
+    "natalOnly": true,
+    "noFortuneScore": true
+  },
+  "researchComparison": {
+    "topic": "Tử Phủ Vũ Tướng",
+    "difference": "Tài liệu tham khảo có cách mô tả rộng (bốn sao trong tam phương tứ chính) và cách nhấn mạnh tiểu dạng Tử Vi–Thiên Phủ đồng tọa Mệnh; đây không phải hai quy ước trường phái đã phân loại chính thức.",
+    "internalReadingOnly": true,
+    "references": [
+      {
+        "title": "AmLichVietnam: cách Tử Phủ Vũ Tướng",
+        "url": "https://amlichvietnam.vn/kien-thuc/tu-vi/cach-tu-phu-vu-tuong"
+      },
+      {
+        "title": "ThaiAm: Tử Phủ Vũ Tướng",
+        "url": "https://www.thaiam.vn/tu-vi-wiki/cach-cuc/tu-phu-vu-tuong.html"
+      }
+    ]
+  },
+  "families": {
+    "tu-phu-vu-tuong": {
+      "label": "Tử Phủ Vũ Tướng",
+      "question": "Khi thay đổi phạm vi hội chiếu của Tử Phủ Vũ Tướng, sao nào rời khỏi phép kiểm tra? Điều kiện nào là quan sát, điều kiện nào chỉ là giả thuyết biên tập?",
+      "lenses": [
+        {
+          "id": "four-court",
+          "label": "Tứ chính (phạm vi rộng)",
+          "geometry": "four-court",
+          "anchorAll": [],
+          "explanation": "Đòi hỏi đủ chính tinh bản mệnh trong Mệnh, hai cung tam hợp hoặc đối cung. Đây là tiêu chí bộ sao ở V11.63, không phải xác nhận thành cách."
+        },
+        {
+          "id": "triad-only",
+          "label": "Tam hợp (không tính đối cung)",
+          "geometry": "triad-only",
+          "anchorAll": [],
+          "explanation": "Đòi hỏi toàn bộ sao bắt buộc nằm trong Mệnh và hai cung tam hợp; sao chỉ ở đối cung không được tính. Dùng để so độ nhạy khi đổi phạm vi."
+        },
+        {
+          "id": "focus-anchored",
+          "label": "Điểm tựa tọa Mệnh (tiểu tình huống)",
+          "geometry": "four-court",
+          "anchorAll": [
+            "Tử Vi",
+            "Thiên Phủ"
+          ],
+          "explanation": "Tử Vi – Thiên Phủ đồng tọa Mệnh là một tiểu loại bố trí chặt hơn, không đồng nhất với bộ bốn sao hội về Tứ chính."
+        }
+      ],
+      "counterexample": "Đừng đánh đồng đủ bốn tên trong Tứ chính với trường hợp Tử–Phủ cùng tọa Mệnh. Cũng không suy miếu hãm chỉ từ địa chi.",
+      "notReviewed": true
+    },
+    "co-nguyet-dong-luong": {
+      "label": "Cơ Nguyệt Đồng Lương",
+      "question": "Khi thay đổi phạm vi hội chiếu của Cơ Nguyệt Đồng Lương, sao nào rời khỏi phép kiểm tra? Điều kiện nào là quan sát, điều kiện nào chỉ là giả thuyết biên tập?",
+      "lenses": [
+        {
+          "id": "four-court",
+          "label": "Tứ chính (phạm vi rộng)",
+          "geometry": "four-court",
+          "anchorAll": [],
+          "explanation": "Đòi hỏi đủ chính tinh bản mệnh trong Mệnh, hai cung tam hợp hoặc đối cung. Đây là tiêu chí bộ sao ở V11.63, không phải xác nhận thành cách."
+        },
+        {
+          "id": "triad-only",
+          "label": "Tam hợp (không tính đối cung)",
+          "geometry": "triad-only",
+          "anchorAll": [],
+          "explanation": "Đòi hỏi toàn bộ sao bắt buộc nằm trong Mệnh và hai cung tam hợp; sao chỉ ở đối cung không được tính. Dùng để so độ nhạy khi đổi phạm vi."
+        },
+        {
+          "id": "focus-anchored",
+          "label": "Điểm tựa tọa Mệnh (tiểu tình huống)",
+          "geometry": "four-court",
+          "anchorAll": [
+            "Thiên Cơ"
+          ],
+          "explanation": "Chọn Thiên Cơ làm điểm tựa tọa Mệnh để khảo sát: đây là bài tập biến đổi điểm nhìn, không phải quy tắc thành cách được thẩm định."
+        }
+      ],
+      "counterexample": "Một sao nằm ở đối cung có thể làm phép đếm Tứ chính đúng nhưng phép xét tam hợp không đúng.",
+      "notReviewed": true
+    },
+    "sat-pha-tham": {
+      "label": "Sát Phá Tham",
+      "question": "Khi thay đổi phạm vi hội chiếu của Sát Phá Tham, sao nào rời khỏi phép kiểm tra? Điều kiện nào là quan sát, điều kiện nào chỉ là giả thuyết biên tập?",
+      "lenses": [
+        {
+          "id": "four-court",
+          "label": "Tứ chính (phạm vi rộng)",
+          "geometry": "four-court",
+          "anchorAll": [],
+          "explanation": "Đòi hỏi đủ chính tinh bản mệnh trong Mệnh, hai cung tam hợp hoặc đối cung. Đây là tiêu chí bộ sao ở V11.63, không phải xác nhận thành cách."
+        },
+        {
+          "id": "triad-only",
+          "label": "Tam hợp (không tính đối cung)",
+          "geometry": "triad-only",
+          "anchorAll": [],
+          "explanation": "Đòi hỏi toàn bộ sao bắt buộc nằm trong Mệnh và hai cung tam hợp; sao chỉ ở đối cung không được tính. Dùng để so độ nhạy khi đổi phạm vi."
+        },
+        {
+          "id": "focus-anchored",
+          "label": "Điểm tựa tọa Mệnh (tiểu tình huống)",
+          "geometry": "four-court",
+          "anchorAll": [
+            "Thất Sát"
+          ],
+          "explanation": "Chọn Thất Sát tọa Mệnh làm ví dụ điểm tựa, rồi theo dõi Phá Quân và Tham Lang nằm ở tam hợp hay đối cung."
+        }
+      ],
+      "counterexample": "Không thể dùng một sao Sát Phá Tham ở đại hạn hoặc lưu niên để hoàn tất cấu trúc bản mệnh.",
+      "notReviewed": true
+    },
+    "cu-nhat": {
+      "label": "Cự Nhật",
+      "question": "Khi thay đổi phạm vi hội chiếu của Cự Nhật, sao nào rời khỏi phép kiểm tra? Điều kiện nào là quan sát, điều kiện nào chỉ là giả thuyết biên tập?",
+      "lenses": [
+        {
+          "id": "four-court",
+          "label": "Tứ chính (phạm vi rộng)",
+          "geometry": "four-court",
+          "anchorAll": [],
+          "explanation": "Đòi hỏi đủ chính tinh bản mệnh trong Mệnh, hai cung tam hợp hoặc đối cung. Đây là tiêu chí bộ sao ở V11.63, không phải xác nhận thành cách."
+        },
+        {
+          "id": "triad-only",
+          "label": "Tam hợp (không tính đối cung)",
+          "geometry": "triad-only",
+          "anchorAll": [],
+          "explanation": "Đòi hỏi toàn bộ sao bắt buộc nằm trong Mệnh và hai cung tam hợp; sao chỉ ở đối cung không được tính. Dùng để so độ nhạy khi đổi phạm vi."
+        },
+        {
+          "id": "focus-anchored",
+          "label": "Điểm tựa tọa Mệnh (tiểu tình huống)",
+          "geometry": "four-court",
+          "anchorAll": [
+            "Cự Môn"
+          ],
+          "explanation": "Lấy Cự Môn tọa Mệnh để thử phép đọc theo sao chủ, rồi phân biệt Thái Dương ở tam hợp hay xung chiếu."
+        }
+      ],
+      "counterexample": "Cự Môn và Thái Dương đủ tên chưa chứng minh một nhãn cách cục cổ điển, cũng không suy từ độ sáng thiếu dữ liệu.",
+      "notReviewed": true
+    }
+  }
+}

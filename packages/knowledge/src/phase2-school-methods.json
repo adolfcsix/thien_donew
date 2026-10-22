@@ -1,0 +1,705 @@
+{
+  "schemaVersion": "2.0.0",
+  "edition": "11.104.0",
+  "researchOnly": true,
+  "statement": "Lịch sử truyền thống và tính đúng số học khác nhau; không một hồ sơ nào được tự động bật làm engine chính.",
+  "disciplines": [
+    {
+      "id": "tu-vi",
+      "name": "Tử Vi Đẩu Số",
+      "implementation": "existing-partial",
+      "priority": "P0",
+      "existingBoundary": "Nhiều bảng an sao và tính niên hạn; cần đối chứng dị bản Tứ Hóa."
+    },
+    {
+      "id": "bat-tu",
+      "name": "Bát Tự / Tứ Trụ",
+      "implementation": "existing-partial",
+      "priority": "P0",
+      "existingBoundary": "Lập tứ trụ; cần độ chính xác tiết khí và xử lý kinh độ."
+    },
+    {
+      "id": "mai-hoa",
+      "name": "Mai Hoa Dịch Số",
+      "implementation": "existing-partial",
+      "priority": "P0",
+      "existingBoundary": "Khởi quẻ và Thể Dụng; cần bảng so sánh dị bản."
+    },
+    {
+      "id": "luc-hao",
+      "name": "Lục Hào Nạp Giáp",
+      "implementation": "existing-partial",
+      "priority": "P0",
+      "existingBoundary": "Nạp Giáp và quan hệ Nhật Nguyệt; chưa đầy đủ dụng thần/ứng kỳ."
+    },
+    {
+      "id": "ky-mon",
+      "name": "Kỳ Môn Độn Giáp",
+      "implementation": "existing-partial",
+      "priority": "P0",
+      "existingBoundary": "Chai Bổ và Chuyển Bàn giờ; Phi Bàn cần bộ quy tắc riêng."
+    },
+    {
+      "id": "phong-thuy",
+      "name": "Phong thủy",
+      "implementation": "existing-partial",
+      "priority": "P0",
+      "existingBoundary": "Bát Trạch, Phi Tinh; cần phân tách Tam Nguyên/Tam Hợp."
+    },
+    {
+      "id": "kinh-dich",
+      "name": "Kinh Dịch",
+      "implementation": "existing-partial",
+      "priority": "P1",
+      "existingBoundary": "64 quẻ; bản kinh, hào từ và chú giải phải tách nguồn."
+    },
+    {
+      "id": "lich-phap",
+      "name": "Lịch pháp Đông phương",
+      "implementation": "existing-partial",
+      "priority": "P0",
+      "existingBoundary": "Hạ tầng ngày âm dương, can chi, tiết khí dùng chung."
+    },
+    {
+      "id": "ngu-hanh",
+      "name": "Ngũ Hành",
+      "implementation": "existing-partial",
+      "priority": "P2",
+      "existingBoundary": "Kiến thức nền; quy ước phải gắn với bộ môn sử dụng."
+    },
+    {
+      "id": "chon-ngay",
+      "name": "Chọn ngày / Trạch nhật",
+      "implementation": "existing-partial",
+      "priority": "P1",
+      "existingBoundary": "Phân biệt hệ Trực, Sao và Ngày hoàng đạo theo từng lịch pháp."
+    },
+    {
+      "id": "ha-lac",
+      "name": "Hà Lạc Lý Số",
+      "implementation": "knowledge-only",
+      "priority": "P2",
+      "existingBoundary": "Hiện chỉ có tri thức, chưa có engine."
+    },
+    {
+      "id": "dai-luc-nham",
+      "name": "Đại Lục Nhâm",
+      "implementation": "foundation-only",
+      "priority": "P1",
+      "existingBoundary": "V11.90 nghiên cứu Tứ Khóa và một phần Tam Truyền (Độc Khắc/Bỉ Dụng), vẫn không có đủ 9 Tông Môn; Nguyệt Tướng tra bảng HKO 2025–2027."
+    },
+    {
+      "id": "thai-at",
+      "name": "Thái Ất Thần Số",
+      "implementation": "foundation-only",
+      "priority": "P1",
+      "existingBoundary": "V11.91 chỉ tính Tuế kế theo 《Thái Ất Kim Kính Thức Kinh》 quyển I, mốc 724; không tự xác lập ranh giới năm, chưa có bàn hoàn chỉnh, tướng, nguyệt/nhật/thời kế."
+    },
+    {
+      "id": "thiet-ban",
+      "name": "Thiết Bản Thần Số",
+      "implementation": "research-backlog",
+      "priority": "P2",
+      "existingBoundary": "Thư tịch, dị bản, quyền sử dụng tài liệu và phương pháp đối chiếu còn thiếu."
+    }
+  ],
+  "schools": [
+    {
+      "id": "tu-vi-tam-hop",
+      "disciplineId": "tu-vi",
+      "title": "Tử Vi — Tam Hợp",
+      "status": "research-comparison",
+      "engineIntegration": "legacy-reference-only",
+      "priority": "P0",
+      "method": "Cấu trúc 12 cung, chính/phụ tinh, tam phương tứ chính.",
+      "inputs": [
+        "ngày giờ sinh",
+        "giới tính",
+        "quy ước lịch",
+        "bảng sao"
+      ],
+      "boundaries": [
+        "Lịch âm nhuận",
+        "bảng sao theo truyền bản",
+        "biệt lệ Tứ Hóa"
+      ],
+      "subroutines": [
+        "lập lá số",
+        "tam phương"
+      ],
+      "pending": [
+        "đối chứng chính tinh từng dị bản",
+        "bảng Tứ Hóa có xuất xứ"
+      ],
+      "sources": [
+        "https://journals.openedition.org/extremeorient/282"
+      ],
+      "document": "docs/research/schools/tu-vi-tam-hop.md"
+    },
+    {
+      "id": "tu-vi-phi-tinh",
+      "disciplineId": "tu-vi",
+      "title": "Tử Vi — Phi Tinh Tứ Hóa",
+      "status": "deterministic-subroutine-only",
+      "engineIntegration": "isolated-research-only",
+      "priority": "P0",
+      "method": "Đối chiếu bảng Tứ Hóa 10 can theo dị bản, lập bốn quan hệ từ cung can tới sao thực an; tách biệt Tứ Hóa năm sinh và năm xem.",
+      "inputs": [
+        "cung can",
+        "bảng tứ hóa lựa chọn",
+        "niên hạn"
+      ],
+      "boundaries": [
+        "cung can hay niên can",
+        "Tứ Hóa theo các phái",
+        "định nghĩa tự hóa"
+      ],
+      "subroutines": [
+        "bảng 10 can x 4 hóa theo 3 hồ sơ phiên bản",
+        "đối chiếu sai khác Toàn Tập/Toàn Thư/Trung Châu",
+        "đồ thị Phi Hóa theo sao thực an, tự hóa, đối cung"
+      ],
+      "pending": [
+        "thẩm định văn bản gốc từng dị bản và trang/thiên",
+        "đối chiếu có chữ ký chuyên gia độc lập",
+        "luận giải và các lớp vận hạn nâng cao chưa được bật"
+      ],
+      "sources": [
+        "https://qqqtseng.pixnet.net/blog/posts/9292852613",
+        "https://tradiculture.com/ziweisihuabiaowanzhengjiexi/",
+        "https://wiki.openfate.ai/zh-hant/ziwei/transformations/four-transformations"
+      ],
+      "document": "docs/research/schools/tu-vi-phi-tinh.md"
+    },
+    {
+      "id": "bat-tu-tiet-khi",
+      "disciplineId": "bat-tu",
+      "title": "Bát Tự — Tiết khí, kinh độ và quy ước đổi ngày giờ",
+      "status": "deterministic-subroutine-only",
+      "engineIntegration": "isolated-research-only",
+      "priority": "P0",
+      "method": "Giữ nguyên Bát Tự mặc định. Research-only: sáu quy ước đồng hồ/đổi ngày V11.93; V11.94 tra 12 Jie theo thời điểm UTC từ bảng 36 mốc 2025–2027 (tham chiếu gián tiếp các bảng HKO), an trụ năm/tháng bằng Ngũ Hổ Độn và giữ ngày/giờ từ V11.93.",
+      "inputs": [
+        "ngày giờ dân dụng YYYY-MM-DD HH:mm",
+        "UTC offset số phút tại ngày sinh do người nghiên cứu kiểm chứng",
+        "kinh độ nơi sinh thực (độ Đông dương)",
+        "loại đồng hồ dân dụng / mặt trời trung bình / mặt trời biểu kiến",
+        "quy ước đổi ngày lúc 00:00 hoặc 23:00"
+      ],
+      "boundaries": [
+        "không tự xác định múi giờ lịch sử hay DST",
+        "ngoài khoảng 2025–2027 hoặc gần phút giao Jie ±60 giây: không xuất trụ năm/tháng; các năm khác vẫn chỉ có engine xấp xỉ",
+        "phương trình thời gian xấp xỉ NOAA",
+        "biên 23:00/00:00 hoặc biên chi giờ không suy kết quả chắc chắn khi sát giờ",
+        "không áp kinh độ lên trụ năm/tháng",
+        "Bảng Jie hiện chép đối chiếu qua ba bảng bên thứ ba dẫn HKO, chưa chứng thực từng phút trực tiếp trên bản chính; chỉ dùng nghiên cứu"
+      ],
+      "subroutines": [
+        "so sánh 6 quy ước giờ/đổi ngày trong module nghiên cứu",
+        "giờ Mặt Trời trung bình theo kinh độ và múi giờ đã kiểm chứng",
+        "giờ Mặt Trời biểu kiến theo NOAA Equation of Time",
+        "kiểm tra mốc Jie và ranh đổi trụ cần thẩm định",
+        "36 mốc 12 Jie/2025–2027 theo giờ Hồng Kông UTC+8 và chuẩn hóa sang UTC",
+        "an năm/tháng theo 12 tháng tiết khí đã có nhật trình giao tiết; từ chối không có bảng và gần ranh ±60 giây",
+        "kiểm soát khác biệt với trụ năm/tháng từ engine Meeus xấp xỉ; giữ nguyên trụ ngày/giờ"
+      ],
+      "pending": [
+        "xác thực từng phút 12 Jie trực tiếp từ bản gốc HKO và mở rộng bộ dữ liệu ngoài 2025–2027",
+        "đối chiếu chuyên gia các quy tắc Tý đầu/Tý cuối",
+        "tra múi giờ lịch sử IANA hoặc cơ sở dữ liệu độc lập",
+        "mô hình VSOP87/ephemeris kiểm chứng và sai số gần giới hạn",
+        "tích hợp engine Bát Tự chính sau thử nghiệm độc lập"
+      ],
+      "sources": [
+        "https://gml.noaa.gov/grad/solcalc/solareqns.PDF",
+        "https://www.hko.gov.hk/en/gts/time/24solarterms.htm",
+        "https://www.hko.gov.hk/en/gts/astronomy/Solar_Term.htm",
+        "https://recatools.com/guides/why-solar-term-dates-move/",
+        "https://www.qimena.com/en/wiki/qimen-calculation-rules/",
+        "https://tinhmenhdo.web.app/en/solar-terms-hongkong-2025/"
+      ],
+      "document": "docs/research/schools/bat-tu-tiet-khi.md"
+    },
+    {
+      "id": "mai-hoa-lunar-number",
+      "disciplineId": "mai-hoa",
+      "title": "Mai Hoa — Khởi theo tượng số",
+      "status": "deterministic-subroutine-only",
+      "engineIntegration": "isolated-research-only",
+      "priority": "P0",
+      "method": "Năm chi/tháng ngày âm/giờ chi và hai số đã có. V11.104 bổ sung Hậu Thiên Đoan Pháp: số quái vật tượng làm thượng quái, phương vị làm hạ quái, cộng số chi giờ để lấy hào động; hỗ/biến/Thể–Dụng tái sử dụng engine đã có.",
+      "inputs": [
+        "số quái vật tượng từ 1..8 do người sử dụng xác nhận",
+        "số quái phương vị từ 1..8 do người sử dụng xác nhận",
+        "số chi giờ Tý=1 đến Hợi=12",
+        "hoặc quy ước hai số / năm chi tháng ngày âm hiện có"
+      ],
+      "boundaries": [
+        "không tự ánh xạ tên đồ vật, kinh vĩ độ hay hướng la bàn sang quái",
+        "số quái dùng thứ tự Tiên Thiên 乾1 兌2 離3 震4 巽5 坎6 艮7 坤8",
+        "tháng nhuận, ngày/giờ cần kiểm tra khi khởi quẻ theo âm lịch; không tự quy đổi",
+        "đối chiếu quy ước chỉ mô tả khác biệt, không xác nhận một phái đúng hơn",
+        "không tự động dự đoán cát hung, ứng kỳ"
+      ],
+      "subroutines": [
+        "V11.104 Hậu Thiên vật tượng/phương vị/giờ chi, tách biệt phép hai số",
+        "64 tổ hợp thượng/hạ quái × 12 giờ chi = 768 kiểm tra",
+        "đối chiếu cùng quẻ chủ nhưng hào động, quẻ biến, Thể–Dụng có thể khác nhau",
+        "quẻ chủ, hỗ quẻ, quẻ biến theo sáu hào dùng chung engine Kinh Dịch"
+      ],
+      "pending": [
+        "thẩm định bản khắc/chú giải cổ văn về cách gán vật tượng và phương vị",
+        "đối chiếu chuyên gia về Phục Hy/Bát Quái phương vị và các truyền bản",
+        "quy tắc tháng nhuận theo từng phái",
+        "kiểm thử E2E từ Next.js/NestJS trên môi trường có dependencies"
+      ],
+      "sources": [
+        "https://zh.wikisource.org/wiki/梅花易數/卷一",
+        "https://zh.wikisource.org/wiki/梅花易數/卷二"
+      ],
+      "document": "docs/research/schools/mai-hoa-lunar-number.md"
+    },
+    {
+      "id": "luc-hao-jingfang",
+      "disciplineId": "luc-hao",
+      "title": "Lục Hào — Nạp Giáp Kinh Phòng",
+      "status": "existing-needs-external-verification",
+      "engineIntegration": "legacy-reference-only",
+      "priority": "P0",
+      "method": "Bát Cung, Nạp Giáp, Thế Ứng, Lục Thân, Lục Thần.",
+      "inputs": [
+        "6 hào động/tĩnh",
+        "ngày can chi",
+        "nguyệt kiến"
+      ],
+      "boundaries": [
+        "định nguyệt kiến theo tiết khí",
+        "dụng thần phụ thuộc câu hỏi",
+        "phục thần theo bản truyền"
+      ],
+      "subroutines": [
+        "bát cung",
+        "nạp giáp"
+      ],
+      "pending": [
+        "quy tắc chọn dụng thần",
+        "phục thần",
+        "vượng suy và ứng kỳ"
+      ],
+      "sources": [],
+      "document": "docs/research/schools/luc-hao-jingfang.md"
+    },
+    {
+      "id": "ky-mon-chai-bo-rotating",
+      "disciplineId": "ky-mon",
+      "title": "Kỳ Môn — Chai Bổ Chuyển Bàn",
+      "status": "existing-needs-external-verification",
+      "engineIntegration": "legacy-reference-only",
+      "priority": "P0",
+      "method": "Âm/Dương độn, cục, địa bàn, Thiên bàn, Bát Môn, Cửu Tinh. V11.105 bổ sung tra Mã Tinh theo chi giờ, đối chiếu chi ngày và dò các Lục Nghi tương ứng cung Kích Hình ở Thiên bàn, không tự luận đoán. V11.109 thêm dấu Môn khắc cung và Tam Kỳ Nhập Mộ theo quy ước Diễn Nghĩa, có bảng độc lập và ghi riêng dị bản; không luận đoán.",
+      "inputs": [
+        "tiết khí",
+        "can chi ngày giờ",
+        "quy tắc định cục"
+      ],
+      "boundaries": [
+        "giao tiết",
+        "giờ Tý",
+        "chân thái dương thời",
+        "Mã Tinh theo chi ngày chỉ đối chiếu, không tráo với Mã Tinh giờ",
+        "Kích Hình xác định từ Thiên bàn, không từ địa bàn, không suy cát hung",
+        "Môn Bách dùng chiều Môn khắc cung; dị bản tên gọi cung khắc Môn ghi riêng",
+        "Tam Kỳ Nhập Mộ theo Diễn Nghĩa Ất 2/Bính 6/Đinh 8; dị bản Bảo Giám Đinh 6 không áp dụng",
+        "Can Trung 5 chưa biểu diễn trên Thiên bàn không được báo là không nhập mộ"
+      ],
+      "subroutines": [
+        "địa bàn",
+        "chuyển bàn giờ",
+        "V11.105 tra Mã Tinh theo chi giờ, bốn nhóm Tam Hợp và bốn cung góc",
+        "V11.105 dò sáu vị trí Lục Nghi Kích Hình trên Thiên bàn đã an theo Chuyển Bàn",
+        "V11.109 quan hệ Ngũ hành Môn thời bàn/cung; dấu Môn khắc cung",
+        "V11.109 Tam Kỳ tại cung mộ quy chiếu 2/6/8 trên Thiên Can đang biểu diễn"
+      ],
+      "pending": [
+        "đối chiếu tam nguyên",
+        "cách cục/tổ hợp",
+        "dị bản Thiên bàn",
+        "đối chứng độc lập các ca Kích Hình Chuyển Bàn giữa trường phái",
+        "Lục Nghi/Bát Môn/nhật thời nhập mộ, cách cục và Phi Bàn cần nguồn và công thức riêng"
+      ],
+      "sources": [
+        "https://www.guoxuezhijia.com/gxbk/21942.html",
+        "https://www.sohu.com/a/389192627_120339516",
+        "https://zh.wikisource.org/zh-hant/遁甲演義",
+        "https://zh.wikisource.org/zh-hant/奇门宝鉴御定",
+        "https://www.shidianguji.com/zh/book/SDZJ0630/chapter/1lx9g2ky1kugj"
+      ],
+      "document": "docs/research/schools/ky-mon-chai-bo-rotating.md",
+      "structuralDocument": "docs/research/schools/ky-mon-structural-signals.md"
+    },
+    {
+      "id": "ky-mon-flying",
+      "disciplineId": "ky-mon",
+      "title": "Kỳ Môn — Phi Bàn",
+      "status": "research-backlog",
+      "engineIntegration": "none",
+      "priority": "P1",
+      "method": "Tách quy tắc phi cung, thứ tự tuần hoàn khỏi Chuyển Bàn.",
+      "inputs": [
+        "tiết khí",
+        "cục",
+        "can chi giờ"
+      ],
+      "boundaries": [
+        "quy tắc phi bàn mỗi phái",
+        "dị bản Trung cung"
+      ],
+      "subroutines": [],
+      "pending": [
+        "nguồn quy tắc an tinh môn",
+        "đối chiếu 72 cục",
+        "ca so sánh Chuyển Bàn"
+      ],
+      "sources": [],
+      "document": "docs/research/schools/ky-mon-flying.md"
+    },
+    {
+      "id": "phong-thuy-bat-trach",
+      "disciplineId": "phong-thuy",
+      "title": "Phong thủy — Bát Trạch",
+      "status": "existing-needs-external-verification",
+      "engineIntegration": "legacy-reference-only",
+      "priority": "P1",
+      "method": "Cung phi và nhóm Đông/Tây tứ mệnh, đối chiếu tọa hướng.",
+      "inputs": [
+        "năm sinh",
+        "giới tính theo quy tắc tính",
+        "tọa/hướng"
+      ],
+      "boundaries": [
+        "giao Lập Xuân",
+        "độ chính xác đo góc"
+      ],
+      "subroutines": [
+        "cung phi"
+      ],
+      "pending": [
+        "bộ ca quy chiếu theo từng niên đại"
+      ],
+      "sources": [],
+      "document": "docs/research/schools/phong-thuy-bat-trach.md"
+    },
+    {
+      "id": "phong-thuy-huyen-khong",
+      "disciplineId": "phong-thuy",
+      "title": "Phong thủy — Huyền Không Phi Tinh",
+      "status": "existing-needs-external-verification",
+      "engineIntegration": "legacy-reference-only",
+      "priority": "P0",
+      "method": "Vận, Phi Tinh và tọa/hướng trong hệ 24 sơn.",
+      "inputs": [
+        "thời vận",
+        "tọa/hướng",
+        "sơn cụ thể"
+      ],
+      "boundaries": [
+        "Hạ quái hay Thế quái",
+        "giao vận",
+        "biên 24 sơn"
+      ],
+      "subroutines": [
+        "phi tinh hạ quái"
+      ],
+      "pending": [
+        "quy tắc thế quái theo nguồn",
+        "ca sát mốc vận"
+      ],
+      "sources": [],
+      "document": "docs/research/schools/phong-thuy-huyen-khong.md"
+    },
+    {
+      "id": "dai-luc-nham-yuejiang",
+      "disciplineId": "dai-luc-nham",
+      "title": "Đại Lục Nhâm — Nguyệt Tướng gia thời",
+      "status": "deterministic-subroutine-only",
+      "engineIntegration": "isolated-research-only",
+      "priority": "P1",
+      "method": "Thiên bàn xoay quanh địa bàn 12 chi, đặt Nguyệt Tướng tại cung chi giờ.",
+      "inputs": [
+        "nguyệt tướng do người nghiên cứu cung cấp",
+        "chi giờ đã xác nhận"
+      ],
+      "boundaries": [
+        "Nguyệt Tướng đổi theo Trung khí, không phải tiết khí đầu tháng",
+        "nguồn thời gian giờ chi",
+        "chưa xác minh các cách tính tiết khí"
+      ],
+      "subroutines": [
+        "thiên địa bàn",
+        "phục ngâm / phản ngâm ở mức cấu trúc",
+        "bảng Trung khí HKO 2025–2027",
+        "tứ khóa nghiên cứu",
+        "tam truyền độc khắc / bỉ dụng duy nhất"
+      ],
+      "pending": [
+        "các phép Tam Truyền còn lại thuộc Cửu Tông Môn",
+        "Thiệp Hại và ngoại lệ dị bản",
+        "ngày Can Chi tự xác minh theo lịch pháp",
+        "Thiên Tướng",
+        "ca đối chiếu bản in độc lập"
+      ],
+      "sources": [
+        "https://zh.wikisource.org/zh-hans/%E5%85%AD%E5%A3%AC%E6%8C%87%E5%8D%97/1",
+        "https://journals.openedition.org/extremeorient/282"
+      ],
+      "document": "docs/research/schools/dai-luc-nham-yuejiang.md"
+    },
+    {
+      "id": "thai-at-foundation",
+      "disciplineId": "thai-at",
+      "title": "Thái Ất — Nghiên cứu lập cục",
+      "status": "deterministic-subroutine-only",
+      "engineIntegration": "isolated-research-only",
+      "priority": "P1",
+      "method": "Tuế kế nghiên cứu theo 王希明《太乙金鏡式經》quyển I: tích niên mốc Khai Nguyên 12 (724), chu kỳ 360, 72, 24, mỗi cung 3 năm; tám cung bỏ trung 5.",
+      "inputs": [
+        "năm truyền thống đã xác định ranh giới",
+        "hồ sơ phương pháp taiyi-jinjing-annual-724",
+        "xác nhận ranh giới năm từ hệ lịch bên ngoài"
+      ],
+      "boundaries": [
+        "không tự đổi ngày dương lịch thành năm truyền thống",
+        "không chấp nhận năm BCE",
+        "không thay epoch",
+        "khác biệt cách an tướng và các phép nguyệt, nhật, thời"
+      ],
+      "subroutines": [
+        "tích niên và tuế kế tám cung (research-only)"
+      ],
+      "pending": [
+        "đối chiếu độc lập bảng 72 cục",
+        "chọn ranh giới năm từ tài liệu nguyên bản",
+        "Thiên Mục/Kế Thần/Chủ Khách",
+        "Nguyệt kế/Nhật kế/Thời kế",
+        "so sánh các dị bản tích niên"
+      ],
+      "sources": [
+        "https://zh.wikisource.org/zh/太乙金鏡式經_(四庫全書本)/卷01",
+        "https://ctext.org/wiki.pl?if=gb&res=264226"
+      ],
+      "document": "docs/research/schools/thai-at-foundation.md"
+    },
+    {
+      "id": "ha-lac-source-review",
+      "disciplineId": "ha-lac",
+      "title": "Hà Lạc — Đối chiếu phương pháp",
+      "status": "research-backlog",
+      "engineIntegration": "none",
+      "priority": "P2",
+      "method": "Nghiên cứu Hà Đồ Lạc Thư và phép định quẻ theo tài liệu.",
+      "inputs": [
+        "hệ tượng số",
+        "phép lập quẻ định danh"
+      ],
+      "boundaries": [
+        "không suy công thức Hà Lạc từ ma phương 3x3"
+      ],
+      "subroutines": [],
+      "pending": [
+        "phân tích văn bản gốc",
+        "bảng tra ca mẫu"
+      ],
+      "sources": [],
+      "document": "docs/research/schools/ha-lac-source-review.md"
+    },
+    {
+      "id": "bat-tu-nguyet-lenh",
+      "disciplineId": "bat-tu",
+      "title": "Bát Tự — Nguyệt Lệnh, Thập Thần, Tàng Can và bằng chứng Nhật Chủ",
+      "status": "deterministic-subroutine-only",
+      "engineIntegration": "isolated-research-only",
+      "priority": "P0",
+      "method": "Sổ bằng chứng Địa Chi tháng, khí chính/phụ, thấu can và căn Nhật Chủ; không tính điểm vượng nhược hoặc quyết định Dụng Thần.",
+      "inputs": [
+        "lá số nghiên cứu Jie 2025–2027 có đủ 4 trụ",
+        "Nhật Can",
+        "bảng Tàng Can v9.6",
+        "quy ước đổi ngày/giờ V11.93"
+      ],
+      "boundaries": [
+        "±60 giây quanh Jie: BLOCKED",
+        "bảng Tàng Can có dị bản về thứ tự phụ/dư khí",
+        "nhánh chưa hỗ trợ về hợp hội và biến cách"
+      ],
+      "subroutines": [
+        "10×10 Thập Thần theo bảng đang có",
+        "12×10 Tàng Can với vị trí thấu can",
+        "khí chính Nguyệt Lệnh và dấu hiệu căn/ấn/tỷ minh bạch"
+      ],
+      "pending": [
+        "định lượng khí mùa theo trường phái đã đối chứng",
+        "xét hợp hội và biến cách",
+        "giao thức độc lập xác định vượng suy",
+        "thẩm định dụng thần và cách cục"
+      ],
+      "sources": [
+        "https://www.donglishuzhai.net/chapter/3723.html",
+        "https://libokang.com/zh-hant/guji/bazi/%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE%E5%8E%9F%E6%96%87/"
+      ],
+      "document": "docs/research/schools/bat-tu-month-command.md"
+    },
+    {
+      "id": "bat-tu-bien-cach",
+      "disciplineId": "bat-tu",
+      "title": "Bát Tự — Thấu Can, Tam Hợp/Tam Hội và bằng chứng biến cách",
+      "status": "deterministic-subroutine-only",
+      "engineIntegration": "isolated-research-only",
+      "priority": "P0",
+      "method": "Theo Tử Bình Chân Thuyên, quan sát ứng viên nguyệt lệnh thấu can và đủ bộ ba chi; không tuyên bố hóa cục, thành cách/phá cách hay Dụng Thần.",
+      "inputs": [
+        "Lá số nghiên cứu V11.94 đã qua phép kiểm V11.95",
+        "Chi tháng xác nhận bằng Jie",
+        "Thứ tự tàng can V9.6 và 4 can chi"
+      ],
+      "boundaries": [
+        "Giờ sát Jie hoặc ngoài 2025–2027: BLOCKED",
+        "Tam Hợp/Tam Hội đủ chi không đủ điều kiện chứng nhận hóa khí",
+        "Xung/hợp, cứu ứng, hỗn tạp và dị bản cần chuyên gia khảo chứng"
+      ],
+      "subroutines": [
+        "Ứng viên thấu can khí tháng, không tính riêng Nhật Can",
+        "Phát hiện đủ Tam Hợp và Tam Hội bằng ba chi phân biệt",
+        "Vết quan hệ can hợp/xung, chi hợp/xung và xung đột",
+        "Giao thức điều kiện thành cách/phá cách: chưa quyết định"
+      ],
+      "pending": [
+        "Nguồn thư tịch nhiều truyền bản, đối chiếu bản in",
+        "Quy tắc ưu tiên cách khi đa khí thấu",
+        "Xác định hóa khí theo điều kiện tháng và hợp/xung",
+        "Bộ ví dụ thành/bại/cứu ứng có chuyên gia kiểm chứng",
+        "Thẩm định riêng Dụng Thần và vượng/nhược"
+      ],
+      "sources": [
+        "https://www.zhaosir.online/Books/BookChapterDetail.aspx?did=267",
+        "https://www.mingsage.com/zh/classics/zi-ping-zhen-quan/lun-yong-shen-bian-hua",
+        "https://www.aqioo.com/dlbzgjf/160014.html"
+      ],
+      "document": "docs/research/schools/bat-tu-bien-cach.md"
+    },
+    {
+      "id": "luc-hao-phuc-than",
+      "disciplineId": "luc-hao",
+      "title": "Lục Hào — Dụng Thần giả thiết và tra Phục Thần bản cung",
+      "status": "deterministic-subroutine-only",
+      "engineIntegration": "isolated-research-only",
+      "priority": "P0",
+      "method": "Theo Nạp Giáp Kinh Phòng/Bát Cung, khi Lục Thân đã chọn không hiện trong quẻ chủ, tra quẻ thuần bản cung, bảo toàn vị trí hào và ghi Phi–Phục Thần cùng quan hệ Nhật/Nguyệt chỉ khi đầu vào hợp lệ.",
+      "inputs": [
+        "Quẻ chủ có Nạp Giáp và Bát Cung hợp lệ, đủ sáu hào",
+        "Một Lục Thân được người học chọn, không tự đoán dụng thần",
+        "Can Chi ngày và Nguyệt kiến nếu có, kèm nguồn và quy ước nhập"
+      ],
+      "boundaries": [
+        "Có Lục Thân ở quẻ chủ thì không tạo Phục Thần",
+        "Bản cung có nhiều hào cùng Lục Thân thì giữ tất cả ứng viên",
+        "Nguyệt kiến gần giao tiết hoặc lấy giờ trưa xấp xỉ không được coi đã thẩm định",
+        "Các dấu hiệu sinh khắc, xung, không không tự xác định vượng suy/ứng kỳ/cát hung"
+      ],
+      "subroutines": [
+        "Tra hào cùng vị trí quẻ thuần bản cung",
+        "Sổ ứng viên Phi Thần/Phục Thần và quan hệ sinh khắc có hướng",
+        "Quan hệ Nhật–Nguyệt, Tuần Không có kiểm soát dữ liệu thủ công và lịch gần đúng"
+      ],
+      "pending": [
+        "Kiểm định dị bản an Phục Thần trong Hỏa Châu Lâm/Đoán Dịch Thiên Cơ/Thêm Bớt Bốc Dịch",
+        "Phép chọn Dụng Thần theo câu hỏi và khi nhiều ứng viên cùng Lục Thân",
+        "Chuẩn hóa nguyệt kiến bằng giao tiết thiên văn chính xác",
+        "Luật vượng suy, Nhật–Nguyệt sinh khắc, phát động, nguyệt phá, xuất phục, ứng kỳ",
+        "Bộ ca đối chiếu được chuyên gia độc lập thẩm định"
+      ],
+      "sources": [
+        "https://libokang.com/zh-hant/guji/liuyao/%E6%96%B7%E6%98%93%E5%A4%A9%E6%A9%9F/3/",
+        "https://www.wuxizhouyi.com/nd.jsp?id=611",
+        "https://www.yixiangqiankun.com/3724.htm"
+      ],
+      "document": "docs/research/schools/luc-hao-phuc-than.md"
+    },
+    {
+      "id": "luc-hao-dung-than-evidence",
+      "disciplineId": "luc-hao",
+      "title": "Lục Hào — Sổ bằng chứng câu hỏi, Nhật–Nguyệt, Tuần Không và Phi/Phục",
+      "status": "deterministic-subroutine-only",
+      "engineIntegration": "isolated-research-only",
+      "priority": "P0",
+      "method": "Theo Bốc Phệ Chính Tông và Thêm Bớt Bốc Dịch: chỉ gợi ý Lục Thân cho các phạm vi câu hỏi hẹp; khi người dùng xác nhận, ghi tín hiệu lục xung Nguyệt Phá, nhật xung, tuần không, động hào tự khai và Phi/Phục; không quyết định ứng kỳ/vượng suy/cát hung.",
+      "inputs": [
+        "Quẻ đã dựng bằng chuẩn Nạp Giáp Kinh Phòng; câu hỏi từ năm loại được khai báo hẹp",
+        "Lục Thân tham khảo do người nghiên cứu xác nhận",
+        "Can Chi ngày và Nguyệt Kiến thủ công có dấu nguồn, nếu có",
+        "Vị trí hào động nhập thủ công, không trùng"
+      ],
+      "boundaries": [
+        "Không ánh xạ tự động từ văn bản câu hỏi tự nhiên",
+        "Không coi tháng gần đúng là giao tiết thiên văn được xác nhận",
+        "Không kết luận nhật phá hoặc ám động chỉ từ nhật xung",
+        "Không suy xuất phục/vượng suy/tốt xấu/ứng kỳ từ một tín hiệu riêng"
+      ],
+      "subroutines": [
+        "Bảng tra năm phạm vi hỏi hẹp, đòi xác nhận Lục Thân",
+        "Bằng chứng lục xung theo Nhật/Nguyệt, Tuần Không và sinh khắc từng hào",
+        "Ghi dấu hào động do người học khai báo và Phi/Phục có hướng"
+      ],
+      "pending": [
+        "Đối chiếu các dị bản về lựa chọn Dụng Thần khi trùng Lục Thân",
+        "Thời điểm giao Jie và Can Chi ngày có quy ước thời gian học phái",
+        "Quy tắc đầy đủ xuất Phục Thần và tương tác động biến",
+        "Bộ lá số/ca hỏi từ các truyền bản và chuyên gia độc lập xác minh",
+        "Tích hợp production chỉ sau build/E2E"
+      ],
+      "sources": [
+        "https://www.quanxue.cn/qt_mingxiang/boshi/boshi26.html",
+        "https://zh.wikisource.org/zh-hans/增刪卜易/17",
+        "https://shuyuan.zhiming.life/read/增删卜易/16"
+      ],
+      "document": "docs/research/schools/luc-hao-dung-than-evidence.md"
+    },
+    {
+      "id": "luc-hao-multiple-jie-evidence",
+      "disciplineId": "luc-hao",
+      "title": "Lục Hào — Lưỡng Hiện/Phục Thần và đối chiếu Nguyệt Kiến theo 12 Jie",
+      "status": "deterministic-subroutine-only",
+      "engineIntegration": "isolated-research-only",
+      "priority": "P0",
+      "method": "Lập sổ xung đột tiêu chí Dụng Thần đa hiện theo 增刪卜易 và đối chiếu 12 Jie thời gian UTC bằng bảng thứ cấp 2025–2027: không quyết định chọn một hào, không suy xuất phục hoặc kết quả cát hung.",
+      "inputs": [
+        "Quẻ Nạp Giáp Kinh Phòng chính tắc và loại câu hỏi hẹp người nghiên cứu xác nhận",
+        "Hào động được người nghiên cứu khai báo; Can Chi ngày/tháng được nhập thủ công nếu có",
+        "ISO instant có múi giờ để so với bảng tham chiếu Jie 2025–2027 (không bắt buộc)"
+      ],
+      "boundaries": [
+        "Chỉ đối chiếu phút giao tiết trong phạm vi bảng thứ cấp; mọi mốc ±60 giây trả về cần xét lại",
+        "Nếu tháng thủ công khác tháng suy từ Jie tham chiếu: từ chối và không tự sửa dữ liệu",
+        "Không tự dựng Can Chi ngày từ UTC, không chứng nhận bảng thứ cấp như HKO chính thức",
+        "Có nhiều ứng viên thì giữ nguyên, trình bày các tín hiệu mâu thuẫn, không xếp thứ tự hay phán chọn",
+        "Phi/Phục có dấu nhưng chưa đủ điều kiện kết luận xuất phục, ứng kỳ hoặc cát hung"
+      ],
+      "subroutines": [
+        "Sổ Lưỡng Hiện đối chiếu động/tĩnh, tuần không, nguyệt phá, nhật xung",
+        "Sổ Phi–Phục với các dấu tình trạng Phi Thần theo đầu vào hợp lệ",
+        "12 Jie tham chiếu có guard ±60 giây, từ chối ngoài phạm vi, so khớp Nguyệt Kiến thủ công"
+      ],
+      "pending": [
+        "Đối chiếu từng phút Jie từ nguyên bản HKO hoặc ephemeris độc lập",
+        "Ví dụ và quy tắc ưu tiên Dụng Thần theo dị bản/đối tượng hỏi cụ thể",
+        "Quy tắc xuất phục và động biến có kiểm định thư tịch và chuyên gia",
+        "Build/E2E production, phiên bản hóa lịch pháp và kiểm định truyền bản"
+      ],
+      "sources": [
+        "https://www.shidianguji.com/book/XYXZSBY/chapter/1lzxsny7db6rt",
+        "https://ctext.org/wiki.pl?chapter=157683&if=en",
+        "https://www.hko.gov.hk/en/gts/astron2026/almanac2026_index.htm"
+      ],
+      "document": "docs/research/schools/luc-hao-multiple-jie-evidence.md"
+    }
+  ]
+}

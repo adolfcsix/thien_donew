@@ -1,0 +1,153 @@
+/* V11.164.18.3 — Thiên Môn identity and dimensional, light-weight navigation.
+ * CSS-only depth, no runtime library, no changes to navigation semantics.
+ * The approved concept boards are preserved in docs/design-references.
+ */
+.site {
+  --tm-metal: #e8c994;
+  --tm-character: #fff0ca;
+  --tm-shine: #ffefd1;
+  --tm-jade: #285d4e;
+  --tm-trace: #d6ae72;
+  --tm-disc: #10271f;
+  --tm-logo-bg: rgba(10, 35, 26, .66);
+  --tm-logo-border: rgba(224, 189, 127, .6);
+  --tm-nav-glint: rgba(243, 221, 166, .14);
+  --tm-nav-shadow: rgba(0, 9, 7, .38);
+}
+.site.light {
+  --tm-metal: #8b6633;
+  --tm-character: #163c2e;
+  --tm-shine: #fdf2db;
+  --tm-jade: #c7e0d0;
+  --tm-trace: #967044;
+  --tm-disc: #f8f5e8;
+  --tm-logo-bg: rgba(253, 250, 239, .64);
+  --tm-logo-border: rgba(105, 91, 61, .55);
+  --tm-nav-glint: rgba(255, 255, 255, .54);
+  --tm-nav-shadow: rgba(30, 64, 43, .13);
+}
+.thien-mon-mark { display:block;flex:none;max-width:100%;height:auto;overflow:visible; }
+.thien-mon-mark .tm-outer-orbit {transform-origin:50% 50%;}
+.site .brand {min-width:0;align-items:center;gap:10px;padding:0 4px 19px;margin-bottom:3px;text-decoration:none;}
+.site .brand-seal {
+  --tm-character: #f7e9bd;
+  width:64px;height:70px;flex:0 0 64px;
+  border:1px solid var(--tm-logo-border);border-radius:20px;
+  background:radial-gradient(circle at 50% 24%,rgba(220,180,98,.24),transparent 56%), var(--tm-logo-bg);
+  box-shadow:inset 0 1px rgba(255,250,231,.22),inset 0 -9px 19px rgba(4,27,19,.11),0 7px 19px var(--tm-nav-shadow);
+  transform:translateZ(0);
+}
+.site.light .brand-seal {--tm-character:#224b39;box-shadow:inset 0 1px rgba(255,255,255,.85),0 8px 18px var(--tm-nav-shadow);}
+.site .brand-seal .thien-mon-mark {width:55px;max-height:64px;filter:drop-shadow(0 0 5px rgba(232,196,120,.16));}
+.site .brand strong {font-size:16px;letter-spacing:.12em;line-height:1.3;color:var(--td-glass-heading);white-space:nowrap;}
+.site .brand small {color:var(--td-glass-muted)!important;letter-spacing:.1em;line-height:1.45;font-size:8px;}
+.site .brand:focus-visible {outline:2px solid var(--td-glass-heading);outline-offset:3px;border-radius:12px;}
+
+/* The entire photograph continues behind this floating pane on desktop. */
+@media (min-width: 971px) {
+  .site > #thiendo-sidebar {
+    top:10px;bottom:10px;left:9px;width:240px;height:auto;
+    border:1px solid var(--td-glass-edge);border-radius:23px;
+    padding:20px 11px 16px;
+    box-shadow:0 20px 54px var(--tm-nav-shadow),0 4px 14px var(--tm-nav-shadow),inset 0 1px var(--tm-nav-glint), inset -1px 0 var(--tm-nav-glint);
+  }
+  .site .app-area {margin-left:258px;}
+}
+/* Keep actual accessible navigation controls in front of the ornamental surface. */
+.site > #thiendo-sidebar {
+  background-image:
+    radial-gradient(circle at 12% 2%,rgba(242,219,158,.15),transparent 29%),
+    linear-gradient(165deg,rgba(255,255,255,.07),transparent 38%,rgba(0,10,8,.12)),
+    url('/theme/van-may-thien-do.svg');
+  background-size:cover,cover,320px 384px;
+  background-repeat:no-repeat,no-repeat,repeat;
+  -webkit-backdrop-filter:blur(19px) saturate(125%);
+  backdrop-filter:blur(19px) saturate(125%);
+}
+.site.light > #thiendo-sidebar {
+  background-image:
+    radial-gradient(circle at 12% 2%,rgba(255,255,255,.75),transparent 30%),
+    linear-gradient(170deg,rgba(255,255,255,.15),transparent 45%,rgba(28,72,48,.06)),
+    url('/theme/van-may-thien-do.svg');
+}
+/* Layered highlights create 2.5D glass surfaces without WebGL/expensive filters per item. */
+.site > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]) {
+  position:relative;isolation:isolate;
+  border:1px solid transparent;border-radius:14px;
+  background-clip:padding-box;
+  transform:translate3d(0,0,0);
+  transition:transform .24s cubic-bezier(.18,.7,.19,1),
+    background-color .23s ease, color .23s ease,
+    border-color .23s ease,box-shadow .26s ease;
+  box-shadow:inset 0 1px rgba(255,255,255,.025);
+}
+.site > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"])::before {
+  content:'';position:absolute;inset:0;border-radius:inherit;z-index:-1;
+  background:linear-gradient(119deg,var(--tm-nav-glint),transparent 52%);
+  opacity:0;pointer-events:none;transition:opacity .24s ease;
+}
+.site > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]):is(:hover,:focus-visible)::before,
+.site > #thiendo-sidebar .nav-item[aria-current="page"]::before,
+.site > #thiendo-sidebar .nav-item.active::before,
+.site > #thiendo-sidebar [class*="group"][data-active="true"] > [class*="groupTitle"] [class*="groupToggle"]::before {opacity:1;}
+.site > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]):is(:hover,:focus-visible) {
+  background-color:var(--td-glass-hover);color:var(--td-glass-heading);
+  border-color:var(--td-glass-edge);
+  box-shadow:inset 0 1px var(--tm-nav-glint),0 7px 14px var(--tm-nav-shadow),0 0 0 1px rgba(255,255,255,.02);
+}
+.site > #thiendo-sidebar :is(.nav-item.active,.nav-item[aria-current="page"]) {
+  background-color:var(--td-glass-active);
+  border-color:var(--td-glass-edge);
+  box-shadow:inset 0 1px var(--tm-nav-glint), inset 3px 0 0 var(--td-glass-heading),0 8px 18px var(--tm-nav-shadow);
+}
+.site > #thiendo-sidebar [class*="group"][data-active="true"] > [class*="groupTitle"] [class*="groupToggle"] {
+  background-color:var(--td-glass-active);color:var(--td-glass-heading);
+  border-color:var(--td-glass-edge);
+}
+.site > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]):focus-visible {
+  outline:2px solid var(--td-glass-heading);outline-offset:2px;
+}
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .site > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]):hover {
+    transform:perspective(640px) rotateX(2deg) translate3d(2px,-2px,5px);
+  }
+  .site .brand:hover .brand-seal {transform:translate3d(0,-2px,0);box-shadow:0 12px 27px var(--tm-nav-shadow),inset 0 1px var(--tm-nav-glint);}
+  .site .brand-seal {transition:transform .26s ease,box-shadow .26s ease;}
+}
+/* Dialog receives the same emblem rather than a poster-sized photograph. */
+.account-art-mark {--tm-jade:#397b63;--tm-disc:#13362b;--tm-metal:#e9d3a2;--tm-character:#fff4cf;--tm-trace:#cfb781;}
+.account-art-mark .thien-mon-mark {width:108px;filter:drop-shadow(0 4px 13px rgba(220,177,95,.22));}
+/* Home card hero is a compact brand emblem, not an oversized rotated paper stamp. */
+.site [data-home] [class*="artSeal"] {
+  width:min(65%,256px);aspect-ratio:1;display:flex;flex-direction:column;
+  justify-content:center;gap:0;
+  border-radius:28px;
+  padding:14px 9px;
+  background:radial-gradient(circle at 50% 20%,rgba(217,175,99,.17),transparent 70%),var(--tm-logo-bg);
+  border-color:var(--tm-logo-border);
+  box-shadow:0 17px 38px var(--tm-nav-shadow),inset 0 1px var(--tm-nav-glint);
+  transform:none;
+}
+.site [data-home] [class*="artSeal"] .thien-mon-mark {width:min(100%,172px);height:auto;}
+.site [data-home] [class*="artSeal"] small {color:var(--td-accent-text);font-size:9px;line-height:1.4;text-align:center;}
+/* Mobile drawer must remain flush and full-height for focus, dismissal and scrolling. */
+@media (max-width:970px) {
+  .site > #thiendo-sidebar {top:0;left:0;bottom:0;height:100dvh;border-radius:0 22px 22px 0;}
+  .site .brand {padding-right:38px;}
+  .site > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]) {transform:none;}
+}
+@media (max-width:700px) {
+  .account-art-mark {display:block;top:50%;left:auto;right:57px;transform:translateY(-50%);}
+  .account-art-mark .thien-mon-mark {width:50px;height:auto;}
+  .account-art-caption {padding-right:60px;}
+}
+@media (prefers-reduced-motion:reduce) {
+  .site > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"],.brand-seal),
+  .site > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"])::before {
+    transform:none!important;transition:none!important;animation:none!important;
+  }
+}
+@media (forced-colors:active) {
+  .site > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]) {border-color:ButtonBorder;box-shadow:none;}
+  .site > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]):focus-visible {outline:2px solid Highlight;}
+}

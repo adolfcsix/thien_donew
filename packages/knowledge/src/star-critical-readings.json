@@ -1,0 +1,471 @@
+{
+  "schemaVersion": "1.0.0",
+  "edition": "11.60.0",
+  "scope": "educational-counter-reading-no-placement",
+  "expertReviewed": false,
+  "notice": "66 ghi chú phản biện biên soạn riêng theo biểu tượng sao; giả định có điều kiện, không là phép an hay dự báo. Chưa thẩm định chuyên gia.",
+  "records": {
+    "Thiên Riêu": {
+      "distinction": "Phân biệt cảm giác hấp dẫn, chú ý với cách con người thực sự giữ ranh giới; tên sao không được dùng để suy diễn đời sống riêng tư.",
+      "caseStudy": "Giả định sao ở Nô Bộc: ghi nhận tình huống thu hút chú ý trong nhóm, rồi kiểm tra sự cộng tác qua chính tinh và cung Thiên Di.",
+      "counterExample": "Có sức hút xã hội nhưng quan hệ thiếu tin cậy không đủ để kết luận Thiên Riêu là nguyên nhân.",
+      "inquiry": "Cần thấy bằng chứng nào ngoài tên sao để phân biệt giao tiếp cuốn hút và lựa chọn quan hệ bền vững?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thiên Y": {
+      "distinction": "Biểu tượng chăm sóc khác với chẩn đoán bệnh, khỏi bệnh hay lời hứa phục hồi; nêu rõ giới hạn phi y học.",
+      "caseStudy": "Giả định tại Tật Ách: đặt câu hỏi về nguồn hỗ trợ, thói quen chăm sóc thay vì gán tình trạng sức khỏe.",
+      "counterExample": "Một người có nếp sống lành mạnh không chứng minh Thiên Y tạo ra sức khỏe tốt.",
+      "inquiry": "Nếu bỏ mọi phát biểu y khoa, còn có thể đặt câu hỏi gì về hệ hỗ trợ và chăm sóc?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Tam Thai": {
+      "distinction": "Bước đệm trong tổ chức khác với bảo đảm có địa vị; nhấn mạnh các tầng chuẩn bị và trình tự công việc.",
+      "caseStudy": "Giả định ở Quan Lộc: xem liệu công việc có bước học việc, phối hợp và bàn giao rõ ràng hay không.",
+      "counterExample": "Sự thăng chức khi thiếu quy trình chuẩn bị không phải là bằng chứng rằng sao tự sinh ra địa vị.",
+      "inquiry": "Trong ví dụ công việc nào sự chuẩn bị có ý nghĩa hơn chức danh đạt được?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Bát Tọa": {
+      "distinction": "Điểm tựa và chỗ đứng biểu tượng khác với quyền thế hoặc sự bất biến; xem cách một nền tảng được duy trì.",
+      "caseStudy": "Giả định ở Điền Trạch: khảo sát điểm tựa của nếp sống trong gia đình, không dự đoán tài sản.",
+      "counterExample": "Có nơi ở ổn định nhưng gia đình thiếu đồng thuận không thể dùng một sao để giải thích toàn bộ.",
+      "inquiry": "Phân biệt sự ổn định về vật chất với cảm giác an cư bằng những điều kiện nào?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thái Tuế": {
+      "distinction": "Nhịp mở đầu về tiếng nói và vị thế trong tập thể khác với sao lưu Thái Tuế của năm đang xét.",
+      "caseStudy": "Nếu ở Mệnh: đối chiếu khả năng tự trình bày quan điểm với vị trí của Tuế Phá ở nhịp thứ bảy.",
+      "counterExample": "Một tranh luận nhất thời không cho phép kết luận cả cuộc đời thường vướng tranh chấp.",
+      "inquiry": "Vì sao không thể lấy một nhịp vòng năm sinh thay cho hạn năm hiện tại?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thiếu Dương": {
+      "distinction": "Cơ hội nhìn thấy vấn đề không đồng nghĩa cơ hội chắc chắn thành công; nhấn mạnh quan sát trước hành động.",
+      "caseStudy": "Nếu ở Quan Lộc: đánh giá chất lượng thử nghiệm ý tưởng và đối chiếu nhịp Thiếu Âm để xét mặt kín đáo.",
+      "counterExample": "Một quyết định nóng vội gây thất bại không phải do thiếu hay có Thiếu Dương.",
+      "inquiry": "Dấu hiệu nào trong tình huống giúp phân biệt sáng kiến thử nghiệm và ảo tưởng chắc thắng?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Tang Môn": {
+      "distinction": "Chủ đề khép lại một kỳ vọng không được đồng nhất với tang chế, mất người hay dự báo bi kịch.",
+      "caseStudy": "Nếu ở Phúc Đức: đọc như lời nhắc xem gia đình xử lý thay đổi giá trị và ký ức chung ra sao.",
+      "counterExample": "Sự kiện buồn từng xảy ra không biến tên Tang Môn thành bằng chứng dự báo tử vong.",
+      "inquiry": "Có thể phân tích sự chuyển đổi thế hệ mà không gán một tai họa định trước như thế nào?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thiếu Âm": {
+      "distinction": "Chú ý điều kín đáo và rà soát nội tâm khác với tiêu cực hoặc yếu thế; xem chất lượng lắng nghe.",
+      "caseStudy": "Nếu ở Phu Thê: khảo sát cách đôi bên tự kiểm tra kỳ vọng thay vì đoán bí mật trong quan hệ.",
+      "counterExample": "Việc im lặng trong giao tiếp không đồng nghĩa người đó thiếu thiện chí.",
+      "inquiry": "Cần thêm quan sát nào để phân biệt bình tĩnh suy xét và né tránh đối thoại?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Quan Phù": {
+      "distinction": "Quy chuẩn và đối chiếu trách nhiệm khác với khẳng định kiện tụng; chú ý tên gần giống Quan Phủ của vòng khác.",
+      "caseStudy": "Nếu ở Quan Lộc: thử phân tích quy trình giấy tờ, ranh giới trách nhiệm và khả năng xử lý bất đồng.",
+      "counterExample": "Một vụ kiện thực tế không xác nhận Quan Phù có khả năng dự báo pháp lý.",
+      "inquiry": "Làm sao tránh trộn Quan Phù của Vòng Thái Tuế với Quan Phủ của Vòng Bác Sĩ?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Tử Phù": {
+      "distinction": "Cam kết và chi phí cơ hội khác với mất mát tất yếu; xem điều kiện ràng buộc một lời hứa.",
+      "caseStudy": "Nếu ở Tài Bạch: khảo sát cách các cam kết chi tiêu hạn chế lựa chọn, không đoán số tiền.",
+      "counterExample": "Một thỏa thuận bị hủy không đủ cho kết luận toàn bộ sao thuộc loại hung.",
+      "inquiry": "Những điều khoản nào trong tình huống giả định cần làm rõ trước khi nói đến chi phí cơ hội?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Tuế Phá": {
+      "distinction": "Góc nhìn đối lập là động lực phản biện, không phải bằng chứng bị phá hoại; đọc cùng Thái Tuế ở thế đối.",
+      "caseStudy": "Nếu ở Thiên Di: xem người đối diện phản hồi quan điểm cá nhân tại Mệnh thế nào.",
+      "counterExample": "Có phản đối từ bên ngoài không có nghĩa bản thân bị định sẵn bất lợi.",
+      "inquiry": "Khi nào phản biện giúp sửa sai và khi nào trở thành xung đột không có dữ liệu đối chứng?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Long Đức": {
+      "distinction": "Thiện chí và gắn kết cộng đồng khác với may mắn vô điều kiện; cần xem hành động hỗ trợ cụ thể.",
+      "caseStudy": "Nếu ở Nô Bộc: hỏi nguồn lực nào được chia sẻ thật, và sự tương trợ diễn ra ra sao.",
+      "counterExample": "Danh tiếng tốt không đủ chứng minh cá nhân luôn nhận được giúp đỡ.",
+      "inquiry": "Có thể kiểm tra thiện chí qua trách nhiệm và kết quả hợp tác mà không cần dự báo không?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Bạch Hổ": {
+      "distinction": "Độ mạnh và phản ứng tự vệ là hình tượng, không phải dấu hiệu bệnh, tai nạn hay hung bạo.",
+      "caseStudy": "Nếu ở Mệnh: đặt câu hỏi về cách quản lý sức ép và giới hạn hành động quyết liệt.",
+      "counterExample": "Một va chạm thực tế không chứng minh sao này đã tiên báo sự cố.",
+      "inquiry": "Mô tả sự kiên quyết thế nào để không biến biểu tượng thành phán xét nhân cách?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Phúc Đức": {
+      "distinction": "Nhịp mang tên Phúc Đức trong Vòng Thái Tuế phải tách biệt cung Phúc Đức của 12 cung chức.",
+      "caseStudy": "Nếu sao ở cung Tài Bạch: nghiên cứu cách các giá trị dài hạn ảnh hưởng quyết định nguồn lực.",
+      "counterExample": "Chữ Phúc Đức trùng tên cung không có nghĩa mọi lá số an sao ấy tại cung Phúc Đức.",
+      "inquiry": "Khi tìm kiếm, người đọc phân biệt tên sao, tên cung và vị trí địa chi bằng cách nào?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Điếu Khách": {
+      "distinction": "Đối thoại và giao tế khác với suy diễn đám tang hay khách viếng từ tên chữ cổ.",
+      "caseStudy": "Nếu ở Thiên Di: khảo sát cách tiếp nhận người lạ và chi phí thời gian trong trao đổi công việc.",
+      "counterExample": "Một cuộc gặp không suôn sẻ không đủ để nói bản chất quan hệ xã hội xấu.",
+      "inquiry": "Những quy tắc lắng nghe nào giúp cuộc trò chuyện có ích thay vì chỉ tăng tần suất gặp gỡ?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Trực Phù": {
+      "distinction": "Khép nhịp của Vòng Thái Tuế bằng chủ đề nhất quán, không phải công thức tự động xác định đúng sai.",
+      "caseStudy": "Nếu ở Quan Lộc: so sánh trách nhiệm được hứa với công việc đã giao, rồi xét nhịp Thái Tuế kế tiếp.",
+      "counterExample": "Một bản cam kết bị phá không cho biết vị trí sao tạo ra tính cách cố định.",
+      "inquiry": "Tiêu chí nào giúp kiểm tra sự nhất quán giữa nguyên tắc và hành động?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Bác Sĩ": {
+      "distinction": "Tên sao trong Vòng Bác Sĩ nói về hình tượng học và ghi nhận, không chứng minh năng lực hành nghề y.",
+      "caseStudy": "Nếu ở Mệnh: đặt câu hỏi về việc một người học phương pháp, ghi chú và kiểm tra lại kết quả.",
+      "counterExample": "Một người làm bác sĩ không phải bằng chứng sao Bác Sĩ quyết định nghề nghiệp.",
+      "inquiry": "Làm sao nghiên cứu thái độ học hỏi mà không suy diễn bằng cấp?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Lực Sĩ": {
+      "distinction": "Sức bền nỗ lực không có nghĩa luôn khỏe mạnh hay luôn thành công; cần phân biệt lao lực với tiến bộ.",
+      "caseStudy": "Nếu ở Quan Lộc: khảo sát khả năng duy trì công việc có chu kỳ nghỉ ngơi và phân quyền hợp lý.",
+      "counterExample": "Làm việc quá sức gây kiệt sức không chứng minh đây là sao báo thể lực.",
+      "inquiry": "Khi nào sự kiên trì trở thành thiếu linh hoạt trong một dự án?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thanh Long": {
+      "distinction": "Khởi sắc trong nghi thức tương tác khác với vận may chắc chắn; đọc theo nhịp của Bác Sĩ.",
+      "caseStudy": "Nếu ở Nô Bộc: xét sự thuận lợi trong thủ tục giới thiệu và cách kết nối nhóm.",
+      "counterExample": "Một cuộc gặp vui vẻ không khẳng định tất cả quan hệ sau đó suôn sẻ.",
+      "inquiry": "Cần phân biệt cơ hội mới với lợi ích thực sự được kiểm tra như thế nào?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Tiểu Hao": {
+      "distinction": "Tổn hao nhỏ mang tính so sánh tương đối, không được biến thành một khoản mất tiền cụ thể.",
+      "caseStudy": "Nếu ở Tài Bạch: xét các khoản chi lặp lại, đối chiếu Đại Hao ở nhịp thứ mười cùng vòng.",
+      "counterExample": "Một hóa đơn nhỏ không phải tín hiệu định mệnh hay chứng thực của sao.",
+      "inquiry": "Trong nghiên cứu giả định, khoản chi nào thực sự nhỏ khi xét tỷ lệ tổng ngân sách?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Tướng Quân": {
+      "distinction": "Vai trò dẫn dắt khác với quyền lực áp đặt; cần xét sự phân công và trách nhiệm đi kèm.",
+      "caseStudy": "Nếu ở Quan Lộc: so sánh khả năng quyết định và trách nhiệm giải trình trong một nhóm.",
+      "counterExample": "Có chức vụ quản lý không tự động có uy tín hay năng lực hợp tác.",
+      "inquiry": "Một thủ lĩnh đáng tin phải có điều kiện nào ngoài quyền ra lệnh?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Tấu Thư": {
+      "distinction": "Văn bản và diễn đạt có tổ chức khác với khẳng định có học vị hoặc đỗ đạt.",
+      "caseStudy": "Nếu ở Phụ Mẫu: nghiên cứu cách quy ước gia đình được truyền đạt, ghi nhận và sửa khi sai.",
+      "counterExample": "Một kết quả thi cử không đủ để chứng nhận sao gây ra trí tuệ hay thành tích.",
+      "inquiry": "Thế nào là truyền đạt đầy đủ thông tin mà không biến biểu tượng thành dự báo thi cử?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Phi Liêm": {
+      "distinction": "Tốc độ truyền tin khác với vội vã và sai sót; cần quan sát sự cân bằng giữa nhanh và chính xác.",
+      "caseStudy": "Nếu ở Thiên Di: xem cách phản hồi thông tin từ môi trường mới và việc xác minh nguồn.",
+      "counterExample": "Một tin giả lan nhanh không đủ cho kết luận sao liên quan luôn bất lợi.",
+      "inquiry": "Trong tình huống nào nên giảm tốc độ giao tiếp để tăng độ tin cậy?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Hỷ Thần": {
+      "distinction": "Cảm xúc vui và kết nối khác với chắc chắn có hỷ sự, cưới hỏi hoặc tin tốt.",
+      "caseStudy": "Nếu ở Phu Thê: hỏi việc thể hiện niềm vui giúp đối thoại thế nào, không đoán thời điểm cưới.",
+      "counterExample": "Một đám cưới xảy ra không chứng minh sao báo kết hôn.",
+      "inquiry": "Cần kiểm tra tính bền vững của quan hệ ngoài những khoảnh khắc vui bằng gì?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Bệnh Phù": {
+      "distinction": "Biểu tượng giảm tải không được coi là chẩn đoán bệnh; điều cần đọc là quản lý nguồn lực.",
+      "caseStudy": "Nếu ở Tật Ách: khảo sát thói quen phân bổ sức lực, tránh mọi kết luận y khoa từ sao.",
+      "counterExample": "Bị ốm là sự kiện thực tế không thể chứng minh hiệu lực dự báo của Bệnh Phù.",
+      "inquiry": "Biện pháp nào giúp nghiên cứu chủ đề nghỉ ngơi mà không đưa lời khuyên khám chữa bệnh?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Đại Hao": {
+      "distinction": "Đại và Tiểu Hao mô tả hai kiểu cân nhắc hao tổn, không tự gán số tiền hay phá sản.",
+      "caseStudy": "Nếu ở Điền Trạch: giả định thay đổi quy mô nơi ở, phân tích chi phí một lần và khả năng cân đối.",
+      "counterExample": "Một khoản đầu tư lớn có lợi nhuận không phải bằng chứng Đại Hao hoàn toàn cát hoặc hung.",
+      "inquiry": "Khi nào chi phí lớn là đầu tư có kế hoạch chứ không phải mất mát?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Phục Binh": {
+      "distinction": "Thông tin chưa rõ và tính cảnh giác khác với quy kết có người phản bội hoặc âm mưu.",
+      "caseStudy": "Nếu ở Nô Bộc: phân tích chất lượng minh bạch trong hợp tác và quy trình xác nhận thỏa thuận.",
+      "counterExample": "Một lần bị lừa không chứng minh rằng mọi mối quan hệ sau này đều có rủi ro.",
+      "inquiry": "Cần dữ liệu hành vi nào trước khi đánh giá độ tin cậy của cộng tác viên?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Quan Phủ": {
+      "distinction": "Quy trình xử lý trách nhiệm trong vòng Bác Sĩ khác với Quan Phù ở vòng Thái Tuế.",
+      "caseStudy": "Nếu ở Quan Lộc: phân biệt cơ chế kiểm tra, phân quyền và xử lý khi sai quy trình.",
+      "counterExample": "Một tranh chấp công việc không tự nhiên chứng minh sao là hung tinh.",
+      "inquiry": "Nếu hai vòng cùng có tên gần giống, giao diện phải hiện thuộc vòng nào trước khi luận?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Tràng Sinh": {
+      "distinction": "Nhịp hình thành khác với dự báo sinh nở, tuổi thọ hay mốc thời gian của một con người.",
+      "caseStudy": "Nếu ở Mệnh: khảo sát cách một kế hoạch được khởi tạo, phân biệt khởi sự và triển khai.",
+      "counterExample": "Một dự án mới ra đời không chứng minh năm nào đời người sẽ có sự kiện.",
+      "inquiry": "Để gọi là khởi tạo, cần quan sát những điều kiện sơ khởi nào?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Mộc Dục": {
+      "distinction": "Giai đoạn hoàn thiện bề mặt và quy trình khác với suy đoán nhục dục hay tính nết.",
+      "caseStudy": "Nếu ở Điền Trạch: xét việc sửa đổi không gian, điều chỉnh nề nếp sinh hoạt một cách thực tế.",
+      "counterExample": "Một thay đổi về phong cách không đồng nghĩa có biến cố hôn nhân.",
+      "inquiry": "Việc chỉnh sửa hình thức khác gì thay đổi cấu trúc nền tảng?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Quan Đới": {
+      "distinction": "Hình thành quy cách và vai trò khác với chứng nhận có danh phận xã hội.",
+      "caseStudy": "Nếu ở Quan Lộc: so sánh trang bị kỹ năng với việc được giao trách nhiệm chính thức.",
+      "counterExample": "Một giấy bổ nhiệm không xác nhận vị trí sao sinh ra chức vụ.",
+      "inquiry": "Làm sao phân biệt nghi thức nhận vai trò và năng lực thực hiện vai trò?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Lâm Quan": {
+      "distinction": "Đảm nhiệm công việc ổn định khác với chắc chắn thành công hay giàu có.",
+      "caseStudy": "Nếu ở Tài Bạch: xét khả năng tự quản lý một nguồn lực và sức bền của quy trình.",
+      "counterExample": "Sự thất bại trong một dự án không phủ nhận hoặc chứng minh ý nghĩa biểu tượng của nhịp.",
+      "inquiry": "Điều gì cho thấy một quá trình đã đủ nguồn lực để vận hành thường xuyên?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Đế Vượng": {
+      "distinction": "Cường độ cao của một chu trình không đồng nghĩa đỉnh đời hay tuổi thọ; cần nhìn nhịp hạ nhiệt tiếp sau.",
+      "caseStudy": "Nếu ở Mệnh: khảo sát khi năng lực đang tập trung mạnh và nhu cầu phân bổ trách nhiệm.",
+      "counterExample": "Một thành tích cá nhân không chứng minh sự nghiệp đã đạt cực đỉnh.",
+      "inquiry": "Điều gì giúp duy trì thành quả sau một giai đoạn hoạt động mạnh?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Suy": {
+      "distinction": "Nhịp hạ cường độ khác với kết luận suy sụp con người; có thể là lúc tối ưu nguồn lực.",
+      "caseStudy": "Nếu ở Quan Lộc: giả định giảm việc cũ để nhường thời gian tái đào tạo và chuyển giao.",
+      "counterExample": "Việc thất nghiệp xảy ra không đủ để gọi Sao Suy là nguyên nhân.",
+      "inquiry": "Khi nào giảm tải là một quyết định có kế hoạch thay vì mất khả năng?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Bệnh": {
+      "distinction": "Tên nhịp Bệnh không dùng chẩn đoán sức khỏe; phân tích tải của hệ thống và nhu cầu bảo trì.",
+      "caseStudy": "Nếu ở Tật Ách: chỉ đặt câu hỏi về nếp nghỉ ngơi và khả năng phục hồi sau lao động.",
+      "counterExample": "Người khỏe mạnh có sao Bệnh không tạo mâu thuẫn cần giải thích bằng tai họa tương lai.",
+      "inquiry": "Làm thế nào trình bày rõ Bệnh là tên pha trong vòng chứ không phải hồ sơ y tế?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Tử": {
+      "distinction": "Nhịp kết thúc chu kỳ là biểu tượng chuyển giai đoạn, tuyệt đối không được dự báo tử vong.",
+      "caseStudy": "Nếu ở Phúc Đức: xem việc kết thúc một phong tục và lựa chọn giữ những giá trị còn phù hợp.",
+      "counterExample": "Sự mất mát trong đời sống không thể được quy cho tên nhịp Tử.",
+      "inquiry": "Các dấu hiệu nào phân biệt kết thúc một dự án với kết thúc đời người?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Mộ": {
+      "distinction": "Tích tụ và lưu trữ khác với đoán nơi chôn cất hoặc chuyện hậu sự.",
+      "caseStudy": "Nếu ở Điền Trạch: khảo sát khả năng lưu trữ giấy tờ, thói quen quản lý tài sản và ký ức gia đình.",
+      "counterExample": "Có tài sản tích lũy không chứng minh sao Mộ là nguồn của của cải.",
+      "inquiry": "Một nền tảng được bảo toàn có thể trở thành ràng buộc khi nào?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Tuyệt": {
+      "distinction": "Gián đoạn và tái cấu trúc không phải lời tiên đoán tuyệt tự hay biến cố lớn.",
+      "caseStudy": "Nếu ở Quan Lộc: giả định phải dừng công cụ cũ trước khi thiết lập quy trình mới.",
+      "counterExample": "Một thất bại không đủ để kết luận chu kỳ đã bế tắc hoàn toàn.",
+      "inquiry": "Dữ liệu nào giúp phân biệt tạm dừng, kết thúc và thay đổi phương pháp?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thai": {
+      "distinction": "Mầm ý tưởng và điều kiện nuôi dưỡng khác với dự báo mang thai hoặc con cái.",
+      "caseStudy": "Nếu ở Tử Tức: bàn về kỳ vọng nuôi dưỡng và môi trường phát triển của trẻ, không dự báo sinh nở.",
+      "counterExample": "Một sự kiện sinh con không chứng thực khả năng dự báo của sao tên Thai.",
+      "inquiry": "Ý tưởng nào cần thêm nguồn lực trước khi coi là đã sẵn sàng?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Dưỡng": {
+      "distinction": "Nuôi dưỡng và tích lũy điều kiện chưa phải giai đoạn thu hoạch hay dự báo nuôi con.",
+      "caseStudy": "Nếu ở Phúc Đức: xét cách bồi đắp thói quen cộng đồng qua những đóng góp nhỏ.",
+      "counterExample": "Một gia đình được giúp đỡ không chứng minh sao Dưỡng chủ mọi điều tốt.",
+      "inquiry": "Giải thích khác biệt giữa duy trì điều kiện và đạt kết quả như thế nào?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Long Trì": {
+      "distinction": "Nề nếp và nghi thức khác với quyền uy; cân nhắc vai trò giữ chuẩn mực trong một tập thể.",
+      "caseStudy": "Nếu ở Phụ Mẫu: nghiên cứu quy tắc sinh hoạt được truyền qua thế hệ và khả năng thay đổi chúng.",
+      "counterExample": "Gia đình có lễ nghi không chứng minh sao bảo đảm hòa thuận.",
+      "inquiry": "Khi nào tuân thủ nghi thức giúp gắn kết, khi nào gây cứng nhắc?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Phượng Các": {
+      "distinction": "Thẩm mỹ và cách trình bày khác với khả năng nghệ thuật bẩm sinh; cần nhận diện quá trình rèn luyện.",
+      "caseStudy": "Nếu ở Quan Lộc: quan sát cách sản phẩm được trình bày với người dùng và tiêu chuẩn thiết kế.",
+      "counterExample": "Một nghệ sĩ nổi tiếng không phải xác nhận rằng sao tạo năng khiếu.",
+      "inquiry": "Đánh giá phẩm chất thẩm mỹ qua phản hồi và luyện tập thay vì tên sao được không?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Giải Thần": {
+      "distinction": "Điều hòa và gỡ vướng chỉ mang ý nghĩa gợi hỏi, không hứa hóa giải mọi sát tinh hay mọi biến cố.",
+      "caseStudy": "Nếu ở Nô Bộc: xét cơ chế hòa giải một bất đồng bằng thông tin được xác minh.",
+      "counterExample": "Một xung đột tự kết thúc không chứng minh sao đã hóa giải.",
+      "inquiry": "Những điều kiện nào khiến một giải pháp thực sự hiệu quả thay vì chỉ dễ chịu?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thiên Quan": {
+      "distinction": "Trách nhiệm giúp đỡ khác với đặc quyền siêu nhiên hoặc chắc chắn được quan chức nâng đỡ.",
+      "caseStudy": "Nếu ở Quan Lộc: khảo sát hành vi giữ nguyên tắc và hỗ trợ người khác trong tổ chức.",
+      "counterExample": "Được cấp trên khen không chứng minh Thiên Quan quyết định công danh.",
+      "inquiry": "Phân biệt sự công nhận sau hành động và lời hứa may mắn bằng cách nào?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thiên Phúc": {
+      "distinction": "Tình thương và việc tạo điều kiện khác với phúc lộc vô điều kiện hay khẳng định nghiệp báo.",
+      "caseStudy": "Nếu ở Phúc Đức: xem các hình thức hỗ trợ cộng đồng và sự tương hỗ dài hạn.",
+      "counterExample": "Một gia đình gặp may không đủ xác nhận mô hình nhân quả từ sao.",
+      "inquiry": "Thế nào là một hành vi giúp đỡ có trách nhiệm và có thể quan sát?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Ân Quang": {
+      "distinction": "Sự tri ân và ghi nhận khác với giả định luôn được biết ơn hay đền đáp.",
+      "caseStudy": "Nếu ở Nô Bộc: nghiên cứu cách nhóm ghi nhận đóng góp thầm lặng và phản hồi.",
+      "counterExample": "Bị quên công lao không thể suy ra sao mất tác dụng hoặc báo xấu.",
+      "inquiry": "Cần cách thức nào để ghi nhận đóng góp công bằng, không phụ thuộc quan hệ cá nhân?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thiên Quý": {
+      "distinction": "Trân trọng giá trị người khác khác với đoán gặp quý nhân cụ thể hoặc thăng tiến.",
+      "caseStudy": "Nếu ở Phụ Mẫu: quan sát phương pháp khuyến khích và đánh giá nỗ lực giữa các thế hệ.",
+      "counterExample": "Có người giúp đỡ không chứng minh sao tạo ra mối quan hệ đó.",
+      "inquiry": "Làm sao phân biệt sự nâng đỡ bền vững với một lời khen ngắn hạn?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thái Phụ": {
+      "distinction": "Nghi thức và diễn đạt vai trò khác với xác nhận có chức vụ; nghiên cứu việc thể hiện trách nhiệm.",
+      "caseStudy": "Nếu ở Quan Lộc: xét thói quen bàn giao, trình bày trước tập thể và việc giữ lời.",
+      "counterExample": "Một quyết định bổ nhiệm không đủ xác nhận hiệu lực tiên đoán của sao.",
+      "inquiry": "Chức danh và năng lực giải thích công việc khác nhau ở đâu?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Phong Cáo": {
+      "distinction": "Quy cách công bố khác với chắc chắn nhận bằng khen; chú ý tính minh bạch khi phổ biến thông tin.",
+      "caseStudy": "Nếu ở Quan Lộc: xem kết quả công việc được thông báo, lưu trữ và đối chiếu thế nào.",
+      "counterExample": "Một giấy khen không có nghĩa tất cả nỗ lực được đánh giá công bằng.",
+      "inquiry": "Cần điều kiện gì để sự công nhận chính thức đi kèm chứng cứ thật?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Quốc Ấn": {
+      "distinction": "Hình tượng tín nhiệm và đại diện tập thể khác với chức quyền nhà nước hay khả năng lãnh đạo mặc định.",
+      "caseStudy": "Nếu ở Thiên Di: nghiên cứu việc một người đại diện nhóm khi làm việc với bên ngoài.",
+      "counterExample": "Một cá nhân giữ chức vụ không xác thực sao quyết định quyền lực.",
+      "inquiry": "Những cơ chế nào giúp kiểm soát quyền đại diện để tránh lạm dụng?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Kiếp Sát": {
+      "distinction": "Trở lực và phản ứng trước biến động không được biến thành dự báo tai nạn, bạo lực, mất của.",
+      "caseStudy": "Nếu ở Thiên Di: phân tích kế hoạch dự phòng cho một chuyến đi mà không gắn sự cố định trước.",
+      "counterExample": "Một rủi ro xảy ra không chứng minh vị trí sao đã cảnh báo đúng.",
+      "inquiry": "Phân biệt phòng ngừa rủi ro hợp lý với nỗi sợ do tên sao gây ra thế nào?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Phá Toái": {
+      "distinction": "Vướng mắc nhỏ và sửa chữa khác với phá sản hoặc đổ vỡ không thể cứu.",
+      "caseStudy": "Nếu ở Điền Trạch: xét chi phí bảo trì lặt vặt và cách xử lý lỗi lặp lại.",
+      "counterExample": "Một sự cố đồ đạc không phải bằng chứng sao báo hỏng nhà.",
+      "inquiry": "Những lỗi nhỏ nào cần quy trình bảo trì chứ không phải nhận định vận xấu?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thiên Đức": {
+      "distinction": "Sự điều tiết và khả năng hòa giải khác với may mắn tự đến; tách chủ đề đạo đức khỏi luận nhân quả.",
+      "caseStudy": "Nếu ở Phu Thê: khảo sát hai bên chủ động nhường nhịn nhưng vẫn giữ ranh giới.",
+      "counterExample": "Một lần được tha thứ không chứng minh sao quyết định nhân cách tốt.",
+      "inquiry": "Thỏa hiệp ở mức nào giúp giải quyết khác biệt mà không làm mất quyền tự quyết?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Nguyệt Đức": {
+      "distinction": "Khoan hòa và chấp nhận khác biệt không đồng nghĩa bỏ qua xung đột hay trách nhiệm.",
+      "caseStudy": "Nếu ở Phụ Mẫu: xem cách gia đình nhận lỗi, xin lỗi và cải thiện giao tiếp.",
+      "counterExample": "Một mối quan hệ được hàn gắn không chứng minh sao là nguyên nhân duy nhất.",
+      "inquiry": "Làm sao phân biệt tha thứ trưởng thành và né tránh vấn đề chưa xử lý?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thiên Giải": {
+      "distinction": "Giải pháp nhấn mạnh thay đổi phương án khác với bảo đảm mọi vấn đề tự biến mất.",
+      "caseStudy": "Nếu ở Quan Lộc: giả định quy trình gặp tắc nghẽn, liệt kê các lựa chọn cải tiến và điều kiện thử.",
+      "counterExample": "Một lần thoát rắc rối không xác thực lời hứa hóa giải mọi sát tinh.",
+      "inquiry": "Làm sao kiểm tra một phương án thực sự tháo nút thắt thay vì chỉ đổi tên vấn đề?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Địa Giải": {
+      "distinction": "Tháo gỡ theo điều kiện môi trường khác với lời hứa luôn bình an; xác định nguồn lực hữu hình.",
+      "caseStudy": "Nếu ở Điền Trạch: xem việc sửa bố trí nhà ở giảm bớt trở ngại sinh hoạt nào.",
+      "counterExample": "Đổi nhà rồi thấy thoải mái không tự chứng minh vị trí sao tạo ra kết quả.",
+      "inquiry": "Khi nào việc ổn định môi trường tạo điều kiện cho một thay đổi bền vững?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thiên La": {
+      "distinction": "Dấu hình tượng tại Thìn trong hệ thống hiện dùng, không suy rộng thành mạng lưới ràng buộc ở mọi cung.",
+      "caseStudy": "Nếu cung chức tại Thìn: đối chiếu cụ thể nguồn nghĩa vụ, giới hạn thực tế trước khi dùng chữ bị trói.",
+      "counterExample": "Cảm giác bế tắc không phải bằng chứng rằng Thiên La gây ra hoàn cảnh.",
+      "inquiry": "Vị trí Thìn và chủ đề cung chức cần được tách thành hai thông tin nào?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Địa Võng": {
+      "distinction": "Dấu hình tượng tại Tuất của engine, không tự suy từ tên Địa Võng ra vận hạn hoặc cản trở.",
+      "caseStudy": "Nếu cung chức tại Tuất: nghiên cứu những quy tắc, hợp đồng có thể tạo cảm giác gò bó.",
+      "counterExample": "Một nghĩa vụ phức tạp không đủ để nói người đó không thể tự chủ.",
+      "inquiry": "Khác biệt giữa quy định bảo vệ tập thể và ràng buộc quá mức là gì?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thiên Thương": {
+      "distinction": "Nằm tại Nô Bộc theo quy ước engine hiện tại; không gán đau thương thể xác hay tổn thương cụ thể.",
+      "caseStudy": "Nếu ở Nô Bộc: thảo luận những khoảng cách giao tiếp và nguyên tắc hỗ trợ giữa bạn bè.",
+      "counterExample": "Mất lòng tin vào một người không phải do tên sao quyết định.",
+      "inquiry": "Làm sao xét chất lượng quan hệ qua hành vi mà không gán tội lỗi cho người khác?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thiên Sứ": {
+      "distinction": "An ở Tật Ách theo quy ước engine hiện tại; tên sao không dùng kết luận bệnh tật hay tử vong.",
+      "caseStudy": "Nếu ở Tật Ách: chỉ mở câu hỏi về giới hạn và cách ứng phó trong hoàn cảnh căng thẳng.",
+      "counterExample": "Một lần đi khám bệnh không phải bằng chứng cho mệnh đề siêu nhiên.",
+      "inquiry": "Phân biệt chỉ dẫn chăm sóc an toàn với suy luận y khoa từ sao như thế nào?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thiên Tài": {
+      "distinction": "Khả năng học hỏi khác với chỉ số thông minh hoặc lời khẳng định thiên tài; xét điều kiện rèn luyện.",
+      "caseStudy": "Nếu ở Quan Lộc: quan sát cách một kỹ năng được hình thành qua dự án và nhận xét của đồng nghiệp.",
+      "counterExample": "Có thành tích xuất sắc không chứng thực sao đã quyết định năng khiếu.",
+      "inquiry": "Dữ liệu nào về quá trình thực hành thuyết phục hơn danh xưng tài giỏi?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thiên Thọ": {
+      "distinction": "Bền bỉ trong nếp sống khác với số năm sống, tuổi thọ hoặc bảo đảm an toàn.",
+      "caseStudy": "Nếu ở Phúc Đức: nghiên cứu cách các truyền thống được duy trì và thay đổi phù hợp.",
+      "counterExample": "Sống lâu không phải bằng chứng sao dự đoán được tuổi thọ.",
+      "inquiry": "Một tập quán được gìn giữ nên cập nhật thế nào để không thành gánh nặng?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Đường Phù": {
+      "distinction": "Tổ chức thủ tục khác với chức vị hoặc quyết định pháp lý; nghiên cứu sự minh bạch quy trình.",
+      "caseStudy": "Nếu ở Quan Lộc: xem quy định bàn giao, phê duyệt và kiểm soát sai sót trong công việc.",
+      "counterExample": "Có giấy phép không đồng nghĩa tổ chức đang hoạt động đúng chuẩn.",
+      "inquiry": "Một bộ thủ tục tốt phải có phần kiểm soát và phản hồi nào?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Thiên Trù": {
+      "distinction": "Nuôi dưỡng và hưởng dụng nguồn lực không tự xác định giàu nghèo hay thói quen ăn uống.",
+      "caseStudy": "Nếu ở Điền Trạch: bàn về phân bổ nguồn lực cho sinh hoạt, tính bền vững và chia sẻ.",
+      "counterExample": "Một bữa tiệc đầy đủ không chứng minh sao mang tài lộc.",
+      "inquiry": "Phân biệt tận hưởng hợp lý với lãng phí dựa trên nhu cầu và kế hoạch thế nào?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Lưu Hà": {
+      "distinction": "Dòng chảy và truyền đạt khác với dự báo tai nạn đường thủy; tên chữ không tạo dữ kiện sự cố.",
+      "caseStudy": "Nếu ở Thiên Di: đánh giá việc trao đổi thông tin khi môi trường di chuyển thay đổi.",
+      "counterExample": "Một chuyến đi đường nước gặp sự cố không xác nhận sao tiên đoán tai nạn.",
+      "inquiry": "Thông tin nào cần xác minh trước khi kết luận cách giao tiếp đã thích nghi tốt?",
+      "reviewStatus": "editorial-unreviewed"
+    },
+    "Đẩu Quân": {
+      "distinction": "Nhịp điều tiết được an theo hệ năm-tháng-giờ nhưng không đồng nghĩa mọi biến đổi là vận tháng đã được kiểm chứng.",
+      "caseStudy": "Nếu ở Quan Lộc: dùng nhịp lịch biểu làm câu hỏi về chu kỳ công việc, không tự gán vận hạn.",
+      "counterExample": "Một tháng bận rộn không chứng minh phép đoán lưu nguyệt từ sao.",
+      "inquiry": "Cần phân biệt vị trí sao bản mệnh với tầng lưu nguyệt chưa được xác minh như thế nào?",
+      "reviewStatus": "editorial-unreviewed"
+    }
+  }
+}

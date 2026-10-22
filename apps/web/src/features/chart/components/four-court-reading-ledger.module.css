@@ -1,0 +1,15 @@
+/* V11.58: scoped styles; the frozen historical CSS baseline remains unchanged. */
+.ledger{grid-column:1/-1}
+.ledger>header{margin-bottom:14px}
+.summary{display:flex;gap:10px;flex-wrap:wrap;margin:13px 0}
+.summary>span{display:flex;align-items:baseline;gap:7px;border:1px solid var(--line);background:var(--panel);padding:9px 13px;font-size:12px;color:var(--muted)}
+.summary b{color:var(--gold);font-size:19px}
+.courts{margin:0 0 16px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.courts>li{padding:13px;background:var(--panel);border:1px solid var(--line);min-width:0}
+.courts strong{display:block;margin:4px 0 9px;font-size:15px}
+.courts p{font-size:12px!important;line-height:1.65!important;overflow-wrap:anywhere;margin:5px 0}
+.courts p b{color:var(--gold)}
+.relation{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.questions{border-top:1px solid var(--line)}
+@media(max-width:1100px){.courts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.courts{grid-template-columns:1fr}.summary>span{flex:1 1 120px}}

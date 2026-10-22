@@ -1,0 +1,103 @@
+name: Verify committed lockfile and full-stack
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  generate-lockfile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: https://registry.npmjs.org
+      - name: Read-only workspace and release metadata checks before registry access
+        run: npm run audit:workspaces && npm run audit:release-metadata
+      - name: Verify committed lockfile without rewriting it
+        run: node infrastructure/scripts/validate-lockfile.mjs
+      - name: Prove reproducible installation with fresh npm ci
+        run: npm ci --no-audit --no-fund
+      - name: Run source integrity and full regression using installed TypeScript parser
+        run: npm run check:release:source
+      - name: Upload verified committed lockfile for audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: thien-do-verified-npm-lockfile
+          path: package-lock.json
+          if-no-files-found: error
+          retention-days: 7
+
+  fullstack-using-bootstrap-lockfile:
+    needs: generate-lockfile
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: thiendo
+          POSTGRES_PASSWORD: thiendo_dev
+          POSTGRES_DB: thiendo_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U thiendo -d thiendo_test"
+          --health-interval 5s --health-timeout 5s --health-retries 15
+    env:
+      DATABASE_URL: postgresql://thiendo:thiendo_dev@localhost:5432/thiendo_test
+      WEB_ORIGIN: http://127.0.0.1:3000
+      COOKIE_SECURE: 'false'
+      API_PORT: '8080'
+      API_HOST: 127.0.0.1
+      E2E_LOCAL_DB_CONFIRM: 'YES'
+      NEXT_BASE_URL: http://127.0.0.1:3000
+      API_BASE_URL: http://127.0.0.1:3000
+      API_INTERNAL_URL: http://127.0.0.1:8080
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          name: thien-do-verified-npm-lockfile
+          path: .
+      - name: Verify committed lockfile artifact
+        run: node infrastructure/scripts/validate-lockfile.mjs
+      - name: Install exact resolved graph
+        run: npm ci --no-audit --no-fund
+      - name: Source checks and regression
+        run: npm run check:release:source
+      - name: Typecheck and real Next/Nest build
+        run: npm run typecheck && npm run build
+      - name: Verify disposable database is empty BEFORE any migration
+        run: npm run check:e2e-pre-migrate
+      - name: Migrate PostgreSQL twice
+        run: npm run db:migrate && npm run db:migrate
+      - name: Prove disposable DB identity and empty tables
+        run: npm run check:e2e-target && npm run check:e2e-db
+      - name: Live first-party Next/Nest/PostgreSQL HTTP E2E
+        run: bash infrastructure/scripts/run-ci-http.sh
+      # Generated ONLY after npm ci, source regression, typecheck, Next/Nest build,
+      # disposable PostgreSQL checks and live first-party HTTP E2E have passed.
+      - name: Write commit-bound test-only build receipt
+        run: |
+          mkdir -p docs/reports
+          node infrastructure/scripts/build-proof.mjs --write docs/reports/fullstack-proof.json
+      - name: Upload completed fullstack proof (NOT a production certificate)
+        uses: actions/upload-artifact@v4
+        with:
+          name: thien-do-fullstack-proof
+          path: docs/reports/fullstack-proof.json
+          if-no-files-found: error
+          retention-days: 7
+      - name: Upload build/test server logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: thien-do-bootstrap-server-logs
+          path: |
+            ${{ runner.temp }}/thiendo-ci-logs.*/*.log
+          if-no-files-found: ignore
+          retention-days: 7

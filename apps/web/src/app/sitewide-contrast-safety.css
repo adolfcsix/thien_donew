@@ -1,0 +1,14 @@
+/* Site-wide readability layer. Loaded after legacy styles. No route logic or content changes. */
+.site { --td-readable-text: #f3ebdb; --td-readable-muted: #d2ddd2; --td-readable-link: #f2d6a4; color-scheme: dark; }
+.site.light { --td-readable-text: #21372d; --td-readable-muted: #43594c; --td-readable-link: #704a1c; color-scheme: light; }
+/* Restrict overrides to the shared chrome: specialist chart/star semantic colors stay intact. */
+.site :is(.sidebar,.topbar,.bottom-nav) { color: var(--td-readable-text); }
+.site :is(.sidebar,.topbar,.bottom-nav) :is(a,button) { color: inherit; }
+.site :is(.sidebar,.topbar,.bottom-nav) :is(a,button):focus-visible,
+.site :is(input,select,textarea,button,a):focus-visible { outline: 3px solid var(--td-readable-link); outline-offset: 3px; }
+.site :is(input,textarea,select) { color: var(--td-readable-text); }
+.site.light :is(input,textarea,select) { color: var(--td-readable-text); }
+.site :is(input,textarea)::placeholder { color: var(--td-readable-muted); opacity: 1; }
+/* Keep the image layer from lowering contrast during crossfades. */
+.site :is(.sidebar,.topbar) { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+@media (prefers-reduced-motion: reduce) { .site, .site *, .site *::before, .site *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }

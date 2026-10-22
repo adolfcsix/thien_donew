@@ -1,0 +1,105 @@
+{
+  "workflow": "Built-in image generation; WebP encoding with ffmpeg at quality 82, width 1536",
+  "assets": [
+    {
+      "id": "astrology",
+      "mode": "dark",
+      "scene": "An immense classical astronomical observatory open to the sky, a magnificent finely engraved brass armillary sphere to the right, delicate orbit arcs and constellations, marble balustrades, distant celestial horizon.",
+      "palette": "midnight navy, indigo, cool silver, soft brass starlight",
+      "usage": "Decorative artwork, not a calculation diagram",
+      "tool": "Built-in image generation",
+      "file": "apps/web/public/theme/western/astrology-dark.webp",
+      "prompt": "Use case: stylized-concept. Asset type: premium website decorative panoramic background, landscape 1536x1024 or wide. An immense classical astronomical observatory open to the sky, a magnificent finely engraved brass armillary sphere to the right, delicate orbit arcs and constellations, marble balustrades, distant celestial horizon. Lighting and palette: midnight navy, indigo, cool silver, soft brass starlight. Detailed painterly architectural 3D illustration with exquisite physical materials, depth and atmosphere; editorial restraint, high quality. Landscape wide framing, quiet left half with broad negative space for live webpage title; main scene concentrated on the right and outer edges, softly receding detail in center. This is a single background artwork, not a website screenshot or mockup. No UI, no borders or frame, no logos, no Chinese gate, no typography, no legible writing, no watermark, no people. Clearly dark night version, rich darkness with controlled warm light."
+    },
+    {
+      "id": "astrology",
+      "mode": "light",
+      "scene": "An immense classical astronomical observatory open to the sky, a magnificent finely engraved brass armillary sphere to the right, delicate orbit arcs and constellations, marble balustrades, distant celestial horizon.",
+      "palette": "pale powder blue, pearl marble, champagne brass, luminous azure sky",
+      "usage": "Decorative artwork, not a calculation diagram",
+      "tool": "Built-in image generation",
+      "file": "apps/web/public/theme/western/astrology-light.webp",
+      "prompt": "Use case: stylized-concept. Asset type: premium website decorative panoramic background, landscape 1536x1024 or wide. An immense classical astronomical observatory open to the sky, a magnificent finely engraved brass armillary sphere to the right, delicate orbit arcs and constellations, marble balustrades, distant celestial horizon. Lighting and palette: pale powder blue, pearl marble, champagne brass, luminous azure sky. Detailed painterly architectural 3D illustration with exquisite physical materials, depth and atmosphere; editorial restraint, high quality. Landscape wide framing, quiet left half with broad negative space for live webpage title; main scene concentrated on the right and outer edges, softly receding detail in center. This is a single background artwork, not a website screenshot or mockup. No UI, no borders or frame, no logos, no Chinese gate, no typography, no legible writing, no watermark, no people. Clearly bright daylight version, airy and luminous."
+    },
+    {
+      "id": "tarot",
+      "mode": "dark",
+      "scene": "A luxurious European symbolic reading salon, three blank engraved tarot card backs fanned on an antique desk to the right, subtle sun and moon emblems on the card backs, flowing velvet, a moonlit arched window, delicate brass celestial detailing, no identifiable existing deck art.",
+      "palette": "aubergine, plum velvet, muted rose gold, candlelit deep violet",
+      "usage": "Decorative artwork, not a calculation diagram",
+      "tool": "Built-in image generation",
+      "file": "apps/web/public/theme/western/tarot-dark.webp",
+      "prompt": "Use case: stylized-concept. Asset type: premium website decorative panoramic background, landscape 1536x1024 or wide. A luxurious European symbolic reading salon, three blank engraved tarot card backs fanned on an antique desk to the right, subtle sun and moon emblems on the card backs, flowing velvet, a moonlit arched window, delicate brass celestial detailing, no identifiable existing deck art. Lighting and palette: aubergine, plum velvet, muted rose gold, candlelit deep violet. Detailed painterly architectural 3D illustration with exquisite physical materials, depth and atmosphere; editorial restraint, high quality. Landscape wide framing, quiet left half with broad negative space for live webpage title; main scene concentrated on the right and outer edges, softly receding detail in center. This is a single background artwork, not a website screenshot or mockup. No UI, no borders or frame, no logos, no Chinese gate, no typography, no legible writing, no watermark, no people. Clearly dark night version, rich darkness with controlled warm light."
+    },
+    {
+      "id": "tarot",
+      "mode": "light",
+      "scene": "A luxurious European symbolic reading salon, three blank engraved tarot card backs fanned on an antique desk to the right, subtle sun and moon emblems on the card backs, flowing velvet, a moonlit arched window, delicate brass celestial detailing, no identifiable existing deck art.",
+      "palette": "peach ivory, blush silk, warm copper, airy rose dawn",
+      "usage": "Decorative artwork, not a calculation diagram",
+      "tool": "Built-in image generation",
+      "file": "apps/web/public/theme/western/tarot-light.webp",
+      "prompt": "Use case: stylized-concept. Asset type: premium website decorative panoramic background, landscape 1536x1024 or wide. A luxurious European symbolic reading salon, three blank engraved tarot card backs fanned on an antique desk to the right, subtle sun and moon emblems on the card backs, flowing velvet, a moonlit arched window, delicate brass celestial detailing, no identifiable existing deck art. Lighting and palette: peach ivory, blush silk, warm copper, airy rose dawn. Detailed painterly architectural 3D illustration with exquisite physical materials, depth and atmosphere; editorial restraint, high quality. Landscape wide framing, quiet left half with broad negative space for live webpage title; main scene concentrated on the right and outer edges, softly receding detail in center. This is a single background artwork, not a website screenshot or mockup. No UI, no borders or frame, no logos, no Chinese gate, no typography, no legible writing, no watermark, no people. Clearly bright daylight version, airy and luminous."
+    },
+    {
+      "id": "numerology",
+      "mode": "dark",
+      "scene": "A refined Pythagorean geometric sanctuary, sculptural golden ratio spirals, brass intersecting circles and small ivory geometric solids arranged to the right on floating travertine terraces, repeating elegant architectural arches fading into the horizon, sophisticated mathematical harmony, no numbers or text.",
+      "palette": "deep teal and petrol blue, bronze, softly luminous geometric edges",
+      "usage": "Decorative artwork, not a calculation diagram",
+      "tool": "Built-in image generation",
+      "file": "apps/web/public/theme/western/numerology-dark.webp",
+      "prompt": "Use case: stylized-concept. Asset type: premium website decorative panoramic background, landscape 1536x1024 or wide. A refined Pythagorean geometric sanctuary, sculptural golden ratio spirals, brass intersecting circles and small ivory geometric solids arranged to the right on floating travertine terraces, repeating elegant architectural arches fading into the horizon, sophisticated mathematical harmony, no numbers or text. Lighting and palette: deep teal and petrol blue, bronze, softly luminous geometric edges. Detailed painterly architectural 3D illustration with exquisite physical materials, depth and atmosphere; editorial restraint, high quality. Landscape wide framing, quiet left half with broad negative space for live webpage title; main scene concentrated on the right and outer edges, softly receding detail in center. This is a single background artwork, not a website screenshot or mockup. No UI, no borders or frame, no logos, no Chinese gate, no typography, no legible writing, no watermark, no people. Clearly dark night version, rich darkness with controlled warm light."
+    },
+    {
+      "id": "numerology",
+      "mode": "light",
+      "scene": "A refined Pythagorean geometric sanctuary, sculptural golden ratio spirals, brass intersecting circles and small ivory geometric solids arranged to the right on floating travertine terraces, repeating elegant architectural arches fading into the horizon, sophisticated mathematical harmony, no numbers or text.",
+      "palette": "ivory limestone, pale turquoise, brushed champagne gold, sunlit",
+      "usage": "Decorative artwork, not a calculation diagram",
+      "tool": "Built-in image generation",
+      "file": "apps/web/public/theme/western/numerology-light.webp",
+      "prompt": "Use case: stylized-concept. Asset type: premium website decorative panoramic background, landscape 1536x1024 or wide. A refined Pythagorean geometric sanctuary, sculptural golden ratio spirals, brass intersecting circles and small ivory geometric solids arranged to the right on floating travertine terraces, repeating elegant architectural arches fading into the horizon, sophisticated mathematical harmony, no numbers or text. Lighting and palette: ivory limestone, pale turquoise, brushed champagne gold, sunlit. Detailed painterly architectural 3D illustration with exquisite physical materials, depth and atmosphere; editorial restraint, high quality. Landscape wide framing, quiet left half with broad negative space for live webpage title; main scene concentrated on the right and outer edges, softly receding detail in center. This is a single background artwork, not a website screenshot or mockup. No UI, no borders or frame, no logos, no Chinese gate, no typography, no legible writing, no watermark, no people. Clearly bright daylight version, airy and luminous."
+    },
+    {
+      "id": "symbols",
+      "mode": "dark",
+      "scene": "A contemplative Hermetic symbolic garden, a fine branching gold sculpture of ten softly glowing spheres arranged as an artistic tree motif to the right, subtle arches and reflecting water, antique geometric manuscript textures without legible marks, botanical shadows, respectful visual abstraction not a claimed diagram.",
+      "palette": "blackened emerald, antique gold, deep olive, soft amber glow",
+      "usage": "Decorative artwork, not a calculation diagram",
+      "tool": "Built-in image generation",
+      "file": "apps/web/public/theme/western/symbols-dark.webp",
+      "prompt": "Use case: stylized-concept. Asset type: premium website decorative panoramic background, landscape 1536x1024 or wide. A contemplative Hermetic symbolic garden, a fine branching gold sculpture of ten softly glowing spheres arranged as an artistic tree motif to the right, subtle arches and reflecting water, antique geometric manuscript textures without legible marks, botanical shadows, respectful visual abstraction not a claimed diagram. Lighting and palette: blackened emerald, antique gold, deep olive, soft amber glow. Detailed painterly architectural 3D illustration with exquisite physical materials, depth and atmosphere; editorial restraint, high quality. Landscape wide framing, quiet left half with broad negative space for live webpage title; main scene concentrated on the right and outer edges, softly receding detail in center. This is a single background artwork, not a website screenshot or mockup. No UI, no borders or frame, no logos, no Chinese gate, no typography, no legible writing, no watermark, no people. Clearly dark night version, rich darkness with controlled warm light."
+    },
+    {
+      "id": "symbols",
+      "mode": "light",
+      "scene": "A contemplative Hermetic symbolic garden, a fine branching gold sculpture of ten softly glowing spheres arranged as an artistic tree motif to the right, subtle arches and reflecting water, antique geometric manuscript textures without legible marks, botanical shadows, respectful visual abstraction not a claimed diagram.",
+      "palette": "warm alabaster, sage mist, pale olive, antique brass, daylight",
+      "usage": "Decorative artwork, not a calculation diagram",
+      "tool": "Built-in image generation",
+      "file": "apps/web/public/theme/western/symbols-light.webp",
+      "prompt": "Use case: stylized-concept. Asset type: premium website decorative panoramic background, landscape 1536x1024 or wide. A contemplative Hermetic symbolic garden, a fine branching gold sculpture of ten softly glowing spheres arranged as an artistic tree motif to the right, subtle arches and reflecting water, antique geometric manuscript textures without legible marks, botanical shadows, respectful visual abstraction not a claimed diagram. Lighting and palette: warm alabaster, sage mist, pale olive, antique brass, daylight. Detailed painterly architectural 3D illustration with exquisite physical materials, depth and atmosphere; editorial restraint, high quality. Landscape wide framing, quiet left half with broad negative space for live webpage title; main scene concentrated on the right and outer edges, softly receding detail in center. This is a single background artwork, not a website screenshot or mockup. No UI, no borders or frame, no logos, no Chinese gate, no typography, no legible writing, no watermark, no people. Clearly bright daylight version, airy and luminous."
+    },
+    {
+      "id": "research",
+      "mode": "dark",
+      "scene": "A grand modern neoclassical research library, graceful terraced shelves without readable book titles, celestial globes and an open blank folio on an elegant desk to the right, brass scientific instruments and subtle fine cartographic arcs, distant skylight and calm disciplined atmosphere.",
+      "palette": "graphite slate, steel blue, warm brushed brass, quiet night lamplight",
+      "usage": "Decorative artwork, not a calculation diagram",
+      "tool": "Built-in image generation",
+      "file": "apps/web/public/theme/western/research-dark.webp",
+      "prompt": "Use case: stylized-concept. Asset type: premium website decorative panoramic background, landscape 1536x1024 or wide. A grand modern neoclassical research library, graceful terraced shelves without readable book titles, celestial globes and an open blank folio on an elegant desk to the right, brass scientific instruments and subtle fine cartographic arcs, distant skylight and calm disciplined atmosphere. Lighting and palette: graphite slate, steel blue, warm brushed brass, quiet night lamplight. Detailed painterly architectural 3D illustration with exquisite physical materials, depth and atmosphere; editorial restraint, high quality. Landscape wide framing, quiet left half with broad negative space for live webpage title; main scene concentrated on the right and outer edges, softly receding detail in center. This is a single background artwork, not a website screenshot or mockup. No UI, no borders or frame, no logos, no Chinese gate, no typography, no legible writing, no watermark, no people. Clearly dark night version, rich darkness with controlled warm light."
+    },
+    {
+      "id": "research",
+      "mode": "light",
+      "scene": "A grand modern neoclassical research library, graceful terraced shelves without readable book titles, celestial globes and an open blank folio on an elegant desk to the right, brass scientific instruments and subtle fine cartographic arcs, distant skylight and calm disciplined atmosphere.",
+      "palette": "warm porcelain, muted terracotta, pale stone, soft skylight",
+      "usage": "Decorative artwork, not a calculation diagram",
+      "tool": "Built-in image generation",
+      "file": "apps/web/public/theme/western/research-light.webp",
+      "prompt": "Use case: stylized-concept. Asset type: premium website decorative panoramic background, landscape 1536x1024 or wide. A grand modern neoclassical research library, graceful terraced shelves without readable book titles, celestial globes and an open blank folio on an elegant desk to the right, brass scientific instruments and subtle fine cartographic arcs, distant skylight and calm disciplined atmosphere. Lighting and palette: warm porcelain, muted terracotta, pale stone, soft skylight. Detailed painterly architectural 3D illustration with exquisite physical materials, depth and atmosphere; editorial restraint, high quality. Landscape wide framing, quiet left half with broad negative space for live webpage title; main scene concentrated on the right and outer edges, softly receding detail in center. This is a single background artwork, not a website screenshot or mockup. No UI, no borders or frame, no logos, no Chinese gate, no typography, no legible writing, no watermark, no people. Clearly bright daylight version, airy and luminous."
+    }
+  ]
+}

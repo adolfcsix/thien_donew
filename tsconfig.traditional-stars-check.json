@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target":"ES2022", "lib":["ES2022","DOM"], "module":"ESNext",
+    "moduleResolution":"Bundler", "strict":true, "skipLibCheck":true,
+    "esModuleInterop":true, "noEmit":true, "baseUrl":".",
+    "paths":{"@thiendo/shared-types":["packages/shared-types/index.d.ts"]}
+  },
+  "files":["tests/types/v1113-traditional-contract.ts"]
+}

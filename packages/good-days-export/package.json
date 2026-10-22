@@ -1,0 +1,7 @@
+{
+  "name": "@thiendo/good-days-export",
+  "version": "9.4.0",
+  "private": true,
+  "main": "src/index.js",
+  "types": "src/index.d.ts"
+}

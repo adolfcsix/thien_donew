@@ -1,0 +1,390 @@
+/* THIÊN ĐỒ V11.164.18.2 — SITE-WIDE VISUAL CONTRACT
+ * All routes share the same photograph/theme state and navigation material.
+ * Immersive, reading and dense screens use different protective veils; never
+ * alter the calculation panels, star colors, grid geometry or route logic.
+ * Original photography is bundled in /public/theme (no remote network calls).
+ */
+.site,
+.site[data-visual-space] {
+  position: relative;
+  isolation: isolate;
+  /* Text/surface contrast is calculated against the tinted surface, not photo. */
+  --td-glass-base: rgba(12, 30, 24, .80);
+  --td-glass-edge: rgba(225, 197, 147, .34);
+  --td-glass-heading: #f3d9a9;
+  --td-glass-nav: #f3f0e5;
+  --td-glass-muted: #c9d6ca;
+  --td-glass-active: rgba(224, 188, 124, .23);
+  --td-glass-hover: rgba(226, 190, 128, .14);
+  --td-glass-shadow: 0 14px 36px rgba(0, 15, 10, .17), inset 1px 0 rgba(255, 255, 255, .10);
+  --td-art-veil: rgba(13, 31, 25, .24);
+  --td-reading-surface: rgba(18, 35, 28, .94);
+  --td-reading-soft: rgba(23, 41, 33, .91);
+  --td-reading-border: rgba(216, 187, 137, .29);
+  --td-divider: rgba(232, 207, 161, .28);
+  --td-accent-text: #efd09a;
+  --td-positive: #b6dec9;
+  --td-negative: #ffb8aa;
+  --td-link: #ebca96;
+  --td-sticky-text: #f2eee1;
+  --faint: #b9c9bc;
+  --td-animation-duration: 960ms;
+  color: var(--text);
+  /* The fallback also covers any route before the photographs decode. */
+  background: #14261e;
+}
+.site.light,
+.site[data-visual-space].light {
+  --gold: #765124; /* 6.79:1 on ivory; gold text was previously too pale */
+  --faint: #4e6257;
+  --td-glass-base: rgba(248, 250, 241, .80);
+  --td-glass-edge: rgba(70, 104, 78, .33);
+  --td-glass-heading: #315b45;
+  --td-glass-nav: #20392e;
+  --td-glass-muted: #405347;
+  --td-glass-active: rgba(50, 101, 67, .15);
+  --td-glass-hover: rgba(57, 108, 78, .10);
+  --td-glass-shadow: 0 12px 30px rgba(28, 58, 38, .09), inset 1px 0 rgba(255,255,255,.74);
+  --td-art-veil: rgba(243, 245, 234, .22);
+  --td-reading-surface: rgba(255, 252, 245, .96);
+  --td-reading-soft: rgba(250, 249, 240, .94);
+  --td-reading-border: rgba(64, 92, 69, .26);
+  --td-divider: rgba(54, 87, 64, .27);
+  --td-accent-text: #765124;
+  --td-positive: #205f42;
+  --td-negative: #9c352a;
+  --td-link: #745025;
+  --td-sticky-text: #223e30;
+  background: #eef1e8;
+}
+
+/* Global, not study-route-only: the art extends BEHIND sidebar and all pages.
+ * One dark image, one light image; crossfade by opacity on GPU-composited layers.
+ * Fixed pseudo-elements are inert and cannot intercept focus, touch or clicks.
+ */
+.site::before, .site::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: cover, cover, cover;
+  transform-origin: 62% 43%;
+}
+.site::before {
+  background-image:
+    linear-gradient(180deg, rgba(11, 30, 23, .30), rgba(12, 31, 26, .43) 56%, rgba(9, 22, 18, .82)),
+    radial-gradient(ellipse at 65% 38%, transparent 10%, rgba(5, 21, 16, .32) 88%),
+    url('/theme/thap-nhi-dia-chi.jpeg');
+  background-position: center, center, 61% 46%;
+  opacity: 1;
+  transform: scale(1);
+}
+.site::after {
+  background-image:
+    linear-gradient(180deg, rgba(244, 247, 234, .19), rgba(241, 246, 232, .42) 55%, rgba(239, 242, 229, .84)),
+    radial-gradient(ellipse at 62% 35%, transparent 12%, rgba(217, 232, 212, .32) 88%),
+    url('/theme/cuon-thu-ngoc.jpeg');
+  background-position: center, center, 57% 44%;
+  opacity: 0;
+  transform: scale(1.035);
+}
+.site.light::before { transform: scale(1.025); }
+.site.light::after { opacity: 1; transform: scale(1); }
+@media (prefers-reduced-motion: no-preference) {
+  .site[data-theme-ready="true"]::before,
+  .site[data-theme-ready="true"]::after {
+    transition: opacity var(--td-animation-duration) cubic-bezier(.25,.68,.22,1),
+      transform 1100ms cubic-bezier(.2,.72,.27,1);
+  }
+}
+.site > .app-area { position: relative; z-index: 1; background: transparent; }
+.site > .app-area .main-content { position: relative; }
+/* Old study-column background is superseded everywhere: prevent double images. */
+.site[data-visual-space] .main-content::before { opacity: 0; }
+
+/* Route-sensitive visual protection (a continuous universe, not identical cards).
+ * Dense: full-safe overlay for 12-palace board, forms, finance and data displays.
+ * Reading: strong surface for long-form, community, libraries, policies.
+ * Immersive: the artwork breathes, protected by the cards themselves.
+ */
+.site[data-visual-density="dense"] .main-content {
+  background: linear-gradient(180deg, rgba(14,30,23,.76), rgba(17,33,26,.87) 62%, rgba(16,30,24,.93));
+  box-shadow: 0 0 0 1px rgba(229,203,157,.09), 0 20px 52px rgba(0,10,7,.08);
+}
+.site.light[data-visual-density="dense"] .main-content {
+  background: linear-gradient(180deg, rgba(249,249,239,.88), rgba(247,246,237,.94) 60%, rgba(249,248,241,.96));
+  box-shadow: 0 0 0 1px rgba(64,91,62,.08), 0 20px 52px rgba(24,48,29,.06);
+}
+.site[data-visual-density="reading"] .main-content {
+  background: linear-gradient(180deg, rgba(15,32,25,.64), rgba(14,29,24,.82) 66%, rgba(15,30,24,.92));
+}
+.site.light[data-visual-density="reading"] .main-content {
+  background: linear-gradient(180deg, rgba(248,249,239,.74), rgba(248,248,239,.86) 64%, rgba(249,248,241,.94));
+}
+/* A page may use its own full-bleed artwork; its established layout remains. */
+.site[data-visual-density="immersive"] .main-content { background-color: transparent; }
+
+/* Sidebar and topbar are one translucent material, with very subtle cloud etch. */
+.site > #thiendo-sidebar,
+.site[data-visual-space] > #thiendo-sidebar {
+  background-color: var(--td-glass-base);
+  background-image: url('/theme/van-may-thien-do.svg');
+  background-size: 320px 384px;
+  background-repeat: repeat;
+  border-right: 1px solid var(--td-glass-edge);
+  box-shadow: var(--td-glass-shadow);
+  color: var(--td-glass-nav);
+  -webkit-backdrop-filter: blur(16px) saturate(125%);
+  backdrop-filter: blur(16px) saturate(125%);
+}
+.site .topbar,
+.site[data-visual-space] .topbar {
+  background: var(--td-glass-base) url('/theme/van-may-thien-do.svg') repeat 0 0 / 320px 384px;
+  border-bottom: 1px solid var(--td-glass-edge);
+  box-shadow: 0 4px 18px rgba(5,22,16,.07);
+  -webkit-backdrop-filter: blur(16px) saturate(125%);
+  backdrop-filter: blur(16px) saturate(125%);
+  color: var(--td-glass-nav);
+}
+.site > #thiendo-sidebar :is(.brand,.nav-heading,.nav-item),
+.site[data-visual-space] > #thiendo-sidebar :is(.brand,.nav-heading,.nav-item) {
+  color: var(--td-glass-nav);
+}
+.site > #thiendo-sidebar :is(.nav-heading,[class*="sectionHeading"]),
+.site[data-visual-space] > #thiendo-sidebar :is(.nav-heading,[class*="sectionHeading"]) {
+  color: var(--td-glass-muted);
+}
+.site > #thiendo-sidebar .nav-item>span {color:var(--td-accent-text);}
+.site > #thiendo-sidebar .brand small,
+.site > #thiendo-sidebar [class*="groupToggle"],
+.site[data-visual-space] > #thiendo-sidebar :is(.brand small,[class*="groupToggle"]) {
+  color: var(--td-glass-nav);
+}
+.site > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]),
+.site[data-visual-space] > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]) {
+  border-radius: 13px;
+}
+.site > #thiendo-sidebar :is(.nav-item:hover,.nav-item[aria-current="page"],.nav-item.active,[class*="groupToggle"]:hover,[class*="groupToggle"]:focus-visible),
+.site[data-visual-space] > #thiendo-sidebar :is(.nav-item:hover,.nav-item[aria-current="page"],.nav-item.active,[class*="groupToggle"]:hover,[class*="groupToggle"]:focus-visible) {
+  background: var(--td-glass-hover);
+  border-color: var(--td-glass-edge);
+  color: var(--td-glass-heading);
+}
+.site > #thiendo-sidebar :is(.nav-item.active,.nav-item[aria-current="page"]),
+.site[data-visual-space] > #thiendo-sidebar :is(.nav-item.active,.nav-item[aria-current="page"]) {
+  background: var(--td-glass-active);
+  border-color: var(--td-glass-edge);
+  color: var(--td-glass-heading);
+  box-shadow: inset 3px 0 0 var(--td-glass-heading), 0 4px 18px rgba(7,27,20,.10);
+}
+.site .topbar :is(.crumb,.crumb b,.quick-search-trigger,.mode-switch button:not(.chosen)) {
+  color: var(--td-glass-nav);
+}
+.site .topbar :is(.quick-search-trigger,.mode-switch,.icon-button,.avatar-button) {
+  background-color: color-mix(in srgb, var(--td-glass-base) 78%, var(--panel));
+  border-color: var(--td-glass-edge);
+}
+.site .topbar .crumb span { color: var(--td-glass-heading); }
+.site .topbar :is(.quick-search-trigger,.mode-switch,.icon-button,.avatar-button) {
+  border-radius: 13px;
+}
+.site .topbar :is(.theme-button,.avatar-button) { border-radius: 50%; }
+.site .topbar .mode-switch button.chosen { color: #f9f4e6; background: #28594a; }
+.site.light .topbar .mode-switch button.chosen { background: #305e4a; color: #fffdf4; }
+.site .topbar :is(.theme-button,.quick-search-trigger):hover { box-shadow: 0 0 0 1px var(--td-glass-edge), 0 6px 18px rgba(5,30,22,.09); }
+.site[data-theme-ready="true"] > #thiendo-sidebar,
+.site[data-theme-ready="true"] .topbar,
+.site[data-theme-ready="true"] .bottom-nav {
+  transition: transform 280ms var(--td-ease), visibility 280ms, background-color var(--td-motion-theme) ease, color var(--td-motion-theme) ease, border-color var(--td-motion-theme) ease, box-shadow var(--td-motion-theme) ease;
+}
+.site[data-theme-ready="true"] > #thiendo-sidebar :is(.brand,.nav-heading,.nav-item,[class*="groupToggle"]),
+.site[data-theme-ready="true"] .topbar :is(.crumb,.crumb b,.quick-search-trigger,.mode-switch button) {
+  transition: color 740ms ease, background-color 240ms ease, border-color 240ms ease;
+}
+
+/* Unify cards, reading surfaces, settings and searchable content WITHOUT
+ * targeting .house/.palace/.board cells or changing their semantic star colors.
+ * These selectors have explicit public class contracts, not generic div/section.
+ */
+.site .main-content :is(.entry-panel,.result-panel,.collection-panel,.library-toolbar,
+  .library-item,.lesson,.glossary-item,.feature-card,.entry-path,.route-feedback,
+  .research-heading,.research-star,.research-domain,.research-method,
+  .research-context,.research-method-comparison,.research-study-circle) {
+  border-color: var(--td-reading-border);
+  border-radius: var(--td-radius-card);
+}
+.site .main-content :is(.entry-panel,.result-panel,.collection-panel,
+  .library-toolbar,.library-item,.lesson,.glossary-item) {
+  background-color: var(--td-reading-surface);
+  color: var(--text);
+}
+.site .main-content :is(.feature-card,.entry-path,.research-heading,.research-star,
+  .research-domain,.research-method,.research-context,.research-method-comparison,
+  .research-study-circle) {
+  box-shadow: 0 12px 36px rgba(5,19,13,.10);
+}
+.site .main-content :is(.page-heading,.library-head) :is(h1,h2) { color: var(--text); }
+.site .main-content :is(.page-heading,.library-head) :is(p,small) { color: var(--muted); }
+.site .main-content a:not([class]) { text-underline-offset: 3px; }
+.site .main-content :is(.library-filters button,.research-tabs button,
+  .library-toolbar input,.library-item,.library-note) { border-radius: var(--td-radius-control); }
+.site .main-content .field :is(input,textarea,select) { color: var(--text); }
+.site .main-content .field :is(input,textarea)::placeholder { color: var(--td-field-placeholder); opacity: 1; }
+/* Increase legibility of faint labels and text-only accent links in both modes. */
+.site .main-content :is(.muted,.library-results,.library-note) { color: var(--muted); }
+.site .main-content :is(.library-count,.library-item>a,.library-results strong) { color: var(--td-accent-text); }
+.site .main-content :is(.error,.text-danger,[role="alert"]) { overflow-wrap: anywhere; }
+.site .main-content :is(button.btn,button.button,a.btn,a.button,button.primary,a.primary) {
+  border-radius: var(--td-radius-control);
+}
+
+/* Forums use CSS Modules; target only user-facing cards and authored fields.
+ * Keep post/reply moderation indicators and danger statuses intact. */
+.site .main-content :is([class*="forum_"],[class*="forum-module_"]) :is(input,textarea,select) {
+  accent-color: var(--gold);
+}
+/* Native dialogs & account forms already have their own positioning/focus code;
+ * only material/palette is synchronized. */
+.site :is(.modal.account-modal,.command-panel,.route-feedback) {
+  border-color: var(--td-reading-border);
+  background-color: var(--td-reading-surface);
+  color: var(--text);
+}
+.site .modal.account-modal { box-shadow: 0 25px 65px rgba(2,17,11,.27); }
+.site .thiendo-legal-footer,
+.site[data-visual-space] .thiendo-legal-footer {
+  background: var(--td-reading-surface);
+  border-top-color: var(--td-divider);
+  color: var(--muted);
+}
+.site .thiendo-legal-footer strong,.site .thiendo-legal-footer a:hover { color: var(--td-accent-text); }
+.site .thiendo-legal-footer a { text-decoration-color: var(--td-divider); }
+.site .bottom-nav {
+  background: var(--td-glass-base);
+  border-top: 1px solid var(--td-glass-edge);
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
+  backdrop-filter: blur(14px) saturate(125%);
+  color: var(--td-glass-nav);
+}
+.site .bottom-nav :is(a,button) { color: var(--td-glass-nav); }
+.site .bottom-nav [aria-current="page"] { color: var(--td-glass-heading); }
+
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .site > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]):hover {
+    transform: translateX(2px);
+    box-shadow: 0 6px 18px rgba(5,23,16,.09);
+  }
+}
+@media (max-width: 970px) {
+  .site > #thiendo-sidebar,
+  .site[data-visual-space] > #thiendo-sidebar {
+    /* Drawer text always sits on a predictable tint, even on busy photos. */
+    background-color: rgba(12, 30, 24, .92);
+    -webkit-backdrop-filter: blur(9px) saturate(115%);
+    backdrop-filter: blur(9px) saturate(115%);
+  }
+  .site.light > #thiendo-sidebar { background-color: rgba(249, 250, 243, .92); }
+  .site .topbar { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+  .site::before, .site::after { background-position: center, center, 66% 42%; }
+}
+@media (max-width: 680px) {
+  .site[data-visual-density="dense"] .main-content,
+  .site[data-visual-density="reading"] .main-content { box-shadow: none; }
+  .site .bottom-nav :is(a,button) { min-height: 48px; }
+  .site .main-content :is(.library-toolbar,.library-item) { padding-inline: 16px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .site::before,.site::after,
+  .site > #thiendo-sidebar,.site .topbar,.site .bottom-nav,
+  .site > #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]) {
+    transition: none !important; animation: none !important;
+  }
+}
+@media (prefers-contrast:more) {
+  .site { --td-glass-base: rgba(9,23,18,.98); --td-reading-surface: #101c16; --td-glass-nav: #fff;
+    --td-glass-muted: #fff; --td-glass-heading: #ffdfa6; }
+  .site.light { --td-glass-base: rgba(255,255,249,.98); --td-reading-surface: #fffdf8;
+    --td-glass-nav: #111f16; --td-glass-muted: #26382b; --td-glass-heading: #224e34; }
+  .site .main-content { background: var(--td-reading-surface) !important; }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site > #thiendo-sidebar,.site .topbar,.site .bottom-nav { background-color: #132b21; }
+  .site.light > #thiendo-sidebar,.site.light .topbar,.site.light .bottom-nav { background-color: #f9faf1; }
+}
+@media (forced-colors:active) {
+  .site::before,.site::after { display:none; }
+  .site > #thiendo-sidebar,.site .topbar,.site .bottom-nav,.site .main-content,
+  .site .thiendo-legal-footer { background: Canvas; color: CanvasText; border-color: CanvasText; }
+}
+@media print {
+  .site::before,.site::after { display:none !important; }
+  .site > #thiendo-sidebar,.site .topbar,.site .bottom-nav { -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .site .main-content,.site .thiendo-legal-footer { background: #fff !important; color:#000 !important; box-shadow:none !important; }
+}
+
+/* Reading surface/ink switch together. Crossfade belongs to the scenic layers;
+   tweening every form field and panel repaints the whole reading canvas. */
+.site[data-theme-ready="true"] .main-content :is(.entry-panel,.result-panel,.collection-panel,.library-item,.lesson,.glossary-item),
+.site[data-theme-ready="true"] :is(input,textarea,select,.thiendo-legal-footer) {
+  transition:transform 180ms var(--td-ease),opacity 180ms var(--td-ease),box-shadow 180ms var(--td-ease);
+}
+.navigation-tooltip {position:fixed;z-index:var(--td-z-tooltip);max-width:230px;padding:10px 14px;border-radius:12px;border:1px solid var(--td-reading-border);background:var(--td-reading-surface);color:var(--text);box-shadow:var(--td-card-elevation);pointer-events:none;font-size:13px;line-height:1.5;}
+@media(min-width:971px) {
+ .site[data-navigation="compact"] > #thiendo-sidebar {width:78px;padding-inline:8px;}
+ .site[data-navigation="compact"] .app-area {margin-left:104px;}
+ .site[data-navigation="compact"] .sidebar :is(.brand>span:last-child,.nav-heading,[class*="sectionHeading"],[class*="groupLabel"],[class*="chevron"]) {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);}
+ .site[data-navigation="compact"] .sidebar .brand {padding:0 0 14px;justify-content:center;}
+ .site[data-navigation="compact"] .brand-seal {width:54px;height:60px;flex-basis:54px;}
+ .site[data-navigation="compact"] .sidebar .nav-item {font-size:0;justify-content:center;padding-inline:4px;min-height:44px;}
+ .site[data-navigation="compact"] .sidebar .nav-item>span {font-size:20px;}
+ .site[data-navigation="compact"] .sidebar [class*="groupToggle"] {justify-content:center;padding-inline:4px;}
+ .site[data-navigation="compact"] .sidebar [class*="groupItems"] {margin:3px 0;padding:0;border:0;}
+ /* A compact rail is one centered 44px target per icon, even for nested links.
+    Clear legacy indentation/font baseline and the nav's hover perspective tilt. */
+ .site[data-navigation="compact"] > #thiendo-sidebar {width:82px;padding-inline:9px;}
+ .site[data-navigation="compact"] .app-area {margin-left:108px;}
+ .site[data-navigation="compact"] #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]) {
+   display:grid;grid-template-columns:minmax(0,1fr);place-items:center;
+   justify-content:center;align-content:center;justify-items:center;
+   min-width:0;width:100%;min-height:48px;padding:6px 0;margin:0;
+   column-gap:0;row-gap:0;text-align:center;
+   transform:none;
+ }
+ .site[data-navigation="compact"] #thiendo-sidebar .nav-item>span,
+ .site[data-navigation="compact"] #thiendo-sidebar [class*="groupSymbol"] {
+   display:grid;place-items:center;flex:none;
+   width:26px;height:26px;min-width:26px;min-height:26px;
+   margin:0 auto;padding:0;font:normal 20px/1 var(--font-ui);
+   transform:none;text-align:center;
+ }
+ .site[data-navigation="compact"] #thiendo-sidebar :is(.nav-item>span,[class*="groupSymbol"]) svg {
+   display:block;width:21px;height:21px;margin:auto;vertical-align:middle;
+ }
+ .site[data-navigation="compact"] #thiendo-sidebar :is([class*="shortcuts"],[class*="groupItems"]) {
+   width:100%;margin-inline:0;padding-inline:0;
+ }
+ .site[data-navigation="compact"] #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]):hover {
+   /* Keep glyph baselines stationary when changing hover/focus state. */
+   transform:none;
+ }
+ .site[data-navigation="compact"] #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]):focus-visible {
+   outline:2px solid var(--td-glass-heading,var(--gold));
+   outline-offset:2px;
+   transform:none;
+ }
+ .site[data-navigation="compact"] #thiendo-sidebar :is(.nav-item,[class*="groupToggle"]):active {transform:none;}
+ .site[data-navigation="compact"] .sidebar .brand {width:100%;justify-content:center;padding-inline:0;}
+ .site[data-navigation="compact"] .sidebar .brand-seal {margin:auto;}
+}
+@media(max-width:970px){.desktop-rail-toggle{display:none!important;}}
+@media(prefers-reduced-motion:reduce){.site[data-theme-ready="true"] *{scroll-behavior:auto!important;transition-duration:0ms!important;animation-duration:0ms!important;}}
+html[data-thiendo-effects="reduced"] .site :is(#thiendo-sidebar,.topbar,.bottom-nav){backdrop-filter:none;-webkit-backdrop-filter:none;background-color:var(--td-reading-surface);}
+/* Reduced device effects is separate from OS reduced-motion. Keep theme
+   state changes immediate on data-saving / low-memory devices too. */
+html[data-thiendo-effects="reduced"] .site[data-theme-ready="true"]::before,
+html[data-thiendo-effects="reduced"] .site[data-theme-ready="true"]::after {
+ transform:none!important;transition:none!important;animation:none!important;
+}
+

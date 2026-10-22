@@ -1,0 +1,256 @@
+TAP version 13
+# Subtest: A69: server-confirmed profile write invalidates an older /me response generation
+ok 1 - A69: server-confirmed profile write invalidates an older /me response generation
+  ---
+  duration_ms: 137.663967
+  type: 'test'
+  ...
+# Subtest: A69: late profile receipt for retired account must not patch a different logged-in account
+ok 2 - A69: late profile receipt for retired account must not patch a different logged-in account
+  ---
+  duration_ms: 67.636288
+  type: 'test'
+  ...
+# Subtest: A69: source binds profile receipt to account id and blocks stale GET revalidation
+ok 3 - A69: source binds profile receipt to account id and blocks stale GET revalidation
+  ---
+  duration_ms: 0.463516
+  type: 'test'
+  ...
+# Subtest: A69: session management, modal overlay and Escape are disabled for profile or security mutations
+ok 4 - A69: session management, modal overlay and Escape are disabled for profile or security mutations
+  ---
+  duration_ms: 0.530066
+  type: 'test'
+  ...
+# Subtest: A69: avatar dragging only accepts same primary pointer and resets after losing capture
+ok 5 - A69: avatar dragging only accepts same primary pointer and resets after losing capture
+  ---
+  duration_ms: 23.774831
+  type: 'test'
+  ...
+# Subtest: A69: circular avatar preview constrains intrinsic image sizing within its grid track
+ok 6 - A69: circular avatar preview constrains intrinsic image sizing within its grid track
+  ---
+  duration_ms: 0.359489
+  type: 'test'
+  ...
+# Subtest: A70: newer server snapshot wins when an earlier /sessions GET arrives late
+ok 7 - A70: newer server snapshot wins when an earlier /sessions GET arrives late
+  ---
+  duration_ms: 58.840012
+  type: 'test'
+  ...
+# Subtest: A70: retired snapshot cannot resurrect revoked sessions after successful mutation
+ok 8 - A70: retired snapshot cannot resurrect revoked sessions after successful mutation
+  ---
+  duration_ms: 17.274603
+  type: 'test'
+  ...
+# Subtest: A70: unmount prevents stale security data being written to detached profile
+ok 9 - A70: unmount prevents stale security data being written to detached profile
+  ---
+  duration_ms: 13.996082
+  type: 'test'
+  ...
+# Subtest: A70: stale failed request does not surface as an error over latest successful data
+ok 10 - A70: stale failed request does not surface as an error over latest successful data
+  ---
+  duration_ms: 10.308015
+  type: 'test'
+  ...
+# Subtest: A70: self-session revocation publishes logout and navigates to opening without reloading protected route
+ok 11 - A70: self-session revocation publishes logout and navigates to opening without reloading protected route
+  ---
+  duration_ms: 19.986775
+  type: 'test'
+  ...
+# Subtest: A70: simultaneous profile/security mutation cannot begin delete-by-password or Google delete challenge
+ok 12 - A70: simultaneous profile/security mutation cannot begin delete-by-password or Google delete challenge
+  ---
+  duration_ms: 0.367382
+  type: 'test'
+  ...
+# Subtest: A71: Node TAP classifier counts all missing dependencies but never marks failures as passing
+ok 13 - A71: Node TAP classifier counts all missing dependencies but never marks failures as passing
+  ---
+  duration_ms: 7.475873
+  type: 'test'
+  ...
+# Subtest: A71: classifier identifies invalid or incomplete TAP summaries
+ok 14 - A71: classifier identifies invalid or incomplete TAP summaries
+  ---
+  duration_ms: 0.266951
+  type: 'test'
+  ...
+# Subtest: A71: all five blocked dependency names are declared in immutable lockfile
+ok 15 - A71: all five blocked dependency names are declared in immutable lockfile
+  ---
+  duration_ms: 4.208368
+  type: 'test'
+  ...
+# Subtest: A72: retired submit cannot update another account after its request returns
+ok 16 - A72: retired submit cannot update another account after its request returns
+  ---
+  duration_ms: 100.614927
+  type: 'test'
+  ...
+# Subtest: A72: retired onGoogleCredential cannot update another account after its request returns
+ok 17 - A72: retired onGoogleCredential cannot update another account after its request returns
+  ---
+  duration_ms: 31.242332
+  type: 'test'
+  ...
+# Subtest: A72: retired verify cannot update another account after its request returns
+ok 18 - A72: retired verify cannot update another account after its request returns
+  ---
+  duration_ms: 36.372283
+  type: 'test'
+  ...
+# Subtest: A72: retired requestReset cannot update another account after its request returns
+ok 19 - A72: retired requestReset cannot update another account after its request returns
+  ---
+  duration_ms: 21.385385
+  type: 'test'
+  ...
+# Subtest: A72: retired resendReset cannot update another account after its request returns
+ok 20 - A72: retired resendReset cannot update another account after its request returns
+  ---
+  duration_ms: 18.894605
+  type: 'test'
+  ...
+# Subtest: A72: retired resetPassword cannot update another account after its request returns
+ok 21 - A72: retired resetPassword cannot update another account after its request returns
+  ---
+  duration_ms: 16.978178
+  type: 'test'
+  ...
+# Subtest: A72: retired deleteUser cannot update another account after its request returns
+ok 22 - A72: retired deleteUser cannot update another account after its request returns
+  ---
+  duration_ms: 14.70109
+  type: 'test'
+  ...
+# Subtest: A72: stale network rejection cannot display an error on a new account
+ok 23 - A72: stale network rejection cannot display an error on a new account
+  ---
+  duration_ms: 16.483496
+  type: 'test'
+  ...
+# Subtest: A72: active login still navigates and closes once
+ok 24 - A72: active login still navigates and closes once
+  ---
+  duration_ms: 15.697365
+  type: 'test'
+  ...
+# Subtest: A72: expired profile editor does not show stale status after a follow-up /me request
+ok 25 - A72: expired profile editor does not show stale status after a follow-up /me request
+  ---
+  duration_ms: 16.505999
+  type: 'test'
+  ...
+# Subtest: A72: both profile and security dispose pending parent busy lock on unmount
+ok 26 - A72: both profile and security dispose pending parent busy lock on unmount
+  ---
+  duration_ms: 0.342064
+  type: 'test'
+  ...
+# Subtest: A80: exact source metadata and NO-GO gates
+ok 27 - A80: exact source metadata and NO-GO gates
+  ---
+  duration_ms: 1.960573
+  type: 'test'
+  ...
+# Subtest: A80: handover docs and validator agree on current source label
+ok 28 - A80: handover docs and validator agree on current source label
+  ---
+  duration_ms: 3.383649
+  type: 'test'
+  ...
+# Subtest: A80: compact navigation hover stays centered, focus state visible
+ok 29 - A80: compact navigation hover stays centered, focus state visible
+  ---
+  duration_ms: 0.457967
+  type: 'test'
+  ...
+# Subtest: generated API modules are deferred only for legitimate isolated integration tests with real sources
+ok 30 - generated API modules are deferred only for legitimate isolated integration tests with real sources
+  ---
+  duration_ms: 7.442042
+  type: 'test'
+  ...
+# Subtest: never suppress a missing runtime import or an invalid test path
+ok 31 - never suppress a missing runtime import or an invalid test path
+  ---
+  duration_ms: 0.355463
+  type: 'test'
+  ...
+# Subtest: GitHub source preflight checks source imports and parse errors, not only lockfile and secrets
+ok 32 - GitHub source preflight checks source imports and parse errors, not only lockfile and secrets
+  ---
+  duration_ms: 0.348704
+  type: 'test'
+  ...
+# Subtest: A82 client exports reuse shared helper rather than synchronously revoke their object URLs
+ok 33 - A82 client exports reuse shared helper rather than synchronously revoke their object URLs
+  ---
+  duration_ms: 1.384228
+  type: 'test'
+  ...
+# Subtest: A82 helper attaches anchor and defers revocation on success and thrown click
+ok 34 - A82 helper attaches anchor and defers revocation on success and thrown click
+  ---
+  duration_ms: 1.178709
+  type: 'test'
+  ...
+# Subtest: A82 Western Natal invalidates old detailed reading as soon as birth input changes
+ok 35 - A82 Western Natal invalidates old detailed reading as soon as birth input changes
+  ---
+  duration_ms: 1.213282
+  type: 'test'
+  ...
+# Subtest: A82 saved Numerology request cannot display errors after user edits inputs
+ok 36 - A82 saved Numerology request cannot display errors after user edits inputs
+  ---
+  duration_ms: 0.305268
+  type: 'test'
+  ...
+# Subtest: A18 browser download keeps blob URL valid through click, defers revocation and cleans up attached link
+ok 37 - A18 browser download keeps blob URL valid through click, defers revocation and cleans up attached link
+  ---
+  duration_ms: 2.782472
+  type: 'test'
+  ...
+# Subtest: A18 URL and anchor are cleaned up even when browser rejects the download click
+ok 38 - A18 URL and anchor are cleaned up even when browser rejects the download click
+  ---
+  duration_ms: 0.548243
+  type: 'test'
+  ...
+# Subtest: A18 study-unified, study-backup and Tarot JSON use the same safe download helper
+ok 39 - A18 study-unified, study-backup and Tarot JSON use the same safe download helper
+  ---
+  duration_ms: 1.168815
+  type: 'test'
+  ...
+# Subtest: A18 exported annual year equals the board year for PNG and printable PDF
+ok 40 - A18 exported annual year equals the board year for PNG and printable PDF
+  ---
+  duration_ms: 0.164778
+  type: 'test'
+  ...
+# Subtest: A18 all 12 palaces and Unicode remain in complete SVG and printable star appendix
+ok 41 - A18 all 12 palaces and Unicode remain in complete SVG and printable star appendix
+  ---
+  duration_ms: 30.173397
+  type: 'test'
+  ...
+1..41
+# tests 41
+# suites 0
+# pass 41
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 607.486093

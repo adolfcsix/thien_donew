@@ -1,0 +1,105 @@
+{
+  "edition": "v11.13.0",
+  "scope": "11 sao an năm sinh, giờ sinh hoặc phái sinh từ Xương/Khúc và ngày âm lịch; không phải toàn bộ danh mục Tử Vi",
+  "records": [
+    {
+      "name": "Long Trì",
+      "group": "Sao theo chi năm sinh",
+      "motif": "Nề nếp, sự trang nhã",
+      "natal": true,
+      "placementRuleSet": "traditional-eleven-natal-v11.13.0",
+      "referenceKey": "year-branch",
+      "expertReviewed": false
+    },
+    {
+      "name": "Phượng Các",
+      "group": "Sao theo chi năm sinh",
+      "motif": "Cảm quan thẩm mỹ, sự trang trọng",
+      "natal": true,
+      "placementRuleSet": "traditional-eleven-natal-v11.13.0",
+      "referenceKey": "year-branch",
+      "expertReviewed": false
+    },
+    {
+      "name": "Giải Thần",
+      "group": "Sao theo chi năm sinh",
+      "motif": "Điều hòa và tháo gỡ",
+      "natal": true,
+      "placementRuleSet": "traditional-eleven-natal-v11.13.0",
+      "referenceKey": "year-branch",
+      "expertReviewed": false
+    },
+    {
+      "name": "Cô Thần",
+      "group": "Sao theo chi năm sinh",
+      "motif": "Tự lập và khoảng riêng",
+      "natal": true,
+      "placementRuleSet": "traditional-eleven-natal-v11.13.0",
+      "referenceKey": "year-branch",
+      "expertReviewed": false
+    },
+    {
+      "name": "Quả Tú",
+      "group": "Sao theo chi năm sinh",
+      "motif": "Chiêm nghiệm và tính độc lập",
+      "natal": true,
+      "placementRuleSet": "traditional-eleven-natal-v11.13.0",
+      "referenceKey": "year-branch",
+      "expertReviewed": false
+    },
+    {
+      "name": "Thiên Quan",
+      "group": "Sao theo can năm sinh",
+      "motif": "Tinh thần hỗ trợ và trách nhiệm",
+      "natal": true,
+      "placementRuleSet": "traditional-eleven-natal-v11.13.0",
+      "referenceKey": "can-year-table",
+      "expertReviewed": false
+    },
+    {
+      "name": "Thiên Phúc",
+      "group": "Sao theo can năm sinh",
+      "motif": "Phúc thiện và lòng quan tâm",
+      "natal": true,
+      "placementRuleSet": "traditional-eleven-natal-v11.13.0",
+      "referenceKey": "can-year-table",
+      "expertReviewed": false
+    },
+    {
+      "name": "Ân Quang",
+      "group": "Phụ tinh theo ngày sinh",
+      "motif": "Sự ghi nhận và lòng biết ơn",
+      "natal": true,
+      "placementRuleSet": "traditional-eleven-natal-v11.13.0",
+      "referenceKey": "lunar-day-xuong-khuc",
+      "expertReviewed": false
+    },
+    {
+      "name": "Thiên Quý",
+      "group": "Phụ tinh theo ngày sinh",
+      "motif": "Trân trọng và sự nâng đỡ",
+      "natal": true,
+      "placementRuleSet": "traditional-eleven-natal-v11.13.0",
+      "referenceKey": "lunar-day-xuong-khuc",
+      "expertReviewed": false
+    },
+    {
+      "name": "Thái Phụ",
+      "group": "Phụ tinh theo giờ sinh",
+      "motif": "Nghi thức và khả năng thể hiện",
+      "natal": true,
+      "placementRuleSet": "traditional-eleven-natal-v11.13.0",
+      "referenceKey": "khuc-adjacency",
+      "expertReviewed": false
+    },
+    {
+      "name": "Phong Cáo",
+      "group": "Phụ tinh theo giờ sinh",
+      "motif": "Quy cách và sự công nhận",
+      "natal": true,
+      "placementRuleSet": "traditional-eleven-natal-v11.13.0",
+      "referenceKey": "khuc-adjacency",
+      "expertReviewed": false
+    }
+  ]
+}

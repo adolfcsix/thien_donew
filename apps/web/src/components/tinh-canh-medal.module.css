@@ -1,0 +1,96 @@
+.medal{
+ display:block;
+ max-width:100%;
+ height:auto;
+ filter:drop-shadow(0 5px 12px rgba(22,28,29,.22));
+ contain:paint;
+ flex:none;
+ transform-style:preserve-3d;
+
+}
+.floatLayer{transform-origin:50px 50px;transform-box:view-box;animation:medalDepthDrift var(--medal-drift,15s) ease-in-out infinite}
+.aura{animation:medalAura 4.8s ease-in-out infinite}
+.halo{animation:medalHalo 5s ease-in-out infinite}
+.pulse{animation:medalPulse 3.6s ease-in-out infinite}
+.shimmer{animation:medalShimmer 5.4s linear infinite;mix-blend-mode:screen;opacity:.6}
+.innerSpin{transform-origin:50px 50px;animation:medalSpin 24s linear infinite}
+.outerSpin{transform-origin:50px 50px;animation:medalSpin 38s linear infinite}
+.orbit{transform-origin:50px 50px;animation:medalSpin 32s linear infinite}
+.orbitReverse{transform-origin:50px 50px;animation:medalSpin 41s linear infinite reverse}
+.sparkles{animation:medalSparkle 2.8s ease-in-out infinite}
+.medal[data-level="10"],
+.medal[data-level="11"],
+.medal[data-level="12"]{transform:perspective(560px) rotateX(9deg) rotateY(-8deg)}
+.medal[data-level="13"],
+.medal[data-level="14"],
+.medal[data-level="15"]{transform:perspective(620px) rotateX(10deg) rotateY(-10deg);filter:drop-shadow(0 9px 18px rgba(25,31,39,.28)) drop-shadow(0 0 16px rgba(244,221,178,.18))}
+.medal[data-level="16"],
+.medal[data-level="17"],
+.medal[data-level="18"]{transform:perspective(720px) rotateX(12deg) rotateY(-12deg);filter:drop-shadow(0 11px 20px rgba(12,18,25,.3)) drop-shadow(0 0 22px rgba(236,214,165,.24))}
+@keyframes medalSpin{to{transform:rotate(360deg)}}
+@keyframes medalHalo{50%{opacity:.25}}
+@keyframes medalAura{50%{opacity:.6;transform:scale(1.06)}}
+@keyframes medalPulse{50%{opacity:.25;transform:scale(1.14)}}
+/* The icon stays readable: slow changing planes, never a full face-away flip. */
+@keyframes medalDepthDrift{
+ 0%,100%{transform:perspective(450px) rotateX(var(--medal-tilt,3deg)) rotateY(-4deg) translateY(0)}
+ 33%{transform:perspective(450px) rotateX(-3deg) rotateY(var(--medal-tilt,3deg)) translateY(-1.5px)}
+ 66%{transform:perspective(450px) rotateX(2deg) rotateY(-3deg) translateY(.8px)}
+}
+.satelliteTrack,.celestialFrame,.celestialBack,.galaxyTrack,.infinityTrack,.solarCrown{transform-origin:50px 50px;transform-box:view-box}
+.satelliteTrack{animation:medalSpin 28s linear infinite}
+.celestialFrame{animation:medalFrontPlane 19s ease-in-out infinite}
+.celestialBack{animation:medalBackPlane 23s ease-in-out infinite}
+.galaxyTrack{animation:medalSpin 46s linear infinite reverse}
+.infinityTrack{animation:medalSpin 54s linear infinite}
+.solarCrown{animation:medalSpin 66s linear infinite reverse}
+@keyframes medalFrontPlane{0%,100%{transform:perspective(400px) rotateX(32deg) rotateY(-12deg) rotateZ(-20deg)}50%{transform:perspective(400px) rotateX(-18deg) rotateY(28deg) rotateZ(18deg)}}
+@keyframes medalBackPlane{0%,100%{transform:perspective(400px) rotateX(-26deg) rotateY(20deg) rotateZ(26deg)}50%{transform:perspective(400px) rotateX(24deg) rotateY(-26deg) rotateZ(-18deg)}}
+@keyframes medalShimmer{0%{transform:translateX(-32px) translateY(-14px) rotate(0deg);opacity:0}14%{opacity:.72}48%{opacity:.1}100%{transform:translateX(34px) translateY(16px) rotate(0deg);opacity:0}}
+@keyframes medalSparkle{0%,100%{opacity:.28}50%{opacity:.95}}
+@media(prefers-reduced-motion:reduce){
+ .floatLayer,.aura,.halo,.pulse,.shimmer,.innerSpin,.outerSpin,.orbit,.orbitReverse,.sparkles{animation:none!important}
+ .medal[data-level]{transform:none!important;filter:drop-shadow(0 3px 6px rgba(22,28,29,.22))}
+}
+@media(max-width:500px){.medal{filter:none}.medal[data-level]{transform:none}}
+
+/* Pause decorative layers outside the viewport and in background tabs. */
+.medal[data-paused="true"] *{animation-play-state:paused!important}
+.aura,.pulse{transform-origin:50px 50px}
+.crown{transform-origin:50px 50px;animation:medalCrown 8s ease-in-out infinite}
+@keyframes medalCrown{50%{transform:rotate(8deg) scale(1.12);opacity:.65}}
+@media(prefers-reduced-motion:reduce){.crown{animation:none!important}}
+
+/* Universal guard includes future layers. Manual pause never overrides system reduce. */
+@media(prefers-reduced-motion:reduce){.medal,.medal *{animation:none!important}}
+:global([data-medal-motion="paused"]) .medal *{animation-play-state:paused!important}
+/* A modal's background does not need to keep spending frames on decorative medals. */
+/* AuthProvider uses a div-based modal, not a native <dialog>. Its
+   backdrop should pause any animated medals beneath the overlay too. */
+:global(body:has(.modal-backdrop.account-backdrop)) .medal *{animation-play-state:paused!important}
+:global(body:has(dialog[open])) .medal *{animation-play-state:paused}
+:global(dialog[open]) .medal:not([data-paused="true"]) *{animation-play-state:running}
+@media print{.medal,.medal *{animation:none!important}.medal[data-level]{transform:none!important;filter:none!important}}
+
+:global(html[data-thiendo-effects="reduced"]) .medal *{animation:none!important}
+
+.medal[data-level="10"] .floatLayer{animation-name:medalAscend;animation-duration:7s}
+.medal[data-level="11"] .floatLayer{animation-name:medalPendulum;animation-duration:9s}
+.medal[data-level="12"] .satelliteTrack{animation-duration:12s;animation-direction:reverse}
+.medal[data-level="13"] .celestialFrame{animation-name:medalMeridian;animation-duration:11s}
+.medal[data-level="14"] .celestialFrame{animation-name:medalPrecession;animation-duration:14s}
+.medal[data-level="15"] .floatLayer{animation-name:medalAscend;animation-duration:6s}
+.medal[data-level="15"] .orbitReverse{animation-duration:15s}
+.medal[data-level="16"] .celestialFrame{animation-name:medalMeridian;animation-duration:9s}
+.medal[data-level="16"] .celestialBack{animation-duration:13s}
+.medal[data-level="17"] .galaxyTrack{animation-duration:19s}
+.medal[data-level="17"] .sparkles{animation-duration:3.8s}
+.medal[data-level="18"] .floatLayer{animation-name:medalCoronation;animation-duration:8s}
+.medal[data-level="18"] .infinityTrack{animation-duration:24s}
+.medal[data-level="18"] .solarCrown{animation-duration:32s}
+@keyframes medalAscend{0%,100%{transform:translateY(1px) scale(.97)}50%{transform:translateY(-3px) scale(1.02)}}
+@keyframes medalPendulum{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes medalMeridian{0%,100%{transform:perspective(400px) rotateX(48deg) rotateZ(-24deg)}50%{transform:perspective(400px) rotateX(-35deg) rotateZ(24deg)}}
+@keyframes medalPrecession{0%,100%{transform:perspective(400px) rotateY(-45deg) rotateZ(18deg)}50%{transform:perspective(400px) rotateY(40deg) rotateZ(-18deg)}}
+@keyframes medalCoronation{0%,100%{transform:perspective(480px) rotateY(-8deg) translateY(1px) scale(.97)}50%{transform:perspective(480px) rotateY(8deg) translateY(-2px) scale(1.02)}}
+@media(prefers-reduced-motion:reduce){.medal,.medal *{animation:none!important}}

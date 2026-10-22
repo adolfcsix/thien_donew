@@ -1,0 +1,9 @@
+'use client';
+import {useState} from 'react';
+import Link from 'next/link';
+import {useAdminSession} from '@/features/membership/admin-session';
+import {useConsoleData,Feedback,ConsoleHero} from '@/features/admin-console/shared';
+import {useAdminTask} from '@/features/admin/use-admin-task';
+import {api} from '@/lib/api';
+import css from '@/features/admin-console/console.module.css';
+export default function AccessPage(){const {capabilities}=useAdminSession(),list=useConsoleData<{sections:{path:string;title:string;enabled:boolean}[]}>('/api/community/premium-sections'),task=useAdminTask(),[reason,setReason]=useState('');return <div className={css.page}><ConsoleHero eyebrow="QUYỀN SỬ DỤNG · PRO" title="Nội dung chuyên sâu" description="Chọn những không gian cần Pro. Các công cụ tính cơ bản và dữ liệu lá số của thành viên không bị đổi. Quyền được kiểm tra lại tại API."/><Feedback error={list.error||task.error} notice={task.notice}/><label>Lý do đổi chính sách<textarea maxLength={500} minLength={8} value={reason} onChange={e=>setReason(e.target.value)}/></label>{list.data?.sections.map(s=><section key={s.path} className={css.card}><h2>{s.enabled?'🔒':'🔓'} {s.title}</h2><p>{s.path}</p><p>{s.enabled?'Chỉ Pro đang hoạt động hoặc quản trị đã xác minh.':'Thành viên đăng nhập có thể mở.'}</p><button disabled={task.pending||!capabilities.includes('finance.write')||reason.trim().length<8} onClick={()=>void task.run(async signal=>{await api('/api/admin/console/premium-sections',{method:'PATCH',body:{...s,enabled:!s.enabled,reason},signal});setReason('');list.reload();return 'Đã cập nhật chính sách truy cập';})}>{s.enabled?'Mở cho thành viên':'Giới hạn Pro'}</button></section>)}<p>Để tặng Pro hoặc cấp huy hiệu Chuyên gia, mở tài khoản tại <Link href="/admin/members">Quản lý thành viên ↗</Link>.</p></div>;}

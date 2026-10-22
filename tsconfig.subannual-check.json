@@ -1,0 +1,1 @@
+{"extends":"./tsconfig.temporal-check.json","files":["tests/types/v1121-temporal-contract.ts","tests/types/v1122-subannual-contract.ts"]}

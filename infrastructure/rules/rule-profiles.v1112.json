@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0.0",
+  "purpose": "Danh mục dị bản chỉ dùng để kiểm toán nội bộ; không phải điều khiển thay đổi trường phái hoặc nội dung để render trong giao diện.",
+  "editorialStatus": "pending-independent-expert-validation",
+  "profiles": [
+    {
+      "id": "tieu-han",
+      "label": "Khởi Tiểu hạn và chiều chuyển cung",
+      "selectedRuleSet": "tieu-han-tu-mo-nam-thuan-nu-nghich-v1",
+      "selectedMethod": "Tam hợp chi năm sinh khởi ở Tứ Mộ; nam thuận, nữ nghịch; tuổi mụ theo năm âm lịch.",
+      "alternatives": [
+        "Khởi hạn theo Mệnh",
+        "Phân chiều hạn theo âm dương năm sinh và giới tính"
+      ],
+      "requiresExpertReview": true,
+      "coverage": "Một dị bản đã triển khai, chưa hỗ trợ chọn dị bản khác",
+      "internalReference": "docs/reference/tieu-han.md"
+    },
+    {
+      "id": "trang-sinh",
+      "label": "Điểm khởi và chiều vòng Tràng Sinh",
+      "selectedRuleSet": "cycles-tam-hop-fixed-anchor-v5.0",
+      "selectedMethod": "Điểm khởi cố định theo Cục và chiều dựa âm dương nam nữ.",
+      "alternatives": [
+        "Quy tắc đổi điểm khởi khi đi nghịch"
+      ],
+      "requiresExpertReview": true,
+      "coverage": "Một bảng đã triển khai",
+      "internalReference": "packages/astrology-engine/src/cycles.js"
+    },
+    {
+      "id": "tu-hoa",
+      "label": "Tứ Hóa thiên can năm sinh",
+      "selectedRuleSet": "annual-tuhoa-tap-v4.0",
+      "selectedMethod": "Bảng hiện hành trong tuhoa.js, có lưu nhãn năm sinh.",
+      "alternatives": [
+        "Bảng Canh/Nhâm của các truyền thống Tứ Hóa khác"
+      ],
+      "requiresExpertReview": true,
+      "coverage": "Chưa đối chiếu độc lập tất cả dị bản",
+      "internalReference": "docs/reference/luu-tu-hoa.md"
+    },
+    {
+      "id": "sat-tinh-mo-rong",
+      "label": "Không–Kiếp, Hỏa–Linh, Tuần–Triệt",
+      "selectedRuleSet": "advanced-placements-tam-hop-v11.6.0",
+      "selectedMethod": "Một bộ an sao Tam Hợp được định phiên bản.",
+      "alternatives": [
+        "Bảng khởi và chiều an Hỏa–Linh khác giữa phái"
+      ],
+      "requiresExpertReview": true,
+      "coverage": "Bốn sát tinh và hai dấu án ngữ, chưa phải mọi phụ tinh",
+      "internalReference": "docs/reference/advanced-stars-and-periods.md"
+    },
+    {
+      "id": "chuyen-ngay-gio-ty",
+      "label": "Chuyển ngày lúc 23 giờ",
+      "selectedRuleSet": "birth-civil-date-hour23-v6.0",
+      "selectedMethod": "Giữ nguyên ngày dân sự người dùng nhập lúc 23:00–23:59.",
+      "alternatives": [
+        "Tách Tý sớm/Tý muộn và đổi ngày từ 23:00"
+      ],
+      "requiresExpertReview": true,
+      "coverage": "Chưa hỗ trợ chuyển ngày theo trường phái",
+      "internalReference": "packages/astrology-engine/src/tuvi.js"
+    },
+    {
+      "id": "thang-nhuan",
+      "label": "Quy tắc xử lý tháng âm nhuận",
+      "selectedRuleSet": "birth-leap-month-same-ordinal-v6.0",
+      "selectedMethod": "Giữ số thứ tự tháng âm nhuận giống tháng thường để an Mệnh và sao theo tháng.",
+      "alternatives": [
+        "Quy tắc phân nửa tháng nhuận hoặc dịch thứ tự tháng"
+      ],
+      "requiresExpertReview": true,
+      "coverage": "Một quy ước đã triển khai; chưa hỗ trợ nhiều trường phái",
+      "internalReference": "packages/astrology-engine/src/tuvi.js"
+    }
+  ]
+}

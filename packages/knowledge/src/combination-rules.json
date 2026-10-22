@@ -1,0 +1,110 @@
+{
+  "edition": "v11.55.0",
+  "rules": [
+    {
+      "id": "phu-bat-dong-cung",
+      "title": "Phụ – Bật đồng cung",
+      "conditions": {
+        "scope": "same-palace",
+        "all": [
+          "Tả Phụ",
+          "Hữu Bật"
+        ]
+      },
+      "interpretation": "Hai hình tượng về hỗ trợ và phối hợp cùng xuất hiện tại cung đang đọc. Khi phân tích, hãy hỏi vai trò của chính tinh và tính chất cung có tạo thành một bối cảnh hợp tác nhất quán hay không.",
+      "caution": "Chỉ mô tả đồng hiện sao; không dự báo được sự trợ giúp cụ thể."
+    },
+    {
+      "id": "xuong-khuc-dong-cung",
+      "title": "Xương – Khúc đồng cung",
+      "conditions": {
+        "scope": "same-palace",
+        "all": [
+          "Văn Xương",
+          "Văn Khúc"
+        ]
+      },
+      "interpretation": "Hai biểu tượng về tri thức, biểu đạt và cảm thụ cùng tọa tại một cung. Cần đọc tiếp chính tinh và chủ đề cung trước khi bàn về cách học hỏi, truyền đạt hoặc sáng tạo.",
+      "caution": "Không phải kết luận về chỉ số thông minh, học lực hoặc tài năng."
+    },
+    {
+      "id": "khong-kiep-dong-cung",
+      "title": "Không – Kiếp đồng cung",
+      "conditions": {
+        "scope": "same-palace",
+        "all": [
+          "Địa Không",
+          "Địa Kiếp"
+        ]
+      },
+      "interpretation": "Địa Không và Địa Kiếp cùng hiện diện, làm nổi bật chủ đề bất định hoặc nhu cầu kiểm tra nền tảng. Phân tích thận trọng những yếu tố bổ trợ trong cùng cung và tam phương.",
+      "caution": "Không coi tổ hợp là điềm tai họa, mất mát hay định mệnh."
+    },
+    {
+      "id": "hoa-linh-dong-cung",
+      "title": "Hỏa – Linh đồng cung",
+      "conditions": {
+        "scope": "same-palace",
+        "all": [
+          "Hỏa Tinh",
+          "Linh Tinh"
+        ]
+      },
+      "interpretation": "Hai biểu tượng về cường độ và phản ứng đồng cung. Khi đọc, nên xem bối cảnh chính tinh và các sao khác để đặt câu hỏi về nhịp độ và khả năng điều tiết.",
+      "caution": "Không đánh đồng với tính nóng nảy, tai nạn hay rủi ro thực tế."
+    },
+    {
+      "id": "thai-toa-dong-cung",
+      "title": "Thai – Tọa đồng cung",
+      "conditions": {
+        "scope": "same-palace",
+        "all": [
+          "Tam Thai",
+          "Bát Tọa"
+        ]
+      },
+      "interpretation": "Hai hình tượng về cấu trúc, điểm tựa và sự hoàn thiện cùng xuất hiện. Đọc theo hướng vai trò của quá trình tích lũy và tổ chức, kết hợp với chính tinh thực tế.",
+      "caution": "Không kết luận sẽ có chức vụ, quyền lực hay tài sản."
+    },
+    {
+      "id": "tu-hoa-loc",
+      "title": "Hóa Lộc tại cung",
+      "conditions": {
+        "scope": "natal-transformation",
+        "name": "Hóa Lộc"
+      },
+      "interpretation": "Hóa Lộc là lớp biến đổi biểu tượng đang gắn lên sao được an tại cung này. Hãy đọc ý nghĩa của sao nhận Hóa Lộc trong chủ đề cung, không suy trực tiếp thành của cải.",
+      "caution": "Không dự đoán số tiền, tài lộc hoặc thu nhập."
+    },
+    {
+      "id": "tu-hoa-quyen",
+      "title": "Hóa Quyền tại cung",
+      "conditions": {
+        "scope": "natal-transformation",
+        "name": "Hóa Quyền"
+      },
+      "interpretation": "Hóa Quyền làm nổi bật câu hỏi về trách nhiệm, quyền chủ động và khả năng điều phối của sao được gắn Hóa Quyền trong bối cảnh cung.",
+      "caution": "Không đồng nghĩa với thăng chức hoặc quyền lực thực tế."
+    },
+    {
+      "id": "tu-hoa-khoa",
+      "title": "Hóa Khoa tại cung",
+      "conditions": {
+        "scope": "natal-transformation",
+        "name": "Hóa Khoa"
+      },
+      "interpretation": "Hóa Khoa được đọc như lớp biến đổi liên quan đến danh tiếng biểu tượng, tri thức và sự ghi nhận, cần xét cùng sao chịu Hóa Khoa và các sao hội hợp.",
+      "caution": "Không khẳng định thi cử, bằng cấp hay danh vọng."
+    },
+    {
+      "id": "tu-hoa-ky",
+      "title": "Hóa Kỵ tại cung",
+      "conditions": {
+        "scope": "natal-transformation",
+        "name": "Hóa Kỵ"
+      },
+      "interpretation": "Hóa Kỵ làm nổi bật câu hỏi về trở ngại, vướng mắc hoặc điều cần rà soát trong chủ đề mà sao gốc đại diện. Không thể đưa ra kết luận nếu tách khỏi các sao và cung liên hệ.",
+      "caution": "Không coi là định sẵn bất hạnh, bệnh tật hay thất bại."
+    }
+  ]
+}

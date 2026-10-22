@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0.0",
+  "translation": "Chinese sexagenary stems and branches mapped into Vietnamese canonical names; explicit hour/month general, not an inferred birth chart.",
+  "cases": [
+    {
+      "id": "single-lower-ping-xu",
+      "sourceUrl": "https://forum.shusquare.com/forum.php?mod=viewthread&tid=18021",
+      "sourceDescriptor": "丙戌日 子将酉时; parallel printed example using 申将巳时 has same plate offset",
+      "input": {"dayStem":"Bính","dayBranch":"Tuất","monthGeneral":"Tý","divinationHour":"Dậu"},
+      "expectedUpper": ["Thân","Hợi","Sửu","Thìn"],
+      "expectedLower": ["Bính","Thân","Tuất","Sửu"],
+      "expectedRule": "zei-ke-lower-attacks-upper",
+      "expectedThree": ["Thân","Hợi","Dần"]
+    },
+    {
+      "id": "single-upper-ding-chou",
+      "sourceUrl": "https://forum.shusquare.com/forum.php?mod=viewthread&tid=18021",
+      "sourceDescriptor": "丁丑日 亥将卯时; 元首",
+      "input": {"dayStem":"Đinh","dayBranch":"Sửu","monthGeneral":"Hợi","divinationHour":"Mão"},
+      "expectedUpper": ["Mão","Hợi","Dậu","Tỵ"],
+      "expectedLower": ["Đinh","Mão","Sửu","Dậu"],
+      "expectedRule": "zei-ke-upper-controls-lower",
+      "expectedThree": ["Tỵ","Sửu","Dậu"]
+    },
+    {
+      "id": "bi-yong-yang-ren-chen",
+      "sourceUrl": "https://www.guoyitang.com.cn/lrzn/1759.html",
+      "sourceDescriptor": "壬辰日 辰将巳时; 知一／比用",
+      "input": {"dayStem":"Nhâm","dayBranch":"Thìn","monthGeneral":"Thìn","divinationHour":"Tỵ"},
+      "expectedUpper": ["Tuất","Dậu","Mão","Dần"],
+      "expectedLower": ["Nhâm","Tuất","Thìn","Mão"],
+      "expectedRule": "bi-yong-unique-yin-yang",
+      "expectedThree": ["Tuất","Dậu","Thân"]
+    },
+    {
+      "id": "bi-yong-lower-wu-yin",
+      "sourceUrl": "https://www.guoyitang.com.cn/lrzn/1759.html",
+      "sourceDescriptor": "戊寅日 巳将子时; 知一/比用",
+      "input": {"dayStem":"Mậu","dayBranch":"Dần","monthGeneral":"Tỵ","divinationHour":"Tý"},
+      "expectedUpper": ["Tuất","Mão","Mùi","Tý"],
+      "expectedLower": ["Mậu","Tuất","Dần","Mùi"],
+      "expectedRule": "bi-yong-unique-yin-yang",
+      "expectedThree": ["Tý","Tỵ","Tuất"]
+    },
+    {
+      "id": "four-lesson-only-jia-zi",
+      "sourceUrl": "https://kknews.cc/zh-sg/education/gvjk29l.html",
+      "sourceDescriptor": "甲子日 卯时 亥将; 四课 order reversed on the source page",
+      "input": {"dayStem":"Giáp","dayBranch":"Tý","monthGeneral":"Hợi","divinationHour":"Mão"},
+      "expectedUpper": ["Tuất","Ngọ","Thân","Thìn"],
+      "expectedLower": ["Giáp","Tuất","Tý","Thân"]
+    }
+  ],
+  "evidenceNote": "These are transcribed independent worked examples. Links are methodological references, not empirical validation of divination. Cross-check source text and alternative editions before claiming school-wide completeness."
+}

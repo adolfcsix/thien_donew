@@ -1,0 +1,63 @@
+{
+  "edition": "11.41.0",
+  "status": "editorial-research-not-expert-validated",
+  "notice": "Các tình huống dưới đây là hướng dẫn đọc dữ liệu Tử Vi truyền thống, không xác nhận cách cục hoặc dự báo cá nhân.",
+  "families": [
+    {
+      "id": "tu-phu-vu-tuong",
+      "focus": "Phân biệt vai trò của Tử Vi, Thiên Phủ, Vũ Khúc và Thiên Tướng trong mạng lưới Mệnh – Tài Bạch – Quan Lộc – Thiên Di; không gộp bốn hình tượng thành một phẩm chất duy nhất.",
+      "studySteps": [
+        "Đọc chính tinh tọa Mệnh trước; ghi lại ba cung hội chiếu đang chứa ba sao còn lại hay không.",
+        "So vị trí của Thiên Phủ và Vũ Khúc khi bàn chủ đề quản trị nguồn lực; tránh đồng nhất biểu tượng với tài sản thực tế.",
+        "Kiểm tra từng trạng thái sáng tối, sao hỗ trợ, án ngữ và Tứ Hóa có sao đích hợp lệ trước khi tóm tắt bối cảnh."
+      ],
+      "cases": {
+        "gap": {"title":"Chưa đủ cấu trúc Tử – Phủ – Vũ – Tướng", "question":"Những sao chưa được xác định đang nằm ngoài Tứ chính, bị trùng nhiều cung hay thực sự không có trong lớp chính tinh?", "action":"Ghi rõ cung của mỗi sao còn thiếu; không tự suy rằng thiếu một sao đồng nghĩa phá cách."},
+        "support": {"title":"Sao hỗ trợ hội với bộ quản trị", "question":"Sao hỗ trợ đang tọa Mệnh hay chỉ ở cung hội chiếu, và chính tinh nào cùng cung với nó?", "action":"Đối chiếu Tả/Hữu, Khôi/Việt, Xương/Khúc theo từng vị trí; tránh cộng điểm may mắn."},
+        "review": {"title":"Điều kiện cần rà soát trước khi đọc bộ Tử – Phủ", "question":"Yếu tố cần xem thêm là sát tinh, Hóa Kỵ đúng sao đích, độ sáng chưa rõ hay Tuần/Triệt?", "action":"Ghi nhận riêng từng bằng chứng; không gộp tất cả thành nhãn cát hoặc hung."}
+      }
+    },
+    {
+      "id": "co-nguyet-dong-luong",
+      "focus": "Phân tích riêng Thiên Cơ (biến chuyển), Thái Âm (tiếp nhận), Thiên Đồng (thích nghi) và Thiên Lương (nguyên tắc) thay vì suy thẳng ra nghề nghiệp hay học lực.",
+      "studySteps": [
+        "Xác định sao nào thực sự tọa Mệnh và sao nào chỉ hội về qua Tài, Quan, Di.",
+        "Xét vị trí Thái Âm và trạng thái độ sáng có trong lá số trước khi diễn giải biểu tượng tiếp nhận hoặc tích lũy.",
+        "Tách phần hỏi về tư duy, nếp sống và hỗ trợ xã hội; không từ tên bộ sao suy ra một nghề nghiệp cụ thể."
+      ],
+      "cases": {
+        "gap": {"title":"Bộ Cơ – Nguyệt – Đồng – Lương chưa khớp", "question":"Thiên Cơ, Thái Âm, Thiên Đồng hoặc Thiên Lương thiếu ở cung hội chiếu nào, và Mệnh có sao chủ đề làm điểm tựa không?", "action":"Đọc lại trục cung và lớp chính tinh; không bổ sung sao bằng diễn giải văn bản."},
+        "support": {"title":"Điều kiện học hỏi và trợ lực", "question":"Xương/Khúc hay Khôi/Việt xuất hiện đúng trong Tứ chính hay chỉ được nhắc ở dữ liệu khác?", "action":"Dùng địa chi và tên cung đi kèm mỗi sao để nêu câu hỏi, không quy ra thành tích học tập."},
+        "review": {"title":"Phân biệt biến động và trở lực", "question":"Hóa Kỵ, án ngữ, sát tinh hoặc trạng thái sáng tối tác động lên sao nào của bộ?", "action":"Đặt câu hỏi cụ thể về chính tinh nhận tác động, không gọi đó là một sự kiện trong đời."}
+      }
+    },
+    {
+      "id": "sat-pha-tham",
+      "focus": "Khảo sát mối quan hệ giữa Thất Sát, Phá Quân và Tham Lang trong chủ đề thay đổi và thích ứng; tuyệt đối không quy các sao này thành tính cách bạo lực hay biến cố tất yếu.",
+      "studySteps": [
+        "Kiểm tra Thất Sát, Phá Quân, Tham Lang nằm tại Mệnh, Tài, Quan, Di ra sao; ghi đủ quan hệ tọa/hội/xung.",
+        "Tách câu hỏi về lực thay đổi của Phá Quân khỏi xu hướng tìm cơ hội của Tham Lang và yêu cầu quyết định của Thất Sát.",
+        "Đối chiếu sát tinh và Hóa Kỵ với độ sáng cụ thể; không tăng mức cảnh báo nếu hồ sơ bằng chứng còn mâu thuẫn."
+      ],
+      "cases": {
+        "gap": {"title":"Thiếu mắt xích Sát – Phá – Tham", "question":"Sao nào chưa nằm trong Tứ chính hoặc bị ghi nhận trùng; có một sao của bộ thực tọa Mệnh không?", "action":"Chỉ ghi nhận điều kiện cấu trúc thiếu, không khẳng định thành hay bại theo trường phái."},
+        "support": {"title":"Bối cảnh hỗ trợ khi có sao biến động", "question":"Sao phụ nào đi cùng chính tinh tại cung cụ thể, thay vì chỉ xuất hiện đâu đó trong lá số?", "action":"Xét từng vị trí và chủ đề cung trước khi tạo nhận định về cách ứng phó thay đổi."},
+        "review": {"title":"Không nhân đôi yếu tố rủi ro", "question":"Sát tinh đồng cung, Hóa Kỵ và Tuần/Triệt có thật sự hiện diện trong cùng lớp dữ liệu bản mệnh không?", "action":"Phân loại bằng chứng và kiểm tra trùng sao trước khi viết bất kỳ diễn giải nào."}
+      }
+    },
+    {
+      "id": "cu-nhat",
+      "focus": "Đọc Cự Môn và Thái Dương như hai góc nghiên cứu về ngôn từ và tính hiển lộ; không suy tự động ra danh tiếng, phát ngôn hay sức khỏe.",
+      "studySteps": [
+        "Xác định Cự Môn hoặc Thái Dương có tọa Mệnh hay không, sao còn lại hội chiếu qua cung nào.",
+        "Đọc độ sáng của Thái Dương nếu có dữ liệu an hợp lệ; tránh điền trạng thái theo địa chi từ trí nhớ.",
+        "Đối chiếu Xương/Khúc, Khôi/Việt và biến hóa của sao đích trước khi mô tả sắc thái lời nói trong truyền thống."
+      ],
+      "cases": {
+        "gap": {"title":"Cự – Nhật chưa đủ điều kiện hội về Mệnh", "question":"Thiếu chính tinh nào trong Tứ chính, hay không có Cự Môn/Thái Dương thực tọa Mệnh?", "action":"Ghi nhận sự khác biệt giữa cùng cung, xung chiếu và không hội; không ép quy tắc cho khớp."},
+        "support": {"title":"Bối cảnh biểu đạt và trợ lực", "question":"Xương Khúc, Khôi Việt nằm cạnh Cự Môn hay Thái Dương tại cung nào?", "action":"So cách bố trí thực của sao hỗ trợ trước khi bàn các chủ đề tri thức hoặc giao tiếp."},
+        "review": {"title":"Độ sáng và các ghi nhận cần dè dặt", "question":"Thái Dương có trạng thái độ sáng hợp lệ không, có Hóa Kỵ đúng sao đích hay dấu án ngữ không?", "action":"Giữ trạng thái chưa rõ khi thiếu bản ghi, không đưa ra nhận định danh tiếng hoặc sức khỏe."}
+      }
+    }
+  ]
+}

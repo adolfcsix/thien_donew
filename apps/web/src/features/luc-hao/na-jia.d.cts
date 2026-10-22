@@ -1,0 +1,12 @@
+import type {Hexagram,Trigram} from '../iching/hexagrams.cjs';
+export type PalaceStage=Readonly<{id:string;name:string;self:number;response:number}>;
+export type NaJiaLine=Readonly<{position:number;stem:string;branch:string;branchHan:string;element:string;stemBranch:string;family:string;familyRelation:string;role:string|null;spirit:string|null}>;
+export declare const BRANCH_ELEMENTS:Readonly<Record<string,string>>;
+export declare const NA_JIA:Readonly<Record<string,{innerStem:string;outerStem:string;inner:string[];outer:string[]}>>;
+export declare const STAGES:ReadonlyArray<PalaceStage>;
+export declare const STEMS:readonly string[];
+export declare const SIX_SPIRITS:readonly string[];
+export declare function getEightPalace(hexagram:Hexagram):Readonly<{palace:Trigram;stage:PalaceStage;bits:string;hexagram:Hexagram}>;
+export declare function getSpirits(dayStem:string|null):readonly string[]|null;
+export declare function familyFromElements(palaceElement:string,lineElement:string):Readonly<{relation:string;family:string}>;
+export declare function makeNaJiaChart(hexagram:Hexagram,options?:{dayStem?:string|null}):Readonly<{hexagram:Hexagram;palace:Trigram;stage:PalaceStage;method:string;dayStem:string|null;lines:readonly NaJiaLine[];notComputed:readonly string[]}>;

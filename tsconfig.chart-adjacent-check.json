@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target":"ES2022", "lib":["ES2022", "DOM"], "module":"ESNext", "moduleResolution":"Bundler",
+    "strict":true, "skipLibCheck":true, "noEmit":true, "baseUrl":".",
+    "paths": {
+      "@thiendo/shared-types":["packages/shared-types/index.d.ts"],
+      "@thiendo/interpretation":["packages/interpretation/src/index.d.ts"],
+      "@thiendo/knowledge":["packages/knowledge/src/index.d.ts"]
+    }
+  },
+  "files":["tests/types/v1111-adjacent-contract.ts"]
+}

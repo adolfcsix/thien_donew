@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "version": "11.149.0",
+  "commit": "REPLACE_WITH_40_CHAR_GIT_SHA",
+  "environment": "staging",
+  "origin": "https://staging.example.com",
+  "completedAt": "REPLACE_WITH_CURRENT_ISO_TIMESTAMP",
+  "checks": [
+    {
+      "id": "npm_ci",
+      "status": "NOT_RUN",
+      "runUrl": "",
+      "evidenceSha256": ""
+    },
+    {
+      "id": "typecheck",
+      "status": "NOT_RUN",
+      "runUrl": "",
+      "evidenceSha256": ""
+    },
+    {
+      "id": "build",
+      "status": "NOT_RUN",
+      "runUrl": "",
+      "evidenceSha256": ""
+    },
+    {
+      "id": "migrations",
+      "status": "NOT_RUN",
+      "runUrl": "",
+      "evidenceSha256": ""
+    },
+    {
+      "id": "http_e2e",
+      "status": "NOT_RUN",
+      "runUrl": "",
+      "evidenceSha256": ""
+    },
+    {
+      "id": "chromium_responsive",
+      "status": "NOT_RUN",
+      "runUrl": "",
+      "evidenceSha256": ""
+    },
+    {
+      "id": "oauth_otp",
+      "status": "NOT_RUN",
+      "runUrl": "",
+      "evidenceSha256": ""
+    },
+    {
+      "id": "backup_restore",
+      "status": "NOT_RUN",
+      "runUrl": "",
+      "evidenceSha256": ""
+    },
+    {
+      "id": "tls_dns",
+      "status": "NOT_RUN",
+      "runUrl": "",
+      "evidenceSha256": ""
+    },
+    {
+      "id": "monitoring_alerts",
+      "status": "NOT_RUN",
+      "runUrl": "",
+      "evidenceSha256": ""
+    },
+    {
+      "id": "rollback",
+      "status": "NOT_RUN",
+      "runUrl": "",
+      "evidenceSha256": ""
+    },
+    {
+      "id": "dependency_audit",
+      "status": "NOT_RUN",
+      "runUrl": "",
+      "evidenceSha256": ""
+    }
+  ]
+}

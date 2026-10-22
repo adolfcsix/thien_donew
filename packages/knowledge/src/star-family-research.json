@@ -1,0 +1,94 @@
+{
+  "edition": "v11.36-star-families",
+  "scope": "Kiến thức phương pháp độc lập do Thiên Đồ biên tập; không phải công thức an sao",
+  "records": [
+    {
+      "family": "14 chính tinh",
+      "subject": "Khung sao chủ",
+      "howToRead": "Mỗi chính tinh cần được đọc theo vị trí an, trạng thái, cung chức và sao đồng cung.",
+      "commonMistake": "Đọc riêng một sao mà bỏ qua tam phương, Tứ Hóa và thời điểm đang xét.",
+      "exercise": "Dùng bản ghi 14 chính tinh × 12 cung để lập bảng câu hỏi, sau đó đối chiếu thực tế cung Mệnh–Tài–Quan.",
+      "expertReviewed": false
+    },
+    {
+      "family": "Lục cát",
+      "subject": "Nhóm sao hỗ trợ",
+      "howToRead": "Xét Tả–Hữu, Xương–Khúc, Khôi–Việt theo vị trí có thật trong lá số, phân biệt đồng cung và tam hợp.",
+      "commonMistake": "Khẳng định cứ gặp cát tinh là đỗ đạt hoặc có quý nhân.",
+      "exercise": "Chọn một cung và thống kê có bao nhiêu nhóm hỗ trợ, thuộc lớp năm sinh hay lưu niên.",
+      "expertReviewed": false
+    },
+    {
+      "family": "Lục sát",
+      "subject": "Nhóm sao thường xét như lực cản",
+      "howToRead": "Xét Kình–Đà, Hỏa–Linh, Không–Kiếp theo bối cảnh cung, trạng thái các chính tinh và quan hệ hội chiếu.",
+      "commonMistake": "Gán ngay sự kiện tai nạn, thất bại hoặc bệnh tật khi thấy một sao mang chữ sát.",
+      "exercise": "Thử so hai cung có cùng Kình Dương nhưng khác chính tinh, ghi rõ giả định đang sử dụng.",
+      "expertReviewed": false
+    },
+    {
+      "family": "Tứ Hóa",
+      "subject": "Biến hóa gắn sao đích",
+      "howToRead": "Hóa Lộc, Hóa Quyền, Hóa Khoa và Hóa Kỵ cần liên kết thiên can và sao đích của bảng dùng trong từng lớp thời gian.",
+      "commonMistake": "Coi nhãn Hóa Kỵ như một ngôi sao có vị trí cố định độc lập; trộn Tứ Hóa lưu niên và năm sinh.",
+      "exercise": "Lập bảng gồm thiên can, bảng quy tắc, sao đích, cung sao đích và phiên bản trường phái.",
+      "expertReviewed": false
+    },
+    {
+      "family": "Song Lộc và Thiên Mã",
+      "subject": "Nguồn lực và chuyển động",
+      "howToRead": "Lộc Tồn, Hóa Lộc và Thiên Mã chỉ có ý nghĩa nghiên cứu sau khi xác định đúng lớp sao và vị trí.",
+      "commonMistake": "Dùng một chữ Lộc để kết luận thu nhập; không xét điều kiện Lộc–Mã cùng hay khác cung.",
+      "exercise": "Đánh dấu nguồn của từng sao trong bản mệnh và năm xem, tránh cộng sao lưu hai lần.",
+      "expertReviewed": false
+    },
+    {
+      "family": "Vòng Thái Tuế",
+      "subject": "Mười hai nhãn theo địa chi năm sinh",
+      "howToRead": "Các sao vòng Thái Tuế an theo địa chi năm sinh; xem mối liên hệ của các tam hợp trong bố cục.",
+      "commonMistake": "Đánh đồng sao Thái Tuế gốc với Lưu Thái Tuế; gộp Quan Phù với Quan Phủ.",
+      "exercise": "Lập biểu mười hai sao theo mười hai chi và so với mốc Lưu Thái Tuế năm đang xem.",
+      "expertReviewed": false
+    },
+    {
+      "family": "Vòng Tràng Sinh",
+      "subject": "Chu kỳ mười hai trạng thái",
+      "howToRead": "Tràng Sinh tới Dưỡng là một chuỗi trạng thái biểu tượng có hướng an theo hệ Cục và quy tắc chọn.",
+      "commonMistake": "Đếm Tràng Sinh và Trường Sinh như hai sao độc lập; mặc định trạng thái Tử dự đoán sự chết.",
+      "exercise": "Đối chiếu cùng một vị trí cung dưới quy tắc thuận và nghịch trước khi lưu tên.",
+      "expertReviewed": false
+    },
+    {
+      "family": "Vòng Bác Sĩ",
+      "subject": "Mười hai nhãn gắn Lộc Tồn",
+      "howToRead": "Bộ Bác Sĩ an theo mốc và chiều của cách an sao đang dùng; mỗi nhãn có vị trí tương ứng trong vòng.",
+      "commonMistake": "Nhầm Quan Phủ của vòng Bác Sĩ với Quan Phù của vòng Thái Tuế.",
+      "exercise": "Kiểm xem mỗi trong 12 cung có đúng một sao vòng khi tính trên lá số mẫu.",
+      "expertReviewed": false
+    },
+    {
+      "family": "Phụ tinh lẻ",
+      "subject": "Sao bổ trợ theo Can Chi và các mốc sinh",
+      "howToRead": "Những sao như Hồng Loan, Thiên Hỷ, Thiên Hình, Đào Hoa, Tuần/Triệt có đầu vào an và nhóm nghĩa khác nhau.",
+      "commonMistake": "Xem mọi sao phụ là cát/hung thuần túy hoặc tự suy công thức từ nghĩa tên.",
+      "exercise": "Đối chiếu nguồn năm sinh, giờ sinh, tháng, ngày hoặc vị trí cố định của từng sao.",
+      "expertReviewed": false
+    },
+    {
+      "family": "Phụ tinh bổ sung",
+      "subject": "Các sao tăng độ phủ thuật toán",
+      "howToRead": "Những sao như Quốc Ấn, Thiên Khốc, Thiên Hư, Thiên La, Địa Võng cần bộ quy tắc độc lập trước khi luận.",
+      "commonMistake": "Thấy tên trong thư viện thì coi như có engine đã được thẩm định.",
+      "exercise": "Đối chiếu từng tên sao với ID, file an sao, đầu vào và fixture kiểm chứng trước khi bật trên lá số.",
+      "expertReviewed": false
+    },
+    {
+      "family": "Thần sát Tam Hợp mở rộng",
+      "subject": "Nhóm còn thiếu hoặc khác trường phái",
+      "howToRead": "Một số danh mục bổ sung Tướng Tinh, Tức Thần, Thiên Sát… nhưng không phải mọi trường phái an cùng bộ thần sát.",
+      "commonMistake": "Thêm tên thần sát vào engine mà không xác định bảng tam hợp năm sinh, tên gọi và công thức chuẩn.",
+      "exercise": "Lập bảng dị bản và đề nghị chuyên gia xác minh công thức trước khi thêm bất kỳ sao mới.",
+      "expertReviewed": false
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+name: THIEN DO - Source integrity (NOT a build)
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  source-only:
+    name: Source / regression only (not production verification)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install source parser (not application dependencies)
+        run: npm install --global typescript@5.9.3 --no-audit --no-fund
+      - name: Calendar-day and star witness gate
+        run: |
+          node infrastructure/scripts/audit-star-jie-witness-v111496.cjs
+          node --test tests/v111496-jie-day-star-witness.test.cjs
+      - name: NAOJ minute solar terms cross-checked against HKO and Tử Vi gates (V11.149.9)
+        run: |
+          npm run audit:naoj-jie:1499
+          node --test tests/v111499-naoj-jie-witness.test.cjs
+      - name: Official HKO 2017–2023 Jie calendar days (V11.149.8)
+        run: |
+          npm run audit:hko-jie-days:1498
+          node --test tests/v111498-hko-official-days.test.cjs
+      - name: Official HKO 2013–2016 Jie minutes (research-only)
+        run: |
+          npm run audit:hko-jie-primary:1497
+          node --test tests/v111497-hko-primary-jie.test.cjs
+      - name: Source and regression gate
+        run: npm run check:release:source
+      - name: Display evidence scope
+        if: always()
+        run: |
+          echo '### Source-only gate (not Next/Nest build or PostgreSQL E2E)' >> "$GITHUB_STEP_SUMMARY"
+          echo 'To validate full stack, commit a real package-lock.json and run the full-stack workflow.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Archive sanitized source-gate verdict
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: thien-do-source-only-evidence
+          path: docs/reports/release-v*-source-evidence.json
+          if-no-files-found: warn
+          retention-days: 14

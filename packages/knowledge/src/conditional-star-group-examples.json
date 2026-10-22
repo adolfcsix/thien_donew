@@ -1,0 +1,426 @@
+{
+  "edition": "11.59.0",
+  "status": "internally-reproducible-engine-examples",
+  "expertReviewed": false,
+  "notice": "Lá số thử giả định do engine sinh ra để minh họa điều kiện. Không phải chứng cứ thẩm định độc lập về thuật số hoặc dự báo.",
+  "cases": [
+    {
+      "groupId": "ta-huu-xuong-khuc",
+      "status": "complete",
+      "input": {
+        "date": "1988-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 15,
+        "minute": 30
+      },
+      "anchorBranchIndex": 6,
+      "anchorPalace": "Phúc Đức",
+      "expectedEvidence": [
+        {
+          "star": "Tả Phụ",
+          "branchIndex": 2,
+          "relation": "Tam hợp"
+        },
+        {
+          "star": "Hữu Bật",
+          "branchIndex": 0,
+          "relation": "Đối cung"
+        },
+        {
+          "star": "Văn Xương",
+          "branchIndex": 2,
+          "relation": "Tam hợp"
+        },
+        {
+          "star": "Văn Khúc",
+          "branchIndex": 0,
+          "relation": "Đối cung"
+        }
+      ],
+      "expectedExcluded": []
+    },
+    {
+      "groupId": "ta-huu-xuong-khuc",
+      "status": "partial",
+      "input": {
+        "date": "1988-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 1,
+        "minute": 30
+      },
+      "anchorBranchIndex": 1,
+      "anchorPalace": "Phúc Đức",
+      "expectedEvidence": [
+        {
+          "star": "Văn Xương",
+          "branchIndex": 9,
+          "relation": "Tam hợp"
+        },
+        {
+          "star": "Văn Khúc",
+          "branchIndex": 5,
+          "relation": "Tam hợp"
+        }
+      ],
+      "expectedExcluded": [
+        {
+          "star": "Tả Phụ",
+          "reason": "outside"
+        },
+        {
+          "star": "Hữu Bật",
+          "reason": "outside"
+        }
+      ]
+    },
+    {
+      "groupId": "khoi-viet-xuong-khuc",
+      "status": "complete",
+      "input": {
+        "date": "1997-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 1,
+        "minute": 30
+      },
+      "anchorBranchIndex": 5,
+      "anchorPalace": "Nô Bộc",
+      "expectedEvidence": [
+        {
+          "star": "Thiên Khôi",
+          "branchIndex": 11,
+          "relation": "Đối cung"
+        },
+        {
+          "star": "Thiên Việt",
+          "branchIndex": 9,
+          "relation": "Tam hợp"
+        },
+        {
+          "star": "Văn Xương",
+          "branchIndex": 9,
+          "relation": "Tam hợp"
+        },
+        {
+          "star": "Văn Khúc",
+          "branchIndex": 5,
+          "relation": "Tọa cung"
+        }
+      ],
+      "expectedExcluded": []
+    },
+    {
+      "groupId": "khoi-viet-xuong-khuc",
+      "status": "partial",
+      "input": {
+        "date": "1997-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 1,
+        "minute": 30
+      },
+      "anchorBranchIndex": 1,
+      "anchorPalace": "Phụ Mẫu",
+      "expectedEvidence": [
+        {
+          "star": "Thiên Việt",
+          "branchIndex": 9,
+          "relation": "Tam hợp"
+        },
+        {
+          "star": "Văn Xương",
+          "branchIndex": 9,
+          "relation": "Tam hợp"
+        },
+        {
+          "star": "Văn Khúc",
+          "branchIndex": 5,
+          "relation": "Tam hợp"
+        }
+      ],
+      "expectedExcluded": [
+        {
+          "star": "Thiên Khôi",
+          "reason": "outside"
+        }
+      ]
+    },
+    {
+      "groupId": "ta-huu-loc-ton",
+      "status": "complete",
+      "input": {
+        "date": "1979-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 1,
+        "minute": 30
+      },
+      "anchorBranchIndex": 11,
+      "anchorPalace": "Huynh Đệ",
+      "expectedEvidence": [
+        {
+          "star": "Tả Phụ",
+          "branchIndex": 3,
+          "relation": "Tam hợp"
+        },
+        {
+          "star": "Hữu Bật",
+          "branchIndex": 11,
+          "relation": "Tọa cung"
+        },
+        {
+          "star": "Lộc Tồn",
+          "branchIndex": 5,
+          "relation": "Đối cung"
+        }
+      ],
+      "expectedExcluded": []
+    },
+    {
+      "groupId": "ta-huu-loc-ton",
+      "status": "partial",
+      "input": {
+        "date": "1979-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 1,
+        "minute": 30
+      },
+      "anchorBranchIndex": 3,
+      "anchorPalace": "Điền Trạch",
+      "expectedEvidence": [
+        {
+          "star": "Tả Phụ",
+          "branchIndex": 3,
+          "relation": "Tọa cung"
+        },
+        {
+          "star": "Hữu Bật",
+          "branchIndex": 11,
+          "relation": "Tam hợp"
+        }
+      ],
+      "expectedExcluded": [
+        {
+          "star": "Lộc Tồn",
+          "reason": "outside"
+        }
+      ]
+    },
+    {
+      "groupId": "kinh-da-hoa-linh",
+      "status": "complete",
+      "input": {
+        "date": "2004-02-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 1,
+        "minute": 30
+      },
+      "anchorBranchIndex": 9,
+      "anchorPalace": "Tài Bạch",
+      "expectedEvidence": [
+        {
+          "star": "Kình Dương",
+          "branchIndex": 3,
+          "relation": "Đối cung"
+        },
+        {
+          "star": "Đà La",
+          "branchIndex": 1,
+          "relation": "Tam hợp"
+        },
+        {
+          "star": "Hỏa Tinh",
+          "branchIndex": 3,
+          "relation": "Đối cung"
+        },
+        {
+          "star": "Linh Tinh",
+          "branchIndex": 9,
+          "relation": "Tọa cung"
+        }
+      ],
+      "expectedExcluded": []
+    },
+    {
+      "groupId": "kinh-da-hoa-linh",
+      "status": "partial",
+      "input": {
+        "date": "2004-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 1,
+        "minute": 30
+      },
+      "anchorBranchIndex": 3,
+      "anchorPalace": "Điền Trạch",
+      "expectedEvidence": [
+        {
+          "star": "Đà La",
+          "branchIndex": 11,
+          "relation": "Tam hợp"
+        },
+        {
+          "star": "Linh Tinh",
+          "branchIndex": 11,
+          "relation": "Tam hợp"
+        }
+      ],
+      "expectedExcluded": [
+        {
+          "star": "Kình Dương",
+          "reason": "outside"
+        },
+        {
+          "star": "Hỏa Tinh",
+          "reason": "outside"
+        }
+      ]
+    },
+    {
+      "groupId": "khong-kiep-hoa-linh",
+      "status": "complete",
+      "input": {
+        "date": "1979-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 1,
+        "minute": 30
+      },
+      "anchorBranchIndex": 6,
+      "anchorPalace": "Thiên Di",
+      "expectedEvidence": [
+        {
+          "star": "Địa Không",
+          "branchIndex": 10,
+          "relation": "Tam hợp"
+        },
+        {
+          "star": "Địa Kiếp",
+          "branchIndex": 0,
+          "relation": "Đối cung"
+        },
+        {
+          "star": "Hỏa Tinh",
+          "branchIndex": 2,
+          "relation": "Tam hợp"
+        },
+        {
+          "star": "Linh Tinh",
+          "branchIndex": 2,
+          "relation": "Tam hợp"
+        }
+      ],
+      "expectedExcluded": []
+    },
+    {
+      "groupId": "khong-kiep-hoa-linh",
+      "status": "partial",
+      "input": {
+        "date": "2012-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 1,
+        "minute": 30
+      },
+      "anchorBranchIndex": 0,
+      "anchorPalace": "Mệnh",
+      "expectedEvidence": [
+        {
+          "star": "Địa Kiếp",
+          "branchIndex": 0,
+          "relation": "Tọa cung"
+        },
+        {
+          "star": "Hỏa Tinh",
+          "branchIndex": 8,
+          "relation": "Tam hợp"
+        }
+      ],
+      "expectedExcluded": [
+        {
+          "star": "Địa Không",
+          "reason": "outside"
+        },
+        {
+          "star": "Linh Tinh",
+          "reason": "outside"
+        }
+      ]
+    },
+    {
+      "groupId": "ta-huu-khoi-viet",
+      "status": "complete",
+      "input": {
+        "date": "2020-02-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 1,
+        "minute": 30
+      },
+      "anchorBranchIndex": 10,
+      "anchorPalace": "Tử Tức",
+      "expectedEvidence": [
+        {
+          "star": "Tả Phụ",
+          "branchIndex": 4,
+          "relation": "Đối cung"
+        },
+        {
+          "star": "Hữu Bật",
+          "branchIndex": 10,
+          "relation": "Tọa cung"
+        },
+        {
+          "star": "Thiên Khôi",
+          "branchIndex": 6,
+          "relation": "Tam hợp"
+        },
+        {
+          "star": "Thiên Việt",
+          "branchIndex": 2,
+          "relation": "Tam hợp"
+        }
+      ],
+      "expectedExcluded": []
+    },
+    {
+      "groupId": "ta-huu-khoi-viet",
+      "status": "partial",
+      "input": {
+        "date": "2020-01-15",
+        "calendar": "solar",
+        "gender": "Nam",
+        "hour": 1,
+        "minute": 30
+      },
+      "anchorBranchIndex": 0,
+      "anchorPalace": "Mệnh",
+      "expectedEvidence": [
+        {
+          "star": "Thiên Khôi",
+          "branchIndex": 0,
+          "relation": "Tọa cung"
+        },
+        {
+          "star": "Thiên Việt",
+          "branchIndex": 8,
+          "relation": "Tam hợp"
+        }
+      ],
+      "expectedExcluded": [
+        {
+          "star": "Tả Phụ",
+          "reason": "outside"
+        },
+        {
+          "star": "Hữu Bật",
+          "reason": "outside"
+        }
+      ]
+    }
+  ]
+}

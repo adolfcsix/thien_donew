@@ -1,0 +1,12 @@
+{
+ "scope":"Author-published teaching / selected digital book; not universal or expert validation",
+ "hourSource":{"id":"starlin-other","url":"https://www.108s.tw/article/info/97","thaiPhu":[6,7,8,9,10,11,0,1,2,3,4,5],"phongCao":[2,3,4,5,6,7,8,9,10,11,0,1]},
+ "bookExample":{"id":"lap-giai-pdf","pdfPage":70,"vanKhuc":8,"thaiPhu":9,"phongCao":7},
+ "tuongAnchors":[0,9,6,3,0,9,6,3,0,9,6,3],
+ "tuanByDecade":[[10,11],[8,9],[6,7],[4,5],[2,3],[0,1]],
+ "trietSingle":[8,6,4,2,0,9,7,5,3,1],
+ "changshengAnchors":{"2":8,"3":11,"4":5,"5":8,"6":2},
+ "tueTienNames":["Tuế Kiến","Hối Khí","Tang Môn","Quán Sách","Quan Phù","Tiểu Hao","Đại Hao","Long Đức","Bạch Hổ","Thiên Đức","Điếu Khách","Bệnh Phù"],
+ "tueTienHanzi":["歲建","晦氣","喪門","貫索","官符","小耗","大耗","龍德","白虎","天德","弔客","病符"],
+ "derivation":"Manually transcribed branch indices (Tý=0) from explicit starts and forward direction; no engine output used for external expected values. Book example rendered separately. Modern webpages are methods of these teaching sources, not scans of ancient editions."
+}

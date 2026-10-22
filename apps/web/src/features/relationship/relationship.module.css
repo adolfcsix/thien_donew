@@ -1,0 +1,57 @@
+.root{max-width:1280px;margin:auto;padding:clamp(14px,3vw,30px);border-radius:20px;background:#10182b;color:#e8e5f2;line-height:1.75;min-width:0;overflow-wrap:anywhere}.hero,.panel{margin:18px 0;padding:clamp(16px,3vw,28px);border:1px solid #62577d;border-radius:16px;background:linear-gradient(145deg,#24304b,#211c37)}.hero h1{font-family:var(--font-serif);font-size:clamp(30px,5vw,50px);line-height:1.25;color:#e5cea0}.hero>span{font-size:11px;letter-spacing:.1em;color:#d8bd87}.root h2,.root h3,.root h4{color:#e5cea0}.root a{color:#ddc390}.columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.editor{min-width:0;border:1px solid #82709d;border-radius:12px;padding:16px}.editor legend{padding:0 7px;color:#e5cea0}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.root label{display:grid;gap:5px;font-size:13px;min-width:0}.root input,.root select,.root textarea{width:100%;max-width:100%;min-width:0;padding:10px;border:1px solid #8a7caa;border-radius:7px;background:#252c47;color:#fff;font:inherit}.root input[type=checkbox]{width:18px;height:18px;flex-shrink:0}.confirm{display:flex!important;gap:9px!important;align-items:flex-start;margin:14px 0}.root button{padding:11px 15px;border:1px solid #c1a36d;border-radius:8px;background:#4b3d70;color:#ffe8b3;font:inherit;cursor:pointer}.root button:disabled{opacity:.5}.root button[aria-pressed=true]{background:#695185}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0}.toolbar label{flex:1;min-width:140px}.table{width:100%;max-width:100%;overflow:auto;min-width:0}.table table{width:100%;min-width:640px;border-collapse:collapse;font-size:13px}.table th,.table td{padding:9px;border-bottom:1px solid #514d6b;text-align:left;vertical-align:top}.matrix table{min-width:1080px}.matrix td{white-space:nowrap}.root details{padding:12px;margin:10px 0;border:1px solid #62577d;border-radius:8px}.root summary{color:#e5cea0;cursor:pointer}.wheel svg{width:100%;max-width:560px;display:block;margin:auto}.wheel svg g[role=button]{cursor:pointer}.wheel svg g[role=button]:focus text{fill:#fff;stroke:#e5cea0;stroke-width:.4}.wheel p{font-size:12px;color:#cec7df}.card{padding:14px;border:1px solid #62577d;border-radius:10px;background:#192039}.root :focus-visible{outline:3px solid #e0b962;outline-offset:3px}@media(max-width:850px){.columns{grid-template-columns:minmax(0,1fr)}}@media(max-width:450px){.fields{grid-template-columns:minmax(0,1fr)}.toolbar{display:grid;grid-template-columns:minmax(0,1fr)}.toolbar label{min-width:0}.editor{padding:12px}}
+
+/* A28 — no fixed dark surface: honors each Western day/night scene. */
+.root{width:100%;max-width:1480px;margin:0 auto;background:transparent;color:var(--text);box-sizing:border-box}
+.root *, .root *::before, .root *::after{box-sizing:border-box}
+.hero,.panel{min-width:0;background:var(--panel);border-color:var(--line-strong);color:var(--text);overflow-wrap:anywhere}
+.hero{background:linear-gradient(130deg,color-mix(in srgb,var(--panel) 94%,var(--gold) 6%),var(--panel))}
+.hero h1,.root h2,.root h3,.root h4{color:var(--gold)}
+.root a{color:var(--gold)}
+.columns{grid-template-columns:repeat(2,minmax(0,1fr))}
+.columns>*{min-width:0}
+.editor{border-color:var(--line-strong);background:color-mix(in srgb,var(--panel-alt) 65%,transparent)}
+.editor legend{color:var(--gold)}
+.fields>*{min-width:0}
+.root input,.root select,.root textarea{background:var(--panel-alt);border-color:var(--line-strong);color:var(--text)}
+.root button{background:var(--panel-alt);color:var(--text);border-color:var(--gold)}
+.root button[aria-pressed=true]{background:color-mix(in srgb,var(--gold) 25%,var(--panel));color:var(--text)}
+.card{background:var(--panel-alt);border-color:var(--line-strong);min-width:0;overflow-wrap:anywhere}
+.root details{border-color:var(--line-strong)}
+.root summary{color:var(--gold)}
+.table{overflow-x:auto;max-width:100%;scrollbar-gutter:stable;overscroll-behavior-inline:contain}
+.table table{width:max-content;min-width:100%;max-width:none}
+.table th,.table td{border-color:var(--line-strong);white-space:normal;overflow-wrap:normal}
+.matrix table{width:max-content;min-width:1080px}
+.matrix th:first-child{position:sticky;left:0;z-index:1;background:var(--panel-alt)}
+.toolbar{max-width:100%;min-width:0}
+.toolbar label{min-width:min(180px,100%);max-width:100%}
+.wheel{--astro-core:color-mix(in srgb,var(--panel) 94%,var(--gold) 6%);--astro-edge:var(--panel-alt);width:100%;max-width:760px;min-width:0;margin:12px auto 24px;overflow:hidden}
+.wheel svg{width:100%;max-width:680px;height:auto;display:block;margin:auto;overflow:visible}
+.wheelRim{stroke:var(--gold);stroke-width:2}
+.wheelRing{stroke:color-mix(in srgb,var(--text) 40%,transparent);stroke-width:1}
+.zodiacDivision{stroke:color-mix(in srgb,var(--gold) 55%,transparent)}
+.zodiacGlyph{fill:var(--gold);font-size:20px;font-weight:600}
+.houseBoundary{stroke:var(--gold);stroke-width:1.5}
+.houseNumber{fill:var(--text);font-size:10px}
+.softAspect{stroke:var(--astro-soft,#5793aa);stroke-width:1.3}
+.tenseAspect{stroke:var(--astro-tense,#c96585);stroke-width:1.3}
+.planetTarget{cursor:pointer;outline:none}
+.planetLeader{stroke:var(--text);stroke-width:.9;opacity:.7;pointer-events:none}
+.discA{fill:var(--panel);stroke:#b68c3d;stroke-width:1.3}
+.discB{fill:var(--panel);stroke:#8161bc;stroke-width:1.3}
+.activeDisc{fill:color-mix(in srgb,var(--gold) 28%,var(--panel));stroke:var(--gold);stroke-width:2.7}
+.planetTarget:focus-visible circle{stroke:var(--gold);stroke-width:4}
+.planetGlyph,.angleGlyph{fill:var(--text);font-size:22px;font-weight:600;pointer-events:none}
+.angleGlyph{font-size:10px}
+.wheelCore{fill:var(--panel);stroke:var(--gold);stroke-width:1;opacity:.98}
+.wheelEyebrow{font-size:11px;letter-spacing:2px;fill:var(--gold)}
+.wheelCenter{font-size:18px;letter-spacing:1px;fill:var(--text);font-weight:700}
+.wheelSub{font-size:10px;fill:var(--text)}
+.wheelLegend{display:flex;gap:7px 18px;flex-wrap:wrap;justify-content:center;font-size:12px;color:var(--text)}
+.wheel p{font-size:12px;color:var(--text);opacity:.85;max-width:650px;margin:10px auto;text-align:center}
+@media(max-width:1000px){.columns{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.root{padding:12px}.hero,.panel{padding:16px 12px}.fields{grid-template-columns:1fr}.toolbar{display:grid;grid-template-columns:minmax(0,1fr)}.toolbar label{min-width:0}.wheelLegend{justify-content:flex-start}}
+@media(prefers-reduced-motion:reduce){.wheel svg *{transition:none!important;animation:none!important}}
+
+/* Precision plotting refinement. */
+.wheelRim{filter:none;stroke-width:1.3}.wheelCore{fill:none;stroke:none}.softAspect,.tenseAspect{stroke-width:1.6}.planetLeader{stroke-dasharray:2 2;opacity:.6;stroke-width:.8}.wheelRing{stroke:color-mix(in srgb,var(--text) 38%,transparent)}.chartLegend button{font:inherit;padding:8px 12px;border:1px solid var(--line-strong);border-radius:8px;background:var(--panel);color:var(--text);cursor:pointer}.chartLegend button[aria-pressed=true]{border-color:var(--gold);box-shadow:inset 0 -2px var(--gold)}

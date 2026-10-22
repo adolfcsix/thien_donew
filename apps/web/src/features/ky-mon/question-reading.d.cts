@@ -1,0 +1,12 @@
+import type {BaseFormation} from './formation.cjs';
+import type {RotatingHourPlate} from './hour-plate.cjs';
+export type QuestionTopic='career'|'finance'|'relationship'|'health'|'travel'|'study'|'other';
+export type QuestionIndicator={id:string;layer:'door'|'stem'|'star'|'deity';symbol:string;name:string};
+export type QuestionSelection={topic:QuestionTopic;indicatorId:string;referencePalace:number|null;confirmed:boolean;questionNote?:string};
+export type QuestionEvidence={id:string;kind:string;palaceNumber:number;text:string};
+export type QuestionRelation={role:string;fromPalace:number;toPalace:number;fromElement:string;toElement:string;code:'same'|'generates'|'controls'|'generated-by'|'controlled-by';description:string};
+export type QuestionReadingReport={kind:'question-reading-evidence';method:string;topic:{id:QuestionTopic;name:string};questionNote:string;indicator:QuestionIndicator;referencePalace:number|null;confirmed:boolean;status:'awaiting-confirmation'|'not-computed'|'unlocated'|'evidence-ready';usePalace:number|null;candidates:readonly number[];relations:readonly QuestionRelation[];supportingEvidence:readonly QuestionEvidence[];counterEvidence:readonly QuestionEvidence[];contextEvidence:readonly QuestionEvidence[];missingData:readonly {code:string;text:string}[];outcome:null;score:null;forecast:null;note:string};
+export declare const TOPICS:readonly {id:QuestionTopic;name:string}[];
+export declare const INDICATORS:readonly QuestionIndicator[];
+export declare function palaceRelation(fromNumber:number,toNumber:number,role:string):QuestionRelation;
+export declare function readQuestionBoard(base:BaseFormation,plate:RotatingHourPlate|null,selection:QuestionSelection):QuestionReadingReport;

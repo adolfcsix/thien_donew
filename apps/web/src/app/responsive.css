@@ -1,0 +1,431 @@
+/* Basic mode hides advanced star layers without changing computed data. */
+.site[data-mode="basic"] .house-minor,
+.site[data-mode="basic"] .house-tuhoa,
+.site[data-mode="basic"] .house-footer,
+.site[data-mode="basic"] .board-options,
+.site[data-mode="basic"] .details-grid > div:not(:first-child) {
+  display: none;
+}
+.site[data-mode="basic"] .details-grid {grid-template-columns:1fr;}
+
+@keyframes orbit {
+  to {
+  transform:rotate(360deg)
+}
+}
+
+@media(max-width:1250px) {
+  .feature-grid {
+  grid-template-columns:repeat(2,1fr)
+}
+
+.hero-copy {
+  padding:50px 0 50px 36px
+}
+
+.main-content {
+  padding-left:27px;
+  padding-right:27px
+}
+
+.workspace {
+  grid-template-columns:260px minmax(0,1fr)
+}
+
+.entry-panel {
+  padding:20px 17px
+}
+}
+
+@media(max-width:970px) {
+  .sidebar {
+  transform:translateX(-100%);
+  transition:transform .2s
+}
+
+.sidebar.show {
+  transform:none
+}
+
+.nav-shade {
+  display:block;
+  position:fixed;
+  z-index:19;
+  inset:0;
+  background:#0009;
+  border:0;
+  width:100%
+}
+
+.mobile-menu {
+  display:grid
+}
+
+.app-area {
+  margin:0
+}
+
+.topbar {
+  padding:0 23px
+}
+
+.main-content {
+  padding:30px 23px 95px
+}
+
+.hero-copy {
+  padding:40px
+}
+
+.hero h1 {
+  font-size:45px
+}
+
+.celestial-frame {
+  min-height:395px
+}
+
+.celestial-ring {
+  width:290px;
+  height:290px
+}
+
+.ring-two {
+  width:220px;
+  height:220px
+}
+
+.celestial-core {
+  width:165px;
+  height:165px
+}
+
+.celestial-frame:before {
+  width:345px;
+  height:345px
+}
+
+.workspace {
+  grid-template-columns:1fr
+}
+
+.entry-panel {
+  display:block
+}
+
+.entry-panel form {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 18px
+}
+
+.entry-panel form>.btn {
+  grid-column:1/-1
+}
+
+.rule-note {
+  grid-column:1/-1
+}
+}
+
+@media(max-width:680px) {
+  .topbar {
+  height:60px;
+  padding:0 15px
+}
+
+.crumb {
+  font-size:9px
+}
+
+.crumb span {
+  padding:0 6px
+}
+
+.toolbar {
+  gap:6px
+}
+
+.mode-switch button {
+  font-size:9px;
+  padding:7px 8px
+}
+
+.icon-button,.avatar-button {
+  width:30px;
+  height:30px
+}
+
+.bottom-nav {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  background:#15251d;
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:68px;
+  padding-bottom:env(safe-area-inset-bottom);
+  border-top:1px solid rgba(197,161,106,.22);
+  z-index:16
+}
+
+.bottom-nav a,.bottom-nav button {
+  border:0;
+  background:transparent;
+  color:#b3b9aa;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  font-size:11px
+}
+
+.bottom-nav a.active {
+  color:var(--gold)
+}
+
+.bottom-nav span {
+  font:20px var(--font-display)
+}
+
+.bottom-nav small {
+  font-size:10px
+}
+
+.main-content {
+  padding:19px 13px 100px
+}
+
+.hero {
+  grid-template-columns:1fr
+}
+
+.hero-copy {
+  padding:40px 23px 10px
+}
+
+.hero h1 {
+  font-size:clamp(34px,8vw,48px);
+  margin:18px 0
+}
+
+.hero-copy>p {
+  font-size:12px
+}
+
+.hero-actions {
+  flex-wrap:wrap
+}
+
+.hero-line {
+  margin-top:22px;
+  line-height:1.9
+}
+
+.celestial-frame {
+  min-height:290px
+}
+
+.celestial-frame:before {
+  width:270px;
+  height:270px
+}
+
+.celestial-ring {
+  width:245px;
+  height:245px
+}
+
+.ring-two {
+  height:185px;
+  width:185px
+}
+
+.celestial-core {
+  height:140px;
+  width:140px
+}
+
+.celestial-core div {
+  font-size:64px
+}
+
+.orbit-label.top {
+  top:7px
+}
+
+.orbit-label.bottom {
+  bottom:7px
+}
+
+.intro-bar {
+  padding:16px 0
+}
+
+.intro-bar div {
+  flex-direction:column;
+  gap:4px
+}
+
+.intro-bar b {
+  font-size:22px
+}
+
+.intro-bar span {
+  text-align:center;
+  font-size:8px
+}
+
+.section-space {
+  margin-top:40px
+}
+
+.section-title {
+  display:block
+}
+
+.section-title h2 {
+  font-size:26px
+}
+
+.feature-grid {
+  grid-template-columns:1fr 1fr;
+  gap:9px
+}
+
+.feature-card {
+  padding:15px;
+  min-height:240px
+}
+
+.feature-card h3 {
+  font-size:17px
+}
+
+.feature-card p {
+  font-size:10px
+}
+
+.feature-symbol {
+  margin-top:17px
+}
+
+.entry-panel form {
+  display:block
+}
+
+.entry-panel {
+  padding:20px
+}
+
+.result-panel {
+  padding:12px;
+  min-height:300px
+}
+
+.result-title {
+  display:block
+}
+
+.result-actions {
+  margin-top:13px
+}
+
+.empty-board {
+  min-height:350px;
+  padding:20px
+}
+
+.empty-mandala {
+  font-size:69px
+}
+
+.empty-board h2 {
+  font-size:25px
+}
+
+.page-heading h1 {
+  font-size:30px
+}
+
+.board-toolbar {
+  display:block
+}
+
+.board-options {
+  margin-top:12px
+}
+
+.astrology-grid {
+  grid-template-rows:repeat(4,130px);
+  min-width:660px
+}
+
+.house {
+  padding:8px
+}
+
+.details-grid {
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+
+.lesson-grid,.glossary {
+  grid-template-columns:1fr
+}
+
+.saved-item {
+  align-items:start
+}
+
+.saved-actions {
+  flex-direction:column
+}
+
+.modal {
+  padding:30px 21px
+}
+}
+
+@media(max-width:370px) {
+  .feature-grid {
+  grid-template-columns:1fr
+}
+
+.mode-switch button {
+  padding:6px
+}
+
+.crumb {
+  letter-spacing:0
+}
+
+.hero h1 {
+  font-size:32px
+}
+
+.toolbar .icon-button {
+  display:none
+}
+
+.board-scroll {
+  margin:0 -12px
+}
+
+.saved-actions .btn {
+  padding:7px 10px
+}
+}
+
+@media(prefers-reduced-motion:reduce) {
+  html {
+  scroll-behavior:auto
+}
+
+*,*:before,*:after {
+  animation-duration:.01ms!important;
+  transition-duration:.01ms!important
+}
+}

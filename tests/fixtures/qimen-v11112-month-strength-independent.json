@@ -1,0 +1,10 @@
+{
+  "elementOrder": ["Mộc", "Hỏa", "Thổ", "Kim", "Thủy"],
+  "genericRows": [["vượng","hưu","tù","tử","tướng"],["tướng","vượng","hưu","tù","tử"],["tử","tướng","vượng","hưu","tù"],["tù","tử","tướng","vượng","hưu"],["hưu","tù","tử","tướng","vượng"]],
+  "starRows": [["tướng","vượng","hưu","tù","phế"],["phế","tướng","vượng","hưu","tù"],["tù","phế","tướng","vượng","hưu"],["hưu","tù","phế","tướng","vượng"],["vượng","hưu","tù","phế","tướng"]],
+  "termBranches": ["Tý","Sửu","Sửu","Dần","Dần","Mão","Mão","Thìn","Thìn","Tỵ","Tỵ","Ngọ","Ngọ","Mùi","Mùi","Thân","Thân","Dậu","Dậu","Tuất","Tuất","Hợi","Hợi","Tý"],
+  "branchElements": {"Tý":"Thủy","Sửu":"Thổ","Dần":"Mộc","Mão":"Mộc","Thìn":"Thổ","Tỵ":"Hỏa","Ngọ":"Hỏa","Mùi":"Thổ","Thân":"Kim","Dậu":"Kim","Tuất":"Thổ","Hợi":"Thủy"},
+  "doorElements": {"Hưu":"Thủy","Sinh":"Thổ","Thương":"Mộc","Đỗ":"Mộc","Cảnh":"Hỏa","Tử":"Thổ","Kinh":"Kim","Khai":"Kim"},
+  "starElements": {"Thiên Bồng":"Thủy","Thiên Nhuế":"Thổ","Thiên Nhậm":"Thổ","Thiên Cầm":"Thổ","Thiên Xung":"Mộc","Thiên Phụ":"Mộc","Thiên Anh":"Hỏa","Thiên Tâm":"Kim","Thiên Trụ":"Kim"},
+  "stemElements": {"Giáp":"Mộc","Ất":"Mộc","Bính":"Hỏa","Đinh":"Hỏa","Mậu":"Thổ","Kỷ":"Thổ","Canh":"Kim","Tân":"Kim","Nhâm":"Thủy","Quý":"Thủy"}
+}

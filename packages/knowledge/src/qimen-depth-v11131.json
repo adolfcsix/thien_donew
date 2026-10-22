@@ -1,0 +1,188 @@
+{
+  "version": "11.131",
+  "sources": [
+    {
+      "id": "yanyi",
+      "title": "Độn Giáp Diễn Nghĩa",
+      "url": "https://zh.wikisource.org/wiki/遁甲演義",
+      "checked": "2026-10-14",
+      "locator": "三奇入墓 · 王璋 đoạn; 門迫宮迫",
+      "scope": "Bảng mộ Ất2/Bính6/Đinh8; Môn khắc cung."
+    },
+    {
+      "id": "baojian",
+      "title": "Kỳ Môn Bảo Giám Ngự Định",
+      "url": "https://zh.wikisource.org/wiki/奇门宝鉴御定",
+      "checked": "2026-10-14",
+      "locator": "释迫; 释三奇入墓; 阴局中五寄艮宫得生门",
+      "scope": "Bảng mộ Ất2/Bính6/Đinh6; Môn khắc cung; âm Trung5 ký Cấn8."
+    }
+  ],
+  "rules": {
+    "yanyi": {
+      "name": "Diễn Nghĩa · bảng Tam Kỳ",
+      "graves": {
+        "Ất": 2,
+        "Bính": 6,
+        "Đinh": 8
+      }
+    },
+    "baojian": {
+      "name": "Bảo Giám · bảng Tam Kỳ",
+      "graves": {
+        "Ất": 2,
+        "Bính": 6,
+        "Đinh": 6
+      }
+    }
+  },
+  "stars": [
+    {
+      "name": "Thiên Bồng",
+      "element": "Thủy",
+      "guide": "Thông tin chưa rõ, nguồn lực tiềm ẩn và hướng tiếp cận."
+    },
+    {
+      "name": "Thiên Nhuế",
+      "element": "Thổ",
+      "guide": "Điểm tồn đọng, chăm sóc và việc cần sửa; không suy bệnh từ một sao."
+    },
+    {
+      "name": "Thiên Xung",
+      "element": "Mộc",
+      "guide": "Khởi động, phản ứng và tiến độ."
+    },
+    {
+      "name": "Thiên Phụ",
+      "element": "Mộc",
+      "guide": "Hướng dẫn, kỹ năng và phương án hỗ trợ."
+    },
+    {
+      "name": "Thiên Cầm",
+      "element": "Thổ",
+      "guide": "Phần ký Trung cung: đọc cùng sao chủ cung nhận ký."
+    },
+    {
+      "name": "Thiên Tâm",
+      "element": "Kim",
+      "guide": "Cách quyết định, chuyên môn và kiểm tra tiêu chí."
+    },
+    {
+      "name": "Thiên Trụ",
+      "element": "Kim",
+      "guide": "Giao tiếp, giới hạn và phản hồi."
+    },
+    {
+      "name": "Thiên Nhậm",
+      "element": "Thổ",
+      "guide": "Tính bền, trách nhiệm và điều kiện triển khai."
+    },
+    {
+      "name": "Thiên Anh",
+      "element": "Hỏa",
+      "guide": "Biểu đạt, mức hiện diện và thông tin công khai."
+    }
+  ],
+  "doors": [
+    {
+      "name": "Hưu",
+      "element": "Thủy",
+      "guide": "Nghỉ, thương lượng và tái bố trí."
+    },
+    {
+      "name": "Sinh",
+      "element": "Thổ",
+      "guide": "Điều kiện hình thành nguồn lực."
+    },
+    {
+      "name": "Thương",
+      "element": "Mộc",
+      "guide": "Va chạm, cạnh tranh và giới hạn."
+    },
+    {
+      "name": "Đỗ",
+      "element": "Mộc",
+      "guide": "Thu hẹp, kín đáo và kiểm soát tiếp cận."
+    },
+    {
+      "name": "Cảnh",
+      "element": "Hỏa",
+      "guide": "Trình bày, hồ sơ và thông tin nhìn thấy."
+    },
+    {
+      "name": "Tử",
+      "element": "Thổ",
+      "guide": "Việc kết thúc, tồn đọng hoặc cần chuyển cách xử lý."
+    },
+    {
+      "name": "Kinh",
+      "element": "Kim",
+      "guide": "Bất ngờ, lời nói và điều cần làm rõ."
+    },
+    {
+      "name": "Khai",
+      "element": "Kim",
+      "guide": "Cơ hội mở, thủ tục và người quyết định."
+    }
+  ],
+  "deities": [
+    {
+      "name": "Trực Phù",
+      "element": null,
+      "guide": "Mốc dẫn dắt và trách nhiệm quyết định."
+    },
+    {
+      "name": "Đằng Xà",
+      "element": null,
+      "guide": "Giả định, hình dung và thông tin cần phản kiểm."
+    },
+    {
+      "name": "Thái Âm",
+      "element": null,
+      "guide": "Chuẩn bị kín đáo và nguồn hỗ trợ."
+    },
+    {
+      "name": "Lục Hợp",
+      "element": null,
+      "guide": "Phối hợp, thỏa thuận và quan hệ."
+    },
+    {
+      "name": "Bạch Hổ",
+      "element": null,
+      "guide": "Áp lực, va chạm và giới hạn."
+    },
+    {
+      "name": "Huyền Vũ",
+      "element": null,
+      "guide": "Thông tin chưa công khai; cần xác minh trước khi suy động cơ."
+    },
+    {
+      "name": "Cửu Địa",
+      "element": null,
+      "guide": "Nền tảng, ổn định và bước chuẩn bị."
+    },
+    {
+      "name": "Cửu Thiên",
+      "element": null,
+      "guide": "Mở rộng, tầm nhìn và khả năng triển khai."
+    }
+  ],
+  "topics": {
+    "career": "Đối chiếu vai trò, tiến độ, điều kiện quyết định và dữ liệu công việc.",
+    "finance": "Đối chiếu dòng nguồn lực, điều kiện trao đổi và thông tin đã xác minh.",
+    "relationship": "Giữ riêng góc nhìn mỗi bên, cách giao tiếp và điều kiện phối hợp.",
+    "health": "Chỉ dùng để suy ngẫm câu hỏi và thông tin còn thiếu; không chuyển biểu tượng thành chẩn đoán hay hướng điều trị.",
+    "travel": "Đối chiếu lộ trình, thủ tục và điều kiện di chuyển thực tế.",
+    "study": "Đối chiếu mục tiêu học, tài liệu, người hỗ trợ và tiến độ.",
+    "other": "Ghi rõ đối tượng, thời điểm và tiêu chí của câu hỏi."
+  },
+  "limits": [
+    "Mốc tiết khí/ngày/giờ của hồ sơ chuyên sâu được nhập thủ công, phải ghi nguồn; trang nền vẫn có trợ giúp lịch dân dụng.",
+    "Ký dương2/âm8 là biến thể thao tác hữu hạn trên Chai Bổ, chưa phải bộ máy hoàn chỉnh cho một trường phái Bảo Giám.",
+    "Phi Bàn chỉ nhập tham chiếu, kiểm cấu trúc; chưa tự an Phi Bàn hay chứng nhận tính đúng trường phái.",
+    "Thiên Cầm có vị trí ký riêng trong danh sách chín sao; thiên can Trung5 chưa được ghép thêm vào thiên bàn tự tính.",
+    "Nhập Mộ ở đây chỉ tra Tam Kỳ thiên bàn, không mở rộng sang ngày/giờ hoặc tất cả Lục Nghi.",
+    "Chưa tổng hợp vượng suy, ứng kỳ, cách cục và kết quả thành một dự báo hoặc điểm số.",
+    "Nguồn trực tuyến hiện hành đã đọc; URL oldid của profile nền không truy cập được trong lần rà này."
+  ]
+}

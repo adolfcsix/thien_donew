@@ -1,0 +1,11 @@
+export type TreeNode={id:number;name:string;hebrew:string;gloss:string};
+export type HermeticPath={id:number;letter:string;letterName:string;gematria:number;from:number;to:number;rwsCardId:string;tradition:string};
+export type TarotDeck={id:string;name:string;period:string;origin:string;system:string;artStatus:string;status:string};
+export type SymbolLayer={id:string;label:string;tradition:string;examples:string[];boundary:string};
+export const SEFIROT:readonly TreeNode[];
+export const PATHS:readonly HermeticPath[];
+export const DECKS:readonly TarotDeck[];
+export const SYMBOL_LAYERS:readonly SymbolLayer[];
+export function getDeck(id:string):TarotDeck;
+export function compareCard(cardId:string):{id:string;rws:{name:string;number:number};marseille:{name:string;number:number};thoth:{name:string;number:number};comparisonOnly:boolean;caveat:string};
+export function getCorrespondence(cardId:string,system?:'golden-dawn'|'crowley-thoth'|'jewish-source-only'):{system:string;cardId:string;connected:boolean;reason?:string;path?:HermeticPath;warning?:string};

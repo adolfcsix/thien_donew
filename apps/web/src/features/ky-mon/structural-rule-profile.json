@@ -1,0 +1,108 @@
+{
+  "id": "thien-do-qimen-yanyi-structure-v11109",
+  "status": "research-only",
+  "placementConvention": "Thời gia Chai Bổ · Chuyển Bàn tám cung ngoài · Trung 5 theo bộ dựng V11.78",
+  "structureConvention": "Độn Giáp Diễn Nghĩa: Môn khắc cung; Tam Kỳ tại 2/6/8",
+  "lineageCertification": false,
+  "doorDefinition": "door-controls-palace",
+  "graveScope": "three-wonders-on-represented-heaven-stems",
+  "doorElements": {
+    "Hưu": "Thủy",
+    "Sinh": "Thổ",
+    "Thương": "Mộc",
+    "Đỗ": "Mộc",
+    "Cảnh": "Hỏa",
+    "Tử": "Thổ",
+    "Kinh": "Kim",
+    "Khai": "Kim"
+  },
+  "threeWonderGraves": [
+    {
+      "stem": "Ất",
+      "palace": 2,
+      "branch": "Mùi",
+      "source": "dunjia-yanyi"
+    },
+    {
+      "stem": "Bính",
+      "palace": 6,
+      "branch": "Tuất",
+      "source": "dunjia-yanyi"
+    },
+    {
+      "stem": "Đinh",
+      "palace": 8,
+      "branch": "Sửu",
+      "source": "dunjia-yanyi"
+    }
+  ],
+  "variants": [
+    {
+      "id": "baojian-ding-6",
+      "source": "baojian",
+      "stem": "Đinh",
+      "palace": 6,
+      "branch": "Tuất",
+      "applied": false
+    },
+    {
+      "id": "miji-palace-controls-door",
+      "source": "miji-different-name",
+      "doorDefinition": "palace-controls-door",
+      "applied": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "dunjia-yanyi",
+      "title": "遁甲演義 — Độn Giáp Diễn Nghĩa",
+      "url": "https://zh.wikisource.org/zh-hant/遁甲演義",
+      "locators": [
+        "三奇入墓",
+        "門迫宮迫"
+      ],
+      "type": "primary-work/digital-transcription",
+      "opened": "2026-10-12",
+      "facsimileVerified": false,
+      "revisionUrl": "https://zh.wikisource.org/w/index.php?title=遁甲演義&oldid=2082234",
+      "displayTitle": "Độn Giáp Diễn Nghĩa",
+      "displayLocators": [
+        "Tam Kỳ Nhập Mộ",
+        "Môn Bách / Cung Bách"
+      ]
+    },
+    {
+      "id": "baojian",
+      "title": "奇門寶鑑御定 — Kỳ Môn Bảo Giám Ngự Định",
+      "url": "https://zh.wikisource.org/zh-hant/奇门宝鉴御定",
+      "locators": [
+        "釋迫",
+        "釋奇墓奇制與日時干墓同凶"
+      ],
+      "type": "primary-work/digital-transcription",
+      "opened": "2026-10-12",
+      "facsimileVerified": false,
+      "revisionUrl": "https://zh.wikisource.org/w/index.php?title=奇门宝鉴御定&oldid=2353651",
+      "displayTitle": "Kỳ Môn Bảo Giám Ngự Định",
+      "displayLocators": [
+        "Giải thích Bách",
+        "Mộ và chế của Tam Kỳ"
+      ]
+    },
+    {
+      "id": "miji-different-name",
+      "title": "奇門遁甲秘笈大全 — 門迫宮迫",
+      "url": "https://www.shidianguji.com/zh/book/SDZJ0630/chapter/1lx9g2ky1kugj",
+      "locators": [
+        "門迫宮迫"
+      ],
+      "type": "primary-work/digital-transcription",
+      "opened": "2026-10-12",
+      "facsimileVerified": false,
+      "displayTitle": "Kỳ Môn Độn Giáp Bí Kíp Đại Toàn",
+      "displayLocators": [
+        "Môn Bách / Cung Bách"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+export function subscribeVisibleRefresh(windowTarget: Pick<EventTarget,'addEventListener'|'removeEventListener'>, documentTarget: Pick<EventTarget,'addEventListener'|'removeEventListener'> & {readonly visibilityState:string}, refresh:()=>void, cooldownMs?:number, now?:()=>number):()=>void;

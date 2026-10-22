@@ -1,0 +1,24 @@
+{
+  "sourceVersion": "11.149.16",
+  "policy": "Append-only SQL migrations; every baseline byte is immutable. Future migrations may be added only with contiguous numeric prefix.",
+  "migrations": {
+    "001_core.sql": "99af92aaa989d32551c3fcccb90e446d95551d5570e4387a0a358f6ef9265c14",
+    "002_indexes.sql": "62b322a7b446d9cf8a160b4a0964a2a38384f75ed2a47534c9bed5a40504e412",
+    "003_lunar_date_storage.sql": "de1757bfceaf0816d9dc01332367f3bd9429841d59f349c1066128439ab95bc9",
+    "004_study_entries.sql": "e4a0e432b641789ea44e728d6b0243b934c8528396d19a2c6fd8c80ef75df2c6",
+    "005_study_import_receipts.sql": "1504caf15783f3b95c24a651b02d28fd9a1061d3e02df337126e218b1c4e572e",
+    "006_account_identity_security.sql": "1bea49884cbc90e2c13d4fde284edc5f341c898cefffaa798412a979fce263f6",
+    "007_numerology_study.sql": "97eececc64e2911a1aeaff4f2b8c1d40eb528f26bbafe649c9dfce9a13e9ad8a",
+    "008_western_study.sql": "a26d3a9bdd2ebd8f80e1456008b4f0fd960ba528150ccb8c419d145687ea2ae1",
+    "009_tarot_rws_study.sql": "957fc8ce010ff3105d032bf541adcfdd1e9222a8051e2c3b690b1795e7eb630d",
+    "010_da_liu_ren_study.sql": "1d9b41879385b26bdd776ecc28d11ec8bcbe7c20c5845b1107c1b54e72ea45de",
+    "011_taiyi_study.sql": "8b417027597ee58c52c2d8ceac4f3e6671e864d3a945dc93ec835747eafadbca",
+    "012_unified_birth_profiles.sql": "9b3a1eff9ce453f7d019430c267354a9ef75a8b2b009f84ff0d399f19eb5c3e6",
+    "013_google_nonce_replay.sql": "2f6a5345bd2bc96b651d1a12d7fe8a55fb44b085145122c502744d4876fd8ba4",
+    "014_bazi_study_snapshot.sql": "6bc1ab27301f949b6bcf7334ac043aff3f1b19d3b0900304d192b313c02a5e4d",
+    "015_admin_billing.sql": "043ae83f5b7be97b13087a8045c021203f878e2b67b93a1cdc7b3eaa54d4fa91",
+    "016_private_consultations.sql": "b429a338d85f7ce4a345e5928f9bd6e22e74c5ddbedee2a0d2f68b76b95f66f8",
+    "017_consultation_display_name.sql": "c7d8ddc075f169a9fbca5d3c5441de2fc8184202174116e7776272abc30668e0",
+    "018_operational_query_indexes.sql": "5a2a21c2e5367c4b38ac0b42b77a0d9d40e1bf1b479d2bb1a317d90fdc155dd7"
+  }
+}

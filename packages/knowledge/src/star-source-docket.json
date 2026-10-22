@@ -1,0 +1,479 @@
+{
+  "release": "11.122.0",
+  "reviewedOn": "2026-10-13",
+  "scope": "15 hồ sơ ưu tiên từ danh mục đối chiếu; không phải chuẩn đầy đủ mọi trường phái.",
+  "engineCount": 104,
+  "missingCount": 11,
+  "aliasCount": 4,
+  "automaticPlacement": false,
+  "automaticAlias": false,
+  "sources": [
+    {
+      "id": "lap-giai-pdf",
+      "title": "Lập và giải tử vi — Vũ Đức Huynh",
+      "url": "https://www.huyenhocvietnam.vn/upload/attach/hhvn202172310234xcs1WJ.pdf",
+      "kind": "rendered-digital-book",
+      "checkedOn": "2026-10-13",
+      "locations": "Bìa PDF1; Thái Phụ/Phong Cáo PDF70; Văn Tinh PDF73 (trang tính từ 1).",
+      "scope": "Bìa và metadata khớp tác giả; năm/ấn bản chưa xác minh. Bản điện tử đã kiểm ảnh trang, không coi là scan ấn bản gốc.",
+      "sha256": "8be2550a7defea0c970b9778c15ddad8362b7e574fb369d4820b8c566c6c4ccf"
+    },
+    {
+      "id": "ao-bi-transcription",
+      "title": "Áo Bí — bản chép Dokumen",
+      "url": "https://dokumen.pub/tu-vi-ao-bi-bien-chung-hoc.html",
+      "kind": "transcription-only",
+      "checkedOn": "2026-10-13",
+      "locations": "Mục Văn Tinh giữa nhãn trang91 và92 trong bản chép; chưa xác nhận phân trang scan.",
+      "scope": "Chưa đọc scan gốc; Giáp Tý trong bảng và Giáp Tỵ trong câu quyết mâu thuẫn."
+    },
+    {
+      "id": "ao-bi-demo",
+      "title": "Áo Bí — trích đoạn PDF Tử Vi Global",
+      "url": "https://www.tuviglobal.com/static/upload/books/demo/trich_tuviaobi.pdf",
+      "kind": "digital-excerpt",
+      "checkedOn": "2026-10-13",
+      "locations": "PDF2 ghi Sài Gòn 1972; bản trích chỉ 27 trang.",
+      "scope": "Chỉ củng cố thông tin tự ghi trong bản điện tử; không có đoạn Văn Tinh và không xác nhận ấn bản gốc."
+    },
+    {
+      "id": "starlin-tuong",
+      "title": "Star Lin — bước 15: Tướng Tiền",
+      "url": "https://www.108s.tw/article/info/101",
+      "kind": "author-published-teaching",
+      "checkedOn": "2026-10-13",
+      "locations": "Mục thao tác 生年/流年: bốn tam hợp, thuận hành, thứ tự 12 thần.",
+      "scope": "Quy tắc của tài liệu giảng dạy này; tách năm sinh/năm xem. Không đại diện mọi trường phái."
+    },
+    {
+      "id": "starlin-tue",
+      "title": "Star Lin — bước 14: Tuế Tiền",
+      "url": "https://www.108s.tw/article/info/100",
+      "kind": "author-published-teaching",
+      "checkedOn": "2026-10-13",
+      "locations": "Mục thao tác 生年/流年: khởi Tuế Kiến tại chi năm, thuận hành; 貫索 thứ tư.",
+      "scope": "Quán Sách thuộc bảng Tuế Tiền đang đọc. Không thay vòng Thái Tuế hiện hành bằng bảng này."
+    },
+    {
+      "id": "starlin-other",
+      "title": "Star Lin — bước 11: các phụ tinh",
+      "url": "https://www.108s.tw/article/info/97",
+      "kind": "author-published-teaching",
+      "checkedOn": "2026-10-13",
+      "locations": "Các mục 台輔/封誥, 截空 và 旬中/旬空.",
+      "scope": "Thái/Thai Phụ có khác cách đếm; Tuần tách tên hai cung, Triệt/截空 chọn một cung theo can. Không tự đồng nhất."
+    },
+    {
+      "id": "starlin-changsheng",
+      "title": "Star Lin — bước 12: Trường Sinh",
+      "url": "https://www.108s.tw/article/info/98",
+      "kind": "author-published-teaching",
+      "checkedOn": "2026-10-13",
+      "locations": "Mục 生年: năm điểm khởi theo Cục, chiều Âm–Dương Nam–Nữ và chuỗi 長生.",
+      "scope": "Đối chiếu điểm khởi của một nguồn; vẫn có các dị bản đảo điểm khởi."
+    },
+    {
+      "id": "an-quang-compilation",
+      "title": "Ân Quang — bài 252, gắn nhãn KHHB số26 trong tuyển tập điện tử",
+      "url": "https://www.huyenhocvietnam.vn/upload/attach/hhvn2021721629xDTf73.pdf",
+      "kind": "transcribed-compilation",
+      "checkedOn": "2026-10-13",
+      "locations": "PDF794 (index793), bài Vì đâu có nhiều cách an sao khác nhau.",
+      "scope": "Chỉ đọc văn bản trích xuất; chưa xác nhận scan tạp chí gốc. Nêu Hồng Diễm/Quán Sách và vòng Tướng Tiền, không cung cấp bảng Hồng Diễm."
+    },
+    {
+      "id": "ung-khiem-name-list",
+      "title": "Thầy Ưng Khiêm — Danh mục tên sao",
+      "url": "https://thayungkhiem.vn/cac-sao-tu-vi",
+      "kind": "author-published-name-list",
+      "checkedOn": "2026-10-13",
+      "locations": "Vòng Tràng Sinh có mục Trường Sinh; chỉ dùng quan hệ tên và nhóm.",
+      "scope": "Nguồn tên tiếng Việt; không dùng số 121 làm chuẩn ngành hoặc lấy danh mục này để suy quy tắc an sao."
+    },
+    {
+      "id": "ung-khiem-hong-diem",
+      "title": "Thầy Ưng Khiêm — Hồng Diễm",
+      "url": "https://thayungkhiem.vn/sao-hong-diem",
+      "kind": "author-published-teaching-algorithm",
+      "checkedOn": "2026-10-13",
+      "locations": "Mục 2, bảng 10 can; bảng từ phần mềm của tác giả, chưa là đối chứng độc lập.",
+      "scope": "Nguồn trực tiếp của quy tắc tác giả đang dùng; không thay scan ấn bản gốc hoặc fixture lá số độc lập."
+    },
+    {
+      "id": "ung-khiem-thai-phu",
+      "title": "Thầy Ưng Khiêm — Thai Phụ",
+      "url": "https://thayungkhiem.vn/sao-thai-phu",
+      "kind": "author-published-teaching-algorithm",
+      "checkedOn": "2026-10-13",
+      "locations": "Tên 台輔 và cách đếm hai cung; chưa đọc bản sách được bài dẫn.",
+      "scope": "Nguồn trực tiếp của quy tắc tác giả đang dùng; không thay scan ấn bản gốc hoặc fixture lá số độc lập."
+    },
+    {
+      "id": "ung-khiem-tuan",
+      "title": "Thầy Ưng Khiêm — Tuần Không",
+      "url": "https://thayungkhiem.vn/sao-tuan-khong",
+      "kind": "author-published-teaching-algorithm",
+      "checkedOn": "2026-10-13",
+      "locations": "Định nghĩa Tuần Không hai cung theo tuần Giáp, giới hạn theo cách an của tác giả.",
+      "scope": "Nguồn trực tiếp của quy tắc tác giả đang dùng; không thay scan ấn bản gốc hoặc fixture lá số độc lập."
+    },
+    {
+      "id": "ung-khiem-triet",
+      "title": "Thầy Ưng Khiêm — Triệt Không",
+      "url": "https://thayungkhiem.vn/sao-triet-khong",
+      "kind": "author-published-teaching-algorithm",
+      "checkedOn": "2026-10-13",
+      "locations": "Bảng cặp cung theo 10 can; tác giả công bố cách an hai cung, khác biểu diễn đơn trong Star Lin.",
+      "scope": "Nguồn trực tiếp của quy tắc tác giả đang dùng; không thay scan ấn bản gốc hoặc fixture lá số độc lập."
+    }
+  ],
+  "records": [
+    {
+      "name": "Lưu Niên Văn Tinh",
+      "category": "missing",
+      "system": "Can năm sinh",
+      "evidence": "Hai bảng khác tại Đinh, Kỷ, Tân, Nhâm; bản chép còn mâu thuẫn riêng ở Giáp.",
+      "sourceIds": [
+        "lap-giai-pdf",
+        "ao-bi-transcription",
+        "ao-bi-demo"
+      ],
+      "next": "Đọc bản gốc Áo Bí và chốt bảng theo từng nguồn/phái; đối chứng lá số độc lập.",
+      "risk": "Tên Lưu Niên không tự chứng minh dùng can năm xem.",
+      "gates": {
+        "sourceIdentity": false,
+        "scopeDefined": true,
+        "placementCompared": true,
+        "independentChartFixture": false,
+        "schoolReview": false
+      },
+      "automaticPlacement": false,
+      "automaticAlias": false,
+      "state": "conflicting-rules"
+    },
+    {
+      "name": "Tướng Tinh",
+      "category": "missing",
+      "system": "Tướng Tiền 12 thần",
+      "evidence": "Đã đọc thứ tự và bốn điểm khởi tam hợp từ nguồn giảng dạy; bảng nghiên cứu 12 chi khớp quy tắc đó.",
+      "sourceIds": [
+        "starlin-tuong",
+        "an-quang-compilation"
+      ],
+      "next": "Đối chứng lá số nguồn độc lập và thẩm định phái/lớp năm trước tích hợp.",
+      "risk": "Không thêm tám sao rời; giữ toàn vòng và phân biệt với Tướng Quân vòng Bác Sĩ.",
+      "gates": {
+        "sourceIdentity": true,
+        "scopeDefined": true,
+        "placementCompared": true,
+        "independentChartFixture": false,
+        "schoolReview": false
+      },
+      "automaticPlacement": false,
+      "automaticAlias": false,
+      "hanzi": "將星",
+      "state": "source-rule-compared"
+    },
+    {
+      "name": "Phan An",
+      "category": "missing",
+      "system": "Tướng Tiền 12 thần",
+      "evidence": "Đã đọc thứ tự và bốn điểm khởi tam hợp từ nguồn giảng dạy; bảng nghiên cứu 12 chi khớp quy tắc đó.",
+      "sourceIds": [
+        "starlin-tuong",
+        "an-quang-compilation"
+      ],
+      "next": "Đối chứng lá số nguồn độc lập và thẩm định phái/lớp năm trước tích hợp.",
+      "risk": "Không thêm tám sao rời; giữ toàn vòng và phân biệt với Tướng Quân vòng Bác Sĩ.",
+      "gates": {
+        "sourceIdentity": true,
+        "scopeDefined": true,
+        "placementCompared": true,
+        "independentChartFixture": false,
+        "schoolReview": false
+      },
+      "automaticPlacement": false,
+      "automaticAlias": false,
+      "hanzi": "攀鞍",
+      "state": "source-rule-compared"
+    },
+    {
+      "name": "Tức Thần",
+      "category": "missing",
+      "system": "Tướng Tiền 12 thần",
+      "evidence": "Đã đọc thứ tự và bốn điểm khởi tam hợp từ nguồn giảng dạy; bảng nghiên cứu 12 chi khớp quy tắc đó.",
+      "sourceIds": [
+        "starlin-tuong",
+        "an-quang-compilation"
+      ],
+      "next": "Đối chứng lá số nguồn độc lập và thẩm định phái/lớp năm trước tích hợp.",
+      "risk": "Không thêm tám sao rời; giữ toàn vòng và phân biệt với Tướng Quân vòng Bác Sĩ.",
+      "gates": {
+        "sourceIdentity": true,
+        "scopeDefined": true,
+        "placementCompared": true,
+        "independentChartFixture": false,
+        "schoolReview": false
+      },
+      "automaticPlacement": false,
+      "automaticAlias": false,
+      "hanzi": "息神",
+      "state": "source-rule-compared"
+    },
+    {
+      "name": "Tai Sát",
+      "category": "missing",
+      "system": "Tướng Tiền 12 thần",
+      "evidence": "Đã đọc thứ tự và bốn điểm khởi tam hợp từ nguồn giảng dạy; bảng nghiên cứu 12 chi khớp quy tắc đó.",
+      "sourceIds": [
+        "starlin-tuong",
+        "an-quang-compilation"
+      ],
+      "next": "Đối chứng lá số nguồn độc lập và thẩm định phái/lớp năm trước tích hợp.",
+      "risk": "Không thêm tám sao rời; giữ toàn vòng và phân biệt với Tướng Quân vòng Bác Sĩ.",
+      "gates": {
+        "sourceIdentity": true,
+        "scopeDefined": true,
+        "placementCompared": true,
+        "independentChartFixture": false,
+        "schoolReview": false
+      },
+      "automaticPlacement": false,
+      "automaticAlias": false,
+      "hanzi": "災煞",
+      "state": "source-rule-compared"
+    },
+    {
+      "name": "Thiên Sát",
+      "category": "missing",
+      "system": "Tướng Tiền 12 thần",
+      "evidence": "Đã đọc thứ tự và bốn điểm khởi tam hợp từ nguồn giảng dạy; bảng nghiên cứu 12 chi khớp quy tắc đó.",
+      "sourceIds": [
+        "starlin-tuong",
+        "an-quang-compilation"
+      ],
+      "next": "Đối chứng lá số nguồn độc lập và thẩm định phái/lớp năm trước tích hợp.",
+      "risk": "Không thêm tám sao rời; giữ toàn vòng và phân biệt với Tướng Quân vòng Bác Sĩ.",
+      "gates": {
+        "sourceIdentity": true,
+        "scopeDefined": true,
+        "placementCompared": true,
+        "independentChartFixture": false,
+        "schoolReview": false
+      },
+      "automaticPlacement": false,
+      "automaticAlias": false,
+      "hanzi": "天煞",
+      "state": "source-rule-compared"
+    },
+    {
+      "name": "Chỉ Bối",
+      "category": "missing",
+      "system": "Tướng Tiền 12 thần",
+      "evidence": "Đã đọc thứ tự và bốn điểm khởi tam hợp từ nguồn giảng dạy; bảng nghiên cứu 12 chi khớp quy tắc đó.",
+      "sourceIds": [
+        "starlin-tuong",
+        "an-quang-compilation"
+      ],
+      "next": "Đối chứng lá số nguồn độc lập và thẩm định phái/lớp năm trước tích hợp.",
+      "risk": "Không thêm tám sao rời; giữ toàn vòng và phân biệt với Tướng Quân vòng Bác Sĩ.",
+      "gates": {
+        "sourceIdentity": true,
+        "scopeDefined": true,
+        "placementCompared": true,
+        "independentChartFixture": false,
+        "schoolReview": false
+      },
+      "automaticPlacement": false,
+      "automaticAlias": false,
+      "hanzi": "指背",
+      "state": "source-rule-compared"
+    },
+    {
+      "name": "Nguyệt Sát",
+      "category": "missing",
+      "system": "Tướng Tiền 12 thần",
+      "evidence": "Đã đọc thứ tự và bốn điểm khởi tam hợp từ nguồn giảng dạy; bảng nghiên cứu 12 chi khớp quy tắc đó.",
+      "sourceIds": [
+        "starlin-tuong",
+        "an-quang-compilation"
+      ],
+      "next": "Đối chứng lá số nguồn độc lập và thẩm định phái/lớp năm trước tích hợp.",
+      "risk": "Không thêm tám sao rời; giữ toàn vòng và phân biệt với Tướng Quân vòng Bác Sĩ.",
+      "gates": {
+        "sourceIdentity": true,
+        "scopeDefined": true,
+        "placementCompared": true,
+        "independentChartFixture": false,
+        "schoolReview": false
+      },
+      "automaticPlacement": false,
+      "automaticAlias": false,
+      "hanzi": "月煞",
+      "state": "source-rule-compared"
+    },
+    {
+      "name": "Vong Thần",
+      "category": "missing",
+      "system": "Tướng Tiền 12 thần",
+      "evidence": "Đã đọc thứ tự và bốn điểm khởi tam hợp từ nguồn giảng dạy; bảng nghiên cứu 12 chi khớp quy tắc đó.",
+      "sourceIds": [
+        "starlin-tuong",
+        "an-quang-compilation"
+      ],
+      "next": "Đối chứng lá số nguồn độc lập và thẩm định phái/lớp năm trước tích hợp.",
+      "risk": "Không thêm tám sao rời; giữ toàn vòng và phân biệt với Tướng Quân vòng Bác Sĩ.",
+      "gates": {
+        "sourceIdentity": true,
+        "scopeDefined": true,
+        "placementCompared": true,
+        "independentChartFixture": false,
+        "schoolReview": false
+      },
+      "automaticPlacement": false,
+      "automaticAlias": false,
+      "hanzi": "亡神",
+      "state": "source-rule-compared"
+    },
+    {
+      "name": "Hồng Diễm",
+      "category": "missing",
+      "system": "Thần sát phụ thuộc hệ",
+      "evidence": "V11.122 đã ghi bảng 10 can năm sinh do tác giả Thầy Ưng Khiêm công bố từ thuật toán của chính nguồn. Chưa có đối chứng ấn bản/phái và lá số độc lập.",
+      "sourceIds": [
+        "ung-khiem-hong-diem"
+      ],
+      "next": "Kiểm ấn bản/phái và fixture lá số độc lập; đối chiếu các bảng khác trước chọn quy tắc.",
+      "risk": "Bảng từ một phần mềm không tự xác minh quy tắc; không thêm vào vòng Tướng Tiền hoặc biến thành lớp lưu năm xem.",
+      "gates": {
+        "sourceIdentity": true,
+        "scopeDefined": true,
+        "placementCompared": false,
+        "independentChartFixture": false,
+        "schoolReview": false
+      },
+      "automaticPlacement": false,
+      "automaticAlias": false,
+      "state": "source-table-captured",
+      "hanzi": "紅艷"
+    },
+    {
+      "name": "Quán Sách",
+      "category": "missing",
+      "system": "Tuế Tiền 12 thần",
+      "evidence": "貫索 là vị trí thứ tư sau Tuế Kiến, Hối Khí, Tang Môn trong nguồn đang đọc.",
+      "sourceIds": [
+        "starlin-tue",
+        "an-quang-compilation"
+      ],
+      "next": "Đối chứng toàn vòng Tuế Tiền và nguyên bàn/lưu năm theo phái cụ thể.",
+      "risk": "Không nhầm Tướng Tiền, Quan Phù, Quan Phủ hoặc chỉ đổi tên Thiếu Âm hiện có.",
+      "gates": {
+        "sourceIdentity": true,
+        "scopeDefined": true,
+        "placementCompared": true,
+        "independentChartFixture": false,
+        "schoolReview": false
+      },
+      "automaticPlacement": false,
+      "automaticAlias": false,
+      "hanzi": "貫索",
+      "state": "source-rule-compared"
+    },
+    {
+      "name": "Trường Sinh",
+      "category": "alias",
+      "system": "Chu kỳ 12 trạng thái",
+      "evidence": "長生 có hai cách viết Việt; điểm khởi năm Cục và chiều đã so với quy tắc nguồn được chọn.",
+      "sourceIds": [
+        "starlin-changsheng",
+        "ung-khiem-name-list"
+      ],
+      "next": "V11.122 đã liên kết thuật ngữ trong ma trận tới ID Tràng Sinh; không tạo sao thứ hai. Duyệt phái và fixture độc lập cho quy tắc vẫn còn mở.",
+      "risk": "Khớp tên không công nhận mọi dị bản điểm khởi.",
+      "gates": {
+        "sourceIdentity": true,
+        "scopeDefined": true,
+        "placementCompared": true,
+        "independentChartFixture": false,
+        "schoolReview": false
+      },
+      "automaticPlacement": false,
+      "automaticAlias": false,
+      "candidate": "Tràng Sinh",
+      "state": "name-candidate-rule-compared"
+    },
+    {
+      "name": "Thai Phụ",
+      "category": "alias",
+      "system": "Sao theo giờ sinh",
+      "evidence": "Nguồn Star Lin khởi 台輔 ở Ngọ, 封誥 ở Dần khi giờ Tý; engine theo ví dụ PDF70 dùng hai cung kề Văn Khúc. Lệch một cung ở cả 12 giờ.",
+      "sourceIds": [
+        "starlin-other",
+        "lap-giai-pdf",
+        "ung-khiem-thai-phu"
+      ],
+      "next": "Giữ hai phương pháp riêng; đối chiếu 12 giờ và phái trước gộp tên hoặc thay công thức.",
+      "risk": "Không xem khác biệt là lỗi engine đã được chứng minh; không tự sửa toàn bộ lá số cũ.",
+      "gates": {
+        "sourceIdentity": true,
+        "scopeDefined": true,
+        "placementCompared": true,
+        "independentChartFixture": false,
+        "schoolReview": false
+      },
+      "automaticPlacement": false,
+      "automaticAlias": false,
+      "candidate": "Thái Phụ",
+      "hanzi": "台輔",
+      "state": "variant-conflict"
+    },
+    {
+      "name": "Tuần Không",
+      "category": "alias",
+      "system": "Không vong theo tuần Giáp",
+      "evidence": "Cặp cung của engine khớp tập hợp hai cung 旬中/旬空 trong 60 Can Chi; cách đặt tên/biểu diễn khác.",
+      "sourceIds": [
+        "starlin-other",
+        "ung-khiem-tuan"
+      ],
+      "next": "Duyệt định nghĩa Tuần Không theo phái trước thêm alias tìm kiếm.",
+      "risk": "Hai tên nguồn không có nghĩa phải tạo hai sao độc lập trong engine.",
+      "gates": {
+        "sourceIdentity": true,
+        "scopeDefined": true,
+        "placementCompared": true,
+        "independentChartFixture": false,
+        "schoolReview": false
+      },
+      "automaticPlacement": false,
+      "automaticAlias": false,
+      "candidate": "Tuần",
+      "state": "paired-location-compared"
+    },
+    {
+      "name": "Triệt Không",
+      "category": "alias",
+      "system": "Không vong theo can năm",
+      "evidence": "Nguồn 截空 chọn một cung theo can; engine dùng cặp Triệt. Mỗi cung nguồn nằm trong cặp nhưng không tương đương toàn bộ biểu diễn. V11.122 ghi thêm nguồn tiếng Việt công bố cặp cung theo can như engine; hai cách biểu diễn vẫn được giữ riêng.",
+      "sourceIds": [
+        "starlin-other",
+        "ung-khiem-triet"
+      ],
+      "next": "Tìm nguồn xác định Triệt Không/Triệt Lộ Không Vong và quy tắc cặp cung; không gộp chỉ qua chữ Không.",
+      "risk": "Khác một-cung/hai-cung; tránh nhập 10 vị trí đơn như bằng chứng tương đương cặp.",
+      "gates": {
+        "sourceIdentity": true,
+        "scopeDefined": true,
+        "placementCompared": true,
+        "independentChartFixture": false,
+        "schoolReview": false
+      },
+      "automaticPlacement": false,
+      "automaticAlias": false,
+      "candidate": "Triệt",
+      "state": "representation-conflict"
+    }
+  ],
+  "nextMilestone": "Tarot 78 lá sau khi ghi rõ các gate Tử Vi còn mở; các sao chưa đủ chứng cứ tiếp tục ở nhánh nghiên cứu."
+}

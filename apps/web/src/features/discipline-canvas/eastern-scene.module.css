@@ -1,0 +1,21 @@
+/* Inert, viewport-throttled CSS 3D. Accurate chart numbers remain outside this art layer. */
+.scene{--scene-accent:var(--td-accent-text,var(--gold,#bd955c));--scene-shade:color-mix(in srgb,var(--scene-accent) 22%,transparent);width:clamp(110px,19vw,190px);aspect-ratio:1;float:right;position:relative;margin:0 0 12px 18px;isolation:isolate;perspective:560px;transform-style:preserve-3d;pointer-events:none;contain:layout paint;color:var(--scene-accent);border-radius:50%;background:radial-gradient(circle,var(--scene-shade),transparent 70%)}
+.scene[data-school="bat-tu"],.scene[data-school="ha-lac"]{--scene-accent:var(--td-accent-text,var(--mint,#85b9ab))}
+.scene[data-school="thiet-ban"],.scene[data-school="dai-luc-nham"]{--scene-accent:var(--td-accent-text,var(--gold,#bea175))}
+.sky{position:absolute;inset:25%;border-radius:50%;filter:blur(13px);background:var(--scene-shade);animation:sceneBreath 7s ease-in-out infinite}
+.outer,.rim{position:absolute;border:1.5px solid currentColor;border-radius:50%;opacity:.66;transform-style:preserve-3d}
+.outer{inset:7%;transform:rotateX(66deg);animation:sceneTurn 24s linear infinite}
+.outer i{position:absolute;width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}.outer i:nth-child(1){top:0;left:50%}.outer i:nth-child(2){right:0;top:50%}.outer i:nth-child(3){bottom:0;left:50%}.outer i:nth-child(4){left:0;top:50%}
+.disk{position:absolute;inset:21%;display:grid;place-items:center;border:1px solid currentColor;border-radius:19%;background:linear-gradient(135deg,color-mix(in srgb,var(--scene-accent) 16%,transparent),transparent 70%);box-shadow:0 0 18px var(--scene-shade),inset 0 0 20px var(--scene-shade);transform-style:preserve-3d;animation:sceneTilt 15s ease-in-out infinite alternate;transform:rotateX(16deg) rotateY(-20deg)}
+.core{font:600 clamp(33px,5vw,61px) var(--font-han);line-height:1;text-shadow:0 0 14px var(--scene-shade);transform:translateZ(24px)}
+.trigram{position:absolute;top:4%;font:8px serif;letter-spacing:1px;opacity:.78}.small{position:absolute;bottom:10%;right:13%;font-size:12px;transform:translateZ(8px)}
+.rim{inset:13%;border-style:dashed;transform:rotateY(72deg) rotateZ(18deg);animation:rimTurn 19s linear infinite reverse}
+.caption{position:absolute;bottom:5%;left:0;right:0;text-align:center;font:600 10px var(--font-ui);letter-spacing:.13em;opacity:.8}
+@keyframes sceneTurn{to{transform:rotateX(66deg) rotateZ(360deg)}}
+@keyframes sceneTilt{to{transform:rotateX(-10deg) rotateY(24deg)}}
+@keyframes rimTurn{to{transform:rotateY(72deg) rotateZ(378deg)}}
+@keyframes sceneBreath{50%{opacity:.4;transform:scale(1.2)}}
+@media(max-width:600px){.scene{width:clamp(86px,24vw,126px);margin:0 0 8px 10px;opacity:.88}}
+@media(prefers-reduced-motion:reduce){.scene *{animation:none!important}}
+.scene[data-paused="true"] *,:global(html[data-thiendo-effects="reduced"]) .scene *{animation-play-state:paused!important}
+@media print{.scene{display:none}}

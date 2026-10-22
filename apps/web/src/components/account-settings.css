@@ -1,0 +1,346 @@
+/* V11.115.1 — account surfaces: scoped tokens preserve the original Thiên Đồ palette. */
+.modal-backdrop.account-backdrop {
+  padding: clamp(10px, 3vw, 28px);
+  background: rgba(5, 13, 11, .76);
+  -webkit-backdrop-filter: blur(9px);
+  backdrop-filter: blur(9px);
+  animation: account-backdrop-enter .22s ease both;
+}
+.modal.account-modal {
+  --account-bg: #17271f;
+  --account-surface: #20362c;
+  --account-field: #11241b;
+  --account-text: #f5ecdb;
+  --account-muted: #b6c4b8;
+  --account-line: rgba(208, 188, 146, .21);
+  --account-highlight: #d6b681;
+  --account-focus: rgba(214,182,129,.36);
+  display: grid;
+  grid-template-columns: minmax(205px, .85fr) minmax(0, 1.25fr);
+  width: min(880px, 100%);
+  max-height: min(92dvh, 900px);
+  min-height: min(590px, 85dvh);
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid rgba(220,190,132,.32);
+  border-radius: 23px;
+  background: var(--account-bg);
+  color: var(--account-text);
+  isolation: isolate;
+  box-shadow: 0 32px 110px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.025) inset;
+  animation: account-panel-enter .33s cubic-bezier(.2,.8,.24,1) both;
+}
+html[data-thiendo-theme="light"] .modal.account-modal {
+  --account-bg: #f5f0e6;
+  --account-surface: #ebe4d6;
+  --account-field: #fffbf2;
+  --account-text: #22382d;
+  --account-muted: #5c7064;
+  --account-line: rgba(49,79,59,.20);
+  --account-highlight: #775b30;
+  --account-focus: rgba(80,111,77,.22);
+  border-color: rgba(63,88,67,.23);
+  box-shadow: 0 32px 110px rgba(11,34,23,.28);
+}
+.modal.account-modal .account-close {
+  position: absolute;
+  inset: 15px 16px auto auto;
+  z-index: 4;
+  width: 36px;
+  height: 36px;
+  font-size: 25px;
+  border: 1px solid var(--account-line);
+  background: var(--account-surface);
+  color: var(--account-text);
+  transition: transform .18s ease, background-color .18s ease;
+}
+.modal.account-modal .account-close:hover {transform: rotate(90deg);background: var(--account-field);}
+.account-dialog-art {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  min-height: 100%;
+  padding: 36px 29px 34px;
+  background:
+    radial-gradient(ellipse at 44% 36%,rgba(229,183,107,.14),transparent 42%),
+    radial-gradient(ellipse at 80% 8%,rgba(79,147,118,.24),transparent 53%),
+    linear-gradient(150deg,#213e32,#0b1b16 83%);
+  border-right: 1px solid rgba(232,210,166,.15);
+}
+.account-dialog-art::after {
+  content: '';
+  position:absolute;
+  inset: 0;
+  pointer-events:none;
+  opacity: .2;
+  background-image: repeating-linear-gradient(65deg,transparent 0 39px,rgba(216,194,151,.10) 39px 40px);
+}
+.account-orbit {
+  position: absolute;
+  top: 11%; left: 50%;
+  width: min(23vw,235px); aspect-ratio: 1;
+  border: 1px solid rgba(226,193,126,.36);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  animation: account-orbit-drift 15s ease-in-out infinite alternate;
+}
+.account-orbit-one::before,.account-orbit-one::after {
+  content:'';position:absolute;inset:14%;border:1px solid rgba(226,193,126,.27);border-radius:50%;
+}
+.account-orbit-one::after {inset:31%;border-color:rgba(226,193,126,.48);}
+.account-orbit-two {top:7%;opacity:.38;transform:translateX(-50%) rotate(45deg) scale(1.29);border-radius:33%;animation-duration:21s;}
+.account-art-mark {
+  position:absolute;top:calc(11% + 95px);left:50%;transform:translate(-50%,-50%);
+  font-family:var(--font-han);font-size:clamp(35px,5vw,54px);font-weight:400;
+  color:#ecd6a8;text-shadow:0 0 30px rgba(231,192,119,.25);
+}
+.account-art-caption {z-index:1;max-width:260px;}
+.account-art-caption>span {display:block;color:#e0c292;font-size:10px;font-weight:750;letter-spacing:.23em;margin-bottom:18px;}
+.account-art-caption strong {display:block;color:#f7eddb;font:normal 31px/1.25 var(--font-display);letter-spacing:.008em;}
+.account-art-caption p {color:#bdd0c2;max-width:250px;font-size:13px;line-height:1.85;margin:14px 0 0;}
+.account-dialog-content {
+  padding: clamp(26px, 4vw, 43px) clamp(23px, 4vw, 44px) 31px;
+  padding-right: clamp(22px, 4vw, 44px);
+  overflow-y:auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--account-line) transparent;
+  min-width:0;
+}
+.account-dialog-header {padding-right:28px;margin-bottom:24px;}
+.account-kicker {display:inline-flex;align-items:center;gap:10px;color:var(--account-highlight);font-size:10px;letter-spacing:.15em;font-weight:750;}
+.account-kicker i {width:4px;height:4px;border-radius:50%;background:currentColor;}
+.modal.account-modal h2 {margin:11px 0 8px;font-size:clamp(28px,3.4vw,38px);line-height:1.2;color:var(--account-text);letter-spacing:-.025em;}
+.account-dialog-description {font-size:13px;line-height:1.75;color:var(--account-muted);margin:0;}
+.account-screen {animation:account-content-enter .22s ease-out both;}
+.modal.account-modal .account-form-stack {display:grid;gap:12px;}
+.modal.account-modal .account-control {display:grid;gap:7px;}
+.modal.account-modal .account-control-label {display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:650;color:var(--account-text);margin:0 0 5px;}
+.modal.account-modal input:not([type="file"]):not([type="range"]):not([type="checkbox"]) {
+  min-width:0;width:100%;min-height:47px;border:1px solid var(--account-line);border-radius:11px;
+  padding:11px 14px;background:var(--account-field);color:var(--account-text);
+  transition:border-color .19s ease,box-shadow .19s ease,background-color .19s ease;
+  font-size:14px;line-height:1.4;
+}
+.modal.account-modal input::placeholder {color:var(--account-muted);opacity:.64;}
+.modal.account-modal input:not([type="file"]):not([type="range"]):focus-visible {
+  outline:0;border-color:var(--account-highlight);box-shadow:0 0 0 4px var(--account-focus);
+}
+.modal.account-modal input:disabled {opacity:.62;cursor:not-allowed;}
+.account-input-wrap {position:relative;}
+.account-input-wrap input {padding-right:65px !important;}
+.account-reveal {position:absolute;right:7px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--account-highlight);font-size:12px;font-weight:650;padding:8px;border-radius:6px;}
+.account-reveal:hover {background:var(--account-surface);}
+.account-control-hint,.account-password-strength>span {font-size:11px;color:var(--account-muted);line-height:1.5;margin:6px 0 0;}
+.account-primary {min-height:48px;margin-top:5px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:11px;font-weight:700;box-shadow:0 7px 24px rgba(198,156,87,.13);}
+.account-primary:hover:not(:disabled) {box-shadow:0 8px 28px rgba(198,156,87,.26);transform:translateY(-1px);}
+.account-separator {display:flex;align-items:center;gap:12px;color:var(--account-muted);font-size:11px;margin:22px 0 8px;}
+.account-separator::before,.account-separator::after {content:"";height:1px;flex:1;background:var(--account-line);}
+.modal.account-modal .link-button {color:var(--account-highlight);padding:8px 0;font-size:12px;border-radius:4px;background:none;border:0;}
+.modal.account-modal .link-button:hover {text-decoration:underline;text-underline-offset:4px;}
+.account-forgot {justify-self:end;margin:-5px 0 0;}
+.account-switch {text-align:center;margin:15px 0 0;color:var(--account-muted);font-size:12px;}
+.account-switch .link-button {display:inline;font-weight:700;}
+.modal.account-modal .google-auth-area {margin:7px 0 0;display:grid;justify-items:center;gap:8px;text-align:center;}
+.modal.account-modal .google-auth-area>.muted {font-size:11px;margin:0;color:var(--account-muted);}
+.modal.account-modal .google-auth-disabled {pointer-events:none;opacity:.5;}
+.modal.account-modal .account-info-note {border:1px solid var(--account-line);background:var(--account-surface);padding:13px 14px;border-radius:12px;color:var(--account-muted);font-size:12px;line-height:1.75;margin:0 0 15px;}
+.account-info-note strong {color:var(--account-text);overflow-wrap:anywhere;}
+.account-otp-input {font-family:var(--font-mono) !important;text-align:center;letter-spacing:.38em;font-size:22px !important;font-weight:700 !important;}
+.account-code-clock {display:flex;justify-content:center;gap:5px;color:var(--account-muted);font-size:12px;text-align:center;}
+.account-code-clock strong {font-variant-numeric:tabular-nums;color:var(--account-highlight);}
+.account-pending {display:flex;align-items:center;gap:8px;font-size:11px;color:var(--account-muted);margin:18px 0 0;}
+.account-spinner {width:13px;height:13px;border:2px solid var(--account-line);border-top-color:var(--account-highlight);border-radius:50%;animation:account-rotate .7s linear infinite;}
+.modal.account-modal .account-error,.modal.account-modal .error {background:rgba(160,63,57,.12);padding:10px 13px;border:1px solid rgba(217,124,113,.4);border-radius:9px;font-size:12px;line-height:1.6;color:#f2b3ad;margin:12px 0 0;overflow-wrap:anywhere;}
+html[data-thiendo-theme="light"] .modal.account-modal .error {color:#9f3030;}
+.modal.account-modal .account-success {color:#c9edce;border:1px solid rgba(105,190,126,.32);background:rgba(72,155,91,.12);padding:10px 13px;border-radius:9px;font-size:12px;line-height:1.6;margin:0 0 14px;}
+html[data-thiendo-theme="light"] .modal.account-modal .account-success {color:#285e37;}
+.account-password-strength {display:grid;gap:7px;}
+.account-strength-track {display:grid;grid-template-columns:repeat(4,1fr);gap:5px;}
+.account-strength-track>span {height:3px;border-radius:5px;background:var(--account-line);transition:background-color .2s ease;}
+.account-strength-track>span[data-filled="true"] {background:#be9161;}
+.account-strength-track>span[data-filled="true"][data-score="4"] {background:#78b593;}
+.account-password-strength>span {margin:0;}
+/* Signed-in dashboard */
+.account-identity {display:flex;align-items:center;gap:14px;min-width:0;padding:14px;background:var(--account-surface);border:1px solid var(--account-line);border-radius:14px;}
+.account-profile-avatar {width:68px;height:68px;flex:none;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;border-radius:50%;overflow:hidden;font-size:26px;font-weight:750;color:#f6e5c7;background:linear-gradient(145deg,#ad8650,#2d6950);border:2px solid rgba(220,191,136,.43);box-shadow:0 5px 18px rgba(0,0,0,.15);}
+.account-profile-avatar img {display:block;width:100%;height:100%;min-width:0;min-height:0;max-width:100%;max-height:100%;object-fit:cover;border-radius:inherit;}
+.account-identity-copy {min-width:0;overflow-wrap:anywhere;}
+.account-identity-kicker {margin:0 0 2px;font-size:9px;letter-spacing:.13em;color:var(--account-highlight);font-weight:750;}
+.account-identity-copy strong {font-size:16px;font-weight:700;color:var(--account-text);line-height:1.3;}
+.account-email {font-size:11px;margin:3px 0 5px;color:var(--account-muted);}
+.account-identity-pill {display:inline-block;font-size:10px;color:var(--account-highlight);border:1px solid var(--account-line);border-radius:20px;padding:2px 9px;}
+.account-tabs {display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin:18px 0 18px;padding:4px;background:var(--account-surface);border-radius:12px;border:1px solid var(--account-line);}
+.account-tabs button {padding:10px 6px;border:0;border-radius:8px;background:transparent;color:var(--account-muted);font-weight:650;font-size:12px;transition:background-color .18s ease,color .18s ease,box-shadow .18s ease;}
+.account-tabs button:hover {color:var(--account-text);}
+.account-tabs button.is-active {background:var(--account-field);color:var(--account-highlight);box-shadow:0 2px 8px rgba(0,0,0,.09);}
+.account-panel {animation:account-content-enter .18s ease both;min-height:150px;}
+.account-section {padding:18px 0;border-top:1px solid var(--account-line);}
+.account-section:first-child,.account-section-first {padding-top:0;border:0;}
+.account-section h3 {font-size:14px;color:var(--account-text);margin:0 0 5px;font-weight:750;}
+.account-section-description {color:var(--account-muted);font-size:12px;line-height:1.75;margin:4px 0 13px;}
+.account-avatar-actions {display:flex;align-items:center;flex-wrap:wrap;gap:14px;margin:12px 0;}
+.modal.account-modal .account-file-label {display:inline-flex;align-items:center;justify-content:center;min-height:40px;border-radius:10px;font-size:12px;cursor:pointer;}
+.account-file-label.is-disabled {pointer-events:none;opacity:.5;}
+.account-form-footer {display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:13px;}
+.account-form-footer .btn {min-width:135px;}
+.account-button-row {display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.account-button-row>.btn {flex:1;min-height:43px;border-radius:10px;}
+.account-session-actions {padding-top:16px;border-top:1px solid var(--account-line);margin-top:17px;}
+.account-danger-zone {border-top:1px solid var(--account-line);margin-top:13px;padding-top:9px;}
+.modal.account-modal .text-danger {display:block;border:0;background:none;padding:8px 0;font-size:12px;color:#df918e;text-align:left;}
+.modal.account-modal .text-danger:hover {text-decoration:underline;text-underline-offset:3px;}
+.account-inline-warning {font-size:12px;line-height:1.6;color:#e2a7a0;margin:8px 0;}
+html[data-thiendo-theme="light"] .account-inline-warning {color:#a44740;}
+.account-delete-form {padding:10px 0 3px;}
+.account-connection-row {display:flex;align-items:center;gap:12px;padding:13px;border:1px solid var(--account-line);border-radius:12px;margin:12px 0;}
+.account-connection-row>div {flex:1;min-width:0;}
+.account-connection-row strong {color:var(--account-text);font-size:13px;}
+.account-connection-row p {font-size:11px;line-height:1.5;margin:4px 0 0;color:var(--account-muted);}
+.account-connection-symbol {display:grid;place-items:center;background:var(--account-field);border-radius:10px;width:40px;height:40px;flex:none;color:var(--account-text);font-size:19px;font-weight:750;}
+.account-connection-status {font-size:10px;flex:none;color:var(--account-muted);}
+.account-connection-status.connected {color:#9bd3a4;}
+html[data-thiendo-theme="light"] .account-connection-status.connected {color:#256b40;}
+/* Crop editor uses an exact canvas preview and sends only cropped JPEG bytes. */
+.avatar-editor {display:grid;gap:10px;margin-top:12px;}
+.avatar-editor-stage {position:relative;width:min(230px,100%);aspect-ratio:1;margin:auto;overflow:hidden;touch-action:pan-y;cursor:grab;border-radius:50%;background:var(--account-field);border:2px solid var(--account-highlight);box-shadow:0 0 0 7px var(--account-surface);}
+.avatar-editor-stage:active {cursor:grabbing;}
+.avatar-editor-stage canvas {width:100%;height:100%;display:block;}
+.avatar-editor-stage img[hidden] {display:none;}
+.avatar-editor-mask {pointer-events:none;position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 3px rgba(255,255,255,.13);}
+.avatar-editor .account-control-label {margin-top:3px;}
+.avatar-zoom {width:100%;accent-color:var(--account-highlight);}
+.avatar-editor .account-button-row {margin-top:6px;}
+@keyframes account-backdrop-enter {from{opacity:0}to{opacity:1}}
+@keyframes account-panel-enter {from{opacity:0;transform:translateY(14px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes account-content-enter {from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@keyframes account-orbit-drift {0%{transform:translateX(-50%) rotate(-7deg)}100%{transform:translateX(-50%) rotate(8deg)}}
+@keyframes account-rotate {to{transform:rotate(360deg)}}
+@media(max-width:700px) {
+  .modal.account-modal {display:block;max-width:520px;min-height:0;max-height:min(94dvh,900px);overflow-y:auto;scrollbar-width:thin;}
+  .account-dialog-art {min-height:90px;padding:16px 20px;border-right:0;border-bottom:1px solid rgba(220,190,132,.17);}
+  .account-art-caption {max-width:100%;}
+  .account-art-caption>span {margin:0 0 4px;font-size:9px;}
+  .account-art-caption strong {font:normal 19px/1.3 var(--font-display);}
+  .account-art-caption p,.account-orbit,.account-art-mark {display:none;}
+  .account-dialog-content {padding:24px 22px 22px;overflow:visible;}
+  .modal.account-modal .account-close {inset:12px 12px auto auto;}
+  .account-dialog-header {margin-bottom:18px;}
+}
+@media(max-width:380px) {
+  .modal-backdrop.account-backdrop {padding:7px;}
+  .modal.account-modal {border-radius:15px;max-height:97dvh;}
+  .account-dialog-content {padding:22px 16px 18px;}
+  .account-identity {padding:10px;gap:10px;}
+  .account-profile-avatar {width:52px;height:52px;font-size:22px;}
+  .modal.account-modal h2 {font-size:27px;}
+  .account-connection-row {flex-wrap:wrap;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .modal-backdrop.account-backdrop,.modal.account-modal,.account-screen,.account-panel,.account-orbit,.account-spinner {animation:none !important;}
+  .modal.account-modal * {transition:none !important;scroll-behavior:auto !important;}
+}
+.google-auth-mount {width:min(100%,320px);min-height:40px;margin:0 auto;display:grid;justify-items:center;}
+.account-google-error {width:100%;}
+.account-google-error .link-button {margin:0 auto;}
+
+.account-avatar-position {padding:6px 0;border-top:1px solid var(--account-line);}
+.account-avatar-position summary {cursor:pointer;color:var(--account-highlight);font-size:12px;margin:3px 0 12px;}
+.account-avatar-position .account-control-label {margin:9px 0 5px;}
+
+.account-remember{display:flex;align-items:center;gap:10px;font-size:13px}.account-remember input{width:18px;min-height:18px;flex:none}
+
+/* Personal ledger is visible in the profile without relying on public-rank privacy. */
+.account-rank-identity{display:flex;align-items:center;gap:16px;min-width:0}
+.account-rank-identity p{margin:5px 0;color:var(--account-muted)}
+.account-rank progress{display:block;width:100%;height:12px;margin:16px 0 8px;accent-color:var(--account-highlight);border:1px solid var(--account-muted);border-radius:12px;overflow:hidden;background:var(--account-field)}
+.account-rank progress::-webkit-progress-bar{background:var(--account-field)}
+.account-rank progress::-webkit-progress-value{background:var(--account-highlight);border-radius:12px}
+.account-rank progress::-moz-progress-bar{background:var(--account-highlight);border-radius:12px}
+.account-rank a{color:var(--account-highlight);text-underline-offset:3px}
+/* Secondary actions must follow the same account tokens as their surrounding surface. */
+.modal.account-modal .btn.secondary{
+  color:var(--account-text);background:var(--account-surface);border-color:var(--account-line);
+}
+.modal.account-modal .btn.secondary:hover:not(:disabled){background:var(--account-field)}
+.modal.account-modal .text-danger{color:#ffb4a9}
+html[data-thiendo-theme="light"] .modal.account-modal .text-danger{color:#a12d26}
+/* Email/captions use account tokens even when the overlay is outside .site. */
+.modal.account-modal .muted{color:var(--account-muted)}
+
+/* Account UX re-audit: once signed in, the identity card is the primary
+   focus. Preserve scenic Thiên Môn art for login/register, but do not repeat
+   brand captions or waste half the width of account settings. */
+.modal.account-modal.thien-mon-branded.account-modal-signed-in {
+  grid-template-columns: minmax(0,1fr);
+  width: min(750px, 100%);
+  min-height: 0;
+}
+.modal.account-modal.thien-mon-branded.account-modal-signed-in .account-dialog-art { display:none; }
+.modal.account-modal.thien-mon-branded.account-modal-signed-in .account-dialog-content {
+  padding: clamp(20px,3vw,32px);
+}
+.modal.account-modal.account-modal-signed-in .account-dialog-header { margin-bottom: 15px; }
+.modal.account-modal.account-modal-signed-in .account-dialog-description { max-width: 55ch; }
+.account-rank-medal-trigger {
+  display: grid; place-items: center; flex: none;
+  border-radius: 50%; border: 1px solid var(--account-line);
+  padding: 6px; background: var(--account-field); color: inherit; cursor:pointer;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.account-rank-medal-trigger:hover {
+  transform: translateY(-2px); border-color: var(--account-highlight);
+  box-shadow: 0 0 0 3px var(--account-focus);
+}
+.account-rank-medal-trigger:focus-visible {outline:3px solid var(--account-highlight);outline-offset:3px;}
+@media (prefers-reduced-motion: reduce) { .account-rank-medal-trigger {transition:none;} .account-rank-medal-trigger:hover {transform:none;} }
+
+/* V11.164.21 — signed-in account dialog accessibility.
+ * A max-height on an auto-sized CSS grid does not guarantee that the grid item
+ * becomes a usable scroll container: the profile's rank/avatar/forms can extend
+ * beyond the clipped parent. Establish a definite height for the signed-in
+ * desktop dialog and make its content the only vertical scroll region.
+ * Keep the scenic art fixed, preserve the login/register dialog styling. */
+@media (min-width: 861px) {
+  .modal.account-modal.thien-mon-branded.account-modal-signed-in {
+    height: min(90dvh, 900px);
+    min-height: 0;
+    grid-template-rows: minmax(0, 1fr);
+  }
+  .modal.account-modal.thien-mon-branded.account-modal-signed-in .account-dialog-content {
+    min-height: 0;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-gutter: stable;
+    padding-bottom: max(32px, env(safe-area-inset-bottom));
+  }
+}
+/* At tablet/phone widths the entire dialog scrolls as one document, so the
+ * account banner does not steal gestures from the photo editor or save button. */
+@media (max-width: 860px) {
+  .modal.account-modal.thien-mon-branded.account-modal-signed-in {
+    height: auto;
+    min-height: 0;
+    max-height: min(92dvh, 900px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .modal.account-modal.thien-mon-branded.account-modal-signed-in .account-dialog-content {
+    max-height: none;
+    overflow: visible;
+    padding-bottom: max(32px, env(safe-area-inset-bottom));
+  }
+}
+/* A very short landscape viewport should never trap the only scroller. */
+@media (max-height: 480px) {
+  .modal-backdrop.account-backdrop { align-items: start; overflow-y: auto; }
+  .modal.account-modal.thien-mon-branded.account-modal-signed-in { max-height: calc(100dvh - 20px); }
+}
+

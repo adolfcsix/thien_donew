@@ -1,0 +1,133 @@
+/* A29 / Tử Vi presentation only. Decorative materials never affect chart data,
+   CSS star-category colors, screen readers, print, or the 12-palace grid order. */
+.chart-experience .chart-scene{
+  --scene-light-x:50%;--scene-light-y:35%;
+  overflow:clip;
+  border:1px solid #a38c5b;
+  background:
+    radial-gradient(ellipse at 18% 8%,rgba(225,244,201,.16),transparent 40%),
+    radial-gradient(ellipse at 82% 94%,rgba(84,176,151,.12),transparent 46%),
+    linear-gradient(146deg,#244e40,#102d28 57%,#173c33);
+  box-shadow:0 20px 48px rgba(5,25,23,.3),inset 0 2px rgba(234,221,174,.32),inset 0 0 0 3px rgba(24,73,58,.46);
+}
+.chart-experience .chart-scene::before{
+  inset:7px;border:1px solid rgba(224,203,145,.24);border-radius:17px;
+  z-index:0;
+}
+.chart-experience .chart-scene::after{
+  z-index:2;inset:0;width:auto;height:auto;left:0;top:0;
+  background:radial-gradient(ellipse 46% 33% at var(--scene-light-x) var(--scene-light-y),rgba(226,245,203,.23),transparent 86%);
+  transform:none;opacity:0;transition:opacity .35s ease;
+}
+.chart-experience .chart-scene[data-motion="active"][data-depth="on"]::after{opacity:1}
+.chart-experience .chart-scene>:not(.chart-scene-engraving){position:relative;z-index:1}
+.chart-experience .chart-scene-engraving{
+  position:absolute;inset:-13% -9%;overflow:hidden;pointer-events:none;z-index:0;
+  opacity:.24;transition:opacity .3s ease;
+  background:
+    repeating-linear-gradient(45deg,transparent 0 78px,rgba(229,212,160,.055) 79px 80px,transparent 81px 158px),
+    repeating-linear-gradient(-45deg,transparent 0 78px,rgba(229,212,160,.04) 79px 80px,transparent 81px 158px);
+}
+.chart-experience .chart-scene-orbit{
+  position:absolute;display:block;aspect-ratio:1;border-radius:50%;
+  left:50%;top:48%;width:min(88%,920px);transform:translate(-50%,-50%);
+  border:1px solid rgba(224,202,145,.30);
+  box-shadow:inset 0 0 0 9px rgba(230,211,166,.015),inset 0 0 0 11px rgba(224,202,145,.2),0 0 0 13px rgba(224,202,145,.055);
+}
+.chart-experience .chart-scene-orbit-outer::before,.chart-experience .chart-scene-orbit-inner::before{
+  content:"";position:absolute;inset:4%;border-radius:50%;border:1px dashed rgba(224,202,145,.34);
+}
+.chart-experience .chart-scene-orbit-inner{width:min(58%,610px);border-style:dashed;opacity:.82}
+.chart-experience .chart-scene[data-depth="on"]{
+  box-shadow:0 21px 52px rgba(5,25,23,.35),inset 0 2px rgba(244,228,174,.46),0 0 0 2px rgba(222,208,151,.18);
+}
+.chart-experience .chart-scene[data-depth="off"] .chart-scene-engraving{opacity:.09}
+.chart-experience .chart-scene[data-depth="off"]::after{opacity:0}
+.chart-experience .chart-scene[data-depth="on"][data-motion="active"] .chart-scene-orbit-outer{
+  animation:chart-material-orbit 90s linear infinite;
+}
+.chart-experience .chart-scene[data-depth="on"][data-motion="active"] .chart-scene-orbit-inner{
+  animation:chart-material-orbit-reverse 125s linear infinite;
+}
+@keyframes chart-material-orbit{
+  from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}
+}
+@keyframes chart-material-orbit-reverse{
+  from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(-360deg)}
+}
+.chart-experience .chart-scene-bar button[aria-pressed="true"]{
+  background:linear-gradient(145deg,rgba(226,211,158,.2),rgba(127,199,171,.14));
+  border-color:rgba(231,209,148,.72);
+  box-shadow:inset 0 1px rgba(255,255,255,.14),0 0 0 1px rgba(217,202,154,.07);
+}
+.chart-experience .chart-scene-bar button[aria-pressed="false"]{
+  background:rgba(0,0,0,.22);border-color:rgba(232,216,171,.35);
+}
+/* Jade is a translucent stone with veins and reflected light, never a flat green fill.
+   Keep the luminous material underneath the opaque, contrast-tested star glyphs. */
+.chart-experience .chart-room-layout[data-board-skin="jade"] .board-scroll{
+  border-color:#b9a578;background:
+    radial-gradient(ellipse at 20% 0%,rgba(193,242,203,.22),transparent 50%),
+    linear-gradient(155deg,#5a927b,#183f36 35%,#13372f 80%,#376953);
+  box-shadow:inset 0 2px rgba(232,245,211,.26),0 12px 30px rgba(5,28,24,.32);
+}
+.chart-experience .chart-room-layout[data-board-skin="jade"] .atlas-grid{
+  background:linear-gradient(120deg,#4b8068,#a0bc94 37%,#3f795d 67%,#b4b78f);
+  border-color:rgba(211,202,155,.56);
+  --muted:#d3e2d8;--gold:#f6dca5;--text:#f2f6eb;
+}
+.chart-experience .chart-room-layout[data-board-skin="jade"] .atlas-house.house{
+  background:
+    radial-gradient(ellipse at 15% 0%,rgba(181,237,203,.20),transparent 57%),
+    radial-gradient(ellipse at 102% 105%,rgba(102,181,155,.17),transparent 58%),
+    repeating-linear-gradient(128deg,transparent 0 26px,rgba(218,246,222,.032) 27px 27.5px,transparent 29px 66px),
+    linear-gradient(148deg,#1e5a4b,#103e35 44%,#0d302b 82%,#245a48);
+  color:#f2f6eb;
+  box-shadow:inset 0 1px rgba(228,247,224,.33),inset 1px 0 rgba(173,224,190,.12),inset 0 -12px 26px rgba(2,24,21,.20);
+}
+.chart-experience .chart-room-layout[data-board-skin="jade"] :is(.atlas-house-header,.atlas-house-bottom){
+  background:linear-gradient(96deg,rgba(8,42,34,.82),rgba(38,98,76,.8) 50%,rgba(8,42,34,.82));
+  border-color:rgba(179,219,176,.31);color:#eaf5e8;
+}
+.chart-experience .chart-room-layout[data-board-skin="jade"] .atlas-center.board-center{
+  background:
+    radial-gradient(circle at 30% 10%,rgba(182,230,195,.28),transparent 49%),
+    radial-gradient(ellipse at 94% 88%,rgba(89,191,159,.20),transparent 60%),
+    repeating-linear-gradient(118deg,transparent 0 44px,rgba(198,240,204,.042) 46px 46.5px,transparent 48px 90px),
+    linear-gradient(157deg,#276d56,#154b3e 48%,#0c352e);
+  box-shadow:inset 0 2px rgba(243,242,214,.25),inset 0 0 0 5px rgba(202,208,156,.10),inset 0 0 0 6px rgba(238,223,167,.26);
+  isolation:isolate;
+}
+/* Engraved bronze compass: decorative only, behind the center's text. */
+.chart-experience .chart-room-layout[data-board-skin="jade"] .atlas-center.board-center::before{
+  content:"";position:absolute;width:min(76%,340px);aspect-ratio:1;inset:auto;left:50%;top:48%;
+  transform:translate(-50%,-50%);pointer-events:none;z-index:0;opacity:.18;
+  background:
+    radial-gradient(circle,transparent 0 21%,rgba(232,210,156,.64) 21.3% 22%,transparent 22.3% 31%,rgba(232,210,156,.5) 31.3% 31.8%,transparent 32.3% 43%,rgba(232,210,156,.54) 43.3% 44%,transparent 44.5% 60%),
+    repeating-conic-gradient(from 0deg,rgba(230,219,164,.32) 0deg 1deg,transparent 1deg 30deg);
+  border:1px solid rgba(231,216,161,.46);border-radius:50%;
+}
+.chart-experience .chart-room-layout[data-board-skin="jade"] .atlas-center.board-center>*{
+  position:relative;z-index:1;
+}
+.chart-experience .chart-scene[data-depth="on"][data-motion="active"] .chart-room-layout[data-board-skin="jade"] .atlas-center.board-center::before{
+  animation:chart-material-orbit 90s linear infinite;
+}
+/* Deliberately conservative: animation OFF shows legible, static engraved stone. */
+.chart-experience .chart-scene[data-depth="off"] .atlas-center-seal{animation:none;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .chart-experience .chart-scene .chart-scene-orbit,
+  .chart-experience .chart-scene .atlas-center.board-center::before{animation:none!important}
+  .chart-experience .chart-scene::after{transition:none;opacity:0}
+}
+html[data-thiendo-effects="reduced"] .chart-experience .chart-scene .chart-scene-orbit,
+html[data-thiendo-effects="reduced"] .chart-experience .chart-scene .atlas-center.board-center::before{animation:none!important}
+@media (max-width:760px){
+  .chart-experience .chart-scene-engraving{opacity:.1}
+  .chart-experience .chart-scene-orbit-inner{display:none}
+  .chart-experience .chart-scene::after{display:none}
+}
+@media print{
+  .chart-experience .chart-scene-engraving,.chart-experience .chart-scene::after{display:none!important}
+  .chart-experience .chart-scene .atlas-center.board-center::before{animation:none!important}
+}

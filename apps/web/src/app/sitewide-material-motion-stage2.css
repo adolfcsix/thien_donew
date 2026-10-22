@@ -1,0 +1,83 @@
+/* Stage 2: shared presentation only. Do not modify chart geometry, semantic star
+   colors, API data, form validation, admin permissions or route navigation. */
+.site {
+  --td2-foreground: #f3f0e5;
+  --td2-secondary: #d2ded2;
+  --td2-surface: rgba(16, 35, 28, .94);
+  --td2-control: rgba(21, 46, 37, .96);
+  --td2-edge: rgba(232, 206, 163, .36);
+  --td2-focus: #f3d39d;
+  --td2-ease: cubic-bezier(.2,.72,.22,1);
+  --td2-fast: 180ms;
+  --td2-normal: 280ms;
+  --td2-theme: 880ms;
+}
+.site.light {
+  --td2-foreground: #20392e;
+  --td2-secondary: #405448;
+  --td2-surface: rgba(253, 251, 245, .97);
+  --td2-control: rgba(251, 250, 243, .98);
+  --td2-edge: rgba(59, 91, 69, .36);
+  --td2-focus: #245d48;
+}
+/* Shared chrome only: route-specific content retains its own palette and layout. */
+.site :is(.topbar,.bottom-nav,#thiendo-sidebar) {
+  border-color: var(--td2-edge);
+}
+.site :is(.topbar,.bottom-nav,#thiendo-sidebar) :is(a,button):focus-visible,
+.site :is(.command-panel,.modal.account-modal) :is(a,button,input,select,textarea):focus-visible {
+  outline: 3px solid var(--td2-focus);
+  outline-offset: 3px;
+}
+/* Forms in shared navigation and search overlays are protected from moving
+   photographic backgrounds, including the middle of a theme crossfade. */
+.site :is(.command-panel,.modal.account-modal) {
+  background-color: var(--td2-surface);
+  border-color: var(--td2-edge);
+  color: var(--td2-foreground);
+}
+.site :is(.command-panel,.modal.account-modal) :is(input,textarea,select) {
+  background-color: var(--td2-control);
+  color: var(--td2-foreground);
+  border-color: var(--td2-edge);
+  caret-color: var(--td2-foreground);
+}
+.site :is(.command-panel,.modal.account-modal) :is(input,textarea)::placeholder {
+  color: var(--td2-secondary);
+  opacity: 1;
+}
+/* One motion vocabulary for shared navigation; transform-only hover animation
+   avoids layout shifts and leaves content / chart panels untouched. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .site :is(.topbar,.bottom-nav,#thiendo-sidebar) :is(a,button) {
+    transition: background-color var(--td2-normal) var(--td2-ease),
+      border-color var(--td2-normal) var(--td2-ease),
+      color var(--td2-normal) var(--td2-ease),
+      box-shadow var(--td2-normal) var(--td2-ease);
+  }
+  .site :is(.topbar,.bottom-nav,#thiendo-sidebar) :is(a,button):active {
+    filter: brightness(.94);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site :is(.topbar,.bottom-nav,#thiendo-sidebar,.command-panel,.modal.account-modal) {
+    scroll-behavior: auto;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media (prefers-contrast: more) {
+  .site :is(.topbar,.bottom-nav,#thiendo-sidebar,.command-panel,.modal.account-modal) {
+    background-color: #11251d;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .site.light :is(.topbar,.bottom-nav,#thiendo-sidebar,.command-panel,.modal.account-modal) {
+    background-color: #fffdf5;
+  }
+}
+/* Low-bandwidth / low-memory rendering follows Shell's existing data flag. */
+html[data-thiendo-effects="reduced"] .site :is(.command-panel,.modal.account-modal) {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}

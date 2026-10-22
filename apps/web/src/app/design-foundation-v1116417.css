@@ -1,0 +1,226 @@
+/* THIÊN ĐỒ · V11.164.17 — design foundation.
+ * Canonical shared tokens and controls, maintained in place in V11.164.19.
+ * Important: retain the denser square geometry of the 12-palace charts and
+ * specialized expert tools. These rules apply only to named shared controls.
+ */
+.site {
+  --td-motion-fast: 180ms;
+  --td-motion-enter: 260ms;
+  --td-motion-theme: 960ms;
+  --td-z-navigation: 20;
+  --td-z-tooltip: 75;
+  --td-z-dialog: 100;
+  --td-success: #b6dec9;
+  --td-warning: #f1d299;
+  --td-error: #ffb8aa;
+  --td-radius-control: 13px;
+  --td-radius-card: 18px;
+  --td-radius-dialog: 24px;
+  --td-radius-chip: 999px;
+  --td-space-1: 4px;
+  --td-space-2: 8px;
+  --td-space-3: 12px;
+  --td-space-4: 16px;
+  --td-space-5: 22px;
+  --td-space-6: 30px;
+  --td-ease: cubic-bezier(.22, .8, .28, 1);
+  --td-focus-ring: #e9bc78;
+  --td-field-bg: #13241d;
+  --td-field-border: rgba(226, 205, 164, .32);
+  --td-field-hover: rgba(226, 205, 164, .57);
+  --td-field-placeholder: #acb8aa;
+  --td-card-edge: rgba(212, 186, 138, .24);
+  --td-card-elevation: 0 14px 42px rgba(3, 12, 9, .17);
+  --td-button-elevation: 0 10px 22px rgba(1, 11, 8, .13);
+  --td-primary-text: #1a2c22;
+  --td-primary-gradient: linear-gradient(115deg, #e9cc9a 0%, #d4a96d 52%, #e0bc86 100%);
+  --td-muted-hover: rgba(214, 177, 116, .09);
+}
+.site.light {
+  --td-success: #205f42;
+  --td-warning: #765124;
+  --td-error: #9c352a;
+  --td-focus-ring: #744b20;
+  --td-field-bg: #fffaf0;
+  --td-field-border: rgba(57, 85, 67, .36);
+  --td-field-hover: rgba(48, 83, 62, .66);
+  --td-field-placeholder: #66766b;
+  --td-card-edge: rgba(51, 81, 64, .21);
+  --td-card-elevation: 0 14px 42px rgba(42, 52, 35, .08);
+  --td-button-elevation: 0 8px 21px rgba(60, 68, 44, .12);
+  --td-primary-text: #152a20;
+  --td-primary-gradient: linear-gradient(115deg, #f1d6a3 0%, #ddb779 52%, #ebc98e 100%);
+  --td-muted-hover: rgba(43, 83, 61, .07);
+}
+
+/* The page entry originally used .button/.primary, but only .btn had a
+   baseline. Give both established public APIs the same measured geometry. */
+.site .main-content :is(.btn, .button),
+.site .route-feedback__actions :is(a, button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 11px 19px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--td-radius-control);
+  background: color-mix(in srgb, var(--panel) 85%, var(--jade));
+  color: var(--text);
+  font: 650 13px/1.45 var(--font-ui);
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 1px 0 rgba(255,255,255,.05) inset;
+  transition: border-color .2s ease, background-color .2s ease,
+    box-shadow .24s var(--td-ease), transform .24s var(--td-ease);
+}
+.site .main-content :is(.btn.gold, .button.primary),
+.site .route-feedback__actions .btn.gold {
+  background: var(--td-primary-gradient);
+  color: var(--td-primary-text);
+  border-color: rgba(139, 89, 32, .24);
+  box-shadow: var(--td-button-elevation), 0 1px 0 rgba(255,255,255,.38) inset;
+}
+.site .main-content .btn.secondary,
+.site .main-content .btn.subtle {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+.site .main-content .btn.subtle { color: var(--muted); }
+.site .main-content .btn.full { width: 100%; }
+.site .main-content .btn.small { min-height: 38px; padding: 8px 14px; font-size: 12px; }
+.site .main-content :is(.btn, .button):disabled,
+.site .route-feedback__actions :is(a,button):disabled {
+  opacity: .55; cursor: not-allowed; box-shadow: none;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .site .main-content :is(.btn,.button):not(:disabled):hover,
+  .site .route-feedback__actions :is(a,button):not(:disabled):hover {
+    transform: translateY(-2px);
+    border-color: var(--td-field-hover);
+    box-shadow: var(--td-button-elevation);
+  }
+  .site .main-content :is(.btn.gold,.button.primary):not(:disabled):hover {
+    box-shadow: 0 14px 29px rgba(4, 17, 11, .19), 0 1px 0 rgba(255,255,255,.35) inset;
+  }
+}
+.site .main-content :is(.btn,.button):not(:disabled):active,
+.site .route-feedback__actions :is(a,button):not(:disabled):active {
+  transform: translateY(0) scale(.985);
+}
+
+/* Common form controls: do not alter compact data tables, date/time fields
+   outside .field, chart board cells, toggle/range or the account modal. */
+.site .main-content .field :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]), select, textarea) {
+  min-height: 46px;
+  width: 100%;
+  max-width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--td-field-border);
+  border-radius: var(--td-radius-control);
+  background: var(--td-field-bg);
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.5;
+  box-shadow: 0 1px 0 rgba(255,255,255,.035) inset;
+  transition: border-color .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+.site .main-content .field :is(input,textarea)::placeholder {
+  color: var(--td-field-placeholder);
+  opacity: 1;
+}
+.site .main-content .field :is(input,select,textarea):hover:not(:disabled) {
+  border-color: var(--td-field-hover);
+}
+.site .main-content .field :is(input,select,textarea):focus-visible {
+  outline: 2px solid var(--td-focus-ring);
+  outline-offset: 2px;
+  border-color: var(--td-focus-ring);
+  box-shadow: 0 0 0 4px var(--glow);
+}
+.site .main-content .field :is(input,select,textarea)[aria-invalid="true"] {
+  border-color: #d78378;
+}
+.site .main-content .field :is(input,select,textarea):disabled {
+  opacity: .65;
+  cursor: not-allowed;
+}
+
+/* Intentional soft card language, without touching the strict palace grid. */
+.site .main-content :is(.entry-panel, .result-panel, .collection-panel,
+  .lesson, .glossary-item, .feature-card, .entry-path, .route-feedback) {
+  border-radius: var(--td-radius-card);
+  border-color: var(--td-card-edge);
+}
+.site .main-content :is(.entry-path, .feature-card) {
+  box-shadow: var(--td-card-elevation);
+}
+.site .main-content .route-feedback {
+  background: linear-gradient(150deg,
+    color-mix(in srgb,var(--panel) 93%,var(--jade)),var(--panel-alt));
+  box-shadow: var(--td-card-elevation);
+}
+.site .main-content .page-heading h1 { line-height: 1.2; letter-spacing: -.018em; }
+.site .main-content .page-heading > p { max-width: 66ch; }
+
+/* Top chrome: tighten the visual relationship between search, mode and nav. */
+.site .topbar {
+  background: color-mix(in srgb, var(--body) 94%, var(--jade));
+  border-bottom-color: var(--line-strong);
+}
+.site .quick-search-trigger { border-radius: var(--td-radius-control); }
+.site .mode-switch { border-radius: var(--td-radius-control); }
+.site .mode-switch button { border-radius: 9px; }
+.site .nav-item { border-radius: 11px; }
+.site .command-panel { border-radius: var(--td-radius-dialog); }
+.site .command-option { border-radius: 10px; }
+.site .icon-button, .site .avatar-button { box-shadow: 0 1px 0 rgba(255,255,255,.07) inset; }
+
+/* Shared account skin only: preserve password-reveal positioning and all
+   modal focus-trap/scroll behavior owned by AuthProvider. */
+.site .modal.account-modal { border-radius: var(--td-radius-dialog); }
+.site .modal.account-modal .account-primary { border-radius: var(--td-radius-control); }
+.site .modal.account-modal .account-close { border-radius: 50%; }
+.site .modal.account-modal .account-reveal { border-radius: 9px; }
+.site .modal.account-modal :is(.account-info-note,.account-identity,.account-connection-row) {
+  border-radius: var(--td-radius-control);
+}
+
+/* Explicit focus styling for keyboard navigation (never rely on hover alone). */
+.site :where(.btn,.button,.quick-search-trigger,.nav-item,.mode-switch button,
+  .icon-button,.avatar-button,.account-reveal):focus-visible {
+  outline: 2px solid var(--td-focus-ring);
+  outline-offset: 3px;
+}
+
+@media (max-width: 680px) {
+  .site { --td-radius-card: 15px; --td-radius-dialog: 18px; }
+  .site .main-content :is(.btn, .button) { min-height: 44px; }
+  .site .main-content .field :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),select,textarea) {
+    font-size: 16px; /* no iOS Safari auto-zoom */
+  }
+  .site .main-content .page-heading { overflow-wrap: anywhere; }
+  .site .main-content :is(.entry-panel,.result-panel,.collection-panel,.lesson,.feature-card,.entry-path) {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .site .main-content :is(.btn,.button):hover,
+  .site .main-content :is(.btn,.button):active,
+  .site .route-feedback__actions :is(a,button):hover,
+  .site .route-feedback__actions :is(a,button):active { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site :is(.btn,.button,.quick-search-trigger,.nav-item,.mode-switch button,.icon-button,.avatar-button) {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media (forced-colors: active) {
+  .site .main-content :is(.btn,.button) { border: 1px solid ButtonText; }
+  .site .main-content :is(.btn,.button):focus-visible { outline: 2px solid Highlight; }
+  .site .main-content .field :is(input,select,textarea) { border: 1px solid FieldText; }
+}

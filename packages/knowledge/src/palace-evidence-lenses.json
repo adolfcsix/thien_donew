@@ -1,0 +1,80 @@
+{
+  "edition": "11.47.0",
+  "status": "editorial-research-only",
+  "expertReviewed": false,
+  "notice": "Các nhãn nhóm sao phục vụ đọc đối chiếu, không phải dự đoán tốt xấu hay đánh giá sức khỏe/tài chính.",
+  "profiles": {
+    "Mệnh": {
+      "main": "Khi so vai trò sao tọa Mệnh, cần phân biệt hình tượng tự thân và điều kiện môi trường nào?",
+      "support": "Sao trợ lực đi cùng Mệnh gợi câu hỏi gì về việc nhận hỗ trợ mà vẫn giữ quyền chủ động?",
+      "challenge": "Khi có sát tinh, cần kiểm tra yếu tố ứng xử và điều chỉnh kỳ vọng nào thay vì gán tính cách?",
+      "transformation": "Hóa năm sinh gắn với sao nào ở Mệnh, và ý nghĩa học tập nào phải đặt trong toàn Tứ chính?"
+    },
+    "Phụ Mẫu": {
+      "main": "Phân biệt biểu tượng của chính tinh và nhận định thực tế về cha mẹ như thế nào?",
+      "support": "Những sao trợ lực tại cung có thể dùng để hỏi về tương tác liên thế hệ ra sao?",
+      "challenge": "Nếu có sát tinh tại cung, phải kiểm tra cách đặt ranh giới nào trước khi diễn giải?",
+      "transformation": "Tứ Hóa tọa cung có sao đích xác thực không, và vì sao không được quy kết hành vi người thân?"
+    },
+    "Phúc Đức": {
+      "main": "Có thể đọc chính tinh như một biểu tượng về giá trị được truyền lại nhưng tránh kết luận gia phong ra sao?",
+      "support": "Sao hỗ trợ có thể đặt câu hỏi nào về việc chăm sóc đời sống tinh thần?",
+      "challenge": "Sát tinh tọa cung gợi câu hỏi về biến đổi niềm tin nào mà không suy diễn đời sống dòng họ?",
+      "transformation": "Khi có Hóa năm sinh, cần phân biệt giá trị gia đình với niềm tin cá nhân như thế nào?"
+    },
+    "Điền Trạch": {
+      "main": "Vị trí chính tinh có thể dùng để suy ngẫm về cảm nhận không gian sống như thế nào?",
+      "support": "Sao trợ lực nào liên quan việc phối hợp quản lý không gian mà không dự báo tài sản?",
+      "challenge": "Nếu có sát tinh, kiểm tra nhu cầu ổn định và thay đổi nào mà không khẳng định mất nhà?",
+      "transformation": "Hóa tọa Điền có sao đích hợp lệ không, và cần hỏi gì về kỳ vọng an cư?"
+    },
+    "Quan Lộc": {
+      "main": "Chính tinh tại Quan giúp đặt câu hỏi về phương pháp học nghề và trách nhiệm thế nào?",
+      "support": "Những sao trợ lực tại Quan có thể gợi cách hợp tác trong công việc ra sao?",
+      "challenge": "Sát tinh cho phép nêu câu hỏi gì về áp lực nghề nghiệp mà không dự đoán thất nghiệp?",
+      "transformation": "Hóa năm sinh tại Quan có thể nghiên cứu như lựa chọn vai trò ra sao, không xem là thăng chức?"
+    },
+    "Nô Bộc": {
+      "main": "Chính tinh tại cung này đặt vấn đề gì về vai trò của bản thân trong tập thể?",
+      "support": "Sao hỗ trợ gợi câu hỏi nào về hợp tác hai chiều và giới hạn hỗ trợ?",
+      "challenge": "Sát tinh có thể thúc đẩy việc suy ngẫm xung đột lợi ích mà không phán xét bạn bè thế nào?",
+      "transformation": "Hóa năm sinh có bằng chứng sao đích không và có thể đặt câu hỏi gì về trao đổi trách nhiệm?"
+    },
+    "Thiên Di": {
+      "main": "Đối chiếu chính tinh với cung Mệnh để xem bối cảnh bên ngoài thay đổi cách biểu đạt ra sao?",
+      "support": "Sao trợ lực tại Thiên Di gợi câu hỏi nào về sự thích nghi với cộng đồng?",
+      "challenge": "Sát tinh tại Thiên Di không đủ dự báo tai nạn; có thể nghiên cứu sự chuẩn bị như thế nào?",
+      "transformation": "Hóa tại Thiên Di nếu hợp lệ giúp đặt câu hỏi gì về học hỏi môi trường mới?"
+    },
+    "Tật Ách": {
+      "main": "Chính tinh tại Tật Ách chỉ là biểu tượng; cần hỏi về nhịp sinh hoạt chứ không chẩn đoán gì?",
+      "support": "Sao hỗ trợ gợi hướng quan sát nào về thói quen chăm sóc bản thân?",
+      "challenge": "Sát tinh không dùng suy đoán bệnh tật; có thể đặt câu hỏi gì về ứng phó căng thẳng?",
+      "transformation": "Tứ Hóa ở đây được dùng để nghiên cứu biểu tượng ra sao mà không khuyến nghị chữa trị?"
+    },
+    "Tài Bạch": {
+      "main": "Vị trí chính tinh cho phép hỏi về thái độ quản lý nguồn lực như thế nào?",
+      "support": "Sao hỗ trợ có thể liên hệ tới hợp tác và chia sẻ nguồn lực ra sao mà không dự báo thu nhập?",
+      "challenge": "Sát tinh tọa Tài gợi câu hỏi về nguyên tắc quản lý rủi ro nào mà không dự báo phá sản?",
+      "transformation": "Tứ Hóa ở Tài có sao đích thực không, và vì sao không thể suy thành lời khuyên đầu tư?"
+    },
+    "Tử Tức": {
+      "main": "Biểu tượng chính tinh gợi cách đặt câu hỏi nào về trách nhiệm chăm sóc, không suy đoán con cái?",
+      "support": "Sao hỗ trợ có thể gợi một cách học hỏi về nuôi dưỡng và quan tâm ra sao?",
+      "challenge": "Sát tinh không thể dùng dự báo khả năng sinh sản; cần giữ ranh giới diễn giải thế nào?",
+      "transformation": "Hóa tại cung này có thể đặt câu hỏi về kỳ vọng chăm sóc ra sao mà không quy kết tương lai trẻ em?"
+    },
+    "Phu Thê": {
+      "main": "Đọc sao chính như biểu tượng tương tác thay vì kết luận phẩm chất bạn đời như thế nào?",
+      "support": "Sao hỗ trợ có thể nêu câu hỏi gì về giao tiếp và khả năng thương lượng?",
+      "challenge": "Nếu sát tinh hiện diện, cần suy ngẫm ranh giới và giải quyết bất đồng thế nào mà không dự báo chia tay?",
+      "transformation": "Hóa tọa cung được kiểm chứng ra sao trước khi nghiên cứu kỳ vọng về quan hệ?"
+    },
+    "Huynh Đệ": {
+      "main": "Chính tinh gợi điều gì về vị trí và trách nhiệm giữa anh chị em mà không mô tả người thật?",
+      "support": "Sao trợ lực có thể đặt câu hỏi nào về sự hỗ trợ tương hỗ trong gia đình?",
+      "challenge": "Sát tinh tại cung chỉ là biểu tượng; nêu câu hỏi nào về mâu thuẫn và hòa giải mà không quy kết?",
+      "transformation": "Hóa năm sinh có đủ dữ liệu sao đích không để đối chiếu cách phân công trách nhiệm?"
+    }
+  }
+}
