@@ -62,7 +62,7 @@ try{
    await page.getByLabel('Tính địa bàn, thời bàn và Tuần Không khi có giờ').setChecked(snapshot.withHour);
    const expert=page.getByRole('button',{name:/Khám phá Chuyên sâu/});if(await expert.count())await expert.click();
    const summary=page.locator('summary').filter({hasText:'Mã Tinh và Lục Nghi Kích Hình'});
-   if(snapshot.withHour){await summary.click();await page.getByText('Truy nguyên Mã Tinh giờ:',{exact:false}).waitFor();}
+   if(snapshot.withHour){const openExpert=page.getByRole('button',{name:'Mở Chuyên sâu: Chi tiết từng cung và Chuyển Bàn thời gian',exact:true});if(await openExpert.count())await openExpert.click();await summary.waitFor({state:'visible'});await summary.click();await page.getByText('Truy nguyên Mã Tinh giờ:',{exact:false}).waitFor();}
    else assert.equal(await summary.count(),0);
    await assertRestoredControls(page,snapshot);
    const earthBoard=await earthBoardState(page);assert.equal(earthBoard.length,9);

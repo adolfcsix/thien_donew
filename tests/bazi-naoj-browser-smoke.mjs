@@ -1,4 +1,4 @@
-/** Built Next + Chromium. Anonymous auth is mocked; this does not certify SQL. */
+/** Built Next + Chromium. Account identity/access/profile reads are mocked; this does not certify SQL. */
 import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
 import {localTestOrigin} from '../infrastructure/scripts/e2e-http.mjs';
@@ -10,6 +10,9 @@ for(const width of [390,768,1440]){
   const context=await browser.newContext({viewport:{width,height:900}}),page=await context.newPage(),errors=[];
   page.on('pageerror',e=>errors.push(e.message));
   await context.route('**/api/auth/me',r=>r.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
+  // SaveStudy loads profile choices after /me; keep this UI fixture internally consistent.
+  await context.route('**/api/billing/access',r=>r.fulfill({json:{isAdmin:false,isOwner:false}}));
+  await context.route('**/api/birth-profiles',r=>r.fulfill({json:{profiles:[]}}));
   await context.addInitScript(()=>localStorage.setItem('thiendo-view-mode','expert'));
   await page.goto(origin+'/bazi');
   const panel=page.getByLabel('Đối chứng Tiết NAOJ 2017–2023 có giờ phút');

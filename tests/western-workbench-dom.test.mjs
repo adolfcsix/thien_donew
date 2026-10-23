@@ -1,10 +1,10 @@
 import {test,beforeEach,afterEach} from 'node:test';import assert from 'node:assert/strict';import {readFileSync,existsSync} from 'node:fs';import {resolve,dirname} from 'node:path';import {createRequire} from 'node:module';
-const require=createRequire(import.meta.url),React=require('react'),{act}=React,ts=require('typescript'),{JSDOM}=require(process.env.THIENDO_DOM_TEST_MODULE);let dom,view,container,cache,downloads,selected,saved;
-function compile(path){path=resolve(path);if(cache.has(path))return cache.get(path).exports;const m={exports:{}};cache.set(path,m);const code=ts.transpileModule(readFileSync(path,'utf8'),{fileName:path,compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true}}).outputText;new Function('module','exports','require',code)(m,m.exports,id=>{if(id==='@/lib/download-blob')return {downloadBlobFile:(blob,name)=>downloads.push({blob,name})};if(id==='next/link')return {__esModule:true,default:({children,...p})=>React.createElement('a',p,children)};if(id.endsWith('.module.css'))return {__esModule:true,default:new Proxy({},{get:(_,k)=>String(k)})};if(id.startsWith('@/')||id.startsWith('.')){const base=id.startsWith('@/')?resolve('apps/web/src',id.slice(2)):resolve(dirname(path),id);for(const p of [base,base+'.ts',base+'.tsx',base+'.cjs'])if(existsSync(p))return p.endsWith('.cjs')?require(p):compile(p);}return require(id);});return m.exports;}
+const require=createRequire(import.meta.url),React=require('react'),{act}=React,ts=require('typescript'),{JSDOM}=require(process.env.THIENDO_DOM_TEST_MODULE);let dom,view,container,cache,downloads,selected,saved,catalogProvider;
+function compile(path){path=resolve(path);if(cache.has(path))return cache.get(path).exports;const m={exports:{}};cache.set(path,m);const code=ts.transpileModule(readFileSync(path,'utf8'),{fileName:path,compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true}}).outputText;new Function('module','exports','require',code)(m,m.exports,id=>{if(id==='./secure-api'&&catalogProvider)return {westernCatalog:(...args)=>catalogProvider(...args)};if(id==='@/lib/download-blob')return {downloadBlobFile:(blob,name)=>downloads.push({blob,name})};if(id==='next/link')return {__esModule:true,default:({children,...p})=>React.createElement('a',p,children)};if(id.endsWith('.module.css'))return {__esModule:true,default:new Proxy({},{get:(_,k)=>String(k)})};if(id.startsWith('@/')||id.startsWith('.')){const base=id.startsWith('@/')?resolve('apps/web/src',id.slice(2)):resolve(dirname(path),id);for(const p of [base,base+'.ts',base+'.tsx',base+'.cjs'])if(existsSync(p))return p.endsWith('.cjs')?require(p):compile(p);}return require(id);});return m.exports;}
 const numeric={method:'pythagorean-segmented-v1',name:'Nguyễn Văn An',date:'2004-03-12',year:2026,yMode:'consonant',masters:true};
 const natal={method:'western-tropical-geocentric-whole-sign-v1',date:'2000-01-01',hour:19,minute:0,utcOffsetMinutes:420,offsetConfirmed:true,latitude:21.03,longitude:105.85,houseSystem:'whole-sign',orb:6};
 const {studyWesternInput}=require('../packages/interpretation/src/western-depth.cjs'),{newAdvancedSpread}=require('../packages/astrology-engine/src/tarot-spreads.cjs');
-beforeEach(()=>{saved=new Map();dom=new JSDOM('<div id="root"></div>',{url:'http://localhost'});for(const [k,v]of Object.entries({window:dom.window,document:dom.window.document,navigator:dom.window.navigator,HTMLElement:dom.window.HTMLElement,IS_REACT_ACT_ENVIRONMENT:true})){saved.set(k,Object.getOwnPropertyDescriptor(globalThis,k));Object.defineProperty(globalThis,k,{value:v,writable:true,configurable:true});}cache=new Map();downloads=[];selected=[];container=document.getElementById('root');view=require('react-dom/client').createRoot(container);});
+beforeEach(()=>{catalogProvider=null;saved=new Map();dom=new JSDOM('<div id="root"></div>',{url:'http://localhost'});for(const [k,v]of Object.entries({window:dom.window,document:dom.window.document,navigator:dom.window.navigator,HTMLElement:dom.window.HTMLElement,IS_REACT_ACT_ENVIRONMENT:true})){saved.set(k,Object.getOwnPropertyDescriptor(globalThis,k));Object.defineProperty(globalThis,k,{value:v,writable:true,configurable:true});}cache=new Map();downloads=[];selected=[];container=document.getElementById('root');view=require('react-dom/client').createRoot(container);});
 afterEach(async()=>{await act(async()=>view.unmount());dom.window.close();for(const [k,v]of saved){if(v)Object.defineProperty(globalThis,k,v);else delete globalThis[k];}});
 async function render(C,props={}){await act(async()=>view.render(React.createElement(C,props)));}
 function button(label){const node=[...container.querySelectorAll('button')].find(n=>n.textContent.includes(label));assert.ok(node,label);return node;}
@@ -39,4 +39,42 @@ for (const discipline of ['astrology','tarot','numerology']) test('3D observator
  assert.equal(scene.dataset.running,'false');assert.equal(scene.dataset.separated,'true');assert.equal(scene.dataset.step,'0');
  assert.equal(container.querySelector('input[type=range]').value,'0');
  assert.equal(saved.size>0,true);
+});
+
+const catalogNavigation={planets:Array.from({length:10},(_,i)=>({body:'Body'+i,name:'Thiên thể '+i})),signs:Array.from({length:12},(_,i)=>({name:'Cung '+i})),houses:Array.from({length:12},(_,i)=>({number:i+1,area:'Nhà '+(i+1)})),aspects:Array.from({length:5},(_,i)=>({name:'Góc '+i,angle:i*30})),contexts:{}};
+function catalogPacket(tab,index){return {navigation:catalogNavigation,item:{name:tab+':'+index,theme:'Nội dung '+tab+':'+index}};}
+async function tapTab(label){const t=[...container.querySelectorAll('[role=tab]')].find(n=>n.textContent===label);assert.ok(t,label);await act(async()=>t.click());return t;}
+test('manual tabs move keyboard focus without requests; each group remembers its item and cached visits do not refetch',async()=>{
+ const calls=[];catalogProvider=async(tab,index)=>{calls.push(tab+':'+index);return catalogPacket(tab,index);};
+ await render(compile('apps/web/src/features/western/western-knowledge.tsx').WesternKnowledge);
+ await choose(container.querySelector('select'),'2');
+ const first=container.querySelector('[role=tab]');first.focus();
+ await act(async()=>first.dispatchEvent(new window.KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true})));
+ assert.equal(document.activeElement.textContent,'12 cung Hoàng đạo');assert.deepEqual(calls,['planets:0','planets:2']);
+ await tapTab('12 cung Hoàng đạo');await choose(container.querySelector('select'),'5');await tapTab('10 thiên thể');
+ assert.equal(container.querySelector('select').value,'2');assert.ok(container.textContent.includes('Nội dung planets:2'));
+ await tapTab('12 cung Hoàng đạo');assert.equal(container.querySelector('select').value,'5');assert.ok(container.textContent.includes('Nội dung signs:5'));
+ assert.deepEqual(calls,['planets:0','planets:2','signs:0','signs:5']);
+ const active=container.querySelector('[role=tab][aria-selected=true]'),panel=document.getElementById(active.getAttribute('aria-controls'));
+ assert.equal(panel.hidden,false);assert.equal(panel.getAttribute('aria-labelledby'),active.id);assert.equal(container.querySelectorAll('[role=tabpanel]:not([hidden])').length,1);
+});
+test('late catalog response cannot overwrite a different tab; failed current item can retry',async()=>{
+ const pending=[];catalogProvider=(tab,index,signal)=>new Promise((resolve,reject)=>pending.push({tab,index,signal,resolve,reject}));
+ await render(compile('apps/web/src/features/western/western-knowledge.tsx').WesternKnowledge);
+ assert.ok(container.querySelector('[role=status]'));
+ await tapTab('12 nhà');assert.equal(pending[0].signal.aborted,true);
+ await act(async()=>pending[1].resolve(catalogPacket('houses',0)));assert.ok(container.textContent.includes('Nội dung houses:0'));
+ await act(async()=>pending[0].resolve(catalogPacket('planets',0)));assert.ok(!container.textContent.includes('Nội dung planets:0'));
+ await choose(container.querySelector('select'),'4');await act(async()=>pending[2].reject(Error('Mạng tạm gián đoạn')));
+ assert.ok(container.querySelector('[role=alert]').textContent.includes('Mạng tạm gián đoạn'));assert.equal(container.querySelector('select').value,'4');
+ await act(async()=>button('Thử lại mục tri thức').click());await act(async()=>pending[3].resolve(catalogPacket('houses',4)));
+ assert.equal(container.querySelector('[role=alert]'),null);assert.ok(container.textContent.includes('Nội dung houses:4'));
+});
+test('catalog unmount aborts in-flight work; independent tab sets have unique accessible panel IDs',async()=>{
+ let signal;catalogProvider=(_t,_i,s)=>{signal=s;return new Promise(()=>{});};
+ await render(compile('apps/web/src/features/western/western-knowledge.tsx').WesternKnowledge);
+ await act(async()=>view.render(React.createElement('div')));assert.equal(signal.aborted,true);
+ const C=compile('apps/web/src/app/western-symbols/page.tsx').default;await render(C);
+ const tabs=[...container.querySelectorAll('[role=tab]')];assert.equal(new Set(tabs.map(t=>t.id)).size,tabs.length);
+ for(const t of tabs)assert.ok(document.getElementById(t.getAttribute('aria-controls')));
 });

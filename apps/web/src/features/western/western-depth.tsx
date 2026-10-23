@@ -1,13 +1,14 @@
 'use client';
 import {NatalStudyWorkbench} from './natal-study-workbench';
 import {downloadBlobFile} from '@/lib/download-blob';
-import {useEffect,useState} from 'react';
+import {useState} from 'react';
 import type {WesternStudy} from '@thiendo/interpretation/src/western-depth.cjs';
 import {exportWesternStudy} from '@thiendo/interpretation/src/western-presentation.cjs';
-import {westernCatalog,type WesternCatalog} from './secure-api';
+import {useWesternCatalog as useKnowledge} from './use-western-catalog';
+import {WesternKnowledge} from './western-knowledge';
+export {WesternKnowledge} from './western-knowledge';
 import styles from './western-depth.module.css';
 const labels:Record<string,string>={fire:'Lửa',earth:'Đất',air:'Khí',water:'Nước',cardinal:'Tiên phong',fixed:'Kiên định',mutable:'Linh hoạt'};
-function useKnowledge(tab='planets',index=0){const [data,setData]=useState<{key:string;value:WesternCatalog}|null>(null),[error,setError]=useState(''),[retry,setRetry]=useState(0);const key=tab+':'+index;useEffect(()=>{const c=new AbortController();setError('');void westernCatalog(tab,index,c.signal).then(value=>{if(!c.signal.aborted)setData({key,value});}).catch(e=>{if(!c.signal.aborted)setError(e.message)});return()=>c.abort();},[tab,index,key,retry]);return {navigation:data?.value.navigation||null,item:data?.key===key?data.value.item:null,error,retry:()=>setRetry(v=>v+1)};}
 export function WesternDepth({report,busy=false,selected,onSelect,onContextChange}:{report:WesternStudy;busy?:boolean;selected:string;onSelect:(body:string)=>void;onContextChange:(context:string)=>void}){
  const [house,setHouse]=useState('all'),[angle,setAngle]=useState('all'),[anchor,setAnchor]=useState('all');const library=useKnowledge(),knowledge=library.navigation;
  if(!knowledge)return <section className={styles.root}><p role={library.error?'alert':'status'}>{library.error||'Đang tải mục tri thức…'}</p>{library.error&&<button onClick={library.retry}>Thử lại tri thức</button>}</section>;
@@ -25,12 +26,4 @@ export function WesternDepth({report,busy=false,selected,onSelect,onContextChang
  <WesternKnowledge/>
  <details><summary>Nguồn, phương pháp và giới hạn luận Natal</summary><p>{report.notice}</p>{report.sources.map(s=><p key={s.id}><a href={s.url} target="_blank" rel="noreferrer">{s.title} ↗</a> · {s.scope}</p>)}<p>Không có Transit/Progression/Synastry/Composite, dignity đầy đủ, applying/separating hoặc góc với trục trong bộ đọc này. 12 nhà không đồng nhất với 12 cung.</p></details><p>Bản xuất bỏ ngày/giờ/nơi sinh và UTC, nhưng vị trí hành tinh vẫn có thể tiết lộ thời điểm; hãy xem trước khi chia sẻ.</p><button type="button" onClick={download}>↓ Xuất luận Natal JSON</button>
  </section>;
-}
-
-export function WesternKnowledge(){
- const [tab,setTab]=useState<'planets'|'signs'|'houses'|'aspects'>('planets'),[index,setIndex]=useState(0);
- const library=useKnowledge(tab,index),knowledge=library.navigation,item=library.item;
- if(!knowledge)return <section className={styles.root}><p role={library.error?'alert':'status'}>{library.error||'Đang tải thư viện tri thức…'}</p>{library.error&&<button onClick={library.retry}>Thử lại tri thức</button>}</section>;
- const catalog=knowledge[tab];
- return <section className={styles.root} aria-label="Thư viện tri thức phương Tây"> <details open><summary>Thư viện 10 thiên thể · 12 cung · 12 nhà · 5 góc</summary><div className={styles.controls}><label>Nhóm tri thức Natal<select aria-label="Nhóm tri thức Natal" value={tab} onChange={e=>{setTab(e.target.value as typeof tab);setIndex(0);}}><option value="planets">10 thiên thể</option><option value="signs">12 cung Hoàng đạo</option><option value="houses">12 nhà</option><option value="aspects">5 góc hợp</option></select></label><label>Mục tri thức Natal<select aria-label="Mục tri thức Natal" value={Math.min(index,catalog.length-1)} onChange={e=>setIndex(+e.target.value)}>{catalog.map((p,i)=><option key={i} value={i}>{'name' in p?p.name:`Nhà ${p.number} · ${p.area}`}</option>)}</select></label></div>{library.error&&<p role="alert">{library.error} <button onClick={library.retry}>Thử lại mục tri thức</button></p>}{!item?<p role="status">Đang tải mục tri thức…</p>:<article>{Object.entries(item).filter(([k,v])=>typeof v==='string'&&!['body','glyph'].includes(k)).map(([k,v])=><p key={k}><b>{({name:'Tên',theme:'Chủ đề',practice:'Thử trong thực tế',question:'Câu hỏi',caution:'Lưu ý',element:'Nguyên tố',modality:'Tính chất',style:'Cách biểu đạt',traditionalRuler:'Chủ tinh truyền thống',modernAlternative:'Lựa chọn hiện đại riêng',area:'Lĩnh vực',emptyNotice:'Nhà trống',reading:'Hướng đọc'} as Record<string,string>)[k]||k}:</b> {labels[String(v)]||knowledge.planets.find(p=>p.body===v)?.name||String(v)}</p>)}</article>}</details></section>;
 }

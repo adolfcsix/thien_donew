@@ -34,6 +34,7 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
   await pg.query("INSERT INTO admin_memberships(user_id,role) VALUES($1,'owner')",[owner.user.id]);
   async function post(context,url,data){const r=await context.request.post(origin+url,{data});assert.equal(r.status(),200,url+' '+await r.text());return r.json();}
   const sent=await post(owner.context,'/api/auth/email/send',{});await post(owner.context,'/api/auth/email/verify',{challengeId:sent.challengeId,code:delivered.get(owner.email)});
+ if(process.env.THIENDO_BROWSER_SCOPE==='study-tabs'){await require('./helpers-study-tabs-browser.cjs')({context:member.context,origin,record,pageErrors,out});assert.deepEqual(pageErrors,[]);return;}
  if(process.env.THIENDO_BROWSER_SCOPE==='observatory'){await require('./helpers-observatory-browser.cjs')({context:member.context,origin,record,pageErrors,out});assert.deepEqual(pageErrors,[]);return;}
  if(process.env.THIENDO_BROWSER_SCOPE==='western'){await require('./helpers-western-workbench-browser.cjs')({context:member.context,origin,record,pageErrors});assert.deepEqual(pageErrors,[]);return;}
 

@@ -1,4 +1,5 @@
 'use client';
+import {StudyTabs} from '@/components/study-tabs/study-tabs';
 import {DisciplineNavigation} from '@/features/western/discipline-navigation';
 import {useMemo,useState} from 'react';
 import Link from 'next/link';
@@ -34,15 +35,15 @@ export default function WesternSymbolsPage(){
    <p>Giá trị chữ ở đây là bảng tra, chưa tính từ/tên hoặc các biến thể gematria. Các đầu nối Hermetic không được coi là một phần chung cho mọi truyền thống Kabbalah.</p>
   </section>
   <section className={styles.panel}><div className={styles.sectionHead}><span>02 / TAROT SO SÁNH</span><h2>Ba truyền thống, ba phương pháp</h2></div>
-   <div className={styles.deckTabs}>{DECKS.map(deck=><button type="button" aria-pressed={deckTab===deck.id} key={deck.id} onClick={()=>setDeckTab(deck.id)}>{deck.name}</button>)}</div>
-   <article className={styles.deckDescription}><b>{activeDeck.name}</b><small>{activeDeck.period} · {activeDeck.origin}</small><p>{activeDeck.system}</p><p>{activeDeck.artStatus}</p><span>{activeDeck.status==='reading-engine-existing'?'Engine RWS: đã hoạt động':'Chỉ atlas so sánh, chưa có engine bói/trải riêng'}</span></article>
+   <StudyTabs label="Truyền thống Tarot" items={DECKS.map(d=>({id:d.id,label:d.name}))} value={deckTab} onChange={setDeckTab}>
+   <article className={styles.deckDescription}><b>{activeDeck.name}</b><small>{activeDeck.period} · {activeDeck.origin}</small><p>{activeDeck.system}</p><p>{activeDeck.artStatus}</p><span>{activeDeck.status==='reading-engine-existing'?'Engine RWS: đã hoạt động':'Chỉ atlas so sánh, chưa có engine bói/trải riêng'}</span></article></StudyTabs>
    <label className={styles.cardSelector}>Chọn vị trí lá để đối chiếu (cùng số ≠ cùng nghĩa)<select value={cardId} onChange={e=>setCardId(e.target.value)}>{CARDS.map(card=><option value={card.id} key={card.id}>{card.nameVi} — {card.id}</option>)}</select></label>
    <div className={styles.comparison}><article><small>RWS · 1909</small><h3>{card.rws.name}</h3><p>Thứ tự: {card.rws.number}</p></article><article><small>MARSEILLE · truyền bản</small><h3>{card.marseille.name}</h3><p>Thứ tự: {card.marseille.number}</p></article><article><small>THOTH · Thelema</small><h3>{card.thoth.name}</h3><p>Thứ tự: {card.thoth.number}</p></article></div>
    <p className={styles.notice}>{card.caveat} {card.comparisonOnly?'Đối chiếu phẩm vị Court chỉ là chỉ mục nghiên cứu, không phải quan hệ một–một.':''}</p>
    <div className={styles.note}><h3>Đối chiếu Hebrew theo từng lớp</h3>{match?.connected&&match.path?<p><strong>{match.path.letter} · {match.path.letterName}</strong> — tuyến {match.path.id} ({match.path.from} ↔ {match.path.to}). {match.warning}</p>:<p>{match?.reason??'Ẩn phụ không mang phép gán 22 chữ Hebrew của Major Arcana. Các bảng Sephirot–ẩn phụ cần trình bày theo một phương pháp và nguồn riêng.'}</p>}</div>
    <p>Đọc nghĩa và trải bài đầy đủ hiện chỉ dùng RWS. Chưa dùng ảnh, văn bản thuyết minh thương mại hoặc tự gán nghĩa RWS cho Marseille/Thoth. <Link href="/tarot">Mở trải Tarot RWS →</Link></p>
   </section>
-  <section className={styles.panel}><div className={styles.sectionHead}><span>03 / HỆ BIỂU TƯỢNG</span><h2>Tách lớp nguồn và diễn giải</h2></div><div className={styles.symbolNav}>{SYMBOL_LAYERS.map(layer=><button key={layer.id} type="button" onClick={()=>setActiveSymbol(layer.id)} aria-pressed={activeSymbol===layer.id}>{layer.label}</button>)}</div><article className={styles.symbolDetails}><h3>{chosenLayer.label}</h3><p><b>Hệ quy chiếu:</b> {chosenLayer.tradition}</p><p><b>Ví dụ:</b> {chosenLayer.examples.join(' · ')}</p><p><b>Ranh giới:</b> {chosenLayer.boundary}</p></article></section>
+  <section className={styles.panel}><div className={styles.sectionHead}><span>03 / HỆ BIỂU TƯỢNG</span><h2>Tách lớp nguồn và diễn giải</h2></div><StudyTabs label="Lớp biểu tượng" items={SYMBOL_LAYERS.map(l=>({id:l.id,label:l.label}))} value={activeSymbol} onChange={setActiveSymbol}><article className={styles.symbolDetails}><h3>{chosenLayer.label}</h3><p><b>Hệ quy chiếu:</b> {chosenLayer.tradition}</p><p><b>Ví dụ:</b> {chosenLayer.examples.join(' · ')}</p><p><b>Ranh giới:</b> {chosenLayer.boundary}</p></article></StudyTabs></section>
   <footer className={styles.footer}><b>Hồ sơ phương pháp</b><p>Dữ liệu so sánh là kiến thức lịch sử và quy ước biểu tượng; không phải kết quả thực nghiệm, khẳng định tín ngưỡng hay công cụ dự báo. Quyền sử dụng hình lá bài cần đánh giá cho từng ấn bản trước khi nhập vào Thiên Đồ.</p><p><Link href="/numerology">Thần số học nâng cao ↗</Link> · <Link href="/research/schools">Phương pháp & đối chứng ↗</Link></p></footer>
  </div>;
 }
