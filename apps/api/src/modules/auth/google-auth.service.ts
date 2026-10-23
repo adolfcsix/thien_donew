@@ -163,7 +163,7 @@ export class GoogleAuthService {
       await client.query('UPDATE auth_email_challenges SET used_at=NOW() WHERE id=$1',[ch.id]);
       await client.query(`INSERT INTO sessions(token_hash,user_id,expires_at,device_label) VALUES($1,$2,NOW()+INTERVAL '7 days',$3)`,[createHash('sha256').update(token).digest('hex'),user.id,typeof req.headers['user-agent']==='string'?req.headers['user-agent'].replace(/[\x00-\x1f\x7f<>]/g,'').slice(0,120):'Thiết bị không xác định']);
       if (previous) await client.query('DELETE FROM sessions WHERE token_hash=$1',[createHash('sha256').update(previous).digest('hex')]);
-      return {user};
+      return {user,destination:await this.auth.sessionDestination(client,user.id)};
     });
     if ('error' in status) throw new UnauthorizedException(status.error);
     if('deleted' in status){this.auth.setSessionCookie(res,'',0);return status;}

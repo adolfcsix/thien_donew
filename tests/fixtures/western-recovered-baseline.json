@@ -1,0 +1,895 @@
+[
+  {
+    "input": {
+      "method": "pythagorean-segmented-v1",
+      "name": "Nguyễn Văn An",
+      "date": "2004-03-12",
+      "year": 2026,
+      "yMode": "consonant",
+      "masters": true
+    },
+    "output": {
+      "method": "pythagorean-advanced-comparison-v1",
+      "baseMethod": "pythagorean-segmented-v1",
+      "input": {
+        "method": "pythagorean-segmented-v1",
+        "name": "Nguyễn Văn An",
+        "date": "2004-03-12",
+        "year": 2026,
+        "yMode": "consonant",
+        "masters": true
+      },
+      "lifePathComparison": {
+        "segmented": {
+          "value": 3,
+          "steps": [
+            12,
+            3
+          ],
+          "parts": [
+            {
+              "value": 3,
+              "steps": [
+                3
+              ]
+            },
+            {
+              "value": 3,
+              "steps": [
+                12,
+                3
+              ]
+            },
+            {
+              "value": 6,
+              "steps": [
+                2004,
+                6
+              ]
+            }
+          ]
+        },
+        "allDigits": {
+          "value": 3,
+          "steps": [
+            12,
+            3
+          ]
+        },
+        "agrees": true,
+        "note": "Hai phép rút được hiển thị song song; không đổi phương pháp chính của hồ sơ Pythagoras."
+      },
+      "maturity": {
+        "value": 6,
+        "steps": [
+          6
+        ]
+      },
+      "nameFrequency": {
+        "counts": {
+          "1": 2,
+          "2": 0,
+          "3": 1,
+          "4": 1,
+          "5": 5,
+          "6": 0,
+          "7": 2,
+          "8": 0,
+          "9": 0
+        },
+        "hiddenPassion": [
+          5
+        ],
+        "missingNumbers": [
+          2,
+          6,
+          8,
+          9
+        ]
+      },
+      "personalMonths": [
+        {
+          "month": 1,
+          "value": 8,
+          "steps": [
+            2042,
+            8
+          ]
+        },
+        {
+          "month": 2,
+          "value": 9,
+          "steps": [
+            2043,
+            9
+          ]
+        },
+        {
+          "month": 3,
+          "value": 1,
+          "steps": [
+            2044,
+            10,
+            1
+          ]
+        },
+        {
+          "month": 4,
+          "value": 2,
+          "steps": [
+            2045,
+            11,
+            2
+          ]
+        },
+        {
+          "month": 5,
+          "value": 3,
+          "steps": [
+            2046,
+            12,
+            3
+          ]
+        },
+        {
+          "month": 6,
+          "value": 4,
+          "steps": [
+            2047,
+            13,
+            4
+          ]
+        },
+        {
+          "month": 7,
+          "value": 5,
+          "steps": [
+            2048,
+            14,
+            5
+          ]
+        },
+        {
+          "month": 8,
+          "value": 6,
+          "steps": [
+            2049,
+            15,
+            6
+          ]
+        },
+        {
+          "month": 9,
+          "value": 7,
+          "steps": [
+            2050,
+            7
+          ]
+        },
+        {
+          "month": 10,
+          "value": 8,
+          "steps": [
+            2051,
+            8
+          ]
+        },
+        {
+          "month": 11,
+          "value": 9,
+          "steps": [
+            2052,
+            9
+          ]
+        },
+        {
+          "month": 12,
+          "value": 1,
+          "steps": [
+            2053,
+            10,
+            1
+          ]
+        }
+      ],
+      "exampleDate": {
+        "date": "2026-01-01",
+        "personalYear": {
+          "value": 7,
+          "steps": [
+            2041,
+            7
+          ]
+        },
+        "personalMonth": {
+          "value": 8,
+          "steps": [
+            8
+          ]
+        },
+        "personalDay": {
+          "value": 9,
+          "steps": [
+            9
+          ]
+        }
+      },
+      "limitations": [
+        "Chỉ dùng bảng chữ Latin Pythagoras và quy tắc Y do người dùng chọn.",
+        "Tên đã chuyển tự sẽ tạo kết quả khác; không hỗ trợ tự động chuyển bảng Chaldean.",
+        "Mọi ý nghĩa là thực hành biểu tượng, không phải phát hiện thực nghiệm."
+      ]
+    }
+  },
+  {
+    "input": {
+      "method": "pythagorean-segmented-v1",
+      "name": "Nguyễn Văn An",
+      "date": "2000-02-29",
+      "year": 2000,
+      "yMode": "consonant",
+      "masters": true
+    },
+    "output": {
+      "method": "pythagorean-advanced-comparison-v1",
+      "baseMethod": "pythagorean-segmented-v1",
+      "input": {
+        "method": "pythagorean-segmented-v1",
+        "name": "Nguyễn Văn An",
+        "date": "2000-02-29",
+        "year": 2000,
+        "yMode": "consonant",
+        "masters": true
+      },
+      "lifePathComparison": {
+        "segmented": {
+          "value": 6,
+          "steps": [
+            15,
+            6
+          ],
+          "parts": [
+            {
+              "value": 2,
+              "steps": [
+                2
+              ]
+            },
+            {
+              "value": 11,
+              "steps": [
+                29,
+                11
+              ]
+            },
+            {
+              "value": 2,
+              "steps": [
+                2000,
+                2
+              ]
+            }
+          ]
+        },
+        "allDigits": {
+          "value": 6,
+          "steps": [
+            15,
+            6
+          ]
+        },
+        "agrees": true,
+        "note": "Hai phép rút được hiển thị song song; không đổi phương pháp chính của hồ sơ Pythagoras."
+      },
+      "maturity": {
+        "value": 9,
+        "steps": [
+          9
+        ]
+      },
+      "nameFrequency": {
+        "counts": {
+          "1": 2,
+          "2": 0,
+          "3": 1,
+          "4": 1,
+          "5": 5,
+          "6": 0,
+          "7": 2,
+          "8": 0,
+          "9": 0
+        },
+        "hiddenPassion": [
+          5
+        ],
+        "missingNumbers": [
+          2,
+          6,
+          8,
+          9
+        ]
+      },
+      "personalMonths": [
+        {
+          "month": 1,
+          "value": 7,
+          "steps": [
+            2032,
+            7
+          ]
+        },
+        {
+          "month": 2,
+          "value": 8,
+          "steps": [
+            2033,
+            8
+          ]
+        },
+        {
+          "month": 3,
+          "value": 9,
+          "steps": [
+            2034,
+            9
+          ]
+        },
+        {
+          "month": 4,
+          "value": 1,
+          "steps": [
+            2035,
+            10,
+            1
+          ]
+        },
+        {
+          "month": 5,
+          "value": 2,
+          "steps": [
+            2036,
+            11,
+            2
+          ]
+        },
+        {
+          "month": 6,
+          "value": 3,
+          "steps": [
+            2037,
+            12,
+            3
+          ]
+        },
+        {
+          "month": 7,
+          "value": 4,
+          "steps": [
+            2038,
+            13,
+            4
+          ]
+        },
+        {
+          "month": 8,
+          "value": 5,
+          "steps": [
+            2039,
+            14,
+            5
+          ]
+        },
+        {
+          "month": 9,
+          "value": 6,
+          "steps": [
+            2040,
+            6
+          ]
+        },
+        {
+          "month": 10,
+          "value": 7,
+          "steps": [
+            2041,
+            7
+          ]
+        },
+        {
+          "month": 11,
+          "value": 8,
+          "steps": [
+            2042,
+            8
+          ]
+        },
+        {
+          "month": 12,
+          "value": 9,
+          "steps": [
+            2043,
+            9
+          ]
+        }
+      ],
+      "exampleDate": {
+        "date": "2000-01-01",
+        "personalYear": {
+          "value": 6,
+          "steps": [
+            2031,
+            6
+          ]
+        },
+        "personalMonth": {
+          "value": 7,
+          "steps": [
+            7
+          ]
+        },
+        "personalDay": {
+          "value": 8,
+          "steps": [
+            8
+          ]
+        }
+      },
+      "limitations": [
+        "Chỉ dùng bảng chữ Latin Pythagoras và quy tắc Y do người dùng chọn.",
+        "Tên đã chuyển tự sẽ tạo kết quả khác; không hỗ trợ tự động chuyển bảng Chaldean.",
+        "Mọi ý nghĩa là thực hành biểu tượng, không phải phát hiện thực nghiệm."
+      ]
+    }
+  },
+  {
+    "input": {
+      "method": "pythagorean-segmented-v1",
+      "name": "Y",
+      "date": "1900-03-01",
+      "year": 2026,
+      "yMode": "consonant",
+      "masters": false
+    },
+    "output": {
+      "method": "pythagorean-advanced-comparison-v1",
+      "baseMethod": "pythagorean-segmented-v1",
+      "input": {
+        "method": "pythagorean-segmented-v1",
+        "name": "Y",
+        "date": "1900-03-01",
+        "year": 2026,
+        "yMode": "consonant",
+        "masters": false
+      },
+      "lifePathComparison": {
+        "segmented": {
+          "value": 5,
+          "steps": [
+            5
+          ],
+          "parts": [
+            {
+              "value": 3,
+              "steps": [
+                3
+              ]
+            },
+            {
+              "value": 1,
+              "steps": [
+                1
+              ]
+            },
+            {
+              "value": 1,
+              "steps": [
+                1900,
+                10,
+                1
+              ]
+            }
+          ]
+        },
+        "allDigits": {
+          "value": 5,
+          "steps": [
+            14,
+            5
+          ]
+        },
+        "agrees": true,
+        "note": "Hai phép rút được hiển thị song song; không đổi phương pháp chính của hồ sơ Pythagoras."
+      },
+      "maturity": {
+        "value": 3,
+        "steps": [
+          12,
+          3
+        ]
+      },
+      "nameFrequency": {
+        "counts": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 1,
+          "8": 0,
+          "9": 0
+        },
+        "hiddenPassion": [
+          7
+        ],
+        "missingNumbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9
+        ]
+      },
+      "personalMonths": [
+        {
+          "month": 1,
+          "value": 6,
+          "steps": [
+            2031,
+            6
+          ]
+        },
+        {
+          "month": 2,
+          "value": 7,
+          "steps": [
+            2032,
+            7
+          ]
+        },
+        {
+          "month": 3,
+          "value": 8,
+          "steps": [
+            2033,
+            8
+          ]
+        },
+        {
+          "month": 4,
+          "value": 9,
+          "steps": [
+            2034,
+            9
+          ]
+        },
+        {
+          "month": 5,
+          "value": 1,
+          "steps": [
+            2035,
+            10,
+            1
+          ]
+        },
+        {
+          "month": 6,
+          "value": 2,
+          "steps": [
+            2036,
+            11,
+            2
+          ]
+        },
+        {
+          "month": 7,
+          "value": 3,
+          "steps": [
+            2037,
+            12,
+            3
+          ]
+        },
+        {
+          "month": 8,
+          "value": 4,
+          "steps": [
+            2038,
+            13,
+            4
+          ]
+        },
+        {
+          "month": 9,
+          "value": 5,
+          "steps": [
+            2039,
+            14,
+            5
+          ]
+        },
+        {
+          "month": 10,
+          "value": 6,
+          "steps": [
+            2040,
+            6
+          ]
+        },
+        {
+          "month": 11,
+          "value": 7,
+          "steps": [
+            2041,
+            7
+          ]
+        },
+        {
+          "month": 12,
+          "value": 8,
+          "steps": [
+            2042,
+            8
+          ]
+        }
+      ],
+      "exampleDate": {
+        "date": "2026-01-01",
+        "personalYear": {
+          "value": 5,
+          "steps": [
+            2030,
+            5
+          ]
+        },
+        "personalMonth": {
+          "value": 6,
+          "steps": [
+            6
+          ]
+        },
+        "personalDay": {
+          "value": 7,
+          "steps": [
+            7
+          ]
+        }
+      },
+      "limitations": [
+        "Chỉ dùng bảng chữ Latin Pythagoras và quy tắc Y do người dùng chọn.",
+        "Tên đã chuyển tự sẽ tạo kết quả khác; không hỗ trợ tự động chuyển bảng Chaldean.",
+        "Mọi ý nghĩa là thực hành biểu tượng, không phải phát hiện thực nghiệm."
+      ]
+    }
+  },
+  {
+    "input": {
+      "method": "pythagorean-segmented-v1",
+      "name": "Nguyễn Văn An",
+      "date": "2100-12-31",
+      "year": 2100,
+      "yMode": "vowel",
+      "masters": true
+    },
+    "output": {
+      "method": "pythagorean-advanced-comparison-v1",
+      "baseMethod": "pythagorean-segmented-v1",
+      "input": {
+        "method": "pythagorean-segmented-v1",
+        "name": "Nguyễn Văn An",
+        "date": "2100-12-31",
+        "year": 2100,
+        "yMode": "vowel",
+        "masters": true
+      },
+      "lifePathComparison": {
+        "segmented": {
+          "value": 1,
+          "steps": [
+            10,
+            1
+          ],
+          "parts": [
+            {
+              "value": 3,
+              "steps": [
+                12,
+                3
+              ]
+            },
+            {
+              "value": 4,
+              "steps": [
+                31,
+                4
+              ]
+            },
+            {
+              "value": 3,
+              "steps": [
+                2100,
+                3
+              ]
+            }
+          ]
+        },
+        "allDigits": {
+          "value": 1,
+          "steps": [
+            10,
+            1
+          ]
+        },
+        "agrees": true,
+        "note": "Hai phép rút được hiển thị song song; không đổi phương pháp chính của hồ sơ Pythagoras."
+      },
+      "maturity": {
+        "value": 4,
+        "steps": [
+          4
+        ]
+      },
+      "nameFrequency": {
+        "counts": {
+          "1": 2,
+          "2": 0,
+          "3": 1,
+          "4": 1,
+          "5": 5,
+          "6": 0,
+          "7": 2,
+          "8": 0,
+          "9": 0
+        },
+        "hiddenPassion": [
+          5
+        ],
+        "missingNumbers": [
+          2,
+          6,
+          8,
+          9
+        ]
+      },
+      "personalMonths": [
+        {
+          "month": 1,
+          "value": 2,
+          "steps": [
+            2144,
+            11,
+            2
+          ]
+        },
+        {
+          "month": 2,
+          "value": 3,
+          "steps": [
+            2145,
+            12,
+            3
+          ]
+        },
+        {
+          "month": 3,
+          "value": 4,
+          "steps": [
+            2146,
+            13,
+            4
+          ]
+        },
+        {
+          "month": 4,
+          "value": 5,
+          "steps": [
+            2147,
+            14,
+            5
+          ]
+        },
+        {
+          "month": 5,
+          "value": 6,
+          "steps": [
+            2148,
+            15,
+            6
+          ]
+        },
+        {
+          "month": 6,
+          "value": 7,
+          "steps": [
+            2149,
+            16,
+            7
+          ]
+        },
+        {
+          "month": 7,
+          "value": 8,
+          "steps": [
+            2150,
+            8
+          ]
+        },
+        {
+          "month": 8,
+          "value": 9,
+          "steps": [
+            2151,
+            9
+          ]
+        },
+        {
+          "month": 9,
+          "value": 1,
+          "steps": [
+            2152,
+            10,
+            1
+          ]
+        },
+        {
+          "month": 10,
+          "value": 2,
+          "steps": [
+            2153,
+            11,
+            2
+          ]
+        },
+        {
+          "month": 11,
+          "value": 3,
+          "steps": [
+            2154,
+            12,
+            3
+          ]
+        },
+        {
+          "month": 12,
+          "value": 4,
+          "steps": [
+            2155,
+            13,
+            4
+          ]
+        }
+      ],
+      "exampleDate": {
+        "date": "2100-01-01",
+        "personalYear": {
+          "value": 1,
+          "steps": [
+            2143,
+            10,
+            1
+          ]
+        },
+        "personalMonth": {
+          "value": 2,
+          "steps": [
+            2
+          ]
+        },
+        "personalDay": {
+          "value": 3,
+          "steps": [
+            3
+          ]
+        }
+      },
+      "limitations": [
+        "Chỉ dùng bảng chữ Latin Pythagoras và quy tắc Y do người dùng chọn.",
+        "Tên đã chuyển tự sẽ tạo kết quả khác; không hỗ trợ tự động chuyển bảng Chaldean.",
+        "Mọi ý nghĩa là thực hành biểu tượng, không phải phát hiện thực nghiệm."
+      ]
+    }
+  }
+]

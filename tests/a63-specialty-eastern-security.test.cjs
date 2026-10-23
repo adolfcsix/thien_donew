@@ -64,7 +64,7 @@ test('Administrator forms are wired to API endpoints; no decorative action butto
 });
 test('Login defaults to chart for user, never client-side grant admin',()=>{
  const source=read('apps/web/src/lib/login-destination.ts');assert.match(source,/return '\/chart'/);
- assert.match(source,/parseAdminAccess\(await api/);assert.match(source,/if\(access\.isAdmin\)/);
+ assert.match(source,/api<unknown>\('\/api\/auth\/destination'/);assert.match(source,/if\(target==='\/admin'\)/);
 });
 test('Eastern animation has viewport pause and reduced-motion support',()=>{
  assert.match(scene,/observeVisibleMotion/);assert.match(scene,/data-paused="true"/);

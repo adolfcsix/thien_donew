@@ -38,6 +38,7 @@ else {
  class DB{
   constructor(){this.users=[];this.sessions=[];this.charts=[];this.failNextSessionInsert=false;}
   async query(sql,params=[]){
+   if(sql==='SELECT role FROM admin_memberships WHERE user_id=$1')return {rows:[],rowCount:0};
    if(/SELECT (?:user_id FROM admin_memberships|id FROM billing_orders)/.test(sql))return {rows:[],rowCount:0};
    if(/INSERT INTO account_security_events/.test(sql))return {rows:[],rowCount:1};
    if(/DELETE FROM admin_session_assurance/.test(sql))return {rows:[],rowCount:0};

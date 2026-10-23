@@ -10,3 +10,5 @@ export interface AdvancedNumerology {
  limitations:string[];
 }
 export function calculate(raw:unknown):AdvancedNumerology;
+
+export function calculatePersonalDate(raw:unknown,selected:string):AdvancedNumerology['exampleDate'];

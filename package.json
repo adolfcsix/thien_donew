@@ -203,8 +203,15 @@
     "check:github:source": "node infrastructure/scripts/check-github-readiness.mjs",
     "test:sql:isolated": "node infrastructure/scripts/test-isolated-sql.mjs",
     "test:ai:sql": "node --test tests/deep-ai-session-sql.test.mjs",
-    "test:session:dom": "node --test tests/private-session-dom.test.mjs tests/ai-history-dom.test.mjs tests/tool-login-dom.test.mjs",
-    "test:stack:isolated": "node --test tests/deep-stack-http.test.mjs"
+    "test:session:dom": "node --test tests/private-session-dom.test.mjs tests/ai-history-dom.test.mjs tests/tool-login-dom.test.mjs tests/book-reader-dom.test.mjs tests/western-workbench-dom.test.mjs tests/readable-tables-dom.test.mjs",
+    "test:stack:isolated": "node --test tests/deep-stack-http.test.mjs",
+    "test:billing:sql": "node --test tests/billing-closed-state-sql.test.mjs",
+    "check:source-archive": "node infrastructure/scripts/verify-source-archive.cjs",
+    "test:reader:dom": "node --test tests/book-reader-dom.test.mjs",
+    "test:reader:browser": "node tests/book-reader-browser.mjs",
+    "test:auth:routing:sql": "node --test tests/auth-routing-security-sql.test.mjs",
+    "test:western:dom": "node --test tests/western-workbench-dom.test.mjs tests/readable-tables-dom.test.mjs",
+    "test:western:browser": "node tests/western-workbench-browser.cjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

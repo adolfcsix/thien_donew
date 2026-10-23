@@ -38,7 +38,7 @@ function audit(){
    'Tử Vi 11 disputed names, 4 aliases and unreviewed subannual transit layers remain blocked'],errors});
 }
 if(require.main===module){const result=audit();console.log(JSON.stringify(result,null,2));
- if(process.argv.includes('--write'))fs.writeFileSync(path.join(root,'docs/reports/V11_149_9_NAOJ_STAR_AUDIT.json'),JSON.stringify(result,null,2)+'\n');
+ if(process.argv.includes('--write')){fs.mkdirSync(path.join(root,'docs/reports'),{recursive:true});fs.writeFileSync(path.join(root,'docs/reports/V11_149_9_NAOJ_STAR_AUDIT.json'),JSON.stringify(result,null,2)+'\n');}
  if(result.errors.length)process.exitCode=1;
 }
 module.exports={audit,FROZEN_SHA256};

@@ -4,7 +4,7 @@ import {
   Fragment, createContext, useCallback, useContext, useEffect, useRef, useState,
   type FormEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode,
 } from 'react';
-import { accountApi,api,SESSION_EXPIRED_EVENT } from '@/lib/api';
+import { accountApi,api,SESSION_EXPIRED_EVENT,type AuthSessionResult } from '@/lib/api';
 import {LOGOUT_REVISION_KEY,logoutRevision,publishLogout,concealSession,replaceWithOpening} from '@/lib/session-exit';
 import {useRouter,usePathname} from 'next/navigation';
 import {loginDestination} from '@/lib/login-destination';
@@ -153,7 +153,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // A POST may have committed the login even if the subsequent /me is offline.
   // Trust only the successful authenticated POST response; rehydrate richer profile
   // fields when available. A successful /me remains authoritative thereafter.
-  const completeLogin = useCallback(async (result: { user: AuthUser }) => {
+  const completeLogin = useCallback(async (result: AuthSessionResult) => {
     const id = ++generation.current;
     lastSessionCheck.current = Date.now();
     setUser(current => current?.id === result.user.id ? { ...current, ...result.user } : result.user);
@@ -168,12 +168,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }).catch(() => {
       // A transient GET outage must not masquerade as a failed login.
     });
-    // The signed-in POST is already confirmed. A temporary billing/access
-    // outage must not turn a successful login into a misleading login error.
+    // The signed-in POST normally includes a backend-selected destination.
+    // Receipts without a destination use the independent auth endpoint. An outage
+    // must not turn a successful login into a misleading login error.
     // Unknown admin privileges fail closed: use the member chart as the safe
     // destination, never assume admin access from a client-side role value.
     let destination = '/chart';
-    try { destination = await loginDestination(pathname, window.location.search); }
+    try { destination = await loginDestination(pathname, window.location.search,undefined,result.destination); }
     catch { /* Safe member destination; the server protects /admin separately. */ }
     if(generation.current!==id)return;
     router.replace(destination);
@@ -297,7 +298,7 @@ function AuthDialog({ entryScreen, user, avatarRevision, close, refreshProfile, 
   close: () => void;
   refreshProfile: () => Promise<void>;
   clearUser: () => void;
-  completeLogin: (result: {user: AuthUser}) => Promise<void>;
+  completeLogin: (result: AuthSessionResult) => Promise<void>;
   applyLocalProfile: (patch: Partial<AuthUser>, accountId: AuthUser['id']) => void;
 }) {
   const [register, setRegister] = useState(entryScreen === 'register');

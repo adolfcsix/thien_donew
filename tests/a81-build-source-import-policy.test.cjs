@@ -44,3 +44,5 @@ test('GitHub source preflight checks source imports and parse errors, not only l
   const preflight = readFileSync(resolve(root, 'infrastructure/scripts/check-github-readiness.mjs'), 'utf8');
   assert.match(preflight, /\['source-integrity', 'infrastructure\/scripts\/check-source\.mjs'\]/);
 });
+
+test('standalone HTTP harness defers only its exact generated Nest entrypoint and policies', async()=>{const {deferredSqlTestSource}=await policy;for(const target of ['app.module','common/database.service','common/operations','common/origin-policy']){assert.equal(deferredSqlTestSource('tests/deep-stack-http.test.mjs',`../apps/api/dist/${target}.js`),`apps/api/src/${target}.ts`);assert.equal(deferredSqlTestSource('tests/other.test.mjs',`../apps/api/dist/${target}.js`),null);}for(const target of ['common/unknown','common/e2e-identity','common/../operations','../secrets'])assert.equal(deferredSqlTestSource('tests/deep-stack-http.test.mjs',`../apps/api/dist/${target}.js`),null);});

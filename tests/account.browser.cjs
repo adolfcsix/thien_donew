@@ -34,6 +34,8 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
   await pg.query("INSERT INTO admin_memberships(user_id,role) VALUES($1,'owner')",[owner.user.id]);
   async function post(context,url,data){const r=await context.request.post(origin+url,{data});assert.equal(r.status(),200,url+' '+await r.text());return r.json();}
   const sent=await post(owner.context,'/api/auth/email/send',{});await post(owner.context,'/api/auth/email/verify',{challengeId:sent.challengeId,code:delivered.get(owner.email)});
+ if(process.env.THIENDO_BROWSER_SCOPE==='western'){await require('./helpers-western-workbench-browser.cjs')({context:member.context,origin,record,pageErrors});assert.deepEqual(pageErrors,[]);return;}
+
 
 
  // Two submits in one event turn must share the same pending operation.
@@ -50,10 +52,14 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  const fresh=await browser.newContext({viewport:{width:1440,height:1000}});fresh.on('page',p=>p.on('pageerror',e=>pageErrors.push(e.message)));
  const page=await fresh.newPage();page.setDefaultTimeout(15000);await page.goto(origin+'/login?next=/chart',{waitUntil:'networkidle'});
  const dialog=page.getByRole('dialog');await dialog.waitFor();
+ // The auth POST now carries the server-selected destination; a follow-up API outage must not misroute Owner.
+ await page.route('**/api/auth/destination',r=>r.fulfill({status:503,contentType:'application/json',body:JSON.stringify({message:'Controlled routing outage'})}));
+ await page.route('**/api/billing/access',r=>new URL(page.url()).pathname==='/login'?r.fulfill({status:503,contentType:'application/json',body:JSON.stringify({message:'Controlled billing outage'})}):r.continue());
  await dialog.getByLabel('Username hoặc email',{exact:true}).fill('qa_owner');await dialog.getByLabel('Mật khẩu',{exact:true}).fill(password);await pairedSubmit(page,dialog.getByRole('button',{name:'Đăng nhập',exact:true}),'/api/auth/login');await dialog.waitFor({state:'hidden'});
  await page.getByRole('heading',{name:'Bảo vệ khu vực quản trị',exact:true}).waitFor();assert.equal((await fresh.request.get(origin+'/api/admin/overview')).status(),403);
  assert.equal(Number((await pg.query('SELECT count(*)::int AS n FROM sessions WHERE user_id=$1',[owner.user.id])).rows[0].n),2);record({case:'paired login submit creates exactly one new session and one POST',verdict:'PASS'});
  assert.equal(new URL(page.url()).pathname,'/admin');record({case:'Owner login from public login page routes to /admin and remains locked before MFA',verdict:'PASS'});
+ await page.unroute('**/api/auth/destination');await page.unroute('**/api/billing/access');record({case:'Owner POST receipt routes directly to admin despite auth-destination and billing outages at login',verdict:'PASS'});
  let setupCalls=0,releaseSetup;const holdSetup=new Promise(r=>releaseSetup=r);await page.route('**/api/auth/mfa/setup',async route=>{setupCalls++;await holdSetup;await route.continue()});
  await page.getByLabel('Mật khẩu hiện tại',{exact:true}).fill(password);const setupResponse=page.waitForResponse(r=>r.url().endsWith('/api/auth/mfa/setup'));
  await page.getByRole('button',{name:'Thiết lập MFA',exact:true}).evaluate(button=>{button.form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));button.form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}))});
@@ -75,6 +81,14 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  await page.goto(origin+'/admin/books',{waitUntil:'networkidle'});await page.getByRole('heading',{name:'Quản trị sách',exact:true}).waitFor();await page.reload({waitUntil:'networkidle'});await page.getByRole('heading',{name:'Quản trị sách',exact:true}).waitFor();
  for(const width of [390,768,1024,1440]){await page.setViewportSize({width,height:1000});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,'Admin books overflow '+width)}
  record({case:'direct admin subsection, reload and four viewport sizes remain functional',verdict:'PASS'});
+ const bazi=await member.context.newPage();
+ await bazi.goto(origin+'/bazi',{waitUntil:'networkidle'});
+ await bazi.getByRole('heading',{name:'Tứ trụ, bốn dấu mốc thời gian',exact:true}).waitFor();
+ await bazi.getByRole('button',{name:'Lập Bát Tự'}).click();
+ await bazi.getByRole('heading',{name:'Tứ trụ, bốn dấu mốc thời gian',exact:true}).waitFor();
+ assert.deepEqual((await bazi.getByRole('alert').allTextContents()).map(text=>text.trim()).filter(Boolean),[],'Current valid Bazi fixture must calculate without a UI error');
+ assert.ok((await bazi.locator('.bz-page').innerText()).includes('Nhật Chủ'));
+ await bazi.close();record({case:'authenticated Bazi calculator mounts and submits after the SSR account gate',verdict:'PASS'});
  const regular=await member.context.newPage();await regular.goto(origin+'/admin',{waitUntil:'networkidle'});
  const memberApi=await(await member.context.request.get(origin+'/api/auth/me')).json();
  const memberBrowser=await regular.evaluate(async()=>await(await fetch('/api/auth/me',{cache:'no-store',credentials:'include'})).json());
@@ -193,6 +207,7 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  await fresh.close(); const shortcutPage=await member.context.newPage();await shortcutPage.goto(origin+'/',{waitUntil:'networkidle'});await shortcutPage.keyboard.press('Control+k');await shortcutPage.getByRole('dialog',{name:'Tìm nhanh trang và công cụ',exact:true}).waitFor();await shortcutPage.keyboard.press('Escape');await shortcutPage.waitForFunction(()=>document.body.style.overflow!=='hidden');assert.equal(await shortcutPage.locator('.command-backdrop').count(),0);
  await shortcutPage.goto(origin+'/admin',{waitUntil:'networkidle'});await shortcutPage.getByRole('alert').filter({hasText:'không có quyền quản trị'}).waitFor();await shortcutPage.keyboard.press('Control+k');await shortcutPage.keyboard.press('Escape');assert.equal(await shortcutPage.locator('.command-backdrop').count(),0);assert.notEqual(await shortcutPage.evaluate(()=>document.body.style.overflow),'hidden');
  record({case:'public Ctrl+K remains functional; non-admin admin gate cannot open invisible user search or lock scrolling',verdict:'PASS'}); await shortcutPage.close();
+await require('./helpers-western-workbench-browser.cjs')({context:member.context,origin,record,pageErrors});
 assert.deepEqual(pageErrors,[]);
  }catch(error){console.error('BROWSER FAILED',error);for(const context of browser?.contexts()||[])for(const p of context.pages())await p.screenshot({path:path.join(out,'failure-'+Date.now()+'.png')}).catch(()=>{});throw error;}finally{fs.writeFileSync(path.join(out,'results.json'),JSON.stringify({sqlEngine:'PGlite WASM, not native PostgreSQL',provider:'No live email/Gemini/payOS calls',results,pageErrors},null,2));await browser?.close();if(web){web.closeAllConnections();await new Promise(r=>web.close(r));}await app?.close();await api?.close();await pg.close();fs.rmSync(privateWork,{recursive:true,force:true,maxRetries:6,retryDelay:100});fs.rmSync(webWork,{recursive:true,force:true,maxRetries:6,retryDelay:100});}
 })().catch(e=>{console.error(e);process.exitCode=1;});

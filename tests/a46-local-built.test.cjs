@@ -22,7 +22,7 @@ test('compiled launcher starts both direct Node children and stops the other whe
  const dir=fixture();let pair;
  try{
   const marker=JSON.stringify(join(dir,'api-ready'));
-  writeFileSync(join(dir,'apps/api/dist/main.js'),`require('node:fs').writeFileSync(${marker},'ready');console.log('FIXTURE_API_READY');setInterval(()=>{},1000);`);
+  writeFileSync(join(dir,'apps/api/dist/main.js'),`process.stdout.write('FIXTURE_API_READY'+String.fromCharCode(10),()=>require('node:fs').writeFileSync(${marker},'ready'));setInterval(()=>{},1000);`);
   writeFileSync(join(dir,'apps/web/.next/standalone/apps/web/server.js'),`console.log('FIXTURE_WEB_READY');const fs=require('node:fs');const poll=setInterval(()=>{if(fs.existsSync(${marker})){clearInterval(poll);process.exit(7)}},15);`);
   const out=[],err=[],codes=[];
   pair=startLocalBuiltChildren(localBuiltPlan(dir,env),{

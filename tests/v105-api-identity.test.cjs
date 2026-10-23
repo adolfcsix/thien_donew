@@ -34,7 +34,7 @@ function loadIdentityModule() {
 const academyLessons = JSON.parse(readFileSync(join(ROOT,'apps/web/src/features/academy/lessons.json'),'utf8'));
 const expectedHtmlMarkers = new Map([
   ['/', 'Một thư phòng.'], ['/chart', 'THIÊN ĐỒ'], ['/calendar', 'Lịch'],
-  ['/good-days', 'ngày'], ['/bazi', 'Tứ trụ'], ['/academy', 'Từ đọc địa bàn'],
+  ['/good-days', 'ngày'], ['/bazi', 'Đang kiểm tra tài khoản…'], ['/academy', 'Từ đọc địa bàn'],
   ['/library', 'Từ điển huyền học'], ['/star-atlas', 'chính tinh'],
   ...academyLessons.map(x=>['/academy/'+x.slug, x.title])
 ]);

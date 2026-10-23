@@ -1,4 +1,4 @@
-const {inflateRawSync}=require('node:zlib');
+const {inflateRawSync,crc32}=require('node:zlib');
 const SLUG=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const SUBJECTS=new Set(['tu-vi','bat-tu','kinh-dich','mai-hoa','luc-hao','ky-mon','lich-phap','phong-thuy','chiem-tinh','tarot','than-so-hoc','nghien-cuu','khac']);
@@ -40,10 +40,10 @@ function epubEntries(zip){
  if(zip.readUInt16LE(eocd+4)!==0||zip.readUInt16LE(eocd+6)!==0)fail('EPUB nhiều đĩa không hỗ trợ');
  const count=zip.readUInt16LE(eocd+10),start=zip.readUInt32LE(eocd+16),size=zip.readUInt32LE(eocd+12);
  if(!count||count>500||start+size>eocd||start+size>zip.length)fail('EPUB catalog ZIP không hợp lệ');
- let at=start,total=0;const results=new Map();
+ let at=start,total=0;const results=new Map(),ranges=[];
  for(let i=0;i<count;i++){
   if(at+46>eocd||zip.readUInt32LE(at)!==0x02014b50)fail('EPUB central-directory không hợp lệ');
-  const flags=zip.readUInt16LE(at+8),method=zip.readUInt16LE(at+10),compressed=zip.readUInt32LE(at+20),plain=zip.readUInt32LE(at+24),fn=zip.readUInt16LE(at+28),extra=zip.readUInt16LE(at+30),comment=zip.readUInt16LE(at+32),offset=zip.readUInt32LE(at+42);
+  const flags=zip.readUInt16LE(at+8),method=zip.readUInt16LE(at+10),checksum=zip.readUInt32LE(at+16),compressed=zip.readUInt32LE(at+20),plain=zip.readUInt32LE(at+24),fn=zip.readUInt16LE(at+28),extra=zip.readUInt16LE(at+30),comment=zip.readUInt16LE(at+32),offset=zip.readUInt32LE(at+42);
   if(flags&1||![0,8].includes(method)||compressed===0xffffffff||plain===0xffffffff||plain>3*1024*1024)fail('EPUB entry mã hóa hoặc quá lớn');
   total+=plain;if(total>60*1024*1024)fail('EPUB vượt giới hạn giải nén');
   if(at+46+fn+extra+comment>eocd)fail('EPUB central-directory bị cắt');
@@ -54,9 +54,19 @@ function epubEntries(zip){
   const localLen=zip.readUInt16LE(offset+26),localExtra=zip.readUInt16LE(offset+28),dataStart=offset+30+localLen+localExtra;
   if(dataStart+compressed>start)fail('EPUB ZIP payload tràn');
   if(zip.toString('utf8',offset+30,offset+30+localLen)!==path)fail('EPUB tên entry không khớp');
+  if(zip.readUInt16LE(offset+6)!==flags||zip.readUInt16LE(offset+8)!==method)fail('EPUB local metadata không khớp');
+  let end=dataStart+compressed;
+  if(flags&8){
+   const descriptor=end+(end+4<=start&&zip.readUInt32LE(end)===0x08074b50?4:0);
+   if(descriptor+12>start||zip.readUInt32LE(descriptor)!==checksum||zip.readUInt32LE(descriptor+4)!==compressed||zip.readUInt32LE(descriptor+8)!==plain)fail('EPUB data descriptor không khớp');
+   end=descriptor+12;
+  }else if(zip.readUInt32LE(offset+14)!==checksum||zip.readUInt32LE(offset+18)!==compressed||zip.readUInt32LE(offset+22)!==plain)fail('EPUB local CRC hoặc kích thước không khớp');
+  if(ranges.some(([from,to])=>offset<to&&end>from))fail('EPUB entry chồng lấn (overlap)');
+  ranges.push([offset,end]);
   const payload=zip.subarray(dataStart,dataStart+compressed);
   const data=method===0?payload:inflateRawSync(payload,{maxOutputLength:3*1024*1024});
   if(data.length!==plain)fail('EPUB giải nén sai kích thước');
+  if(crc32(data)!==checksum)fail('EPUB CRC checksum không khớp');
   results.set(path,data);
  }
  if(at!==start+size)fail('EPUB directory length không khớp');
@@ -65,11 +75,12 @@ function epubEntries(zip){
  return results;
 }
 function decodeEntities(s){return s.replace(/&(#x[0-9a-f]+|#[0-9]+|amp|lt|gt|quot|apos|nbsp);/gi,(full,entity)=>{const map={amp:'&',lt:'<',gt:'>',quot:'"',apos:"'",nbsp:' '};const e=entity.toLowerCase();if(map[e])return map[e];if(e.startsWith('#')){const n=Number.parseInt(e.slice(e[1]==='x'?2:1),e[1]==='x'?16:10);return Number.isSafeInteger(n)&&n<=0x10ffff&&n!==0?String.fromCodePoint(n):'';}return full;});}
-function epubChapters(bytes){const files=epubEntries(bytes),root=files.get('META-INF/container.xml').toString('utf8');const match=root.match(/full-path=["']([^"']+\.opf)["']/i);if(!match)fail('EPUB chưa khai báo OPF');const opfPath=match[1];const opf=files.get(opfPath)?.toString('utf8');if(!opf)fail('EPUB OPF không tồn tại');const base=opfPath.includes('/')?opfPath.slice(0,opfPath.lastIndexOf('/')+1):'';const items=new Map();for(const entry of opf.matchAll(/<item\b[^>]*\/>/gi)){const tag=entry[0],id=tag.match(/\bid=["']([^"']+)["']/i)?.[1],href=tag.match(/\bhref=["']([^"']+)["']/i)?.[1],media=tag.match(/\bmedia-type=["']([^"']+)["']/i)?.[1];if(id&&href&&media==='application/xhtml+xml')items.set(id,href);}
- const chapters=[];for(const item of opf.matchAll(/<itemref\b[^>]*\/>/gi)){const id=item[0].match(/\bidref=["']([^"']+)["']/i)?.[1],href=id?items.get(id):null;if(!href)continue;let joined=base+decodeURIComponent(href.split('#')[0]);const parts=[];for(const piece of joined.split('/')){if(piece==='.'||!piece)continue;if(piece==='..'){if(!parts.length)fail('EPUB path traversal');parts.pop();}else parts.push(piece);}joined=parts.join('/');const data=files.get(joined);if(!data)continue;
+function epubChapters(bytes){const files=epubEntries(bytes),root=files.get('META-INF/container.xml').toString('utf8');const match=root.match(/full-path=["']([^"']+\.opf)["']/i);if(!match)fail('EPUB chưa khai báo OPF');const opfPath=match[1];const opf=files.get(opfPath)?.toString('utf8');if(!opf)fail('EPUB OPF không tồn tại');const base=opfPath.includes('/')?opfPath.slice(0,opfPath.lastIndexOf('/')+1):'';const items=new Map();for(const entry of opf.matchAll(/<item\b[^>]*>/gi)){const tag=entry[0],id=tag.match(/\bid=["']([^"']+)["']/i)?.[1],href=tag.match(/\bhref=["']([^"']+)["']/i)?.[1],media=tag.match(/\bmedia-type=["']([^"']+)["']/i)?.[1];if(id&&href&&media==='application/xhtml+xml')items.set(id,href);}
+ const chapters=[];for(const item of opf.matchAll(/<itemref\b[^>]*>/gi)){const id=item[0].match(/\bidref=["']([^"']+)["']/i)?.[1],href=id?items.get(id):null;if(!href)continue;let joined=base+decodeURIComponent(href.split('#')[0]);const parts=[];for(const piece of joined.split('/')){if(piece==='.'||!piece)continue;if(piece==='..'){if(!parts.length)fail('EPUB path traversal');parts.pop();}else parts.push(piece);}joined=parts.join('/');const data=files.get(joined);if(!data)continue;
  const doc=data.toString('utf8');if(/<script\b/i.test(doc)){} // scripts are never executed or returned as markup
- const safe=doc.replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi,'').replace(/<style\b[^>]*>[\s\S]*?<\/style\s*>/gi,'').replace(/<\/(?:p|h[1-6]|div|li|section|br|blockquote)>/gi,'\n').replace(/<br\b[^>]*\/?\s*>/gi,'\n').replace(/<[^>]+>/g,'').replace(/[\t ]+/g,' ').replace(/\n\s*\n\s*\n/g,'\n\n').trim();
- if(safe)chapters.push({index:chapters.length,title:decodeEntities(doc.match(/<title[^>]*>([^<]{1,100})<\/title>/i)?.[1]||`Chương ${chapters.length+1}`),text:decodeEntities(safe).slice(0,120000)});
+ const safe=doc.replace(/<head\b[^>]*>[\s\S]*?<\/head\s*>/gi,'').replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi,'').replace(/<style\b[^>]*>[\s\S]*?<\/style\s*>/gi,'').replace(/<\/(?:p|h[1-6]|div|li|section|br|blockquote)>/gi,'\n').replace(/<br\b[^>]*\/?\s*>/gi,'\n').replace(/<[^>]+>/g,'').replace(/[\t ]+/g,' ').replace(/\n\s*\n\s*\n/g,'\n\n').trim();
+ const text=decodeEntities(safe);
+ if(text)chapters.push({index:chapters.length,title:decodeEntities(doc.match(/<title[^>]*>([^<]{1,100})<\/title>/i)?.[1]||`Chương ${chapters.length+1}`),text:text.slice(0,120000),truncated:text.length>120000,originalCharacters:text.length});
  if(chapters.length>=100)break;}
  if(!chapters.length)fail('EPUB không có chương đọc được');return chapters;
 }

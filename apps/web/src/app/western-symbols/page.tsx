@@ -10,11 +10,12 @@ type System='golden-dawn'|'crowley-thoth'|'jewish-source-only';
 const systemNames:Record<System,string>={'golden-dawn':'Hermetic · Golden Dawn','crowley-thoth':'Hermetic · Crowley (Thoth)','jewish-source-only':'Kabbalah Do Thái · chỉ khảo cứu'};
 export default function WesternSymbolsPage(){
  const [system,setSystem]=useState<System>('golden-dawn');
+ const [node,setNode]=useState('all');
  const [letterSearch,setLetterSearch]=useState('');
  const [cardId,setCardId]=useState('major-08');
  const [deckTab,setDeckTab]=useState('rws-1909');
  const [activeSymbol,setActiveSymbol]=useState('hebrew');
- const filtered=useMemo(()=>PATHS.filter(p=>`${p.letterName} ${p.letter} ${p.id} ${CARDS[Number(p.rwsCardId.slice(6))]?.name}`.toLowerCase().includes(letterSearch.trim().toLowerCase())),[letterSearch]);
+ const filtered=useMemo(()=>PATHS.filter(p=>(system==='jewish-source-only'||node==='all'||p.from===Number(node)||p.to===Number(node))&&(`${p.letterName} ${p.letter} ${p.gematria} ${system==='jewish-source-only'?p.id-10:p.id} ${system==='jewish-source-only'?'':CARDS[Number(p.rwsCardId.slice(6))]?.name}`.toLowerCase().includes(letterSearch.trim().toLowerCase()))),[letterSearch,node,system]);
  const card=compareCard(cardId);
  const match=cardId.startsWith('major-')?getCorrespondence(cardId,system):null;
  const chosenLayer=SYMBOL_LAYERS.find(s=>s.id===activeSymbol)||SYMBOL_LAYERS[0];
@@ -26,7 +27,11 @@ export default function WesternSymbolsPage(){
    <div className={styles.sefirot}>{SEFIROT.map(node=><article key={node.id}><small>{String(node.id).padStart(2,'0')}</small><strong lang="he" dir="rtl">{node.hebrew}</strong><b>{node.name}</b><span>{node.gloss}</span></article>)}</div>
    <div className={styles.toolbar}><label>Trường phái nghiên cứu<select value={system} onChange={e=>setSystem(e.target.value as System)}>{Object.entries(systemNames).map(([value,name])=><option key={value} value={value}>{name}</option>)}</select></label><label>Tra chữ/đường<input type="search" value={letterSearch} onChange={e=>setLetterSearch(e.target.value)} placeholder="Aleph, 11, א…" maxLength={45}/></label></div>
    {system==='jewish-source-only'?<p className={styles.notice}>Ở chế độ này chỉ tra Sephirot, chữ Hebrew và số chữ. Quan hệ Tarot được tắt vì không thuộc dữ liệu chung của Kabbalah Do Thái cổ điển.</p>:<p className={styles.notice}>{system==='crowley-thoth'?'Biến thể Thoth cần xem riêng Heh/Tzaddi tại thẻ IV và XVII. Các đầu nối trên bàn Kircher không được coi là bất biến giữa các truyền thống.':'Bảng 22 tuyến dùng sơ đồ Kircher theo Golden Dawn, là một lối xếp trong Hermetic Qabalah.'}</p>}
-   <div className={styles.pathTable} tabIndex={0} role="region" aria-label="Bảng đối chiếu 22 tuyến Hermetic"><table><thead><tr><th>Tuyến</th><th>Chữ / giá trị</th><th>Đầu nối</th><th>Ẩn chính Golden Dawn</th></tr></thead><tbody>{filtered.map((path:HermeticPath)=><tr key={path.id}><td>{path.id}</td><td><b lang="he">{path.letter}</b> {path.letterName} · {path.gematria}</td><td>{SEFIROT[path.from-1].name} ↔ {SEFIROT[path.to-1].name}</td><td>{system==='jewish-source-only'?'Không gán Tarot':CARDS[Number(path.rwsCardId.slice(6))]?.name}</td></tr>)}</tbody></table>{!filtered.length&&<p>Không có kết quả tương ứng.</p>}</div>
+   {system!=='jewish-source-only'&&<label className={styles.cardSelector}>Lọc tuyến qua Sephirot<select value={node} onChange={e=>setNode(e.target.value)}><option value="all">Toàn bộ 22 tuyến Hermetic</option>{SEFIROT.map(n=><option key={n.id} value={n.id}>{n.name} · {n.gloss}</option>)}</select></label>}
+   <p role="status">Đang hiển thị {filtered.length} / 22 {system==='jewish-source-only'?'chữ Hebrew':'tuyến của bảng nền Golden Dawn'}.</p>
+   {system==='crowley-thoth'&&<p className={styles.notice}>Bảng dưới vẫn là bảng nền Golden Dawn để đối chiếu, không phải sơ đồ Thoth đã chuyển đổi. Khác biệt theo lá được trình bày bên dưới.</p>}
+   <div className={styles.pathTable} tabIndex={0} role="region" aria-label={system==='jewish-source-only'?'Bảng 22 chữ Hebrew':'Bảng đối chiếu 22 tuyến Hermetic'}><table><thead><tr><th>{system==='jewish-source-only'?'Thứ tự chữ':'Tuyến Hermetic'}</th><th>Chữ / giá trị</th>{system!=='jewish-source-only'&&<><th>Đầu nối Kircher</th><th>Ẩn chính Golden Dawn</th></>}</tr></thead><tbody>{filtered.map((path:HermeticPath)=><tr key={path.id}><td>{system==='jewish-source-only'?path.id-10:path.id}</td><td><b lang="he" dir="rtl">{path.letter}</b> {path.letterName} · {path.gematria}</td>{system!=='jewish-source-only'&&<><td>{SEFIROT[path.from-1].name} ↔ {SEFIROT[path.to-1].name}</td><td>{CARDS[Number(path.rwsCardId.slice(6))]?.name}</td></>}</tr>)}</tbody></table>{!filtered.length&&<p>Không có kết quả tương ứng. Thử tên chữ khác hoặc bỏ bộ lọc.</p>}</div>
+   <p>Giá trị chữ ở đây là bảng tra, chưa tính từ/tên hoặc các biến thể gematria. Các đầu nối Hermetic không được coi là một phần chung cho mọi truyền thống Kabbalah.</p>
   </section>
   <section className={styles.panel}><div className={styles.sectionHead}><span>02 / TAROT SO SÁNH</span><h2>Ba truyền thống, ba phương pháp</h2></div>
    <div className={styles.deckTabs}>{DECKS.map(deck=><button type="button" aria-pressed={deckTab===deck.id} key={deck.id} onClick={()=>setDeckTab(deck.id)}>{deck.name}</button>)}</div>

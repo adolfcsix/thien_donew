@@ -1,4 +1,4 @@
-import {Injectable,BadRequestException,ForbiddenException,NotFoundException,ConflictException,ServiceUnavailableException,UnauthorizedException} from '@nestjs/common';
+import {Injectable,BadRequestException,ForbiddenException,NotFoundException,ConflictException,ServiceUnavailableException} from '@nestjs/common';
 import type {Request} from 'express';
 import {randomUUID} from 'node:crypto';
 import {DatabaseService} from '../../common/database.service';
@@ -75,14 +75,22 @@ export class BillingService {
   assertChartId(id);const row=(await this.db.query<ReconciliationOrder>('SELECT id,user_id AS "userId",order_code AS "orderCode",amount_vnd AS "amountVnd",status,payment_link_id AS "paymentLinkId" FROM billing_orders WHERE id=$1',[id])).rows[0];
   if(!row)throw new NotFoundException();return row;
  }
+ /** Close only a verified unpaid order; the conditional update cannot overwrite a paid/refunded receipt. */
+ private async closeVerifiedOrder(client:PoolClient,o:ReconciliationOrder,data:{id:string;orderCode:number;amount:number;amountPaid:number;status:string},source:string){
+  if(!['CANCELLED','EXPIRED'].includes(data.status)||data.amountPaid!==0)return;
+  const changed=await client.query(`UPDATE billing_orders SET status='cancelled',payment_link_id=COALESCE(payment_link_id,$4)
+   WHERE id=$1 AND order_code=$2 AND amount_vnd=$3 AND (payment_link_id IS NULL OR payment_link_id=$4)
+   AND status IN ('creating','pending','failed') RETURNING id`,[o.id,data.orderCode,data.amount,data.id]);
+  if(changed.rows[0])await client.query("INSERT INTO admin_audit(action,target,details) VALUES('payment.closed',$1,$2)",[o.id,JSON.stringify({provider:'payos',providerStatus:data.status,amount:data.amount,source})]);
+ }
  private async reconcileSnapshot(o:ReconciliationOrder,authorize:(client:PoolClient)=>Promise<void>){
   const data=paymentLookup(await this.gateway.get(Number(o.orderCode)),{orderCode:Number(o.orderCode),amount:Number(o.amountVnd),paymentLinkId:o.paymentLinkId});
   if(data.status==='PAID')await this.settle({orderCode:data.orderCode,amount:data.amountPaid,paymentLinkId:data.id,reference:'reconcile:'+data.id},{authorize,verifiedLookup:true});
-  else await this.db.transaction(authorize);
+  else await this.db.transaction(async client=>{await authorize(client);await this.closeVerifiedOrder(client,o,data,'verified-provider-lookup');});
  }
  async reconcile(req:Request,id:string){
   await this.order(req,id);const o=await this.lookup(id);
-  await this.reconcileSnapshot(o,async client=>{if((await this.auth.me(req,client))?.id!==o.userId)throw new UnauthorizedException('Phiên đối soát đã hết hạn');});
+  await this.reconcileSnapshot(o,async client=>{await this.auth.assertSessionInTransaction(client,req,o.userId);});
   return this.order(req,id);
  }
  /** Explicit administrator path; customer order access remains owner-scoped. */
@@ -100,7 +108,7 @@ export class BillingService {
   const {order:o}=await this.order(req,id);if(o.status==='paid'||o.status==='refunded')throw new ConflictException('Đơn đã trả tiền không thể hủy');
   const stored=await this.lookup(id);const result=paymentLookup(await this.gateway.cancel(Number(o.orderCode)),{orderCode:Number(o.orderCode),amount:Number(o.amountVnd),paymentLinkId:stored.paymentLinkId});
   if(result.status!=='CANCELLED'||result.amountPaid!==0)throw new ConflictException('Cổng thanh toán chưa xác nhận hủy đơn chưa nhận tiền');
-  await this.db.query("UPDATE billing_orders SET status='cancelled' WHERE id=$1 AND status IN ('creating','pending','failed')",[id]);return this.order(req,id);
+  await this.db.transaction(async client=>{await this.auth.assertSessionInTransaction(client,req,stored.userId);await this.closeVerifiedOrder(client,stored,result,'verified-provider-cancel');});return this.order(req,id);
  }
  async report(req:Request,raw:unknown){const body=object(raw),ids=body.chartIds;if(!Array.isArray(ids)||ids.length<1||ids.length>5||new Set(ids).size!==ids.length)throw new BadRequestException('Chọn 1–5 lá số');const access=await this.access(req),feature=ids.length===1?'premium-report':'multi-chart-report';if(access.isAdmin)await this.mfa.requireAdmin(req);else if(!access.features.includes(feature)){const policy=(await this.db.query("SELECT enabled FROM premium_sections WHERE path='/pro/research'")).rows[0];if(policy?.enabled!==false)throw new ForbiddenException('Tính năng này cần quyền Pro');}
  const year=integer(body.year??new Date().getFullYear(),1900,2100),span=integer(body.span??3,1,5);if(year+span-1>2100)throw new BadRequestException('Khoảng năm vượt phạm vi');

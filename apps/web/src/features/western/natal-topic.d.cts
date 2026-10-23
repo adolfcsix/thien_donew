@@ -1,0 +1,4 @@
+import type {WesternStudy} from '@thiendo/interpretation/src/western-depth.cjs';
+export const TOPICS:{id:string;title:string;bodies:string[];houses:number[];question:string;exercise:string;counter:string}[];
+export type NatalTopic={format:string;version:number;topic:string;title:string;question:string;exercise:string;counter:string;scope:string;planets:{body:string;name:string;sign:string;house:number;longitude:number;reading:string;question:string;practice:string;caution:string}[];houses:{number:number;area:string;sign:string;ruler:WesternStudy['houses'][number]['ruler'];occupants:string[];question:string}[];aspects:{first:string;second:string;firstName:string;secondName:string;name:string;orb:number;targetAngle:number;reading:string;question:string;notice:string}[]};
+export function buildNatalTopic(report:WesternStudy,id:string):NatalTopic;

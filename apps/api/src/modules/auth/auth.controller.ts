@@ -10,6 +10,7 @@ import { AccountEmailService } from './account-email.service';
 export class AuthController {
   constructor(private readonly service: AuthService, private readonly google: GoogleAuthService, private readonly profile: ProfileService, private readonly recovery:PasswordRecoveryService,private readonly mfa:AdminMfaService,private readonly emailService:AccountEmailService) { }
   @Get('me') async me(@Req() req: Request) { return { user: await this.service.me(req) }; }
+  @Get('destination') destination(@Req() req: Request) { return this.service.destination(req); }
   @Post('register') async register(@Req() req: Request, @Res({ passthrough: true }) res: Response, @Body() body: unknown) { res.status(HttpStatus.CREATED); return this.service.register(body, req, res); }
   @Post('login') @HttpCode(200) async login(@Req() req: Request, @Res({ passthrough: true }) res: Response, @Body() body: unknown) { return this.service.login(body, req, res); }
   @Post('logout/all') @HttpCode(200) async logoutAll(@Req() req:Request,@Res({passthrough:true}) res:Response) {return this.service.logoutAll(req,res);}

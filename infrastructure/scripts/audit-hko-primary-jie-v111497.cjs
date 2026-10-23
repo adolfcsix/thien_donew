@@ -19,5 +19,5 @@ function audit(){
    note:'Minute-level primary transcription separately auditable. Not a sub-minute ephemeris or approved chart engine.',errors};
  return out;
 }
-if(require.main===module){const a=audit();console.log(JSON.stringify(a,null,2));if(process.argv.includes('--write'))fs.writeFileSync(path.join(root,'docs/reports/V11_149_7_HKO_PRIMARY_JIE_AUDIT.json'),JSON.stringify(a,null,2)+'\n');if(a.errors.length)process.exitCode=1;}
+if(require.main===module){const a=audit();console.log(JSON.stringify(a,null,2));if(process.argv.includes('--write')){fs.mkdirSync(path.join(root,'docs/reports'),{recursive:true});fs.writeFileSync(path.join(root,'docs/reports/V11_149_7_HKO_PRIMARY_JIE_AUDIT.json'),JSON.stringify(a,null,2)+'\n');}if(a.errors.length)process.exitCode=1;}
 module.exports={audit};

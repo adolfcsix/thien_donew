@@ -42,7 +42,8 @@ const mockResponse=()=>({cookies:[],cleared:[],headers:{},cookie(name,value){thi
 function reqWith(cookie=''){return {headers:{cookie}}}
 class DB {
  constructor(){this.nonces=new Map();this.users=[];this.sessions=[];this.challenges=[];this.resets=[];this.trusted=[];this.queries=[];this.failSession=false;}
- async query(sql,params=[]){this.queries.push(sql);const users=this.users,sessions=this.sessions,challenges=this.challenges,resets=this.resets;let rows=[];
+ async query(sql,params=[]){
+   if(sql==='SELECT role FROM admin_memberships WHERE user_id=$1')return {rows:[],rowCount:0};this.queries.push(sql);const users=this.users,sessions=this.sessions,challenges=this.challenges,resets=this.resets;let rows=[];
   if(/SELECT user_id FROM (?:account_blocks|admin_memberships)|SELECT id FROM billing_orders/.test(sql))return {rows:[],rowCount:0};
   if(/INSERT INTO auth_google_nonces/.test(sql)){this.nonces.set(params[0],true);return {rows:[],rowCount:1};}
   if(/DELETE FROM auth_google_nonces/.test(sql)){const exists=this.nonces.delete(params[0]);return {rows:exists?[{nonce_hash:params[0]}]:[],rowCount:exists?1:0};}

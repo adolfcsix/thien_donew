@@ -17,7 +17,13 @@ function calculate(raw){
  const hiddenPassion=Object.keys(counts).filter(x=>counts[x]===maximum).map(Number);
  const missingNumbers=Object.keys(counts).filter(x=>counts[x]===0).map(Number);
  const physicalMonths=Array.from({length:12},(_,index)=>({month:index+1,...reduce(month+day+year+index+1,false)}));
- const personalDay=(selected)=>{
+ const personalDay=selected=>calculatePersonalDate(core.input,selected);
+ return {method:METHOD,baseMethod:base.METHOD,input:core.input,lifePathComparison:contrast,maturity,
+  nameFrequency:{counts,hiddenPassion,missingNumbers},personalMonths:physicalMonths,exampleDate:personalDay(`${year}-01-01`),
+  limitations:['Chỉ dùng bảng chữ Latin Pythagoras và quy tắc Y do người dùng chọn.', 'Tên đã chuyển tự sẽ tạo kết quả khác; không hỗ trợ tự động chuyển bảng Chaldean.', 'Mọi ý nghĩa là thực hành biểu tượng, không phải phát hiện thực nghiệm.']};
+}
+function calculatePersonalDate(raw,selected){
+ const input=base.validateInput(raw),[birthYear,month,day]=input.date.split('-').map(Number);
   if(typeof selected!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(selected))throw Error('Ngày đối chiếu không hợp lệ.');
   const d=new Date(selected+'T00:00:00Z');
   if(!Number.isFinite(d.getTime())||d.toISOString().slice(0,10)!==selected||+selected.slice(0,4)<birthYear||+selected.slice(0,4)>2100)throw Error('Ngày đối chiếu ngoài phạm vi.');
@@ -25,9 +31,5 @@ function calculate(raw){
   const personalYear=reduce(month+day+y,false);
   const personalMonth=reduce(personalYear.value+m,false);
   return {date:selected,personalYear,personalMonth,personalDay:reduce(personalMonth.value+dayOfMonth,false)};
- };
- return {method:METHOD,baseMethod:base.METHOD,input:core.input,lifePathComparison:contrast,maturity,
-  nameFrequency:{counts,hiddenPassion,missingNumbers},personalMonths:physicalMonths,exampleDate:personalDay(`${year}-01-01`),
-  limitations:['Chỉ dùng bảng chữ Latin Pythagoras và quy tắc Y do người dùng chọn.', 'Tên đã chuyển tự sẽ tạo kết quả khác; không hỗ trợ tự động chuyển bảng Chaldean.', 'Mọi ý nghĩa là thực hành biểu tượng, không phải phát hiện thực nghiệm.']};
 }
-module.exports={METHOD,calculate};
+module.exports={METHOD,calculate,calculatePersonalDate};

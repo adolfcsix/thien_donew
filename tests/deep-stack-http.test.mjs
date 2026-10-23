@@ -6,6 +6,7 @@ import {createRequire} from 'node:module';
 import {pathToFileURL} from 'node:url';
 import {randomBytes} from 'node:crypto';
 import {spawn} from 'node:child_process';
+import {getReadOnlyRouteManifest} from '../infrastructure/scripts/read-only-route-manifest.mjs';
 const require=createRequire(import.meta.url),nativeFetch=globalThis.fetch;
 if(!process.env.THIENDO_SQL_TEST_MODULE)throw Error('Explicit isolated THIENDO_SQL_TEST_MODULE required');
 const {PGlite}=await import(pathToFileURL(process.env.THIENDO_SQL_TEST_MODULE).href);
@@ -65,4 +66,19 @@ test('logout while provider is processing yields HTTP 401 and no new private AI 
  providerAction=async()=>{assert.equal((await send('/api/auth/logout',{cookie:alice.cookie,body:{}})).r.status,200);};
  const generated=await send('/api/huyen-giai/generate',{cookie:alice.cookie,body:{chartId,question:'Giải thích thêm theo chứng cứ',consent:true}});providerAction=null;assert.equal(generated.r.status,401);assert.equal((await send('/api/auth/me',alice)).value.user,null);
  assert.equal((await pg.query('SELECT COUNT(*)::int AS n FROM ai_messages WHERE user_id=$1',[alice.id])).rows[0].n,count);const usage=(await pg.query("SELECT status,error_code FROM ai_usage WHERE user_id=$1 ORDER BY created_at DESC LIMIT 1",[alice.id])).rows[0];assert.equal(usage.status,'failed');assert.equal(usage.error_code,'SESSION_REVOKED');
+});
+
+test('guest SSR manifest matches standalone app including Bazi account gate',async()=>{for(const route of getReadOnlyRouteManifest()){const r=await nativeFetch(origin+route.path,{signal:AbortSignal.timeout(15000)});assert.equal(r.status,200,route.path);assert.match(r.headers.get('content-type'),/text\/html/);const html=await r.text();assert.ok(html.includes('<html')&&html.includes(route.marker),route.path);}});
+
+test('shared login rejects role injection, rotates cookies and chooses member area on the backend',async()=>{
+ const made=await send('/api/auth/register',{body:{email:'routing_http@example.invalid',username:'routing_http',password,role:'owner',isAdmin:true,destination:'/admin'}});assert.equal(made.r.status,201);assert.equal(made.value.destination,'/chart');const oldCookie=made.r.headers.get('set-cookie').split(';')[0];
+ const logged=await send('/api/auth/login',{cookie:oldCookie,body:{email:'routing_http',password,remember:false,role:'owner',isAdmin:true}});assert.equal(logged.r.status,200);assert.equal(logged.value.destination,'/chart');const cookie=logged.r.headers.get('set-cookie').split(';')[0];assert.notEqual(cookie,oldCookie);assert.match(logged.r.headers.get('set-cookie'),/HttpOnly/);assert.match(logged.r.headers.get('set-cookie'),/SameSite=Lax/);
+ assert.equal((await send('/api/auth/me',{cookie:oldCookie})).value.user,null);assert.equal((await send('/api/auth/destination',{cookie})).value.destination,'/chart');assert.equal((await send('/api/admin/console/session',{cookie:cookie+'; role=owner; isAdmin=true'})).r.status,403);assert.equal((await send('/api/auth/destination')).r.status,401);
+ assert.equal((await send('/api/admin/console/team/'+made.value.user.id,{cookie,method:'PATCH',body:{role:'admin',expectedRole:'member',expectedRevision:0,capabilities:['overview.read'],reason:'Isolated role injection'}})).r.status,403);
+ assert.equal((await pg.query('SELECT COUNT(*)::int n FROM admin_memberships WHERE user_id=$1',[made.value.user.id])).rows[0].n,0);
+ assert.equal((await send('/api/admin/console/session',{cookie:'thiendo_session='+'a'.repeat(64)+'; role=owner'})).r.status,401);
+ assert.equal((await send('/api/auth/login',{source:'https://attacker.invalid',body:{email:'routing_http',password}})).r.status,403);
+});
+test('a fresh administrator password login routes to admin but cannot reuse previous-session MFA',async()=>{
+ assert.equal((await send('/api/admin/console/session',bob)).r.status,200);const logged=await send('/api/auth/login',{cookie:bob.cookie,body:{email:bob.email,password,role:'user'}});assert.equal(logged.r.status,200);assert.equal(logged.value.destination,'/admin');const cookie=logged.r.headers.get('set-cookie').split(';')[0];assert.equal((await send('/api/auth/destination',{cookie})).value.destination,'/admin');assert.equal((await send('/api/admin/console/session',{cookie})).r.status,403);assert.equal((await send('/api/admin/console/session',bob)).r.status,401);
 });

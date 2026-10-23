@@ -59,7 +59,7 @@ before(()=>{
 });
 beforeEach(()=>{
  navigations=[];opened=0;closed=0;mounts=0;
- uiApi=async()=>({isAdmin:false,isOwner:false});
+ uiApi=async path=>path==='/api/auth/destination'?{destination:'/chart'}:{isAdmin:false,isOwner:false};
  state={user:null,loading:false,open:()=>opened++,close:()=>closed++};
  container=document.createElement('div');document.body.appendChild(container);view=createRoot(container);
 });
@@ -196,4 +196,12 @@ test('Polling serializes slow requests, pauses hidden tabs and cancels on unmoun
   await act(async()=>fire());assert.equal(calls,2);assert.equal(jobs.size,0);
   await act(async()=>view.render(null));assert.equal(signal.aborted,true);await act(async()=>release());assert.equal(jobs.size,0);
  }finally{globalThis.setTimeout=originalSet;globalThis.clearTimeout=originalClear;if(visibility)Object.defineProperty(document,'visibilityState',visibility);else delete document.visibilityState;}
+});
+
+
+test('signed-in administrator uses server destination even when user metadata claims member',async()=>{
+ window.history.replaceState(null,'','/login?next=/chart');const calls=[];uiApi=async path=>{calls.push(path);return {destination:'/admin'};};state={...state,user:{id:'admin',role:'user'}};await renderLogin();assert.deepEqual(navigations,['/admin']);assert.deepEqual(calls,['/api/auth/destination']);
+});
+test('routing outage has an actionable retry and never trusts a client Owner role',async()=>{
+ window.history.replaceState(null,'','/login?next=/admin');state={...state,user:{id:'member',role:'owner',isAdmin:true}};uiApi=async()=>{throw Error('Controlled auth outage');};await renderLogin();assert.deepEqual(navigations,[]);assert.ok(container.querySelector('[role="alert"]'));uiApi=async()=>({destination:'/chart'});const retry=[...container.querySelectorAll('button')].find(b=>b.textContent==='Thử lại');assert.ok(retry);await act(async()=>retry.click());assert.deepEqual(navigations,['/chart']);
 });

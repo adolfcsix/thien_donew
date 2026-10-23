@@ -27,12 +27,15 @@ jobs:
       - run: node --test tests/production/*.test.cjs tests/v111645-private-file-writes.test.cjs tests/v111645-readiness-chain.test.cjs
       - name: SQL integration in isolated PGlite runtime
         run: |
-          npm install --prefix "$RUNNER_TEMP/thiendo-sql" --no-save --ignore-scripts --no-audit --no-fund @electric-sql/pglite@0.5.10
+          npm install --prefix "$RUNNER_TEMP/thiendo-sql" --no-save --ignore-scripts --no-audit --no-fund @electric-sql/pglite@0.5.11
           THIENDO_SQL_TEST_MODULE="$RUNNER_TEMP/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js" npm run test:account:sql
+          THIENDO_SQL_TEST_MODULE="$RUNNER_TEMP/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js" npm run test:sql:isolated
       - name: React login and tool-access lifecycle (DOM harness)
         run: |
-          npm install --prefix "$RUNNER_TEMP/thiendo-dom" --no-save --ignore-scripts --no-audit --no-fund jsdom@30.1.2
-          THIENDO_DOM_TEST_MODULE="$RUNNER_TEMP/thiendo-dom/node_modules/jsdom/lib/api.js" npm run test:access:dom
+          npm install --prefix "$RUNNER_TEMP/thiendo-dom" --no-save --ignore-scripts --no-audit --no-fund jsdom@30.1.3
+          THIENDO_DOM_TEST_MODULE="$RUNNER_TEMP/thiendo-dom/node_modules/jsdom/lib/api.js" npm run test:session:dom
+      - name: Standalone Next and Nest session/AI HTTP regression (controlled providers)
+        run: THIENDO_SQL_TEST_MODULE="$RUNNER_TEMP/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js" npm run test:stack:isolated
       - name: Admin, private files and eighteen ranks in a real browser (PGlite)
         run: |
           npm install --prefix "$RUNNER_TEMP/thiendo-browser" --no-audit --no-fund --save-exact playwright@1.62.1
@@ -46,6 +49,27 @@ jobs:
             ${{ runner.temp }}/thiendo-v111645-browser
             ${{ runner.temp }}/thiendo-v111645-browser.log
           retention-days: 14
+      - name: Account and AI browser regression (isolated PGlite, captured providers)
+        env:
+          THIENDO_PLAYWRIGHT_MODULE: '${{ runner.temp }}/thiendo-browser/node_modules/playwright'
+          THIENDO_SQL_TEST_MODULE: '${{ runner.temp }}/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js'
+        run: |
+          THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-account-browser" node tests/account.browser.cjs
+          THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-ai-browser" node tests/v1116413-ai-insights.browser.cjs
+          THIENDO_READER_REPORT_DIR="$RUNNER_TEMP/thiendo-reader-browser" npm run test:reader:browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: deep-session-ai-regression-evidence
+          path: |
+            docs/reports/isolated-sql/
+            verification/deep-audit/http-results.json
+            verification/deep-audit/http-web.log
+            ${{ runner.temp }}/thiendo-account-browser
+            ${{ runner.temp }}/thiendo-ai-browser
+            ${{ runner.temp }}/thiendo-reader-browser
+          if-no-files-found: warn
+          retention-days: 7
       - name: Reject insecure production operation scripts
         run: for script in infrastructure/production/*.sh; do bash -n "$script" || exit; done
   immutable-web-image-layout:

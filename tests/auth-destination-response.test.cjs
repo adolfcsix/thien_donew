@@ -1,0 +1,8 @@
+'use strict';
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),ts=require('./helpers-typeloader.cjs');
+function client(reply){const mod={exports:{}};const code=ts.transpileModule(fs.readFileSync('apps/web/src/lib/api.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;new Function('module','exports','require','fetch',code)(mod,mod.exports,require,async()=>new Response(JSON.stringify(reply),{headers:{'content-type':'application/json'}}));return mod.exports;}
+const user={id:'10000000-0000-4000-8000-000000000001',email:'test@example.invalid'};
+test('successful login preserves the two server-selected destinations',async()=>{for(const destination of ['/admin','/chart'])assert.equal((await client({user,destination}).accountApi.login('test','password')).destination,destination);});
+test('login, signup and Google responses reject injected redirect metadata',async()=>{for(const path of ['/api/auth/login','/api/auth/register','/api/auth/google/verify'])for(const destination of ['https://evil.invalid','//evil.invalid','/admin?bypass=true',true,null])await assert.rejects(client({user,destination}).api(path,{method:'POST',body:{}}),/Phản hồi máy chủ không hợp lệ/);});
+test('legacy successful authentication without destination remains supported',async()=>{assert.equal((await client({user}).accountApi.login('test','password')).user.id,user.id);});
+test('dedicated destination endpoint rejects absent or partial receipts',async()=>{for(const reply of [{},{destination:true},{isAdmin:true},{destination:'/chart#owner'}])await assert.rejects(client(reply).api('/api/auth/destination'),/Phản hồi máy chủ không hợp lệ/);});

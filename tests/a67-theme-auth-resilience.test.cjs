@@ -42,7 +42,7 @@ test('A67: post-login route-check outage falls back only to the unprivileged cha
  const body=provider.split('const completeLogin = useCallback(async')[1]?.split('}, [router,pathname]')[0];
  assert.ok(body,'authenticated POST completion callback is present');
  assert.match(body,/let destination = '\/chart';/);
- assert.match(body,/try\s*\{ destination = await loginDestination\(pathname, window\.location\.search\); \}/);
+ assert.match(body,/try\s*\{ destination = await loginDestination\(pathname, window\.location\.search,undefined,result\.destination\); \}/);
  assert.match(body,/catch\s*\{[^}]*server protects \/admin/);
  assert.match(body,/if\(generation\.current!==id\)return;\s*router\.replace\(destination\)/);
  assert.doesNotMatch(body,/result\.user\.role\s*===\s*['"]admin/);
@@ -62,9 +62,9 @@ test('A67: unsafe login next and malformed admin receipts still fail closed', as
   './api':{api:async()=>response},'./tool-access.cjs':safe,
   '@/features/membership/admin-session-contract':contract,
  }).loginDestination;
- assert.equal(await run({isAdmin:false,isOwner:false})('/login','?next=https://evil.example'),'/chart');
+ assert.equal(await run({destination:'/chart'})('/login','?next=https://evil.example'),'/chart');
  await assert.rejects(run({isAdmin:'true',isOwner:false})('/login',''));
- assert.equal(await run({isAdmin:true,isOwner:true})('/login','?next=/chart'),'/admin');
+ assert.equal(await run({destination:'/admin'})('/login','?next=/chart'),'/admin');
 });
 
 

@@ -29,12 +29,15 @@ function validMfaSetup(payload: Record<string, unknown>): boolean {
     return uri.protocol === 'otpauth:' && uri.hostname === 'totp' && !uri.username && !uri.password && uri.searchParams.get('secret') === payload.manualKey;
   } catch { return false; }
 }
+export type AuthSessionResult={user:AuthUser;destination?:'/chart'|'/admin'};
+const validDestination=(v:unknown)=>v==='/chart'||v==='/admin';
 // Never infer a session or a committed mutation from an empty/partial response.
 function validateAccountResponse(path: string, payload: Record<string, unknown>): void {
   let valid = true;
   switch (path) {
     case '/api/auth/me': valid = payload.user === null || authUser(payload.user); break;
-    case '/api/auth/login': case '/api/auth/register': valid = authUser(payload.user); break;
+    case '/api/auth/destination': valid = validDestination(payload.destination); break;
+    case '/api/auth/login': case '/api/auth/register': valid = authUser(payload.user) && (payload.destination===undefined||validDestination(payload.destination)); break;
     case '/api/auth/logout': valid = payload.ok === true; break;
     case '/api/auth/logout/all': valid = payload.revoked === true; break;
     case '/api/auth/account': valid = payload.deleted === true; break;
@@ -45,7 +48,7 @@ function validateAccountResponse(path: string, payload: Record<string, unknown>)
     case '/api/auth/google/config': valid = typeof payload.enabled === 'boolean' && (payload.enabled ? typeof payload.clientId === 'string' && !!payload.clientId : payload.clientId === null || typeof payload.clientId === 'string'); break;
     case '/api/auth/google/nonce': valid = typeof payload.nonce === 'string' && !!payload.nonce; break;
     case '/api/auth/google/start': valid = typeof payload.challengeId === 'string' && !!payload.challengeId && typeof payload.email === 'string' && !!payload.email && (payload.purpose === 'login' || payload.purpose === 'delete') && typeof payload.expiresInSeconds === 'number' && Number.isFinite(payload.expiresInSeconds) && payload.expiresInSeconds > 0; break;
-    case '/api/auth/google/verify': valid = payload.deleted === true || authUser(payload.user); break;
+    case '/api/auth/google/verify': valid = payload.deleted === true || (authUser(payload.user) && (payload.destination===undefined||validDestination(payload.destination))); break;
     case '/api/auth/mfa/setup': valid = validMfaSetup(payload); break;
     case '/api/auth/mfa/confirm': case '/api/auth/mfa/verify': valid = payload.verified === true && payload.mfaEnabled === true; break;
   }
@@ -243,8 +246,8 @@ export const accountApi = {
       return api<{user:AuthUser|null}>('/api/auth/me');
     }
   },
-  login: (email: string, password: string, remember = true) => api<{ user: AuthUser }>('/api/auth/login', { method: 'POST', body: { email, password, remember } }),
-  register: (email: string, password: string, username?: string) => api<{ user: AuthUser }>('/api/auth/register', { method: 'POST', body: { email, password, username } }),
+  login: (email: string, password: string, remember = true) => api<AuthSessionResult>('/api/auth/login', { method: 'POST', body: { email, password, remember } }),
+  register: (email: string, password: string, username?: string) => api<AuthSessionResult>('/api/auth/register', { method: 'POST', body: { email, password, username } }),
   logout: () => api<{ ok: true }>('/api/auth/logout', { method: 'POST' }),
   logoutAll: () => api<{revoked:true}>('/api/auth/logout/all',{method:'POST'}),
   remove: (password: string) => api<{ deleted: true }>('/api/auth/account', { method: 'DELETE', body: { password } }),
@@ -278,7 +281,7 @@ export const accountApi = {
   googleConfig: () => api<{enabled:boolean;clientId:string|null}>('/api/auth/google/config'),
   googleNonce: () => api<{nonce:string}>('/api/auth/google/nonce'),
   googleStart: (credential:string,purpose:'login'|'delete'='login') => api<{challengeId:string;email:string;purpose:'login'|'delete';expiresInSeconds:number}>('/api/auth/google/start',{method:'POST',body:{credential,purpose}}),
-  googleVerify: (challengeId:string,code:string) => api<{user:AuthUser}|{deleted:true}>('/api/auth/google/verify',{method:'POST',body:{challengeId,code}}),
+  googleVerify: (challengeId:string,code:string) => api<AuthSessionResult|{deleted:true}>('/api/auth/google/verify',{method:'POST',body:{challengeId,code}}),
 };
 export const chartApi = {
   save: (input: ChartInput & {birthProfileId?:string|null}, signal?:AbortSignal) => api<{ id: string; verified: boolean }>('/api/charts', { method: 'POST', body: input, signal, timeoutMs: STORAGE_TIMEOUT_MS }),

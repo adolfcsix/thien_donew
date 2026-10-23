@@ -56,8 +56,9 @@ export class AdminMfaService {
   await this.db.transaction(async client=>{
    // Revalidate password and membership after slow password derivation.
    const fresh=await client.query<{password_hash:string}>(`SELECT u.password_hash FROM users u JOIN admin_memberships a ON a.user_id=u.id
-     WHERE u.id=$1 AND NOT EXISTS(SELECT 1 FROM account_blocks b WHERE b.user_id=u.id) FOR UPDATE OF u`,[user.id]);
+     WHERE u.id=$1 AND NOT EXISTS(SELECT 1 FROM account_blocks b WHERE b.user_id=u.id) FOR UPDATE OF u FOR SHARE OF a`,[user.id]);
    if(!fresh.rows[0]||fresh.rows[0].password_hash!==current.password_hash)throw new UnauthorizedException('Tài khoản vừa thay đổi');
+   await this.auth.assertSessionInTransaction(client,req,user.id);
    const previous=await client.query<{enabled_at:Date|null}>('SELECT enabled_at FROM admin_mfa_credentials WHERE user_id=$1 FOR UPDATE',[user.id]);
    if(previous.rows[0]?.enabled_at)throw new ForbiddenException('MFA đã bật, không cho phép tạo lại khóa qua API');
    await client.query(`INSERT INTO admin_mfa_credentials(user_id,secret_encrypted) VALUES($1,$2)

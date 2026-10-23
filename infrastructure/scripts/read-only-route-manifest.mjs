@@ -16,7 +16,8 @@ export function buildReadOnlyRouteManifest(lessons) {
     {path:'/chart', marker:'THIÊN ĐỒ'},
     {path:'/calendar', marker:'Lịch'},
     {path:'/good-days', marker:'ngày'},
-    {path:'/bazi', marker:'Tứ trụ'},
+    // The account gate renders first on SSR; the calculator is checked after login in account.browser.cjs.
+    {path:'/bazi', marker:'Đang kiểm tra tài khoản…', authenticatedMarker:'Tứ trụ, bốn dấu mốc thời gian'},
     {path:'/academy', marker:'Từ đọc địa bàn'},
     {path:'/library', marker:'Từ điển huyền học'},
     {path:'/star-atlas', marker:'chính tinh'},

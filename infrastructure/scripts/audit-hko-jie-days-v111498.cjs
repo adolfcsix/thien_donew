@@ -25,7 +25,7 @@ function audit(){
  return out;
 }
 if(require.main===module){const r=audit();console.log(JSON.stringify(r,null,2));
- if(process.argv.includes('--write'))fs.writeFileSync(path.join(root,'docs/reports/V11_149_8_HKO_DAY_SOURCE_AUDIT.json'),JSON.stringify(r,null,2)+'\n');
+ if(process.argv.includes('--write')){fs.mkdirSync(path.join(root,'docs/reports'),{recursive:true});fs.writeFileSync(path.join(root,'docs/reports/V11_149_8_HKO_DAY_SOURCE_AUDIT.json'),JSON.stringify(r,null,2)+'\n');}
  if(r.errors.length)process.exitCode=1;
 }
 module.exports={audit};

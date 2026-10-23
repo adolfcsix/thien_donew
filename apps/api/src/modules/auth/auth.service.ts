@@ -225,6 +225,20 @@ export class AuthService {
     return user;
   }
 
+  /** Navigation hint only. Every admin API still verifies membership, MFA and capabilities. */
+  async sessionDestination(client: Pick<PoolClient, 'query'>, userId: string): Promise<'/admin'|'/chart'> {
+    const {rows}=await client.query<{role:string}>('SELECT role FROM admin_memberships WHERE user_id=$1',[userId]);
+    return rows[0]?.role==='admin'||rows[0]?.role==='owner'?'/admin':'/chart';
+  }
+
+  async destination(req: Request) {
+    const user=await this.required(req);
+    return this.db.transaction(async client=>{
+      await this.assertSessionInTransaction(client,req,user.id);
+      return {destination:await this.sessionDestination(client,user.id)};
+    });
+  }
+
   /** Revalidate an in-flight private result at its commit boundary, not only at request entry. */
   async assertSessionInTransaction(client: PoolClient, req: Request, userId: string): Promise<void> {
     const token = this.getToken(req);
@@ -241,7 +255,7 @@ export class AuthService {
     // A new login rotates the browser's previous token, even if it belonged to
     // another account. Both operations commit together; failure keeps the old token.
     const previous = this.getToken(req);
-    await this.db.transaction(async client => {
+    const destination = await this.db.transaction(async client => {
       // The KDF can finish after another request resets the password. Lock and
       // compare the credential snapshot before creating a session. A later
       // password mutation must wait, then revoke this session in its own commit.
@@ -255,9 +269,10 @@ export class AuthService {
       );
       if (previous) await client.query('DELETE FROM sessions WHERE token_hash=$1', [digest(previous)]);
       await client.query('INSERT INTO account_security_events(user_id,event) VALUES($1,$2)',[id,'auth.login.success']);
+      return this.sessionDestination(client,id);
     });
     this.setSessionCookie(res, token, remember ? SESSION_AGE_SECONDS : 12 * 3600, remember);
-    return { user: { id, email } };
+    return { user: { id, email }, destination };
   }
 
   async register(body: unknown, req: Request, res: Response) {
@@ -298,7 +313,7 @@ export class AuthService {
       registrationStorageError(error);
     }
     this.setSessionCookie(res, token);
-    return { user: { id, email, username } };
+    return { user: { id, email, username }, destination: '/chart' as const };
   }
 
   async login(body: unknown, req: Request, res: Response) {

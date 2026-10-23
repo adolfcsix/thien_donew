@@ -1,4 +1,5 @@
 'use client';
+import {NumerologyStudy} from '@/features/western/numerology-study';
 import {DisciplineNavigation} from '@/features/western/discipline-navigation';
 import {MysticScene} from '@/features/western/mystic-scene';
 import {useEffect,useRef,useState,type FormEvent} from 'react';
@@ -75,6 +76,7 @@ export default function NumerologyPage(){
     <p>Giá trị xuất hiện nhiều nhất: {advanced.nameFrequency.hiddenPassion.join(', ')} · Giá trị vắng mặt: {advanced.nameFrequency.missingNumbers.length?advanced.nameFrequency.missingNumbers.join(', '):'Không có'}. Đây chỉ là phép đếm trên bảng chữ được chọn, không gán phẩm chất hay khiếm khuyết.</p>
     <h3>12 tháng cá nhân của năm {result.input.year}</h3><div className={styles.years}>{advanced.personalMonths.map(item=><article key={item.month}><span>Tháng {String(item.month).padStart(2,'0')}</span><b>{item.value}</b><small>{item.steps.join(' → ')}</small></article>)}</div><p>Tháng cá nhân = năm cá nhân + tháng dương lịch. Chỉ số ngày cũng tính được theo cùng hệ quy tắc nhưng không tự động tạo dự báo sự kiện.</p><p>{advanced.limitations.join(' ')}</p>
    </section>}
+   <NumerologyStudy input={result.input}/>
    <button className={styles.export} onClick={exportJson}>↓ Xuất JSON đầy đủ (có tên và ngày sinh)</button>
    <SaveStudy draft={{discipline:'numerology',title:`Pythagoras · ${result.input.date}`,summary:`Đường đời ${result.lifePath.value} · phương pháp phân đoạn`,notes:'',tags:['Pythagoras'],snapshot:{...result.input}}}/>
   </>}
