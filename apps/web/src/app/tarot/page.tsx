@@ -1,5 +1,6 @@
 'use client';
 import {DisciplineNavigation} from '@/features/western/discipline-navigation';
+import {SymbolObservatory} from '@/features/western/symbol-observatory';
 import {MysticScene} from '@/features/western/mystic-scene';
 import {useEffect,useMemo,useRef,useState,type FormEvent,type ChangeEvent} from 'react';
 import Link from 'next/link';
@@ -104,7 +105,7 @@ export default function TarotPage(){
     <p>Khám phá trọn bộ 78 lá Rider–Waite–Smith theo cách tiếp cận phản tư. Mỗi trải bài gợi một góc nhìn; không thay thế bằng chứng, quyền tự quyết hay lời khuyên chuyên môn.</p>
     <div className={styles.stats}><span><strong>78</strong> lá bài</span><span><strong>22</strong> Ẩn chính</span><span><strong>56</strong> Ẩn phụ</span></div>
    </div><div className={styles.heroScene}><MysticScene variant="tarot"/></div>
-  </header>
+  </header><SymbolObservatory discipline="tarot"/>
   <section className={`${styles.panel} ${styles.deckChooser}`} aria-label="Chọn bộ minh họa Tarot">
    <div><span className={styles.eyebrow}>BỘ BÀI</span><h2>Chọn phong cách 78 lá</h2><p>Đổi bộ hình ở thư viện, lá rút và Celtic Cross; mã lá, ý nghĩa và hồ sơ vẫn theo chuẩn RWS.</p></div>
    <label className={styles.deckSelect}>Bộ hình minh họa<select value={deck} onChange={event=>{const selected=event.target.value as TarotDeckId;setDeck(selected);try{window.localStorage.setItem('thiendo:tarot-deck',selected);}catch{}}}>{TAROT_DECKS.map(d=><option key={d.id} value={d.id}>{d.label}</option>)}</select></label>

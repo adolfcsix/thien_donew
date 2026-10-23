@@ -17,6 +17,8 @@ command -v setsid >/dev/null 2>&1 || { echo 'BLOCKED: setsid required for safe C
 # from a failed E2E run. Local executions continue to use TMPDIR or /tmp.
 log_base="${RUNNER_TEMP:-${TMPDIR:-/tmp}}"
 log_dir="$(mktemp -d "${log_base%/}/thiendo-ci-logs.XXXXXX")"
+# A private, disposable file root must be shared by the API and library E2E.
+export BOOK_PRIVATE_STORAGE_DIR="$(mktemp -d "${log_base%/}/thiendo-ci-private-books.XXXXXX")"
 api_pid=''
 web_pid=''
 cleanup() {
@@ -25,6 +27,7 @@ cleanup() {
   if [[ -n "$web_pid" ]]; then kill -- "-$web_pid" 2>/dev/null || true; fi
   if [[ -n "$api_pid" ]]; then kill -- "-$api_pid" 2>/dev/null || true; fi
   wait 2>/dev/null || true
+  rm -rf -- "$BOOK_PRIVATE_STORAGE_DIR"
   if [[ "$status" -eq 0 ]]; then
     rm -rf -- "$log_dir"
   else

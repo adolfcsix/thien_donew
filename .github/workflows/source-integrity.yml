@@ -6,14 +6,14 @@ jobs:
   source-only:
     name: Source / regression only (not production verification)
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Install source parser (not application dependencies)
-        run: npm install --global typescript@5.9.3 --no-audit --no-fund
+      - name: Install committed workspace dependencies
+        run: npm ci --no-audit --no-fund
       - name: Calendar-day and star witness gate
         run: |
           node infrastructure/scripts/audit-star-jie-witness-v111496.cjs

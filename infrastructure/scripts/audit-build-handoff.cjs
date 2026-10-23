@@ -11,8 +11,9 @@ try {
   const proof = flow.indexOf('build-proof.mjs --write');
   const upload = flow.indexOf('name: thien-do-fullstack-proof');
   assert.ok(e2e > 0 && proof > e2e && upload > proof, 'Receipt must follow live fullstack E2E');
-  for (const fragment of ['npm install --package-lock-only', 'validate-lockfile.mjs', 'npm ci',
+  for (const fragment of ['Verify committed lockfile without rewriting it', 'validate-lockfile.mjs', 'npm ci',
     'npm run typecheck && npm run build', 'postgres:16-alpine']) assert.ok(flow.includes(fragment), fragment);
+  assert.ok(!/npm (?:install|i)[^\n]*--package-lock-only/.test(flow), 'Workflow must not regenerate the committed lockfile');
   const cmd = read('infrastructure/scripts/get-github-build-results.ps1');
   for (const fragment of ['select-bootstrap-run.mjs', 'import-lockfile.mjs --candidate $candidate --apply',
     'thien-do-fullstack-proof', 'build-proof.mjs --verify $proofFile --sha $localSha --run-id $runId'])

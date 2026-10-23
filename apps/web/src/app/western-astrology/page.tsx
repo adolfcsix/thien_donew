@@ -1,5 +1,6 @@
 'use client';
 import {DisciplineNavigation} from '@/features/western/discipline-navigation';
+import {SymbolObservatory} from '@/features/western/symbol-observatory';
 import {MysticScene} from '@/features/western/mystic-scene';
 import {useEffect,useRef,useState,type FormEvent} from 'react';
 import Link from 'next/link';
@@ -31,7 +32,7 @@ export default function WesternNatal(){
  function submit(e:FormEvent){e.preventDefault();void runNatal(input,true);}
  function exportJson(){if(!result)return;downloadBlobFile(new Blob([JSON.stringify({format:'thien-do.western-natal',version:1,result},null,2)],{type:'application/json'}),'thien-do-natal.json');}
  const planet=result?.planets.find(p=>p.body===selected);
- return <div className={`${styles.root} western-world-page`}><DisciplineNavigation current="/western-astrology"/><header className={styles.hero}><div className={styles.heroScene}><MysticScene variant="astrology"/></div><span>THIÊN ĐỒ / NATAL CHART</span><h1>Một thời điểm.<br/>Một bản đồ bầu trời.</h1><p>10 thiên thể, Ascendant, MC, 12 nhà Whole Sign và năm góc hợp chính. Các phép tính dùng dữ liệu thiên văn độc lập với Can Chi.</p><b>Natal và bộ đọc chuyên sâu · Tropical / Whole Sign</b><p><Link href="/western-astrology/relationship">Synastry · Composite · So sánh hai lá số →</Link></p></header>
+ return <div className={`${styles.root} western-world-page`}><DisciplineNavigation current="/western-astrology"/><header className={styles.hero}><div className={styles.heroScene}><MysticScene variant="astrology"/></div><span>THIÊN ĐỒ / NATAL CHART</span><h1>Một thời điểm.<br/>Một bản đồ bầu trời.</h1><p>10 thiên thể, Ascendant, MC, 12 nhà Whole Sign và năm góc hợp chính. Các phép tính dùng dữ liệu thiên văn độc lập với Can Chi.</p><b>Natal và bộ đọc chuyên sâu · Tropical / Whole Sign</b><p><Link href="/western-astrology/relationship">Synastry · Composite · So sánh hai lá số →</Link></p></header><SymbolObservatory discipline="astrology"/>
  <section className={styles.panel}><h2>Dữ liệu sinh và phương pháp</h2><form className={styles.form} onSubmit={submit}>
  <label>Cách xác định múi giờ<select aria-label="Cách xác định múi giờ" value={input.method} disabled={restoring||task.pending} onChange={e=>update('method',e.target.value as NatalInput['method'])}><option value={METHOD}>UTC thủ công (hồ sơ cũ)</option><option value={ZONED_METHOD}>Tra IANA theo ngày sinh</option></select></label>
  {input.method===ZONED_METHOD&&<label>Múi giờ IANA nơi sinh<select aria-label="Múi giờ IANA nơi sinh" value={input.timeZone||''} disabled={restoring||task.pending} onChange={e=>update('timeZone',e.target.value)} required><option value="">Chọn múi giờ nơi sinh</option>{zones.map(zone=><option key={zone} value={zone}>{zone}</option>)}</select></label>}

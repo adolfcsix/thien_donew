@@ -1,6 +1,7 @@
 'use client';
 import {NumerologyStudy} from '@/features/western/numerology-study';
 import {DisciplineNavigation} from '@/features/western/discipline-navigation';
+import {SymbolObservatory} from '@/features/western/symbol-observatory';
 import {MysticScene} from '@/features/western/mystic-scene';
 import {useEffect,useRef,useState,type FormEvent} from 'react';
 import Link from 'next/link';
@@ -56,7 +57,7 @@ export default function NumerologyPage(){
  const advanced=result?advancedCalculate(result.input):null;
  const metrics=result?[['Đường đời',result.lifePath],['Biểu đạt',result.expression],['Linh hồn',result.soulUrge],['Nhân cách',result.personality]] as const:[];
  return <div className={`${styles.root} western-world-page`}><DisciplineNavigation current="/numerology"/>
-  <header className={styles.hero}><div className={styles.heroScene}><MysticScene variant="numerology"/></div><span>THIÊN ĐỒ / PYTHAGORAS</span><h1>Hình học của những con số</h1><p>Đối chiếu từng bước tính từ ngày sinh và tên. Một hệ biểu tượng hiện đại để nghiên cứu và tự suy ngẫm; các con số không xác định tính cách hay tương lai bằng khoa học.</p><div className={styles.badges}><b>Thư viện: nền tảng</b><b>Công cụ: đã triển khai</b><b>Chỉ số nâng cao: có đối chiếu</b></div></header>
+  <header className={styles.hero}><div className={styles.heroScene}><MysticScene variant="numerology"/></div><span>THIÊN ĐỒ / PYTHAGORAS</span><h1>Hình học của những con số</h1><p>Đối chiếu từng bước tính từ ngày sinh và tên. Một hệ biểu tượng hiện đại để nghiên cứu và tự suy ngẫm; các con số không xác định tính cách hay tương lai bằng khoa học.</p><div className={styles.badges}><b>Thư viện: nền tảng</b><b>Công cụ: đã triển khai</b><b>Chỉ số nâng cao: có đối chiếu</b></div></header><SymbolObservatory discipline="numerology"/>
   <section className={styles.panel}><h2>01 / Chọn dữ liệu và quy ước</h2><form onSubmit={submit} className={styles.form}>
    <label>Họ tên theo giấy khai sinh<input value={input.name} required maxLength={100} disabled={restoring} onChange={e=>update('name',e.target.value)} autoComplete="off" placeholder="Nhập tên hoặc bản chuyển tự muốn nghiên cứu"/></label>
    <label>Ngày sinh dương lịch<input type="date" value={input.date} min="1900-01-01" max="2100-12-31" required disabled={restoring} onChange={e=>update('date',e.target.value)}/></label>

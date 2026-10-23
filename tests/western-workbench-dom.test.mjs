@@ -16,3 +16,27 @@ test('invalid selected date has recovery and a changed report year resets its da
 test('no vowels means no invented soul-urge zero or profile',async()=>{const C=compile('apps/web/src/features/western/numerology-study.tsx').NumerologyStudy;await render(C,{input:{...numeric,name:'Y'}});await choose(container.querySelector('select'),'soulUrge');assert.ok(container.querySelector('[role=status]').textContent.includes('Không có chữ'));assert.equal(container.querySelector('[aria-label="Diễn giải chỉ số đã chọn"]'),null);});
 test('Celtic Cross summary and full list share one filter',async()=>{const C=compile('apps/web/src/features/tarot/tarot-depth.tsx').TarotDepthReadingPanel;await render(C,{snapshot:newAdvancedSpread({spread:'celtic-cross',context:'work'},n=>new Uint8Array(n)),onContextChange:()=>{}});assert.ok(container.textContent.includes('bao phủ 10 / 10'));await choose(container.querySelector('select[aria-label="Vị trí để lọc tổ hợp Tarot"]'),'9');assert.ok(container.textContent.includes('9 / 45'));assert.equal(container.querySelectorAll('.tarot-combination-study').length,6);});
 test('Jewish atlas removes Hermetic edges, Tarot search and columns; Hermetic filter works',async()=>{const C=compile('apps/web/src/app/western-symbols/page.tsx').default;await render(C);const system=container.querySelector('select');await choose(system,'jewish-source-only');const table=container.querySelector('[aria-label="Bảng 22 chữ Hebrew"] table');assert.equal(table.querySelectorAll('thead th').length,2);assert.equal(table.querySelectorAll('tbody tr').length,22);assert.equal(table.textContent.includes('↔'),false);await choose(container.querySelector('input[type=search]'),'The Fool');assert.equal(table.querySelectorAll('tbody tr').length,0);await choose(container.querySelector('input[type=search]'),'');await choose(system,'crowley-thoth');assert.ok(container.textContent.includes('không phải sơ đồ Thoth đã chuyển đổi'));const filter=[...container.querySelectorAll('select')].find(s=>s.textContent.includes('Toàn bộ 22 tuyến'));await choose(filter,'1');assert.equal(container.querySelectorAll('[aria-label="Bảng đối chiếu 22 tuyến Hermetic"] tbody tr').length,3);});
+
+for (const discipline of ['astrology','tarot','numerology']) test('3D observatory '+discipline+' selects lessons, separates layers and resets without changing calculation state',async()=>{
+ const {SymbolObservatory}=compile('apps/web/src/features/western/symbol-observatory.tsx');
+ const {observatoryLessons}=compile('apps/web/src/features/western/observatory-lessons.ts');
+ await render(SymbolObservatory,{discipline});
+ const scene=container.querySelector('[data-step]');
+ assert.equal(scene.getAttribute('aria-hidden'),'true');
+ assert.equal(scene.dataset.running,'false');
+ const group=container.querySelector('[aria-label="Chọn lớp học biểu tượng"]');
+ assert.equal(group.querySelectorAll('button').length,4);
+ for(const [i,b] of [...group.querySelectorAll('button')].entries()){
+  await act(async()=>b.click());
+  assert.equal(scene.dataset.step,String(i));
+  assert.equal(group.querySelectorAll('[aria-pressed=true]').length,1);
+  const lesson=observatoryLessons[discipline].steps[i];
+  for(const text of [lesson.read,lesson.check,lesson.pitfall,lesson.practice]) assert.ok(container.querySelector('article').textContent.includes(text));
+ }
+ await act(async()=>button('Tách các lớp').click());assert.equal(scene.dataset.separated,'false');
+ await act(async()=>button('Tự xoay mô hình').click());assert.equal(scene.dataset.running,'true');
+ await act(async()=>button('Đặt lại góc nhìn').click());
+ assert.equal(scene.dataset.running,'false');assert.equal(scene.dataset.separated,'true');assert.equal(scene.dataset.step,'0');
+ assert.equal(container.querySelector('input[type=range]').value,'0');
+ assert.equal(saved.size>0,true);
+});

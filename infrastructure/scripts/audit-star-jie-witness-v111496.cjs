@@ -16,7 +16,7 @@ function audit(){
   note:'HKO dates are calendar days; no inferred Jie time, no new astrological algorithm. School gates remain closed.',errors:problems};
 }
 if(require.main===module){const report=audit();console.log(JSON.stringify(report,null,2));
- if(process.argv.includes('--write')){const out=path.join(root,'docs/reports/V11_149_6_JIE_AND_STARS_WITNESSES.json');fs.writeFileSync(out,JSON.stringify(report,null,2)+'\n');}
+ if(process.argv.includes('--write')){const out=path.join(root,'docs/reports/V11_149_6_JIE_AND_STARS_WITNESSES.json');fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,JSON.stringify(report,null,2)+'\n');}
  if(report.errors.length)process.exitCode=1;
 }
 module.exports={audit};

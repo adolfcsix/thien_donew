@@ -34,12 +34,16 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
   await pg.query("INSERT INTO admin_memberships(user_id,role) VALUES($1,'owner')",[owner.user.id]);
   async function post(context,url,data){const r=await context.request.post(origin+url,{data});assert.equal(r.status(),200,url+' '+await r.text());return r.json();}
   const sent=await post(owner.context,'/api/auth/email/send',{});await post(owner.context,'/api/auth/email/verify',{challengeId:sent.challengeId,code:delivered.get(owner.email)});
+ if(process.env.THIENDO_BROWSER_SCOPE==='observatory'){await require('./helpers-observatory-browser.cjs')({context:member.context,origin,record,pageErrors,out});assert.deepEqual(pageErrors,[]);return;}
  if(process.env.THIENDO_BROWSER_SCOPE==='western'){await require('./helpers-western-workbench-browser.cjs')({context:member.context,origin,record,pageErrors});assert.deepEqual(pageErrors,[]);return;}
 
 
 
  // Two submits in one event turn must share the same pending operation.
  async function pairedSubmit(page,button,endpoint){
+  // A response can arrive before React commits its pending=false render.
+  // Exercise duplicate submission only once the real control is actionable.
+  await button.click({trial:true});
   let calls=0,release;const gate=new Promise(resolve=>release=resolve),handlers=[];
   const handler=route=>{const done=(async()=>{calls++;await gate;await route.continue()})();handlers.push(done);return done;};
   await page.route('**'+endpoint,handler);

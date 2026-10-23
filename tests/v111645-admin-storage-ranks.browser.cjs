@@ -51,8 +51,19 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
   await page.getByLabel('Đường dẫn (không dấu)',{exact:true}).fill('browser-public-post');await page.getByLabel('Tiêu đề',{exact:true}).fill('Nội dung admin đã kiểm chứng');await page.getByLabel('Nội dung',{exact:true}).fill('Nội dung được lưu qua UI, API và SQL thực.');await page.getByLabel('Xuất bản công khai',{exact:true}).check();await page.getByRole('button',{name:'Lưu bài viết',exact:true}).click();await page.getByRole('status').filter({hasText:'Đã lưu thay đổi'}).waitFor();
   await userPage.goto(origin+'/articles',{waitUntil:'networkidle'});await userPage.getByRole('heading',{name:'Nội dung admin đã kiểm chứng',exact:true}).waitFor();record({case:'admin publication visible on user page',verdict:'PASS'});
   const staff=await register('staff-browser@example.invalid');
-  await page.getByRole('button',{name:'Tài khoản',exact:true}).click();await page.getByLabel('Tìm tài khoản theo email',{exact:true}).fill(staff.email);await page.getByRole('button',{name:'Tìm',exact:true}).click();
-  const staffRow=page.getByRole('row').filter({hasText:staff.email});page.once('dialog',d=>d.accept());await staffRow.getByRole('button',{name:'Cấp quản trị',exact:true}).click();await staffRow.getByRole('button',{name:'Gỡ quản trị',exact:true}).waitFor();
+  await page.goto(origin+'/admin/team',{waitUntil:'networkidle'});
+  await page.getByLabel('Lọc tài khoản',{exact:true}).selectOption('all');
+  await page.getByLabel('Tìm email, username hoặc tên hiển thị',{exact:true}).fill(staff.email);
+  await page.getByRole('button',{name:'Tìm tài khoản',exact:true}).click();
+  const staffRow=page.getByRole('row').filter({hasText:staff.email});
+  await staffRow.getByRole('button',{name:'Thiết lập quyền',exact:true}).click();
+  await page.getByLabel('Vai trò mới',{exact:true}).selectOption('admin');
+  await page.getByLabel('Mẫu phân công',{exact:true}).selectOption('full');
+  await page.getByLabel('Lý do phân quyền',{exact:true}).fill('Isolated browser approval workflow fixture');
+  await page.getByRole('button',{name:'Lưu quyền & thu hồi phiên cũ',exact:true}).click();
+  await page.getByRole('status').filter({hasText:'Đã lưu quyền'}).waitFor();
+  assert.equal((await staff.context.request.get(origin+'/api/auth/me').then(r=>r.json())).user,null,'role change revokes the old session');
+  await post(staff.context,'/api/auth/login',{email:staff.email,password});
   const staffSent=await post(staff.context,'/api/auth/email/send',{});await post(staff.context,'/api/auth/email/verify',{challengeId:staffSent.challengeId,code:delivered.get(staff.email)});
   const staffSetup=await post(staff.context,'/api/auth/mfa/setup',{password});await post(staff.context,'/api/auth/mfa/confirm',{code:totpCode(staffSetup.manualKey,Math.floor(Date.now()/30000))});
   const staffPage=await staff.context.newPage();await staffPage.goto(origin+'/admin/huyen-giai',{waitUntil:'networkidle'});const configSave=staffPage.getByRole('button',{name:'Lưu cấu hình',exact:true});await configSave.waitFor();assert.equal(await configSave.isDisabled(),true);record({case:'owner grants staff role via UI; staff AI configuration remains read-only',verdict:'PASS'});
@@ -85,7 +96,7 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
   record({case:'real PDF upload, publication, member/anonymous/Pro authorization and HTTP byte ranges',verdict:'PASS'});
   const imageDoc={slug:'qa-media-document',title:'Tài liệu kiểm thử ảnh',subject:'tu-vi',body:'Nội dung do QA tự tạo để kiểm tra ảnh.',tags:['kiem thu'],excerpt:'Kiểm tra ảnh riêng'};
   const docCreated=await owner.context.request.post(origin+'/api/van-kho/admin/documents',{data:imageDoc});assert.equal(docCreated.status(),201);const imageDocId=(await docCreated.json()).id;
-  const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aZ4sAAAAASUVORK5CYII=','base64');
+  const png=Buffer.from(JSON.parse(fs.readFileSync(path.join(root,'tests/fixtures/avatar-valid-hex.json'),'utf8')).PNG,'hex');
   const imageUpload=await owner.context.request.post(origin+'/api/van-kho/admin/documents/'+imageDocId+'/images/png',{data:png,headers:{'content-type':'application/octet-stream','x-image-alt':encodeURIComponent('Ảnh do QA tạo'),'x-image-rights':encodeURIComponent('Ảnh kiểm thử tự tạo, không dùng nội dung bên thứ ba')}});assert.equal(imageUpload.status(),201,await imageUpload.text());const image=await imageUpload.json();
   assert.equal((await owner.context.request.patch(origin+'/api/van-kho/admin/documents/'+imageDocId,{data:{...imageDoc,body:imageDoc.body+'\n'+image.markdown,expectedRevision:1}})).status(),200);
   assert.equal((await owner.context.request.post(origin+'/api/van-kho/admin/documents/'+imageDocId+'/submit',{data:{}})).status(),201);
@@ -114,8 +125,8 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
    assert.equal((await (await member.context.request.get(origin+'/api/tinh-canh/me')).json()).progress.points,beforePoints);
    record({case:'admin manual rank reflected on member focus without changing points',level,verdict:'PASS'});
   }
-  await page.goto(origin+'/admin/tinh-canh',{waitUntil:'networkidle'});await page.getByLabel('UUID thành viên',{exact:true}).fill(member.user.id);await page.getByLabel('Chọn cảnh giới',{exact:true}).selectOption('18');await page.getByLabel('Lý do cấp (12–600 ký tự)',{exact:true}).fill('Nghiệm thu huy hiệu Vô Cực Tinh Đồ qua giao diện');
-  const rankResponse=page.waitForResponse(r=>r.url().endsWith('/api/tinh-canh/admin/rank-grants')&&r.request().method()==='POST');await page.getByRole('button',{name:'Cấp / thay đổi cảnh giới',exact:true}).click();assert.equal((await rankResponse).status(),201);
+  await page.goto(origin+'/admin/tinh-canh',{waitUntil:'networkidle'});await page.getByRole('region',{name:'Cấp cảnh giới thủ công',exact:true}).getByLabel('UUID thành viên',{exact:true}).fill(member.user.id);await page.getByLabel('Chọn cảnh giới',{exact:true}).selectOption('18');await page.getByLabel('Lý do cấp (12–600 ký tự)',{exact:true}).fill('Nghiệm thu huy hiệu Vô Cực Tinh Đồ qua giao diện');
+  const rankResponse=page.waitForResponse(r=>r.url().endsWith('/api/tinh-canh/admin/rank-grants')&&r.request().method()==='POST');page.once('dialog',d=>d.accept());await page.getByRole('button',{name:'Cấp / thay đổi cảnh giới',exact:true}).click();assert.equal((await rankResponse).status(),201);
   await userPage.evaluate(()=>window.dispatchEvent(new Event('focus')));await personal.locator('svg[data-level="18"]').waitFor();await personal.getByText('Vô Cực Tinh Đồ',{exact:true}).waitFor();
   record({case:'admin UI grants level 18; existing member page refreshes to named apex medal',verdict:'PASS'});
   const revokeResponse=page.waitForResponse(r=>r.url().includes('/api/tinh-canh/admin/rank-grants/')&&r.url().endsWith('/revoke'));page.once('dialog',d=>d.accept('Thu hồi quyết định QA sau khi kiểm chứng đầy đủ'));await page.getByRole('button',{name:'Thu hồi',exact:true}).click();assert.equal((await revokeResponse).status(),201);
@@ -153,8 +164,8 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
   await userPage.route('**/api/tinh-canh/me/privacy',route=>route.fulfill({status:503,contentType:'application/json',body:JSON.stringify({message:'Fixture privacy outage'})}));
   await privacy.click();await userPage.getByRole('alert').filter({hasText:'Chưa xác nhận được lựa chọn hiển thị'}).waitFor();await privacy.waitFor();assert.equal(await privacy.isChecked(),true);assert.equal((await (await member.context.request.get(origin+'/api/tinh-canh/me')).json()).publicRank,true);await userPage.unroute('**/api/tinh-canh/me/privacy');
   record({case:'privacy API failure rolls back checkbox and preserves server preference (UI fault injection)',verdict:'PASS'});
-  await userPage.getByRole('button',{name:'Mở tài khoản',exact:true}).click();await userPage.getByRole('button',{name:'Đăng xuất',exact:true}).click();await personal.waitFor({state:'hidden'});await userPage.getByRole('button',{name:'Đăng nhập để xem cảnh giới',exact:true}).waitFor();
-  record({case:'sign-out removes personal medal/history from existing public rank page',verdict:'PASS'});
+  await userPage.getByRole('button',{name:'Mở tài khoản',exact:true}).click();await userPage.getByRole('button',{name:'Đăng xuất',exact:true}).click();await userPage.waitForURL(origin+'/');assert.equal((await member.context.request.get(origin+'/api/auth/me').then(r=>r.json())).user,null);await personal.waitFor({state:'hidden'});await userPage.goto(origin+'/tinh-canh',{waitUntil:'networkidle'});await userPage.getByRole('button',{name:'Đăng nhập để xem cảnh giới',exact:true}).waitFor();
+  record({case:'sign-out returns home and clears session; reopening ranks shows the guest gate',verdict:'PASS'});
 
   // UI-only fault injection below; not native database or catalog acceptance.
   for(const catalog of [{route:'/books',endpoint:'/api/books',field:'books',more:'Tải thêm sách',search:'Tìm tên sách hoặc tác giả'},{route:'/van-kho',endpoint:'/api/van-kho',field:'documents',more:'Tải thêm tài liệu',search:'Tìm kiếm'}]){
