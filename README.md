@@ -21,7 +21,7 @@ Mở PowerShell trong thư mục này, đọc hướng dẫn trước khi chạy
 | `apps/web/` | Website và tài nguyên giao diện |
 | `apps/api/` | API, tài khoản, phân quyền, quản trị |
 | `packages/` | Engine, tri thức, diễn giải và xuất tệp dùng chung |
-| `infrastructure/` | 36 migration, Docker, triển khai và công cụ vận hành |
+| `infrastructure/` | 37 migration, Docker, triển khai và công cụ vận hành |
 | `tests/` | Hồi quy, trình duyệt, dữ liệu đối chứng và tương thích |
 | `docs/` | Báo cáo hiện tại, giấy phép, hồ sơ nghiên cứu và thiết kế |
 

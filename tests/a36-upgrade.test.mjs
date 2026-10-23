@@ -7,7 +7,7 @@ const root=resolve(import.meta.dirname,'..'),entry=process.env.THIENDO_SQL_TEST_
 if(!entry)throw Error('THIENDO_SQL_TEST_MODULE required: use isolated QA database only');
 const {PGlite}=await import(pathToFileURL(entry).href),db=await PGlite.create({dataDir:'memory://'});
 try{
- await db.exec('CREATE ROLE thiendo_app');const names=readdirSync(resolve(root,'infrastructure/db')).filter(n=>/^\d{3}_.*\.sql$/.test(n)).sort();assert.equal(names.length,36);
+ await db.exec('CREATE ROLE thiendo_app');const names=readdirSync(resolve(root,'infrastructure/db')).filter(n=>/^\d{3}_.*\.sql$/.test(n)).sort();assert.equal(names.length,37);
  for(const n of names.slice(0,32))await db.exec(readFileSync(resolve(root,'infrastructure/db',n),'utf8'));
  const user=randomUUID(),book=randomUUID(),post=randomUUID(),entitlement=randomUUID();await db.query("INSERT INTO users(id,email,password_hash,salt,username) VALUES($1,'upgrade@example.invalid','fixture','fixture','upgrade_member')",[user]);
  await db.query("INSERT INTO library_books(id,slug,title,author,subject,access_level,status,license_name,license_proof) VALUES($1,'upgrade-book','Sách giữ nguyên','QA','tu-vi','pro','published','Tác giả','Fixture')",[book]);await db.query("INSERT INTO content_posts(id,slug,title,body,published) VALUES($1,'upgrade-post','Bài giữ nguyên','Nội dung giữ nguyên',true)",[post]);await db.query("INSERT INTO pro_entitlements(id,user_id,features,starts_at,expires_at) VALUES($1,$2,'[\"premium-report\"]',clock_timestamp(),clock_timestamp()+interval '30 days')",[entitlement,user]);

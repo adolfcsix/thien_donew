@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict');
 module.exports=async function({context,origin,record,pageErrors,out}){
  for(const width of (process.env.THIENDO_TAB_BAZI_ONLY?[]:[320,390,768,1440]))for(const theme of ['dark','light']){
-  const page=await context.newPage();page.on('pageerror',e=>pageErrors.push(e.message));await page.setViewportSize({width,height:900});await page.addInitScript(v=>localStorage.setItem('thiendo-theme',v),theme);
+  const page=await context.newPage();page.on('pageerror',e=>pageErrors.push(e.message));await page.setViewportSize({width,height:900});await page.addInitScript(v=>{localStorage.setItem('thiendo-theme',v);localStorage.setItem('thiendo-view-mode','expert');},theme);
   let requests=0;page.on('request',r=>{if(new URL(r.url()).pathname==='/api/calculations/western/catalog')requests++;});
   async function fits(){assert.equal(await page.evaluate(()=>Math.max(document.body.scrollWidth,document.documentElement.scrollWidth)>innerWidth+2),false);}
   async function ready(library){await library.locator('[aria-busy=false] article').waitFor();}

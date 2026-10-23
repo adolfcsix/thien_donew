@@ -8,12 +8,12 @@ const drill=readFileSync(join(root,'infrastructure/production/restore-drill.sh')
 const ops=readFileSync(join(root,'infrastructure/production/ops-check.mjs'),'utf8');
 test('isolated restore checks every current migration rather than a misleading row count',()=>{
  const files=readdirSync(join(root,'infrastructure/db')).filter(x=>/^\d{3}_[a-z0-9_-]+\.sql$/.test(x)).sort();
- assert.equal(files.length,36,'The restore gate must be reviewed when adding migrations');
+ assert.equal(files.length,37,'The restore gate must be reviewed when adding migrations');
  const expected=[...drill.matchAll(/\('([0-9]{3}_[a-z0-9_-]+\.sql)'\)/g)].map(x=>x[1]);
  assert.deepEqual(expected,files,'Every migration file must appear exactly once in the restore gate');
  assert.match(drill,/EXCEPT SELECT name FROM schema_migrations/);
- assert.match(drill,/verifiedMigrationNames:36/);
- assert.match(ops,/v\.verifiedMigrationNames>=36/);
+ assert.match(drill,/verifiedMigrationNames:37/);
+ assert.match(ops,/v\.verifiedMigrationNames>=37/);
 });
 test('restore never touches production and removes all restored session / OTP credentials',()=>{
  assert.match(drill,/createdb[^\n]*"\$target"/);

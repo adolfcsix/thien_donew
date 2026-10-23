@@ -21,7 +21,7 @@ for(const [key,hours] of [['BACKUP_STATUS_FILE',26],['RESTORE_DRILL_STATUS_FILE'
  if(!path){findings.push({check:key,ok:false,reason:'status-file-not-configured'});continue;}
  try{const v=JSON.parse(readFileSync(path,'utf8')),age=(Date.now()-Date.parse(v.time))/3600000;const base=v.ok===true&&Number.isFinite(age)&&age>=0&&age<hours;
   const restore=key==='RESTORE_DRILL_STATUS_FILE';
-  const proof=restore ? (v.productionChanged===false&&v.clearedAuthState===true&&v.minMigration>=19&&v.verifiedMigrationNames>=36
+  const proof=restore ? (v.productionChanged===false&&v.clearedAuthState===true&&v.minMigration>=19&&v.verifiedMigrationNames>=37
     &&typeof v.snapshot==='string'&&/^[a-f0-9]{8,64}$/.test(v.snapshot)
     &&typeof v.target==='string'&&/^thiendo_restore_[a-z0-9_]{1,32}$/.test(v.target)
     &&v.verifiedPrivateAssets===true&&Number.isSafeInteger(v.assetFiles)&&v.assetFiles>=0&&v.verifiedAssetReferences===true&&Number.isSafeInteger(v.assetReferences)&&v.assetReferences>=0)

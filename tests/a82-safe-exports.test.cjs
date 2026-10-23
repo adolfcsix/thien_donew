@@ -39,7 +39,7 @@ test('A82 helper attaches anchor and defers revocation on success and thrown cli
 test('A82 Western Natal invalidates old detailed reading as soon as birth input changes',()=>{
  const source=read('apps/web/src/app/western-astrology/page.tsx');
  assert.match(source,/function update<[\s\S]*?setResult\(null\);setReport\(null\);setMessage\(''\);}/);
- assert.match(source,/\{report&&result&&<WesternDepth/);
+ assert.match(source,/\{report&&result&&<ExpertOnly[^>]*><WesternDepth/);
  assert.match(source,/setResult\(null\);setReport\(null\);setInput\(initial\);/);
  assert.match(source,/if\(!controller\.signal\.aborted&&version===revision\.current\)setMessage\(error\.message\)/);
 });

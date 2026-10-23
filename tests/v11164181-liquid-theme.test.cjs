@@ -79,7 +79,7 @@ test('photos, pre-A43 API registration after exact A43 additions, original artwo
   for (const [f, hash] of Object.entries(expected)) assert.equal(sha(baselineBytes(root,f)),hash,f);
   const migrationDir=path.join(root,'infrastructure/db');
   const migrations=fs.readdirSync(migrationDir).filter(f=>f.endsWith('.sql')).sort();
-  assert.equal(migrations.length,36);
+  assert.equal(migrations.length,37);
   const aggregate = migrations.slice(0,30).map(f=>f+':'+sha(fs.readFileSync(path.join(migrationDir,f)))+'\n').join('');
   assert.equal(sha(Buffer.from(aggregate)), '18b33ba731cc9fd34e17d6f1addea8be431015c9a7d527866f180f37d9189a6e');
 });

@@ -31,9 +31,9 @@ export class AdminConsoleService{
   const restricted:string[]=[];
   if(caps.includes('finance.read')){
    used.push('finance.read');
-   const summary=(await this.db.query(`SELECT count(*)::int AS "activeGrants",MAX(expires_at) AS "expiresAt" FROM pro_entitlements WHERE user_id=$1 AND revoked_at IS NULL AND starts_at<=clock_timestamp() AND expires_at>clock_timestamp()`,[id])).rows[0];
+   const summary=(await this.db.query(`SELECT count(*)::int AS "activeGrants",COALESCE(bool_or(expires_at IS NULL),false) AS "hasLifetime",MAX(expires_at) AS "expiresAt" FROM pro_entitlements WHERE user_id=$1 AND revoked_at IS NULL AND starts_at<=clock_timestamp() AND (expires_at IS NULL OR expires_at>clock_timestamp())`,[id])).rows[0];
    const grants=(await this.db.query(`SELECT id,features,starts_at AS "startsAt",expires_at AS "expiresAt",revoked_at AS "revokedAt",order_id AS "orderId",
-     revoked_at IS NULL AND starts_at<=clock_timestamp() AND expires_at>clock_timestamp() AS active
+     revoked_at IS NULL AND starts_at<=clock_timestamp() AND (expires_at IS NULL OR expires_at>clock_timestamp()) AS active
      FROM pro_entitlements WHERE user_id=$1 ORDER BY starts_at DESC,id DESC LIMIT 20`,[id])).rows;
    pro={...summary,grants};
   }else restricted.push('finance');

@@ -78,6 +78,6 @@ test('new migration preserved in isolated restore gate',()=>{
  const restore=t('infrastructure/production/restore-drill.sh');
  const ops=t('infrastructure/production/ops-check.mjs');
  assert.match(restore,/027_tinh_canh_manual_grants\.sql/);
- assert.match(restore,/verifiedMigrationNames:36/);
- assert.match(ops,/verifiedMigrationNames>=36/);
+ assert.match(restore,/verifiedMigrationNames:37/);
+ assert.match(ops,/verifiedMigrationNames>=37/);
 });

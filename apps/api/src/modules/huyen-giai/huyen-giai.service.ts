@@ -30,7 +30,7 @@ export class HuyenGiaiService {
  constructor(private readonly db:DatabaseService,private readonly auth:AuthService,private readonly charts:ChartsService,private readonly mfa:AdminMfaService){}
  private async config():Promise<AiConfig>{const row=(await this.db.query<AiConfig>('SELECT * FROM ai_runtime_config WHERE id=1')).rows[0];if(!row)throw new ServiceUnavailableException('Thiếu cấu hình Thiên Đồ AI');return row;}
  async status(req:Request){const user=await this.auth.required(req);const conf=await this.config();
-  const tier=(await this.db.query<{freeDaily:number;proDaily:number;isPro:boolean}>(`SELECT q.free_daily AS "freeDaily",q.pro_daily AS "proDaily",EXISTS(SELECT 1 FROM pro_entitlements e WHERE e.user_id=$1 AND e.revoked_at IS NULL AND e.starts_at<=clock_timestamp() AND e.expires_at>clock_timestamp() AND e.features ? 'premium-report') AS "isPro" FROM ai_plan_quotas q WHERE id=1`,[user.id])).rows[0];
+  const tier=(await this.db.query<{freeDaily:number;proDaily:number;isPro:boolean}>(`SELECT q.free_daily AS "freeDaily",q.pro_daily AS "proDaily",EXISTS(SELECT 1 FROM pro_entitlements e WHERE e.user_id=$1 AND e.revoked_at IS NULL AND e.starts_at<=clock_timestamp() AND (e.expires_at IS NULL OR e.expires_at>clock_timestamp()) AND e.features ? 'premium-report') AS "isPro" FROM ai_plan_quotas q WHERE id=1`,[user.id])).rows[0];
   if(!tier)throw new ServiceUnavailableException('Thiếu hạn mức AI theo gói');
   const effectiveLimit=Math.min(conf.daily_user_calls,tier.isPro?tier.proDaily:tier.freeDaily);
   const used=(await this.db.query<{calls:string}>("SELECT COUNT(*)::text AS calls FROM ai_usage WHERE user_id=$1 AND created_at>=date_trunc('day',clock_timestamp() AT TIME ZONE 'UTC') AT TIME ZONE 'UTC'",[user.id])).rows[0];
@@ -104,7 +104,7 @@ export class HuyenGiaiService {
    if(!locked?.enabled)throw new ServiceUnavailableException('AI đang tạm tắt');
    if(!sameAiGenerationConfig(conf,locked))throw new ConflictException('Cấu hình AI vừa thay đổi; vui lòng gửi lại yêu cầu');
    const count=await client.query<{user_calls:string;global_calls:string;spent:string}>(`SELECT (count(*) FILTER(WHERE user_id=$1))::text AS user_calls,count(*)::text AS global_calls,COALESCE(sum(CASE WHEN status='reserved' THEN reserved_microusd ELSE billed_microusd END),0)::text AS spent FROM ai_usage WHERE created_at>=date_trunc('day',clock_timestamp() AT TIME ZONE 'UTC') AT TIME ZONE 'UTC'`,[user.id]);
-   const tier=(await client.query<{free_daily:number;pro_daily:number;is_pro:boolean}>(`SELECT free_daily,pro_daily,EXISTS(SELECT 1 FROM pro_entitlements WHERE user_id=$1 AND revoked_at IS NULL AND starts_at<=clock_timestamp() AND expires_at>clock_timestamp() AND features ? 'premium-report') AS is_pro FROM ai_plan_quotas WHERE id=1`,[user.id])).rows[0];
+   const tier=(await client.query<{free_daily:number;pro_daily:number;is_pro:boolean}>(`SELECT free_daily,pro_daily,EXISTS(SELECT 1 FROM pro_entitlements WHERE user_id=$1 AND revoked_at IS NULL AND starts_at<=clock_timestamp() AND (expires_at IS NULL OR expires_at>clock_timestamp()) AND features ? 'premium-report') AS is_pro FROM ai_plan_quotas WHERE id=1`,[user.id])).rows[0];
    if(!tier)throw new ServiceUnavailableException('Chưa cấu hình hạn mức AI theo gói');
    const perUserLimit=Math.min(locked.daily_user_calls,tier.is_pro?tier.pro_daily:tier.free_daily);
    const row=count.rows[0];if(Number(row.user_calls)>=perUserLimit||Number(row.global_calls)>=locked.daily_global_calls)throw new HttpException('Đã hết lượt luận giải trong ngày',HttpStatus.TOO_MANY_REQUESTS);

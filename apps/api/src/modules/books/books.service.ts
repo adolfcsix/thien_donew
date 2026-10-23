@@ -38,7 +38,7 @@ export class BooksService{
   if(book.accessLevel==='free')return null;
   const user=await this.auth.required(req);
   if(book.accessLevel==='member')return user;
-  const {rows}=await this.db.query(`SELECT EXISTS(SELECT 1 FROM admin_memberships WHERE user_id=$1) OR EXISTS(SELECT 1 FROM pro_entitlements WHERE user_id=$1 AND revoked_at IS NULL AND starts_at<=clock_timestamp() AND expires_at>clock_timestamp()) AS permitted`,[user.id]);
+  const {rows}=await this.db.query(`SELECT EXISTS(SELECT 1 FROM admin_memberships WHERE user_id=$1) OR EXISTS(SELECT 1 FROM pro_entitlements WHERE user_id=$1 AND revoked_at IS NULL AND starts_at<=clock_timestamp() AND (expires_at IS NULL OR expires_at>clock_timestamp())) AS permitted`,[user.id]);
   if(!canRead(book.accessLevel,{signedIn:true,pro:rows[0]?.permitted===true}))throw new ForbiddenException('Sách này yêu cầu quyền Pro còn hiệu lực');
   return user;
  }
@@ -52,7 +52,7 @@ export class BooksService{
   return {books:rows.rows.slice(0,25),nextOffset:rows.rows.length>25?offset+25:null};
  }
  private async published(slugValue:string){const id=slug(slugValue);const {rows}=await this.db.query<BookRow>(`SELECT ${FIELDS} FROM library_books b WHERE b.slug=$1 AND b.status='published'`,[id]);if(!rows[0])throw new NotFoundException('Không tìm thấy sách');return rows[0];}
- async detail(req:Request,name:string){const b=await this.published(name);const actor=await this.optionalUser(req);const pro=actor?(await this.db.query(`SELECT EXISTS(SELECT 1 FROM admin_memberships WHERE user_id=$1) OR EXISTS(SELECT 1 FROM pro_entitlements WHERE user_id=$1 AND revoked_at IS NULL AND starts_at<=clock_timestamp() AND expires_at>clock_timestamp()) AS permitted`,[actor.id])).rows[0].permitted===true:false;
+ async detail(req:Request,name:string){const b=await this.published(name);const actor=await this.optionalUser(req);const pro=actor?(await this.db.query(`SELECT EXISTS(SELECT 1 FROM admin_memberships WHERE user_id=$1) OR EXISTS(SELECT 1 FROM pro_entitlements WHERE user_id=$1 AND revoked_at IS NULL AND starts_at<=clock_timestamp() AND (expires_at IS NULL OR expires_at>clock_timestamp())) AS permitted`,[actor.id])).rows[0].permitted===true:false;
  const related=await this.db.query(`SELECT ${FIELDS} FROM library_books b WHERE b.status='published' AND b.subject=$1 AND b.id<>$2 ORDER BY b.featured DESC,b.updated_at DESC LIMIT 6`,[b.subject,b.id]);
  const progress=actor?(await this.db.query(`SELECT position,bookmarks,favorite FROM library_reading_progress WHERE user_id=$1 AND book_id=$2`,[actor.id,b.id])).rows[0]:null;
  return {book:b,canRead:canRead(b.accessLevel,{signedIn:!!actor,pro}),related:related.rows,progress:progress||null};}

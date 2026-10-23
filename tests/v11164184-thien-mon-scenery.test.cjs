@@ -66,5 +66,5 @@ test('guest login landing retains identity and delegates server-verified role ro
 test('scenery adds no API requests or 3D engine and preserves the 30 old SQL migrations',()=>{
   assert.doesNotMatch(css,/javascript:|@import|webgl|three\.js|animation-iteration-count:infinite/i);
   assert.doesNotMatch(css,/input\[|\.chart-palace|\.astrology-grid|\.payment-confirm/);
-  assert.equal(fs.readdirSync(path.join(root,'infrastructure/db')).filter(f=>f.endsWith('.sql')).length,36);
+  assert.equal(fs.readdirSync(path.join(root,'infrastructure/db')).filter(f=>f.endsWith('.sql')).length,37);
 });

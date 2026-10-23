@@ -29,7 +29,7 @@ const denied=status=>e=>e.getStatus?.()===status;
 before(async()=>{
  process.env.ADMIN_MFA_ENCRYPTION_KEY=randomBytes(32).toString('base64');pg=await PGlite.create();
  await pg.exec('CREATE ROLE thiendo_app');
- const names=readdirSync(resolve(root,'infrastructure/db')).filter(n=>/^\d{3}_.*sql$/.test(n)).sort();assert.equal(names.length,36);
+ const names=readdirSync(resolve(root,'infrastructure/db')).filter(n=>/^\d{3}_.*sql$/.test(n)).sort();assert.equal(names.length,37);
  for(const n of names.slice(0,34))await pg.exec(readFileSync(resolve(root,'infrastructure/db',n),'utf8'));
  const legacy=randomUUID();await pg.query("INSERT INTO users(id,email,password_hash,salt) VALUES($1,'upgrade@example.invalid','preserve','preserve')",[legacy]);
  const beforeRows=(await pg.query('SELECT * FROM users')).rows;

@@ -15,8 +15,8 @@ async function fixture(){
 }
 test('A02 immutable 32-file manifest including additive 032 and complete valid ledger',async()=>{
   const {expected,assertMigrationLedger:check}=await fixture();
-  assert.equal(expected.length,36);
-  assert.deepEqual(check(expected,expected,{requireComplete:true}),{checked:36,expected:36,complete:true});
+  assert.equal(expected.length,37);
+  assert.deepEqual(check(expected,expected,{requireComplete:true}),{checked:37,expected:37,complete:true});
 });
 test('A02 clean database or contiguous prior versions are allowed to migrate, but not E2E',async()=>{
   const {expected,assertMigrationLedger:check}=await fixture();

@@ -3,7 +3,7 @@ const require=createRequire(import.meta.url),root=resolve(import.meta.dirname,'.
 const {PGlite}=await import(pathToFileURL(process.env.THIENDO_SQL_TEST_MODULE).href),{AdminConsoleService}=require('../apps/api/dist/modules/admin-console/admin-console.service.js');
 let pg,service,actor,denied=false;const uid=randomUUID();
 before(async()=>{
- pg=await PGlite.create();await pg.exec('CREATE ROLE thiendo_app');const names=readdirSync(resolve(root,'infrastructure/db')).filter(n=>/^\d{3}_.*sql$/.test(n)).sort();assert.equal(names.length,36);
+ pg=await PGlite.create();await pg.exec('CREATE ROLE thiendo_app');const names=readdirSync(resolve(root,'infrastructure/db')).filter(n=>/^\d{3}_.*sql$/.test(n)).sort();assert.equal(names.length,37);
  for(const n of names.slice(0,33))await pg.exec(readFileSync(resolve(root,'infrastructure/db',n),'utf8'));
  await pg.query("INSERT INTO users(id,email,password_hash,salt) VALUES($1,'showcase@example.invalid','hash-fixture','salt-fixture')",[uid]);await pg.query("INSERT INTO admin_memberships(user_id,role) VALUES($1,'owner')",[uid]);await pg.query("INSERT INTO admin_profile_preferences(user_id,badge_style,badge_tone,motto) VALUES($1,'orbit','jade','Preserve existing profile')",[uid]);await pg.query("INSERT INTO pro_entitlements(id,user_id,features,starts_at,expires_at) VALUES($1,$2,'[\"premium-report\"]',clock_timestamp(),clock_timestamp()+interval '30 days')",[randomUUID(),uid]);
  await pg.query("INSERT INTO admin_mfa_credentials(user_id,secret_encrypted,enabled_at) VALUES($1,'qa-ciphertext-sentinel',clock_timestamp())",[uid]);

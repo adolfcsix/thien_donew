@@ -70,7 +70,7 @@ test('badge components include unique geometry and reduced-motion override',()=>
 });
 test('migration and restore contract include 026 without rewriting older ledger',()=>{
  const files=readdirSync(join(root,'infrastructure/db')).filter(x=>/^\d{3}_.+\.sql$/.test(x));
- assert.equal(files.length,36);assert.ok(files.includes('025_forum_moderation.sql'));assert.ok(files.includes('026_tinh_canh_points.sql'));assert.ok(files.includes('027_tinh_canh_manual_grants.sql'));
+ assert.equal(files.length,37);assert.ok(files.includes('025_forum_moderation.sql'));assert.ok(files.includes('026_tinh_canh_points.sql'));assert.ok(files.includes('027_tinh_canh_manual_grants.sql'));
  const restore=text('infrastructure/production/restore-drill.sh');assert.match(restore,/026_tinh_canh_points.sql/);
- assert.match(restore,/verifiedMigrationNames:36/);
+ assert.match(restore,/verifiedMigrationNames:37/);
 });

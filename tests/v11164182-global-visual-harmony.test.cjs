@@ -105,7 +105,7 @@ test('artwork, pre-A43 API registration after exact A43 additions and security-r
   for(const [f,h] of Object.entries(expect)) assert.equal(sha(baselineBytes(root,f)),h,f);
   const dir=path.join(root,'infrastructure/db');
   const migrations=fs.readdirSync(dir).filter(f=>f.endsWith('.sql')).sort();
-  assert.equal(migrations.length,36);
+  assert.equal(migrations.length,37);
   const joined=migrations.slice(0,30).map(f=>`${f}:${sha(fs.readFileSync(path.join(dir,f)))}\n`).join('');
   assert.equal(sha(Buffer.from(joined)),'18b33ba731cc9fd34e17d6f1addea8be431015c9a7d527866f180f37d9189a6e');
 });

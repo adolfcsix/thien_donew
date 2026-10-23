@@ -97,7 +97,7 @@ npm.cmd run dev
 
 Website: http://localhost:3000. API nội bộ: http://127.0.0.1:8080. Health: `/api/health`; readiness: `/api/health/ready`. Hai tiến trình Next và Nest đều phải chạy. Lần sau dùng `START_THIEN_DO_WINDOWS.bat` sau khi cấu hình đã đủ. Dừng bằng Ctrl+C.
 
-Hệ thống cần đủ **36 migration, từ 001 đến 036**. Không sửa SQL cũ hoặc checksum. Compose giữ dữ liệu trong volume `thiendo_pg`; không xóa volume để sửa lỗi đăng nhập/đăng ký.
+Hệ thống cần đủ **37 migration, từ 001 đến 037**. Không sửa SQL cũ hoặc checksum. Compose giữ dữ liệu trong volume `thiendo_pg`; không xóa volume để sửa lỗi đăng nhập/đăng ký.
 
 Trên Linux/macOS, dùng `npm` thay `npm.cmd`, `cp -n .env.example .env` để tránh ghi đè cấu hình; các lệnh Node/Docker tương tự.
 
@@ -549,3 +549,12 @@ Font A65 ưu tiên subset tiếng Việt khi trùng phạm vi Latin mở rộng 
 Ánh sáng trang trí Tử Vi đọc hình học tối đa một lần cho các pointermove trong cùng frame, lấy tọa độ cuối. Rời vùng, hủy pointer, thao tác touch, đổi sang con trỏ thô hoặc mất focus cửa sổ đều xóa ánh sáng tạm; không ảnh hưởng tọa độ/sao/xuất lá số.
 
 Nếu trình duyệt tạm chặn đọc preference khi tab trở lại, hệ thống giữ theme đang dùng trong RAM. Khi storage hoạt động lại, sự kiện từ tab khác vẫn đồng bộ bình thường. Đây không phải lưu bền vững preference qua lần đóng trình duyệt khi storage đã bị chặn.
+
+
+### Cập nhật quyền Pro vĩnh viễn
+
+Chạy `npm run db:migrate` để thêm migration 037 trước khi khởi động mã mới. Không sửa 001–036. Migration 037 cho phép quyền hỗ trợ không hết hạn; gói mua vẫn có thời hạn.
+
+Trong Bàn điều hành → Đơn & quyền, chọn tài khoản, thời hạn “Vĩnh viễn · đến khi thu hồi” và lý do ít nhất 8 ký tự. Admin cần quyền `finance.write`, quyền đọc thành viên để chọn tài khoản và MFA mới. Cũng có thể thao tác trong hồ sơ vận hành thành viên. Thu hồi giữ nguyên lịch sử và đóng quyền ở API. Owner vẫn giữ các quyền riêng như cấu hình giá, phân quyền đội ngũ và quy trình hoàn tiền.
+
+Cơ bản giữ công cụ và kết quả chính; Chuyên sâu mở bảng phân tích và đối chiếu. Báo cáo nghiên cứu và Xưởng phương pháp có khóa Pro do API kiểm tra. Admin được miễn yêu cầu mua gói; các yêu cầu MFA quản trị vẫn áp dụng.

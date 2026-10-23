@@ -1,5 +1,6 @@
 'use client';
 import {DisciplineNavigation} from '@/features/western/discipline-navigation';
+import {ExpertOnly} from '@/components/view-mode';
 import {SymbolObservatory} from '@/features/western/symbol-observatory';
 import {MysticScene} from '@/features/western/mystic-scene';
 import {useEffect,useMemo,useRef,useState,type FormEvent,type ChangeEvent} from 'react';
@@ -105,7 +106,7 @@ export default function TarotPage(){
     <p>Khám phá trọn bộ 78 lá Rider–Waite–Smith theo cách tiếp cận phản tư. Mỗi trải bài gợi một góc nhìn; không thay thế bằng chứng, quyền tự quyết hay lời khuyên chuyên môn.</p>
     <div className={styles.stats}><span><strong>78</strong> lá bài</span><span><strong>22</strong> Ẩn chính</span><span><strong>56</strong> Ẩn phụ</span></div>
    </div><div className={styles.heroScene}><MysticScene variant="tarot"/></div>
-  </header><SymbolObservatory discipline="tarot"/>
+  </header><ExpertOnly defer title="Xưởng học biểu tượng 3D"><SymbolObservatory discipline="tarot"/></ExpertOnly>
   <section className={`${styles.panel} ${styles.deckChooser}`} aria-label="Chọn bộ minh họa Tarot">
    <div><span className={styles.eyebrow}>BỘ BÀI</span><h2>Chọn phong cách 78 lá</h2><p>Đổi bộ hình ở thư viện, lá rút và Celtic Cross; mã lá, ý nghĩa và hồ sơ vẫn theo chuẩn RWS.</p></div>
    <label className={styles.deckSelect}>Bộ hình minh họa<select value={deck} onChange={event=>{const selected=event.target.value as TarotDeckId;setDeck(selected);try{window.localStorage.setItem('thiendo:tarot-deck',selected);}catch{}}}>{TAROT_DECKS.map(d=><option key={d.id} value={d.id}>{d.label}</option>)}</select></label>
@@ -137,7 +138,7 @@ export default function TarotPage(){
       <TarotFace card={position.card} reversed={position.orientation==='reversed'} deck={deck}/>
       <div className={styles.readingCopy}><h3>{position.card.nameVi}</h3><p className={styles.orientation}>{position.orientation==='reversed'?'Lá ngược':'Lá xuôi'} · {position.card.name}</p><p>{position.meaning}.</p><h4>Câu hỏi tự đối chiếu</h4><p>{position.reflection}</p></div>
      </article>)}
-    </div></TarotCloth>{snapshot&&<TarotDepthReadingPanel snapshot={snapshot} onContextChange={context=>{if(snapshot.version===2){setReadingContext(context);setResult(reading({...snapshot,context}));}}}/>}<div className={styles.saveArea}><button className={styles.secondary} type="button" onClick={exportJson}>↓ Xuất JSON trải bài</button>
+    </div></TarotCloth>{snapshot&&<ExpertOnly defer title="Diễn giải Tarot chuyên sâu"><TarotDepthReadingPanel snapshot={snapshot} onContextChange={context=>{if(snapshot.version===2){setReadingContext(context);setResult(reading({...snapshot,context}));}}}/></ExpertOnly>}<div className={styles.saveArea}><button className={styles.secondary} type="button" onClick={exportJson}>↓ Xuất JSON trải bài</button>
        <SaveStudy onSaved={()=>setHistoryRefresh(n=>n+1)} draft={snapshot?{discipline:'tarot',title:`Tarot RWS · ${describeTarotMethod(result).name}`,summary:result.positions.map(p=>p.card.nameVi+(p.orientation==='reversed'?' (ngược)':'')).join(' · ').slice(0,240),notes:'',tags:['Tarot','RWS'],snapshot:{...snapshot}}:null}/>
       </div><p className={styles.help}>Bản lưu giữ mã lá và chiều lá, không rút ngẫu nhiên lại khi mở. Câu hỏi có thể là thông tin riêng tư: chỉ lưu vào tài khoản khi bạn chủ động chọn.</p>
    </div>}

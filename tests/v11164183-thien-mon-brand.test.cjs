@@ -53,5 +53,5 @@ test('approved concept boards and frozen backend schema and security-reviewed de
   for(const file of ['docs/design-references/brand-thien-mon/approved-light-board.png','docs/design-references/brand-thien-mon/approved-dark-board.png'])assert.ok(fs.statSync(path.join(root,file)).size>500_000,file);
   assert.equal(sha('package-lock.json'),'553a9b4328e2f37e965573913996f7760e133e9ba0e0678dacd80a2c5c9705ff');
   assert.equal(sha('apps/api/src/app.module.ts'),'7cd6730534b2f4839d2386f3b6e0f8f443def5d613e2e87068475e0ad95dc4f5');
-  assert.equal(fs.readdirSync(path.join(root,'infrastructure/db')).filter(n=>n.endsWith('.sql')).length,36);
+  assert.equal(fs.readdirSync(path.join(root,'infrastructure/db')).filter(n=>n.endsWith('.sql')).length,37);
 });

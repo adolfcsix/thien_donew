@@ -4,7 +4,7 @@ module.exports=async function({context,origin,record,pageErrors,out}){
  for(const [route,discipline] of [['western-astrology','astrology'],['tarot','tarot'],['numerology','numerology']]){
   for(const width of [320,390,768,1440,1920]) for(const theme of ['dark','light']){
    const page=await context.newPage();page.on('pageerror',e=>pageErrors.push(e.message));
-   await page.setViewportSize({width,height:900});await page.addInitScript(v=>localStorage.setItem('thiendo-theme',v),theme);
+   await page.setViewportSize({width,height:900});await page.addInitScript(v=>{localStorage.setItem('thiendo-theme',v);localStorage.setItem('thiendo-view-mode','expert');},theme);
    try{
     await page.goto(origin+'/'+route,{waitUntil:'networkidle'});
     const lab=page.locator('[data-observatory="'+discipline+'"]'),scene=lab.locator('[data-step]'),rotor=scene.locator('[class*="rotor"]');

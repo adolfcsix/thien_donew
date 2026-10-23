@@ -49,7 +49,7 @@ test('Links to all policies appear in persistent site footer',()=>{
  assert.ok(shell.includes('/huong-dan'));assert.ok(shell.includes('/ho-tro'));
 });
 test('Original older migrations unchanged; new SQL is an additive 029 step',()=>{
- const files=readdirSync(join(root,'infrastructure/db')).filter(x=>/^\d{3}_[\w-]+\.sql$/.test(x)).sort();assert.equal(files.length,36);assert.equal(files[29],'030_admin_insights.sql');assert.equal(files[32],'033_community_experts_access.sql');assert.equal(files[33],'034_admin_badge_showcase.sql');assert.equal(files[34],'035_admin_trusted_devices.sql');assert.equal(files.at(-1),'036_specialty_badges.sql');
+ const files=readdirSync(join(root,'infrastructure/db')).filter(x=>/^\d{3}_[\w-]+\.sql$/.test(x)).sort();assert.equal(files.length,37);assert.equal(files[29],'030_admin_insights.sql');assert.equal(files[32],'033_community_experts_access.sql');assert.equal(files[33],'034_admin_badge_showcase.sql');assert.equal(files[34],'035_admin_trusted_devices.sql');assert.equal(files.at(-1),'037_lifetime_pro_entitlements.sql');
  assert.match(read('infrastructure/production/restore-drill.sh'),/029_guides_policies_cms\.sql/);
 });
 test('Accessibility uses a responsive TOC, headings and visible search status',()=>{

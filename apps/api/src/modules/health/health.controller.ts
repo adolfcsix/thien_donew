@@ -15,7 +15,7 @@ const REQUIRED_MIGRATIONS = [
   '025_forum_moderation.sql','026_tinh_canh_points.sql','027_tinh_canh_manual_grants.sql',
   '028_billing_reconciliation_policy.sql','029_guides_policies_cms.sql','030_admin_insights.sql',
   '031_forum_single_image.sql','032_admin_console.sql','033_community_experts_access.sql','034_admin_badge_showcase.sql',
-  '035_admin_trusted_devices.sql','036_specialty_badges.sql',
+  '035_admin_trusted_devices.sql','036_specialty_badges.sql','037_lifetime_pro_entitlements.sql',
 ];
 const REQUIRED_TABLES = [
   'expert_credentials','direct_conversations','direct_messages','direct_read_receipts','direct_blocks','direct_message_reports','premium_sections','admin_badge_showcase',

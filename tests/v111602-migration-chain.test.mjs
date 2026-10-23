@@ -7,10 +7,10 @@ import {verifyMigrationChain,defaultDbDir,defaultBaselinePath,defaultExtensionPa
 
 const proof=verifyMigrationChain(defaultDbDir,defaultBaselinePath);
 test('Current migrations are contiguous and reviewed frozen SQL 001-018 is unchanged',()=>{
- assert.equal(proof.total,36);
- assert.equal(proof.frozen,36);
+ assert.equal(proof.total,37);
+ assert.equal(proof.frozen,37);
  assert.equal(proof.files[0],'001_core.sql');
- assert.equal(proof.files[29],'030_admin_insights.sql');assert.equal(proof.files[32],'033_community_experts_access.sql');assert.equal(proof.files[33],'034_admin_badge_showcase.sql');assert.equal(proof.files[34],'035_admin_trusted_devices.sql');assert.equal(proof.files.at(-1),'036_specialty_badges.sql');
+ assert.equal(proof.files[29],'030_admin_insights.sql');assert.equal(proof.files[32],'033_community_experts_access.sql');assert.equal(proof.files[33],'034_admin_badge_showcase.sql');assert.equal(proof.files[34],'035_admin_trusted_devices.sql');assert.equal(proof.files.at(-1),'037_lifetime_pro_entitlements.sql');
 });
 function withFixture(work){const dir=mkdtempSync(join(tmpdir(),'thiendo-migrations-'));
  const sqlDir=join(dir,'db');mkdirSync(sqlDir);
@@ -37,8 +37,8 @@ test('Refuse missing frozen baseline',()=>withFixture(({sqlDir,baseline,extensio
  rmSync(baseline);assert.throws(()=>verifyMigrationChain(sqlDir,baseline,extension),/Missing or invalid frozen/);
 }));
 test('Allow a properly numbered future migration without changing old ones',()=>withFixture(({sqlDir,baseline,extension})=>{
- writeFileSync(join(sqlDir,'037_future_additive.sql'),'SELECT 1;\n');
- assert.equal(verifyMigrationChain(sqlDir,baseline,extension).total,37);
+ writeFileSync(join(sqlDir,'038_future_additive.sql'),'SELECT 1;\n');
+ assert.equal(verifyMigrationChain(sqlDir,baseline,extension).total,38);
 }));
 
 test('Refuse mutation of migration 019–027 even if not yet in a DB ledger',()=>withFixture(({sqlDir,baseline,extension})=>{
@@ -67,3 +67,5 @@ test('A63 refuse tampering of new 036 specialty badges migration',()=>withFixtur
  const name='036_specialty_badges.sql';writeFileSync(join(sqlDir,name),readFileSync(join(sqlDir,name),'utf8')+'\n-- tampered\n');
  assert.throws(()=>verifyMigrationChain(sqlDir,baseline,extension),/Immutable 036/);
 }));
+
+test('Refuse tampering of lifetime grant migration 037',()=>withFixture(({sqlDir,baseline,extension})=>{const name='037_lifetime_pro_entitlements.sql';writeFileSync(join(sqlDir,name),readFileSync(join(sqlDir,name),'utf8')+'\n-- altered\n');assert.throws(()=>verifyMigrationChain(sqlDir,baseline,extension),/Immutable 037/);}));

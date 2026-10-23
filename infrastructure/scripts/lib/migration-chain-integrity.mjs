@@ -94,7 +94,11 @@ export function verifyMigrationChain(directory,baselinePath,extensionPath=defaul
   if(files[35]!==name||createHash('sha256').update(readFileSync(join(directory,name))).digest('hex')!==digest)
    throw new Error('Immutable 036 migration was modified: '+name);
  }
- return {total:files.length,frozen:specialtyEntries.length+trustedEntries.length+showcaseEntries.length+hubEntries.length+administrationEntries.length+frozen.length+later.length+modern.length+newest.length+forum.length,files};
+ const lifetime=JSON.parse(readFileSync(resolve(import.meta.dirname,'../../db/baselines/migration-037.json'),'utf8'));
+ const lifetimeEntries=Object.entries(lifetime.migrations||{});
+ if(lifetimeEntries.length!==1)throw new Error('Unexpected 037 baseline length');
+ for(const [name,digest] of lifetimeEntries){if(files[36]!==name||createHash('sha256').update(readFileSync(join(directory,name))).digest('hex')!==digest)throw new Error('Immutable 037 migration was modified: '+name);}
+ return {total:files.length,frozen:lifetimeEntries.length+specialtyEntries.length+trustedEntries.length+showcaseEntries.length+hubEntries.length+administrationEntries.length+frozen.length+later.length+modern.length+newest.length+forum.length,files};
 }
 
 export const defaultDbDir=resolve(import.meta.dirname,'../../db');

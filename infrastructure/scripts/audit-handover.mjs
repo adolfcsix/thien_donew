@@ -25,7 +25,7 @@ export function auditHandover(root=ROOT){
  if(guides.length!==15||policies.length!==8||!policies.every(x=>x.reviewStatus==='legal_draft'))err('8 policy draft / 15 guide contract changed or unsupported legal approval');
  const shell=get(root,'apps/web/src/components/shell.tsx');for(const p of policies)if(!shell.includes('/phap-ly/'+p.slug))err('Footer missing policy '+p.slug);
  const migrations=readdirSync(join(root,'infrastructure/db')).filter(x=>/^\d{3}_[a-zA-Z0-9_-]+\.sql$/.test(x));
- if(migrations.length!==36||!get(root,'HUONG_DAN.md').includes('**'+migrations.length+' migration'))err('Migration count/document mismatch');
+ if(migrations.length!==37||!get(root,'HUONG_DAN.md').includes('**'+migrations.length+' migration'))err('Migration count/document mismatch');
  const modern=get(root,'docs/TAROT_DECKS_MODERN_LICENSES.md');if(!modern.includes('CC BY 4.0')||!modern.includes('offline')||!modern.includes('78'))err('Tarot license/offline qualification undocumented');
  for(const rel of ['README.md','HUONG_DAN.md','docs/BAO_CAO_HIEN_TAI.md'])for(const m of get(root,rel).matchAll(/\]\(([^)]+)\)/g)){
   const link=m[1];if(/^\w+:|^\/\//.test(link))continue;

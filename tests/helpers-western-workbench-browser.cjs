@@ -4,7 +4,7 @@ module.exports=async function westernWorkbench({context,origin,record,pageErrors
  async function packet(page,button){const waiting=page.waitForEvent('download');await button.click();let raw='';for await(const part of await(await waiting).createReadStream())raw+=part.toString();return JSON.parse(raw);}
  async function fits(page){const size=await page.evaluate(()=>({inner:innerWidth,html:document.documentElement.scrollWidth,body:document.body.scrollWidth}));assert.ok(Math.max(size.html,size.body)<=size.inner+2,JSON.stringify(size));}
  for(const width of [320,390,1440])for(const theme of ['dark','light']){
-  const page=await context.newPage();page.setDefaultTimeout(25000);page.on('pageerror',e=>pageErrors.push(e.message));await page.setViewportSize({width,height:900});await page.addInitScript(value=>localStorage.setItem('thiendo-theme',value),theme);
+  const page=await context.newPage();page.setDefaultTimeout(25000);page.on('pageerror',e=>pageErrors.push(e.message));await page.setViewportSize({width,height:900});await page.addInitScript(value=>{localStorage.setItem('thiendo-theme',value);localStorage.setItem('thiendo-view-mode','expert');},theme);
   async function visit(route){await page.goto(origin+route,{waitUntil:'domcontentloaded'});const shell=page.locator('[data-theme-ready="true"]');await shell.waitFor();assert.equal((await shell.getAttribute('class')).split(/\s+/).includes('light'),theme==='light');}
   function done(name,route,extra={}){record({case:name,route,width,theme,verdict:'PASS',...extra});}
   try{

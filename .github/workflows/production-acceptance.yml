@@ -55,6 +55,7 @@ jobs:
           THIENDO_SQL_TEST_MODULE: '${{ runner.temp }}/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js'
         run: |
           THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-account-browser" node tests/account.browser.cjs
+          THIENDO_BROWSER_SCOPE=lifetime-pro THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-lifetime-pro-browser" node tests/account.browser.cjs
           THIENDO_BROWSER_SCOPE=study-tabs THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-study-tabs-browser" node tests/account.browser.cjs
           THIENDO_BROWSER_SCOPE=observatory THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-observatory-browser" node tests/account.browser.cjs
           THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-ai-browser" node tests/v1116413-ai-insights.browser.cjs
@@ -70,6 +71,7 @@ jobs:
             ${{ runner.temp }}/thiendo-account-browser
             ${{ runner.temp }}/thiendo-observatory-browser
             ${{ runner.temp }}/thiendo-study-tabs-browser
+            ${{ runner.temp }}/thiendo-lifetime-pro-browser
             ${{ runner.temp }}/thiendo-ai-browser
             ${{ runner.temp }}/thiendo-reader-browser
           if-no-files-found: warn

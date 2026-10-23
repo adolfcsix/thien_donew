@@ -68,13 +68,15 @@ export function ModeIntroduction({discipline, summary}: {discipline: ModeDiscipl
 }
 
 /** Replace dense evidence panels with an explicit, accessible route to them in basic mode. */
-export function ExpertOnly({title, children}: {title: string; children: ReactNode}) {
+export function ExpertOnly({title, children, defer = false}: {title: string; children: ReactNode; defer?: boolean}) {
   const {mode, setMode} = useViewMode();
+  const [opened, setOpened] = useState(mode === 'expert');
+  useEffect(() => { if (mode === 'expert') setOpened(true); }, [mode]);
   return <>
     {mode !== 'expert' && <div className={styles.teaser}>
       <span>{title}</span><button type="button" onClick={() => setMode('expert')} aria-label={`Mở Chuyên sâu: ${title}`}>Xem chi tiết <span aria-hidden="true">↗</span></button>
     </div>}
     {/* Keep mounted stateful tools (e.g. Feng Shui floorplan) across mode changes. */}
-    <div className={styles.expertRegion} hidden={mode !== 'expert'}>{children}</div>
+    <div className={styles.expertRegion} hidden={mode !== 'expert'}>{!defer || opened || mode === 'expert' ? children : null}</div>
   </>;
 }

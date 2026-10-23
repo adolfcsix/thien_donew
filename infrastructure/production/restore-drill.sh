@@ -65,11 +65,12 @@ DO $$ BEGIN
     ('033_community_experts_access.sql'),
     ('034_admin_badge_showcase.sql'),
     ('035_admin_trusted_devices.sql'),
-    ('036_specialty_badges.sql'))
+    ('036_specialty_badges.sql'),
+    ('037_lifetime_pro_entitlements.sql'))
     SELECT name FROM expected
     EXCEPT SELECT name FROM schema_migrations
   ) THEN RAISE EXCEPTION 'Restored schema is missing required migration(s)'; END IF;
-  IF (SELECT count(*) FROM schema_migrations) < 36 THEN
+  IF (SELECT count(*) FROM schema_migrations) < 37 THEN
     RAISE EXCEPTION 'Restored schema migration ledger is incomplete';
   END IF;
 END $$;
@@ -123,7 +124,7 @@ if(assets.checksumsVerified!==true||!Number.isSafeInteger(assets.files))throw Er
 if(references.referencesVerified!==true||references.archivedFiles!==assets.files)throw Error('Restored database asset references were not verified');
 // Keep the legacy receipt schema floor; the exact current chain is verified above.
 fs.writeFileSync(file,JSON.stringify({ok:true,time:new Date().toISOString(),snapshot,target,minMigration:19,
-  clearedAuthState:true,verifiedMigrationNames:36,productionChanged:false,verifiedPrivateAssets:true,verifiedAssetReferences:true,assetReferences:references.references,assetFiles:assets.files,assetsTarget})+'\n',{mode:0o600});
+  clearedAuthState:true,verifiedMigrationNames:37,productionChanged:false,verifiedPrivateAssets:true,verifiedAssetReferences:true,assetReferences:references.references,assetFiles:assets.files,assetsTarget})+'\n',{mode:0o600});
 NODE
 # This receipt has no credentials and is read by the unprivileged monitor.
 chmod 644 "$config_dir/restore-status.json"

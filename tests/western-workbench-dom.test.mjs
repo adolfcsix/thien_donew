@@ -78,3 +78,13 @@ test('catalog unmount aborts in-flight work; independent tab sets have unique ac
  const tabs=[...container.querySelectorAll('[role=tab]')];assert.equal(new Set(tabs.map(t=>t.id)).size,tabs.length);
  for(const t of tabs)assert.ok(document.getElementById(t.getAttribute('aria-controls')));
 });
+
+test('deferred expert panels start on demand and retain controls across mode changes',async()=>{
+ const {ViewModeProvider,ExpertOnly,useViewMode}=compile('apps/web/src/components/view-mode.tsx');let mounts=0;
+ function Child(){const [value,setValue]=React.useState(0);React.useEffect(()=>{mounts++},[]);return React.createElement('button',{onClick:()=>setValue(v=>v+1)},'Count '+value);}
+ function Shell(){const {mode,setMode}=useViewMode();return React.createElement(React.Fragment,null,React.createElement('button',{onClick:()=>setMode(mode==='basic'?'expert':'basic')},'Toggle mode'),React.createElement(ExpertOnly,{title:'Deep fixture',defer:true},React.createElement(Child)));}
+ await render(ViewModeProvider,{children:React.createElement(Shell)});assert.equal(mounts,0);assert.equal(container.textContent.includes('Count'),false);
+ await act(async()=>button('Xem chi tiết').click());assert.equal(mounts,1);await act(async()=>button('Count 0').click());
+ await act(async()=>button('Toggle mode').click());assert.equal(container.querySelector('[hidden]').textContent,'Count 1');
+ await act(async()=>button('Toggle mode').click());assert.equal(mounts,1);assert.ok(button('Count 1'));assert.equal(window.localStorage.getItem('thiendo-view-mode'),'expert');
+});
