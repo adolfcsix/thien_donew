@@ -270,3 +270,19 @@ test('console resource switch never renders previous data under the new URL and 
  await act(async()=>releases.get('/second')({name:'SECOND'}));
  assert.match(container.textContent,/THIRD/);assert.equal(container.textContent.includes('SECOND'),false);
 });
+
+test('new member inbox exposes an available admin support channel without existing conversations',async()=>{
+ const {Messages}=component('apps/web/src/features/community-hub/messages.tsx');
+ state={...state,user:{id:'10000000-0000-4000-8000-000000000001'}};
+ const calls=[];uiApi=async path=>{
+  calls.push(path);
+  if(path==='/api/community/support-conversation')return {available:true,id:'20000000-0000-4000-8000-000000000002',peerId:'30000000-0000-4000-8000-000000000003'};
+  if(path==='/api/community/conversations')return {conversations:[],nextOffset:null};
+  if(path==='/api/auth/email/status')return {verified:false};
+  throw Error('Unexpected '+path);
+ };
+ await act(async()=>view.render(React.createElement(Messages)));
+ const support=container.querySelector('section[aria-label="Hỗ trợ từ quản trị"]');assert.ok(support);
+ assert.equal(support.querySelector('button').disabled,false);assert.ok(calls.includes('/api/community/support-conversation'));
+ assert.match(support.textContent,/Không gửi mật khẩu/);
+});

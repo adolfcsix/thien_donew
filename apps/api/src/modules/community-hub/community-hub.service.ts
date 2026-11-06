@@ -23,6 +23,26 @@ export class CommunityHubService {
  private async participant(c:PoolClient,conversationId:string,userId:string){id(conversationId);const r=await c.query('SELECT * FROM direct_conversations WHERE id=$1 AND (first_user=$2 OR second_user=$2)',[conversationId,userId]);if(!r.rows[0])throw new NotFoundException('Không tìm thấy cuộc trò chuyện');return r.rows[0];}
  async identity(req:Request,target:string){target=id(target);const r=await this.db.query(`SELECT u.id,${display} AS name,m.role,ARRAY(SELECT b.level FROM admin_badge_showcase b WHERE b.user_id=m.user_id ORDER BY b.position) AS "showcaseLevels",COALESCE(p.badge_style,'gate') AS "badgeStyle",COALESCE(p.badge_tone,CASE WHEN m.role='owner' THEN 'gold' ELSE 'jade' END) AS "badgeTone",e.specialty,e.granted_at AS "expertSince",m.role IS NOT NULL AS "isAdmin",e.user_id IS NOT NULL AS "isExpert" FROM users u LEFT JOIN admin_memberships m ON m.user_id=u.id LEFT JOIN admin_profile_preferences p ON p.user_id=u.id LEFT JOIN expert_credentials e ON e.user_id=u.id AND e.revoked_at IS NULL WHERE u.id=$1 AND NOT EXISTS(SELECT 1 FROM account_blocks b WHERE b.user_id=u.id)`,[target]);if(!r.rows[0])throw new NotFoundException();return {identity:r.rows[0]};}
  async mine(req:Request){const user=await this.auth.required(req);return this.identity(req,user.id);}
+ async supportConversation(req:Request){
+  const user=await this.auth.required(req);
+  return this.db.transaction(async c=>{
+   await this.auth.assertSessionInTransaction(c,req,user.id);
+   const configured=process.env.SUPPORT_ADMIN_USER_ID?.trim();
+   if(configured)id(configured);
+   const target=(await c.query<{id:string}>(`SELECT u.id FROM admin_memberships m JOIN users u ON u.id=m.user_id
+    WHERE m.role IN ('owner','admin') AND u.id<>$1 AND ($2::uuid IS NULL OR u.id=$2)
+    AND NOT EXISTS(SELECT 1 FROM account_blocks b WHERE b.user_id=u.id)
+    ORDER BY CASE WHEN m.role='owner' THEN 0 ELSE 1 END,u.created_at,u.id LIMIT 1 FOR SHARE OF m,u`,[user.id,configured||null])).rows[0];
+   if(!target)return {available:false,reason:'Chưa có quản trị viên tiếp nhận hỗ trợ.'};
+   await this.pair(c,user.id,target.id);
+   const blocked=(await c.query('SELECT 1 FROM direct_blocks WHERE (blocker_id=$1 AND blocked_id=$2) OR (blocker_id=$2 AND blocked_id=$1)',[user.id,target.id])).rows[0];
+   if(blocked)return {available:false,reason:'Kênh hỗ trợ hiện bị chặn. Hãy dùng trang Liên hệ & hỗ trợ.'};
+   const [a,b]=[user.id,target.id].sort();
+   await c.query('INSERT INTO direct_conversations(id,first_user,second_user,initiated_by) VALUES($1,$2,$3,$4) ON CONFLICT(first_user,second_user) DO NOTHING',[randomUUID(),a,b,user.id]);
+   const row=(await c.query('SELECT id FROM direct_conversations WHERE first_user=$1 AND second_user=$2',[a,b])).rows[0];
+   return {available:true,id:row.id,peerId:target.id};
+  });
+ }
  async conversations(req:Request,offsetValue?:string){const user=await this.auth.required(req),offset=Number(offsetValue||0);if(!Number.isSafeInteger(offset)||offset<0||offset>10000)throw new BadRequestException();const r=await this.db.query(`SELECT c.id,c.updated_at AS "updatedAt",u.id AS "peerId",${display} AS name,
  (SELECT body FROM direct_messages WHERE conversation_id=c.id ORDER BY id DESC LIMIT 1) AS preview,
  COALESCE((SELECT id::text FROM direct_messages WHERE conversation_id=c.id ORDER BY id DESC LIMIT 1),'0') AS "latestMessageId",

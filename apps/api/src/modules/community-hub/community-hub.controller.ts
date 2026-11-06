@@ -6,6 +6,7 @@ export class CommunityHubController {
  constructor(private readonly hub:CommunityHubService){}
  @Get('identity') mine(@Req() r:Request){return this.hub.mine(r);}
  @Get('identity/:id') identity(@Req() r:Request,@Param('id') id:string){return this.hub.identity(r,id);}
+ @Post('support-conversation') support(@Req() r:Request){return this.hub.supportConversation(r);}
  @Get('conversations') list(@Req() r:Request,@Query('offset') offset?:string){return this.hub.conversations(r,offset);}
  @Post('conversations/:peer') open(@Req() r:Request,@Param('peer') peer:string){return this.hub.open(r,peer);}
  @Get('conversations/:id/messages') messages(@Req() r:Request,@Param('id') id:string,@Query('before') before?:string){return this.hub.messages(r,id,before);}
