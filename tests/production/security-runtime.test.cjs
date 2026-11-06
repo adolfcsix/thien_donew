@@ -12,7 +12,7 @@ function load(file,globals={}){
  return mod.exports;
 }
 const operations=load('apps/api/src/common/operations.ts',{console:{error(){},log(){}}});
-function response(){return {locals:{requestId:'correlation-141'},status(n){this.code=n;return this},json(v){this.body=v;return this}};}
+function response(){return {headers:{},setHeader(k,v){this.headers[k]=v},locals:{requestId:'correlation-141'},status(n){this.code=n;return this},json(v){this.body=v;return this}};}
 function filtered(error){const res=response();new operations.SafeExceptionFilter().catch(error,{switchToHttp:()=>({getResponse:()=>res})});return res;}
 test('internal exceptions never expose SQL or credentials',()=>{const r=filtered(Error('SELECT password_hash FROM users password=secret'));assert.equal(r.code,500);assert.equal(r.body.requestId,'correlation-141');assert.doesNotMatch(JSON.stringify(r.body),/password_hash|SELECT|secret/);});
 test('HTTP 5xx exceptions are sanitized even when their message is structured',()=>{for(const error of [new nest.ServiceUnavailableException('postgresql://owner:secret@db'),new nest.HttpException({message:['private error']},502)]){const r=filtered(error);assert.ok(r.code>=500);assert.doesNotMatch(JSON.stringify(r.body),/private|postgresql|secret/);}});
@@ -30,4 +30,11 @@ test('Google key rotation refreshes once across concurrent requests and bounds u
  now+=61000;keys=[b.jwk];await Promise.all(Array.from({length:16},()=>verify(token(b))));assert.equal(fetches,2);
  now+=61000;for(let i=0;i<12;i++)await assert.rejects(()=>verify(token(b,'unknown-'+i)));assert.equal(fetches,3);
  await assert.rejects(()=>verifyGoogleCredential(token(b),'wrong-nonce','client-141'));
+});
+test('overload responses carry retry guidance while 503 internals remain private',()=>{
+ for(const status of [429,503]){
+  const result=filtered(new nest.HttpException('private database diagnostic',status));
+  assert.equal(result.code,status);assert.equal(result.headers['Retry-After'],'5');
+  if(status===503)assert.doesNotMatch(JSON.stringify(result.body),/private database/);
+ }
 });

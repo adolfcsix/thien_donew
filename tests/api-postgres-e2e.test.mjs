@@ -165,3 +165,25 @@ test('V8.1 register/login/ownership/save/read/delete end to end with PostgreSQL'
     await cleanupDisposableTestAccounts(request, accounts);
   }
 });
+
+test('shared-origin auth burst isolates twelve accounts and revokes rotated cookies on native PostgreSQL',async()=>{
+ const proof=await request('/api/health/e2e');assert.equal(proof.status,200);assertMatchedApiInstance(verifiedDatabaseIdentity,proof.json);
+ const suffix=randomUUID().replaceAll('-','');
+ const accounts=Array.from({length:12},(_,i)=>({email:`auth-burst-${suffix}-${i}@example.invalid`,password:`Burst!${randomUUID()}`,registered:false,cookie:''}));
+ try{
+  const registration=await Promise.allSettled(accounts.map(async account=>{
+   const result=await request('/api/auth/register',{method:'POST',body:{email:account.email,password:account.password}});
+   if(result.status===201){account.registered=true;account.cookie=result.cookie;}
+   assert.equal(result.status,201);assert.equal(result.json.user.email,account.email);
+  }));
+  for(const result of registration)assert.equal(result.status,'fulfilled',result.reason?.message);
+  const oldCookies=accounts.map(account=>account.cookie);
+  const login=await Promise.allSettled(accounts.map(async account=>{
+   const result=await request('/api/auth/login',{method:'POST',cookie:account.cookie,body:{email:account.email,password:account.password}});
+   assert.equal(result.status,200);account.cookie=result.cookie;
+   const me=await request('/api/auth/me',{cookie:account.cookie});assert.equal(me.json.user.email,account.email);
+  }));
+  for(const result of login)assert.equal(result.status,'fulfilled',result.reason?.message);
+  for(const cookie of oldCookies){const me=await request('/api/auth/me',{cookie});assert.equal(me.json.user,null);}
+ }finally{await cleanupDisposableTestAccounts(request,accounts);}
+});

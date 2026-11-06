@@ -45,10 +45,10 @@ function digest(value: string): string {
 const MAX_ACTIVE_KDFS = 4;
 const MAX_WAITING_KDFS = 32;
 let activeKdfs = 0;
-const waitingKdfs: Array<(release: () => void) => void> = [];
+const waitingKdfs: Array<{resolve:(release:()=>void)=>void;timer:ReturnType<typeof setTimeout>}> = [];
 function releaseKdfSlot(): void {
   const next = waitingKdfs.shift();
-  if (next) next(releaseKdfSlot);
+  if (next) { clearTimeout(next.timer); next.resolve(releaseKdfSlot); }
   else activeKdfs--;
 }
 function acquireKdfSlot(): Promise<() => void> {
@@ -59,7 +59,15 @@ function acquireKdfSlot(): Promise<() => void> {
   if (waitingKdfs.length >= MAX_WAITING_KDFS) {
     return Promise.reject(new HttpException('Máy chủ đang xử lý nhiều yêu cầu xác thực, thử lại sau', HttpStatus.TOO_MANY_REQUESTS));
   }
-  return new Promise(resolve => { waitingKdfs.push(resolve); });
+  return new Promise((resolve,reject) => {
+    const entry={resolve,timer:setTimeout(()=>{
+      const index=waitingKdfs.indexOf(entry);
+      if(index<0)return;
+      waitingKdfs.splice(index,1);
+      reject(new HttpException('Hàng chờ xác thực quá thời gian, vui lòng thử lại sau',HttpStatus.TOO_MANY_REQUESTS));
+    },5000)};
+    waitingKdfs.push(entry);
+  });
 }
 export async function derivePassword(password: string, salt: string): Promise<string> {
   const release = await acquireKdfSlot();
