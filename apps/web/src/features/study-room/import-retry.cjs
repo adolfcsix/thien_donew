@@ -1,4 +1,5 @@
 'use strict';
+const {sha256Fingerprint}=require('./sha256-fingerprint.cjs');
 
 /**
  * A restore can COMMIT successfully even when the browser never sees the HTTP
@@ -50,8 +51,8 @@ function finishPending(storage, userId, importId) {
   else storage.removeItem(key);
 }
 async function fingerprintEntries(entries, cryptoObject) {
-  if (!cryptoObject?.subtle?.digest) throw new Error('Trình duyệt không hỗ trợ tạo dấu vân tay bản sao an toàn');
   const encoded = new TextEncoder().encode(JSON.stringify(entries));
+  if(!cryptoObject?.subtle?.digest)return sha256Fingerprint(encoded);
   const digest = await cryptoObject.subtle.digest('SHA-256', encoded);
   return [...new Uint8Array(digest)].map(x => x.toString(16).padStart(2, '0')).join('');
 }

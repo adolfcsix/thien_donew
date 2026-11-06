@@ -25,6 +25,10 @@ export function isDeferredBuildIdentityImport(sourcePath, specifier) {
  */
 export function deferredSqlTestSource(sourcePath, specifier) {
   const source = sourcePath.replaceAll('\\', '/');
+  if(source==='tests/helpers-lifetime-pro-browser.cjs'&&specifier==='../apps/api/dist/modules/auth/totp.js'){
+    const target='apps/api/src/modules/auth/totp.ts';
+    return existsSync(fileURLToPath(new URL('../../'+target,import.meta.url)))?target:null;
+  }
   if (!/^tests\/[a-zA-Z0-9_-]+\.test\.mjs$/.test(source)) return null;
   // The full-stack test imports its Nest entrypoint/policies before starting an
   // isolated application. Allow these exact generated modules, with source proof.

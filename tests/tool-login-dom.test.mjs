@@ -119,6 +119,56 @@ test('Admin DOM denies member before issuing any privileged API read',async()=>{
  await renderAdmin();
  assert.ok(container.textContent.includes('không có quyền quản trị'));assert.deepEqual(calls,['/api/billing/access']);
 });
+test('Admin MFA enrollment survives leaving for Mail or Authenticator without resetting the gate',async()=>{
+ const calls=[];uiApi=async path=>{
+  calls.push(path);
+  if(path==='/api/billing/access')return {isAdmin:true,isOwner:false};
+  if(path==='/api/auth/mfa/status')return {configured:true,enabled:false,verified:false,stepUp:false,role:'admin',handle:'staff'};
+  if(path==='/api/auth/email/status')return {verified:true};
+  if(path==='/api/auth/mfa/setup')return {manualKey:'TEST-ONLY-SETUP-KEY',otpauthUrl:'otpauth://test'};
+  throw Error('Unexpected '+path);
+ };
+ await renderAdmin();
+ const password=container.querySelector('input[type=password]');assert.ok(password&&!password.disabled);
+ await act(async()=>password.closest('form').dispatchEvent(new window.Event('submit',{bubbles:true,cancelable:true})));
+ const key=container.querySelector('output'),code=container.querySelector('input[autocomplete="one-time-code"]');assert.equal(key.textContent,'TEST-ONLY-SETUP-KEY');
+ const before=calls.length;
+ await act(async()=>{window.dispatchEvent(new window.Event('focus'));document.dispatchEvent(new window.Event('visibilitychange'));});
+ assert.equal(container.querySelector('output'),key);assert.equal(container.querySelector('input[autocomplete="one-time-code"]'),code);assert.equal(calls.length,before);
+ assert.equal(calls.includes('/api/admin/console/session'),false);
+});
+test('Remembered-device temporary outage falls back to explicit MFA without opening admin APIs',async()=>{
+ const calls=[];uiApi=async path=>{
+  calls.push(path);
+  if(path==='/api/billing/access')return {isAdmin:true,isOwner:false};
+  if(path==='/api/auth/mfa/status')return {configured:true,enabled:true,verified:false,stepUp:false,role:'admin',handle:'staff'};
+  if(path==='/api/auth/mfa/trusted-session')throw Object.assign(Error('Temporary outage'),{status:503});
+  throw Error('Unexpected '+path);
+ };
+ await renderAdmin();assert.ok(container.querySelector('input[autocomplete="one-time-code"]'));
+ assert.equal(calls.includes('/api/admin/console/session'),false);
+ const input=container.querySelector('input[autocomplete="one-time-code"]');
+ await act(async()=>window.dispatchEvent(new window.Event('focus')));assert.equal(container.querySelector('input[autocomplete="one-time-code"]'),input);
+});
+test('Remembered-device authorization rejection cannot be treated as a successful admin session',async()=>{
+ uiApi=async path=>{
+  if(path==='/api/billing/access')return {isAdmin:true,isOwner:false};
+  if(path==='/api/auth/mfa/status')return {configured:true,enabled:true,verified:false,stepUp:false,role:'admin',handle:'staff'};
+  if(path==='/api/auth/mfa/trusted-session')throw Object.assign(Error('Session rejected'),{status:403});
+  throw Error('Privileged API must not load');
+ };
+ await renderAdmin();assert.match(container.querySelector('[role=alert]').textContent,/Session rejected/);assert.equal(container.querySelector('input[autocomplete="one-time-code"]'),null);
+});
+test('Verified admin still revalidates on return and removes revoked privileged content',async()=>{
+ uiApi=adminFixture(false);await renderAdmin();assert.ok(container.textContent.includes('Gói Pro'));
+ let release;uiApi=()=>new Promise(resolve=>{release=resolve;});
+ const visibility=Object.getOwnPropertyDescriptor(document,'visibilityState');Object.defineProperty(document,'visibilityState',{configurable:true,value:'visible'});
+ try{
+  await act(async()=>window.dispatchEvent(new window.Event('focus')));
+  assert.equal(container.textContent.includes('Gói Pro'),false);
+  await act(async()=>release({isAdmin:false,isOwner:false}));assert.match(container.textContent,/không có quyền quản trị/);
+ }finally{if(visibility)Object.defineProperty(document,'visibilityState',visibility);else delete document.visibilityState;}
+});
 test('Admin DOM exposes owner-only price controls but disables them for staff',async()=>{
  uiApi=adminFixture(false);await renderAdmin();
  const tab=[...container.querySelectorAll('button')].find(b=>b.textContent==='Gói Pro');assert.ok(tab);await act(async()=>tab.click());
@@ -204,4 +254,19 @@ test('signed-in administrator uses server destination even when user metadata cl
 });
 test('routing outage has an actionable retry and never trusts a client Owner role',async()=>{
  window.history.replaceState(null,'','/login?next=/admin');state={...state,user:{id:'member',role:'owner',isAdmin:true}};uiApi=async()=>{throw Error('Controlled auth outage');};await renderLogin();assert.deepEqual(navigations,[]);assert.ok(container.querySelector('[role="alert"]'));uiApi=async()=>({destination:'/chart'});const retry=[...container.querySelectorAll('button')].find(b=>b.textContent==='Thử lại');assert.ok(retry);await act(async()=>retry.click());assert.deepEqual(navigations,['/chart']);
+});
+
+test('console resource switch never renders previous data under the new URL and ignores late results',async()=>{
+ const {useConsoleData}=component('apps/web/src/features/admin-console/shared.tsx');
+ const releases=new Map(),renders=[];
+ uiApi=url=>new Promise(resolve=>releases.set(url,resolve));
+ function Probe({url}){const result=useConsoleData(url);renders.push({url,data:result.data});return React.createElement('p',null,result.data?.name||'Loading');}
+ await act(async()=>view.render(React.createElement(Probe,{url:'/first'})));
+ await act(async()=>releases.get('/first')({name:'FIRST'}));assert.match(container.textContent,/FIRST/);
+ await act(async()=>view.render(React.createElement(Probe,{url:'/second'})));
+ assert.ok(renders.filter(x=>x.url==='/second').every(x=>x.data===null));
+ await act(async()=>view.render(React.createElement(Probe,{url:'/third'})));
+ await act(async()=>releases.get('/third')({name:'THIRD'}));
+ await act(async()=>releases.get('/second')({name:'SECOND'}));
+ assert.match(container.textContent,/THIRD/);assert.equal(container.textContent.includes('SECOND'),false);
 });

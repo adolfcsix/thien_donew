@@ -16,6 +16,7 @@ before(()=>{
  api=compile('apps/web/src/lib/api.ts');
  ({AuthProvider,useAuth}=compile('apps/web/src/components/auth-provider.tsx',{
   '@/lib/api':api,
+  '@/lib/dialog-viewport.cjs':require('../apps/web/src/lib/dialog-viewport.cjs'),
   '@/lib/session-exit':{LOGOUT_REVISION_KEY:'test.logout',logoutRevision:()=>null,publishLogout:()=>published++,concealSession:()=>document.documentElement.setAttribute('data-session-suspended','true'),replaceWithOpening:()=>{nav++;document.documentElement.setAttribute('data-session-suspended','true');}},
   'next/navigation':{useRouter:()=>({replace:()=>{}}),usePathname:()=>'/chart'},
   '@/lib/login-destination':{loginDestination:async()=>'/chart'},
@@ -60,4 +61,15 @@ test('missing domain permission does not masquerade as an expired session',async
 });
 test('unmount removes the session-expiry listener',async()=>{
  await act(async()=>root.unmount());root={unmount(){}};await act(async()=>window.dispatchEvent(new Event(api.SESSION_EXPIRED_EVENT)));assert.equal(nav,0);assert.equal(published,0);
+});
+test('late 401 from prior session cannot revoke a newly authenticated session',async()=>{
+ let release;globalThis.fetch=async path=>path==='/api/charts'?await new Promise(resolve=>{release=resolve;}):new Response(JSON.stringify({user,destination:'/chart'}),{status:200});
+ let old;await act(async()=>{old=api.api('/api/charts').catch(error=>error);});
+ await act(async()=>api.accountApi.login('fixture@example.invalid','fixture-password'));
+ await act(async()=>{release(new Response('{"message":"Old session expired"}',{status:401}));assert.equal((await old).status,401);});
+ assert.match(container.textContent,/PRIVATE CHART CONTENT/);assert.equal(nav,0);assert.equal(published,0);
+ // The current session must still be revoked by a new protected 401.
+ globalThis.fetch=async()=>new Response('{"message":"Current session expired"}',{status:401});
+ await act(async()=>{await assert.rejects(api.api('/api/charts'),e=>e.status===401);});
+ assert.equal(container.querySelector('[data-private]'),null);assert.equal(nav,1);
 });

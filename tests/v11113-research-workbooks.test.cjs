@@ -110,7 +110,7 @@ test('study backup UI uses one atomic endpoint and makes network ambiguity expli
  const page=fs.readFileSync(path.join(__dirname,'../apps/web/src/app/study/page.tsx'),'utf8');
  const client=fs.readFileSync(path.join(__dirname,'../apps/web/src/lib/api.ts'),'utf8');
  assert.match(page,/parseStudyBackup\(await file\.text\(\)\)/);
- assert.match(page,/crypto\.randomUUID\(\)/); // key must survive failed request for safe replay
+ assert.match(page,/createRequestId\(\)/); // key must survive failed request for safe replay
  assert.match(page,/window\.confirm\(`Tạo \$\{backupEntries\.length\} hồ sơ mới/);
  assert.match(page,/studyApi\.importBackup\(restoring,backupImportId\)/);
  assert.doesNotMatch(page,/studyApi\.update\(result\.id,\{pinned:true\}\)/);

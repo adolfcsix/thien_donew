@@ -44,7 +44,8 @@ export default function AdminMfaGate({status,onVerified}:{status:Status;onVerifi
    <label className={styles.trustedBrowser}><input type="checkbox" checked={trustDevice} onChange={e=>setTrustDevice(e.target.checked)}/>Ghi nhớ trình duyệt tin cậy trong 30 ngày; những lần đăng nhập sau không cần OTP để xem Bàn điều hành. Không dùng trên thiết bị chung. Thao tác quản trị thay đổi dữ liệu vẫn yêu cầu mã mới.</label>
    <button disabled={busy||code.length!==6}>{key?'Xác nhận thiết lập':'Xác minh và vào Bàn điều hành'}</button>
   </form>}
-  {status.enabled&&<p className={styles.muted}>Trên máy đã ghi nhớ trước đó, đăng nhập sẽ tự mở Bàn điều hành. Nếu chưa mở được, nhập mã Authenticator tại đây.</p>}
+  {status.enabled&&<p className={styles.muted}>Trên máy đã ghi nhớ trước đó, đăng nhập sẽ tự mở Bàn điều hành. Nếu chưa mở được, nhập mã Authenticator tại đây. Bạn có thể chuyển sang ứng dụng xác thực rồi quay lại mà không mất bước đang làm.</p>}
+  {status.configured&&<button type="button" disabled={busy} onClick={onVerified}>Kiểm tra lại trạng thái MFA</button>}
   {error&&<p role="alert" className={styles.notice}>{error}</p>}
  </section></main>;
 }

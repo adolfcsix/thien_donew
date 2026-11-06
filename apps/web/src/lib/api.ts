@@ -180,7 +180,9 @@ function validateExpertBookResponse(path:string,method:string,payload:Record<str
  }
  if(!valid)throw new InvalidApiResponse();
 }
+let sessionEpoch = 0;
 export async function api<T>(path: string, options: { method?: string; body?: unknown; signal?: AbortSignal; timeoutMs?: number } = {}): Promise<T> {
+  const requestEpoch = sessionEpoch;
   if (options.timeoutMs !== undefined && (!Number.isSafeInteger(options.timeoutMs) || options.timeoutMs < 1 || options.timeoutMs > 120_000)) throw new RangeError('Invalid request deadline');
   const commerceDeadline = /^\/api\/(?:billing|admin|articles)(?:\/|$)/.test(path) ? ACCOUNT_TIMEOUT_MS : 0;
   const deadline = options.timeoutMs ?? (path.startsWith('/api/auth/') ? ACCOUNT_TIMEOUT_MS : commerceDeadline);
@@ -205,7 +207,7 @@ export async function api<T>(path: string, options: { method?: string; body?: un
     // valid existing session, so credential-check endpoints are excluded.
     const protectedAuthRead = (options.method || 'GET').toUpperCase() === 'GET' &&
       /^\/api\/auth\/(?:me|sessions|security\/events|mfa\/status|email\/status)(?:\?|$)/.test(path);
-    if (response.status === 401 && path.startsWith('/api/') &&
+    if (response.status === 401 && requestEpoch === sessionEpoch && !options.signal?.aborted && path.startsWith('/api/') &&
         (!/^\/api\/auth(?:\/|\?|$)/.test(path) || protectedAuthRead) && typeof window !== 'undefined') {
       window.dispatchEvent(new Event(SESSION_EXPIRED_EVENT));
     }
@@ -234,6 +236,10 @@ export async function api<T>(path: string, options: { method?: string; body?: un
   validateStorageResponse(path, (options.method || 'GET').toUpperCase(), options.body, payload);
   validateCommunityResponse(path, (options.method || 'GET').toUpperCase(), payload);
   validateExpertBookResponse(path, (options.method || 'GET').toUpperCase(), payload);
+  // Old requests may still finish after a new session is established. Their
+  // errors remain errors for their callers, but cannot revoke the new session.
+  if ((options.method || 'GET').toUpperCase() === 'POST' &&
+      ['/api/auth/login','/api/auth/register','/api/auth/google/verify'].includes(path) && authUser(payload.user)) sessionEpoch++;
   return payload as unknown as T;
 }
 export const accountApi = {

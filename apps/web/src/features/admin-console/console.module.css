@@ -14,3 +14,16 @@
 .authorityGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:18px;margin:22px 0}.authorityGrid h2{margin-top:14px}.dossier{min-width:0;display:grid;gap:16px;margin:18px 0;padding:18px 0;border-block:1px solid var(--line)}.dossier h3{margin:0;font-size:17px}.dossierFacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:12px;margin:0}.dossierFacts div{padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--panel-alt);overflow-wrap:anywhere}.dossierFacts dt{font-size:11px;color:var(--muted)}.dossierFacts dd{margin:7px 0 0;font-size:13px}.dossierEntry{padding:14px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.dossierEntry button{margin:10px}.dossier textarea{min-height:90px}
 
 .showcaseField{border:1px solid var(--line);border-radius:14px;padding:16px;min-width:0}.showcaseField legend{padding:0 8px;font-weight:650}.showcasePicker{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(130px,100%),1fr));gap:10px;margin:14px 0}.showcasePicker button{display:grid;justify-items:center;gap:8px;padding:12px 8px}.showcasePicker button[aria-pressed=true]{border-color:var(--gold);background:var(--glow);box-shadow:inset 0 -3px var(--gold)}.showcasePicker span{font-size:11px;line-height:1.5;text-align:center}
+
+/* Touch tablets need the same usable controls as phones, including landscape. */
+@media (pointer:coarse){
+ .page input:not([type=checkbox]):not([type=radio]):not([type=range]),.page select,.page textarea{font-size:16px}
+ .page button,.button{min-height:44px}
+ .permissionRow label{min-height:44px}
+ .table{overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+}
+@media(max-width:420px){
+ .permissionRow{grid-template-columns:minmax(0,1fr) 65px 75px;gap:4px;padding-inline:4px}
+ .pagination{flex-wrap:wrap}
+ .heroActions{width:100%}
+}

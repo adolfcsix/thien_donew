@@ -1,4 +1,5 @@
 'use client';
+import {observeDialogViewport} from '@/lib/dialog-viewport.cjs';
 
 import {
   Fragment, createContext, useCallback, useContext, useEffect, useRef, useState,
@@ -250,6 +251,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 function useDialogFocus(close: () => void, pending: boolean) {
   const dialog = useRef<HTMLElement>(null);
   useEffect(() => {
+    const restoreViewport=observeDialogViewport(dialog.current,window);
     const previous = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const lastOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -259,6 +261,7 @@ function useDialogFocus(close: () => void, pending: boolean) {
     });
     return () => {
       cancelAnimationFrame(frame);
+      restoreViewport();
       document.body.style.overflow = lastOverflow;
       previous?.focus();
     };

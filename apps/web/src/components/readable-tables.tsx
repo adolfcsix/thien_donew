@@ -24,7 +24,10 @@ export function ReadableTables() {
       state.applied.set(attribute,value);
     }
     const observed = new Set<Element>();
-    const resize = new ResizeObserver(schedule);
+    // Some embedded browsers omit ResizeObserver. Keep tables usable and
+    // remeasure on viewport changes instead of crashing the shared shell.
+    const resize = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(schedule);
+    window.addEventListener('resize', schedule);
     function schedule() {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(update);
@@ -32,7 +35,7 @@ export function ReadableTables() {
     function update() {
       if (!main) return;
       for (const element of observed) {
-        if (!element.isConnected) { resize.unobserve(element); observed.delete(element); }
+        if (!element.isConnected) { resize?.unobserve(element); observed.delete(element); }
       }
       main.querySelectorAll('table').forEach(table => {
         let wrapper = table.parentElement;
@@ -43,11 +46,11 @@ export function ReadableTables() {
           wrapper.classList.add('readable-table');
         }
         for (const element of [wrapper, table]) {
-          if (!observed.has(element)) { resize.observe(element); observed.add(element); }
+          if (!observed.has(element)) { resize?.observe(element); observed.add(element); }
         }
       });
       enhanced.forEach((original, wrapper) => {
-        if (!wrapper.isConnected) { resize.unobserve(wrapper); enhanced.delete(wrapper); return; }
+        if (!wrapper.isConnected) { resize?.unobserve(wrapper); enhanced.delete(wrapper); return; }
         const overflows = wrapper.scrollWidth > wrapper.clientWidth + 1;
         wrapper.dataset.overflow = String(overflows);
         fallback(wrapper,original,'tabindex',overflows?'0':null);
@@ -69,7 +72,8 @@ export function ReadableTables() {
     schedule();
     return () => {
       cancelAnimationFrame(frame);
-      mutation.disconnect(); resize.disconnect();
+      window.removeEventListener('resize', schedule);
+      mutation.disconnect(); resize?.disconnect();
       enhanced.forEach((original, wrapper) => {
         if (!original.hadClass) wrapper.classList.remove('readable-table');
         delete wrapper.dataset.overflow;

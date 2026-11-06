@@ -25,7 +25,7 @@ async function bootstrap() {
     if (prod) res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
     if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(req.method) && req.path !== '/api/billing/webhook/payos') {
       if (!isTrustedMutation(req.headers.origin, req.headers['sec-fetch-site'], allowed)) {
-        return res.status(403).json({ error: 'Nguồn yêu cầu không hợp lệ' });
+        return res.status(403).json({statusCode:403,code:'ORIGIN_NOT_ALLOWED',error:'Nguồn yêu cầu không hợp lệ',message:prod?'Nguồn yêu cầu không hợp lệ':'Địa chỉ truy cập không khớp WEB_ORIGIN. Dùng đúng địa chỉ đã cấu hình hoặc khởi động bằng npm run dev:lan để truy cập qua IP LAN.',requestId:res.locals.requestId});
       }
     }
     next();

@@ -1,4 +1,6 @@
 'use client';
+import {createRequestId} from '@/lib/request-id.cjs';
+
 import consoleCss from '@/features/admin-console/console.module.css';
 import {adminLinks} from '@/features/admin-console/model';
 import {AdminMembers} from '@/features/admin-console/members';
@@ -48,7 +50,7 @@ export default function Admin() {
     const giftRequest = useRef<{fingerprint:string;id:string}|null>(null);
     function grantPro(){
         const fingerprint=JSON.stringify(grant);
-        if(giftRequest.current?.fingerprint!==fingerprint)giftRequest.current={fingerprint,id:crypto.randomUUID()};
+        if(giftRequest.current?.fingerprint!==fingerprint)giftRequest.current={fingerprint,id:createRequestId()};
         void action('/api/admin/console/pro/'+grant.userId+'/gift',{...(grant.lifetime?{lifetime:true}:{days:grant.days}),reason:grant.reason,requestId:giftRequest.current.id},'POST',()=>{giftRequest.current=null;setGrant(current=>({...current,reason:''}));});
     }
     async function load(target = tab, signal?: AbortSignal) {

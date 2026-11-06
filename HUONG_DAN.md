@@ -558,3 +558,12 @@ Chạy `npm run db:migrate` để thêm migration 037 trước khi khởi độn
 Trong Bàn điều hành → Đơn & quyền, chọn tài khoản, thời hạn “Vĩnh viễn · đến khi thu hồi” và lý do ít nhất 8 ký tự. Admin cần quyền `finance.write`, quyền đọc thành viên để chọn tài khoản và MFA mới. Cũng có thể thao tác trong hồ sơ vận hành thành viên. Thu hồi giữ nguyên lịch sử và đóng quyền ở API. Owner vẫn giữ các quyền riêng như cấu hình giá, phân quyền đội ngũ và quy trình hoàn tiền.
 
 Cơ bản giữ công cụ và kết quả chính; Chuyên sâu mở bảng phân tích và đối chiếu. Báo cáo nghiên cứu và Xưởng phương pháp có khóa Pro do API kiểm tra. Admin được miễn yêu cầu mua gói; các yêu cầu MFA quản trị vẫn áp dụng.
+
+
+## Chạy thử trên điện thoại cùng Wi-Fi
+
+Dùng `npm run dev:lan` tại thư mục gốc (Windows: `START_THIEN_DO_LAN_WINDOWS.bat`). Chương trình chọn IP LAN khi máy chỉ có một IP phù hợp, đồng bộ `WEB_ORIGIN` cho API và mở Next bằng `--hostname 0.0.0.0`. Nếu có nhiều card mạng, chọn rõ IP: `npm run dev:lan -- 192.168.1.242` (thay bằng IP hiện tại của máy). Mở đúng URL chương trình in ra trên cả máy và điện thoại, không dùng lẫn localhost/127.0.0.1/IP trong cùng phiên. Cần cùng Wi-Fi và cho phép Node trên mạng riêng trong Windows Firewall.
+
+Đây là lệnh phát triển, không dành cho production; không tắt cookie Secure hoặc MFA của máy chủ thật. Không sửa DATABASE_URL, không xóa database để xử lý lỗi tài khoản. Nếu COOKIE_SECURE=true hoặc NODE_ENV=production, lệnh từ chối chạy HTTP LAN và yêu cầu HTTPS/môi trường phát triển riêng.
+
+Nếu báo lỗi đăng ký, chạy `npm run check:auth:register`; công cụ mới đối chiếu tên migration hiện tại thay vì cố định 36. Gửi mã hỗ trợ nếu có, không gửi mật khẩu hoặc nội dung .env.

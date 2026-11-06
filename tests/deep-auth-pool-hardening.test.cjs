@@ -11,7 +11,7 @@ const ts=getTs();
 if(!ts){test('Deep auth/pool tests require TypeScript compiler',{skip:true},()=>{});}
 else {
  const originalLoad=Module._load, originalTs=require.extensions['.ts'];
- const nest={Logger:{warn(){}},Injectable:()=>()=>{},BadRequestException:class extends Error{status=400},ConflictException:class extends Error{status=409},UnauthorizedException:class extends Error{status=401},HttpException:class extends Error{constructor(msg,status){super(msg);this.status=status}},HttpStatus:{TOO_MANY_REQUESTS:429}};
+ const nest={ServiceUnavailableException:class extends Error{status=503},Logger:{warn(){}},Injectable:()=>()=>{},BadRequestException:class extends Error{status=400},ConflictException:class extends Error{status=409},UnauthorizedException:class extends Error{status=401},HttpException:class extends Error{constructor(msg,status){super(msg);this.status=status}},HttpStatus:{TOO_MANY_REQUESTS:429}};
  let poolFactory=()=>{throw Error('Unexpected pool')};
  Module._load=function(name,parent,isMain){if(name==='@nestjs/common')return nest;if(name==='pg')return {Pool:class {constructor(){return Object.assign({on(){}},poolFactory())}}};return originalLoad.apply(this,arguments);};
  require.extensions['.ts']=function(mod,file){const out=ts.transpileModule(fs.readFileSync(file,'utf8'),{fileName:file,compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,experimentalDecorators:true,esModuleInterop:true}});mod._compile(out.outputText,file)};
@@ -38,4 +38,35 @@ else {
  });
  test('DatabaseService discards PostgreSQL connection if ROLLBACK fails and preserves original error',async()=>{const original=new Error('original write failure');let released=[];poolFactory=()=>({connect:async()=>({query:async(sql)=>{if(sql==='BEGIN')return{};if(sql==='ROLLBACK')throw Error('dead socket');throw original;},release:(discard)=>released.push(discard)}),end:async()=>{}});const dbs=new DatabaseService();await assert.rejects(()=>dbs.transaction(async c=>c.query('INSERT FAILS')),e=>e===original);assert.deepEqual(released,[true]);});
  test('DatabaseService reuses healthy connection after successful rollback',async()=>{const original=new Error('write rejected');let released=[];poolFactory=()=>({connect:async()=>({query:async(sql)=>{if(sql==='BEGIN'||sql==='ROLLBACK')return{};throw original},release:(discard)=>released.push(discard)}),end:async()=>{}});const dbs=new DatabaseService();await assert.rejects(()=>dbs.transaction(async c=>c.query('BAD SQL')),e=>e===original);assert.deepEqual(released,[false]);});
+ test('1000 database operations have a shared bounded budget and recover after a burst',async()=>{
+  const pending=[];let calls=0;
+  poolFactory=()=>({query:()=>{calls++;return new Promise(resolve=>pending.push(resolve))},end:async()=>{}});
+  const service=new DatabaseService();
+  const burst=Array.from({length:1000},()=>service.query('SELECT 1'));
+  const settled=Promise.allSettled(burst);
+  assert.equal(calls,64,'Excess requests must not reach pg or its waiter queue');
+  for(const resolve of pending)resolve({rows:[]});
+  const results=await settled;
+  assert.equal(results.filter(x=>x.status==='fulfilled').length,64);
+  assert.equal(results.filter(x=>x.status==='rejected'&&x.reason.status===503).length,936);
+  const next=service.query('SELECT 1');pending.at(-1)({rows:[{ok:true}]});assert.equal((await next).rows[0].ok,true);
+ });
+ test('Transaction waiters share query budget; connect failures release admission',async()=>{
+  const pending=[];let connections=0;
+  poolFactory=()=>({query:()=>new Promise(resolve=>pending.push(resolve)),connect:async()=>{connections++;throw Error('connect failed')},end:async()=>{}});
+  const service=new DatabaseService();
+  const queries=Array.from({length:64},()=>service.query('SELECT 1'));
+  await assert.rejects(()=>service.transaction(async()=>{}),e=>e.status===503);assert.equal(connections,0);
+  pending.forEach(resolve=>resolve({rows:[]}));await Promise.all(queries);
+  for(let i=0;i<100;i++)await assert.rejects(()=>service.transaction(async()=>{}),/connect failed/);
+  assert.equal(connections,100,'Failed connects cannot leak budget');
+ });
+ test('Rejected query releases its budget and shutdown refuses new work',async()=>{
+  poolFactory=()=>({query:async()=>{throw Error('query failed')},end:async()=>{}});
+  const service=new DatabaseService();
+  for(let i=0;i<100;i++)await assert.rejects(()=>service.query('SELECT 1'),/query failed/);
+  await service.onModuleDestroy();await assert.rejects(()=>service.query('SELECT 1'),e=>e.status===503);
+  await assert.rejects(()=>service.transaction(async()=>{}),e=>e.status===503);
+ });
+
 }

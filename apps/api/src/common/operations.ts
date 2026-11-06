@@ -31,6 +31,7 @@ export class SafeExceptionFilter implements ExceptionFilter {
  catch(error:unknown,host:ArgumentsHost) {
   const res=host.switchToHttp().getResponse<Response>();
   const status=error instanceof HttpException?error.getStatus():500;
+  if(status===429||status===503)res.setHeader('Retry-After','5');
   if(status>=500)console.error(JSON.stringify({event:'api_error',requestId:res.locals.requestId,status,category:failureCategory(error)}));
   const payload=status<500&&error instanceof HttpException?error.getResponse():null;
   const message=typeof payload==='string'?payload:payload&&typeof payload==='object'&&'message' in payload?payload.message:'Lỗi máy chủ. Vui lòng thử lại sau';

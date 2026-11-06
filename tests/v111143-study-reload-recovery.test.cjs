@@ -47,7 +47,7 @@ test('V11.114.3: malformed records and data never persisted', async()=>{
  const s=storage(),fp=await fingerprintEntries(entry,webcrypto);
  assert.match(fp,/^[a-f0-9]{64}$/);
  assert.notEqual(fp,await fingerprintEntries([{...entry[0],notes:'khác'}],webcrypto));
- await assert.rejects(fingerprintEntries(entry,{}),/không hỗ trợ/);
+ assert.equal(await fingerprintEntries(entry,{}),fp); // HTTP LAN uses the same portable SHA-256 fingerprint
  assert.throws(()=>reservePending(s,userA,fp,()=>'invalid'),/generated/);
  assert.equal(s.contents.size,0);
 });

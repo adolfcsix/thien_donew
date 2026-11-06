@@ -18,3 +18,10 @@ export function analyzeRegistrationSchema(migrations, columns) {
     .filter(field => !present.has(`${table}.${field}`)).map(field => `${table}.${field}`));
   return {ok:missingMigrations.length===0 && missingColumns.length===0, missingMigrations, missingColumns};
 }
+
+/** Compare actual filenames, not a stale historical migration count. */
+export function analyzeAccountMigrationLedger(expected,applied){
+ const have=new Set(applied),wanted=new Set(expected);
+ const missing=expected.filter(name=>!have.has(name)),unexpected=applied.filter(name=>!wanted.has(name));
+ return {ok:missing.length===0&&unexpected.length===0&&have.size===applied.length,missing,unexpected};
+}

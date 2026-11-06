@@ -1,4 +1,6 @@
 'use client';
+import {createRequestId} from '@/lib/request-id.cjs';
+
 
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
@@ -14,7 +16,7 @@ export function PageViewRecorder() {
     if (pathname.startsWith('/admin') || navigator.doNotTrack === '1') return;
     if (!last.current || last.current.path !== pathname) last.current = {
       path: pathname,
-      id: crypto.randomUUID()
+      id: createRequestId()
     };
     const controller = new AbortController();
     void fetch('/api/analytics/page-view', {

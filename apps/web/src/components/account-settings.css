@@ -344,3 +344,8 @@ html[data-thiendo-theme="light"] .modal.account-modal .text-danger{color:#a12d26
   .modal.account-modal.thien-mon-branded.account-modal-signed-in { max-height: calc(100dvh - 20px); }
 }
 
+
+/* The iOS keyboard resizes VisualViewport independently of the layout viewport. */
+.modal-backdrop.account-backdrop{top:var(--account-viewport-top,0px);bottom:auto;height:var(--account-viewport-height,100dvh);box-sizing:border-box;}
+.modal-backdrop.account-backdrop .modal.account-modal.thien-mon-branded{min-height:0;max-height:min(calc(var(--account-viewport-height,100dvh) - 2 * clamp(10px,3vw,28px)),900px);}
+@media(max-width:860px){.modal-backdrop.account-backdrop .modal.account-modal.thien-mon-branded{overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;}.modal.account-modal input,.modal.account-modal select,.modal.account-modal textarea{font-size:16px;}.modal.account-modal .account-close{width:44px;height:44px;}}

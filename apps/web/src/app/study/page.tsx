@@ -1,4 +1,6 @@
 'use client';
+import {createRequestId} from '@/lib/request-id.cjs';
+
 import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {usePendingOperation} from '@/lib/use-pending-operation';
@@ -139,8 +141,8 @@ function StudyForUser({userId}:{userId:string}){
       // contains the backup data, notes, titles or snapshots.
       let reservation:{importId:string;resumed:boolean};
       let persistent=true;
-      try { reservation=reservePending(window.sessionStorage,userId,fingerprint,()=>crypto.randomUUID()); }
-      catch { reservation={importId:crypto.randomUUID(),resumed:false};persistent=false; }
+      try { reservation=reservePending(window.sessionStorage,userId,fingerprint,()=>createRequestId()); }
+      catch { reservation={importId:createRequestId(),resumed:false};persistent=false; }
       setBackupEntries(parsed);setBackupImportId(reservation.importId);setBackupFingerprint(fingerprint);
       setError(!persistent
         ? `Đã kiểm tra ${parsed.length} hồ sơ, nhưng trình duyệt chặn bộ nhớ phiên: tránh tải lại trang giữa lúc khôi phục để không mất mã yêu cầu.`

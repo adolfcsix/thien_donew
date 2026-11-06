@@ -352,7 +352,7 @@ test('V11.114.2: readiness, migration, and client retry reuse the durable receip
  assert.match(service,/INSERT INTO study_import_receipts/);
  assert.match(text('apps/api/src/modules/study/study.controller.ts'),/@Get\('import\/:id'\)/);
  const ui=text('apps/web/src/app/study/page.tsx');
- assert.match(ui,/crypto.randomUUID\(\)/);
+ assert.match(ui,/createRequestId\(\)/);
  assert.match(ui,/studyApi.importStatus\(backupImportId\)/);
  assert.match(ui,/studyApi.importBackup\(restoring,backupImportId\)/);
 });

@@ -42,7 +42,12 @@ function VerifiedSession({children}:{children:ReactNode}){
     let status=parseAdminMfa(await api<unknown>('/api/auth/mfa/status',{signal:controller.signal,timeoutMs:15000}),a);
     if(status.configured&&status.enabled&&!status.verified){
      // Trusted access is decided only by backend, with HttpOnly cookie and DB token.
-     const trusted=await api<{restored:boolean}>('/api/auth/mfa/trusted-session',{method:'POST',body:{},signal:controller.signal,timeoutMs:15000});
+     // A remembered-device outage must still allow explicit TOTP verification.
+     // Authentication/permission rejections remain fatal; no privileged UI is opened.
+     let trusted={restored:false};
+     try{trusted=await api<{restored:boolean}>('/api/auth/mfa/trusted-session',{method:'POST',body:{},signal:controller.signal,timeoutMs:15000});}
+     catch(reason){const status=(reason as {status?:number})?.status;if(status===401||status===403)throw reason;}
+     if(controller.signal.aborted)return;
      if(trusted.restored)status=parseAdminMfa(await api<unknown>('/api/auth/mfa/status',{signal:controller.signal,timeoutMs:15000}),a);
     }
     const own=status.configured&&status.verified?parseWorkspace(await api<unknown>('/api/admin/console/session',{signal:controller.signal,timeoutMs:15000})):null;
@@ -52,7 +57,10 @@ function VerifiedSession({children}:{children:ReactNode}){
   })();
  },[]);
  useEffect(()=>{refresh();return()=>active.current?.abort();},[pathname,refresh]);
- useVisibleRefresh(refresh);
+ // Leaving for Mail/Authenticator is part of enrollment. Refreshing here would
+ // unmount the gate and discard its email challenge, setup key and typed code.
+ // Once privileged content is open, continue revalidating on every return.
+ useVisibleRefresh(refresh,!!workspace&&mfa?.verified===true);
  if(error)return <section className={styles.page}><h1>Khu vực quản trị</h1><p role="alert">{error}</p>{access&&!access.isAdmin&&<><p>Đang dùng: <strong>{user?.displayName||user?.username||user?.email}</strong>. Quyền Admin/Owner được cấp riêng, không đi kèm gói dịch vụ.</p><p>Nếu đây là máy chủ mới, người vận hành cần kiểm tra tài khoản Owner đã được khởi tạo đúng database theo hướng dẫn HUONG_DAN.md.</p><button type="button" onClick={()=>open()}>Mở hồ sơ để kiểm tra hoặc đổi tài khoản</button></>}<div className={styles.actions}><button onClick={refresh}>Kiểm tra lại quyền</button><Link href="/membership">Về trang thành viên</Link></div></section>;
  if(!access||!mfa)return <p className={styles.sessionPlaceholder} role="status">Đang xác minh quyền và MFA…</p>;
  if(!mfa.configured||!mfa.verified)return <AdminMfaGate status={mfa} onVerified={refresh}/>;

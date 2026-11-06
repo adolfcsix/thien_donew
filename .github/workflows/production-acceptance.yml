@@ -55,11 +55,16 @@ jobs:
           THIENDO_SQL_TEST_MODULE: '${{ runner.temp }}/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js'
         run: |
           THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-account-browser" node tests/account.browser.cjs
+          THIENDO_BROWSER_SCOPE=touch-compat THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-touch-chromium" node tests/account.browser.cjs
           THIENDO_BROWSER_SCOPE=lifetime-pro THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-lifetime-pro-browser" node tests/account.browser.cjs
           THIENDO_BROWSER_SCOPE=study-tabs THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-study-tabs-browser" node tests/account.browser.cjs
           THIENDO_BROWSER_SCOPE=observatory THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-observatory-browser" node tests/account.browser.cjs
           THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-ai-browser" node tests/v1116413-ai-insights.browser.cjs
           THIENDO_READER_REPORT_DIR="$RUNNER_TEMP/thiendo-reader-browser" npm run test:reader:browser
+      - name: WebKit touch, viewport and HTTP-LAN capability regression
+        run: |
+          node "$RUNNER_TEMP/thiendo-browser/node_modules/playwright/cli.js" install --with-deps webkit
+          THIENDO_BROWSER_ENGINE=webkit THIENDO_BROWSER_SCOPE=touch-compat THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-touch-webkit" THIENDO_PLAYWRIGHT_MODULE="$RUNNER_TEMP/thiendo-browser/node_modules/playwright" THIENDO_SQL_TEST_MODULE="$RUNNER_TEMP/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js" node tests/account.browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -72,6 +77,8 @@ jobs:
             ${{ runner.temp }}/thiendo-observatory-browser
             ${{ runner.temp }}/thiendo-study-tabs-browser
             ${{ runner.temp }}/thiendo-lifetime-pro-browser
+            ${{ runner.temp }}/thiendo-touch-chromium
+            ${{ runner.temp }}/thiendo-touch-webkit
             ${{ runner.temp }}/thiendo-ai-browser
             ${{ runner.temp }}/thiendo-reader-browser
           if-no-files-found: warn

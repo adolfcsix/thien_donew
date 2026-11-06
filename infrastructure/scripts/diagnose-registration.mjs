@@ -1,9 +1,10 @@
+import {verifyMigrationChain,defaultDbDir,defaultBaselinePath} from './lib/migration-chain-integrity.mjs';
 /** Registration failure doctor. READ ONLY. Never displays credentials, email,
  * cookies, SQL error text, or any account records. No registration is attempted.
  *
  * Windows: npm.cmd run check:auth:register
  */
-import {ACCOUNT_COLUMNS,analyzeRegistrationSchema} from './lib/registration-readiness.mjs';
+import {ACCOUNT_COLUMNS,analyzeRegistrationSchema,analyzeAccountMigrationLedger} from './lib/registration-readiness.mjs';
 
 const url = process.env.DATABASE_URL || 'postgresql://thiendo:thiendo_dev@localhost:5432/thiendo';
 const report = [];
@@ -42,7 +43,9 @@ try {
   } else {
     const rows=await db.query('SELECT name FROM public.schema_migrations');
     const applied=rows.rows.map(item=>item.name);
-    result('migration-ledger',applied.length===36,`${applied.length}/36 migration đã ghi nhận. Chưa đủ thì sao lưu và chạy npm.cmd run db:migrate.`);
+    const expected=verifyMigrationChain(defaultDbDir,defaultBaselinePath).files;
+    const checked=analyzeAccountMigrationLedger(expected,applied);
+    result('migration-ledger',checked.ok,`${applied.length}/${expected.length} migration đã ghi nhận. Thiếu: ${checked.missing.join(', ')||'không'}; ngoài mã nguồn: ${checked.unexpected.join(', ')||'không'}. Khi thiếu, sao lưu và chạy npm.cmd run db:migrate.`);
     const columns=await db.query(`SELECT table_name,column_name FROM information_schema.columns
       WHERE table_schema='public' AND table_name = ANY($1::text[])`,[Object.keys(ACCOUNT_COLUMNS)]);
     const contract=analyzeRegistrationSchema(applied,columns.rows);

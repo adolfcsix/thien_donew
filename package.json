@@ -211,7 +211,9 @@
     "test:reader:browser": "node tests/book-reader-browser.mjs",
     "test:auth:routing:sql": "node --test tests/auth-routing-security-sql.test.mjs",
     "test:western:dom": "node --test tests/western-workbench-dom.test.mjs tests/readable-tables-dom.test.mjs",
-    "test:western:browser": "node tests/western-workbench-browser.cjs"
+    "test:western:browser": "node tests/western-workbench-browser.cjs",
+    "dev:lan": "node infrastructure/scripts/start-local-lan.mjs",
+    "test:auth:config": "node --test tests/local-lan-origin.test.mjs tests/account-migration-diagnostic.test.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

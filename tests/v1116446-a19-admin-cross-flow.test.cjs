@@ -32,11 +32,12 @@ test('admin page revokes previous verified UI on each request, including focus a
  const start=frontend.indexOf('const refresh=useCallback('),end=frontend.indexOf('},[]);',start);
  const body=frontend.slice(start,end);
  assert.ok(start>=0&&end>start);
- assert.ok(body.indexOf('setAccess(null);setMfa(null);setError(\'\');')<body.indexOf('await api<unknown>'), 'clear old privilege before async request');
+ const clear=body.indexOf('setAccess(null);setMfa(null);setWorkspace(null);setError(\'\');');
+ assert.ok(clear>=0&&clear<body.indexOf('await api<unknown>'), 'clear old privilege before async request');
  assert.match(body,/if\(controller\.signal\.aborted\)return;/);
  assert.match(body,/parseAdminMfa\(await api<unknown>/);
  assert.match(frontend,/\[pathname,refresh\]/);
- assert.match(frontend,/useVisibleRefresh\(refresh\)/);
+ assert.match(frontend,/useVisibleRefresh\(refresh,!!workspace&&mfa\?\.verified===true\)/);
  assert.match(frontend,/if\(!access\|\|!mfa\)return/);
  assert.match(frontend,/if\(!mfa\.configured\|\|!mfa\.verified\)return/);
 });

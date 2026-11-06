@@ -1,0 +1,5 @@
+'use strict';
+const {test}=require('node:test'),assert=require('node:assert/strict'),{createHash,randomBytes,webcrypto}=require('node:crypto');
+const {sha256Fingerprint}=require('../apps/web/src/features/study-room/sha256-fingerprint.cjs'),{fingerprintEntries}=require('../apps/web/src/features/study-room/import-retry.cjs');
+test('portable SHA-256 matches known vectors and Node for UTF-8, padding edges and large backups',()=>{assert.equal(sha256Fingerprint(new Uint8Array()),'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855');assert.equal(sha256Fingerprint(new TextEncoder().encode('abc')),'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad');for(const n of [1,55,56,63,64,65,119,120,127,128,129,1024,2*1024*1024]){const bytes=randomBytes(n);assert.equal(sha256Fingerprint(bytes),createHash('sha256').update(bytes).digest('hex'),'length '+n);}});
+test('backup fingerprint remains identical with/without subtle, preserving retry keys across HTTPS/LAN',async()=>{const entries=[{title:'Thiên Đồ 🌙',notes:'Cung Mệnh',snapshot:{date:'2000-01-01'}}];assert.equal(await fingerprintEntries(entries,{}),await fingerprintEntries(entries,webcrypto));});
