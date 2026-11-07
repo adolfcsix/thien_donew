@@ -1,3 +1,4 @@
+import {mockMemberAccessForUi} from './helpers-ui-member-access.mjs';
 /** V11.110.1: live Next/Chromium contract for confirmation and evidence rendering.
  * Only /api/auth/me is stubbed. No PostgreSQL, login or browser-on-phone claims.
  * Requires a built and running Next server and Playwright with Chromium installed.
@@ -34,14 +35,14 @@ try{
   const context=await browser.newContext({viewport});
   const page=await context.newPage(),errors=[];
   page.on('pageerror',error=>errors.push(error.message));
-  await context.route('**/api/auth/me',route=>route.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
+  await mockMemberAccessForUi(context);await context.route('**/api/auth/me',route=>route.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
   await page.goto(origin+'/ky-mon');
   await page.getByRole('button',{name:'Nhập thông tin đã đối chiếu',exact:true}).click();
   await page.getByLabel('Tiết khí đã xác nhận').selectOption('3');
   await page.getByLabel('Can Chi ngày đã xác nhận').selectOption('52');
   await page.getByLabel('Can Chi giờ theo Ngũ Tý Độn').selectOption('5');
   assert.equal(await page.getByRole('region',{name:'Đọc bàn theo câu hỏi'}).count(),0);
-  await page.getByRole('button',{name:/Khám phá Chuyên sâu/}).click();
+  await page.getByRole('group',{name:'Chế độ hiển thị',exact:true}).getByRole('button',{name:'Chuyên sâu',exact:true}).click();
   const panel=page.getByRole('region',{name:'Đọc bàn theo câu hỏi'});
   await panel.waitFor();
   const topic=panel.getByRole('combobox',{name:/Chủ đề muốn xem/});
@@ -97,7 +98,7 @@ try{
    mkdirSync(process.env.THIENDO_UI_DEBUG_DIR,{recursive:true});
    await panel.screenshot({path:join(process.env.THIENDO_UI_DEBUG_DIR,`question-${viewport.width}.png`)});
   }
-  await page.getByRole('button',{name:/Chuyển về Cơ bản/}).click();
+  await page.getByRole('group',{name:'Chế độ hiển thị',exact:true}).getByRole('button',{name:'Cơ bản',exact:true}).click();
   assert.equal(await panel.isVisible(),false);
   assert.deepEqual(errors,[]);
   console.log(`PASS question-reading Chromium ${viewport.width}x${viewport.height}: confirmed evidence, relation, jump, reversible edits, board invalidation, no-hour and basic mode`);

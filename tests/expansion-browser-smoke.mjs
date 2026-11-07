@@ -1,3 +1,4 @@
+import {mockMemberAccessForUi} from './helpers-ui-member-access.mjs';
 /** Production Next/Chromium UI checks; auth/storage HTTP mocked explicitly. */
 import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
@@ -11,7 +12,7 @@ for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
   const context=await browser.newContext({viewport}),page=await context.newPage(),errors=[];let signedIn=true,posts=[];
   page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
   const snapshot={method:'pythagorean-segmented-v1',name:'Ada Lovelace',date:'1980-10-22',year:2026,yMode:'consonant',masters:true};
-  await context.route('**/api/auth/me',r=>r.fulfill({json:{user:signedIn?{id:userId,email:'ui@example.invalid'}:null}}));
+  await mockMemberAccessForUi(context);await context.route('**/api/auth/me',r=>r.fulfill({json:{user:signedIn?{id:userId,email:'ui@example.invalid'}:null}}));
   await context.route('**/api/study/'+entryId,r=>r.fulfill({json:{entry:{id:entryId,discipline:'numerology',title:'Fixture',summary:'',notes:'',tags:[],snapshot,pinned:false,createdAt:'2026-10-13',updatedAt:'2026-10-13'}}}));
   await context.route('**/api/study',r=>{posts.push(r.request().postDataJSON());return r.fulfill({json:{id:entryId}});});
   await page.goto(origin+'/numerology');await page.getByLabel('Họ tên theo giấy khai sinh').fill('Ada Lovelace');await page.getByLabel('Ngày sinh dương lịch',{exact:true}).fill('1980-10-22');await page.getByRole('button',{name:'Tính và đối chiếu',exact:true}).click();

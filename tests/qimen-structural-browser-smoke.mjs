@@ -1,3 +1,4 @@
+import {mockMemberAccessForUi} from './helpers-ui-member-access.mjs';
 /** Actual Chromium/Next UI; only anonymous auth/me stubbed. No database/save claims. */
 import assert from 'node:assert/strict';
 import {readFileSync,mkdirSync} from 'node:fs';
@@ -15,9 +16,9 @@ const errors=[];
 try{
  for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
   const context=await browser.newContext({viewport});const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
-  await context.route('**/api/auth/me',route=>route.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
+  await mockMemberAccessForUi(context);await context.route('**/api/auth/me',route=>route.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
   await page.goto(base+'/ky-mon');await page.getByRole('button',{name:'Nhập thông tin đã đối chiếu',exact:true}).click();
-  await page.getByRole('button',{name:/Khám phá Chuyên sâu/}).click();
+  await page.getByRole('group',{name:'Chế độ hiển thị',exact:true}).getByRole('button',{name:'Chuyên sâu',exact:true}).click();
   for(const input of [{term:3,day:52,branch:5},{term:14,day:14,branch:10}]){
    await page.getByLabel('Tính địa bàn, thời bàn và Tuần Không khi có giờ').check();
    await page.getByLabel('Tiết khí đã xác nhận').selectOption(String(input.term));await page.getByLabel('Can Chi ngày đã xác nhận').selectOption(String(input.day));await page.getByLabel('Can Chi giờ theo Ngũ Tý Độn').selectOption(String(input.branch));
@@ -52,7 +53,7 @@ try{
   await page.getByLabel('Tính địa bàn, thời bàn và Tuần Không khi có giờ').uncheck();
   assert.equal(await panel.locator('[data-structural-state="not-computed"]').count(),2);
   assert.equal(await panel.locator('[data-structural-state="present"]').count(),0);
-  await page.getByRole('button',{name:/Chuyển về Cơ bản/}).click();assert.equal(await panel.isVisible(),false);
+  await page.getByRole('group',{name:'Chế độ hiển thị',exact:true}).getByRole('button',{name:'Cơ bản',exact:true}).click();assert.equal(await panel.isVisible(),false);
   console.log(`PASS structural UI ${viewport.width}x${viewport.height}: two independent door/grave tables across two boards, nine palaces, sources, variants, no-hour and basic mode; anonymous auth/me stubbed`);
   await context.close();
  }

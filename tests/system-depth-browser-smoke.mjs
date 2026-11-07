@@ -1,3 +1,4 @@
+import {mockMemberAccessForUi} from './helpers-ui-member-access.mjs';
 /** Live production Next, anonymous auth/me stub only; no DB or real login claims. */
 import assert from 'node:assert/strict';
 import {readFileSync,mkdirSync} from 'node:fs';
@@ -12,7 +13,7 @@ const {chromium}=await import(moduleName);
 const browser=await chromium.launch({headless:true,...(process.env.THIENDO_CHROMIUM_PATH?{executablePath:process.env.THIENDO_CHROMIUM_PATH}:{}),...(process.env.THIENDO_CHROMIUM_ARGS_JSON?{args:JSON.parse(process.env.THIENDO_CHROMIUM_ARGS_JSON)}:{})});
 const errors=[],downloads=process.env.THIENDO_DOWNLOAD_TEST_DIR||'/tmp/thien-do-workbook-exports';mkdirSync(downloads,{recursive:true});
 const base=formation.makeBaseFormation({solarTermIndex:3,dayCycleIndex:52,hourCycleIndex:formation.hourForDayBranch(52,5).index}),plate=hour.buildRotatingHourPlate(base);
-async function expert(page){await page.getByRole('button',{name:'Chuyên sâu',exact:true}).click();await page.getByRole('button',{name:/Chuyển về Cơ bản/}).waitFor();}
+async function expert(page){await page.getByRole('button',{name:'Chuyên sâu',exact:true}).click();assert.equal(await page.getByRole('group',{name:'Chế độ hiển thị',exact:true}).getByRole('button',{name:'Chuyên sâu',exact:true}).getAttribute('aria-pressed'),'true');}
 async function openDetails(panel){for(const details of await panel.locator('details').all())if(await details.getAttribute('open')===null)await details.locator('summary').first().click();}
 async function download(page,panel,file){const event=page.waitForEvent('download');await panel.getByRole('button',{name:'Tải hồ sơ Markdown',exact:true}).click();const d=await event;await d.saveAs(join(downloads,file));const text=readFileSync(join(downloads,file),'utf8');assert.ok(text.includes('Căn cứ:')&&text.includes('Điều chưa hoàn tất'));return text;}
 try{
@@ -22,7 +23,7 @@ try{
  for(const route of [...routes,...lessons.map(l=>'/academy/'+l.slug)]){const response=await cp.goto(origin+route,{waitUntil:'networkidle',timeout:20000});assert.equal(response.status(),200,route);assert.ok((await cp.locator('body').textContent()).trim().length>80,route);}
  console.log(`PASS anonymous route crawl: ${routes.length} pages and ${lessons.length} academy lessons; HTTP 200 and nonempty content`);await crawl.close();
  for(const width of [320,390,768,1440]){
-  const context=await browser.newContext({viewport:{width,height:900}}),page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));await context.route('**/api/auth/me',route=>route.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
+  const context=await browser.newContext({viewport:{width,height:900}}),page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));await mockMemberAccessForUi(context);await context.route('**/api/auth/me',route=>route.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
   await page.goto(origin+'/mai-hoa',{waitUntil:'networkidle'});await page.getByText('Mở công cụ ba phương pháp trước V11.129',{exact:true}).click();await expert(page);await page.getByRole('button',{name:'Theo hai con số',exact:true}).click();await page.getByLabel('Số thứ nhất · thượng quái').fill('3');await page.getByLabel('Số thứ hai · hạ quái').fill('8');
   const mai=page.getByRole('region',{name:'Hồ sơ nghiên cứu mai-hoa',exact:true});await mai.waitFor();assert.equal(await mai.getAttribute('data-workbook-status'),'ready');await openDetails(mai);assert.ok((await mai.textContent()).includes('Hào được đảo'));
   await download(page,mai,`mai-${width}.md`);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);

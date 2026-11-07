@@ -1,3 +1,4 @@
+import {mockMemberAccessForUi} from './helpers-ui-member-access.mjs';
 /** Live Next and actual snapshot/reading modules. Account HTTP is a fixture here;
  * separate PGlite/Nest integration verifies SQL serialization and ownership. */
 import assert from 'node:assert/strict';import {pathToFileURL} from 'node:url';import {mkdirSync} from 'node:fs';import {join} from 'node:path';
@@ -10,7 +11,7 @@ const empty=()=>({id:'custom-v1',version:1,name:'Bố cục đã lưu',positions
 for(const width of [390,1440]){
  const browser=await chromium.launch({headless:true,...(process.env.THIENDO_CHROMIUM_PATH?{executablePath:process.env.THIENDO_CHROMIUM_PATH}:{}),...(process.env.THIENDO_CHROMIUM_ARGS_JSON?{args:JSON.parse(process.env.THIENDO_CHROMIUM_ARGS_JSON)}:{})});
  try{
-  const context=await browser.newContext({viewport:{width,height:950}}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await context.route('**/api/auth/me',r=>r.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));await page.goto(origin+'/tarot');
+  const context=await browser.newContext({viewport:{width,height:950}}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await mockMemberAccessForUi(context);await context.route('**/api/auth/me',r=>r.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));await page.goto(origin+'/tarot');
   await page.getByRole('radio',{name:'Celtic Cross · 10 lá',exact:true}).check();await page.getByRole('combobox',{name:'Bối cảnh lưu cùng trải bài',exact:true}).selectOption('work');await page.getByLabel('Cho phép lá ngược').check();await page.getByRole('button',{name:'✧ Xáo và rút bài',exact:true}).click();
   const map=page.getByRole('region',{name:'Sơ đồ bố cục Tarot',exact:true});await map.getByRole('heading',{name:/Celtic Cross/}).waitFor();
   const first=E.parseReadingExport(JSON.stringify(await download(page,'↓ Xuất JSON trải bài')));assert.equal(first.version,2);assert.equal(first.draw.length,10);assert.equal(first.context,'work');assert.deepEqual(first.method,A.getSpreadRegistry().method);assert.equal(first.layout.positions[1].rotation,90);assert.equal(new Set(first.draw.map(x=>x.id)).size,10);

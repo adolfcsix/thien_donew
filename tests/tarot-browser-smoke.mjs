@@ -1,3 +1,4 @@
+import {mockMemberAccessForUi} from './helpers-ui-member-access.mjs';
 /** Production Next/Chromium; auth/storage responses are mocked, never native DB proof. */
 import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
@@ -11,11 +12,11 @@ for(const width of [390,1440]){
  try{
   const context=await browser.newContext({viewport:{width,height:900}}),page=await context.newPage(),errors=[],posts=[];let signedIn=true,snapshot;
   page.on('pageerror',e=>errors.push(e.message));page.on('dialog',dialog=>dialog.accept());
-  await context.route('**/api/auth/me',r=>r.fulfill({json:{user:signedIn?{id:userId,email:'tarot@example.invalid'}:null}}));
+  await mockMemberAccessForUi(context);await context.route('**/api/auth/me',r=>r.fulfill({json:{user:signedIn?{id:userId,email:'tarot@example.invalid'}:null}}));
   await context.route('**/api/study/'+entryId,r=>r.fulfill({json:{entry:{id:entryId,discipline:'tarot',title:'Fixture',summary:'',notes:'',tags:[],snapshot,pinned:false,createdAt:'2026-10-13',updatedAt:'2026-10-13'}}}));
   await context.route('**/api/study',r=>{if(r.request().method()==='GET')return r.fulfill({json:{entries:snapshot?[{id:entryId,discipline:'tarot',title:'Fixture',summary:'',notes:'',tags:[],snapshot,pinned:false,createdAt:'2026-10-13',updatedAt:'2026-10-13'}]:[]}});posts.push(r.request().postDataJSON());return r.fulfill({json:{id:entryId}});});
   await page.goto(origin+'/tarot');await page.getByRole('heading',{name:'Thư viện 78 lá',exact:true}).waitFor();
-  const catalog=page.locator('[aria-label="Danh mục Tarot"]');assert.equal(await catalog.getByRole('button').count(),78);assert.equal(await catalog.locator('img').count(),78);assert.match(await catalog.locator('img').first().getAttribute('src'),/ar00\.jpg$/);
+  const catalog=page.locator('[aria-label="Danh mục Tarot"]');assert.equal(await catalog.getByRole('button').count(),78);assert.equal(await catalog.locator('img').count(),78);assert.match(await catalog.locator('img').first().getAttribute('src'),/\/tarot\/thumbnails\/rws-1909\/ar00\.webp$/);
   for(const [name,count] of [['Ẩn chính',22],['Gậy',14],['Cốc',14],['Kiếm',14],['Tiền',14]]){await page.getByRole('button',{name,exact:true}).click();assert.equal(await catalog.getByRole('button').count(),count);}
   await page.getByLabel('Tìm lá bài').fill('NO-SUCH-CARD-XYZ');assert.equal(await catalog.getByRole('button').count(),0);assert.equal(await page.getByRole('heading',{name:'Nghĩa xuôi',exact:true}).count(),0);
   await page.getByLabel('Tìm lá bài').fill('');await page.getByRole('button',{name:'Tất cả',exact:true}).click();

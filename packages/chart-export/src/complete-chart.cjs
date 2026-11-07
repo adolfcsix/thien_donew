@@ -38,7 +38,7 @@ function renderCompleteChartSvg(chart,label='',annual,options={}){
  out.push(`<line x1="${x+8}" y1="${y+m.rowHeight-48}" x2="${x+cellW-8}" y2="${y+m.rowHeight-48}" stroke="#d3c8b7"/>`);
  text(x+12,y+m.rowHeight-26,'Đại hạn '+(h.daiHan?.fromAge??'—')+'–'+(h.daiHan?.toAge??'—'),14,'#76501f');
  const flags=annual&&options.showAnnual!==false?[annual.activeDaiHan?.branchIndex===h.branchIndex?'ĐH đang xét':'',annual.tieuHan?.branchIndex===h.branchIndex?'Tiểu hạn':'',annual.luuThaiTueBranchIndex===h.branchIndex?'Lưu Thái Tuế':''].filter(Boolean):[];
- text(x+cellW-12,y+m.rowHeight-8,flags.join(' · '),12,'#69429a','text-anchor="end"');out.push('</g>');}
+ text(x+cellW-12,y+m.rowHeight-16,flags.join(' · '),12,'#69429a','text-anchor="end"');out.push('</g>');}
  const cx=left+cellW,cy=top+m.rowHeight;
  out.push(`<g aria-label="Thông tin trung tâm"><rect x="${cx}" y="${cy}" width="${cellW*2}" height="${m.rowHeight*2}" fill="#eee5d2" stroke="#ae9871"/>`);
  text(720,cy+66,'THIÊN ĐỒ',38,'#76501f','text-anchor="middle" font-weight="700"');text(720,cy+100,'BẢN ĐỒ THẬP NHỊ CUNG',16,'#577561','text-anchor="middle"');

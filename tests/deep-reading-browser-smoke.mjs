@@ -1,3 +1,4 @@
+import {mockMemberAccessForUi} from './helpers-ui-member-access.mjs';
 /** Actual built Next and local chart/annual engine; anonymous auth stub only. */
 import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
@@ -13,7 +14,7 @@ async function exported(page,panel){const ev=page.waitForEvent('download');await
 for(const width of [390,1440]){
  const browser=await chromium.launch({headless:true,...(process.env.THIENDO_CHROMIUM_PATH?{executablePath:process.env.THIENDO_CHROMIUM_PATH}:{}),...(process.env.THIENDO_CHROMIUM_ARGS_JSON?{args:JSON.parse(process.env.THIENDO_CHROMIUM_ARGS_JSON)}:{})});
  try{
-  const context=await browser.newContext({viewport:{width,height:950}}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await context.route('**/api/auth/me',r=>r.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
+  const context=await browser.newContext({viewport:{width,height:950}}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await mockMemberAccessForUi(context);await context.route('**/api/auth/me',r=>r.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
   await page.goto(origin+'/chart');await page.getByLabel('Tên lá số',{exact:true}).fill('QA Chart');await page.getByRole('button',{name:/Tính lá số/}).click();
   const panel=page.getByRole('region',{name:'Luận giải chuyên sâu Tử Vi',exact:true});assert.equal(await panel.count(),0);
   await page.getByRole('button',{name:'Đọc toàn lá số · 12 cung',exact:true}).click();await panel.waitFor();await panel.getByRole('status').filter({hasText:'12 / 12 cung'}).waitFor();

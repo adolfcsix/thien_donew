@@ -1,3 +1,4 @@
+import {mockMemberAccessForUi} from './helpers-ui-member-access.mjs';
 /** Built Next, existing snapshot importer and actual learning modules. Auth stub only. */
 import assert from 'node:assert/strict';import {pathToFileURL} from 'node:url';import {mkdirSync} from 'node:fs';import {join} from 'node:path';
 import {localTestOrigin} from '../infrastructure/scripts/e2e-http.mjs';
@@ -8,7 +9,7 @@ const snapshot={version:1,deck:E.METHODS.deck,spread:'three',includeReversed:tru
 async function download(page,panel){const ev=page.waitForEvent('download');await panel.getByRole('button',{name:'Xuất luận sâu JSON',exact:true}).click();const stream=await(await ev).createReadStream();let raw='';for await(const c of stream)raw+=c.toString();assert.ok(!raw.includes('PRIVATE-QUESTION-OMITTED'));return JSON.parse(raw);}
 for(const width of [390,1440]){
  const browser=await chromium.launch({headless:true,...(process.env.THIENDO_CHROMIUM_PATH?{executablePath:process.env.THIENDO_CHROMIUM_PATH}:{}),...(process.env.THIENDO_CHROMIUM_ARGS_JSON?{args:JSON.parse(process.env.THIENDO_CHROMIUM_ARGS_JSON)}:{})});
- try{const context=await browser.newContext({viewport:{width,height:950}}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await context.route('**/api/auth/me',r=>r.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));await page.goto(origin+'/tarot');
+ try{const context=await browser.newContext({viewport:{width,height:950}}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await mockMemberAccessForUi(context);await context.route('**/api/auth/me',r=>r.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));await page.goto(origin+'/tarot');
  const cat=page.locator('[aria-label="Danh mục Tarot"]'),dossier=page.getByRole('region',{name:'Hồ sơ chuyên sâu lá Tarot',exact:true});await dossier.waitFor();
  for(const card of E.CARDS){await cat.getByRole('button',{name:card.nameVi+' '+card.name,exact:true}).click();await dossier.getByRole('heading',{name:card.nameVi+' · đọc sâu biểu tượng',exact:true}).waitFor();assert.equal(await dossier.getByRole('combobox').count(),1);}
  await page.getByLabel('Tìm lá bài').fill('cuon sach');await page.getByRole('status').filter({hasText:'Đang hiển thị 1 / 78'}).waitFor();await dossier.getByRole('heading',{name:'Nữ Tư Tế · đọc sâu biểu tượng',exact:true}).waitFor();await dossier.getByRole('combobox',{name:'Chiều lá trong hồ sơ Tarot',exact:true}).selectOption('reversed');await dossier.getByRole('heading',{name:'Các khả năng của chiều ngược',exact:true}).waitFor();

@@ -1,3 +1,4 @@
+import {mockMemberAccessForUi} from './helpers-ui-member-access.mjs';
 /** Built Next/Chromium Natal UI; only account/storage HTTP is mocked. */
 import assert from 'node:assert/strict';import {pathToFileURL} from 'node:url';import {localTestOrigin} from '../infrastructure/scripts/e2e-http.mjs';
 const origin=localTestOrigin(process.env.NEXT_BASE_URL||'http://127.0.0.1:3000');
@@ -9,7 +10,7 @@ for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
  try{
   const context=await browser.newContext({viewport}),page=await context.newPage(),errors=[];let signedIn=true,posts=[];
   page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
-  await context.route('**/api/auth/me',r=>r.fulfill({json:{user:signedIn?{id:userId,email:'ui@example.invalid'}:null}}));
+  await mockMemberAccessForUi(context);await context.route('**/api/auth/me',r=>r.fulfill({json:{user:signedIn?{id:userId,email:'ui@example.invalid'}:null}}));
   await context.route('**/api/study/'+entryId,r=>r.fulfill({json:{entry:{id:entryId,discipline:'western-astrology',title:'Fixture',summary:'',notes:'',tags:[],snapshot,pinned:false,createdAt:'2026-10-13',updatedAt:'2026-10-13'}}}));
   await context.route('**/api/study',r=>{posts.push(r.request().postDataJSON());return r.fulfill({json:{id:entryId}});});
   await page.goto(origin+'/western-astrology');await page.getByRole('button',{name:'Lập Natal Chart',exact:true}).click();await page.getByRole('status').filter({hasText:'Cần xác nhận độ lệch UTC'}).waitFor();assert.equal(await page.getByRole('heading',{name:'Kết quả Natal',exact:true}).count(),0);console.log(`PASS Natal offset confirmation gate ${viewport.width}`);

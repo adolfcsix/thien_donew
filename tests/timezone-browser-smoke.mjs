@@ -1,3 +1,4 @@
+import {mockMemberAccessForUi} from './helpers-ui-member-access.mjs';
 /** Real built Next/Chromium and IANA calculator. Auth/storage HTTP only is mocked. */
 import assert from 'node:assert/strict';import {pathToFileURL} from 'node:url';import {localTestOrigin} from '../infrastructure/scripts/e2e-http.mjs';
 const origin=localTestOrigin(process.env.NEXT_BASE_URL||'http://127.0.0.1:3000');
@@ -8,7 +9,7 @@ for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
  try{
   const context=await browser.newContext({viewport}),page=await context.newPage(),errors=[],posts=[];let snapshot;
   page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
-  await context.route('**/api/auth/me',r=>r.fulfill({json:{user:{id:userId,email:'ui@example.invalid'}}}));
+  await mockMemberAccessForUi(context);await context.route('**/api/auth/me',r=>r.fulfill({json:{user:{id:userId,email:'ui@example.invalid'}}}));
   await context.route('**/api/study/'+entryId,r=>r.fulfill({json:{entry:{id:entryId,discipline:'western-astrology',title:'DST fixture',summary:'',notes:'',tags:[],snapshot,pinned:false,createdAt:'2026-10-13',updatedAt:'2026-10-13'}}}));
   await context.route('**/api/study',r=>{posts.push(r.request().postDataJSON());snapshot=posts.at(-1).snapshot;return r.fulfill({json:{id:entryId}});});
   await page.goto(origin+'/western-astrology');await page.getByRole('combobox',{name:'Cách xác định múi giờ',exact:true}).selectOption('western-tropical-geocentric-whole-sign-iana-v2');await page.getByRole('combobox',{name:'Múi giờ IANA nơi sinh',exact:true}).selectOption('America/New_York');

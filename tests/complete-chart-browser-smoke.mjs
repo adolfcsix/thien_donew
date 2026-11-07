@@ -1,3 +1,4 @@
+import {mockMemberAccessForUi} from './helpers-ui-member-access.mjs';
 import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
 import {mkdirSync} from 'node:fs';
@@ -10,8 +11,9 @@ const {chromium}=await import(pathToFileURL(process.env.THIENDO_PLAYWRIGHT_MODUL
 const browser=await chromium.launch({headless:true,executablePath:process.env.THIENDO_CHROMIUM_PATH,args:JSON.parse(process.env.THIENDO_CHROMIUM_ARGS_JSON||'[]')});
 async function bytes(page,trigger){const event=page.waitForEvent('download');await trigger();const stream=await(await event).createReadStream();const parts=[];for await(const p of stream)parts.push(p);return Buffer.concat(parts);}
 try{for(const width of [320,390,768,1024,1440,1920]){
- const context=await browser.newContext({viewport:{width,height:900},deviceScaleFactor:2,isMobile:width<=768,hasTouch:width<=768}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await context.route('**/api/auth/me',r=>r.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));await page.goto(origin+'/chart');await page.getByLabel('Tên lá số',{exact:true}).fill('QA Chart');await page.getByRole('button',{name:/Tính lá số/}).click();
+ const context=await browser.newContext({viewport:{width,height:900},deviceScaleFactor:2,isMobile:width<=768,hasTouch:width<=768}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await mockMemberAccessForUi(context);await context.route('**/api/auth/me',r=>r.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));await page.goto(origin+'/chart');await page.getByLabel('Tên lá số',{exact:true}).fill('QA Chart');await page.getByRole('button',{name:/Tính lá số/}).click();
  const expert=page.getByRole('group',{name:'Chế độ hiển thị',exact:true}).getByRole('button',{name:'Chuyên sâu',exact:true});if(await expert.count())await expert.click();
+ await page.locator('summary').filter({hasText:'Bản vector đầy đủ · thu phóng và xuất SVG'}).click();
  const panel=page.getByRole('region',{name:'Lá số toàn cảnh có thể thu phóng',exact:true}),svg=panel.locator('svg'),viewport=panel.getByRole('region',{name:'Khung cuộn lá số tổng thể',exact:true});await svg.waitFor();assert.equal(await svg.locator('g[data-branch]').count(),12);assert.equal(await svg.locator('[data-star-name]').count(),124);
  const c=E.calculate({date:'2004-01-01',hour:8,minute:30,calendar:'solar',leap:false,gender:'Nam'}),year=page.getByRole('combobox',{name:'Năm âm lịch cần xem',exact:true});await year.selectOption('2026');const a=E.annualOverview(c,2026);await panel.getByText(/104 sao gốc/).first().waitFor();
  const actual=await svg.locator('g[data-branch]').evaluateAll(groups=>groups.map(g=>({branch:+g.dataset.branch,natal:[...g.querySelectorAll('[data-star-name][data-layer="natal"]')].map(n=>n.dataset.starName),all:[...g.querySelectorAll('[data-star-name]')].map(n=>n.dataset.starName)})));

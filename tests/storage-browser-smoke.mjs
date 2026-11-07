@@ -1,3 +1,4 @@
+import {mockMemberAccessForUi} from './helpers-ui-member-access.mjs';
 /** Built Next + Chromium recovery UI checks; auth and storage responses are mocked.
  * Every viewport starts a new browser, including single-process runtimes.
  */
@@ -15,7 +16,7 @@ for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
   page.on('pageerror',error=>{errors.push(error.message);console.error('PAGEERROR',error.stack);});page.on('dialog',dialog=>dialog.accept());
   let mode='malformed-list',written=false,pendingPost,seenPost;
   const imports=[];
-  await context.route('**/api/auth/me',route=>route.fulfill({json:{user:{id:userId,email:'ui@example.invalid'}}}));
+  await mockMemberAccessForUi(context);await context.route('**/api/auth/me',route=>route.fulfill({json:{user:{id:userId,email:'ui@example.invalid'}}}));
   await context.route('**/api/study/import/**',route=>route.fulfill({json:{importId:entryId,imported:1,committed:true}}));
   await context.route('**/api/study/import',route=>{
    const body=route.request().postDataJSON();imports.push(body.importId);

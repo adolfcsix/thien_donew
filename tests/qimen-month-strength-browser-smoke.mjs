@@ -1,3 +1,4 @@
+import {mockMemberAccessForUi} from './helpers-ui-member-access.mjs';
 /** Actual Next/Chromium UI; auth/me is anonymous-stubbed. No DB/save claims. */
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -15,8 +16,8 @@ const wanted=(element,month,star)=>fixture[star?'starRows':'genericRows'][fixtur
 try{
  for(const width of [320,390,768,1440]){
   const context=await browser.newContext({viewport:{width,height:900}}),page=await context.newPage();
-  page.on('pageerror',e=>errors.push(e.message));await context.route('**/api/auth/me',route=>route.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
-  await page.goto(base+'/ky-mon');await page.getByRole('button',{name:'Nhập thông tin đã đối chiếu',exact:true}).click();await page.getByRole('button',{name:/Khám phá Chuyên sâu/}).click();
+  page.on('pageerror',e=>errors.push(e.message));await mockMemberAccessForUi(context);await context.route('**/api/auth/me',route=>route.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
+  await page.goto(base+'/ky-mon');await page.getByRole('button',{name:'Nhập thông tin đã đối chiếu',exact:true}).click();await page.getByRole('group',{name:'Chế độ hiển thị',exact:true}).getByRole('button',{name:'Chuyên sâu',exact:true}).click();
   for(const input of [{term:3,day:52,branch:5},{term:14,day:14,branch:10}]){
    await page.getByLabel('Tính địa bàn, thời bàn và Tuần Không khi có giờ').check();
    await page.getByLabel('Tiết khí đã xác nhận').selectOption(String(input.term));await page.getByLabel('Can Chi ngày đã xác nhận').selectOption(String(input.day));await page.getByLabel('Can Chi giờ theo Ngũ Tý Độn').selectOption(String(input.branch));
@@ -38,7 +39,7 @@ try{
   await panel.getByText('Hai bảng nguyệt khí và dị bản',{exact:true}).click();assert.equal(await panel.locator('a').count(),3);
   await page.getByLabel('Tính địa bàn, thời bàn và Tuần Không khi có giờ').uncheck();assert.equal(await panel.locator('[data-month-state="not-computed"]').count(),2);assert.equal(await panel.locator('[data-month-kind="Cửu Tinh"]').count(),0);
   const patternPanel=page.getByRole('region',{name:'Cách cục Can tại cung 1',exact:true});assert.equal(await patternPanel.locator('[data-pattern-state="not-computed"]').count(),2);
-  await page.getByRole('button',{name:/Chuyển về Cơ bản/}).click();assert.equal(await panel.isVisible(),false);assert.equal(await patternPanel.isVisible(),false);
+  await page.getByRole('group',{name:'Chế độ hiển thị',exact:true}).getByRole('button',{name:'Cơ bản',exact:true}).click();assert.equal(await panel.isVisible(),false);assert.equal(await patternPanel.isVisible(),false);
   console.log(`PASS month-strength and pattern UI ${width}px: independent tables, two boards, nine palaces, center link, no-hour, sources, basic mode, no overflow`);
   await context.close();
  }

@@ -49,6 +49,7 @@ try{
    await page.goto(base+'/ky-mon');
    if(snapshot.mode==='manual'){
     await page.getByRole('button',{name:'Nhập thông tin đã đối chiếu'}).click();
+    const expert=page.getByRole('group',{name:'Chế độ hiển thị',exact:true}).getByRole('button',{name:'Chuyên sâu',exact:true});if(await expert.count())await expert.click();
     await page.getByLabel('Tiết khí đã xác nhận').selectOption(String(snapshot.solarTermIndex));
     await page.getByLabel('Can Chi ngày đã xác nhận').selectOption(String(snapshot.dayCycleIndex));
     await page.getByLabel('Can Chi giờ theo Ngũ Tý Độn').selectOption(String(snapshot.hourBranchIndex));
@@ -60,7 +61,7 @@ try{
     await page.getByLabel(/Tôi đã xác nhận quy ước đổi ngày/).check();
    }
    await page.getByLabel('Tính địa bàn, thời bàn và Tuần Không khi có giờ').setChecked(snapshot.withHour);
-   const expert=page.getByRole('button',{name:/Khám phá Chuyên sâu/});if(await expert.count())await expert.click();
+   const expert=page.getByRole('group',{name:'Chế độ hiển thị',exact:true}).getByRole('button',{name:'Chuyên sâu',exact:true});if(await expert.count())await expert.click();
    const summary=page.locator('summary').filter({hasText:'Mã Tinh và Lục Nghi Kích Hình'});
    if(snapshot.withHour){const openExpert=page.getByRole('button',{name:'Mở Chuyên sâu: Chi tiết từng cung và Chuyển Bàn thời gian',exact:true});if(await openExpert.count())await openExpert.click();await summary.waitFor({state:'visible'});await summary.click();await page.getByText('Truy nguyên Mã Tinh giờ:',{exact:false}).waitFor();}
    else assert.equal(await summary.count(),0);

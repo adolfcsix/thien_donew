@@ -1,3 +1,4 @@
+import {mockMemberAccessForUi} from './helpers-ui-member-access.mjs';
 /** Built Next/Chromium, local chart engine. Only anonymous auth response is mocked. */
 import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
@@ -10,7 +11,7 @@ async function exported(page,panel){const event=page.waitForEvent('download');aw
 for(const width of [390,1440]){
  const browser=await chromium.launch({headless:true,...(process.env.THIENDO_CHROMIUM_PATH?{executablePath:process.env.THIENDO_CHROMIUM_PATH}:{}),...(process.env.THIENDO_CHROMIUM_ARGS_JSON?{args:JSON.parse(process.env.THIENDO_CHROMIUM_ARGS_JSON)}:{})});
  try{
-  const context=await browser.newContext({viewport:{width,height:900}}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await context.route('**/api/auth/me',r=>r.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
+  const context=await browser.newContext({viewport:{width,height:900}}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await mockMemberAccessForUi(context);await context.route('**/api/auth/me',r=>r.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
   await page.goto(origin+'/research/star-system');const panel=page.getByRole('region',{name:'Ma trận hệ thống sao Tử Vi',exact:true}),table=panel.getByRole('table',{name:'Ma trận tên sao và lớp dữ liệu',exact:true});await table.waitFor();assert.equal(await table.locator('tbody tr').count(),127);
   const layer=panel.getByRole('combobox',{name:'Lớp sao trong ma trận',exact:true}),search=panel.getByRole('searchbox',{name:'Tìm trong ma trận sao',exact:true});
   for(const [id,count] of [['main',14],['support',54],['cycle',36],['annual',12],['special',11]]){await layer.selectOption(id);await panel.getByRole('status').filter({hasText:`Ma trận: ${count} /`}).waitFor();assert.equal(await table.locator('tbody tr').count(),count);}

@@ -1,3 +1,4 @@
+import {mockMemberAccessForUi} from './helpers-ui-member-access.mjs';
 /** V11.108 frontend-only browser smoke. Only anonymous auth/me is stubbed.
  * Does not test PostgreSQL, authentication, saving or physical mobile devices. */
 import assert from 'node:assert/strict';
@@ -17,14 +18,14 @@ const ledger=evidence.buildPalaceLedger(f,hour.buildRotatingHourPlate(f));
 try{
  for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
   const context=await browser.newContext({viewport});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await context.route('**/api/auth/me',route=>route.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
+  await mockMemberAccessForUi(context);await context.route('**/api/auth/me',route=>route.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
   await page.goto(base+'/ky-mon');
   await page.getByRole('button',{name:'Nhập thông tin đã đối chiếu',exact:true}).click();
   await page.getByLabel('Tiết khí đã xác nhận').selectOption('3');
   await page.getByLabel('Can Chi ngày đã xác nhận').selectOption('52');
   await page.getByLabel('Can Chi giờ theo Ngũ Tý Độn').selectOption('5');
   await page.locator('section[aria-label^="Bảng đối chiếu chuyên sâu cung"]').waitFor({state:'hidden'});assert.equal(await page.locator('section[aria-label^="Bảng đối chiếu chuyên sâu cung"]').isVisible(),false);
-  await page.getByRole('button',{name:/Khám phá Chuyên sâu/}).click();
+  await page.getByRole('group',{name:'Chế độ hiển thị',exact:true}).getByRole('button',{name:'Chuyên sâu',exact:true}).click();
   let panel=page.locator('section[aria-label^="Bảng đối chiếu chuyên sâu cung"]');
   await panel.waitFor();
   await panel.locator('summary').filter({hasText:'Đối chiếu chín cung trên cùng bàn'}).click();
@@ -53,7 +54,7 @@ try{
   assert.equal(await panel.locator('[data-evidence-state="not-computed"]').count(),8);
   assert.equal(await page.locator('summary').filter({hasText:'Mã Tinh và Lục Nghi Kích Hình'}).count(),0);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
-  await page.getByRole('button',{name:/Chuyển về Cơ bản/}).click();
+  await page.getByRole('group',{name:'Chế độ hiển thị',exact:true}).getByRole('button',{name:'Cơ bản',exact:true}).click();
   await page.locator('section[aria-label^="Bảng đối chiếu chuyên sâu cung"]').waitFor({state:'hidden'});assert.equal(await page.locator('section[aria-label^="Bảng đối chiếu chuyên sâu cung"]').isVisible(),false);
   assert.deepEqual(errors,[]);
   console.log(`PASS ledger UI ${viewport.width}x${viewport.height}: nine palaces, source navigation, steps, earth-only and mode switch; anonymous auth/me stubbed`);
