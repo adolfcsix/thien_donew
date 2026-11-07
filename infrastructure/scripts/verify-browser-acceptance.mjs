@@ -1,4 +1,4 @@
-/** Repeatable UI acceptance only. HTTP account/storage fixtures never certify PostgreSQL. */
+/** Repeatable UI acceptance only. Fixtures vary by suite; Natal uses real account/calculation HTTP. */
 import {spawnSync} from 'node:child_process';
 import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 import {resolve,dirname} from 'node:path';
@@ -22,6 +22,6 @@ try{
  }
 }catch(error){checks.push({name:'Browser prerequisites',status:'BLOCKED',error:error.message});}
 const verdict=checks.length===suites.length&&checks.every(c=>c.status==='PASS')?'PASS':'BLOCKED';
-writeFileSync(resolve(dir,'results.json'),JSON.stringify({version,started,completed:new Date().toISOString(),verdict,checks,scope:'Production Next and Chromium at 390/1440px; account/storage HTTP mocked. Does not certify native PostgreSQL, provider delivery, Windows or Safari.'},null,2)+'\n');
+writeFileSync(resolve(dir,'results.json'),JSON.stringify({version,started,completed:new Date().toISOString(),verdict,checks,scope:'Production Next and Chromium at 390/1440px; Natal uses real account/calculation HTTP; other suites include account/storage fixtures. Does not certify native PostgreSQL, provider delivery, Windows or Safari.'},null,2)+'\n');
 console.log(`${verdict}: UI acceptance only. Evidence: ${dir}`);
 if(verdict!=='PASS')process.exitCode=1;

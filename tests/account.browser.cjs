@@ -35,6 +35,11 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
   await pg.query("INSERT INTO admin_memberships(user_id,role) VALUES($1,'owner')",[owner.user.id]);
   async function post(context,url,data){const r=await context.request.post(origin+url,{data});assert.equal(r.status(),200,url+' '+await r.text());return r.json();}
   const sent=await post(owner.context,'/api/auth/email/send',{});await post(owner.context,'/api/auth/email/verify',{challengeId:sent.challengeId,code:delivered.get(owner.email)});
+ if(process.env.THIENDO_BROWSER_SCOPE==='natal-live'){
+  process.env.NEXT_BASE_URL=origin;
+  process.env.THIENDO_PLAYWRIGHT_MODULE=path.join(path.dirname(require.resolve(process.env.THIENDO_PLAYWRIGHT_MODULE)),'index.mjs');
+  await import(pathToFileURL(path.join(root,'tests/natal-browser-smoke.mjs')).href);return;
+ }
  if(process.env.THIENDO_BROWSER_SCOPE==='touch-compat'){await require('./helpers-touch-compat-browser.cjs')({browser,owner,member,delivered,origin,record,pageErrors});assert.deepEqual(pageErrors,[]);return;}
  if(process.env.THIENDO_BROWSER_SCOPE==='lifetime-pro'){await require('./helpers-lifetime-pro-browser.cjs')({owner,member,password,pg,origin,record,pageErrors,out});assert.deepEqual(pageErrors,[]);return;}
  if(process.env.THIENDO_BROWSER_SCOPE==='study-tabs'){await require('./helpers-study-tabs-browser.cjs')({context:member.context,origin,record,pageErrors,out});assert.deepEqual(pageErrors,[]);return;}
