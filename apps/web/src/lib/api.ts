@@ -182,6 +182,9 @@ function validateExpertBookResponse(path:string,method:string,payload:Record<str
 }
 let sessionEpoch = 0;
 export async function api<T>(path: string, options: { method?: string; body?: unknown; signal?: AbortSignal; timeoutMs?: number } = {}): Promise<T> {
+  // A completed send can race navigation before its inbox refresh starts.
+  // Do not create another fetch (or deadline timer) for a cancelled view.
+  options.signal?.throwIfAborted();
   const requestEpoch = sessionEpoch;
   if (options.timeoutMs !== undefined && (!Number.isSafeInteger(options.timeoutMs) || options.timeoutMs < 1 || options.timeoutMs > 120_000)) throw new RangeError('Invalid request deadline');
   const commerceDeadline = /^\/api\/(?:billing|admin|articles)(?:\/|$)/.test(path) ? ACCOUNT_TIMEOUT_MS : 0;

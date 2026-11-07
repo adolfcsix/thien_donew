@@ -8,6 +8,12 @@ function load(fetch){const timers=[],mod={exports:{}};const code=ts.transpileMod
  return {...mod.exports,timers};
 }
 const json=value=>async()=>({ok:true,status:200,json:async()=>value});
+test('cancelled navigation never starts a follow-up fetch or deadline timer',async()=>{
+ const controller=new AbortController(),reason=Error('View left');controller.abort(reason);
+ let calls=0;const a=load(async()=>{calls++;throw Error('Unexpected network request');});
+ await assert.rejects(a.api('/api/community/conversations',{signal:controller.signal,timeoutMs:15000}),error=>error===reason);
+ assert.equal(calls,0);assert.equal(a.timers.length,0);
+});
 for(const [name,invoke,payload] of [
  ['study create',a=>a.studyApi.create({}),{message:'ok'}],['study update',a=>a.studyApi.update(id,{}),{updated:false}],['study delete',a=>a.studyApi.remove(id),{deleted:false}],
  ['chart save',a=>a.chartApi.save({}),{id,verified:false}],['chart delete',a=>a.chartApi.remove(id),{message:'ok'}],
