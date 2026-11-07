@@ -23,7 +23,7 @@ test('reader: one native dialog with Escape, focus restoration, no duplicate ast
   assert.match(reader,/<dialog[\s\S]*?aria-modal="true"/);
   assert.match(reader,/modal\.showModal\(\)/);
   assert.match(reader,/onClose=\{\(\) => \{/);
-  assert.match(reader,/if \(!modalRef\.current\?\.open\) onClose\(\)/);
+  assert.match(reader,/if \(modalRef\.current\?\.isConnected && !modalRef\.current.open\) onClose\(\)/);
   assert.match(reader,/previousFocus\?\.focus\(\)/);
   assert.match(reader,/modal\.close\(\)/);
   assert.match(reader,/<PalaceDetails house=\{house\}/);

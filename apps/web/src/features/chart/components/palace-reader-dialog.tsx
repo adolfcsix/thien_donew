@@ -29,7 +29,8 @@ export function PalaceReaderDialog({house,houses,annual,ruleSet,showAnnual,showS
 
   useEffect(() => {
     const modal = modalRef.current;
-    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const active = document.activeElement;
+    const previousFocus = active instanceof HTMLElement || active instanceof SVGElement ? active : null;
     if (!modal) return;
     modal.showModal();
     closeRef.current?.focus();
@@ -52,10 +53,16 @@ export function PalaceReaderDialog({house,houses,annual,ruleSet,showAnnual,showS
     aria-modal="true"
     aria-labelledby="thiendo-palace-reader-title"
     aria-describedby="thiendo-palace-reader-description"
+    onCancel={event => {
+      // Update React before the native dialog disappears. Otherwise its queued
+      // close event can dismiss a different palace opened immediately afterward.
+      event.preventDefault();
+      onClose();
+    }}
     onClose={() => {
       // In React Strict Mode the effect is mounted/cleaned up twice in dev.
       // Ignore a queued close event from that cleanup if the dialog reopened.
-      if (!modalRef.current?.open) onClose();
+      if (modalRef.current?.isConnected && !modalRef.current.open) onClose();
     }}
   >
     <div className="palace-reader-header">
@@ -64,7 +71,7 @@ export function PalaceReaderDialog({house,houses,annual,ruleSet,showAnnual,showS
         <h2 id="thiendo-palace-reader-title">Cung {house.palace} <small>{house.stem} {house.branch}</small></h2>
         <p id="thiendo-palace-reader-description">Đọc đầy đủ từng lớp sao trên một cung, không phải phóng ảnh bị mất nét.</p>
       </div>
-      <button type="button" className="palace-reader-close" ref={closeRef} onClick={() => modalRef.current?.close()} aria-label="Đóng phòng đọc cung">× <span>Đóng</span></button>
+      <button type="button" className="palace-reader-close" ref={closeRef} onClick={onClose} aria-label="Đóng phòng đọc cung">× <span>Đóng</span></button>
     </div>
 
     <div className="palace-reader-toolbar" role="group" aria-label="Điều hướng và cỡ chữ phòng đọc">
