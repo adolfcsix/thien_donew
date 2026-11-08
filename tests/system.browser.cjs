@@ -40,7 +40,7 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  const page=await fresh.newPage();page.setDefaultTimeout(15000);await page.goto(origin+'/login?next=/chart',{waitUntil:'networkidle'});
  const dialog=page.getByRole('dialog');await dialog.waitFor();
  await dialog.getByLabel('Username hoặc email',{exact:true}).fill('qa_owner');await dialog.getByLabel('Mật khẩu',{exact:true}).fill(password);await dialog.getByRole('button',{name:'Đăng nhập',exact:true}).click();await dialog.waitFor({state:'hidden'});
- await page.getByRole('heading',{name:'Bảo vệ khu vực quản trị',exact:true}).waitFor();assert.equal((await fresh.request.get(origin+'/api/admin/overview')).status(),403);
+ await page.getByRole('heading',{name:'Xác thực quản trị',exact:true}).waitFor();assert.equal((await fresh.request.get(origin+'/api/admin/overview')).status(),403);
  record({case:'real username/password Owner login succeeds; dashboard remains locked before MFA',verdict:'PASS'});
  let setupCalls=0,releaseSetup;const holdSetup=new Promise(r=>releaseSetup=r);await page.route('**/api/auth/mfa/setup',async route=>{setupCalls++;await holdSetup;await route.continue()});
  await page.getByLabel('Mật khẩu hiện tại',{exact:true}).fill(password);const setupResponse=page.waitForResponse(r=>r.url().endsWith('/api/auth/mfa/setup'));
@@ -48,7 +48,7 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  await page.waitForFunction(()=>document.querySelector('button:disabled')!==null);releaseSetup();const setup=await (await setupResponse).json();await page.getByText(setup.manualKey,{exact:true}).waitFor();assert.equal(setupCalls,1);await page.unroute('**/api/auth/mfa/setup');
  record({case:'real MFA enrollment from UI; paired synchronous submits issue exactly one setup request',verdict:'PASS'});
  let confirmCalls=0,releaseConfirm;const holdConfirm=new Promise(r=>releaseConfirm=r);await page.route('**/api/auth/mfa/confirm',async route=>{confirmCalls++;await holdConfirm;await route.continue()});
- await page.getByLabel('Mã Authenticator 6 chữ số (không phải mã email)',{exact:true}).fill(totpCode(setup.manualKey,Math.floor(Date.now()/30000)));const confirmed=page.waitForResponse(r=>r.url().endsWith('/api/auth/mfa/confirm'));
+ await page.getByLabel('Mã Authenticator 6 chữ số',{exact:true}).fill(totpCode(setup.manualKey,Math.floor(Date.now()/30000)));const confirmed=page.waitForResponse(r=>r.url().endsWith('/api/auth/mfa/confirm'));
  await page.getByRole('button',{name:'Xác nhận thiết lập',exact:true}).evaluate(button=>{button.form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));button.form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}))});releaseConfirm();assert.equal((await confirmed).status(),200);
  await page.getByRole('heading',{name:'Toàn cảnh Thiên Đồ',exact:true}).waitFor();assert.equal(confirmCalls,1);await page.unroute('**/api/auth/mfa/confirm');
  record({case:'real TOTP confirmation admits Owner dashboard, prevents duplicate code consumption',verdict:'PASS'});

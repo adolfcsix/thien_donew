@@ -8,7 +8,7 @@ const scene=source('apps/web/src/features/western/mystic-scene.tsx');
 const motion=source('apps/web/src/features/western/mystic-scene.module.css');
 const viewport=source('apps/web/src/features/western/celestial-frame.module.css');
 test('admin first enrollment distinguishes email, password and TOTP steps and never treats email as MFA',()=>{
- for(const copy of ['Bước 1 · Xác minh email','Bước 2 · Liên kết ứng dụng Authenticator','Bước 3 · Thêm khóa vào ứng dụng xác thực','Mã email và mã Authenticator là hai mã khác nhau'])assert.ok(gate.includes(copy),copy);
+ for(const copy of ['Bước 1 · Xác minh email','Liên kết Authenticator','Thêm vào Authenticator','Mã Authenticator 6 chữ số'])assert.ok(gate.includes(copy),copy);
  assert.match(gate,/if\(emailVerified===true\)void enroll\(\)/);
  assert.match(gate,/disabled=\{busy\|\|emailVerified!==true\}/);
  assert.match(gate,/status\.configured&&\(status\.enabled\|\|!!key\)/);
@@ -46,7 +46,7 @@ test('MFA gate renders coherent controls for missing configuration, enrollment a
  const imports={'@/lib/api':{},'@/features/community-hub/email-verification':{EmailVerification:()=>null},'@/components/auth-provider':{useAuth:()=>({open:()=>{}})},'@/features/admin/use-admin-task':{useAdminTask:()=>({pending:false,error:'',run:()=>{}})},'./membership.module.css':{}};
  new Function('module','exports','require',code)(m,m.exports,id=>id in imports?imports[id]:require(id));
  const render=(configured,enabled)=>renderToStaticMarkup(React.createElement(m.exports.default,{status:{configured,enabled,verified:false,stepUp:false,role:'owner',handle:'owner'},onVerified:()=>{}}));
- for(const enabled of [false,true]){const html=render(false,enabled);assert.ok(html.includes('Thiếu cấu hình máy chủ'));assert.ok(!html.includes('Nhập mã Authenticator để vào'));assert.ok(!html.includes('one-time-code'));assert.equal(html.includes('npm.cmd run admin:mfa:init'),!enabled);}
- const verify=render(true,true);assert.ok(verify.includes('one-time-code'));assert.ok(verify.includes('Xác minh và vào Bàn điều hành'));assert.ok(!verify.includes('Thiếu cấu hình máy chủ'));
+ for(const enabled of [false,true]){const html=render(false,enabled);assert.ok(html.includes('Xác thực quản trị chưa sẵn sàng'));assert.ok(!html.includes('Nhập mã Authenticator để vào'));assert.ok(!html.includes('one-time-code'));assert.ok(!html.includes('npm.cmd run admin:mfa:init'));assert.ok(html.includes('Hướng dẫn cấu hình'));}
+ const verify=render(true,true);assert.ok(verify.includes('one-time-code'));assert.ok(verify.includes('Xác minh và vào Bàn điều hành'));assert.ok(!verify.includes('Xác thực quản trị chưa sẵn sàng'));assert.ok(!verify.includes('Mở Hồ sơ'));assert.ok(!verify.includes('ADMIN_MFA_ENCRYPTION_KEY'));assert.ok(!verify.includes('<details'));assert.ok(!verify.includes('<h2'));
  const enroll=render(true,false);assert.ok(enroll.includes('current-password'));assert.ok(!enroll.includes('one-time-code'));
 });

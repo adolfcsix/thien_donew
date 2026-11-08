@@ -31,7 +31,7 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
   async function post(context,url,data){const r=await context.request.post(origin+url,{data});assert.equal(r.status(),200,url+' '+await r.text());return r.json();}
   const sent=await post(owner.context,'/api/auth/email/send',{});await post(owner.context,'/api/auth/email/verify',{challengeId:sent.challengeId,code:delivered.get(owner.email)});
   const page=await owner.context.newPage();await page.goto(origin+'/admin/books',{waitUntil:'networkidle'});
-  await page.getByRole('heading',{name:'Bảo vệ khu vực quản trị'}).waitFor();record({case:'direct admin subsection requires MFA',verdict:'PASS'});
+  await page.getByRole('heading',{name:'Xác thực quản trị'}).waitFor();record({case:'direct admin subsection requires MFA',verdict:'PASS'});
   // Actual setup/confirm endpoints, no seeded assurance records.
   const setup=await post(owner.context,'/api/auth/mfa/setup',{password});const {totpCode}=require(path.join(root,'apps/api/dist/modules/auth/totp.js'));await post(owner.context,'/api/auth/mfa/confirm',{code:totpCode(setup.manualKey,Math.floor(Date.now()/30000))});
   await page.reload({waitUntil:'networkidle'});await page.getByRole('heading',{name:'Quản trị sách',exact:true}).waitFor();

@@ -71,7 +71,7 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  await page.route('**/api/auth/destination',r=>r.fulfill({status:503,contentType:'application/json',body:JSON.stringify({message:'Controlled routing outage'})}));
  await page.route('**/api/billing/access',r=>new URL(page.url()).pathname==='/login'?r.fulfill({status:503,contentType:'application/json',body:JSON.stringify({message:'Controlled billing outage'})}):r.continue());
  await dialog.getByLabel('Username hoặc email',{exact:true}).fill('qa_owner');await dialog.getByLabel('Mật khẩu',{exact:true}).fill(password);await pairedSubmit(page,dialog.getByRole('button',{name:'Đăng nhập',exact:true}),'/api/auth/login');await dialog.waitFor({state:'hidden'});
- await page.getByRole('heading',{name:'Bảo vệ khu vực quản trị',exact:true}).waitFor();assert.equal((await fresh.request.get(origin+'/api/admin/overview')).status(),403);
+ await page.getByRole('heading',{name:'Xác thực quản trị',exact:true}).waitFor();assert.equal((await fresh.request.get(origin+'/api/admin/overview')).status(),403);
  assert.equal(Number((await pg.query('SELECT count(*)::int AS n FROM sessions WHERE user_id=$1',[owner.user.id])).rows[0].n),2);record({case:'paired login submit creates exactly one new session and one POST',verdict:'PASS'});
  assert.equal(new URL(page.url()).pathname,'/admin');record({case:'Owner login from public login page routes to /admin and remains locked before MFA',verdict:'PASS'});
  await page.unroute('**/api/auth/destination');await page.unroute('**/api/billing/access');record({case:'Owner POST receipt routes directly to admin despite auth-destination and billing outages at login',verdict:'PASS'});
@@ -81,7 +81,7 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  await page.waitForFunction(()=>document.querySelector('button:disabled')!==null);releaseSetup();const setup=await (await setupResponse).json();await page.getByText(setup.manualKey,{exact:true}).waitFor();assert.equal(setupCalls,1);await page.unroute('**/api/auth/mfa/setup');
  record({case:'real MFA enrollment from UI; paired synchronous submits issue exactly one setup request',verdict:'PASS'});
  let confirmCalls=0,releaseConfirm;const holdConfirm=new Promise(r=>releaseConfirm=r);await page.route('**/api/auth/mfa/confirm',async route=>{confirmCalls++;await holdConfirm;await route.continue()});
- await page.getByLabel('Mã Authenticator 6 chữ số (không phải mã email)',{exact:true}).fill(totpCode(setup.manualKey,Math.floor(Date.now()/30000)));const confirmed=page.waitForResponse(r=>r.url().endsWith('/api/auth/mfa/confirm'));
+ await page.getByLabel('Mã Authenticator 6 chữ số',{exact:true}).fill(totpCode(setup.manualKey,Math.floor(Date.now()/30000)));const confirmed=page.waitForResponse(r=>r.url().endsWith('/api/auth/mfa/confirm'));
  await page.getByRole('button',{name:'Xác nhận thiết lập',exact:true}).evaluate(button=>{button.form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));button.form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}))});releaseConfirm();assert.equal((await confirmed).status(),200);
  await page.getByRole('heading',{name:'Toàn cảnh Thiên Đồ',exact:true}).waitFor();assert.equal(confirmCalls,1);await page.unroute('**/api/auth/mfa/confirm');
  record({case:'real TOTP confirmation admits Owner dashboard, prevents duplicate code consumption',verdict:'PASS'});
@@ -112,7 +112,7 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  assert.equal(memberBrowser.user?.id,member.user.id,'Browser must retain member identity');
  await regular.getByRole('alert').filter({hasText:'không có quyền quản trị'}).waitFor();assert.equal((await member.context.request.get(origin+'/api/admin/overview')).status(),403);await regular.close();
  // Expiring assurance requires MFA again, even though the login session is still alive.
- await pg.query("UPDATE admin_session_assurance SET verified_at=clock_timestamp()-interval '13 hours' WHERE user_id=$1",[owner.user.id]);await page.waitForTimeout(300);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));await page.getByRole('heading',{name:'Bảo vệ khu vực quản trị',exact:true}).waitFor();assert.equal((await fresh.request.get(origin+'/api/admin/overview')).status(),403);
+ await pg.query("UPDATE admin_session_assurance SET verified_at=clock_timestamp()-interval '13 hours' WHERE user_id=$1",[owner.user.id]);await page.waitForTimeout(300);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));await page.getByRole('heading',{name:'Xác thực quản trị',exact:true}).waitFor();assert.equal((await fresh.request.get(origin+'/api/admin/overview')).status(),403);
  record({case:'ordinary member denied and expired MFA assurance cannot retain admin access',verdict:'PASS'});
  // A new login session does not inherit another session's MFA assurance.
  await fresh.request.post(origin+'/api/auth/logout',{data:{}});await page.evaluate(()=>{const c=new BroadcastChannel('thiendo.auth-session.v1');c.postMessage({type:'signed-out'});setTimeout(()=>c.close(),100)});await page.waitForURL(origin+'/');assert.equal(await page.getByRole('navigation',{name:'Điều hướng quản trị'}).count(),0);assert.equal((await fresh.request.get(origin+'/api/admin/overview')).status(),401);
