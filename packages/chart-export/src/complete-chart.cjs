@@ -23,7 +23,7 @@ function completeChartModel(chart,annual,options={}){
 function renderCompleteChartSvg(chart,label='',annual,options={}){
  const m=completeChartModel(chart,annual,options),W=m.width,H=m.height,cellW=352,top=92,left=16;
  const out=[`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="group" aria-label="Lá số tổng thể 12 cung" data-complete-chart="true" data-natal-count="${m.natalCount}">`,
- `<rect width="${W}" height="${H}" fill="#f6f0e1"/><style>text{font-family:Arial,Segoe UI,sans-serif}g[data-branch]{cursor:pointer}g[data-branch]:focus{outline:none}g[data-branch]:focus .palace-border{stroke:#865a19;stroke-width:5}.annual-label{fill:#69429a}.palace-border{stroke:#b5a68d;stroke-width:1}</style>`,
+ `<rect width="${W}" height="${H}" fill="#f6f0e1"/><defs><linearGradient id="paper" x2="0" y2="1"><stop stop-color="#fbf8ef"/><stop offset="1" stop-color="#e8dfcb"/></linearGradient></defs><style>text{font-family:Arial,Segoe UI,sans-serif}g[data-branch]{cursor:pointer}g[data-branch]:focus{outline:none}g[data-branch]:focus .palace-border{stroke:#865a19;stroke-width:5}.annual-label{fill:#69429a}.palace-border{stroke:#b5a68d;stroke-width:1}</style>`,
  `<text x="720" y="36" text-anchor="middle" fill="#76501f" font-size="26" font-weight="700">THIÊN ĐỒ · TỬ VI ĐẨU SỐ</text>`,
  `<text x="720" y="65" text-anchor="middle" fill="#314d42" font-size="18">${esc([...String(label)].slice(0,70).join(''))} · ${m.natalCount} sao gốc / vòng sao · ${annual?esc('Năm xem '+annual.year):'Bản mệnh'}</text>`];
  const text=(x,y,value,size=15,color='#314d42',attrs='')=>out.push(`<text x="${x}" y="${y}" font-size="${size}" fill="${color}" ${attrs}>${esc(value)}</text>`);
@@ -40,10 +40,19 @@ function renderCompleteChartSvg(chart,label='',annual,options={}){
  const flags=annual&&options.showAnnual!==false?[annual.activeDaiHan?.branchIndex===h.branchIndex?'ĐH đang xét':'',annual.tieuHan?.branchIndex===h.branchIndex?'Tiểu hạn':'',annual.luuThaiTueBranchIndex===h.branchIndex?'Lưu Thái Tuế':''].filter(Boolean):[];
  text(x+cellW-12,y+m.rowHeight-16,flags.join(' · '),12,'#69429a','text-anchor="end"');out.push('</g>');}
  const cx=left+cellW,cy=top+m.rowHeight;
- out.push(`<g aria-label="Thông tin trung tâm"><rect x="${cx}" y="${cy}" width="${cellW*2}" height="${m.rowHeight*2}" fill="#eee5d2" stroke="#ae9871"/>`);
- text(720,cy+66,'THIÊN ĐỒ',38,'#76501f','text-anchor="middle" font-weight="700"');text(720,cy+100,'BẢN ĐỒ THẬP NHỊ CUNG',16,'#577561','text-anchor="middle"');
+ out.push(`<g aria-label="Thông tin trung tâm"><rect x="${cx}" y="${cy}" width="${cellW*2}" height="${m.rowHeight*2}" fill="url(#paper)" stroke="#ae9871"/>`);
+ out.push(`<rect x="${cx+24}" y="${cy+24}" width="${cellW*2-48}" height="${m.rowHeight*2-48}" rx="8" fill="none" stroke="#c4b18b"/><path d="M${cx+48} ${cy+124}H${cx+cellW*2-48}" stroke="#bba477"/>`);
+ text(720,cy+65,'THIÊN ĐỒ',32,'#76501f','text-anchor="middle" font-weight="700" letter-spacing="5"');
+ text(720,cy+96,'TỬ VI ĐẨU SỐ · HỒ SƠ LÁ SỐ',12,'#577561','text-anchor="middle" letter-spacing="2"');
+ const personal=wrap([...String(label||'Lá số cá nhân')].slice(0,70).join(''),36);
+ personal.forEach((line,i)=>text(720,cy+164+i*30,line,24,'#314d42','text-anchor="middle" font-weight="700"'));
  const info=[['Dương lịch',`${chart.solar.day}/${chart.solar.month}/${chart.solar.year}`],['Âm lịch',`${chart.lunar.day}/${chart.lunar.month}/${chart.lunar.year}${chart.lunar.leap?' nhuận':''}`],['Giờ sinh',`${String(chart.hour).padStart(2,'0')}:${String(chart.minute).padStart(2,'0')} · ${chart.hourBranch}`],['Giới tính',chart.gender],['Năm sinh',chart.yearCanChi],['Mệnh',chart.menh],['Thân',chart.than+' · '+chart.thanPalace],['Cục',chart.cuc.name],...(annual?[['Năm xem',annual.year+' · '+annual.canChi],['Tuổi mụ',annual.ageMu],['Tiểu hạn',annual.tieuHan.palace+' · '+annual.tieuHan.branch]]:[])];
- info.forEach(([name,value],i)=>{text(cx+36,cy+152+i*31,name,16);text(cx+210,cy+152+i*31,value,18,'#314d42','font-weight="700"');});
+ const infoTop=cy+210+(personal.length-1)*30,infoStep=Math.min(64,Math.floor((m.rowHeight*2-110-(infoTop-cy))/6));
+ info.forEach(([name,value],i)=>{const col=i%2,row=Math.floor(i/2),bx=cx+40+col*cellW*.9,by=infoTop+row*infoStep;
+  text(bx,by,String(name).toLocaleUpperCase('vi'),11,'#68796e','letter-spacing="1"');
+  text(bx,by+25,value,17,'#263f35','font-weight="700"');
+  out.push(`<line x1="${bx}" y1="${by+38}" x2="${bx+cellW*.9-24}" y2="${by+38}" stroke="#d8ceba"/>`);
+ });
  text(720,cy+m.rowHeight*2-75,'Lưu tinh và Lưu Tứ Hóa ghi riêng bằng tên đầy đủ.',15,'#69429a','text-anchor="middle"');text(720,cy+m.rowHeight*2-46,'Tuần / Triệt là án ngữ, không cộng vào sao gốc.',15,'#76501f','text-anchor="middle"');out.push('</g>');
  text(720,H-46,'M: Miếu · V: Vượng · Đ: Đắc · B: Bình · H: Hãm — bảng tham khảo 14 chính tinh',15,'#314d42','text-anchor="middle"');text(720,H-20,'Sao gốc / vòng sao, Tứ Hóa, án ngữ và lưu niên là các lớp riêng · '+chart.ruleSet,12,'#577561','text-anchor="middle"');out.push('</svg>');return out.join('');
 }
