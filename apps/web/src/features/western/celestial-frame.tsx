@@ -1,4 +1,6 @@
 'use client';
+import {svgToPng} from '@/lib/svg-png';
+import {usePendingOperation} from '@/lib/use-pending-operation';
 import {downloadBlobFile} from '@/lib/download-blob';
 import {useId,useRef,useState,type CSSProperties,type ReactNode} from 'react';
 import css from './celestial-frame.module.css';
@@ -32,8 +34,9 @@ export function ChartAxes({cx,cy,asc,mc,outer}:{cx:number;cy:number;asc:number;m
 }
 export function angleLabel(longitude:number){const minutes=Math.floor(((longitude%30+30)%30)*60+1e-8),deg=Math.floor(minutes/60);return `${String(deg).padStart(2,'0')}°${String(minutes%60).padStart(2,'0')}′`;}
 export function ChartViewport({children,label}:{children:ReactNode;label:string}){
+ const operation=usePendingOperation();
  const [zoom,setZoom]=useState(1),[error,setError]=useState(''),viewport=useRef<HTMLDivElement>(null);
- async function exportSvg(png=false){try{
+ async function exportSvg(png=false){const request=operation.begin();if(!request)return;try{
   const source=viewport.current?.querySelector('svg');if(!source)return;setError('');const copy=source.cloneNode(true) as SVGSVGElement;
   const originals=[source,...source.querySelectorAll('*')],clones=[copy,...copy.querySelectorAll('*')];
   const properties=['fill','stroke','stroke-width','stroke-dasharray','opacity','fill-opacity','stroke-opacity','font-family','font-size','font-weight','letter-spacing','paint-order','stroke-linecap','stroke-linejoin','text-anchor','stop-color','stop-opacity','visibility','display'];
@@ -55,10 +58,10 @@ export function ChartViewport({children,label}:{children:ReactNode;label:string}
   element('text',{x:'600',y:'1300','text-anchor':'middle',fill:ink,'font-family':'Arial,sans-serif','font-size':'12'},'Dành cho học hỏi và nghiên cứu · Không phải dự đoán chắc chắn');
   const blob=new Blob([new XMLSerializer().serializeToString(sheet)],{type:'image/svg+xml;charset=utf-8'}),filename='thien-do-'+source.dataset.precisionWheel;
   if(!png){downloadBlobFile(blob,filename+'.svg');return;}
-  const url=URL.createObjectURL(blob);try{const image=new Image();image.src=url;await image.decode();const canvas=document.createElement('canvas');canvas.width=2400;canvas.height=2720;const ctx=canvas.getContext('2d');if(!ctx)throw Error('Canvas unavailable');ctx.drawImage(image,0,0,2400,2720);const output=await new Promise<Blob|null>(resolve=>canvas.toBlob(resolve,'image/png'));if(!output)throw Error('PNG unavailable');downloadBlobFile(output,filename+'.png');}finally{URL.revokeObjectURL(url);}
- }catch{setError('Chưa xuất được bản đồ. Hãy thử lại.');}}
+  const output=await svgToPng(blob,2400,2720,request.signal);if(!request.signal.aborted)downloadBlobFile(output,filename+'.png');
+ }catch{if(!request.signal.aborted)setError('Chưa xuất được bản đồ. Hãy thử lại.');}finally{operation.finish(request);}}
 
- return <><div className={css.zoomTools} role="group" aria-label="Thu phóng bản đồ sao"><button type="button" aria-label="Thu nhỏ bản đồ" disabled={zoom<=1} onClick={()=>setZoom(z=>Math.max(1,z-.25))}>−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button type="button" aria-label="Phóng to bản đồ" disabled={zoom>=2.25} onClick={()=>setZoom(z=>Math.min(2.25,z+.25))}>+</button><button type="button" onClick={()=>{setZoom(1);viewport.current?.scrollTo({left:0,top:0});}}>Vừa khung</button><button type="button" onClick={()=>void exportSvg()}>Xuất SVG đang xem</button><button type="button" onClick={()=>void exportSvg(true)}>Xuất PNG bản đồ</button><span>100% trọn vòng · chỉ kéo khi phóng to</span></div><div ref={viewport} className={css.viewport} data-zoom={zoom} role="region" aria-label={label} tabIndex={0} style={{'--wheel-scale':zoom} as CSSProperties}>{children}</div>{error&&<p role="alert">{error}</p>}</>;
+ return <><div className={css.zoomTools} role="group" aria-label="Thu phóng bản đồ sao"><button type="button" aria-label="Thu nhỏ bản đồ" disabled={zoom<=1} onClick={()=>setZoom(z=>Math.max(1,z-.25))}>−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button type="button" aria-label="Phóng to bản đồ" disabled={zoom>=2.25} onClick={()=>setZoom(z=>Math.min(2.25,z+.25))}>+</button><button type="button" onClick={()=>{setZoom(1);viewport.current?.scrollTo({left:0,top:0});}}>Vừa khung</button><button type="button" disabled={operation.pending} onClick={()=>void exportSvg()}>Xuất SVG đang xem</button><button type="button" disabled={operation.pending} onClick={()=>void exportSvg(true)}>Xuất PNG bản đồ</button><span>100% trọn vòng · chỉ kéo khi phóng to</span></div><div ref={viewport} className={css.viewport} data-zoom={zoom} role="region" aria-label={label} tabIndex={0} style={{'--wheel-scale':zoom} as CSSProperties}>{children}</div>{error&&<p role="alert">{error}</p>}</>;
 }
 
 export function coordinateRotation(longitude:number,asc:number){let r=((90-(180+longitude-asc))%180+180)%180;return r>90?r-180:r;}

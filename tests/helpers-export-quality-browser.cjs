@@ -4,8 +4,9 @@ module.exports=async({member,origin,record})=>{
  for(const width of [390,1440]){
   await page.setViewportSize({width,height:950});await page.goto(origin+'/western-astrology');
   await page.getByRole('checkbox').first().check();await page.getByRole('button',{name:'Lập Natal Chart',exact:true}).click();await page.getByRole('heading',{name:'Kết quả Natal',exact:true}).waitFor();
-  async function bytes(name){const event=page.waitForEvent('download');await page.getByRole('button',{name,exact:true}).click();const parts=[];for await(const p of await(await event).createReadStream())parts.push(p);return Buffer.concat(parts);}
+  async function bytes(name){const event=page.waitForEvent('download');await page.getByRole('button',{name,exact:true}).click();if(name==='Xuất PNG bản đồ'){await page.waitForFunction(()=>typeof window.releaseExportDecode==='function');assert.equal(await page.getByRole('button',{name:'Xuất SVG đang xem',exact:true}).isDisabled(),true);assert.equal(await page.getByRole('button',{name,exact:true}).isDisabled(),true);await page.evaluate(()=>window.releaseExportDecode());}const parts=[];for await(const p of await(await event).createReadStream())parts.push(p);return Buffer.concat(parts);}
   const svg=(await bytes('Xuất SVG đang xem')).toString();assert.match(svg,/width="1200"/);assert.match(svg,/height="1360"/);assert.ok(svg.includes('BẢN ĐỒ SAO NATAL'));assert.doesNotMatch(svg,/var\(--/);
+  await page.evaluate(()=>{const decode=HTMLImageElement.prototype.decode;HTMLImageElement.prototype.decode=async function(){await decode.call(this);await new Promise(resolve=>{window.releaseExportDecode=resolve;});};});
   const png=await bytes('Xuất PNG bản đồ');assert.equal(png.readUInt32BE(16),2400);assert.equal(png.readUInt32BE(20),2720);
   const fs=require('node:fs');fs.writeFileSync('/tmp/thien-do-western-export.png',png);
   await page.goto(origin+'/tarot');await page.getByRole('button',{name:'✧ Xáo và rút bài',exact:true}).click();await page.getByRole('button',{name:'In / PDF trải bài',exact:true}).waitFor();

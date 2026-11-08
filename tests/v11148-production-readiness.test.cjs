@@ -39,6 +39,6 @@ test('V11.148 production acceptance CI includes Chromium test while same servers
 });
 test('V11.148 automated browser result is explicitly NOT OAuth or native DB proof',()=>{
  const runner=readFileSync(join(root,'infrastructure/scripts/verify-browser-acceptance.mjs'),'utf8');
- assert.match(runner,/account\/storage HTTP mocked/);
+ assert.match(runner,/other suites include account\/storage fixtures/);
  assert.match(runner,/Does not certify native PostgreSQL/);
 });

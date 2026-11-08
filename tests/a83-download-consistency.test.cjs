@@ -63,3 +63,17 @@ test('A83: shared helper guarantees anchor removal and revocation even if click 
   deferred[0]();assert.deepEqual(operations.at(-1),'revoke');
  }
 });
+
+test('PNG rasterization releases its temporary image URL on success, decode failure and cancellation',async()=>{
+ const ts=require('./helpers-typeloader.cjs'),source=fs.readFileSync(path.join(root,'apps/web/src/lib/svg-png.ts'),'utf8');
+ const code=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+ for(const mode of ['success','decode-failure','cancel']){
+  const controller=new AbortController(),released=[],output=new Blob(['png']),mod={exports:{}};let draws=0;
+  class ImageStub{async decode(){if(mode==='decode-failure')throw Error('decode failed');if(mode==='cancel')controller.abort();}}
+  const doc={createElement:()=>({getContext:()=>({drawImage:()=>draws++}),toBlob:done=>done(output)})};
+  new Function('exports','Image','document','URL',code)(mod.exports,ImageStub,doc,{createObjectURL:()=> 'blob:temporary',revokeObjectURL:url=>released.push(url)});
+  const task=mod.exports.svgToPng(new Blob(['svg']),2400,2720,controller.signal);
+  if(mode==='success')assert.equal(await task,output);else await assert.rejects(task);
+  assert.deepEqual(released,['blob:temporary']);assert.equal(draws,mode==='success'?1:0);
+ }
+});
