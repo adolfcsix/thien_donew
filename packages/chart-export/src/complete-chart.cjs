@@ -3,7 +3,7 @@ const {natalNames,supportingNames}=require('./star-inventory.cjs');
 const {colorFor}=require('./star-display.cjs');
 const {cloudPair,frameCorners}=require('./ornaments.cjs');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
-function wrap(value,max=20){const words=String(value).split(' '),lines=[];let line='';for(const word of words){if(line&&(line+' '+word).length>max){lines.push(line);line=word;}else line+=(line?' ':'')+word;}if(line)lines.push(line);return lines;}
+function wrap(value,max=20){const words=String(value).split(' ').flatMap(word=>{const letters=[...word],chunks=[];for(let i=0;i<letters.length;i+=max)chunks.push(letters.slice(i,i+max).join(''));return chunks;}),lines=[];let line='';for(const word of words){if(line&&(line+' '+word).length>max){lines.push(line);line=word;}else line+=(line?' ':'')+word;}if(line)lines.push(line);return lines;}
 function completeChartModel(chart,annual,options={}){
  const cells=[0,1,2,3,4,7,8,11,12,13,14,15];
  if(!chart||!Array.isArray(chart.houses)||chart.houses.length!==12||new Set(chart.houses.map(h=>h.cell)).size!==12||new Set(chart.houses.map(h=>h.branchIndex)).size!==12||chart.houses.some(h=>!cells.includes(h.cell)||!Number.isInteger(h.branchIndex)||h.branchIndex<0||h.branchIndex>11))throw TypeError('Cần 12 cung và 12 địa chi hợp lệ trên vòng ngoài.');
@@ -26,7 +26,7 @@ function renderCompleteChartSvg(chart,label='',annual,options={}){
  const out=[`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="group" aria-label="Lá số tổng thể 12 cung" data-complete-chart="true" data-natal-count="${m.natalCount}">`,
  `<rect width="${W}" height="${H}" fill="#f6f0e1"/><defs><linearGradient id="paper" x2="0" y2="1"><stop stop-color="#fbf8ef"/><stop offset="1" stop-color="#e8dfcb"/></linearGradient></defs><style>text{font-family:Arial,Segoe UI,sans-serif}g[data-branch]{cursor:pointer}g[data-branch]:focus{outline:none}g[data-branch]:focus .palace-border{stroke:#865a19;stroke-width:5}.annual-label{fill:#69429a}.palace-border{stroke:#b5a68d;stroke-width:1}</style>`,
  `<text x="720" y="36" text-anchor="middle" fill="#76501f" font-size="26" font-weight="700">THIÊN ĐỒ · TỬ VI ĐẨU SỐ</text>`,
- `<text x="720" y="65" text-anchor="middle" fill="#314d42" font-size="18">${esc([...String(label)].slice(0,70).join(''))} · ${m.natalCount} sao gốc / vòng sao · ${annual?esc('Năm xem '+annual.year):'Bản mệnh'}</text>`];
+ `<text x="720" y="65" text-anchor="middle" fill="#314d42" font-size="18">${m.natalCount} sao gốc / vòng sao · ${annual?esc('Năm xem '+annual.year):'Bản mệnh'}</text>`];
  out.push(cloudPair(165,12,230),cloudPair(W-165,12,230));
  const text=(x,y,value,size=15,color='#314d42',attrs='')=>out.push(`<text x="${x}" y="${y}" font-size="${size}" fill="${color}" ${attrs}>${esc(value)}</text>`);
  const item=(x,y,name,lines,layer)=>{out.push(`<text x="${x}" y="${y}" font-size="14" fill="${colorFor(name,{annual:layer.startsWith('annual')})}" data-star-name="${esc(name)}" data-layer="${layer}">${lines.map((l,i)=>`<tspan x="${x}" dy="${i?20:0}">${esc(l)}${i<lines.length-1?' ':''}</tspan>`).join('')}</text>`);return y+lines.length*20;};

@@ -10,6 +10,7 @@ import {SaveStudy} from '@/features/study-room/save-study';
 import {studyApi} from '@/lib/api';
 import {useAuth} from '@/components/auth-provider';
 import {normalizeSearchText} from '@/lib/navigation';
+import {printTarotReading} from '@/features/tarot/print-reading';
 import {downloadBlobFile} from '@/lib/download-blob';
 import styles from './tarot.module.css';
 import {TarotCardDossier,TarotDepthReadingPanel} from '@/features/tarot/tarot-depth';
@@ -138,7 +139,7 @@ export default function TarotPage(){
       <TarotFace card={position.card} reversed={position.orientation==='reversed'} deck={deck}/>
       <div className={styles.readingCopy}><h3>{position.card.nameVi}</h3><p className={styles.orientation}>{position.orientation==='reversed'?'Lá ngược':'Lá xuôi'} · {position.card.name}</p><p>{position.meaning}.</p><h4>Câu hỏi tự đối chiếu</h4><p>{position.reflection}</p></div>
      </article>)}
-    </div></TarotCloth>{snapshot&&<ExpertOnly defer title="Diễn giải Tarot chuyên sâu"><TarotDepthReadingPanel snapshot={snapshot} onContextChange={context=>{if(snapshot.version===2){setReadingContext(context);setResult(reading({...snapshot,context}));}}}/></ExpertOnly>}<div className={styles.saveArea}><button className={styles.secondary} type="button" onClick={exportJson}>↓ Xuất JSON trải bài</button>
+    </div></TarotCloth>{snapshot&&<ExpertOnly defer title="Diễn giải Tarot chuyên sâu"><TarotDepthReadingPanel snapshot={snapshot} onContextChange={context=>{if(snapshot.version===2){setReadingContext(context);setResult(reading({...snapshot,context}));}}}/></ExpertOnly>}<div className={styles.saveArea}><button className={styles.secondary} type="button" onClick={exportJson}>↓ Xuất JSON trải bài</button><button className={styles.secondary} type="button" onClick={()=>{try{printTarotReading(result,deck,describeTarotMethod(result).name);}catch(e){setNotice((e as Error).message);}}}>In / PDF trải bài</button>
        <SaveStudy onSaved={()=>setHistoryRefresh(n=>n+1)} draft={snapshot?{discipline:'tarot',title:`Tarot RWS · ${describeTarotMethod(result).name}`,summary:result.positions.map(p=>p.card.nameVi+(p.orientation==='reversed'?' (ngược)':'')).join(' · ').slice(0,240),notes:'',tags:['Tarot','RWS'],snapshot:{...snapshot}}:null}/>
       </div><p className={styles.help}>Bản lưu giữ mã lá và chiều lá, không rút ngẫu nhiên lại khi mở. Câu hỏi có thể là thông tin riêng tư: chỉ lưu vào tài khoản khi bạn chủ động chọn.</p>
    </div>}

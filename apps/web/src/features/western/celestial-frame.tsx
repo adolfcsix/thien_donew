@@ -33,16 +33,32 @@ export function ChartAxes({cx,cy,asc,mc,outer}:{cx:number;cy:number;asc:number;m
 export function angleLabel(longitude:number){const minutes=Math.floor(((longitude%30+30)%30)*60+1e-8),deg=Math.floor(minutes/60);return `${String(deg).padStart(2,'0')}°${String(minutes%60).padStart(2,'0')}′`;}
 export function ChartViewport({children,label}:{children:ReactNode;label:string}){
  const [zoom,setZoom]=useState(1),[error,setError]=useState(''),viewport=useRef<HTMLDivElement>(null);
- function exportSvg(){try{
+ async function exportSvg(png=false){try{
   const source=viewport.current?.querySelector('svg');if(!source)return;setError('');const copy=source.cloneNode(true) as SVGSVGElement;
   const originals=[source,...source.querySelectorAll('*')],clones=[copy,...copy.querySelectorAll('*')];
   const properties=['fill','stroke','stroke-width','stroke-dasharray','opacity','fill-opacity','stroke-opacity','font-family','font-size','font-weight','letter-spacing','paint-order','stroke-linecap','stroke-linejoin','text-anchor','stop-color','stop-opacity','visibility','display'];
   originals.forEach((node,i)=>{const computed=getComputedStyle(node);for(const key of properties){const value=computed.getPropertyValue(key),hash=value.startsWith('url(')?value.indexOf('#'):-1;clones[i].setAttribute(key,hash<0?value:'url('+value.slice(hash).replace(/[\"\')]+$/,'')+')');}clones[i].removeAttribute('style');clones[i].removeAttribute('class');clones[i].removeAttribute('tabindex');clones[i].removeAttribute('role');});
   copy.setAttribute('xmlns','http://www.w3.org/2000/svg');copy.setAttribute('width','1000');copy.setAttribute('height','1000');copy.removeAttribute('style');
-  downloadBlobFile(new Blob([new XMLSerializer().serializeToString(copy)],{type:'image/svg+xml;charset=utf-8'}),'thien-do-'+source.dataset.precisionWheel+'.svg');
+  const ns='http://www.w3.org/2000/svg',sheet=document.createElementNS(ns,'svg');
+  sheet.setAttribute('xmlns',ns);sheet.setAttribute('width','1200');sheet.setAttribute('height','1360');sheet.setAttribute('viewBox','0 0 1200 1360');
+  const palette=getComputedStyle(source),paper=palette.getPropertyValue('--panel').trim()||'#faf6ef',ink=palette.getPropertyValue('--text').trim()||'#282b3c',gold=palette.getPropertyValue('--gold').trim()||'#967645';
+  function element(tag:string,attrs:Record<string,string>,text?:string){const node=document.createElementNS(ns,tag);for(const [key,value] of Object.entries(attrs))node.setAttribute(key,value);if(text)node.textContent=text;sheet.append(node);return node;}
+  element('rect',{width:'1200',height:'1360',fill:paper});
+  for(const inset of [24,34])element('rect',{x:String(inset),y:String(inset),width:String(1200-inset*2),height:String(1360-inset*2),rx:'4',fill:'none',stroke:gold,'stroke-width':inset===24?'2':'0.7'});
+  const title=source.dataset.precisionWheel==='natal'?'BẢN ĐỒ SAO NATAL':source.dataset.precisionWheel==='synastry'?'BẢN ĐỒ TƯƠNG QUAN':'BẢN ĐỒ SAO · '+(source.dataset.precisionWheel||'').toUpperCase();
+  element('text',{x:'600',y:'87','text-anchor':'middle',fill:gold,'font-family':'Georgia,serif','font-size':'20','letter-spacing':'6'},'THIÊN ĐỒ');
+  element('text',{x:'600',y:'136','text-anchor':'middle',fill:ink,'font-family':'Georgia,serif','font-size':'31'},title);
+  element('path',{d:'M380 162H565M635 162H820M588 162l12-7 12 7-12 7Z',fill:gold,stroke:gold,'stroke-width':'1'});
+  copy.setAttribute('x','100');copy.setAttribute('y','190');copy.setAttribute('width','1000');copy.setAttribute('height','1000');sheet.append(copy);
+  element('text',{x:'600',y:'1235','text-anchor':'middle',fill:ink,'font-family':'Arial,sans-serif','font-size':'17'},'Tọa độ · Cung · Nhà · Góc hợp');
+  element('text',{x:'600',y:'1271','text-anchor':'middle',fill:ink,'font-family':'Arial,sans-serif','font-size':'14'},'Giữ các lớp và bộ lọc đang hiển thị · Không tính lại dữ liệu khi xuất');
+  element('text',{x:'600',y:'1300','text-anchor':'middle',fill:ink,'font-family':'Arial,sans-serif','font-size':'12'},'Dành cho học hỏi và nghiên cứu · Không phải dự đoán chắc chắn');
+  const blob=new Blob([new XMLSerializer().serializeToString(sheet)],{type:'image/svg+xml;charset=utf-8'}),filename='thien-do-'+source.dataset.precisionWheel;
+  if(!png){downloadBlobFile(blob,filename+'.svg');return;}
+  const url=URL.createObjectURL(blob);try{const image=new Image();image.src=url;await image.decode();const canvas=document.createElement('canvas');canvas.width=2400;canvas.height=2720;const ctx=canvas.getContext('2d');if(!ctx)throw Error('Canvas unavailable');ctx.drawImage(image,0,0,2400,2720);const output=await new Promise<Blob|null>(resolve=>canvas.toBlob(resolve,'image/png'));if(!output)throw Error('PNG unavailable');downloadBlobFile(output,filename+'.png');}finally{URL.revokeObjectURL(url);}
  }catch{setError('Chưa xuất được bản đồ. Hãy thử lại.');}}
 
- return <><div className={css.zoomTools} role="group" aria-label="Thu phóng bản đồ sao"><button type="button" aria-label="Thu nhỏ bản đồ" disabled={zoom<=1} onClick={()=>setZoom(z=>Math.max(1,z-.25))}>−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button type="button" aria-label="Phóng to bản đồ" disabled={zoom>=2.25} onClick={()=>setZoom(z=>Math.min(2.25,z+.25))}>+</button><button type="button" onClick={()=>{setZoom(1);viewport.current?.scrollTo({left:0,top:0});}}>Vừa khung</button><button type="button" onClick={exportSvg}>Xuất SVG đang xem</button><span>100% trọn vòng · chỉ kéo khi phóng to</span></div><div ref={viewport} className={css.viewport} data-zoom={zoom} role="region" aria-label={label} tabIndex={0} style={{'--wheel-scale':zoom} as CSSProperties}>{children}</div>{error&&<p role="alert">{error}</p>}</>;
+ return <><div className={css.zoomTools} role="group" aria-label="Thu phóng bản đồ sao"><button type="button" aria-label="Thu nhỏ bản đồ" disabled={zoom<=1} onClick={()=>setZoom(z=>Math.max(1,z-.25))}>−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button type="button" aria-label="Phóng to bản đồ" disabled={zoom>=2.25} onClick={()=>setZoom(z=>Math.min(2.25,z+.25))}>+</button><button type="button" onClick={()=>{setZoom(1);viewport.current?.scrollTo({left:0,top:0});}}>Vừa khung</button><button type="button" onClick={()=>void exportSvg()}>Xuất SVG đang xem</button><button type="button" onClick={()=>void exportSvg(true)}>Xuất PNG bản đồ</button><span>100% trọn vòng · chỉ kéo khi phóng to</span></div><div ref={viewport} className={css.viewport} data-zoom={zoom} role="region" aria-label={label} tabIndex={0} style={{'--wheel-scale':zoom} as CSSProperties}>{children}</div>{error&&<p role="alert">{error}</p>}</>;
 }
 
 export function coordinateRotation(longitude:number,asc:number){let r=((90-(180+longitude-asc))%180+180)%180;return r>90?r-180:r;}
