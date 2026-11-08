@@ -35,6 +35,7 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
   await pg.query("INSERT INTO admin_memberships(user_id,role) VALUES($1,'owner')",[owner.user.id]);
   async function post(context,url,data){const r=await context.request.post(origin+url,{data});assert.equal(r.status(),200,url+' '+await r.text());return r.json();}
   const sent=await post(owner.context,'/api/auth/email/send',{});await post(owner.context,'/api/auth/email/verify',{challengeId:sent.challengeId,code:delivered.get(owner.email)});
+ if(process.env.THIENDO_BROWSER_SCOPE==='admin-config'){await require('./helpers-admin-config-browser.cjs')({owner,origin,record});return;}
  if(process.env.THIENDO_BROWSER_SCOPE==='export-quality'){await require('./helpers-export-quality-browser.cjs')({member,origin,record});return;}
  if(process.env.THIENDO_BROWSER_SCOPE==='natal-live'){
   process.env.NEXT_BASE_URL=origin;

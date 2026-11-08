@@ -39,3 +39,14 @@ test('CSS 3D motion is decoration-only, reduced-motion aware and paused off view
  assert.match(scene,/aria-hidden="true"/);
  assert.match(source('apps/web/src/lib/visible-motion.ts'),/IntersectionObserver/);
 });
+
+test('MFA gate renders coherent controls for missing configuration, enrollment and verification',()=>{
+ const React=require('react'),{renderToStaticMarkup}=require('react-dom/server'),ts=require('./helpers-typeloader.cjs');
+ const m={exports:{}},code=ts.transpileModule(gate,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true}}).outputText;
+ const imports={'@/lib/api':{},'@/features/community-hub/email-verification':{EmailVerification:()=>null},'@/components/auth-provider':{useAuth:()=>({open:()=>{}})},'@/features/admin/use-admin-task':{useAdminTask:()=>({pending:false,error:'',run:()=>{}})},'./membership.module.css':{}};
+ new Function('module','exports','require',code)(m,m.exports,id=>id in imports?imports[id]:require(id));
+ const render=(configured,enabled)=>renderToStaticMarkup(React.createElement(m.exports.default,{status:{configured,enabled,verified:false,stepUp:false,role:'owner',handle:'owner'},onVerified:()=>{}}));
+ for(const enabled of [false,true]){const html=render(false,enabled);assert.ok(html.includes('Thiếu cấu hình máy chủ'));assert.ok(!html.includes('Nhập mã Authenticator để vào'));assert.ok(!html.includes('one-time-code'));assert.equal(html.includes('npm.cmd run admin:mfa:init'),!enabled);}
+ const verify=render(true,true);assert.ok(verify.includes('one-time-code'));assert.ok(verify.includes('Xác minh và vào Bàn điều hành'));assert.ok(!verify.includes('Thiếu cấu hình máy chủ'));
+ const enroll=render(true,false);assert.ok(enroll.includes('current-password'));assert.ok(!enroll.includes('one-time-code'));
+});
