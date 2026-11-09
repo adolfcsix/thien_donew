@@ -76,3 +76,19 @@ Workflow Full Stack của commit giai đoạn trước từng thất bại tại
 - Phân loại 49 cách cục: lib/ziwei/patterns-dingfu.ts, patterns-dinggui.ts, patterns-dingpin.ts, patterns-dingza.ts
 - Quy tắc trường phái: lib/ziwei/school-config.ts; thời gian: true-solar-time.ts, clock-adjust.ts, lunar-solar.ts
 - Dữ liệu giải đoán 13 chiều v4.0: mục Releases v4.0-13d, cần kiểm tra nguồn cấp phép, giới hạn trích lời giảng, khối lượng lưu trữ và sự lệch phiên bản khi sử dụng.
+
+
+## Bổ sung r2 — từ 6 lên 12 điều kiện nghiên cứu (2026-11-10)
+
+- Bộ classical-pattern-research.cjs hiện kiểm tra **12/49 chỉ mục**: **8 định quý, 4 định phú**, bằng hình học bản mệnh. Đây là danh mục nghiên cứu, không phải phán đoán đầy đủ 49 cách cục. 37 chỉ mục chưa kiểm chứng.
+- Thêm sáu mục dựa trên quy tắc đối chiếu lib/ziwei/patterns-dinggui.ts: Nguyệt lạc Hợi cung, Nguyệt sinh Thương Hải, Minh châu xuất hải, Nhật Nguyệt đồng lâm, Vũ Khúc thủ viên và Cự Cơ cư Mão.
+- Mọi nguồn GitHub trong kết quả chỉ đến commit tham khảo cố định 7922285d947b36610e7e31c232d8f1e2a0d0871d thay vì URL main dễ thay đổi nội dung.
+- Giữ ba trạng thái structural-match, not-met, needs-review, và cấm suy từ điều kiện hình học thành kết luận cát/hung. Nếu thiếu sao hoặc vị trí sao không rõ, các kiểm tra phụ thuộc phải giữ unknown.
+- Bộ kiểm thử Node mở rộng đối chiếu từng mẫu và phản chứng, trường hợp sao trùng tên nhưng sai lớp sao, đối chiếu Điền Trạch/Mệnh và không sửa dữ liệu lá số đầu vào. Trước khi gộp phải chờ GitHub Actions xác nhận typecheck và các thử nghiệm cần thiết.
+- Không thêm menu hoặc một khu đọc mới: tái sử dụng bộ lọc và bảng chứng cứ đang có ở chế độ Chuyên sâu, cung Mệnh.
+
+### Hạng mục còn phải đối chiếu
+
+- Kiểm chứng đầy đủ 49 mục cần tách **Định tạp** (đại hạn/lưu niên) khỏi hình học bản mệnh; những mục bất khả thi hoặc đang tranh luận không bị chuyển thành nhãn đã thành cách.
+- Cần bổ sung các nhóm sao được xác minh, quy tắc Không Vong theo trường phái và kiểm toán định nghĩa cát tinh trước khi xác nhận Nhật Nguyệt giáp Mệnh.
+- Bản Tử Vi hiện tại không tự chọn lại trường phái hoặc thay thế thuật toán đang dùng.
