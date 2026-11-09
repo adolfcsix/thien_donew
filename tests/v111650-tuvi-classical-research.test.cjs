@@ -58,3 +58,14 @@ test('Invalid chart geometry is rejected and source chart is not mutated',()=>{
  assert.throws(()=>study({houses:[...c.houses.slice(0,11)]}),/12 cung/);
  const bad=chart();bad.houses[0].branchIndex=1;assert.throws(()=>study(bad),/trùng lặp/);
 });
+
+test('Actual Thiên Đồ engine chart is readable without altering placements',()=>{
+ const engine=require('../packages/astrology-engine/src/tuvi.js');
+ const chart=engine.calculate({date:'2004-08-15',hour:8,minute:30,calendar:'solar',gender:'Nam'});
+ const before=JSON.stringify(chart.houses);
+ const result=study(chart);
+ assert.equal(result.assessed,6);
+ assert.equal(result.groups.length,4);
+ assert.ok(result.records.every(x=>['structural-match','not-met','needs-review'].includes(x.status)));
+ assert.equal(JSON.stringify(chart.houses),before);
+});
