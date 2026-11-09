@@ -73,13 +73,13 @@ function auditClassicalPatternCandidates(chart){
   result('dinh-quy-01','Nhật Nguyệt giáp Mệnh','Định quý','patterns-dinggui.ts',
    'Hai sao Nhật – Nguyệt chia nhau hai cung kề Mệnh; bản tham khảo còn yêu cầu Mệnh không tọa Không Vong và có cát tinh. Không được bỏ qua hai điều kiện này.',[
    place(sun,'Thái Dương ở một trong hai cung giáp Mệnh',x=>[mod(meng.branchIndex-1),mod(meng.branchIndex+1)].includes(x.branchIndex)),
-   place(moon,'Thái Âm ở cung giáp đối diện Thái Dương',x=>observed(sun)?x.branchIndex===mod(2*meng.branchIndex-sun.branchIndex):false),
+   place(moon,'Thái Âm ở cung giáp đối diện Thái Dương',x=>observed(sun)?x.branchIndex===mod(2*meng.branchIndex-sun.branchIndex):null),
    check('Có cát tinh trong cung Mệnh theo danh mục đối chiếu',good.length>0,good.length?good.join(', '):'Chưa thấy cát tinh từ danh mục đang hỗ trợ'),
    check('Đối chiếu đầy đủ điều kiện Không Vong',null,notes.void)],notes.void),
   result('dinh-phu-05','Nhật Nguyệt chiếu bích','Định phú','patterns-dingfu.ts',
    'Thái Dương và Thái Âm cùng tọa Điền Trạch; đây là điều kiện đồng cung, không phải chỉ đồng hội Tam Hợp.',[
     place(sun,'Thái Dương tại Điền Trạch',x=>x.palace==='Điền Trạch'),
-    place(moon,'Thái Âm tại cùng Điền Trạch',x=>observed(sun)&&x.palace==='Điền Trạch'&&x.branchIndex===sun.branchIndex)],notes.specific),
+    place(moon,'Thái Âm tại cùng Điền Trạch',x=>observed(sun)?x.palace==='Điền Trạch'&&x.branchIndex===sun.branchIndex:null)],notes.specific),
   result('dinh-phu-06','Kim xán quang huy','Định phú','patterns-dingfu.ts',
    'Mệnh ở Ngọ, Thái Dương độc thủ (không có chính tinh thứ hai cùng cung).',[
     check('Cung Mệnh đóng Ngọ',meng.branchIndex===6,'Mệnh chi số '+meng.branchIndex),
@@ -88,13 +88,13 @@ function auditClassicalPatternCandidates(chart){
   result('dinh-phu-02','Nhật Nguyệt giáp Tài','Định phú','patterns-dingfu.ts',
    'Vũ Khúc tọa Mệnh hoặc Tài Bạch; Thái Âm ở cung trước, Thái Dương ở cung sau. Phải xét vị trí kề ±1, không tính cách hai cung.',[
     place(wu,'Vũ Khúc tại Mệnh hoặc Tài Bạch',x=>['Mệnh','Tài Bạch'].includes(x.palace)),
-    place(moon,'Thái Âm ở cung trước Vũ Khúc',x=>observed(wu)&&x.branchIndex===mod(wu.branchIndex-1)),
-    place(sun,'Thái Dương ở cung sau Vũ Khúc',x=>observed(wu)&&x.branchIndex===mod(wu.branchIndex+1))],notes.specific),
+    place(moon,'Thái Âm ở cung trước Vũ Khúc',x=>observed(wu)?x.branchIndex===mod(wu.branchIndex-1):null),
+    place(sun,'Thái Dương ở cung sau Vũ Khúc',x=>observed(wu)?x.branchIndex===mod(wu.branchIndex+1):null)],notes.specific),
   result('dinh-phu-03','Tài Lộc giáp Mã','Định phú','patterns-dingfu.ts',
    'Thiên Mã tại Mệnh, Vũ Khúc ở cung trước và Lộc Tồn ở cung sau, đối chiếu đúng chiều của bộ sao theo trường phái tham khảo.',[
     place(horse,'Thiên Mã tọa Mệnh',x=>x.palace==='Mệnh'),
-    place(wu,'Vũ Khúc ở cung trước Thiên Mã',x=>observed(horse)&&x.branchIndex===mod(horse.branchIndex-1)),
-    place(loc,'Lộc Tồn ở cung sau Thiên Mã',x=>observed(horse)&&x.branchIndex===mod(horse.branchIndex+1))],notes.specific)
+    place(wu,'Vũ Khúc ở cung trước Thiên Mã',x=>observed(horse)?x.branchIndex===mod(horse.branchIndex-1):null),
+    place(loc,'Lộc Tồn ở cung sau Thiên Mã',x=>observed(horse)?x.branchIndex===mod(horse.branchIndex+1):null)],notes.specific)
  ];
  const matched=records.filter(x=>x.status==='structural-match').length;
  const reviewed=records.filter(x=>x.status==='needs-review').length;
