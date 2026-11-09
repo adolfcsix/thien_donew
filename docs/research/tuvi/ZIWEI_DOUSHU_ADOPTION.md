@@ -40,3 +40,39 @@ Ngày đối chiếu: 2026-11-10. Tham khảo: https://github.com/Renhuai123/ziw
 - Được kiểm tra bằng typecheck, build, kiểm thử browser trên desktop và điện thoại trước khi merge.
 - Chỉ khi Giai đoạn 2 hoàn tất mới mở tùy chọn trường phái có tác động trực tiếp đến thuật toán.
 
+
+
+## Đã hiện thực trong nhánh nghiên cứu (2026-11-10)
+
+### Cách cục có kiểm chứng điều kiện
+
+- Đã bổ sung module packages/interpretation/src/classical-pattern-research.cjs và khai báo kiểu; không sửa engine an sao.
+- Đã gắn ClassicalPatternResearch vào khu Chuyên sâu trong palace-reading.tsx, chỉ khi xem cung Mệnh; dùng chung phong cách thẻ và bộ lọc của conditional-pattern-evidence.tsx, không tạo menu trùng.
+- Tổng danh mục tham khảo của bộ tứ 《Toàn Thư》 là 49 chỉ mục: Định phú 6, Định quý 27, Định bần 8, Định tạp 8. Bản đầu chỉ ánh xạ 6 điều kiện: Định phú 4 và Định quý 2; **không tuyên bố đã hiện thực cả 49**.
+- Sáu chỉ mục: Nhật Nguyệt giáp Mệnh (chưa thể xác nhận Không Vong), Nhật xuất Phù Tang, Nhật Nguyệt giáp Tài, Tài Lộc giáp Mã, Nhật Nguyệt chiếu bích, Kim xán quang huy.
+- Đầu ra phân biệt structural-match / not-met / needs-review, ghi từng điều kiện met / not-met / unknown, có liên kết tới tệp quy tắc của dự án tham khảo.
+- Lớp nghiên cứu không sử dụng sao hạn hoặc phi hóa lưu niên làm bằng chứng cho hình học bản mệnh; không biến các hệ quy tắc có bất đồng thành một phép kết luận duy nhất.
+- tests/v111650-tuvi-classical-research.test.cjs: kiểm tra sáu trường hợp hình học, sai lớp sao, sao trùng, dữ liệu sai và dữ liệu đầu vào không bị biến đổi; có thêm smoke test bằng lá số engine thật. Chưa được phép gọi đây là tính năng production khi CI, E2E và thẩm định trường phái chưa hoàn tất.
+
+### Các độ sâu cần bổ sung tiếp theo
+
+| Nhánh | Mục tiêu | Điều kiện chấp nhận |
+|---|---|---|
+| 49 cách cục | Mở rộng 6/49 sang danh mục đầy đủ; tách định tạp sang vận hạn | Mỗi mục có câu định nghĩa chuẩn, vị trí sao, giới hạn, trường hợp phản chứng và fixture thực tế; mục tranh luận phải đánh dấu |
+| Tứ Hóa đa trường phái | Đối chiếu Canh/Nhâm, Tứ Hóa nguyên cục / đại hạn / lưu niên / tháng / ngày / giờ | Không đổi bảng gốc mặc định; cho xem sai khác và nguồn trước khi bật một bản quy tắc đã kiểm chứng |
+| Quy ước thời gian | Múi giờ địa phương, DST lịch sử, kinh độ và chân thái dương, Tý sớm/muộn, tháng nhuận | Người dùng xác nhận mọi dịch chuyển; cùng một đầu vào có trace kết quả tính toán, báo vùng thiếu chứng cứ |
+| 13 chủ đề luận giải | Tổng quan, tính cách, tình cảm, sự nghiệp, tài lộc, sức khỏe, huynh đệ, tử tức, thiên di, giao tế, điền trạch, phúc đức, phụ mẫu | Nội dung dựa trên sao/cung/điều kiện thật; dẫn xuất xứ, giới hạn, không tự suy diễn y khoa hoặc định mệnh |
+| Kho cổ thư và học liệu | Lập chỉ mục liên kết lời chú, sao, cung, cách cục và điều kiện | Soát văn bản gốc, giấy phép và trích dẫn; không bê nguyên lời giảng giới hạn phi thương mại sang gói Pro |
+| AI đọc lá số | Đưa chứng cứ, nguồn và cờ trường phái vào giải thích | Không tạo sao mới, không tự đổi quy tắc an sao, truy vấn theo quyền, hiển thị lý do và mức độ chắc chắn |
+| Chất lượng UI/UX | Chế độ Cơ bản gọn, Chuyên sâu nhiều bằng chứng; tra cứu không ngắt quãng | Responsive điện thoại/máy tính, bàn phím, screen reader, reduced motion, xuất PDF/ảnh rõ nét |
+
+### Vấn đề khác đang theo dõi
+
+Workflow Full Stack của commit giai đoạn trước từng thất bại tại kịch bản Playwright Kỳ Môn: không tìm thấy nhãn “Tiết khí đã xác nhận” trong bước phục hồi form sau 30 giây. Đây là lỗi của luồng E2E khác với phạm vi mới, nhưng vẫn là **cổng chặn merge** nếu còn tái diễn. Không ghi nhận “đã đạt full CI” chỉ vì các kiểm thử Node của Tử Vi đạt.
+
+### Chứng cứ và nguồn đối chiếu
+
+- Repository: https://github.com/Renhuai123/ziwei-doushu
+- Phân loại 49 cách cục: lib/ziwei/patterns-dingfu.ts, patterns-dinggui.ts, patterns-dingpin.ts, patterns-dingza.ts
+- Quy tắc trường phái: lib/ziwei/school-config.ts; thời gian: true-solar-time.ts, clock-adjust.ts, lunar-solar.ts
+- Dữ liệu giải đoán 13 chiều v4.0: mục Releases v4.0-13d, cần kiểm tra nguồn cấp phép, giới hạn trích lời giảng, khối lượng lưu trữ và sự lệch phiên bản khi sử dụng.
