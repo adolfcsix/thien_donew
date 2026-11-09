@@ -17,7 +17,23 @@ try{
  for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
   const context=await browser.newContext({viewport});const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
   await mockMemberAccessForUi(context);await context.route('**/api/auth/me',route=>route.fulfill({json:{user:{id:'11111111-1111-4111-8111-111111111111',email:'tool-ui@example.invalid'}}}));
-  await page.goto(base+'/ky-mon');await page.getByRole('button',{name:'Nhập thông tin đã đối chiếu',exact:true}).click();
+  await page.goto(base+'/ky-mon');
+  const manualInput=page.getByRole('button',{name:'Nhập thông tin đã đối chiếu',exact:true});
+  await manualInput.waitFor({state:'visible'});
+  const beforeClick=await manualInput.evaluate(button=>{
+   const rect=button.getBoundingClientRect();
+   const x=Math.min(innerWidth-1,Math.max(0,rect.left+rect.width/2));
+   const y=Math.min(innerHeight-1,Math.max(0,rect.top+rect.height/2));
+   const hit=document.elementFromPoint(x,y);
+   return {path:location.pathname,buttonCount:document.querySelectorAll('button').length,
+    rect:{top:rect.top,left:rect.left,width:rect.width,height:rect.height},
+    disabled:button.disabled,connected:button.isConnected,
+    viewport:{width:innerWidth,height:innerHeight},topHit:hit?.tagName,
+    hitClass:typeof hit?.className==='string'?hit.className.slice(0,80):'',
+    manualPressed:button.getAttribute('aria-pressed')};
+  });
+  console.log('QIMEN_STRUCTURAL_BEFORE_CLICK '+JSON.stringify(beforeClick));
+  await manualInput.click();
   await page.getByRole('group',{name:'Chế độ hiển thị',exact:true}).getByRole('button',{name:'Chuyên sâu',exact:true}).click();
   for(const input of [{term:3,day:52,branch:5},{term:14,day:14,branch:10}]){
    await page.getByLabel('Tính địa bàn, thời bàn và Tuần Không khi có giờ').check();
