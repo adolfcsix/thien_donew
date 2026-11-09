@@ -3,6 +3,7 @@
 import { useMemo, useState, type FormEvent } from 'react';
 import type { ChartInput } from '@thiendo/shared-types';
 import { convertBirthCalendar, birthCheck } from '../lib/birth-calendar';
+import { BirthTimeResearch } from './birth-time-research';
 
 type Props = {
   input: ChartInput;
@@ -94,6 +95,7 @@ export function ChartForm({ input, onChange, onSubmit }: Props) {
           {check.error ? <p className="chart-birth-error">{check.error}</p> : <p>Dương lịch <b>{check.solar}</b> · Âm lịch <b>{check.lunar}</b> · Giờ <b>{check.hourBranch}</b></p>}
         </div>
         <button className="btn gold full" type="submit" disabled={Boolean(check.error)}>✦ &nbsp;Tính lá số</button>
+        <BirthTimeResearch input={input} />
         <details className="chart-form-help">
           <summary>Hướng dẫn về lịch và giờ sinh</summary>
           <p>Chuyển loại lịch sẽ quy đổi ngày đã nhập. Giờ sinh áp dụng theo múi giờ Việt Nam (UTC+7). Nếu sinh ở nước ngoài hoặc gần 23:00, cần kiểm tra múi giờ và quy ước đổi ngày trước khi lập lá số.</p>
