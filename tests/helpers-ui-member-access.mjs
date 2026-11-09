@@ -10,6 +10,20 @@ export async function mockMemberAccessForUi(context){
   if(route.request().method()!=='GET')return route.continue();
   return route.fulfill({status:200,json:{profiles:[]}});
  });
+ // In UI-only fixtures, fake /auth/me is not accompanied by a real SQL cookie.
+ // Background workspace/history reads must not receive a real 401, which would
+ // correctly trigger the app's session-revocation handler and navigate to '/'.
+ // Only stub the two *collection GETs*. Test-specific routes registered later
+ // have priority and can still return malformed lists, failures, or fixtures.
+ // Do not fake writes, item reads, protected admin calls or integration tests.
+ await context.route('**/api/study',route=>{
+  if(route.request().method()!=='GET')return route.continue();
+  return route.fulfill({status:200,json:{entries:[]}});
+ });
+ await context.route('**/api/charts',route=>{
+  if(route.request().method()!=='GET')return route.continue();
+  return route.fulfill({status:200,json:{charts:[]}});
+ });
  await context.route('**/api/billing/access',route=>{
   if(route.request().method()!=='GET')return route.continue();
   return route.fulfill({json:{isAdmin:false,isOwner:false}});
