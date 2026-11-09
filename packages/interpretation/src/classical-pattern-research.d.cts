@@ -27,7 +27,7 @@ export interface ClassicalResearchGroup {
   scope:string;
 }
 export interface ClassicalPatternResearch {
-  edition:'thiendo-classical-research-2026-11-10';
+  edition:'thiendo-classical-research-2026-11-10-r2';
   scope:'natal-only';
   groups:readonly ClassicalResearchGroup[];
   referenceTotal:49;
@@ -39,5 +39,6 @@ export interface ClassicalPatternResearch {
   notice:string;
 }
 export declare const SOURCE:string;
+export declare const SOURCE_COMMIT:'7922285d947b36610e7e31c232d8f1e2a0d0871d';
 export declare const GROUPS:readonly ClassicalResearchGroup[];
 export declare function auditClassicalPatternCandidates(chart:AstrologyResult):ClassicalPatternResearch;

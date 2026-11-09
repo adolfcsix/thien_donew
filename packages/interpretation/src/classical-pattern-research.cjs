@@ -1,15 +1,16 @@
 'use strict';
 /**
- * THIÊN ĐỒ — đối chiếu 6 điều kiện hình học Tử Vi, KHÔNG phải bộ phán định 49 cách cục.
+ * THIÊN ĐỒ — đối chiếu 12 điều kiện hình học Tử Vi, KHÔNG phải bộ phán định 49 cách cục.
  * Nguồn phương pháp tham khảo: Renhuai123/ziwei-doushu, MIT; thuật toán/diễn giải độc lập.
  * Trả về chứng cứ, điều kiện chưa xét, sai lệch dữ liệu. Không sửa lá số và không dự báo.
  */
 const SOURCE='https://github.com/Renhuai123/ziwei-doushu';
+const SOURCE_COMMIT='7922285d947b36610e7e31c232d8f1e2a0d0871d';
 const LAYERS=Object.freeze(['stars','auxiliaryStars','yearStars','additionalStars','traditionalStars','natalExtensionStars','beneficStars','advancedStars','positionalStars','derivedStars','missingStars']);
 const SUPPORT=Object.freeze(['Tả Phụ','Hữu Bật','Văn Xương','Văn Khúc','Thiên Khôi','Thiên Việt','Lộc Tồn','Thiên Mã']);
 const GROUPS=Object.freeze([
  Object.freeze({name:'Định phú',totalInReference:6,implementedHere:4,scope:'Bản mệnh'}),
- Object.freeze({name:'Định quý',totalInReference:27,implementedHere:2,scope:'Bản mệnh'}),
+ Object.freeze({name:'Định quý',totalInReference:27,implementedHere:8,scope:'Bản mệnh'}),
  Object.freeze({name:'Định bần',totalInReference:8,implementedHere:0,scope:'Bản mệnh'}),
  Object.freeze({name:'Định tạp',totalInReference:8,implementedHere:0,scope:'Đại hạn / lưu niên; không thể ghép như cách cục bản mệnh'})
 ]);
@@ -44,7 +45,7 @@ function result(id,title,group,sourceFile,interpretation,checks,extra){
  const negative=checks.some(x=>x.state==='not-met');
  const unknown=checks.some(x=>x.state==='unknown');
  return Object.freeze({id,title,group,reference:'《Tử Vi Đẩu Số Toàn Thư》, quyển I · '+group,
-  sourceUrl:SOURCE+'/blob/main/lib/ziwei/'+sourceFile,
+  sourceUrl:SOURCE+'/blob/'+SOURCE_COMMIT+'/lib/ziwei/'+sourceFile,
   status:negative?'not-met':unknown?'needs-review':'structural-match',checks,
   interpretation,extra,expertReviewed:false,
   caution:'Chỉ kiểm tra điều kiện bằng dữ kiện trên lá số và một quy ước tham khảo; không tự xác nhận thành cách, cát/hung hay dự đoán sự kiện.'});
@@ -57,6 +58,8 @@ function auditClassicalPatternCandidates(chart){
  const wu=getPosition(chart,'Vũ Khúc','stars');
  const horse=getPosition(chart,'Thiên Mã','yearStars');
  const loc=getPosition(chart,'Lộc Tồn','auxiliaryStars');
+ const co=getPosition(chart,'Cự Môn','stars');
+ const ki=getPosition(chart,'Thiên Cơ','stars');
  const good=[...SUPPORT].filter(name=>LAYERS.some(layer=>{const h=byPalace.get('Mệnh');return Array.isArray(h[layer])&&h[layer].includes(name);}));
  const meng=byPalace.get('Mệnh');
  const observed=x=>x.status==='observed';
@@ -90,6 +93,33 @@ function auditClassicalPatternCandidates(chart){
     place(wu,'Vũ Khúc tại Mệnh hoặc Tài Bạch',x=>['Mệnh','Tài Bạch'].includes(x.palace)),
     place(moon,'Thái Âm ở cung trước Vũ Khúc',x=>observed(wu)?x.branchIndex===mod(wu.branchIndex-1):null),
     place(sun,'Thái Dương ở cung sau Vũ Khúc',x=>observed(wu)?x.branchIndex===mod(wu.branchIndex+1):null)],notes.specific),
+  result('dinh-quy-03','Nguyệt lạc Hợi cung','Định quý','patterns-dinggui.ts',
+   'Thái Âm tọa Hợi tại cung Mệnh, còn được ghi là Nguyệt lãng Thiên Môn trong một số chú giải. Không mở rộng sang trường hợp chỉ hội chiếu.',[
+    place(moon,'Thái Âm tại Hợi',x=>x.branchIndex===11),
+    place(moon,'Cung Hợi là Mệnh',x=>x.palace==='Mệnh')],notes.specific),
+  result('dinh-quy-04','Nguyệt sinh Thương Hải','Định quý','patterns-dinggui.ts',
+   'Thái Âm ở Tý (Thương Hải) thủ Điền Trạch. Không đồng nhất điều kiện Điền Trạch với Mệnh hoặc đối cung.',[
+    place(moon,'Thái Âm tọa Tý',x=>x.branchIndex===0),
+    place(moon,'Cung Tý là Điền Trạch',x=>x.palace==='Điền Trạch')],notes.specific),
+  result('dinh-quy-13','Minh châu xuất hải','Định quý','patterns-dinggui.ts',
+   'Mệnh tại Mùi không có chính tinh; đối cung Sửu phải có cả Thái Dương và Thái Âm. Cần xét đúng cung và đúng lớp chính tinh.',[
+    check('Mệnh ở Mùi',meng.branchIndex===7,'Mệnh chi số '+meng.branchIndex),
+    check('Mệnh vô chính diệu',meng.stars.length===0,'Chính tinh tại Mệnh: '+(meng.stars.join(', ')||'không có')),
+    place(sun,'Thái Dương ở đối cung Sửu',x=>x.branchIndex===1),
+    place(moon,'Thái Âm cùng đối cung Sửu',x=>x.branchIndex===1)],notes.specific),
+  result('dinh-quy-14','Nhật Nguyệt đồng lâm','Định quý','patterns-dinggui.ts',
+   'Thái Dương và Thái Âm đồng cung Mệnh. Không xem hai sao ở Tam Hợp hay đối cung là đồng lâm.',[
+    place(sun,'Thái Dương ở Mệnh',x=>x.palace==='Mệnh'),
+    place(moon,'Thái Âm ở đúng cung Mệnh cùng Thái Dương',x=>observed(sun)?x.palace==='Mệnh'&&x.branchIndex===sun.branchIndex:null)],notes.specific),
+  result('dinh-quy-18','Vũ Khúc thủ viên','Định quý','patterns-dinggui.ts',
+   'Vũ Khúc thủ Mệnh tại Mão; chú giải tham khảo giới hạn riêng cung Mão, không suy rộng ra cung khác.',[
+    place(wu,'Vũ Khúc ở Mão',x=>x.branchIndex===3),
+    place(wu,'Mão là cung Mệnh',x=>x.palace==='Mệnh')],notes.specific),
+  result('dinh-quy-24','Cự Cơ cư Mão','Định quý','patterns-dinggui.ts',
+   'Cự Môn và Thiên Cơ phải đồng cung Mệnh tại Mão; không dùng thế hội chiếu để thay thế.',[
+    check('Mệnh tọa Mão',meng.branchIndex===3,'Mệnh chi số '+meng.branchIndex),
+    place(co,'Cự Môn ở Mão và tọa Mệnh',x=>x.branchIndex===3&&x.palace==='Mệnh'),
+    place(ki,'Thiên Cơ ở Mão và tọa Mệnh',x=>x.branchIndex===3&&x.palace==='Mệnh')],notes.specific),
   result('dinh-phu-03','Tài Lộc giáp Mã','Định phú','patterns-dingfu.ts',
    'Thiên Mã tại Mệnh, Vũ Khúc ở cung trước và Lộc Tồn ở cung sau, đối chiếu đúng chiều của bộ sao theo trường phái tham khảo.',[
     place(horse,'Thiên Mã tọa Mệnh',x=>x.palace==='Mệnh'),
@@ -98,9 +128,9 @@ function auditClassicalPatternCandidates(chart){
  ];
  const matched=records.filter(x=>x.status==='structural-match').length;
  const reviewed=records.filter(x=>x.status==='needs-review').length;
- return Object.freeze({edition:'thiendo-classical-research-2026-11-10',scope:'natal-only',
+ return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r2',scope:'natal-only',
   groups:GROUPS,referenceTotal:49,assessed:records.length,matched,needsReview:reviewed,
   records:Object.freeze(records),expertReviewed:false,
-  notice:'6/49 chỉ mục được ánh xạ điều kiện ban đầu; 43 mục còn lại chưa được xác minh. Đây là đối chiếu nghiên cứu, không phải nhận định đầy đủ 49 cách cục.'});
+  notice:'12/49 chỉ mục được ánh xạ điều kiện ban đầu; 37 mục còn lại chưa được xác minh. Đây là đối chiếu nghiên cứu, không phải nhận định đầy đủ 49 cách cục.'});
 }
-module.exports=Object.freeze({SOURCE,GROUPS,auditClassicalPatternCandidates});
+module.exports=Object.freeze({SOURCE,SOURCE_COMMIT,GROUPS,auditClassicalPatternCandidates});
