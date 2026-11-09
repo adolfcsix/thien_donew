@@ -1,6 +1,6 @@
 'use strict';
 /**
- * THIÊN ĐỒ — đối chiếu 12 điều kiện hình học Tử Vi, KHÔNG phải bộ phán định 49 cách cục.
+ * THIÊN ĐỒ — đối chiếu 18 điều kiện hình học và Tứ Hóa nguyên cục Tử Vi, KHÔNG phải bộ phán định 49 cách cục.
  * Nguồn phương pháp tham khảo: Renhuai123/ziwei-doushu, MIT; thuật toán/diễn giải độc lập.
  * Trả về chứng cứ, điều kiện chưa xét, sai lệch dữ liệu. Không sửa lá số và không dự báo.
  */
@@ -10,7 +10,7 @@ const LAYERS=Object.freeze(['stars','auxiliaryStars','yearStars','additionalStar
 const SUPPORT=Object.freeze(['Tả Phụ','Hữu Bật','Văn Xương','Văn Khúc','Thiên Khôi','Thiên Việt','Lộc Tồn','Thiên Mã']);
 const GROUPS=Object.freeze([
  Object.freeze({name:'Định phú',totalInReference:6,implementedHere:4,scope:'Bản mệnh'}),
- Object.freeze({name:'Định quý',totalInReference:27,implementedHere:8,scope:'Bản mệnh'}),
+ Object.freeze({name:'Định quý',totalInReference:27,implementedHere:14,scope:'Bản mệnh'}),
  Object.freeze({name:'Định bần',totalInReference:8,implementedHere:0,scope:'Bản mệnh'}),
  Object.freeze({name:'Định tạp',totalInReference:8,implementedHere:0,scope:'Đại hạn / lưu niên; không thể ghép như cách cục bản mệnh'})
 ]);
@@ -50,6 +50,42 @@ function result(id,title,group,sourceFile,interpretation,checks,extra){
   interpretation,extra,expertReviewed:false,
   caution:'Chỉ kiểm tra điều kiện bằng dữ kiện trên lá số và một quy ước tham khảo; không tự xác nhận thành cách, cát/hung hay dự đoán sự kiện.'});
 }
+/**
+ * Natal transformations only. Missing/duplicate/cross-house/mismatched evidence is
+ * unknown, never an affirmative hit. Never substitute a time-overlay transformation.
+ */
+function readNatalFourHua(chart){
+ const labels=['Hóa Lộc','Hóa Quyền','Hóa Khoa','Hóa Kỵ'];
+ const byName=new Map();
+ for(const house of chart.houses){
+  if(!Array.isArray(house.tuHoa))return {known:false,reason:'Thiếu danh mục Tứ Hóa nguyên cục tại một hoặc nhiều cung.',byName};
+  for(const entry of house.tuHoa){
+   if(!entry||!labels.includes(entry.name)||typeof entry.star!=='string'||!entry.star) return {known:false,reason:'Dữ liệu Hóa không hợp lệ.',byName};
+   if(byName.has(entry.name))return {known:false,reason:'Một loại Hóa bị ghi nhiều lần.',byName};
+   // The star targeted by a natal Hua must be present in precisely one natal
+   // star layer in exactly the same house, never a projected or annual layer.
+   const positions=[];
+   for(const h of chart.houses)for(const layer of ['stars','auxiliaryStars']){
+    if(!Array.isArray(h[layer]))return {known:false,reason:'Lớp sao nhận Hóa không hợp lệ.',byName};
+    for(const name of h[layer])if(name===entry.star)positions.push(h.branchIndex);
+   }
+   if(positions.length!==1||positions[0]!==house.branchIndex) return {known:false,reason:'Sao nhận Hóa thiếu, trùng hoặc sai cung.',byName};
+   byName.set(entry.name,{branchIndex:house.branchIndex,star:entry.star});
+  }
+ }
+ if(byName.size!==4)return {known:false,reason:'Chưa đủ bốn Hóa nguyên cục.',byName};
+ if(chart.transformations!==undefined){
+  if(!Array.isArray(chart.transformations)||chart.transformations.length!==4)return {known:false,reason:'Bảng Tứ Hóa gốc không đầy đủ.',byName};
+  const seen=new Set();
+  for(const t of chart.transformations){
+   const match=t&&byName.get(t.name);
+   if(!match||seen.has(t.name)||match.star!==t.star||match.branchIndex!==t.branch)return {known:false,reason:'Bảng Tứ Hóa gốc và dữ kiện cung không nhất quán.',byName};
+   seen.add(t.name);
+  }
+ }
+ return {known:true,reason:'Bốn Hóa nguyên cục có vị trí và sao nhận Hóa nhất quán.',byName};
+}
+
 /** Đánh giá độc lập, giữ nguyên địa bàn, không trộn lớp lưu hạn với sao bản mệnh. */
 function auditClassicalPatternCandidates(chart){
  const {byBranch,byPalace}=validate(chart);
@@ -60,6 +96,13 @@ function auditClassicalPatternCandidates(chart){
  const loc=getPosition(chart,'Lộc Tồn','auxiliaryStars');
  const co=getPosition(chart,'Cự Môn','stars');
  const ki=getPosition(chart,'Thiên Cơ','stars');
+ const zi=getPosition(chart,'Tử Vi','stars');
+ const fu=getPosition(chart,'Thiên Phủ','stars');
+ const ta=getPosition(chart,'Tả Phụ','auxiliaryStars');
+ const huu=getPosition(chart,'Hữu Bật','auxiliaryStars');
+ const khoi=getPosition(chart,'Thiên Khôi','auxiliaryStars');
+ const viet=getPosition(chart,'Thiên Việt','auxiliaryStars');
+ const hua=readNatalFourHua(chart);
  const good=[...SUPPORT].filter(name=>LAYERS.some(layer=>{const h=byPalace.get('Mệnh');return Array.isArray(h[layer])&&h[layer].includes(name);}));
  const meng=byPalace.get('Mệnh');
  const observed=x=>x.status==='observed';
@@ -120,6 +163,42 @@ function auditClassicalPatternCandidates(chart){
     check('Mệnh tọa Mão',meng.branchIndex===3,'Mệnh chi số '+meng.branchIndex),
     place(co,'Cự Môn ở Mão và tọa Mệnh',x=>x.branchIndex===3&&x.palace==='Mệnh'),
     place(ki,'Thiên Cơ ở Mão và tọa Mệnh',x=>x.branchIndex===3&&x.palace==='Mệnh')],notes.specific),
+  result('dinh-quy-05','Phụ Bật củng chủ','Định quý','patterns-dinggui.ts',
+   'Tử Vi thủ Mệnh, Tả Phụ và Hữu Bật đồng thời hội Tứ chính, giáp Mệnh hoặc cùng tọa Mệnh theo quy tắc tham khảo; không tính một sao đơn lẻ.',[
+    place(zi,'Tử Vi tọa cung Mệnh',x=>x.palace==='Mệnh'),
+    check('Tả Phụ và Hữu Bật cùng hội, giáp hoặc đồng tọa Mệnh',observed(ta)&&observed(huu)?
+      (([meng.branchIndex,mod(meng.branchIndex+4),mod(meng.branchIndex+8),mod(meng.branchIndex+6)].includes(ta.branchIndex)&&[meng.branchIndex,mod(meng.branchIndex+4),mod(meng.branchIndex+8),mod(meng.branchIndex+6)].includes(huu.branchIndex))||
+      (ta.branchIndex===mod(meng.branchIndex-1)&&huu.branchIndex===mod(meng.branchIndex+1))||
+      (huu.branchIndex===mod(meng.branchIndex-1)&&ta.branchIndex===mod(meng.branchIndex+1))):null,
+      observed(ta)&&observed(huu)?'Tả Phụ tại chi số '+ta.branchIndex+'; Hữu Bật tại chi số '+huu.branchIndex:'Thiếu hoặc trùng vị trí Tả Phụ/Hữu Bật')],notes.specific),
+  result('dinh-quy-06','Quân thần khánh hội','Định quý','patterns-dinggui.ts',
+   'Tử Vi, Tả Phụ, Hữu Bật phải đồng tọa cung Mệnh. Hội chiếu mà không đồng cung không đủ điều kiện.',[
+    place(zi,'Tử Vi tại Mệnh',x=>x.palace==='Mệnh'),
+    place(ta,'Tả Phụ cùng tọa Mệnh',x=>x.palace==='Mệnh'),
+    place(huu,'Hữu Bật cùng tọa Mệnh',x=>x.palace==='Mệnh')],notes.specific),
+  result('dinh-quy-09','Tọa quý hướng quý','Định quý','patterns-dinggui.ts',
+   'Thiên Khôi và Thiên Việt phân tọa Mệnh và đối cung: một sao tọa, một sao hướng. Không đồng nhất với thế giáp Mệnh.',[
+    check('Khôi Việt phân tọa Mệnh và đối cung',observed(khoi)&&observed(viet)?
+      ((khoi.branchIndex===meng.branchIndex&&viet.branchIndex===mod(meng.branchIndex+6))||
+      (viet.branchIndex===meng.branchIndex&&khoi.branchIndex===mod(meng.branchIndex+6))):null,
+      observed(khoi)&&observed(viet)?'Khôi chi số '+khoi.branchIndex+'; Việt chi số '+viet.branchIndex:'Thiếu hoặc trùng vị trí Khôi/Việt')],notes.specific),
+  result('dinh-quy-16','Khoa Quyền Lộc củng','Định quý','patterns-dinggui.ts',
+   'Cả Hóa Khoa, Hóa Quyền và Hóa Lộc nguyên cục cùng nằm trong Tam phương Tứ chính của Mệnh; không sử dụng Tứ Hóa lưu hạn để thế chỗ.',[
+    check('Tứ Hóa nguyên cục được xác minh đầy đủ',hua.known?true:null,hua.reason),
+    check('Hóa Khoa, Hóa Quyền và Hóa Lộc đều hội Tứ chính Mệnh',hua.known?
+      ['Hóa Khoa','Hóa Quyền','Hóa Lộc'].every(name=>[meng.branchIndex,mod(meng.branchIndex+4),mod(meng.branchIndex+8),mod(meng.branchIndex+6)].includes(hua.byName.get(name).branchIndex)):null,
+      hua.known?['Hóa Khoa','Hóa Quyền','Hóa Lộc'].map(name=>name+' tại chi số '+hua.byName.get(name).branchIndex).join('; '):hua.reason)],notes.specific),
+  result('dinh-quy-20','Tử Phủ triều viên','Định quý','patterns-dinggui.ts',
+   'Mệnh tại Dần hoặc Thân, đồng thời Tử Vi và Thiên Phủ đồng tọa Mệnh; không lấy hội chiếu hoặc đối cung thay đồng cung.',[
+    check('Mệnh tại Dần hoặc Thân',[2,8].includes(meng.branchIndex),'Mệnh chi số '+meng.branchIndex),
+    place(zi,'Tử Vi tại cung Mệnh',x=>x.palace==='Mệnh'),
+    place(fu,'Thiên Phủ cùng tọa Mệnh',x=>x.palace==='Mệnh')],notes.specific),
+  result('dinh-quy-25','Minh Lộc ám Lộc','Định quý','patterns-dinggui.ts',
+   'Lộc Tồn thủ Mệnh và Hóa Lộc nguyên cục chiếu từ đối cung; không đồng nhất Lộc Tồn với Hóa Lộc.',[
+    place(loc,'Lộc Tồn tọa Mệnh',x=>x.palace==='Mệnh'),
+    check('Tứ Hóa nguyên cục được xác minh đầy đủ',hua.known?true:null,hua.reason),
+    check('Hóa Lộc ở đối cung Mệnh',hua.known?hua.byName.get('Hóa Lộc').branchIndex===mod(meng.branchIndex+6):null,
+      hua.known?'Hóa Lộc tại chi số '+hua.byName.get('Hóa Lộc').branchIndex:hua.reason)],notes.specific),
   result('dinh-phu-03','Tài Lộc giáp Mã','Định phú','patterns-dingfu.ts',
    'Thiên Mã tại Mệnh, Vũ Khúc ở cung trước và Lộc Tồn ở cung sau, đối chiếu đúng chiều của bộ sao theo trường phái tham khảo.',[
     place(horse,'Thiên Mã tọa Mệnh',x=>x.palace==='Mệnh'),
@@ -128,9 +207,9 @@ function auditClassicalPatternCandidates(chart){
  ];
  const matched=records.filter(x=>x.status==='structural-match').length;
  const reviewed=records.filter(x=>x.status==='needs-review').length;
- return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r2',scope:'natal-only',
+ return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r3',scope:'natal-only',
   groups:GROUPS,referenceTotal:49,assessed:records.length,matched,needsReview:reviewed,
   records:Object.freeze(records),expertReviewed:false,
-  notice:'12/49 chỉ mục được ánh xạ điều kiện ban đầu; 37 mục còn lại chưa được xác minh. Đây là đối chiếu nghiên cứu, không phải nhận định đầy đủ 49 cách cục.'});
+  notice:'18/49 chỉ mục được ánh xạ điều kiện ban đầu; 31 mục còn lại chưa được xác minh. Đây là đối chiếu nghiên cứu, không phải nhận định đầy đủ 49 cách cục.'});
 }
 module.exports=Object.freeze({SOURCE,SOURCE_COMMIT,GROUPS,auditClassicalPatternCandidates});
