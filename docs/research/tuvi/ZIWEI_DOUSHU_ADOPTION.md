@@ -92,3 +92,13 @@ Workflow Full Stack của commit giai đoạn trước từng thất bại tại
 - Kiểm chứng đầy đủ 49 mục cần tách **Định tạp** (đại hạn/lưu niên) khỏi hình học bản mệnh; những mục bất khả thi hoặc đang tranh luận không bị chuyển thành nhãn đã thành cách.
 - Cần bổ sung các nhóm sao được xác minh, quy tắc Không Vong theo trường phái và kiểm toán định nghĩa cát tinh trước khi xác nhận Nhật Nguyệt giáp Mệnh.
 - Bản Tử Vi hiện tại không tự chọn lại trường phái hoặc thay thế thuật toán đang dùng.
+
+## Bổ sung r3 — nâng phạm vi từ 12 lên 18 cách cục (10/11/2026)
+
+- Đối chiếu thêm sáu mục nhóm **Định quý** trong `patterns-dinggui.ts` tại commit nguồn `7922285d947b36610e7e31c232d8f1e2a0d0871d`: **Phụ Bật củng chủ** (số 5), **Quân thần khánh hội** (6), **Tọa quý hướng quý** (9), **Khoa Quyền Lộc củng** (16), **Tử Phủ triều viên** (20), **Minh Lộc ám Lộc** (25).
+- Tổng danh mục được ánh xạ **18/49** (Định quý 14/27, Định phú 4/6, Định bần 0/8, Định tạp 0/8). 31 mục chưa ánh xạ, trong đó có các mục bất khả thi hoặc đang tranh luận chưa đủ cơ sở chứng minh.
+- Kiểm tra Tả/Hữu và Khôi/Việt bắt buộc có vị trí duy nhất trong lớp sao phụ nguyên cục, không đổi sao từ các lớp vận hạn; Tử Phủ bắt buộc đồng tọa ở Mệnh Dần/Thân; không nới điều kiện thành hội chiếu nếu nguyên tắc yêu cầu đồng cung.
+- Với hai cách cục cần Tứ Hóa, phải có **đủ bốn Hóa nguyên cục** (Lộc, Quyền, Khoa, Kỵ) và tên sao nhận Hóa thống nhất giữa `houses[].tuHoa`, sao nguyên cục trong cùng cung, và `transformations` (nếu có). Dữ liệu thiếu/trùng/sai cung/sai sao nhận Hóa -> **needs-review**, không tự nhận đạt hay đổi bảng Tứ Hóa của engine. Không dùng Tứ Hóa lưu niên/đại hạn thay thế.
+- Từ phiên bản r3, `classical-pattern-research.cjs` chỉ thêm lớp nghiên cứu; **không thay `tuvi.js` hoặc `tuhoa.js`**, chế độ Cơ bản, quyền Pro và kết quả lá số hiện hành.
+- Bộ test `tests/v111650-tuvi-classical-research.test.cjs` có 23 trường hợp; xác nhận điều kiện đạt, các phản chứng không đồng cung/đối cung, sai lớp sao, bốn Hóa bị thiếu/trùng/lệch, dấu vết nguồn, tính bất biến của lá số. Cần chờ CI xác nhận trước khi gộp vào `main`.
+- Nguyên tắc nghiệp vụ: “khớp cấu trúc” chỉ là chứng cứ tổ hợp sao trong một trường phái, **không phải** phán quyết giàu sang, năng lực, sức khỏe hay tương lai của người dùng.
