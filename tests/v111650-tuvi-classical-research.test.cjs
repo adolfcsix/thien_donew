@@ -11,10 +11,10 @@ function chart(menh=0,sites={}){
 const item=(r,id)=>r.records.find(x=>x.id===id);
 test('Six research rules must not claim full 49 classical structures',()=>{
  const r=study(chart());
- assert.equal(r.assessed,6);assert.equal(r.referenceTotal,49);
+ assert.equal(r.assessed,12);assert.equal(r.referenceTotal,49);
  assert.equal(r.groups.reduce((n,g)=>n+g.totalInReference,0),49);
- assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),6);
- assert.equal(new Set(r.records.map(x=>x.id)).size,6);
+ assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),12);
+ assert.equal(new Set(r.records.map(x=>x.id)).size,12);
  assert.equal(r.expertReviewed,false);
  assert.equal(r.records.every(x=>x.status!=='structural-match'),true);
 });
@@ -68,4 +68,43 @@ test('Actual Thiên Đồ engine chart is readable without altering placements',
  assert.equal(result.groups.length,4);
  assert.ok(result.records.every(x=>['structural-match','not-met','needs-review'].includes(x.status)));
  assert.equal(JSON.stringify(chart.houses),before);
+});
+
+
+test('Reference research is pinned and 12 of 49 rules are clearly scoped',()=>{
+ const r=study(chart());assert.equal(r.assessed,12);assert.equal(r.referenceTotal,49);
+ assert.equal(r.groups.find(x=>x.name==='Định quý').implementedHere,8);
+ assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),12);
+ assert.equal(r.groups.reduce((n,g)=>n+g.totalInReference,0),49);
+ assert.ok(r.records.every(x=>x.sourceUrl.includes('/blob/7922285d947b36610e7e31c232d8f1e2a0d0871d/')));
+});
+test('Nguyệt lạc Hợi cung requires Moon in Hoi as Menh',()=>{
+ assert.equal(item(study(chart(11,{'Thái Âm':[11]})),'dinh-quy-03').status,'structural-match');
+ assert.equal(item(study(chart(0,{'Thái Âm':[11]})),'dinh-quy-03').status,'not-met');
+});
+test('Nguyệt sinh Thương Hải requires Moon in Ty as Dien Trach',()=>{
+ assert.equal(item(study(chart(9,{'Thái Âm':[0]})),'dinh-quy-04').status,'structural-match');
+ assert.equal(item(study(chart(0,{'Thái Âm':[0]})),'dinh-quy-04').status,'not-met');
+});
+test('Minh châu xuất hải requires empty Menh at Mui and paired Sun/Moon in Suu',()=>{
+ const sites={'Thái Dương':[1],'Thái Âm':[1]};
+ assert.equal(item(study(chart(7,sites)),'dinh-quy-13').status,'structural-match');
+ const c=chart(7,sites);c.houses[7].stars.push('Thất Sát');
+ assert.equal(item(study(c),'dinh-quy-13').status,'not-met');
+ c.houses[7].stars=[];c.houses[1].stars.pop();c.houses[4].stars.push('Thái Âm');
+ assert.equal(item(study(c),'dinh-quy-13').status,'not-met');
+});
+test('Nhật Nguyệt đồng lâm requires natal Sun and Moon together in Menh',()=>{
+ assert.equal(item(study(chart(7,{'Thái Dương':[7],'Thái Âm':[7]})),'dinh-quy-14').status,'structural-match');
+ assert.equal(item(study(chart(7,{'Thái Dương':[7],'Thái Âm':[1]})),'dinh-quy-14').status,'not-met');
+});
+test('Vũ Khúc thủ viên requires Vu Khuc at Mao as Menh',()=>{
+ assert.equal(item(study(chart(3,{'Vũ Khúc':[3]})),'dinh-quy-18').status,'structural-match');
+ assert.equal(item(study(chart(3,{'Vũ Khúc':[9]})),'dinh-quy-18').status,'not-met');
+});
+test('Cự Cơ cư Mão rejects any non-major duplicate of Thien Co',()=>{
+ assert.equal(item(study(chart(3,{'Cự Môn':[3],'Thiên Cơ':[3]})),'dinh-quy-24').status,'structural-match');
+ const c=chart(3,{'Cự Môn':[3],'Thiên Cơ':[3]});
+ c.houses[3].stars.pop();c.houses[3].auxiliaryStars.push('Thiên Cơ');
+ assert.equal(item(study(c),'dinh-quy-24').status,'needs-review');
 });
