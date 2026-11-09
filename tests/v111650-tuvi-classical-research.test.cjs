@@ -9,7 +9,7 @@ function chart(menh=0,sites={}){
  return {houses};
 }
 const item=(r,id)=>r.records.find(x=>x.id===id);
-test('Six research rules must not claim full 49 classical structures',()=>{
+test('Twelve research rules must not claim full 49 classical structures',()=>{
  const r=study(chart());
  assert.equal(r.assessed,12);assert.equal(r.referenceTotal,49);
  assert.equal(r.groups.reduce((n,g)=>n+g.totalInReference,0),49);
@@ -64,7 +64,7 @@ test('Actual Thiên Đồ engine chart is readable without altering placements',
  const chart=engine.calculate({date:'2004-08-15',hour:8,minute:30,calendar:'solar',gender:'Nam'});
  const before=JSON.stringify(chart.houses);
  const result=study(chart);
- assert.equal(result.assessed,6);
+ assert.equal(result.assessed,12);
  assert.equal(result.groups.length,4);
  assert.ok(result.records.every(x=>['structural-match','not-met','needs-review'].includes(x.status)));
  assert.equal(JSON.stringify(chart.houses),before);
