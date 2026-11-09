@@ -112,16 +112,16 @@ export default function KyMonPage(){
    {mode==='auto'?<>
     <div className={timeStyle.inputs}>
      <label className={styles.field}>Ngày dương (Việt Nam, UTC+7)
-      <input type="date" value={date} min="1900-01-01" max="2100-12-31" onChange={e=>{setDate(e.target.value);setLateZiAcknowledged(false);}}/>
+      <input aria-label="Ngày dương (Việt Nam, UTC+7)" type="date" value={date} min="1900-01-01" max="2100-12-31" onChange={e=>{setDate(e.target.value);setLateZiAcknowledged(false);}}/>
      </label>
      <label className={styles.field}>Giờ địa phương (0–23)
-      <select value={hour} onChange={e=>{setHour(Number(e.target.value));setLateZiAcknowledged(false);}}>{Array.from({length:24},(_,i)=><option key={i} value={i}>{String(i).padStart(2,'0')} giờ</option>)}</select>
+      <select aria-label="Giờ địa phương (0–23)" value={hour} onChange={e=>{setHour(Number(e.target.value));setLateZiAcknowledged(false);}}>{Array.from({length:24},(_,i)=><option key={i} value={i}>{String(i).padStart(2,'0')} giờ</option>)}</select>
      </label>
      <label className={styles.field}>Phút
-      <select value={minute} onChange={e=>setMinute(Number(e.target.value))}>{Array.from({length:60},(_,i)=><option key={i} value={i}>{String(i).padStart(2,'0')}</option>)}</select>
+      <select aria-label="Phút" value={minute} onChange={e=>setMinute(Number(e.target.value))}>{Array.from({length:60},(_,i)=><option key={i} value={i}>{String(i).padStart(2,'0')}</option>)}</select>
      </label>
      <label className={styles.field}>Quy ước bắt đầu ngày Can Chi
-      <select value={dayBoundary} onChange={e=>{setDayBoundary(e.target.value as DayBoundary);setLateZiAcknowledged(false);}}>
+      <select aria-label="Quy ước bắt đầu ngày Can Chi" value={dayBoundary} onChange={e=>{setDayBoundary(e.target.value as DayBoundary);setLateZiAcknowledged(false);}}>
        <option value="midnight">00:00 — hết ngày dương mới đổi Can Chi</option>
        <option value="late-zi">23:00 — giờ Tý muộn chuyển sang ngày sau</option>
       </select>
@@ -149,13 +149,13 @@ export default function KyMonPage(){
    </>:<>
     <div className={detail.inputs}>
      <label className={styles.field}>Tiết khí đã xác nhận
-      <select value={manual.solarTermIndex} onChange={e=>changeManual('solarTermIndex',Number(e.target.value))}>{SOLAR_TERMS.map(t=><option key={t.index} value={t.index}>{t.name} · {t.dun==='dương'?'Dương':'Âm'} độn</option>)}</select>
+      <select aria-label="Tiết khí đã xác nhận" value={manual.solarTermIndex} onChange={e=>changeManual('solarTermIndex',Number(e.target.value))}>{SOLAR_TERMS.map(t=><option key={t.index} value={t.index}>{t.name} · {t.dun==='dương'?'Dương':'Âm'} độn</option>)}</select>
      </label>
      <label className={styles.field}>Can Chi ngày đã xác nhận
-      <select value={manual.dayCycleIndex} onChange={e=>changeManual('dayCycleIndex',Number(e.target.value))}>{CYCLE.map(day=><option key={day.index} value={day.index}>{day.name} · #{day.index+1}</option>)}</select>
+      <select aria-label="Can Chi ngày đã xác nhận" value={manual.dayCycleIndex} onChange={e=>changeManual('dayCycleIndex',Number(e.target.value))}>{CYCLE.map(day=><option key={day.index} value={day.index}>{day.name} · #{day.index+1}</option>)}</select>
      </label>
      <label className={styles.field}>Can Chi giờ theo Ngũ Tý Độn
-      <select disabled={!withHour} value={manual.hourBranchIndex} onChange={e=>changeManual('hourBranchIndex',Number(e.target.value))}>{manualHours.map((item,i)=><option key={item.index} value={i}>{item.name}</option>)}</select>
+      <select aria-label="Can Chi giờ theo Ngũ Tý Độn" disabled={!withHour} value={manual.hourBranchIndex} onChange={e=>changeManual('hourBranchIndex',Number(e.target.value))}>{manualHours.map((item,i)=><option key={item.index} value={i}>{item.name}</option>)}</select>
      </label>
     </div>
     <p className={styles.note}>Chế độ nhập tay không đối chiếu tổ hợp tiết khí/Can Chi với ngày giờ lịch thực. Bạn chịu trách nhiệm xác nhận các dữ kiện và lựa chọn trường phái. Không lấy tháng âm lịch thay tiết khí.</p>
