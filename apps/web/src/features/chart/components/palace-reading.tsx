@@ -18,6 +18,7 @@ import {TwelvePalaceStudyPanel} from './twelve-palace-study-panel';
 import {FourCourtReadingLedgerPanel} from './four-court-reading-ledger';
 import {PalaceArgumentMapPanel} from './palace-argument-map';
 import {ConditionalPatternEvidencePanel} from './conditional-pattern-evidence';
+import {ClassicalPatternResearch} from './classical-pattern-research';
 
 type Props={chart:AstrologyResult;branchIndex:number;annual:AnnualOverview;showAnnual:boolean};
 
@@ -55,6 +56,7 @@ export function PalaceReading({chart,branchIndex,annual,showAnnual}:Props){
     </div>
     {level==='deep'&&<div className="palace-reading-deep" aria-label="Phân tích chuyên sâu theo dữ liệu đã có">
       <ConditionalPatternEvidencePanel data={reading.conditionalPatternEvidence}/>
+      {chart.houses.some(h=>h.branchIndex===branchIndex&&h.palace==='Mệnh')&&<ClassicalPatternResearch chart={chart}/>}
       <FourCourtReadingLedgerPanel ledger={reading.fourCourtReadingLedger}/>
       <PalaceArgumentMapPanel map={reading.palaceArgumentMap}/>
       <TwelvePalaceStudyPanel study={reading.twelvePalaceStudy}/>
