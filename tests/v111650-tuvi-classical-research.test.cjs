@@ -314,6 +314,8 @@ test('Hình Tù giáp Ấn also supports the uniquely marked natal Thân palace'
  assert.equal(item(study(duplicated),'dinh-quy-15').status,'needs-review');
 });
 test('Hình Tù giáp Ấn never invents Thân when markers are missing or contradictory',()=>{
+ const missingAtMenh=chart(0,{'Liêm Trinh':[0],'Thiên Hình':[0,'additionalStars']});
+ assert.equal(item(study(missingAtMenh),'dinh-quy-15').status,'needs-review');
  const missing=chart(0,{'Liêm Trinh':[6],'Thiên Hình':[6,'additionalStars']});
  assert.equal(item(study(missing),'dinh-quy-15').status,'needs-review');
  const dup=withThan(chart(0,{'Liêm Trinh':[6],'Thiên Hình':[6,'additionalStars']}),6);
