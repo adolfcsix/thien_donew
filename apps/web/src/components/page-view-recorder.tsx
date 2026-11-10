@@ -18,7 +18,9 @@ export function PageViewRecorder() {
       path: pathname,
       id: createRequestId()
     };
-    const controller = new AbortController();
+    // Best-effort, non-identifying telemetry should finish naturally during route
+    // changes. WebKit can surface a physically aborted same-origin fetch as an
+    // access-control page error, even when the promise has a catch handler.
     void fetch('/api/analytics/page-view', {
       method: 'POST',
       headers: {
@@ -28,10 +30,9 @@ export function PageViewRecorder() {
         eventId: last.current.id
       }),
       credentials: 'omit',
-      cache: 'no-store',
-      signal: controller.signal
+      cache: 'no-store'
     }).catch(() => {/* Best effort telemetry never blocks navigation or retries automatically. */});
-    return () => controller.abort();
+    // No cleanup abort: the request holds no private payload or credentials.
   }, [pathname]);
   return null;
 }

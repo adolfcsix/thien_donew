@@ -29,3 +29,11 @@
 .catalogGroup a{display:inline-block;margin-left:6px;text-underline-offset:3px}
 @media(max-width:730px){.catalogGrid{grid-template-columns:1fr}.catalog{padding:10px}.catalogGroup{padding:10px}}
 @media(prefers-reduced-motion:reduce){.catalog *{scroll-behavior:auto}}
+
+
+.catalogControls{display:grid;grid-template-columns:minmax(0,2fr) minmax(180px,1fr);gap:10px;margin:14px 0 8px}
+.catalogControls label{display:flex;flex-direction:column;gap:6px;min-width:0;font-size:12px;font-weight:650}
+.catalogControls input,.catalogControls select{min-height:42px;width:100%;max-width:100%;min-width:0;border:1px solid var(--line-strong);background:var(--panel);color:var(--text);padding:8px 10px;border-radius:6px;font:inherit;font-size:13px}
+.catalogControls input:focus-visible,.catalogControls select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.catalogCount{font-size:12px;font-variant-numeric:tabular-nums}
+@media(max-width:730px){.catalogControls{grid-template-columns:1fr}.catalogControls input,.catalogControls select{min-height:44px}}
