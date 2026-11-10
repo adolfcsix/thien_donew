@@ -16,6 +16,20 @@
 .comparison p{margin:7px 0;line-height:1.6}
 .comparison .checks{margin:8px 0}
 .comparison a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.schoolDifference{margin:10px 0;padding:10px 11px;border:1px solid var(--line);border-radius:7px;background:transparent}
+.schoolDifference p{margin:0 0 9px;line-height:1.6}
+.chartDifference{font-size:12px}
+.schoolTableWrap{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+.schoolTable{border-collapse:collapse;width:100%;min-width:250px;font-size:12px;font-variant-numeric:tabular-nums}
+.schoolTable caption{text-align:left;font-size:11px;line-height:1.5;color:var(--text-secondary,var(--text));padding:0 0 7px}
+.schoolTable th,.schoolTable td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+.schoolTable thead th{font-weight:700;border-bottom:1px solid var(--line-strong)}
+.schoolTable tbody tr[data-different=true] th{font-weight:700}
+.schoolFull{margin:10px 0 6px}
+.schoolFull>summary{cursor:pointer;font-weight:650;padding:6px 0}
+.schoolFull>summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(max-width:480px){.schoolDifference{padding:8px}.schoolTable th,.schoolTable td{padding:7px 6px}}
+
 
 .checks{display:flex;flex-wrap:wrap;gap:7px 10px;padding:0;list-style:none}
 .checks li{font-size:12px!important;border:1px solid var(--line);border-radius:4px;padding:5px 9px;background:var(--panel);line-height:1.5!important}
