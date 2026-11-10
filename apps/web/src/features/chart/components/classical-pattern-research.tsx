@@ -1,6 +1,6 @@
 'use client';
 
-import {useMemo, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import type {AstrologyResult} from '@thiendo/shared-types';
 import {auditClassicalPatternCandidates} from '@thiendo/interpretation/src/classical-pattern-research.cjs';
 import {summarizeClassicalCatalog,filterClassicalCatalog} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
@@ -27,9 +27,22 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   const [filter,setFilter]=useState<Filter>('relevant');
   const [catalogQuery,setCatalogQuery]=useState('');
   const [catalogStatus,setCatalogStatus]=useState<ClassicalCatalogFilterStatus>('all');
+  const [jumpToId,setJumpToId]=useState<string|null>(null);
   const localizedTitles=useMemo(()=>Object.fromEntries(data.records.map(r=>[r.id,r.title])),[data]);
   const catalogView=useMemo(()=>filterClassicalCatalog(catalog,{query:catalogQuery,status:catalogStatus,localizedTitles}),[catalog,catalogQuery,catalogStatus,localizedTitles]);
   const visible=data.records.filter(record=>filter==='all'||record.status!=='not-met');
+  // A catalog item might be hidden by the “Liên quan” filter. Reveal it
+  // before attempting to open/scroll; use the current rendered DOM only.
+  useEffect(()=>{
+    if(!jumpToId)return;
+    const target=document.getElementById('tuvi-classical-'+jumpToId);
+    if(target instanceof HTMLDetailsElement){
+      target.open=true;
+      const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      target.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});
+    }
+    setJumpToId(null);
+  },[jumpToId,filter]);
   return <article className={'palace-reading-editorial '+styles.panel} aria-label="Đối chiếu cách cục cổ điển có nguồn">
     <div className={styles.head}>
       <div>
@@ -41,7 +54,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
         <button type="button" aria-pressed={filter==='all'} onClick={()=>setFilter('all')}>Tất cả</button>
       </div>
     </div>
-    <p>Tham khảo phương pháp kiểm tra điều kiện từ bộ định phú và định quý. Bản này chỉ so sánh sao bản mệnh, không tự xác nhận thành cách hay đưa ra dự báo.</p>
+    <p>Tham khảo cách đối chiếu từ các nhóm Định phú, Định quý và Định bần. Bản này chỉ so sánh sao bản mệnh, không tự xác nhận thành cách hay đưa ra dự báo.</p>
     {visible.length===0&&<p>Chưa có mẫu nào khớp hoặc cần xem lại. Chọn “Tất cả” để thấy từng điều kiện chưa đạt.</p>}
     {visible.map(record=><details key={record.id} id={'tuvi-classical-'+record.id} className={'palace-reading-symbol '+styles.record}>
       <summary><strong>{record.title}</strong><span>{record.group} · {stateText[record.status]}</span></summary>
@@ -80,12 +93,12 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
           <ol>{group.entries.map(entry=><li key={entry.id}>
             <span className={styles.catalogName}><strong>{entry.assessed?localizedTitles[entry.id]||entry.title:entry.title}</strong> {entry.assessed&&localizedTitles[entry.id]!==entry.title&&<small lang="zh">({entry.title})</small>} <small>({entry.id})</small></span>
             <span className={styles.catalogState}>{entry.assessed?'Thiên Đồ đã ánh xạ điều kiện':methodText[entry.sourceStatus]}</span>
-            {entry.assessed&&<a href={'#tuvi-classical-'+entry.id} aria-label={'Chuyển tới điều kiện đối chiếu của '+(localizedTitles[entry.id]||entry.title)}>Điều kiện</a>}
+            {entry.assessed&&<button type="button" onClick={()=>{setFilter('all');setJumpToId(entry.id);}} aria-label={'Mở điều kiện đối chiếu của '+(localizedTitles[entry.id]||entry.title)}>Điều kiện</button>}
             <a href={entry.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={'Đọc quy tắc nguồn '+entry.title}>Nguồn</a>
           </li>)}</ol>
         </section>)}
       </div>
     </details>
-    <small>{data.notice} Bộ này chưa được chuyên gia độc lập thẩm định. Các nhóm định bần và định tạp chưa được kích hoạt; riêng định tạp thuộc nghiên cứu vận hạn, không gộp nhầm vào bản mệnh.</small>
+    <small>{data.notice} Bộ này chưa được chuyên gia độc lập thẩm định. Định bần mới có một điều kiện đối chiếu theo tài liệu, không được dùng để dự đoán nghèo khó; Định tạp thuộc nghiên cứu vận hạn, chưa gộp vào bản mệnh.</small>
   </article>;
 }

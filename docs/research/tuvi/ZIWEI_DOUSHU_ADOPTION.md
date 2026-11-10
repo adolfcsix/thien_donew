@@ -150,3 +150,25 @@ Tổng phạm vi: **22/49** đã có điều kiện đối chiếu (Định phú
 - Bộ `tests/v111650-tuvi-classical-research.test.cjs` có thêm kiểm thử: khớp vị trí Mã/Tướng/Lộc, Hóa Lộc được kiểm chứng, sai lớp sao, sai chi cung, sao trùng, dữ liệu Tứ Hóa thiếu/trùng/lệch, trường hợp có và không có cát tinh. Các kiểm thử hiện hữu được nâng kỳ vọng từ 20 lên 22.
 - Không chỉnh `packages/astrology-engine/src/tuvi.js`, bảng Tứ Hóa, thuật toán vận hạn, phân quyền, paywall hay chế độ Cơ bản.
 - Bằng chứng kiểm thử CI phải được kiểm tra trên SHA của PR trước khi gộp vào `main`; nếu CI chưa hoàn tất hoặc thất bại, **không coi giai đoạn r5 là đã nghiệm thu**.
+
+
+## Bổ sung r6 — 24/49 điều kiện khảo sát, cung Thân và điều hướng chứng cứ (10/11/2026)
+
+### Thêm hai quy tắc minh bạch theo dữ kiện bản mệnh
+
+- **Định quý 15 — Hình Tù giáp Ấn (刑囚夹印)**: theo chú giải `patterns-dinggui.ts` tại commit tham khảo đã ghim, Thiên Hình và Liêm Trinh đồng cung Mệnh **hoặc** đồng cung Thân. Thiên Hình phải thuộc `additionalStars`, Liêm Trinh thuộc `stars`; không giả lập hai sao bằng lưu hạn. Dù tên cách có chữ “giáp”, chú giải đang đối chiếu yêu cầu **đồng cung**; không tự thêm điều kiện Thiên Tướng hoặc cắt rộng thành hội chiếu.
+- **Định bần 05 — Tài dữ Tù cừu (财与囚仇)**: Vũ Khúc và Liêm Trinh lần lượt phân thủ Mệnh–Thân, chấp nhận cả hai chiều. Quy tắc chỉ có ý nghĩa mô tả vị trí của sao trong thư tịch; **không được đưa ra dự đoán về nghèo khó, thân phận hoặc tài chính cá nhân**. Thân trùng Mệnh không được tự tính thành phân thủ hai cung.
+
+### Kiểm tra cung Thân an toàn
+
+- Đọc cung Thân từ đúng **một** cờ `houses[].isThan === true`; các cờ còn lại phải là boolean `false`. Dữ liệu thiếu, trùng cờ hoặc không khớp `chart.than`/`chart.thanPalace` (khi có) -> `needs-review`.
+- Không tự suy ra cung Thân từ `hour`, không thay kết quả trong `packages/astrology-engine/src/tuvi.js`, không sửa `transformations` hay các lớp sao.
+- Sai lớp sao, sao trùng, mâu thuẫn cung, hoặc dữ kiện chưa đủ đều không được biến thành `structural-match`. Bộ nghiên cứu đọc dữ liệu nhưng không ghi ngược vào lá số.
+
+### Giao diện và kiểm thử
+
+- Số quy tắc: **24/49**, phân bố **Định phú 4/6, Định quý 19/27, Định bần 1/8, Định tạp 0/8**. 25 mục tiếp theo chưa được ánh xạ.
+- Nút **Điều kiện** trong danh mục 49 mục mở bộ lọc `Tất cả` trước khi tìm kết quả, mở thẻ chứng cứ và cuộn tới đúng kết quả; tôn trọng `prefers-reduced-motion`. Tránh đường dẫn bị ẩn khi đang ở bộ lọc `Liên quan`.
+- Ghi thêm 7 ca kiểm thử gồm hai chiều Mệnh–Thân, sao đồng/khác cung, sai lớp, sao trùng, thiếu/trùng cờ Thân, thông tin tổng hợp mâu thuẫn, bất biến lá số và hợp đồng điều hướng UI.
+- Kết quả mới chỉ là **đối chiếu cấu trúc theo nguồn**. `expertReviewed: false` tiếp tục giữ nguyên. Không công bố hoàn tất 49/49, không chép dữ liệu diễn giải không rõ quyền sử dụng.
+- PR chỉ được merge khi CI (Source Integrity, Full Stack và Production Acceptance) đạt trên chính head SHA. Không bỏ qua hoặc nới lỏng kiểm thử.
