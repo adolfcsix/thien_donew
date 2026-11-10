@@ -198,3 +198,14 @@ Tổng phạm vi r7: **26/49** (Định phú 4/6, Định quý 19/27, Định b�
 - Sửa lời cảnh báo Định bần trên UI cho đúng phạm vi thực tế; không thêm tab hoặc tăng thao tác bắt buộc.
 - Không chỉnh bộ tính `tuvi.js`, bảng Tứ Hóa `tuhoa.js`, database, quyền admin/Pro, thanh toán, engine vận hạn hoặc chế độ Cơ bản.
 - Chỉ nghiệm thu sau khi Source Integrity, Full Stack và Production Acceptance đều PASS trên đúng SHA của PR; không tự động gộp khi còn bài kiểm tra chưa hoàn tất.
+
+
+## Bổ sung r8 — 27/49 chỉ mục, Quyền Lộc sinh phùng (10/11/2026)
+
+- Đã kiểm tra và phát hiện **Vũ Khúc thủ viên** (`dinh-quy-18`) và **Cự Cơ cư Mão** (`dinh-quy-24`) vốn đã có trong r7; tuyệt đối không cộng trùng số mục hoặc nhân bản quy tắc/giao diện.
+- **Định quý 22 — Quyền Lộc sinh phùng (权禄生逢)**: hai Hóa Lộc/Quyền nguyên cục phải đồng tọa Mệnh. Mỗi sao nhận Hóa phải là chính tinh có vị trí duy nhất và hồ sơ độ sáng thuộc đúng bảng `somenh-14-main-stars-2026-09-18-v1`. Hai sao nhận Hóa phải cùng ở cấp **Miếu/Vượng** (`M`/`V`), không tự coi `Đắc` hay `Bình` tương đương.
+- Nguồn `patterns-dinggui.ts` kiểm tra sao nhận Hóa “không Hãm”; riêng chú giải cổ dùng chữ Miếu/Vượng. Bản r8 cố ý chọn cách đọc *nghiêm ngặt hơn* (`M`/`V`) và đánh dấu rõ khác biệt trong `extra`. Không khẳng định rằng đây là quy ước chung của tất cả trường phái.
+- Bộ kiểm chứng thêm yêu cầu `tuHoaRuleSet` chính xác bằng phiên bản `annual-tuhoa-tap-v4.0`, đọc can năm từ `chart.yearCanChi`, kiểm tra từng sao nhận Hóa so với `TuHoa.ROWS[yearStem]`. Dữ liệu thiếu/mâu thuẫn, Tứ Hóa trùng, trường phái sai, nhận Hóa từ sao phụ không có hồ sơ độ sáng: `needs-review`, không tự biến thành `structural-match`.
+- Kiểm thử gồm khớp cấu trúc, độ sáng Đắc/Hãm, Hóa nằm ngoài cung Mệnh, sai can năm, sai phiên bản bảng, khác sao nhận Hóa, thiếu Tứ Hóa, sao sai lớp, dữ liệu độ sáng bị sửa và trùng chính tinh; đầu vào lá số không bị sửa.
+- Phạm vi sau r8: **27/49** có điều kiện so sánh nghiên cứu (Định phú 4/6, Định quý 20/27, Định bần 3/8, Định tạp 0/8), còn 22 mục chưa được ánh xạ. Đây là diện bao phủ danh mục **không phải tỷ lệ hoàn thành website hay xác nhận chuyên gia**.
+- Không chỉnh engine Tử Vi, bảng sao, các trang người dùng khác, cơ sở dữ liệu, phân quyền/Pro, thanh toán hay Tứ Hóa vận hạn. CI Source Integrity, Full Stack, Production Acceptance phải PASS trên đúng HEAD của PR trước khi merge.
