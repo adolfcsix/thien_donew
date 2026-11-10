@@ -249,3 +249,19 @@ Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructi
 - Với `PremiumLock`, dùng `keepalive:true` cho **GET đọc trạng thái biểu tượng khóa** kèm deadline 12 giây, không ghi dữ liệu. Phần `PremiumGate` **vẫn giữ AbortController và xác minh quyền trên server**. Không sửa endpoint phân quyền, CSRF, CORS hoặc giao dịch.
 - Giữ bài kiểm thử WebKit nghiêm ngặt về `pageerror`; thêm assertion ngăn việc vô tình xóa `keepalive` trên hai request này.
 - Cả Source Integrity, Full Stack và Production Acceptance (bao gồm WebKit trên `main`) cần được kiểm chứng sau merge trước khi tuyên bố lỗi đã giải quyết ổn định.
+
+
+## R11 — Hồ sơ so sánh độ sáng Tham Lang/Hỏa Tinh/Linh Tinh theo trường phái (10/11/2026)
+
+### Kiểm chứng mã nguồn và giới hạn
+- Nguồn đã ghim: `Renhuai123/ziwei-doushu@7922285d947b36610e7e31c232d8f1e2a0d0871d`; `lib/ziwei/school-tables.generated.ts` khai báo `SB_QS` (1-based, cột 0 rỗng, các cột 1–12 từ **Tý**). `school-data.ts` ánh xạ `Tham Lang` = ID 9, `Hỏa Tinh` = 23, `Linh Tinh` = 24, và cấp độ `1=Miếu, 2=Vượng, 3=Đắc, 4=Lợi, 5=Bình, 6=Bất, 7=Hãm`.
+- **Hồ sơ QS tham khảo (Tý → Hợi):** Tham Lang `2,1,5,4,1,7,2,1,5,4,1,7`; Hỏa Tinh `7,3,1,4,7,3,1,4,7,3,1,4`; Linh Tinh `7,3,1,4,7,3,1,4,7,3,1,4`.
+- **Sai khác cần thẩm định:** `SB_QS` trong mã nguồn có hai dãy Hỏa/Linh giống nhau, nhưng `lib/ziwei/algorithm.ts` mô tả một bảng độ sáng Linh Tinh hiệu chỉnh riêng ở cấu hình mặc định. Đây có thể là lựa chọn trường phái khác nhau, **không thể gộp thành một bảng chân lý** và không được lặng lẽ thay bộ độ sáng của Thiên Đồ.
+- Module `packages/interpretation/src/classical-brightness-comparison.cjs` cung cấp `lookupQS` và `compareQSBrightness` bất biến, trả nguồn commit, tên trường phái, vị trí và cấp độ. Chỉ đọc dữ liệu đã qua `auditNatalFirePosition`; thiếu dữ liệu trả `available:false`. `mayConfirmClassicalPattern` luôn `false`, `expertReviewed` luôn `false`.
+- UI chỉ bổ sung **một mục thu gọn bên trong bằng chứng Hỏa Tinh** ở Chuyên sâu; mặc định đóng, truy cập bàn phím, không tạo tab/menu mới. Hiển thị nguồn QS và mã khác biệt, không mạo nhận đã thẩm định độ sáng.
+- Bản đối chiếu không được dùng để đổi `mainStarStrengthRuleSet`, không sửa `advanced-placements.js`, không mở khóa Tham Hỏa tương phùng, không gắn nhãn số mệnh hoặc sửa quyền Pro.
+- **Số chỉ mục ánh xạ không tăng:** vẫn **28/49** (4 Định phú, 21 Định quý, 3 Định bần, 0 Định tạp); vẫn còn 21 chỉ mục chưa ánh xạ. Không đếm hồ sơ QS là một quy tắc cách cục mới.
+
+### Kiểm thử và nghiệm thu
+- `tests/v111655-tuvi-school-brightness-comparison.test.cjs`: 3 ma trận 12 ô, hệ chỉ số Tý, phân biệt Miếu/Vượng, commit nguồn, khác biệt Linh Tinh, đầu vào bất biến, thiếu dữ liệu, không nâng trạng thái cách cục, UI không trộn bảng QS vào kết luận.
+- Merge vào main chỉ sau khi Source Integrity, Full Stack, Production Acceptance cùng PASS trên HEAD SHA; xác minh lại CI sau merge.
