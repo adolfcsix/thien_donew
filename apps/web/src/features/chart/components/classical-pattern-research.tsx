@@ -7,6 +7,7 @@ import {summarizeClassicalEvidence,filterClassicalEvidence} from '@thiendo/inter
 import type {ClassicalEvidenceFilter} from '@thiendo/interpretation/src/classical-evidence-workbench.cjs';
 import {summarizeClassicalCatalog,filterClassicalCatalog} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import {summarizeClassicalResearchReadiness} from '@thiendo/interpretation/src/classical-research-readiness.cjs';
+import {auditClassicalPeriodGeometry} from '@thiendo/interpretation/src/classical-period-geometry.cjs';
 import type {ClassicalCatalogFilterStatus} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import styles from './conditional-pattern-evidence.module.css';
 
@@ -27,6 +28,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   // Distinguish an implemented position check from the source's methodological category.
   const catalog=useMemo(()=>summarizeClassicalCatalog(data.records.map(record=>record.id)),[data]);
   const readiness=useMemo(()=>summarizeClassicalResearchReadiness(catalog),[catalog]);
+  const periodGeometry=useMemo(()=>auditClassicalPeriodGeometry(chart),[chart]);
   const [filter,setFilter]=useState<ClassicalEvidenceFilter>('relevant');
   const [catalogQuery,setCatalogQuery]=useState('');
   const [catalogStatus,setCatalogStatus]=useState<ClassicalCatalogFilterStatus>('all');
@@ -163,7 +165,12 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
       <div className={styles.catalogGrid}>
         {catalogView.groups.map(group=><section key={group.key} className={styles.catalogGroup}>
           <h5>{group.name} · {group.assessed}/{group.total} đã ánh xạ</h5>
-          {group.key==='dinh-tap'&&<p>Nhóm khảo sát vận hạn; không tự lấy điều kiện từ bản mệnh để thay thế.</p>}
+          {group.key==='dinh-tap'&&<div className={styles.periodGeometry} role="note">
+            <p><strong>Dữ liệu đại hạn:</strong> {periodGeometry.verifiedGeometry
+              ? 'Đã kiểm tra cấu trúc 12 cung và 12 khoảng đại hạn theo bộ an hạn đang dùng.'
+              : 'Cần kiểm tra lại dữ liệu an đại hạn của lá số.'}</p>
+            <small>{periodGeometry.reason} Kết quả này chỉ kiểm tra tính nhất quán dữ liệu nội bộ, không xác nhận các cách cục Định tạp hoặc dự báo vận hạn.</small>
+          </div>}
           <ol>{group.entries.map(entry=><li key={entry.id}>
             <span className={styles.catalogName}><strong>{entry.assessed?localizedTitles[entry.id]||entry.title:entry.title}</strong> {entry.assessed&&localizedTitles[entry.id]!==entry.title&&<small lang="zh">({entry.title})</small>} <small>({entry.id})</small></span>
             <span className={styles.catalogState}>{entry.assessed?'Thiên Đồ đã ánh xạ điều kiện':methodText[entry.sourceStatus]}</span>

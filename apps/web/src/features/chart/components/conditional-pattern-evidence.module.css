@@ -73,3 +73,8 @@
 .readinessSummary{font-size:12px!important;line-height:1.7!important;color:var(--text-secondary,var(--text))}
 .readinessSummary strong{color:var(--text)}
 .catalogBlocker{display:block;margin:5px 0 1px;font-size:11px;line-height:1.65;font-weight:400;color:var(--text-secondary,var(--text));overflow-wrap:anywhere}
+
+/* r16: compact period source-integrity note within the existing 49-pattern catalog. */
+.periodGeometry{margin:8px 0 12px;padding:9px 11px;border-left:2px solid var(--line-strong);background:transparent;min-width:0}
+.periodGeometry p{margin:0 0 4px!important;font-size:12px;line-height:1.6}
+.periodGeometry small{display:block;font-size:11px;line-height:1.6;color:var(--text-secondary,var(--text));overflow-wrap:anywhere}

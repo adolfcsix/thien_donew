@@ -314,3 +314,13 @@ Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructi
 - Giao diện dùng chính **danh mục 49 cách cục trong panel Chuyên sâu**; hiển thị số lượng động và thông tin điều kiện còn thiếu chỉ ở sáu mục có thể tiếp tục, không thêm tab hoặc menu mới. Các mục tranh luận/chưa thể suy ra giữ nguyên nhãn và liên kết nguồn.
 - Test r15 xác nhận đúng 21 mục chưa ánh xạ, 6 chướng ngại có căn cứ, trạng thái bất biến, fail-closed khi thiếu quy trình đối chiếu và bất biến lá số thực. Không thay engine, Tứ Hóa, DB, quyền Pro, AI hoặc thanh toán.
 - Chỉ gộp khi Source Integrity, Full Stack và Production Acceptance (5/5) **đồng thời PASS trên đúng HEAD**, sau đó kiểm tra lại `main`.
+
+
+## R16 — Kiểm toán hình học 12 đại hạn trước khi nghiên cứu Định tạp (11/11/2026)
+
+- Bổ sung module thuần `classical-period-geometry.cjs` chỉ đọc lá số. So khớp quy tắc chu kỳ có phiên bản (`cycles-tam-hop-fixed-anchor-v5.0`), Can Chi năm gốc, Cục, cung Mệnh, hướng thuận/nghịch, vị trí 12 địa chi và 12 khoảng tuổi mụ liên tiếp, cùng dữ liệu `houses[].daiHan` đã trình bày.
+- Khi dữ liệu thiếu, bị trùng, lệch thứ tự, sai hướng, sai tuổi bắt đầu/kết thúc hoặc không khớp bản ghi từng cung, báo **chưa xác minh cấu trúc** thay vì tự điều chỉnh chart. Kiểm tra toàn bộ theo địa chi, không đồng nhất vị trí mảng cung với địa chi.
+- Dù kiểm toán hình học đạt, **không** tự cho phép phán đoán Định tạp: kết quả chỉ là tính nhất quán *nội bộ Thiên Đồ*, không xác minh các tiêu chí cung mạnh/yếu, độ sáng, Lộc–Mã, Không Vong hay quan điểm trường phái của nguồn.
+- Hiển thị một ghi chú gọn ngay nhóm **Định tạp** của danh mục 49 mục trong panel Chuyên sâu sẵn có; không thêm tab, không thay trang Cơ bản, không thêm điều kiện vào 28/49 mục đã đối chiếu.
+- Test `tests/v111660-tuvi-period-geometry.test.cjs`: chart engine thật (Nam/Nữ), tamper từng trường quan trọng, không đổi lá số, kiểu đầu ra bất biến, UI không lặp và không tuyên bố đã thẩm định vận hạn.
+- Không chỉnh `tuvi.js`, `cycles.js`, Tứ Hóa, DB, Pro, tài khoản, AI hoặc thanh toán. Chỉ merge sau khi ba workflow Source Integrity, Full Stack, Production Acceptance (5/5) PASS trên đúng HEAD SHA.
