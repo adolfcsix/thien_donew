@@ -30,3 +30,30 @@ test('r11 actual engine chart comparison cannot assert classical formation and d
  assert.equal(result.records.find(x=>x.id==='dinh-quy-17').status!=='structural-match',true);
  assert.equal(JSON.stringify(chart),before);
 });
+
+test('r11 missing or forged source does not create a valid independent brightness comparison',()=>{
+ const {compareQSBrightness}=require('../packages/interpretation/src/classical-brightness-comparison.cjs');
+ const c=Engine.calculate({date:'2004-08-15',hour:8,minute:30,calendar:'solar',gender:'Nam'});
+ const audit={verified:true,branchIndex:2};
+ const tham={status:'observed',branchIndex:2};
+ const fake=compareQSBrightness(c,{verified:false,reason:'wrong version'},tham,{known:true,status:'M'});
+ assert.equal(fake.available,false);
+ assert.equal(fake.mayConfirmClassicalPattern,false);
+ const missing=compareQSBrightness({...c,advancedStars:c.advancedStars.filter(x=>x.name!=='Linh Tinh')},audit,tham,{known:true,status:'M'});
+ assert.equal(missing.available,false);
+ const twice=compareQSBrightness({...c,advancedStars:c.advancedStars.concat({...c.advancedStars.find(x=>x.name==='Linh Tinh')})},audit,tham,{known:true,status:'M'});
+ assert.equal(twice.available,false);
+});
+test('r11 UI presents versioned comparison in existing expert view without using it for classical verdicts',()=>{
+ const fs=require('node:fs'),path=require('node:path');
+ const ui=fs.readFileSync(path.join(__dirname,'../apps/web/src/features/chart/components/classical-pattern-research.tsx'),'utf8');
+ assert.match(ui,/brightnessComparison\.discrepancy\.detail/);
+ assert.match(ui,/brightnessComparison\.fire/);
+ assert.match(ui,/brightnessComparison\.bell/);
+ assert.match(ui,/styles\.comparison/);
+ const research=fs.readFileSync(path.join(__dirname,'../packages/interpretation/src/classical-pattern-research.cjs'),'utf8');
+ const start=research.indexOf("result('dinh-quy-17'");
+ const rule=research.slice(start,research.indexOf("result('dinh-quy-18'",start));
+ assert.match(rule,/Chưa có bảng độ sáng Hỏa Tinh/);
+ assert.doesNotMatch(rule,/brightnessComparison/);
+});
