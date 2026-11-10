@@ -2,8 +2,9 @@
 const MainStarStrength=require('@thiendo/astrology-engine/src/star-strength.js');
 const NatalTuHoa=require('@thiendo/astrology-engine/src/tuhoa.js');
 const {auditNatalObstructionEvidence}=require('./natal-obstruction-evidence.cjs');
+const {auditNatalFirePosition}=require('./natal-fire-evidence.cjs');
 /**
- * THIÊN ĐỒ — đối chiếu 27 điều kiện Tử Vi; kiểm toán Tuần/Triệt độc lập, KHÔNG phải bộ phán định 49 cách cục.
+ * THIÊN ĐỒ — đối chiếu 28 chỉ mục Tử Vi, gồm một mục Tham Hỏa chưa đủ chứng cứ độ sáng; kiểm toán Tuần/Triệt độc lập, KHÔNG phải bộ phán định 49 cách cục.
  * Nguồn phương pháp tham khảo: Renhuai123/ziwei-doushu, MIT; thuật toán/diễn giải độc lập.
  * Trả về chứng cứ, điều kiện chưa xét, sai lệch dữ liệu. Không sửa lá số và không dự báo.
  */
@@ -13,7 +14,7 @@ const LAYERS=Object.freeze(['stars','auxiliaryStars','yearStars','additionalStar
 const SUPPORT=Object.freeze(['Tả Phụ','Hữu Bật','Văn Xương','Văn Khúc','Thiên Khôi','Thiên Việt','Lộc Tồn','Thiên Mã']);
 const GROUPS=Object.freeze([
  Object.freeze({name:'Định phú',totalInReference:6,implementedHere:4,scope:'Bản mệnh'}),
- Object.freeze({name:'Định quý',totalInReference:27,implementedHere:20,scope:'Bản mệnh'}),
+ Object.freeze({name:'Định quý',totalInReference:27,implementedHere:21,scope:'Bản mệnh; Tham Hỏa chưa xác minh độ sáng Hỏa Tinh'}),
  Object.freeze({name:'Định bần',totalInReference:8,implementedHere:3,scope:'Bản mệnh / Mệnh–Thân; không phải dự đoán'}),
  Object.freeze({name:'Định tạp',totalInReference:8,implementedHere:0,scope:'Đại hạn / lưu niên; không thể ghép như cách cục bản mệnh'})
 ]);
@@ -171,6 +172,10 @@ function auditClassicalPatternCandidates(chart){
  const zi=getPosition(chart,'Tử Vi','stars');
  const fu=getPosition(chart,'Thiên Phủ','stars');
  const sat=getPosition(chart,'Thất Sát','stars');
+ const tham=getPosition(chart,'Tham Lang','stars');
+ const thamStrength=readVerifiedMainStrength(chart,tham);
+ const fire=getPosition(chart,'Hỏa Tinh','advancedStars');
+ const fireAudit=auditNatalFirePosition(chart);
  const tuong=getPosition(chart,'Thiên Tướng','stars');
  const ta=getPosition(chart,'Tả Phụ','auxiliaryStars');
  const huu=getPosition(chart,'Hữu Bật','auxiliaryStars');
@@ -249,6 +254,19 @@ function auditClassicalPatternCandidates(chart){
    'Thái Dương và Thái Âm đồng cung Mệnh. Không xem hai sao ở Tam Hợp hay đối cung là đồng lâm.',[
     place(sun,'Thái Dương ở Mệnh',x=>x.palace==='Mệnh'),
     place(moon,'Thái Âm ở đúng cung Mệnh cùng Thái Dương',x=>observed(sun)?x.palace==='Mệnh'&&x.branchIndex===sun.branchIndex:null)],notes.specific),
+  result('dinh-quy-17','Tham Hỏa tương phùng','Định quý','patterns-dinggui.ts',
+   'Tham Lang và Hỏa Tinh nguyên cục cùng thủ Mệnh; nguyên chú giải còn yêu cầu cả hai ở Miếu/Vượng. Thiên Đồ hiện chỉ có độ sáng Tham Lang trong bảng 14 chính tinh, nên KHÔNG thể xác nhận cách cục này.',[
+    place(tham,'Tham Lang chính tinh nguyên cục thủ Mệnh',x=>x.branchIndex===meng.branchIndex),
+    place(fire,'Hỏa Tinh nguyên cục đồng tọa Mệnh',x=>x.branchIndex===meng.branchIndex),
+    check('Hỏa Tinh được xác minh từ năm/giờ theo bảng Tam Hợp có phiên bản',
+      fireAudit.verified?true:null,fireAudit.reason),
+    check('Độ sáng Tham Lang được đối chiếu theo bảng 14 chính tinh của Thiên Đồ',
+      thamStrength.known?true:null,thamStrength.reason),
+    check('Tham Lang thuộc Miếu hoặc Vượng tại cung Mệnh',
+      thamStrength.known?['M','V'].includes(thamStrength.status):null,thamStrength.reason),
+    check('Hỏa Tinh cũng thuộc Miếu hoặc Vượng theo nguồn học thuật được thẩm định',
+      null,'Chưa có bảng độ sáng Hỏa Tinh đã định phiên bản trong engine; không lấy độ sáng của 14 chính tinh thay thế.')],
+   'Kể cả các điều kiện vị trí đều khớp, mục này vẫn cần thẩm định độ sáng Hỏa Tinh. Không suy diễn thành phán đoán vận mệnh.'),
   result('dinh-quy-18','Vũ Khúc thủ viên','Định quý','patterns-dinggui.ts',
    'Vũ Khúc thủ Mệnh tại Mão; chú giải tham khảo giới hạn riêng cung Mão, không suy rộng ra cung khác.',[
     place(wu,'Vũ Khúc ở Mão',x=>x.branchIndex===3),
@@ -390,9 +408,9 @@ function auditClassicalPatternCandidates(chart){
  ];
  const matched=records.filter(x=>x.status==='structural-match').length;
  const reviewed=records.filter(x=>x.status==='needs-review').length;
- return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r9',scope:'natal-only',
+ return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r10',scope:'natal-only',
   groups:GROUPS,referenceTotal:49,assessed:records.length,matched,needsReview:reviewed,
-  records:Object.freeze(records),obstructionAudit,expertReviewed:false,
-  notice:'27/49 chỉ mục được ánh xạ điều kiện nghiên cứu; 22 mục còn lại chưa được xác minh. Đây là đối chiếu nghiên cứu, không phải nhận định đầy đủ 49 cách cục.'});
+  records:Object.freeze(records),obstructionAudit,fireAudit,expertReviewed:false,
+  notice:'28/49 chỉ mục có điều kiện khảo sát, trong đó Tham Hỏa còn thiếu chứng cứ độ sáng Hỏa Tinh; 21 mục chưa được ánh xạ. Đây không phải 28 cách cục được xác nhận.'});
 }
 module.exports=Object.freeze({SOURCE,SOURCE_COMMIT,GROUPS,auditClassicalPatternCandidates});
