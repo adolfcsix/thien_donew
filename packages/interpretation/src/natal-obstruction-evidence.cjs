@@ -19,6 +19,10 @@ function auditNatalObstructionEvidence(chart){
  if(parts.length!==2||yearStem<0||yearBranch<0||hourBranch<0||
     !['Nam','Nữ'].includes(chart.gender)||yearStem%2!==yearBranch%2)
   return fail('Can Chi năm, giờ hoặc giới tính nguyên cục không hợp lệ.');
+ if(chart.hour!==undefined &&
+    (!Number.isInteger(chart.hour)||chart.hour<0||chart.hour>23||
+     Math.floor((chart.hour+1)/2)%12!==hourBranch))
+  return fail('Giờ dân sự không nhất quán với chi giờ đã ghi trên lá số.');
  const y=chart.lunar?.year;
  if(!Number.isInteger(y)||((y-4)%10+10)%10!==yearStem||((y-4)%12+12)%12!==yearBranch)
   return fail('Can Chi năm không khớp với năm âm lịch gốc.');
