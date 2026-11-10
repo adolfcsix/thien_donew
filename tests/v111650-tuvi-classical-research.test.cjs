@@ -4,7 +4,7 @@ const assert=require('node:assert/strict');
 const {auditClassicalPatternCandidates:study}=require('../packages/interpretation/src/classical-pattern-research.cjs');
 const NAMES=['Mệnh','Phụ Mẫu','Phúc Đức','Điền Trạch','Quan Lộc','Nô Bộc','Thiên Di','Tật Ách','Tài Bạch','Tử Tức','Phu Thê','Huynh Đệ'];
 function chart(menh=0,sites={}){
- const houses=Array.from({length:12},(_,i)=>({branchIndex:i,branch:String(i),palace:NAMES[(i-menh+12)%12],stars:[],auxiliaryStars:[],yearStars:[]}));
+ const houses=Array.from({length:12},(_,i)=>({branchIndex:i,branch:String(i),palace:NAMES[(i-menh+12)%12],stars:[],auxiliaryStars:[],yearStars:[],additionalStars:[]}));
  for(const [name,entry] of Object.entries(sites))houses[entry[0]][entry[1]??'stars'].push(name);
  return {houses};
 }
