@@ -228,3 +228,15 @@ Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructi
 - **Không tăng số quy tắc cách cục**: vẫn **27/49**, Định phú 4, Định quý 20, Định bần 3, Định tạp 0; các mục chưa ánh xạ vẫn là 22. Đây là cải thiện chất lượng kiểm chứng, không được ghi nhận là đã hoàn thiện thêm một cách cục.
 - Test mới `tests/v111652-tuvi-natal-obstruction-evidence.test.cjs`: dữ liệu hợp lệ, thiếu dấu, thay đổi cung, đảo thứ tự, sai nguồn, trùng cặp, sai giờ/can chi/năm âm, bất biến đầu vào và trường hợp Không Vong còn bất định.
 - Chỉ merge khi Source Integrity, Full Stack và Production Acceptance đều PASS trên SHA hiện tại; sau merge vẫn phải xác minh lại CI của `main`.
+
+
+## R10 — Tham Hỏa tương phùng: chứng cứ vị trí, chưa kết luận Miếu/Vượng (10/11/2026)
+
+- **Định quý 17 — Tham Hỏa tương phùng (贪火相逢)** trong `patterns-dinggui.ts` tại commit tham khảo đã ghim yêu cầu **Tham Lang và Hỏa Tinh đồng thủ Mệnh và cùng Miếu/Vượng**. Chỉ có đồng cung không đủ xác nhận cách cục.
+- Thiên Đồ hiện có bảng độ sáng `somenh-14-main-stars-2026-09-18-v1` cho **14 chính tinh**, trong đó có Tham Lang, **không bao gồm Hỏa Tinh**. Vì vậy không suy diễn độ sáng Hỏa từ bảng 14 chính tinh, không coi địa chi có Hỏa là đã “nhập miếu”.
+- Module `natal-fire-evidence.cjs` tính lại vị trí 4 sao Hỏa/Linh/Không/Kiếp bằng `advanced-placements-tam-hop-v11.6.0` theo can chi, giờ chi, giới tính, năm âm và giờ dân sự (khi có), đối chiếu cả mảng `advancedStars` tổng hợp và `advancedStars`/`advancedStarDetails` tại đủ 12 cung. Dữ liệu thiếu/sai/trùng/thay đổi hồ sơ nguồn -> `verified:false`, không tự công bố khớp.
+- Có thể đối chiếu vị trí Tham Lang thuộc lớp `stars`, vị trí Hỏa Tinh thuộc lớp `advancedStars`, độ sáng chính tinh Tham Lang có phiên bản nguồn và tình trạng Tham Lang ở `M`/`V`. **Kiểm tra độ sáng Hỏa Tinh luôn `unknown`**, nên mục này **không bao giờ xuất `structural-match` trong r10**, dù vị trí hợp lệ và Tham Lang ở Miếu/Vượng.
+- Phạm vi danh mục: **28/49 mục có bộ điều kiện khảo sát** (Định phú 4/6, Định quý 21/27, Định bần 3/8, Định tạp 0/8). Trong số 28 có ít nhất một mục còn **thiếu điều kiện cốt lõi**, vì vậy số này là độ bao phủ nghiên cứu, **không phải 28 cách cục đã được xác nhận**. Còn 21 mục chưa ánh xạ.
+- Giao diện hiển thị chứng cứ Hỏa Tinh gọn trong Chuyên sâu; không thêm tab thừa, không đưa phần chưa thẩm định vào Cơ bản.
+- Kiểm thử r10 có các ca vị trí đúng/sai, Mệnh khác cung, sao sai lớp/trùng, can chi/giờ sai, nguồn giả, bảng độ sáng Tham Lang bị sửa, bất biến đầu vào và bảo đảm không phát sinh kết luận thiếu chứng cứ. Không sửa `tuvi.js`, quyền Pro, dữ liệu người dùng hay thanh toán.
+- Chỉ merge sau khi Source Integrity, Full Stack và Production Acceptance 5/5 PASS trên đúng HEAD SHA; cần nghiệm thu lại trên `main` sau merge.
