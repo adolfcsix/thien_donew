@@ -3,7 +3,8 @@
 import {useMemo, useState} from 'react';
 import type {AstrologyResult} from '@thiendo/shared-types';
 import {auditClassicalPatternCandidates} from '@thiendo/interpretation/src/classical-pattern-research.cjs';
-import {summarizeClassicalCatalog} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
+import {summarizeClassicalCatalog,filterClassicalCatalog} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
+import type {ClassicalCatalogFilterStatus} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import styles from './conditional-pattern-evidence.module.css';
 
 const stateText={
@@ -24,6 +25,10 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   // Distinguish an implemented position check from the source's methodological category.
   const catalog=useMemo(()=>summarizeClassicalCatalog(data.records.map(record=>record.id)),[data]);
   const [filter,setFilter]=useState<Filter>('relevant');
+  const [catalogQuery,setCatalogQuery]=useState('');
+  const [catalogStatus,setCatalogStatus]=useState<ClassicalCatalogFilterStatus>('all');
+  const localizedTitles=useMemo(()=>Object.fromEntries(data.records.map(r=>[r.id,r.title])),[data]);
+  const catalogView=useMemo(()=>filterClassicalCatalog(catalog,{query:catalogQuery,status:catalogStatus,localizedTitles}),[catalog,catalogQuery,catalogStatus,localizedTitles]);
   const visible=data.records.filter(record=>filter==='all'||record.status!=='not-met');
   return <article className={'palace-reading-editorial '+styles.panel} aria-label="Đối chiếu cách cục cổ điển có nguồn">
     <div className={styles.head}>
@@ -52,12 +57,28 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
       <summary>Danh mục nghiên cứu 49 cách cục · {catalog.assessed} mục có điều kiện đối chiếu</summary>
       <p>{catalog.notice} Trạng thái “có thể kiểm tra” do nguồn phân loại không có nghĩa Thiên Đồ đã triển khai hoặc xác nhận thành cách.</p>
       <p>{catalog.distribution.derivable} mục nguồn đánh giá có thể kiểm tra · {catalog.distribution.disputed} còn tranh luận · {catalog.distribution.unreachable} chưa thể suy ra từ quy tắc nguồn.</p>
+      <div className={styles.catalogControls} role="search" aria-label="Tìm kiếm cách cục trong danh mục">
+        <label>Tìm theo tên gốc, tên Việt hoặc mã cách cục
+          <input type="search" maxLength={100} value={catalogQuery} onChange={event=>setCatalogQuery(event.target.value)} placeholder="Ví dụ: Thất Sát, 七杀, dinh-quy-11"/>
+        </label>
+        <label>Trạng thái nghiên cứu
+          <select value={catalogStatus} onChange={event=>setCatalogStatus(event.target.value as ClassicalCatalogFilterStatus)}>
+            <option value="all">Tất cả 49 mục</option>
+            <option value="assessed">Đã ánh xạ điều kiện</option>
+            <option value="pending">Có thể kiểm tra · chưa ánh xạ</option>
+            <option value="disputed">Nguồn còn tranh luận</option>
+            <option value="unreachable">Nguồn chưa thể suy ra</option>
+          </select>
+        </label>
+      </div>
+      <p className={styles.catalogCount} role="status" aria-live="polite">Hiển thị {catalogView.matches}/{catalog.referenceTotal} mục theo bộ lọc đang chọn.</p>
+      {catalogView.matches===0&&<p role="status">Không tìm thấy cách cục phù hợp. Hãy thử tên gốc, tên tiếng Việt đã đối chiếu hoặc chọn trạng thái khác.</p>}
       <div className={styles.catalogGrid}>
-        {catalog.groups.map(group=><section key={group.key} className={styles.catalogGroup}>
+        {catalogView.groups.map(group=><section key={group.key} className={styles.catalogGroup}>
           <h5>{group.name} · {group.assessed}/{group.total} đã ánh xạ</h5>
           {group.key==='dinh-tap'&&<p>Nhóm khảo sát vận hạn; không tự lấy điều kiện từ bản mệnh để thay thế.</p>}
           <ol>{group.entries.map(entry=><li key={entry.id}>
-            <span className={styles.catalogName}><strong>{entry.title}</strong> <small>({entry.id})</small></span>
+            <span className={styles.catalogName}><strong>{entry.assessed?localizedTitles[entry.id]||entry.title:entry.title}</strong> {entry.assessed&&localizedTitles[entry.id]!==entry.title&&<small lang="zh">({entry.title})</small>} <small>({entry.id})</small></span>
             <span className={styles.catalogState}>{entry.assessed?'Thiên Đồ đã ánh xạ điều kiện':methodText[entry.sourceStatus]}</span>
             <a href={entry.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={'Đọc quy tắc nguồn '+entry.title}>Nguồn</a>
           </li>)}</ol>
