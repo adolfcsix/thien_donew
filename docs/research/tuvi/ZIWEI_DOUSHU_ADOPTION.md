@@ -133,3 +133,20 @@ Workflow Full Stack của commit giai đoạn trước từng thất bại tại
 - Kết quả lọc chỉ ảnh hưởng giao diện trình bày; **không được sửa đánh giá cấu trúc** từ `auditClassicalPatternCandidates`, không tự gắn `structural-match` cho mục chưa thẩm định.
 - Kết quả hiển thị rõ x/49 và báo khi không có mục phù hợp; sử dụng input/select có nhãn truy cập, focus-visible, tối ưu kích thước cho cảm ứng và màn hình nhỏ.
 - `filterClassicalCatalog` là hàm thuần, có kiểm tra tham số, tạo kết quả bất biến; các ca kiểm thử mở rộng gồm 9 bài catalog về số lượng, tìm tên Hán/tên Việt/ID, dấu tiếng Việt, lọc trạng thái và dữ liệu không bị thay đổi.
+
+
+## Bổ sung r5 — 22/49 điều kiện khảo sát và điều hướng chứng cứ (10/11/2026)
+
+### Hai mục nghiên cứu bổ sung (không thay kết quả an sao)
+
+- **Định quý 08 — Lộc Mã bội ấn (禄马佩印)**: Thiên Mã phải là sao năm ở Mệnh, Thiên Tướng phải là chính tinh ở Mệnh, Lộc Tồn hoặc Hóa Lộc bản mệnh xuất hiện ở cung Mệnh hay cung kế tiếp theo thứ tự địa chi. Với nhánh Hóa Lộc, chỉ nhận dữ liệu sau khi đối chiếu đủ bốn Tứ Hóa nguyên cục, đúng sao nhận Hóa, đúng cung và đúng danh sách `transformations`. Nếu Lộc Tồn bị trùng/sai lớp hoặc thiếu Tứ Hóa mà không thể quyết định nhánh thay thế: trả `needs-review`. Đây là **một phép đọc khả kiểm theo nguồn**, không đồng nhất với chân lý duy nhất của mọi trường phái; không dùng Hóa Lộc của đại hạn/lưu niên.
+- **Định quý 23 — Kình Dương nhập miếu (羊刃入庙)**: Mệnh đóng Sửu/Thìn/Mùi/Tuất, Kình Dương thuộc lớp `auxiliaryStars` tọa Mệnh, có ít nhất một cát tinh nguyên cục đúng vị trí (Tả/Hữu, Xương/Khúc, Khôi/Việt, Lộc Tồn hoặc Thiên Mã) **hoặc** Hóa Lộc/Quyền/Khoa đã được kiểm chứng cùng Mệnh. Nếu không có cát tinh riêng và Tứ Hóa chưa đủ chứng cứ, kết quả là `needs-review`. Nhãn “nhập miếu” ở đây dựa vào **bốn địa chi theo bảng tham khảo**, chưa tuyên bố xác minh thang độ sáng của mọi hệ phái.
+
+Tổng phạm vi: **22/49** đã có điều kiện đối chiếu (Định phú 4/6, Định quý 18/27, Định bần 0/8, Định tạp 0/8). **27 mục còn lại** chưa được ánh xạ. Các trường hợp `structural-match` chỉ có nghĩa điều kiện khảo sát khớp dữ liệu, **không phải khẳng định cách cục mang lại giàu sang, nghèo khó hay sự kiện đời người**. `expertReviewed` vẫn bằng `false`.
+
+### Giao diện và kiểm thử
+
+- Trong danh mục 49 mục tại giao diện Chuyên sâu cung Mệnh, các mục đã có quy tắc nay có liên kết “Điều kiện” để chuyển về khối chứng cứ chi tiết; không tạo tab hay thành phần đánh giá trùng lặp.
+- Bộ `tests/v111650-tuvi-classical-research.test.cjs` có thêm kiểm thử: khớp vị trí Mã/Tướng/Lộc, Hóa Lộc được kiểm chứng, sai lớp sao, sai chi cung, sao trùng, dữ liệu Tứ Hóa thiếu/trùng/lệch, trường hợp có và không có cát tinh. Các kiểm thử hiện hữu được nâng kỳ vọng từ 20 lên 22.
+- Không chỉnh `packages/astrology-engine/src/tuvi.js`, bảng Tứ Hóa, thuật toán vận hạn, phân quyền, paywall hay chế độ Cơ bản.
+- Bằng chứng kiểm thử CI phải được kiểm tra trên SHA của PR trước khi gộp vào `main`; nếu CI chưa hoàn tất hoặc thất bại, **không coi giai đoạn r5 là đã nghiệm thu**.

@@ -1,6 +1,6 @@
 'use strict';
 /**
- * THIÊN ĐỒ — đối chiếu 20 điều kiện hình học và Tứ Hóa nguyên cục Tử Vi, KHÔNG phải bộ phán định 49 cách cục.
+ * THIÊN ĐỒ — đối chiếu 22 điều kiện hình học và Tứ Hóa nguyên cục Tử Vi, KHÔNG phải bộ phán định 49 cách cục.
  * Nguồn phương pháp tham khảo: Renhuai123/ziwei-doushu, MIT; thuật toán/diễn giải độc lập.
  * Trả về chứng cứ, điều kiện chưa xét, sai lệch dữ liệu. Không sửa lá số và không dự báo.
  */
@@ -10,7 +10,7 @@ const LAYERS=Object.freeze(['stars','auxiliaryStars','yearStars','additionalStar
 const SUPPORT=Object.freeze(['Tả Phụ','Hữu Bật','Văn Xương','Văn Khúc','Thiên Khôi','Thiên Việt','Lộc Tồn','Thiên Mã']);
 const GROUPS=Object.freeze([
  Object.freeze({name:'Định phú',totalInReference:6,implementedHere:4,scope:'Bản mệnh'}),
- Object.freeze({name:'Định quý',totalInReference:27,implementedHere:16,scope:'Bản mệnh'}),
+ Object.freeze({name:'Định quý',totalInReference:27,implementedHere:18,scope:'Bản mệnh'}),
  Object.freeze({name:'Định bần',totalInReference:8,implementedHere:0,scope:'Bản mệnh'}),
  Object.freeze({name:'Định tạp',totalInReference:8,implementedHere:0,scope:'Đại hạn / lưu niên; không thể ghép như cách cục bản mệnh'})
 ]);
@@ -108,6 +108,20 @@ function auditClassicalPatternCandidates(chart){
  const good=[...SUPPORT].filter(name=>LAYERS.some(layer=>{const h=byPalace.get('Mệnh');return Array.isArray(h[layer])&&h[layer].includes(name);}));
  const meng=byPalace.get('Mệnh');
  const observed=x=>x.status==='observed';
+ // A duplicate or wrong-layer Loc Ton cannot be affirmative evidence.
+ const locDataValid=observed(loc); // Missing Loc Ton means the natal chart evidence is incomplete.
+ const nearHorse=[meng.branchIndex,mod(meng.branchIndex+1)];
+ const locNear=observed(loc)&&nearHorse.includes(loc.branchIndex);
+ const natalHuaLocNear=hua.known&&nearHorse.includes(hua.byName.get('Hóa Lộc').branchIndex);
+ const locOrNatalHua=locDataValid?
+  (locNear||natalHuaLocNear?true:(observed(loc)&&hua.known?false:null)):null;
+ // Count only unique, verified natal positions, never projected period stars.
+ const verifiedHelpers=SUPPORT.filter(name=>{
+  const position=getPosition(chart,name,name==='Thiên Mã'?'yearStars':'auxiliaryStars');
+  return observed(position)&&position.branchIndex===meng.branchIndex;
+ });
+ const natalBeneficHua=hua.known&&['Hóa Lộc','Hóa Quyền','Hóa Khoa'].some(name=>hua.byName.get(name).branchIndex===meng.branchIndex);
+ const hasBeneficInMenh=verifiedHelpers.length>0||natalBeneficHua?true:(hua.known?false:null);
  const place=(x,desc,pred)=>check(desc,observed(x)?pred(x):null,observed(x)?x.name+': '+x.palace+', chi số '+x.branchIndex:x.name+': thiếu hoặc mâu thuẫn vị trí ('+x.status+')');
  const notes={
   specific:'Cần xác định đúng vị trí sao và quy ước trường phái trước khi đọc ý nghĩa.',
@@ -217,13 +231,29 @@ function auditClassicalPatternCandidates(chart){
    'Thiên Mã tại Mệnh, Vũ Khúc ở cung trước và Lộc Tồn ở cung sau, đối chiếu đúng chiều của bộ sao theo trường phái tham khảo.',[
     place(horse,'Thiên Mã tọa Mệnh',x=>x.palace==='Mệnh'),
     place(wu,'Vũ Khúc ở cung trước Thiên Mã',x=>observed(horse)?x.branchIndex===mod(horse.branchIndex-1):null),
-    place(loc,'Lộc Tồn ở cung sau Thiên Mã',x=>observed(horse)?x.branchIndex===mod(horse.branchIndex+1):null)],notes.specific)
+    place(loc,'Lộc Tồn ở cung sau Thiên Mã',x=>observed(horse)?x.branchIndex===mod(horse.branchIndex+1):null)],notes.specific),
+  result('dinh-quy-08','Lộc Mã bội ấn','Định quý','patterns-dinggui.ts',
+   'Thiên Mã và Thiên Tướng cùng thủ Mệnh. Lộc Tồn hoặc Hóa Lộc nguyên cục tọa Mệnh hay cung kế tiếp theo chiều địa chi; không trộn Hóa Lộc vận hạn.',[
+    place(horse,'Thiên Mã từ lớp sao năm thủ Mệnh',x=>x.branchIndex===meng.branchIndex),
+    place(tuong,'Thiên Tướng chính tinh thủ Mệnh',x=>x.branchIndex===meng.branchIndex),
+    check('Lộc Tồn hoặc Hóa Lộc nguyên cục ở Mệnh hay cung sau',observed(horse)?locOrNatalHua:null,
+      'Lộc Tồn: '+(observed(loc)?'chi số '+loc.branchIndex:loc.status)+
+      '; Hóa Lộc: '+(hua.known?'chi số '+hua.byName.get('Hóa Lộc').branchIndex:hua.reason))],
+   'Nguồn chọn một cách đọc có thể kiểm tra của điều kiện “Lộc Mã bội ấn”; cần đối chiếu thêm tập lá số chuẩn trước khi khẳng định tên cách cục.'),
+  result('dinh-quy-23','Kình Dương nhập miếu','Định quý','patterns-dinggui.ts',
+   'Kiểm tra Kình Dương thủ Mệnh tại Sửu, Thìn, Mùi hoặc Tuất và có cát tinh nguyên cục cùng Mệnh. Đây là điều kiện vị trí theo nguồn, chưa thay cho phép đối chiếu độ sáng giữa các trường phái.',[
+    check('Mệnh ở một trong bốn chi Sửu, Thìn, Mùi, Tuất',[1,4,7,10].includes(meng.branchIndex),'Mệnh chi số '+meng.branchIndex),
+    place(getPosition(chart,'Kình Dương','auxiliaryStars'),'Kình Dương thuộc sao phụ nguyên cục thủ Mệnh',x=>x.branchIndex===meng.branchIndex),
+    check('Ít nhất một cát tinh hoặc Hóa Lộc/Quyền/Khoa nguyên cục tại Mệnh',hasBeneficInMenh,
+      'Cát tinh được kiểm chứng: '+(verifiedHelpers.join(', ')||'chưa ghi nhận')+
+      '; Tứ Hóa: '+(hua.known?'đã kiểm tra đủ bốn Hóa':hua.reason))],
+   'Tên “nhập miếu” lấy theo bảng vị trí của nguồn; dữ liệu độ sáng của Thiên Đồ chưa được coi là đã thống nhất trường phái.')
  ];
  const matched=records.filter(x=>x.status==='structural-match').length;
  const reviewed=records.filter(x=>x.status==='needs-review').length;
- return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r4',scope:'natal-only',
+ return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r5',scope:'natal-only',
   groups:GROUPS,referenceTotal:49,assessed:records.length,matched,needsReview:reviewed,
   records:Object.freeze(records),expertReviewed:false,
-  notice:'20/49 chỉ mục được ánh xạ điều kiện ban đầu; 29 mục còn lại chưa được xác minh. Đây là đối chiếu nghiên cứu, không phải nhận định đầy đủ 49 cách cục.'});
+  notice:'22/49 chỉ mục được ánh xạ điều kiện nghiên cứu; 27 mục còn lại chưa được xác minh. Đây là đối chiếu nghiên cứu, không phải nhận định đầy đủ 49 cách cục.'});
 }
 module.exports=Object.freeze({SOURCE,SOURCE_COMMIT,GROUPS,auditClassicalPatternCandidates});
