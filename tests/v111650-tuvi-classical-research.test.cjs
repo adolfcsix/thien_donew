@@ -244,6 +244,9 @@ test('Lộc Mã bội ấn can use verified natal Hóa Lộc, but never a broken
  assert.equal(item(study(outside),'dinh-quy-08').status,'not-met');
  const dup=withFourHua(chart(2,sites),assign);dup.houses[2].auxiliaryStars.push('Lộc Tồn');
  assert.equal(item(study(dup),'dinh-quy-08').status,'needs-review');
+ const sitesWithoutLoc={...sites};delete sitesWithoutLoc['Lộc Tồn'];
+ const withoutLoc=withFourHua(chart(2,sitesWithoutLoc),assign);
+ assert.equal(item(study(withoutLoc),'dinh-quy-08').status,'needs-review');
  const bad=withFourHua(chart(2,sites),assign);bad.houses[3].tuHoa[0].star='Cự Môn';
  assert.equal(item(study(bad),'dinh-quy-08').status,'needs-review');
 });
