@@ -27,6 +27,8 @@
 .catalogName small{opacity:.7}
 .catalogState{margin-left:5px;font-size:11px;color:var(--text-secondary,var(--text));opacity:.82}
 .catalogGroup a{display:inline-block;margin-left:6px;text-underline-offset:3px}
+.catalogGroup button{display:inline-block;margin-left:6px;padding:2px 3px;border:0;background:transparent;color:var(--text);font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.catalogGroup button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 @media(max-width:730px){.catalogGrid{grid-template-columns:1fr}.catalog{padding:10px}.catalogGroup{padding:10px}}
 @media(prefers-reduced-motion:reduce){.catalog *{scroll-behavior:auto}}
 
