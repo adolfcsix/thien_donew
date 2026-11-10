@@ -411,7 +411,7 @@ function auditClassicalPatternCandidates(chart){
  ];
  const matched=records.filter(x=>x.status==='structural-match').length;
  const reviewed=records.filter(x=>x.status==='needs-review').length;
- return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r11',scope:'natal-only',
+ return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r12',scope:'natal-only',
   groups:GROUPS,referenceTotal:49,assessed:records.length,matched,needsReview:reviewed,
   records:Object.freeze(records),obstructionAudit,fireAudit,brightnessComparison,expertReviewed:false,
   notice:'28/49 chỉ mục có điều kiện khảo sát, trong đó Tham Hỏa còn thiếu chứng cứ độ sáng Hỏa Tinh; 21 mục chưa được ánh xạ. Đây không phải 28 cách cục được xác nhận.'});
