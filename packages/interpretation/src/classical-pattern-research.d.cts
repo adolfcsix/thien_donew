@@ -27,7 +27,7 @@ export interface ClassicalResearchGroup {
   scope:string;
 }
 export interface ClassicalPatternResearch {
-  edition:'thiendo-classical-research-2026-11-10-r6';
+  edition:'thiendo-classical-research-2026-11-10-r7';
   scope:'natal-only';
   groups:readonly ClassicalResearchGroup[];
   referenceTotal:49;

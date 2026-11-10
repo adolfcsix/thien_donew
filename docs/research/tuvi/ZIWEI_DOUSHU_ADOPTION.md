@@ -172,3 +172,29 @@ Tổng phạm vi: **22/49** đã có điều kiện đối chiếu (Định phú
 - Ghi thêm 7 ca kiểm thử gồm hai chiều Mệnh–Thân, sao đồng/khác cung, sai lớp, sao trùng, thiếu/trùng cờ Thân, thông tin tổng hợp mâu thuẫn, bất biến lá số và hợp đồng điều hướng UI.
 - Kết quả mới chỉ là **đối chiếu cấu trúc theo nguồn**. `expertReviewed: false` tiếp tục giữ nguyên. Không công bố hoàn tất 49/49, không chép dữ liệu diễn giải không rõ quyền sử dụng.
 - PR chỉ được merge khi CI (Source Integrity, Full Stack và Production Acceptance) đạt trên chính head SHA. Không bỏ qua hoặc nới lỏng kiểm thử.
+
+
+## Bổ sung r7 — 26/49 đối chiếu, chính tinh hãm địa và Không–Kiếp (10/11/2026)
+
+### Nguyên tắc kiểm chứng độ sáng
+
+- **Chỉ đọc bộ `packages/astrology-engine/src/star-strength.js` đã định phiên bản**, gồm 14 chính tinh × 12 chi; sử dụng `chart.mainStarStrengthRuleSet` cùng `houses[].mainStarStrengths` để xác nhận provenance. Không tính lại sao, không thay hoặc tự gán độ sáng từ trường phái của dự án nguồn.
+- Một phép so sánh độ sáng chỉ được đánh dấu `met` khi `mainStarStrengthRuleSet` đúng và danh sách độ sáng trong cung khớp **từng chính tinh, từng mã cấp và từng thuộc tính nguồn** do `MainStarStrength.lookup` trả về. Thiếu/sai/trùng nguồn, thiếu trường, nhầm vị trí hoặc mã cấp -> `needs-review` khi thiếu chứng cứ.
+- Không đồng nhất mức `D` (Đắc), `B` (Bình) với `H` (Hãm). Không coi bất kỳ bảng nào là chuẩn chung cho mọi trường phái.
+
+### Hai mục tiếp nhận nghiên cứu
+
+- **Định bần 06 — Phá Quân thủ Mệnh hãm địa (一生孤贫)**: Phá Quân phải là chính tinh độc nhất về vị trí tên sao trong đúng lớp `stars`, tọa Mệnh, với độ sáng `H` được đối chiếu theo `mainStarStrengthRuleSet` hiện hành. Nếu bảng thiếu hoặc mâu thuẫn -> `needs-review`. Đã có dữ liệu đầy đủ và kết quả khác Hãm -> `not-met`.
+- **Định bần 08 — Lưỡng trùng Hoa Cái (两重华盖)**: Lộc Tồn và Hóa Lộc **nguyên cục** cùng tọa Mệnh, đồng thời Địa Không hoặc Địa Kiếp **nguyên cục** ở Mệnh. Vẫn yêu cầu xác nhận vị trí duy nhất của cả hai sao Không–Kiếp từ `advancedStars`, đối chiếu đủ 4 Tứ Hóa nguyên cục, và không nhận các lớp sao vận hạn.
+
+Nhóm Định bần trong thư tịch dùng tên gọi cổ có thể mang hàm ý tiêu cực. Thiên Đồ **không suy luận mức độ giàu nghèo, giá trị con người hay định mệnh** từ quy tắc đối chiếu này; chỉ hiển thị cấu trúc sao và chứng cứ đã có trên lá số.
+
+Tổng phạm vi r7: **26/49** (Định phú 4/6, Định quý 19/27, Định bần 3/8, Định tạp 0/8). Còn **23 mục** chưa có quy tắc nghiên cứu được ánh xạ. `expertReviewed` tiếp tục là `false`.
+
+### Kiểm thử và giới hạn tích hợp
+
+- Thêm kiểm thử sao Phá Quân tại vị trí Hãm/khác Hãm, thiếu phiên bản bảng, độ sáng sai/đổi nhãn, sai nguồn, thiếu bản ghi, sai lớp sao; xác minh bất biến dữ liệu đầu vào.
+- Kiểm thử song song Địa Không và Địa Kiếp cùng Mệnh, sai cung, sai lớp, sao trùng, Lộc Tồn ngoài Mệnh, Hóa Lộc ngoài Mệnh, bộ Tứ Hóa thiếu/trùng/lệch.
+- Sửa lời cảnh báo Định bần trên UI cho đúng phạm vi thực tế; không thêm tab hoặc tăng thao tác bắt buộc.
+- Không chỉnh bộ tính `tuvi.js`, bảng Tứ Hóa `tuhoa.js`, database, quyền admin/Pro, thanh toán, engine vận hạn hoặc chế độ Cơ bản.
+- Chỉ nghiệm thu sau khi Source Integrity, Full Stack và Production Acceptance đều PASS trên đúng SHA của PR; không tự động gộp khi còn bài kiểm tra chưa hoàn tất.

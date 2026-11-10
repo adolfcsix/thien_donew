@@ -99,6 +99,6 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
         </section>)}
       </div>
     </details>
-    <small>{data.notice} Bộ này chưa được chuyên gia độc lập thẩm định. Định bần mới có một điều kiện đối chiếu theo tài liệu, không được dùng để dự đoán nghèo khó; Định tạp thuộc nghiên cứu vận hạn, chưa gộp vào bản mệnh.</small>
+    <small>{data.notice} Bộ này chưa được chuyên gia độc lập thẩm định. Các mục Định bần chỉ mô tả tổ hợp sao theo tài liệu, không đưa ra kết luận tài chính hay vận mệnh. Định tạp thuộc nghiên cứu vận hạn và chưa gộp vào bản mệnh.</small>
   </article>;
 }

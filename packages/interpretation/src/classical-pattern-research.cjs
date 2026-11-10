@@ -1,6 +1,7 @@
 'use strict';
+const MainStarStrength=require('@thiendo/astrology-engine/src/star-strength.js');
 /**
- * THIÊN ĐỒ — đối chiếu 24 điều kiện hình học và Tứ Hóa nguyên cục Tử Vi, KHÔNG phải bộ phán định 49 cách cục.
+ * THIÊN ĐỒ — đối chiếu 26 điều kiện vị trí, độ sáng và Tứ Hóa nguyên cục Tử Vi, KHÔNG phải bộ phán định 49 cách cục.
  * Nguồn phương pháp tham khảo: Renhuai123/ziwei-doushu, MIT; thuật toán/diễn giải độc lập.
  * Trả về chứng cứ, điều kiện chưa xét, sai lệch dữ liệu. Không sửa lá số và không dự báo.
  */
@@ -11,7 +12,7 @@ const SUPPORT=Object.freeze(['Tả Phụ','Hữu Bật','Văn Xương','Văn Kh�
 const GROUPS=Object.freeze([
  Object.freeze({name:'Định phú',totalInReference:6,implementedHere:4,scope:'Bản mệnh'}),
  Object.freeze({name:'Định quý',totalInReference:27,implementedHere:19,scope:'Bản mệnh'}),
- Object.freeze({name:'Định bần',totalInReference:8,implementedHere:1,scope:'Mệnh–Thân; nhãn thư tịch, không phải dự đoán'}),
+ Object.freeze({name:'Định bần',totalInReference:8,implementedHere:3,scope:'Bản mệnh / Mệnh–Thân; không phải dự đoán'}),
  Object.freeze({name:'Định tạp',totalInReference:8,implementedHere:0,scope:'Đại hạn / lưu niên; không thể ghép như cách cục bản mệnh'})
 ]);
 const mod=n=>(n%12+12)%12;
@@ -54,6 +55,30 @@ function readNatalThan(chart){
     (chart.thanPalace!==undefined&&chart.thanPalace!==h.palace))
   return {known:false,reason:'Cung Thân trên địa bàn không nhất quán với thông tin tổng hợp.'};
  return {known:true,branchIndex:h.branchIndex,palace:h.palace,reason:'Đã đối chiếu cung Thân duy nhất trên địa bàn.'};
+}
+/**
+ * Verify the provenance and *every* same-house main-star strength record
+ * against the actual versioned Thiên Đồ reference matrix. Do not translate
+ * another school's miếu/vượng/hãm, or accept unlabelled/client-made values.
+ */
+function readVerifiedMainStrength(chart,position){
+ const unknown=reason=>({known:false,reason});
+ if(position.status!=='observed')return unknown('Chưa xác minh được vị trí duy nhất của chính tinh.');
+ if(chart.mainStarStrengthRuleSet!==MainStarStrength.RULESET)
+  return unknown('Thiếu hoặc sai phiên bản bảng độ sáng chính tinh.');
+ const house=chart.houses.find(h=>h.branchIndex===position.branchIndex);
+ if(!house||!Array.isArray(house.mainStarStrengths)||house.mainStarStrengths.length!==house.stars.length)
+  return unknown('Danh sách độ sáng trong cung thiếu hoặc không khớp danh sách chính tinh.');
+ for(let i=0;i<house.stars.length;i++){
+  const expected=MainStarStrength.lookup(house.stars[i],house.branchIndex);
+  const actual=house.mainStarStrengths[i];
+  if(!expected||!actual||Object.keys(expected).some(key=>actual[key]!==expected[key]))
+   return unknown('Độ sáng, địa chi hoặc hồ sơ nguồn chưa khớp với bảng đã định phiên bản.');
+ }
+ const record=house.mainStarStrengths.find(x=>x.name===position.name);
+ if(!record)return unknown('Không tìm thấy độ sáng của chính tinh cần đối chiếu.');
+ return {known:true,status:record.status,label:record.label,source:record.source,ruleSet:record.ruleSet,
+  reason:record.name+' tại '+position.palace+' / '+position.branchIndex+': '+record.label+' ('+record.ruleSet+')'};
 }
 const check=(label,met,detail)=>({label,state:met===null?'unknown':met?'met':'not-met',detail});
 function result(id,title,group,sourceFile,interpretation,checks,extra){
@@ -108,6 +133,10 @@ function auditClassicalPatternCandidates(chart){
  const moon=getPosition(chart,'Thái Âm','stars');
  const wu=getPosition(chart,'Vũ Khúc','stars');
  const liem=getPosition(chart,'Liêm Trinh','stars');
+ const pha=getPosition(chart,'Phá Quân','stars');
+ const phaStrength=readVerifiedMainStrength(chart,pha);
+ const khong=getPosition(chart,'Địa Không','advancedStars');
+ const kiep=getPosition(chart,'Địa Kiếp','advancedStars');
  const thienHinh=getPosition(chart,'Thiên Hình','additionalStars');
  const than=readNatalThan(chart);
  const horse=getPosition(chart,'Thiên Mã','yearStars');
@@ -288,13 +317,33 @@ function auditClassicalPatternCandidates(chart){
         (liem.branchIndex===meng.branchIndex&&wu.branchIndex===than.branchIndex)):null,
       'Vũ Khúc: '+(observed(wu)?wu.palace+' / '+wu.branchIndex:wu.status)+
       '; Liêm Trinh: '+(observed(liem)?liem.palace+' / '+liem.branchIndex:liem.status))],
-   'Chỉ so sánh cấu trúc Mệnh–Thân theo tài liệu, không phải dự đoán tài chính hay định mệnh.')
+   'Chỉ so sánh cấu trúc Mệnh–Thân theo tài liệu, không phải dự đoán tài chính hay định mệnh.'),
+  result('dinh-ban-06','Phá Quân thủ Mệnh hãm địa','Định bần','patterns-dingpin.ts',
+   'Chỉ kiểm tra Phá Quân chính tinh thủ Mệnh và được xếp Hãm trong đúng hồ sơ độ sáng 14 sao của Thiên Đồ. Bảng của trường phái khác có thể cho kết quả khác.',[
+    place(pha,'Phá Quân nguyên cục thủ Mệnh',x=>x.branchIndex===meng.branchIndex),
+    check('Độ sáng Phá Quân đã được đối chiếu với bảng nguồn chính thức của Thiên Đồ',
+      phaStrength.known?true:null,phaStrength.reason),
+    check('Phá Quân được ghi nhận ở cấp Hãm',
+      phaStrength.known?phaStrength.status==='H':null,phaStrength.reason)],
+   'Danh xưng nguyên bản có hàm ý tiêu cực; kết quả chỉ là quan hệ sao–cung–độ sáng, không kết luận cuộc đời hoặc tài chính.'),
+  result('dinh-ban-08','Lưỡng trùng Hoa Cái','Định bần','patterns-dingpin.ts',
+   'Bộ đối chiếu nghiêm ngặt: Lộc Tồn và Hóa Lộc nguyên cục cùng tọa Mệnh; có Địa Không hoặc Địa Kiếp nguyên cục cùng Mệnh. Không tính lớp lưu hạn.',[
+    place(loc,'Lộc Tồn nguyên cục thủ Mệnh',x=>x.branchIndex===meng.branchIndex),
+    check('Tứ Hóa nguyên cục đầy đủ và nhất quán',hua.known?true:null,hua.reason),
+    check('Hóa Lộc nguyên cục ở Mệnh',hua.known?hua.byName.get('Hóa Lộc').branchIndex===meng.branchIndex:null,
+      hua.known?'Hóa Lộc tại chi số '+hua.byName.get('Hóa Lộc').branchIndex:hua.reason),
+    check('Địa Không hoặc Địa Kiếp nguyên cục tại Mệnh',
+      observed(khong)&&observed(kiep)?
+       (khong.branchIndex===meng.branchIndex||kiep.branchIndex===meng.branchIndex):null,
+      'Địa Không: '+(observed(khong)?'chi số '+khong.branchIndex:khong.status)+
+      '; Địa Kiếp: '+(observed(kiep)?'chi số '+kiep.branchIndex:kiep.status))],
+   'Chỉ ghi nhận tổ hợp sao theo một cách đọc nghiêm ngặt của thư tịch. Không dự báo nghèo khó, công danh hay sự kiện đời sống.')
  ];
  const matched=records.filter(x=>x.status==='structural-match').length;
  const reviewed=records.filter(x=>x.status==='needs-review').length;
- return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r6',scope:'natal-only',
+ return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r7',scope:'natal-only',
   groups:GROUPS,referenceTotal:49,assessed:records.length,matched,needsReview:reviewed,
   records:Object.freeze(records),expertReviewed:false,
-  notice:'24/49 chỉ mục được ánh xạ điều kiện nghiên cứu; 25 mục còn lại chưa được xác minh. Đây là đối chiếu nghiên cứu, không phải nhận định đầy đủ 49 cách cục.'});
+  notice:'26/49 chỉ mục được ánh xạ điều kiện nghiên cứu; 23 mục còn lại chưa được xác minh. Đây là đối chiếu nghiên cứu, không phải nhận định đầy đủ 49 cách cục.'});
 }
 module.exports=Object.freeze({SOURCE,SOURCE_COMMIT,GROUPS,auditClassicalPatternCandidates});
