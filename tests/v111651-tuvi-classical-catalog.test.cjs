@@ -1,7 +1,7 @@
 'use strict';
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
-const {SOURCE_COMMIT,GROUPS,ALL,summarizeClassicalCatalog}=require('../packages/interpretation/src/classical-pattern-catalog.cjs');
+const {SOURCE_COMMIT,GROUPS,ALL,summarizeClassicalCatalog,filterClassicalCatalog}=require('../packages/interpretation/src/classical-pattern-catalog.cjs');
 const counts={derivable:34,disputed:9,unreachable:6};
 test('49 pinned research indices have unique stable IDs and four complete groups',()=>{
  assert.equal(ALL.length,49);
@@ -48,4 +48,38 @@ test('External views cannot mutate immutable catalog source data',()=>{
  assert.ok(GROUPS.every(g=>Object.isFrozen(g.entries)&&g.entries.every(Object.isFrozen)));
  assert.throws(()=>{ALL[0].sourceStatus='derivable';},TypeError);
  assert.equal(summarizeClassicalCatalog().assessed,0);
+});
+
+
+test('Catalog filter separates audited rules, pending source candidates, disputed and unreachable',()=>{
+ const report=summarizeClassicalCatalog(['dinh-quy-11','dinh-quy-19']);
+ const count=(status)=>filterClassicalCatalog(report,{status}).matches;
+ assert.equal(count('all'),49);
+ assert.equal(count('assessed'),2);
+ assert.equal(count('pending'),32);
+ assert.equal(count('disputed'),9);
+ assert.equal(count('unreachable'),6);
+});
+test('Vietnamese search ignores accents and case, matches Chinese names and stable source IDs',()=>{
+ const report=summarizeClassicalCatalog(['dinh-quy-11','dinh-quy-19']);
+ const titles={'dinh-quy-11':'Thất Sát triều đẩu','dinh-quy-19':'Phủ Tướng triều viên'};
+ assert.equal(filterClassicalCatalog(report,{query:'THAT SAT',localizedTitles:titles}).matches,1);
+ assert.equal(filterClassicalCatalog(report,{query:'Phu tuong',localizedTitles:titles}).matches,1);
+ assert.equal(filterClassicalCatalog(report,{query:'七杀'}).matches,1);
+ assert.equal(filterClassicalCatalog(report,{query:'dinh-quy-11',status:'assessed'}).matches,1);
+ assert.equal(filterClassicalCatalog(report,{query:'  ĐỊNH QUÝ  '}).matches,27);
+ assert.equal(filterClassicalCatalog(report,{query:'missing-word'}).matches,0);
+});
+test('Filtered view remains immutable and does not change evaluation evidence',()=>{
+ const report=summarizeClassicalCatalog(['dinh-quy-11']);
+ const result=filterClassicalCatalog(report,{status:'assessed'});
+ assert.ok(Object.isFrozen(result)&&Object.isFrozen(result.groups));
+ assert.ok(result.groups.every(group=>Object.isFrozen(group.entries)));
+ assert.throws(()=>{result.matches=100;},TypeError);
+ assert.equal(report.assessed,1);
+ assert.equal(report.groups[1].entries.length,27);
+ assert.equal(filterClassicalCatalog(report,{status:'pending'}).matches,33);
+ assert.throws(()=>filterClassicalCatalog(report,{status:'unknown'}),RangeError);
+ assert.throws(()=>filterClassicalCatalog(report,{query:15}),TypeError);
+ assert.throws(()=>filterClassicalCatalog(report,{localizedTitles:[]}),TypeError);
 });
