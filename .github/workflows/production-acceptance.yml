@@ -32,7 +32,8 @@ jobs:
           THIENDO_SQL_TEST_MODULE="$RUNNER_TEMP/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js" npm run test:sql:isolated
       - name: React login and tool-access lifecycle (DOM harness)
         run: |
-          npm install --prefix "$RUNNER_TEMP/thiendo-dom" --no-save --ignore-scripts --no-audit --no-fund jsdom@30.1.3
+          # Pin both public-suffix packages: unpinned tldts can select a core version not yet on npm.
+          npm install --prefix "$RUNNER_TEMP/thiendo-dom" --no-save --ignore-scripts --no-audit --no-fund jsdom@30.1.3 tldts@7.4.19 tldts-core@7.4.19
           THIENDO_DOM_TEST_MODULE="$RUNNER_TEMP/thiendo-dom/node_modules/jsdom/lib/api.js" npm run test:session:dom
       - name: Standalone Next and Nest session/AI HTTP regression (controlled providers)
         run: THIENDO_SQL_TEST_MODULE="$RUNNER_TEMP/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js" npm run test:stack:isolated
