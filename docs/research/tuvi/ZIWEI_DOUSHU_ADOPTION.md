@@ -209,3 +209,22 @@ Tổng phạm vi r7: **26/49** (Định phú 4/6, Định quý 19/27, Định b�
 - Kiểm thử gồm khớp cấu trúc, độ sáng Đắc/Hãm, Hóa nằm ngoài cung Mệnh, sai can năm, sai phiên bản bảng, khác sao nhận Hóa, thiếu Tứ Hóa, sao sai lớp, dữ liệu độ sáng bị sửa và trùng chính tinh; đầu vào lá số không bị sửa.
 - Phạm vi sau r8: **27/49** có điều kiện so sánh nghiên cứu (Định phú 4/6, Định quý 20/27, Định bần 3/8, Định tạp 0/8), còn 22 mục chưa được ánh xạ. Đây là diện bao phủ danh mục **không phải tỷ lệ hoàn thành website hay xác nhận chuyên gia**.
 - Không chỉnh engine Tử Vi, bảng sao, các trang người dùng khác, cơ sở dữ liệu, phân quyền/Pro, thanh toán hay Tứ Hóa vận hạn. CI Source Integrity, Full Stack, Production Acceptance phải PASS trên đúng HEAD của PR trước khi merge.
+
+
+## R9 — Xác minh Tuần/Triệt nguyên cục, không đánh đồng Không Vong (10/11/2026)
+
+### Vấn đề dữ liệu
+Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructionMarkers` của Thiên Đồ ghi **hai dấu án ngữ Tuần/Triệt**, mỗi dấu che hai cung theo bản Tam Hợp đã định phiên bản. Không có cơ sở để suy ra rằng Tuần/Triệt là toàn bộ mọi loại Không Vong trong thư tịch; vì vậy **không tự mở khóa những cách cục đang thiếu điều kiện Không Vong**, kể cả khi cung Mệnh không có Tuần/Triệt.
+
+### Lớp kiểm toán độc lập
+- Module: `packages/interpretation/src/natal-obstruction-evidence.cjs` và declaration tương ứng. Dựa vào `advanced-placements-tam-hop-v11.6.0` của engine hiện tại; **không thay đổi thuật toán tính sao**.
+- Xác minh `advancedStarRuleSet`, can chi năm, năm âm lịch, giới tính, giờ chi và giờ dân sự nếu có; phát hiện can chi trái âm dương, năm không khớp, giờ sai.
+- Sinh lại hai cặp Tuần/Triệt từ bảng đã ghim, kiểm tra tên, căn cứ, phiên bản, hai địa chi và thứ tự; sau đó đối chiếu `obstructionMarkers` của **cả 12 cung**, không chỉ cung Mệnh.
+- Dữ liệu thiếu, giả mạo, trùng hoặc không nhất quán -> `verified:false`, trả giải thích cụ thể; không sửa lá số.
+- Trạng thái chỉ gồm **chứng cứ Tuần/Triệt tại Mệnh**, không đồng nhất với “Không Vong không tồn tại”. Kết quả được hiển thị trong cùng giao diện Chuyên sâu, không tạo thêm menu hoặc tab.
+- Định quý 01 (Nhật Nguyệt giáp Mệnh) có thêm kiểm chứng nguồn Tuần/Triệt nhưng **điều kiện Không Vong đầy đủ vẫn `unknown`** và **không được tạo `structural-match`** chỉ nhờ cặp Tuần/Triệt.
+
+### Nghiệm thu
+- **Không tăng số quy tắc cách cục**: vẫn **27/49**, Định phú 4, Định quý 20, Định bần 3, Định tạp 0; các mục chưa ánh xạ vẫn là 22. Đây là cải thiện chất lượng kiểm chứng, không được ghi nhận là đã hoàn thiện thêm một cách cục.
+- Test mới `tests/v111652-tuvi-natal-obstruction-evidence.test.cjs`: dữ liệu hợp lệ, thiếu dấu, thay đổi cung, đảo thứ tự, sai nguồn, trùng cặp, sai giờ/can chi/năm âm, bất biến đầu vào và trường hợp Không Vong còn bất định.
+- Chỉ merge khi Source Integrity, Full Stack và Production Acceptance đều PASS trên SHA hiện tại; sau merge vẫn phải xác minh lại CI của `main`.
