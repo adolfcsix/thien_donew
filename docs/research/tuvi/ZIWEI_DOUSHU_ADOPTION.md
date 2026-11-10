@@ -281,3 +281,16 @@ Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructi
 - `tests/v111656-tuvi-linh-reconciliation.test.cjs`: xác nhận hai dãy gốc và chỉ số bắt đầu, đúng 5 vị trí khác nhau, dữ liệu bất biến, hành vi thiếu/trùng nguồn, engine tạo lá số thật, không cho giá trị tham khảo đi vào logic xác nhận cách cục, không biến bảng thành cấu hình hệ thống.
 - Số mục có điều kiện khảo sát **không tăng**: **28/49**, trong đó Tham Hỏa còn điều kiện độ sáng chưa được xác minh. Không sửa engine, cơ sở dữ liệu, Tứ Hóa, tài khoản, Pro hoặc thanh toán.
 - Chỉ gộp khi Source Integrity, Full Stack và Production Acceptance đều PASS trên HEAD SHA hiện hành; kiểm tra lại CI của `main` sau merge.
+
+
+## R13 — Bộ lọc chứng cứ theo trạng thái và giải thích tiến độ từng mục (11/11/2026)
+
+### Phạm vi
+- Chỉ bổ sung **lớp trình bày** cho 28 mục nghiên cứu đã có điều kiện. Không thêm cách cục mới, không sửa bảng an sao, Tứ Hóa, độ sáng, quyền người dùng, Pro hay hệ thống thanh toán.
+- `classical-evidence-workbench.cjs` đếm các điều kiện ở 3 trạng thái: `met` (đã quan sát), `not-met` (chưa đáp ứng), `unknown` (chưa xác minh). Hàm thuần dữ liệu đối chiếu lại trạng thái tổng: **có `not-met` -> không khớp; nếu không và có `unknown` -> cần thẩm định; chỉ khi không còn `unknown`/`not-met` -> khớp cấu trúc đang triển khai**. Sự đồng thuận của điều kiện cấu trúc **không có nghĩa cách cục đã được chuyên gia xác nhận**.
+- Năm bộ lọc không đổi dữ liệu: **Liên quan**, **Khớp cấu trúc**, **Cần thẩm định**, **Chưa khớp**, **Tất cả**. Hiển thị số mục tương ứng, số điều kiện đã quan sát và số điều kiện không đủ dữ liệu hoặc chưa đáp ứng ngay trong mỗi mục có thể mở.
+- UI vẫn nằm ở panel Chuyên sâu đã có, không tạo tab hoặc trang riêng. Bộ lọc có `aria-pressed`, vùng thông báo kết quả `role=status` và `aria-live=polite`, giữ thao tác chuyển từ danh mục 49 cách cục tới mục đã ánh xạ bằng nút `Điều kiện`. Nút không gây thay đổi dữ liệu hoặc quyền truy cập.
+- Module đối chiếu chỉ đọc `records` từ `auditClassicalPatternCandidates`; kiểm tra mã ID, trùng lặp, trạng thái thiếu hoặc mâu thuẫn, đóng băng số liệu và danh sách lọc để hạn chế sai khác giữa UI và dữ liệu.
+- Bài kiểm thử: `tests/v111657-tuvi-evidence-workbench.test.cjs` bao phủ năm bộ lọc, ưu tiên phủ định trước thiếu dữ liệu, dữ liệu lỗi/trùng, chart sinh từ engine, giữ chart bất biến, giao diện accessible và chuyển tới điều kiện.
+- **Giữ nguyên 28/49 mục được ánh xạ**, không nâng số lượng dựa trên thay đổi UI. Đặc biệt Tham Hỏa tương phùng còn thiếu thẩm định độ sáng Hỏa Tinh nên vẫn không được tự xác nhận.
+- Chỉ merge nếu Source Integrity, Full Stack và Production Acceptance đều PASS trên HEAD SHA, và xác minh lại CI trên main sau merge.
