@@ -35,3 +35,18 @@ export declare const SOURCE_COMMIT:'7922285d947b36610e7e31c232d8f1e2a0d0871d';
 export declare const GROUPS:readonly ClassicalCatalogGroup[];
 export declare const ALL:readonly ClassicalCatalogEntry[];
 export declare function summarizeClassicalCatalog(assessedIds?:readonly string[]):ClassicalCatalogReport;
+
+
+export type ClassicalCatalogFilterStatus='all'|'assessed'|'pending'|'disputed'|'unreachable';
+export interface ClassicalCatalogFiltered {
+ readonly matches:number;
+ readonly groups:readonly ClassicalCatalogGroupView[];
+}
+export declare function filterClassicalCatalog(
+ report:ClassicalCatalogReport,
+ options?:{
+  query?:string;
+  status?:ClassicalCatalogFilterStatus;
+  localizedTitles?:Readonly<Record<string,string>>;
+ }
+):ClassicalCatalogFiltered;
