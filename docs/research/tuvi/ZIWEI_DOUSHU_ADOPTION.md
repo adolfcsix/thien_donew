@@ -124,3 +124,12 @@ Workflow Full Stack của commit giai đoạn trước từng thất bại tại
 - Giao diện `classical-pattern-research.tsx` đặt mục tra cứu trong phần **Chuyên sâu của cung Mệnh**, mặc định thu gọn, chia nhóm, có liên kết nguồn; không thêm tab hay nhân bản bộ kiểm tra.
 - **Không** biến phân loại `derivable` thành `structural-match`, không tự xác nhận danh mục 49/49 đã hiện thực, không ghép vận hạn vào nguyên cục. Số đã ánh xạ được tính từ dữ liệu `auditClassicalPatternCandidates(chart).records`, nên vẫn chính xác trên bản tích hợp 20 cách cục.
 - `tests/v111651-tuvi-classical-catalog.test.cjs` kiểm tra đủ 49 ID, phân bố nhóm, dẫn nguồn cố định, phạm vi vận hạn, bất biến dữ liệu và tính nhất quán với bộ đối chiếu thực. Cần Source Integrity, TypeScript, build và Full Stack nghiệm thu trước khi gộp PR.
+
+
+## Tra cứu danh mục 49 cách cục bằng tên và trạng thái
+
+- Bộ tra cứu trong chế độ Chuyên sâu được bổ sung tìm kiếm theo **ID nguồn, tên Hán, và tên tiếng Việt đối với những quy tắc đã có ánh xạ trong engine**. Các tên tiếng Việt được đọc trực tiếp từ đối tượng chứng cứ, không tạo thêm bảng ánh xạ trùng lặp, không suy đoán bản dịch đối với mục chưa đánh giá.
+- Công cụ tìm kiếm hỗ trợ chữ Việt có dấu/không dấu; các lựa chọn trạng thái gồm tất cả, đã ánh xạ điều kiện, nguồn cho phép suy ra nhưng chưa ánh xạ, nguồn còn tranh luận, và nguồn chưa thể suy ra.
+- Kết quả lọc chỉ ảnh hưởng giao diện trình bày; **không được sửa đánh giá cấu trúc** từ `auditClassicalPatternCandidates`, không tự gắn `structural-match` cho mục chưa thẩm định.
+- Kết quả hiển thị rõ x/49 và báo khi không có mục phù hợp; sử dụng input/select có nhãn truy cập, focus-visible, tối ưu kích thước cho cảm ứng và màn hình nhỏ.
+- `filterClassicalCatalog` là hàm thuần, có kiểm tra tham số, tạo kết quả bất biến; các ca kiểm thử mở rộng gồm 9 bài catalog về số lượng, tìm tên Hán/tên Việt/ID, dấu tiếng Việt, lọc trạng thái và dữ liệu không bị thay đổi.
