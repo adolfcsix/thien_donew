@@ -420,8 +420,8 @@ test('Lưỡng trùng Hoa Cái requires both Lu and valid natal four transformat
  assert.equal(item(study(incomplete),'dinh-ban-08').status,'needs-review');
  const wrongHua=withFourHua(chart(0,p),full);wrongHua.transformations[0].branch=1;
  assert.equal(item(study(wrongHua),'dinh-ban-08').status,'needs-review');
- const annual=withFourHua(chart(0,p),[['Hóa Lộc',1,'Thái Âm'],...full.slice(1)]);
- assert.equal(item(study(annual),'dinh-ban-08').status,'needs-review');
+ const hoaElsewhere=withFourHua(chart(0,p),[['Hóa Lộc',1,'Thái Âm'],...full.slice(1)]);
+ assert.equal(item(study(hoaElsewhere),'dinh-ban-08').status,'not-met');
  const badLayer=chart(0,p);badLayer.houses[0].advancedStars=[];
  badLayer.houses[0].additionalStars=['Địa Không'];
  withFourHua(badLayer,full);
