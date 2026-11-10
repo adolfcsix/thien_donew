@@ -265,3 +265,19 @@ Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructi
 ### Kiểm thử và nghiệm thu
 - `tests/v111655-tuvi-school-brightness-comparison.test.cjs`: 3 ma trận 12 ô, hệ chỉ số Tý, phân biệt Miếu/Vượng, commit nguồn, khác biệt Linh Tinh, đầu vào bất biến, thiếu dữ liệu, không nâng trạng thái cách cục, UI không trộn bảng QS vào kết luận.
 - Merge vào main chỉ sau khi Source Integrity, Full Stack, Production Acceptance cùng PASS trên HEAD SHA; xác minh lại CI sau merge.
+
+
+## R12 — So sánh từng cung của Linh Tinh giữa hai bảng cùng nguồn (10/11/2026)
+
+### Bằng chứng nguyên bản và phép quy đổi
+- Nguồn ghim: `Renhuai123/ziwei-doushu@7922285d947b36610e7e31c232d8f1e2a0d0871d`. `lib/ziwei/school-tables.generated.ts` chứa dãy `SB_QS[24]` theo **Tý→Hợi**: `7,3,1,4,7,3,1,4,7,3,1,4`, với nhãn `7=Hãm,3=Đắc,1=Miếu,4=Lợi`.
+- `lib/ziwei/algorithm.ts` chứa `DEFAULT_BRIGHTNESS['铃星']` theo **Dần→Sửu**: `庙,利,得,得,庙,得,得,得,庙,陷,陷,陷`. Đã quy đổi vào thứ tự **Tý→Hợi** và chuẩn hóa tên cấp độ bằng hàm thuần dữ liệu trong `classical-brightness-comparison.cjs`.
+- Hai bảng khác nhau tại **5/12 cung**: **Sửu** (QS Đắc / mặc định Hãm), **Thìn** (Hãm / Đắc), **Mùi** (Lợi / Đắc), **Thân** (Hãm / Đắc), **Hợi** (Lợi / Hãm). Bảy cung còn lại có cùng nhãn.
+- Đây là **hai cấu hình trong cùng repo nguồn**, chưa thể từ sự khác biệt suy ra cái nào đúng hoặc áp dụng cho lá số Thiên Đồ. Cờ `adopted:false`, `expertReviewed:false` và `mayConfirmClassicalPattern:false` được giữ bất biến. Vẫn không có bảng độ sáng Hỏa Tinh được chuyên gia phê duyệt để kết luận Tham Hỏa tương phùng.
+
+### UX và kiểm thử
+- Ở phần Chuyên sâu → chứng cứ Hỏa Tinh → đối chiếu trường phái, ưu tiên bảng gọn **5 cung có khác biệt**. Có mục phụ **Xem đủ 12 cung** đóng mặc định, chú giải nguồn, đường dẫn đối chiếu và vị trí Linh Tinh của lá số hiện tại khi đã kiểm chứng.
+- Bảng dùng tiêu đề cột/dòng có ngữ nghĩa, hỗ trợ thao tác bàn phím, văn bản có thể cuộn ngang khi màn hình hẹp; không tạo thêm menu/tab, không tăng hiệu ứng gây rối.
+- `tests/v111656-tuvi-linh-reconciliation.test.cjs`: xác nhận hai dãy gốc và chỉ số bắt đầu, đúng 5 vị trí khác nhau, dữ liệu bất biến, hành vi thiếu/trùng nguồn, engine tạo lá số thật, không cho giá trị tham khảo đi vào logic xác nhận cách cục, không biến bảng thành cấu hình hệ thống.
+- Số mục có điều kiện khảo sát **không tăng**: **28/49**, trong đó Tham Hỏa còn điều kiện độ sáng chưa được xác minh. Không sửa engine, cơ sở dữ liệu, Tứ Hóa, tài khoản, Pro hoặc thanh toán.
+- Chỉ gộp khi Source Integrity, Full Stack và Production Acceptance đều PASS trên HEAD SHA hiện hành; kiểm tra lại CI của `main` sau merge.
