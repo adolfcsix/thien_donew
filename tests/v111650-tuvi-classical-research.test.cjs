@@ -14,7 +14,7 @@ test('Twenty-two research rules must not claim full 49 classical structures',()=
  assert.equal(r.assessed,22);assert.equal(r.referenceTotal,49);
  assert.equal(r.groups.reduce((n,g)=>n+g.totalInReference,0),49);
  assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),22);
- assert.equal(new Set(r.records.map(x=>x.id)).size,20);
+ assert.equal(new Set(r.records.map(x=>x.id)).size,22);
  assert.equal(r.expertReviewed,false);
  assert.equal(r.records.every(x=>x.status!=='structural-match'),true);
 });
@@ -71,7 +71,7 @@ test('Actual Thiên Đồ engine chart is readable without altering placements',
 });
 
 
-test('Reference research is pinned and 20 of 49 rules are clearly scoped',()=>{
+test('Reference research is pinned and 22 of 49 rules are clearly scoped',()=>{
  const r=study(chart());assert.equal(r.assessed,22);assert.equal(r.referenceTotal,49);
  assert.equal(r.groups.find(x=>x.name==='Định quý').implementedHere,18);
  assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),22);
@@ -259,7 +259,8 @@ test('Kình Dương nhập miếu checks four earth branches, exact natal layer 
  }
  const notEarth=chart(3,{'Kình Dương':[3,'auxiliaryStars'],'Tả Phụ':[3,'auxiliaryStars']});
  assert.equal(item(study(notEarth),'dinh-quy-23').status,'not-met');
- const badLayer=chart(4,{'Kình Dương':[4,'advancedStars'],'Tả Phụ':[4,'auxiliaryStars']});
+ const badLayer=chart(4,{'Tả Phụ':[4,'auxiliaryStars']});
+ badLayer.houses[4].advancedStars=['Kình Dương'];
  assert.equal(item(study(badLayer),'dinh-quy-23').status,'needs-review');
  const missing=chart(4,{'Kình Dương':[4,'auxiliaryStars']});
  assert.equal(item(study(missing),'dinh-quy-23').status,'needs-review');
