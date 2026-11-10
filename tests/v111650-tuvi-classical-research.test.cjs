@@ -9,12 +9,12 @@ function chart(menh=0,sites={}){
  return {houses};
 }
 const item=(r,id)=>r.records.find(x=>x.id===id);
-test('Twenty-two research rules must not claim full 49 classical structures',()=>{
+test('Twenty-four research rules must not claim full 49 classical structures',()=>{
  const r=study(chart());
- assert.equal(r.assessed,22);assert.equal(r.referenceTotal,49);
+ assert.equal(r.assessed,24);assert.equal(r.referenceTotal,49);
  assert.equal(r.groups.reduce((n,g)=>n+g.totalInReference,0),49);
- assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),22);
- assert.equal(new Set(r.records.map(x=>x.id)).size,22);
+ assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),24);
+ assert.equal(new Set(r.records.map(x=>x.id)).size,24);
  assert.equal(r.expertReviewed,false);
  assert.equal(r.records.every(x=>x.status!=='structural-match'),true);
 });
@@ -64,17 +64,17 @@ test('Actual Thiên Đồ engine chart is readable without altering placements',
  const chart=engine.calculate({date:'2004-08-15',hour:8,minute:30,calendar:'solar',gender:'Nam'});
  const before=JSON.stringify(chart.houses);
  const result=study(chart);
- assert.equal(result.assessed,22);
+ assert.equal(result.assessed,24);
  assert.equal(result.groups.length,4);
  assert.ok(result.records.every(x=>['structural-match','not-met','needs-review'].includes(x.status)));
  assert.equal(JSON.stringify(chart.houses),before);
 });
 
 
-test('Reference research is pinned and 22 of 49 rules are clearly scoped',()=>{
- const r=study(chart());assert.equal(r.assessed,22);assert.equal(r.referenceTotal,49);
- assert.equal(r.groups.find(x=>x.name==='Định quý').implementedHere,18);
- assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),22);
+test('Reference research is pinned and 24 of 49 rules are clearly scoped',()=>{
+ const r=study(chart());assert.equal(r.assessed,24);assert.equal(r.referenceTotal,49);
+ assert.equal(r.groups.find(x=>x.name==='Định quý').implementedHere,19);
+ assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),24);
  assert.equal(r.groups.reduce((n,g)=>n+g.totalInReference,0),49);
  assert.ok(r.records.every(x=>x.sourceUrl.includes('/blob/7922285d947b36610e7e31c232d8f1e2a0d0871d/')));
 });
@@ -275,4 +275,89 @@ test('Kình Dương nhập miếu uses verified natal benefic Hóa; missing four
  const withDup=withFourHua(chart(4,sites),assign);
  withDup.houses[0].tuHoa.push({name:'Hóa Lộc',star:'Thái Âm'});
  assert.equal(item(study(withDup),'dinh-quy-23').status,'needs-review');
+});
+
+function withThan(c,branch,summary=true){
+ c.houses.forEach((h,i)=>{h.isThan=i===branch;});
+ if(summary){c.than=c.houses[branch].branch;c.thanPalace=c.houses[branch].palace;}
+ return c;
+}
+test('r6 counts 24 distinct natal research rules including Ding Ban without period crossover',()=>{
+ const r=study(chart());
+ assert.deepEqual(r.groups.map(g=>g.implementedHere),[4,19,1,0]);
+ assert.equal(r.assessed,24);
+ assert.equal(r.referenceTotal,49);
+ assert.equal(new Set(r.records.map(x=>x.id)).size,24);
+ assert.equal(r.records.filter(x=>x.group==='Định bần').length,1);
+ assert.equal(r.expertReviewed,false);
+});
+test('Hình Tù giáp Ấn tests same-house Liêm Trinh and Thiên Hình in Mệnh',()=>{
+ const c=withThan(chart(0,{'Liêm Trinh':[0],'Thiên Hình':[0,'additionalStars']}),6);
+ const before=JSON.stringify(c);
+ const matched=item(study(c),'dinh-quy-15');
+ assert.equal(matched.status,'structural-match');
+ assert.equal(matched.checks.length,2);
+ assert.equal(JSON.stringify(c),before,'Research audit must not mutate natal evidence');
+ const separated=withThan(chart(0,{'Liêm Trinh':[0],'Thiên Hình':[1,'additionalStars']}),6);
+ assert.equal(item(study(separated),'dinh-quy-15').status,'not-met');
+ const other=withThan(chart(0,{'Liêm Trinh':[2],'Thiên Hình':[2,'additionalStars']}),6);
+ assert.equal(item(study(other),'dinh-quy-15').status,'not-met');
+});
+test('Hình Tù giáp Ấn also supports the uniquely marked natal Thân palace',()=>{
+ const c=withThan(chart(0,{'Liêm Trinh':[6],'Thiên Hình':[6,'additionalStars']}),6);
+ assert.equal(item(study(c),'dinh-quy-15').status,'structural-match');
+ const wrongLayer=withThan(chart(0,{'Liêm Trinh':[6]}),6);
+ wrongLayer.houses[6].traditionalStars=['Thiên Hình'];
+ assert.equal(item(study(wrongLayer),'dinh-quy-15').status,'needs-review');
+ const duplicated=withThan(chart(0,{'Liêm Trinh':[6],'Thiên Hình':[6,'additionalStars']}),6);
+ duplicated.houses[1].additionalStars=['Thiên Hình'];
+ assert.equal(item(study(duplicated),'dinh-quy-15').status,'needs-review');
+});
+test('Hình Tù giáp Ấn never invents Thân when markers are missing or contradictory',()=>{
+ const missing=chart(0,{'Liêm Trinh':[6],'Thiên Hình':[6,'additionalStars']});
+ assert.equal(item(study(missing),'dinh-quy-15').status,'needs-review');
+ const dup=withThan(chart(0,{'Liêm Trinh':[6],'Thiên Hình':[6,'additionalStars']}),6);
+ dup.houses[0].isThan=true;
+ assert.equal(item(study(dup),'dinh-quy-15').status,'needs-review');
+ const conflict=withThan(chart(0,{'Liêm Trinh':[6],'Thiên Hình':[6,'additionalStars']}),6);
+ conflict.thanPalace='Mệnh';
+ assert.equal(item(study(conflict),'dinh-quy-15').status,'needs-review');
+});
+test('Tài dữ Tù cừu is limited to two opposite placements between Mệnh and natal Thân',()=>{
+ for(const stars of [
+  {'Vũ Khúc':[0],'Liêm Trinh':[6]},
+  {'Vũ Khúc':[6],'Liêm Trinh':[0]}
+ ]){
+  const c=withThan(chart(0,stars),6);
+  const before=JSON.stringify(c);
+  const r=item(study(c),'dinh-ban-05');
+  assert.equal(r.status,'structural-match');
+  assert.equal(JSON.stringify(c),before);
+  assert.match(r.caution,/không tự xác nhận/);
+ }
+ const same=withThan(chart(0,{'Vũ Khúc':[0],'Liêm Trinh':[0]}),0);
+ assert.equal(item(study(same),'dinh-ban-05').status,'not-met');
+ const other=withThan(chart(0,{'Vũ Khúc':[0],'Liêm Trinh':[8]}),6);
+ assert.equal(item(study(other),'dinh-ban-05').status,'not-met');
+});
+test('Tài dữ Tù cừu preserves uncertainty for bad Thân evidence and wrong star layers',()=>{
+ const missing=chart(0,{'Vũ Khúc':[0],'Liêm Trinh':[6]});
+ assert.equal(item(study(missing),'dinh-ban-05').status,'needs-review');
+ const wrong=withThan(chart(0,{'Vũ Khúc':[0],'Liêm Trinh':[6,'auxiliaryStars']}),6);
+ assert.equal(item(study(wrong),'dinh-ban-05').status,'needs-review');
+ const conflict=withThan(chart(0,{'Vũ Khúc':[0],'Liêm Trinh':[6]}),6);
+ conflict.than='Hợi';
+ assert.equal(item(study(conflict),'dinh-ban-05').status,'needs-review');
+ const duplicate=withThan(chart(0,{'Vũ Khúc':[0],'Liêm Trinh':[6]}),6);
+ duplicate.houses[0].stars.push('Liêm Trinh');
+ assert.equal(item(study(duplicate),'dinh-ban-05').status,'needs-review');
+});
+test('Catalog evidence navigation reveals filtered records before opening',()=>{
+ const fs=require('node:fs');
+ const src=fs.readFileSync(require('node:path').join(__dirname,'../apps/web/src/features/chart/components/classical-pattern-research.tsx'),'utf8');
+ assert.match(src,/setFilter\('all'\);setJumpToId\(entry\.id\)/);
+ assert.match(src,/target\.open=true/);
+ assert.match(src,/scrollIntoView/);
+ assert.match(src,/prefers-reduced-motion: reduce/);
+ assert.match(src,/group===?['"]Định bần['"]/);
 });
