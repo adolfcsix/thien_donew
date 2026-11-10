@@ -48,5 +48,7 @@ export declare function filterClassicalCatalog(
   query?:string;
   status?:ClassicalCatalogFilterStatus;
   localizedTitles?:Readonly<Record<string,string>>;
+  /** Optional read-only search strings for assessed records only; never evaluated as pattern criteria. */
+  evidenceTerms?:Readonly<Record<string,string>>;
  }
 ):ClassicalCatalogFiltered;

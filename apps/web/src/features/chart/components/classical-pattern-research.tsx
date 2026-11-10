@@ -30,7 +30,11 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   const [catalogStatus,setCatalogStatus]=useState<ClassicalCatalogFilterStatus>('all');
   const [jumpToId,setJumpToId]=useState<string|null>(null);
   const localizedTitles=useMemo(()=>Object.fromEntries(data.records.map(r=>[r.id,r.title])),[data]);
-  const catalogView=useMemo(()=>filterClassicalCatalog(catalog,{query:catalogQuery,status:catalogStatus,localizedTitles}),[catalog,catalogQuery,catalogStatus,localizedTitles]);
+  // Index criteria labels, not live placement details or birth information.
+  const evidenceTerms=useMemo(()=>Object.fromEntries(data.records.map(record=>[
+    record.id,[record.interpretation,...record.checks.map(condition=>condition.label)].join(' ')
+  ])),[data]);
+  const catalogView=useMemo(()=>filterClassicalCatalog(catalog,{query:catalogQuery,status:catalogStatus,localizedTitles,evidenceTerms}),[catalog,catalogQuery,catalogStatus,localizedTitles,evidenceTerms]);
   const evidence=useMemo(()=>summarizeClassicalEvidence(data.records),[data]);
   const visible=useMemo(()=>filterClassicalEvidence(data.records,filter),[data,filter]);
   // A catalog item might be hidden by the “Liên quan” filter. Reveal it
@@ -138,8 +142,8 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
       <p>{catalog.notice} Trạng thái “có thể kiểm tra” do nguồn phân loại không có nghĩa Thiên Đồ đã triển khai hoặc xác nhận thành cách.</p>
       <p>{catalog.distribution.derivable} mục nguồn đánh giá có thể kiểm tra · {catalog.distribution.disputed} còn tranh luận · {catalog.distribution.unreachable} chưa thể suy ra từ quy tắc nguồn.</p>
       <div className={styles.catalogControls} role="search" aria-label="Tìm kiếm cách cục trong danh mục">
-        <label>Tìm theo tên gốc, tên Việt hoặc mã cách cục
-          <input type="search" maxLength={100} value={catalogQuery} onChange={event=>setCatalogQuery(event.target.value)} placeholder="Ví dụ: Thất Sát, 七杀, dinh-quy-11"/>
+        <label>Tìm theo tên gốc, tên Việt, tên sao, điều kiện hoặc mã cách cục
+          <input type="search" maxLength={100} value={catalogQuery} onChange={event=>setCatalogQuery(event.target.value)} placeholder="Ví dụ: Thất Sát, Hỏa Tinh, Không Vong"/>
         </label>
         <label>Trạng thái nghiên cứu
           <select value={catalogStatus} onChange={event=>setCatalogStatus(event.target.value as ClassicalCatalogFilterStatus)}>

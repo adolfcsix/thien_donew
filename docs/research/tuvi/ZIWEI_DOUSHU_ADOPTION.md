@@ -294,3 +294,12 @@ Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructi
 - Bài kiểm thử: `tests/v111657-tuvi-evidence-workbench.test.cjs` bao phủ năm bộ lọc, ưu tiên phủ định trước thiếu dữ liệu, dữ liệu lỗi/trùng, chart sinh từ engine, giữ chart bất biến, giao diện accessible và chuyển tới điều kiện.
 - **Giữ nguyên 28/49 mục được ánh xạ**, không nâng số lượng dựa trên thay đổi UI. Đặc biệt Tham Hỏa tương phùng còn thiếu thẩm định độ sáng Hỏa Tinh nên vẫn không được tự xác nhận.
 - Chỉ merge nếu Source Integrity, Full Stack và Production Acceptance đều PASS trên HEAD SHA, và xác minh lại CI trên main sau merge.
+
+
+## R14 — Tìm theo sao và điều kiện trong danh mục hiện có (11/11/2026)
+
+- Mở rộng **ô tìm kiếm đã tồn tại** trong danh mục 49 cách cục: bên cạnh tên gốc, tên Việt, mã và nhóm, người dùng có thể tìm theo tên sao và nhãn điều kiện của **28 mục đã được ánh xạ**. Không tạo menu, tab hoặc ô tìm kiếm trùng chức năng.
+- `evidenceTerms` chỉ được lấy từ diễn giải phương pháp và nhãn kiểm tra cố định của kết quả nghiên cứu; **không** lập chỉ mục chi tiết vị trí sao theo lá số, ngày sinh hay dữ liệu cá nhân. Chuỗi tìm kiếm giữ cơ chế không phân biệt dấu tiếng Việt, hỗ trợ ký tự Trung Quốc, không xử lý biểu thức chính quy do người dùng nhập.
+- Dữ liệu tìm kiếm chỉ tác động lớp danh mục. Không thêm cách cục mới, không thay trạng thái `assessed`, `sourceStatus`, kết quả `structural-match`, bộ an sao, Tứ Hóa hoặc quyền truy cập. Không gán từ khóa điều kiện cho các mục chưa ánh xạ/đang tranh luận/không thể suy ra.
+- Test r14 đối chiếu tìm kiếm theo tên sao có dấu và không dấu, chặn nội dung giả gán cho mục chưa ánh xạ, kiểm tra input không hợp lệ, dữ liệu lá số bất biến và đảm bảo tìm kiếm không thay đổi danh mục nguồn.
+- Chỉ merge khi Source Integrity, Full Stack và Production Acceptance đều PASS trên chính commit HEAD hiện hành, sau đó tiếp tục kiểm tra trên `main`.

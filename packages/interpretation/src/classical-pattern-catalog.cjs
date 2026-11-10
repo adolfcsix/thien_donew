@@ -83,10 +83,13 @@ const FILTER_STATUSES=Object.freeze(['all','assessed','pending','disputed','unre
 function filterClassicalCatalog(report,options={}){
  if(!report||!Array.isArray(report.groups))throw new TypeError('Expected a classical catalog report');
  if(!options||typeof options!=='object'||Array.isArray(options))throw new TypeError('Expected catalog filter options');
- const {query='',status='all',localizedTitles={}}=options;
+ const {query='',status='all',localizedTitles={},evidenceTerms={}}=options;
  if(typeof query!=='string')throw new TypeError('Catalog query must be a string');
  if(!FILTER_STATUSES.includes(status))throw new RangeError('Unknown catalog filter status: '+status);
  if(!localizedTitles||typeof localizedTitles!=='object'||Array.isArray(localizedTitles))throw new TypeError('Expected localized catalog titles map');
+ if(!evidenceTerms||typeof evidenceTerms!=='object'||Array.isArray(evidenceTerms)||
+    Object.values(evidenceTerms).some(value=>typeof value!=='string'))
+  throw new TypeError('Expected evidence search terms map of strings');
  const needle=normalizeResearchSearch(query);
  const groups=report.groups.map(group=>{
   const entries=group.entries.filter(entry=>{
@@ -98,7 +101,10 @@ function filterClassicalCatalog(report,options={}){
    if(!correctStatus)return false;
    if(!needle)return true;
    const translated=Object.prototype.hasOwnProperty.call(localizedTitles,entry.id)&&typeof localizedTitles[entry.id]==='string'?localizedTitles[entry.id]:'';
-   return normalizeResearchSearch([entry.id,entry.title,translated,group.name].join(' ')).includes(needle);
+   // Evidence indexing is permitted only for already-mapped research entries.
+   // Unmapped, disputed, and period entries never inherit synthetic evidence.
+   const criteria=entry.assessed&&Object.prototype.hasOwnProperty.call(evidenceTerms,entry.id)?evidenceTerms[entry.id]:'';
+   return normalizeResearchSearch([entry.id,entry.title,translated,group.name,criteria].join(' ')).includes(needle);
   });
   return Object.freeze({...group,entries:Object.freeze(entries)});
  }).filter(group=>group.entries.length>0);
