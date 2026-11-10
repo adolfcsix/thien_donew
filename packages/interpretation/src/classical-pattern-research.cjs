@@ -1,8 +1,9 @@
 'use strict';
 const MainStarStrength=require('@thiendo/astrology-engine/src/star-strength.js');
 const NatalTuHoa=require('@thiendo/astrology-engine/src/tuhoa.js');
+const {auditNatalObstructionEvidence}=require('./natal-obstruction-evidence.cjs');
 /**
- * THIÊN ĐỒ — đối chiếu 27 điều kiện vị trí, độ sáng và Tứ Hóa nguyên cục Tử Vi, KHÔNG phải bộ phán định 49 cách cục.
+ * THIÊN ĐỒ — đối chiếu 27 điều kiện Tử Vi; kiểm toán Tuần/Triệt độc lập, KHÔNG phải bộ phán định 49 cách cục.
  * Nguồn phương pháp tham khảo: Renhuai123/ziwei-doushu, MIT; thuật toán/diễn giải độc lập.
  * Trả về chứng cứ, điều kiện chưa xét, sai lệch dữ liệu. Không sửa lá số và không dự báo.
  */
@@ -176,6 +177,7 @@ function auditClassicalPatternCandidates(chart){
  const khoi=getPosition(chart,'Thiên Khôi','auxiliaryStars');
  const viet=getPosition(chart,'Thiên Việt','auxiliaryStars');
  const hua=readNatalFourHua(chart);
+ const obstructionAudit=auditNatalObstructionEvidence(chart);
  const verifiedYearHua=readVerifiedYearHua(chart,hua);
  const locHuaStar=verifiedYearHua.known?getPosition(chart,verifiedYearHua.loc.star,'stars'):null;
  const quyenHuaStar=verifiedYearHua.known?getPosition(chart,verifiedYearHua.quyen.star,'stars'):null;
@@ -213,6 +215,7 @@ function auditClassicalPatternCandidates(chart){
    place(sun,'Thái Dương ở một trong hai cung giáp Mệnh',x=>[mod(meng.branchIndex-1),mod(meng.branchIndex+1)].includes(x.branchIndex)),
    place(moon,'Thái Âm ở cung giáp đối diện Thái Dương',x=>observed(sun)?x.branchIndex===mod(2*meng.branchIndex-sun.branchIndex):null),
    check('Có cát tinh trong cung Mệnh theo danh mục đối chiếu',good.length>0,good.length?good.join(', '):'Chưa thấy cát tinh từ danh mục đang hỗ trợ'),
+   check('Dấu Tuần/Triệt đã được đối chiếu theo dữ liệu nguyên cục',obstructionAudit.verified?true:null,obstructionAudit.reason),
    check('Đối chiếu đầy đủ điều kiện Không Vong',null,notes.void)],notes.void),
   result('dinh-phu-05','Nhật Nguyệt chiếu bích','Định phú','patterns-dingfu.ts',
    'Thái Dương và Thái Âm cùng tọa Điền Trạch; đây là điều kiện đồng cung, không phải chỉ đồng hội Tam Hợp.',[
@@ -387,9 +390,9 @@ function auditClassicalPatternCandidates(chart){
  ];
  const matched=records.filter(x=>x.status==='structural-match').length;
  const reviewed=records.filter(x=>x.status==='needs-review').length;
- return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r8',scope:'natal-only',
+ return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r9',scope:'natal-only',
   groups:GROUPS,referenceTotal:49,assessed:records.length,matched,needsReview:reviewed,
-  records:Object.freeze(records),expertReviewed:false,
+  records:Object.freeze(records),obstructionAudit,expertReviewed:false,
   notice:'27/49 chỉ mục được ánh xạ điều kiện nghiên cứu; 22 mục còn lại chưa được xác minh. Đây là đối chiếu nghiên cứu, không phải nhận định đầy đủ 49 cách cục.'});
 }
 module.exports=Object.freeze({SOURCE,SOURCE_COMMIT,GROUPS,auditClassicalPatternCandidates});
