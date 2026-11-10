@@ -76,6 +76,37 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
             <li key={name}><strong>{name}:</strong> {entry?entry.branchName+' · '+entry.label:'Chưa xác minh vị trí'} <small>(Bảng QS; không thay cho hồ sơ Thiên Đồ)</small></li>
           )}
         </ul>}
+        <div className={styles.schoolDifference}>
+          <p><strong>Linh Tinh · {data.brightnessComparison.linhReconciliation.differenceCount}/{data.brightnessComparison.linhReconciliation.totalBranches} cung khác nhau</strong> giữa bảng QS và bảng mặc định của nguồn.</p>
+          {data.brightnessComparison.chartLinhComparison&&<p className={styles.chartDifference}>
+            Trên lá số này, Linh Tinh ở <strong>{data.brightnessComparison.chartLinhComparison.branchName}</strong>:
+            QS <strong>{data.brightnessComparison.chartLinhComparison.qsLabel}</strong> ·
+            bảng mặc định <strong>{data.brightnessComparison.chartLinhComparison.defaultLabel}</strong>.
+            {data.brightnessComparison.chartLinhComparison.differs?' Hai bảng khác nhau tại cung này.':' Hai bảng trùng nhau tại cung này.'}
+          </p>}
+          <div className={styles.schoolTableWrap}>
+            <table className={styles.schoolTable}>
+              <caption>Các địa chi có độ sáng Linh Tinh khác nhau giữa hai bảng</caption>
+              <thead><tr><th scope="col">Địa chi</th><th scope="col">QS</th><th scope="col">Mặc định</th></tr></thead>
+              <tbody>{data.brightnessComparison.linhReconciliation.differences.map(row=><tr key={row.branchIndex}>
+                <th scope="row">{row.branchName}</th><td>{row.qsLabel}</td><td>{row.defaultLabel}</td>
+              </tr>)}</tbody>
+            </table>
+          </div>
+          <details className={styles.schoolFull}>
+            <summary>Xem đủ 12 cung</summary>
+            <div className={styles.schoolTableWrap}>
+              <table className={styles.schoolTable}>
+                <caption>Đầy đủ 12 cung, tính cả các cung trùng nhau</caption>
+                <thead><tr><th scope="col">Địa chi</th><th scope="col">QS</th><th scope="col">Mặc định</th></tr></thead>
+                <tbody>{data.brightnessComparison.linhReconciliation.rows.map(row=><tr key={row.branchIndex} data-different={row.differs}>
+                  <th scope="row">{row.branchName}</th><td>{row.qsLabel}</td><td>{row.defaultLabel}</td>
+                </tr>)}</tbody>
+              </table>
+            </div>
+          </details>
+          <small>{data.brightnessComparison.linhReconciliation.note}</small>
+        </div>
         <p><strong>Khác biệt nguồn chưa giải quyết:</strong> {data.brightnessComparison.discrepancy.detail}</p>
         <small><a href={data.brightnessComparison.sourceUrl} target="_blank" rel="noopener noreferrer">Bảng QS nguồn</a> · <a href={data.brightnessComparison.discrepancy.alternateUrl} target="_blank" rel="noopener noreferrer">Cấu hình độ sáng đối chiếu</a>. Không dùng bảng này để tự xác nhận Miếu/Vượng, cấp quyền Pro hoặc phán đoán vận mệnh.</small>
       </details>
