@@ -16,7 +16,7 @@ module.exports=async function({browser,owner,member,delivered,origin,record,page
   p.on('requestfailed',request=>{
    const path=new URL(request.url()).pathname;
    if(['/api/analytics/page-view','/api/community/premium-sections','/api/community/conversations'].includes(path))
-    console.error('TOUCH_FAILED_REQUEST '+JSON.stringify({scope,path,method:request.method(),failure:request.failure()?.errorText||'unknown'}));
+    console.error('TOUCH_FAILED_REQUEST '+JSON.stringify({scope,path,method:request.method(),failure:String(request.failure()||'unknown').slice(0,160)}));
   });
   p.setDefaultTimeout(15000);
  }
