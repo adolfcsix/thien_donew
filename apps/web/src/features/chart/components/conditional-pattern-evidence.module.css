@@ -7,6 +7,9 @@
 .filters button[aria-pressed=true]{color:#1b3028;background:var(--gold);border-color:var(--gold)}
 .filters button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .record>p,.record>ul,.record>div{max-width:100%;overflow-wrap:anywhere}
+.obstruction{margin:13px 0;padding:11px 13px;border:1px solid var(--line);border-radius:8px;background:var(--panel);overflow-wrap:anywhere}
+.obstruction p{margin:0 0 6px;line-height:1.55;font-size:13px}
+.obstruction small{display:block;line-height:1.55;color:var(--text-secondary,var(--text))}
 .checks{display:flex;flex-wrap:wrap;gap:7px 10px;padding:0;list-style:none}
 .checks li{font-size:12px!important;border:1px solid var(--line);border-radius:4px;padding:5px 9px;background:var(--panel);line-height:1.5!important}
 .checks li[data-met=true]{border-color:var(--gold);color:var(--text)}
