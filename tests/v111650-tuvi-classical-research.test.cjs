@@ -13,7 +13,7 @@ test('Twenty research rules must not claim full 49 classical structures',()=>{
  const r=study(chart());
  assert.equal(r.assessed,20);assert.equal(r.referenceTotal,49);
  assert.equal(r.groups.reduce((n,g)=>n+g.totalInReference,0),49);
- assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),18);
+ assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),20);
  assert.equal(new Set(r.records.map(x=>x.id)).size,20);
  assert.equal(r.expertReviewed,false);
  assert.equal(r.records.every(x=>x.status!=='structural-match'),true);
@@ -74,7 +74,7 @@ test('Actual Thiên Đồ engine chart is readable without altering placements',
 test('Reference research is pinned and 20 of 49 rules are clearly scoped',()=>{
  const r=study(chart());assert.equal(r.assessed,20);assert.equal(r.referenceTotal,49);
  assert.equal(r.groups.find(x=>x.name==='Định quý').implementedHere,16);
- assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),18);
+ assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),20);
  assert.equal(r.groups.reduce((n,g)=>n+g.totalInReference,0),49);
  assert.ok(r.records.every(x=>x.sourceUrl.includes('/blob/7922285d947b36610e7e31c232d8f1e2a0d0871d/')));
 });
