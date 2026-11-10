@@ -68,3 +68,8 @@
 .catalogControls input:focus-visible,.catalogControls select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .catalogCount{font-size:12px;font-variant-numeric:tabular-nums}
 @media(max-width:730px){.catalogControls{grid-template-columns:1fr}.catalogControls input,.catalogControls select{min-height:44px}}
+
+/* r15: show explicit source-verification blockers only for unassessed derivable entries. */
+.readinessSummary{font-size:12px!important;line-height:1.7!important;color:var(--text-secondary,var(--text))}
+.readinessSummary strong{color:var(--text)}
+.catalogBlocker{display:block;margin:5px 0 1px;font-size:11px;line-height:1.65;font-weight:400;color:var(--text-secondary,var(--text));overflow-wrap:anywhere}

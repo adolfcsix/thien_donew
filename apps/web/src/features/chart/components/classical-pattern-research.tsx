@@ -6,6 +6,7 @@ import {auditClassicalPatternCandidates} from '@thiendo/interpretation/src/class
 import {summarizeClassicalEvidence,filterClassicalEvidence} from '@thiendo/interpretation/src/classical-evidence-workbench.cjs';
 import type {ClassicalEvidenceFilter} from '@thiendo/interpretation/src/classical-evidence-workbench.cjs';
 import {summarizeClassicalCatalog,filterClassicalCatalog} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
+import {summarizeClassicalResearchReadiness} from '@thiendo/interpretation/src/classical-research-readiness.cjs';
 import type {ClassicalCatalogFilterStatus} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import styles from './conditional-pattern-evidence.module.css';
 
@@ -25,6 +26,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   const data=useMemo(()=>auditClassicalPatternCandidates(chart),[chart]);
   // Distinguish an implemented position check from the source's methodological category.
   const catalog=useMemo(()=>summarizeClassicalCatalog(data.records.map(record=>record.id)),[data]);
+  const readiness=useMemo(()=>summarizeClassicalResearchReadiness(catalog),[catalog]);
   const [filter,setFilter]=useState<ClassicalEvidenceFilter>('relevant');
   const [catalogQuery,setCatalogQuery]=useState('');
   const [catalogStatus,setCatalogStatus]=useState<ClassicalCatalogFilterStatus>('all');
@@ -141,6 +143,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
       <summary>Danh mục nghiên cứu 49 cách cục · {catalog.assessed} mục có điều kiện đối chiếu</summary>
       <p>{catalog.notice} Trạng thái “có thể kiểm tra” do nguồn phân loại không có nghĩa Thiên Đồ đã triển khai hoặc xác nhận thành cách.</p>
       <p>{catalog.distribution.derivable} mục nguồn đánh giá có thể kiểm tra · {catalog.distribution.disputed} còn tranh luận · {catalog.distribution.unreachable} chưa thể suy ra từ quy tắc nguồn.</p>
+      <p className={styles.readinessSummary}>Còn <strong>{readiness.counts.total}</strong> mục chưa ánh xạ: <strong>{readiness.counts.pending}</strong> có thể nghiên cứu tiếp ({readiness.counts.natalPending} nguyên cục, {readiness.counts.periodPending} vận hạn), <strong>{readiness.counts.disputed}</strong> còn tranh luận và <strong>{readiness.counts.unreachable}</strong> chưa có phương pháp suy ra từ nguồn. Kết quả chưa được thẩm định độc lập.</p>
       <div className={styles.catalogControls} role="search" aria-label="Tìm kiếm cách cục trong danh mục">
         <label>Tìm theo tên gốc, tên Việt, tên sao, điều kiện hoặc mã cách cục
           <input type="search" maxLength={100} value={catalogQuery} onChange={event=>setCatalogQuery(event.target.value)} placeholder="Ví dụ: Thất Sát, Hỏa Tinh, Không Vong"/>
@@ -166,6 +169,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
             <span className={styles.catalogState}>{entry.assessed?'Thiên Đồ đã ánh xạ điều kiện':methodText[entry.sourceStatus]}</span>
             {entry.assessed&&<button type="button" onClick={()=>{setFilter('all');setJumpToId(entry.id);}} aria-label={'Mở điều kiện đối chiếu của '+(localizedTitles[entry.id]||entry.title)}>Điều kiện</button>}
             <a href={entry.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={'Đọc quy tắc nguồn '+entry.title}>Nguồn</a>
+            {!entry.assessed&&entry.sourceStatus==='derivable'&&<small className={styles.catalogBlocker}>Cần kiểm chứng: {readiness.byId[entry.id].blocker}</small>}
           </li>)}</ol>
         </section>)}
       </div>
