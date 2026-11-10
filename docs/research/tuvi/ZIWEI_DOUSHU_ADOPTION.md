@@ -240,3 +240,12 @@ Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructi
 - Giao diện hiển thị chứng cứ Hỏa Tinh gọn trong Chuyên sâu; không thêm tab thừa, không đưa phần chưa thẩm định vào Cơ bản.
 - Kiểm thử r10 có các ca vị trí đúng/sai, Mệnh khác cung, sao sai lớp/trùng, can chi/giờ sai, nguồn giả, bảng độ sáng Tham Lang bị sửa, bất biến đầu vào và bảo đảm không phát sinh kết luận thiếu chứng cứ. Không sửa `tuvi.js`, quyền Pro, dữ liệu người dùng hay thanh toán.
 - Chỉ merge sau khi Source Integrity, Full Stack và Production Acceptance 5/5 PASS trên đúng HEAD SHA; cần nghiệm thu lại trên `main` sau merge.
+
+
+### Cùng đợt r10: ổn định WebKit sau r9
+
+- Một lần Production Acceptance trên `main` r9 phát hiện WebKit báo lỗi access control khi điều hướng từ đăng ký/đăng nhập sang `/chart` đối với request `/api/analytics/page-view` và `/api/community/premium-sections`, dù PR r9 trước merge từng PASS. Đây là hồi quy được ghi nhận, không được coi là hệ thống đã ổn định toàn phần.
+- Với `page-view-recorder.tsx`, dùng `keepalive:true` cho **POST telemetry ẩn danh** có payload chỉ gồm UUID sự kiện, `credentials:'omit'`; không bắt browser giữ request bằng một AbortController có thể bị hủy khi chuyển trang.
+- Với `PremiumLock`, dùng `keepalive:true` cho **GET đọc trạng thái biểu tượng khóa** kèm deadline 12 giây, không ghi dữ liệu. Phần `PremiumGate` **vẫn giữ AbortController và xác minh quyền trên server**. Không sửa endpoint phân quyền, CSRF, CORS hoặc giao dịch.
+- Giữ bài kiểm thử WebKit nghiêm ngặt về `pageerror`; thêm assertion ngăn việc vô tình xóa `keepalive` trên hai request này.
+- Cả Source Integrity, Full Stack và Production Acceptance (bao gồm WebKit trên `main`) cần được kiểm chứng sau merge trước khi tuyên bố lỗi đã giải quyết ổn định.
