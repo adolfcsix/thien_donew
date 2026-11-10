@@ -88,7 +88,7 @@ test('r9 keeps classical Không Vong unresolved, even when natal Tuần/Triệt 
  c.houses[10].auxiliaryStars.push('Tả Phụ');
  const result=research(c);
  const candidate=result.records.find(x=>x.id==='dinh-quy-01');
- assert.equal(result.assessed,27);
+ assert.equal(result.assessed,28);
  assert.equal(result.obstructionAudit.verified,true);
  assert.equal(candidate.status,'needs-review');
  assert.equal(candidate.checks.at(-2).state,'met');
