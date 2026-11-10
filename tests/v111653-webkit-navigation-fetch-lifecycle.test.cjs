@@ -43,3 +43,23 @@ test('WebKit touch acceptance still checks page errors on registration, login an
  assert.match(source,/Unexpected browser error from the inbox during inbox-to-study navigation/);
  assert.match(source,/pageErrors\.push\(e\.message\)/);
 });
+
+
+test('WebKit inbox polling uses a bounded keepalive GET without losing stale-response and unmount guards',()=>{
+ const inbox=read('apps/web/src/features/community-hub/messages.tsx');
+ const list=inbox.split('const loadList=useCallback')[1].split('const loadDetail=useCallback')[0];
+ assert.match(list,/if\(signal\.aborted\)return/);
+ assert.match(list,/\{keepalive:true,timeoutMs:15000\}/);
+ assert.match(list,/listRequest\.current\.isCurrent\(request,signal\)/);
+ assert.doesNotMatch(list,/\{signal,timeoutMs:15000\}/);
+ const api=read('apps/web/src/lib/api.ts');
+ assert.match(api,/keepalive\?: boolean/);
+ assert.match(api,/keepalive: options\.keepalive === true/);
+ assert.match(api,/options\.keepalive && .* !== 'GET'/);
+ assert.match(api,/options\.keepalive && .*options\.signal/);
+ // No change to the message-send mutation's cancellation contract.
+ assert.match(inbox,/method:'POST',body:\{body:text,clientId:key\},signal,timeoutMs:15000/);
+ // Keep the strict WebKit pageerror check; never waive known failures.
+ const testBrowser=read('tests/helpers-touch-compat-browser.cjs');
+ assert.match(testBrowser,/Unexpected browser error from the inbox during inbox-to-study navigation/);
+});

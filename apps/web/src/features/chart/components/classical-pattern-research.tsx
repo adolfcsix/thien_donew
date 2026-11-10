@@ -55,6 +55,14 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
       </div>
     </div>
     <p>Tham khảo cách đối chiếu từ các nhóm Định phú, Định quý và Định bần. Bản này chỉ so sánh sao bản mệnh, không tự xác nhận thành cách hay đưa ra dự báo.</p>
+    <section className={styles.obstruction} aria-label="Chứng cứ Tuần và Triệt nguyên cục">
+      <p><strong>Tuần / Triệt (bản mệnh)</strong> · {data.obstructionAudit.verified
+        ? (data.obstructionAudit.atMenh.length
+          ? 'Đã xác minh dấu án ngữ tại Mệnh: '+data.obstructionAudit.atMenh.join(', ')
+          : 'Đã kiểm tra; không có dấu Tuần/Triệt tại Mệnh')
+        : 'Chưa đủ dữ liệu để kiểm chứng'}</p>
+      <small>{data.obstructionAudit.reason} Đây là lớp chứng cứ theo Tam Hợp; không được dùng để tự kết luận mọi loại Không Vong hoặc mở khóa cách cục chưa thẩm định.</small>
+    </section>
     {visible.length===0&&<p>Chưa có mẫu nào khớp hoặc cần xem lại. Chọn “Tất cả” để thấy từng điều kiện chưa đạt.</p>}
     {visible.map(record=><details key={record.id} id={'tuvi-classical-'+record.id} className={'palace-reading-symbol '+styles.record}>
       <summary><strong>{record.title}</strong><span>{record.group} · {stateText[record.status]}</span></summary>

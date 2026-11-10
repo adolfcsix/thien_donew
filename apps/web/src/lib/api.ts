@@ -181,10 +181,13 @@ function validateExpertBookResponse(path:string,method:string,payload:Record<str
  if(!valid)throw new InvalidApiResponse();
 }
 let sessionEpoch = 0;
-export async function api<T>(path: string, options: { method?: string; body?: unknown; signal?: AbortSignal; timeoutMs?: number } = {}): Promise<T> {
+export async function api<T>(path: string, options: { method?: string; body?: unknown; signal?: AbortSignal; timeoutMs?: number; keepalive?: boolean } = {}): Promise<T> {
   // A completed send can race navigation before its inbox refresh starts.
   // Do not create another fetch (or deadline timer) for a cancelled view.
   options.signal?.throwIfAborted();
+  // Permit document-unload-safe GET reads only. Mutations and abortable requests
+  // must never silently outlive their owner or bypass the existing guards.
+  if (options.keepalive && ((options.method || 'GET').toUpperCase() !== 'GET' || options.body !== undefined || options.signal)) throw new RangeError('Only non-abortable GET reads may use keepalive');
   const requestEpoch = sessionEpoch;
   if (options.timeoutMs !== undefined && (!Number.isSafeInteger(options.timeoutMs) || options.timeoutMs < 1 || options.timeoutMs > 120_000)) throw new RangeError('Invalid request deadline');
   const commerceDeadline = /^\/api\/(?:billing|admin|articles)(?:\/|$)/.test(path) ? ACCOUNT_TIMEOUT_MS : 0;
@@ -204,6 +207,7 @@ export async function api<T>(path: string, options: { method?: string; body?: un
       headers: options.body ? { 'Content-Type': 'application/json' } : {},
       body: options.body ? JSON.stringify(options.body) : undefined,
       credentials: 'include', cache: 'no-store', signal: timeout?.signal ?? options.signal,
+      keepalive: options.keepalive === true,
     });
     // Revoke displayed private state as soon as the HTTP status is known, even
     // if the error body is slow. A wrong login/password/OTP must not log out a
