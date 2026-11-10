@@ -274,7 +274,7 @@ function auditClassicalPatternCandidates(chart){
       '; Liêm Trinh (stars): '+(observed(liem)?liem.palace+' / '+liem.branchIndex:liem.status)),
     check('Cung đồng tọa là Mệnh hoặc cung Thân',
       observed(thienHinh)&&observed(liem)?
-       (liem.palace==='Mệnh'||(than.known?liem.branchIndex===than.branchIndex:null)):null,
+       (than.known?(liem.palace==='Mệnh'||liem.branchIndex===than.branchIndex):null):null,
       than.known?'Thân tại '+than.palace+' (chi số '+than.branchIndex+')':than.reason)],
    'Chỉ là đối chiếu quan hệ sao theo chú giải được ghim; không suy ra đặc điểm nhân cách hoặc nghề nghiệp.'),
   result('dinh-ban-05','Tài dữ Tù cừu','Định bần','patterns-dingpin.ts',
