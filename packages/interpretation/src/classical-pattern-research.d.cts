@@ -10,7 +10,7 @@ export interface ClassicalCriterion {
 export interface ClassicalPatternCandidate {
   id:string;
   title:string;
-  group:'Định phú'|'Định quý';
+  group:'Định phú'|'Định quý'|'Định bần';
   reference:string;
   sourceUrl:string;
   status:ClassicalPatternStatus;
@@ -27,7 +27,7 @@ export interface ClassicalResearchGroup {
   scope:string;
 }
 export interface ClassicalPatternResearch {
-  edition:'thiendo-classical-research-2026-11-10-r5';
+  edition:'thiendo-classical-research-2026-11-10-r6';
   scope:'natal-only';
   groups:readonly ClassicalResearchGroup[];
   referenceTotal:49;
