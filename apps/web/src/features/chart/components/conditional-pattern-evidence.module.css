@@ -6,6 +6,11 @@
 .filters button{min-height:36px;cursor:pointer;padding:6px 12px;font-size:12px;font-weight:600;font-family:inherit;background:var(--panel);color:var(--text);border:1px solid var(--line-strong);border-radius:4px}
 .filters button[aria-pressed=true]{color:#1b3028;background:var(--gold);border-color:var(--gold)}
 .filters button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.evidenceFilterCount{margin:10px 0 13px;font-size:12px;line-height:1.55;color:var(--text-secondary,var(--text))}
+.evidenceCounts{display:flex;align-items:center;flex-wrap:wrap;gap:0 4px;margin:8px 0!important;font-size:12px;line-height:1.65;color:var(--text-secondary,var(--text))}
+.evidenceCounts strong{font-weight:700;color:var(--text)}
+@media(max-width:730px){.filters button{flex:1 1 auto;white-space:normal;text-align:center}}
+
 .record>p,.record>ul,.record>div{max-width:100%;overflow-wrap:anywhere}
 .obstruction{margin:13px 0;padding:11px 13px;border:1px solid var(--line);border-radius:8px;background:var(--panel);overflow-wrap:anywhere}
 .obstruction p{margin:0 0 6px;line-height:1.55;font-size:13px}

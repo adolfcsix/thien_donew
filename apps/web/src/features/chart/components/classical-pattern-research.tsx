@@ -3,6 +3,8 @@
 import {useEffect, useMemo, useState} from 'react';
 import type {AstrologyResult} from '@thiendo/shared-types';
 import {auditClassicalPatternCandidates} from '@thiendo/interpretation/src/classical-pattern-research.cjs';
+import {summarizeClassicalEvidence,filterClassicalEvidence} from '@thiendo/interpretation/src/classical-evidence-workbench.cjs';
+import type {ClassicalEvidenceFilter} from '@thiendo/interpretation/src/classical-evidence-workbench.cjs';
 import {summarizeClassicalCatalog,filterClassicalCatalog} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import type {ClassicalCatalogFilterStatus} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import styles from './conditional-pattern-evidence.module.css';
@@ -14,7 +16,6 @@ const stateText={
 } as const;
 const checkText={met:'Đã quan sát', 'not-met':'Chưa đáp ứng',unknown:'Chưa thể xác minh'} as const;
 const methodText={derivable:'Nguồn: có thể kiểm tra',disputed:'Nguồn: còn tranh luận',unreachable:'Nguồn: chưa thể suy ra'} as const;
-type Filter='relevant'|'all';
 
 /**
  * Research-only extension of the existing conditional evidence workbench.
@@ -24,13 +25,14 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   const data=useMemo(()=>auditClassicalPatternCandidates(chart),[chart]);
   // Distinguish an implemented position check from the source's methodological category.
   const catalog=useMemo(()=>summarizeClassicalCatalog(data.records.map(record=>record.id)),[data]);
-  const [filter,setFilter]=useState<Filter>('relevant');
+  const [filter,setFilter]=useState<ClassicalEvidenceFilter>('relevant');
   const [catalogQuery,setCatalogQuery]=useState('');
   const [catalogStatus,setCatalogStatus]=useState<ClassicalCatalogFilterStatus>('all');
   const [jumpToId,setJumpToId]=useState<string|null>(null);
   const localizedTitles=useMemo(()=>Object.fromEntries(data.records.map(r=>[r.id,r.title])),[data]);
   const catalogView=useMemo(()=>filterClassicalCatalog(catalog,{query:catalogQuery,status:catalogStatus,localizedTitles}),[catalog,catalogQuery,catalogStatus,localizedTitles]);
-  const visible=data.records.filter(record=>filter==='all'||record.status!=='not-met');
+  const evidence=useMemo(()=>summarizeClassicalEvidence(data.records),[data]);
+  const visible=useMemo(()=>filterClassicalEvidence(data.records,filter),[data,filter]);
   // A catalog item might be hidden by the “Liên quan” filter. Reveal it
   // before attempting to open/scroll; use the current rendered DOM only.
   useEffect(()=>{
@@ -49,9 +51,12 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
         <h4>Đối chiếu cách cục cổ điển</h4>
         <p className="palace-reading-scope">Đã ánh xạ {data.assessed}/{data.referenceTotal} chỉ mục tham khảo · {data.matched} khớp cấu trúc · {data.needsReview} cần thẩm định.</p>
       </div>
-      <div className={styles.filters} role="group" aria-label="Lọc đối chiếu cách cục">
-        <button type="button" aria-pressed={filter==='relevant'} onClick={()=>setFilter('relevant')}>Liên quan</button>
-        <button type="button" aria-pressed={filter==='all'} onClick={()=>setFilter('all')}>Tất cả</button>
+      <div className={styles.filters} role="group" aria-label="Lọc theo kết quả điều kiện nghiên cứu">
+        <button type="button" aria-pressed={filter==='relevant'} onClick={()=>setFilter('relevant')}>Liên quan · {evidence.counts.relevant}</button>
+        <button type="button" aria-pressed={filter==='matched'} onClick={()=>setFilter('matched')}>Khớp cấu trúc · {evidence.counts.matched}</button>
+        <button type="button" aria-pressed={filter==='review'} onClick={()=>setFilter('review')}>Cần thẩm định · {evidence.counts.review}</button>
+        <button type="button" aria-pressed={filter==='not-met'} onClick={()=>setFilter('not-met')}>Chưa khớp · {evidence.counts.notMet}</button>
+        <button type="button" aria-pressed={filter==='all'} onClick={()=>setFilter('all')}>Tất cả · {evidence.counts.all}</button>
       </div>
     </div>
     <p>Tham khảo cách đối chiếu từ các nhóm Định phú, Định quý và Định bần. Bản này chỉ so sánh sao bản mệnh, không tự xác nhận thành cách hay đưa ra dự báo.</p>
@@ -111,10 +116,16 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
         <small><a href={data.brightnessComparison.sourceUrl} target="_blank" rel="noopener noreferrer">Bảng QS nguồn</a> · <a href={data.brightnessComparison.discrepancy.alternateUrl} target="_blank" rel="noopener noreferrer">Cấu hình độ sáng đối chiếu</a>. Không dùng bảng này để tự xác nhận Miếu/Vượng, cấp quyền Pro hoặc phán đoán vận mệnh.</small>
       </details>
     </section>
-    {visible.length===0&&<p>Chưa có mẫu nào khớp hoặc cần xem lại. Chọn “Tất cả” để thấy từng điều kiện chưa đạt.</p>}
+    <p className={styles.evidenceFilterCount} role="status" aria-live="polite">Hiển thị {visible.length}/{data.assessed} mục nghiên cứu theo bộ lọc. “Khớp cấu trúc” chỉ có nghĩa đã quan sát đủ điều kiện đang triển khai, không phải kết luận cách cục.</p>
+    {visible.length===0&&<p>Không có mục nghiên cứu nào trong nhóm lọc này. Chọn “Tất cả” để xem đầy đủ các điều kiện đã đối chiếu.</p>}
     {visible.map(record=><details key={record.id} id={'tuvi-classical-'+record.id} className={'palace-reading-symbol '+styles.record}>
       <summary><strong>{record.title}</strong><span>{record.group} · {stateText[record.status]}</span></summary>
       <p>{record.interpretation}</p>
+      <p className={styles.evidenceCounts}>
+        <strong>{evidence.byId[record.id].met}/{evidence.byId[record.id].total}</strong> điều kiện đã quan sát
+        {evidence.byId[record.id].unknown>0&&<> · <strong>{evidence.byId[record.id].unknown}</strong> chưa thể xác minh</>}
+        {evidence.byId[record.id].notMet>0&&<> · <strong>{evidence.byId[record.id].notMet}</strong> chưa đáp ứng</>}
+      </p>
       <ul className={styles.checks}>{record.checks.map((condition,i)=><li key={record.id+'-'+i} data-met={condition.state==='met'}>
         <strong>{checkText[condition.state]}:</strong> {condition.label}. <span>{condition.detail}</span>
       </li>)}</ul>
