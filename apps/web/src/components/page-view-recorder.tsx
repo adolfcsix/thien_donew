@@ -30,7 +30,8 @@ export function PageViewRecorder() {
         eventId: last.current.id
       }),
       credentials: 'omit',
-      cache: 'no-store'
+      cache: 'no-store',
+      keepalive: true
     }).catch(() => {/* Best effort telemetry never blocks navigation or retries automatically. */});
     // No cleanup abort: the request holds no private payload or credentials.
   }, [pathname]);

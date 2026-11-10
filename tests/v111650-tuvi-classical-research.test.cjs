@@ -9,12 +9,12 @@ function chart(menh=0,sites={}){
  return {houses};
 }
 const item=(r,id)=>r.records.find(x=>x.id===id);
-test('Twenty-seven research rules must not claim full 49 classical structures',()=>{
+test('Twenty-eight scoped research items must not claim full 49 classical structures',()=>{
  const r=study(chart());
- assert.equal(r.assessed,27);assert.equal(r.referenceTotal,49);
+ assert.equal(r.assessed,28);assert.equal(r.referenceTotal,49);
  assert.equal(r.groups.reduce((n,g)=>n+g.totalInReference,0),49);
- assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),27);
- assert.equal(new Set(r.records.map(x=>x.id)).size,27);
+ assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),28);
+ assert.equal(new Set(r.records.map(x=>x.id)).size,28);
  assert.equal(r.expertReviewed,false);
  assert.equal(r.records.every(x=>x.status!=='structural-match'),true);
 });
@@ -64,17 +64,17 @@ test('Actual Thiên Đồ engine chart is readable without altering placements',
  const chart=engine.calculate({date:'2004-08-15',hour:8,minute:30,calendar:'solar',gender:'Nam'});
  const before=JSON.stringify(chart.houses);
  const result=study(chart);
- assert.equal(result.assessed,27);
+ assert.equal(result.assessed,28);
  assert.equal(result.groups.length,4);
  assert.ok(result.records.every(x=>['structural-match','not-met','needs-review'].includes(x.status)));
  assert.equal(JSON.stringify(chart.houses),before);
 });
 
 
-test('Reference research is pinned and 27 of 49 rules are clearly scoped',()=>{
- const r=study(chart());assert.equal(r.assessed,27);assert.equal(r.referenceTotal,49);
- assert.equal(r.groups.find(x=>x.name==='Định quý').implementedHere,20);
- assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),27);
+test('Reference research is pinned and 28 of 49 research items are scoped',()=>{
+ const r=study(chart());assert.equal(r.assessed,28);assert.equal(r.referenceTotal,49);
+ assert.equal(r.groups.find(x=>x.name==='Định quý').implementedHere,21);
+ assert.equal(r.groups.reduce((n,g)=>n+g.implementedHere,0),28);
  assert.equal(r.groups.reduce((n,g)=>n+g.totalInReference,0),49);
  assert.ok(r.records.every(x=>x.sourceUrl.includes('/blob/7922285d947b36610e7e31c232d8f1e2a0d0871d/')));
 });
@@ -282,12 +282,12 @@ function withThan(c,branch,summary=true){
  if(summary){c.than=c.houses[branch].branch;c.thanPalace=c.houses[branch].palace;}
  return c;
 }
-test('r8 counts 27 distinct natal research rules including Ding Ban without period crossover',()=>{
+test('r10 counts 28 distinct natal research items, one with Fire brightness unresolved',()=>{
  const r=study(chart());
- assert.deepEqual(r.groups.map(g=>g.implementedHere),[4,20,3,0]);
- assert.equal(r.assessed,27);
+ assert.deepEqual(r.groups.map(g=>g.implementedHere),[4,21,3,0]);
+ assert.equal(r.assessed,28);
  assert.equal(r.referenceTotal,49);
- assert.equal(new Set(r.records.map(x=>x.id)).size,27);
+ assert.equal(new Set(r.records.map(x=>x.id)).size,28);
  assert.equal(r.records.filter(x=>x.group==='Định bần').length,3);
  assert.equal(r.expertReviewed,false);
 });
@@ -490,4 +490,80 @@ test('Quyền Lộc sinh phùng never accepts wrong star layer or forged brightn
  const duplicate=withVerifiedAnnualFourHua(chart(0,sites),giapHua);
  duplicate.houses[4].stars.push('Liêm Trinh');
  assert.equal(item(study(duplicate),'dinh-quy-22').status,'needs-review');
+});
+
+function withValidNatalFire(c,yearCanChi='Giáp Dần',lunarYear=1974){
+ const advanced=require('../packages/astrology-engine/src/advanced-placements.js');
+ const lookup=require('../packages/astrology-engine/src/star-strength.js');
+ const values=advanced.calculate({yearStem:0,yearBranch:2,hourBranch:0,gender:'Nam'});
+ Object.assign(c,{yearCanChi,lunar:{year:lunarYear},hour:23,hourBranch:'Tý',gender:'Nam',
+  advancedStarRuleSet:advanced.RULESET,advancedStars:values.stars.map(x=>({...x})),
+  mainStarStrengthRuleSet:lookup.RULESET});
+ for(const h of c.houses){
+  h.advancedStars=values.stars.filter(x=>x.branch===h.branchIndex).map(x=>x.name);
+  h.advancedStarDetails=values.stars.filter(x=>x.branch===h.branchIndex).map(x=>({...x}));
+  h.mainStarStrengths=h.stars.map(name=>lookup.lookup(name,h.branchIndex));
+ }
+ return c;
+}
+test('r10 validates pinned Hỏa Tinh position but never invents the unversioned Hỏa brightness',()=>{
+ const c=withValidNatalFire(chart(1,{'Tham Lang':[1]}));
+ const before=JSON.stringify(c);
+ const r=study(c),v=item(r,'dinh-quy-17');
+ assert.equal(r.assessed,28);
+ assert.deepEqual(r.groups.map(g=>g.implementedHere),[4,21,3,0]);
+ assert.equal(r.fireAudit.verified,true);
+ assert.equal(r.fireAudit.branchIndex,1);
+ assert.equal(r.fireAudit.fireStrengthVerified,false);
+ assert.equal(v.status,'needs-review','Unverified Hỏa brightness must prevent a structural match');
+ assert.deepEqual(v.checks.map(x=>x.state),['met','met','met','met','met','unknown']);
+ assert.equal(v.expertReviewed,false);
+ assert.equal(JSON.stringify(c),before,'Research must never mutate a natal chart');
+});
+test('r10 detects non-Mệnh location and non Miếu/Vượng main-star evidence',()=>{
+ const wrongMenh=withValidNatalFire(chart(3,{'Tham Lang':[1]}));
+ assert.equal(item(study(wrongMenh),'dinh-quy-17').status,'not-met');
+ const wrongTham=withValidNatalFire(chart(1,{'Tham Lang':[2]}));
+ assert.equal(item(study(wrongTham),'dinh-quy-17').status,'not-met');
+ const correctButNoFire=chart(1,{'Tham Lang':[1],'Hỏa Tinh':[1,'advancedStars']});
+ assert.equal(item(study(correctButNoFire),'dinh-quy-17').status,'needs-review');
+});
+test('r10 never affirms source-forged or duplicated Hỏa Tinh',()=>{
+ const version=withValidNatalFire(chart(1,{'Tham Lang':[1]}));
+ version.advancedStarRuleSet='unrelated-school';
+ assert.equal(study(version).fireAudit.verified,false);
+ assert.equal(item(study(version),'dinh-quy-17').status,'needs-review');
+ const modified=withValidNatalFire(chart(1,{'Tham Lang':[1]}));
+ modified.houses[1].advancedStarDetails[0].basis='wrong';
+ assert.equal(study(modified).fireAudit.verified,false);
+ assert.equal(item(study(modified),'dinh-quy-17').status,'needs-review');
+ const wrongYear=withValidNatalFire(chart(1,{'Tham Lang':[1]}),'Giáp Tý',1974);
+ assert.equal(study(wrongYear).fireAudit.verified,false);
+ const duplicate=withValidNatalFire(chart(1,{'Tham Lang':[1]}));
+ duplicate.houses[0].advancedStars.push('Hỏa Tinh');
+ assert.equal(study(duplicate).fireAudit.verified,false);
+ assert.equal(item(study(duplicate),'dinh-quy-17').status,'needs-review');
+ const invalidHour=withValidNatalFire(chart(1,{'Tham Lang':[1]}));
+ invalidHour.hour=8;
+ assert.equal(study(invalidHour).fireAudit.verified,false);
+});
+test('r10 holds pending when Tham Lang provenance is wrong despite valid Hỏa',()=>{
+ const misplaced=withValidNatalFire(chart(1,{'Tham Lang':[1,'auxiliaryStars']}));
+ assert.equal(item(study(misplaced),'dinh-quy-17').status,'needs-review');
+ const noStrength=withValidNatalFire(chart(1,{'Tham Lang':[1]}));delete noStrength.mainStarStrengthRuleSet;
+ assert.equal(item(study(noStrength),'dinh-quy-17').status,'needs-review');
+ const forgedStrength=withValidNatalFire(chart(1,{'Tham Lang':[1]}));
+ forgedStrength.houses[1].mainStarStrengths[0]={...forgedStrength.houses[1].mainStarStrengths[0],status:'H',label:'Hãm'};
+ assert.equal(item(study(forgedStrength),'dinh-quy-17').status,'needs-review');
+});
+
+test('r10 actual Thiên Đồ engine chart preserves placements while verifying natal Fire source',()=>{
+ const engine=require('../packages/astrology-engine/src/tuvi.js');
+ const natal=engine.calculate({date:'2004-08-15',hour:8,minute:30,calendar:'solar',gender:'Nam'});
+ const original=JSON.stringify(natal);
+ const result=study(natal);
+ assert.equal(result.fireAudit.verified,true,'Engine-created chart must carry validated natal Fire evidence');
+ assert.equal(result.fireAudit.fireStrengthVerified,false);
+ assert.equal(item(result,'dinh-quy-17').status!=='structural-match',true);
+ assert.equal(JSON.stringify(natal),original,'Research must never mutate engine output');
 });

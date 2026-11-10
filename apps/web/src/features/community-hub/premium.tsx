@@ -11,7 +11,7 @@ export function PremiumLock({href}:{href:string}){const {user}=useAuth(),{pathna
   // Stale-view suppression without aborting the read-only network fetch.
   // On WebKit a route-transition abort can surface as a page-level access-control
   // error. The standard API still applies its 12s deadline and 401 policy.
-  api<{sections:{path:string;enabled:boolean}[];unlocked:boolean}>('/api/community/premium-sections',{timeoutMs:12000})
+  api<{sections:{path:string;enabled:boolean}[];unlocked:boolean}>('/api/community/premium-sections',{keepalive:true,timeoutMs:12000})
    .then(r=>{if(active)setStatus({scope,unlocked:r.unlocked||r.sections.find(s=>s.path===href)?.enabled===false})})
    .catch(()=>{if(active)setStatus({scope,unlocked:false})});
   return()=>{active=false};},[user?.id,href,pathname,revision,scope]);return <span className="hub-lock" aria-label={unlocked?'Pro đã mở khóa':unlocked===null?'Đang kiểm tra quyền Pro':'Nội dung cần Pro'} title={unlocked?'Đã mở khóa':'Nội dung Pro'}><svg viewBox="0 0 16 18" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d={unlocked?'M5 8V5a3 3 0 0 1 6 0':'M5 8V5a3 3 0 0 1 6 0v3'}/><rect x="2.5" y="8" width="11" height="8" rx="2"/><path d="M8 11v2"/></svg></span>;}

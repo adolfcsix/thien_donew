@@ -11,6 +11,8 @@ test('anonymous page-view telemetry is best-effort and not physically aborted on
  assert.match(source,/navigator\.doNotTrack === '1'/);
  assert.match(source,/pathname\.startsWith\('\/admin'\)/);
  assert.match(source,/credentials: 'omit'/);
+ assert.match(source,/keepalive: true/);
+ assert.match(source,/method: 'POST'/);
  assert.match(source,/void fetch\('\/api\/analytics\/page-view'/);
  assert.match(source,/\.catch\(\(\) =>/);
  assert.doesNotMatch(source,/new AbortController\(|\.abort\(\)|signal:\s*controller\.signal/);
@@ -22,6 +24,7 @@ test('read-only PremiumLock ignores stale async completion without canceling tra
  assert.match(lock,/let active=true/);
  assert.match(lock,/if\(active\)setStatus/);
  assert.match(lock,/return\(\)=>\{active=false\}/);
+ assert.match(lock,/keepalive:true,timeoutMs:12000/);
  assert.match(lock,/timeoutMs:12000/);
  assert.match(lock,/\.catch\(\(\)=>/);
  assert.doesNotMatch(lock,/new AbortController\(|\.abort\(\)|signal:\s*c\.signal/);

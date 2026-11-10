@@ -1,5 +1,6 @@
 import type {AstrologyResult} from '@thiendo/shared-types';
 import type {NatalObstructionEvidence} from './natal-obstruction-evidence.cjs';
+import type {NatalFireEvidence} from './natal-fire-evidence.cjs';
 
 export type ClassicalCriterionStatus='met'|'not-met'|'unknown';
 export type ClassicalPatternStatus='structural-match'|'not-met'|'needs-review';
@@ -28,7 +29,7 @@ export interface ClassicalResearchGroup {
   scope:string;
 }
 export interface ClassicalPatternResearch {
-  edition:'thiendo-classical-research-2026-11-10-r9';
+  edition:'thiendo-classical-research-2026-11-10-r10';
   scope:'natal-only';
   groups:readonly ClassicalResearchGroup[];
   referenceTotal:49;
@@ -37,6 +38,7 @@ export interface ClassicalPatternResearch {
   needsReview:number;
   records:readonly ClassicalPatternCandidate[];
   obstructionAudit:NatalObstructionEvidence;
+  fireAudit:NatalFireEvidence;
   expertReviewed:false;
   notice:string;
 }

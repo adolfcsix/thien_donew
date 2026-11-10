@@ -63,6 +63,12 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
         : 'Chưa đủ dữ liệu để kiểm chứng'}</p>
       <small>{data.obstructionAudit.reason} Đây là lớp chứng cứ theo Tam Hợp; không được dùng để tự kết luận mọi loại Không Vong hoặc mở khóa cách cục chưa thẩm định.</small>
     </section>
+    <section className={styles.obstruction} aria-label="Chứng cứ Hỏa Tinh nguyên cục">
+      <p><strong>Hỏa Tinh (bản mệnh)</strong> · {data.fireAudit.verified
+        ? 'Đã xác minh vị trí tại chi số '+data.fireAudit.branchIndex
+        : 'Chưa đủ chứng cứ vị trí'}</p>
+      <small>{data.fireAudit.reason} Độ sáng Hỏa Tinh chưa được xác minh; mục Tham Hỏa tương phùng không thể kết luận chỉ từ vị trí.</small>
+    </section>
     {visible.length===0&&<p>Chưa có mẫu nào khớp hoặc cần xem lại. Chọn “Tất cả” để thấy từng điều kiện chưa đạt.</p>}
     {visible.map(record=><details key={record.id} id={'tuvi-classical-'+record.id} className={'palace-reading-symbol '+styles.record}>
       <summary><strong>{record.title}</strong><span>{record.group} · {stateText[record.status]}</span></summary>
