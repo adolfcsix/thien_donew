@@ -102,3 +102,25 @@ Workflow Full Stack của commit giai đoạn trước từng thất bại tại
 - Từ phiên bản r3, `classical-pattern-research.cjs` chỉ thêm lớp nghiên cứu; **không thay `tuvi.js` hoặc `tuhoa.js`**, chế độ Cơ bản, quyền Pro và kết quả lá số hiện hành.
 - Bộ test `tests/v111650-tuvi-classical-research.test.cjs` có 23 trường hợp; xác nhận điều kiện đạt, các phản chứng không đồng cung/đối cung, sai lớp sao, bốn Hóa bị thiếu/trùng/lệch, dấu vết nguồn, tính bất biến của lá số. Cần chờ CI xác nhận trước khi gộp vào `main`.
 - Nguyên tắc nghiệp vụ: “khớp cấu trúc” chỉ là chứng cứ tổ hợp sao trong một trường phái, **không phải** phán quyết giàu sang, năng lực, sức khỏe hay tương lai của người dùng.
+
+
+## Bổ sung r4 — đối chiếu 20/49 cách cục (10/11/2026)
+
+- Hai quy tắc vừa ánh xạ từ nhóm **Định quý** của nguồn nghiên cứu gắn cố định commit `7922285d947b36610e7e31c232d8f1e2a0d0871d`:
+  - **Thất Sát triều đẩu** (mục 11): Thất Sát lớp chính tinh tại Mệnh, Mệnh ở Tý/Dần/Ngọ/Thân. Không tính Thất Sát chỉ hội chiếu, ở cung khác, thiếu vị trí hay nằm trong lớp sao khác.
+  - **Phủ Tướng triều viên** (mục 19): Mệnh ở Dần hoặc Thân, Thiên Phủ và Thiên Tướng nguyên cục phân tọa **Tài Bạch/Quan Lộc**, cả hai chiều. Không lấy điều kiện tổng quát hai sao cùng hội Tứ chính, không nhận đồng tọa một cung.
+- Phạm vi nghiên cứu được ánh xạ **20/49** (Định quý 16/27, Định phú 4/6, Định bần 0/8, Định tạp 0/8). Còn 29 mục cần nghiên cứu riêng; `structural-match` chỉ xác nhận quan hệ sao theo điều kiện đã mô tả, không kết luận số mệnh.
+- Không sửa logic an sao tại `tuvi.js`, phép an Tứ Hóa, quyền tài khoản hoặc giao diện Cơ bản.
+- Thêm 4 kiểm thử độc lập cho chiều an sao, sai địa chi Mệnh, sao trùng/sai lớp hoặc thiếu, phân biệt Tam phương và đúng Tài Bạch/Quan Lộc; tổng 27 trường hợp tại `tests/v111650-tuvi-classical-research.test.cjs`.
+- Hai chỉ mục mới không đòi suy diễn độ sáng Miếu/Vượng/Hãm từ dữ liệu chưa xác minh. Các mục 8/12/15/17/22/23/26 và nhóm Định bần/Định tạp sẽ chỉ được đưa vào sau khi chuẩn hóa điều kiện nguồn, lớp sao, độ sáng và/hoặc vận hạn với bằng chứng đầy đủ.
+
+
+
+## Danh mục đủ 49 cách cục — tách tra cứu học thuật và bộ đối chiếu
+
+- `packages/interpretation/src/classical-pattern-catalog.cjs` ghi danh mục nguồn theo 4 nhóm và giữ mỗi mục một ID bền vững, trạng thái **do nguồn phân loại** (`derivable`, `disputed`, `unreachable`) cùng URL truy nguyên ghim commit. Không nhập nguyên lời giảng tham khảo.
+- `summarizeClassicalCatalog(assessedIds)` chỉ đánh dấu mục đã có điều kiện trong engine Thiên Đồ, không suy đoán quy tắc cho mục chưa ánh xạ; không cho phép đánh dấu trùng ID, ID không có thật, mục bất đồng hoặc mục nguồn coi là bất khả thi.
+- 49 mục của nguồn tại commit cố định hiện phân bố **34 có thể kiểm tra / 9 tranh luận / 6 chưa suy ra được**, theo chính nguồn và phạm vi bảng an sao của họ. Các nhóm lần lượt: Định phú 6, Định quý 27, Định bần 8, Định tạp 8.
+- Giao diện `classical-pattern-research.tsx` đặt mục tra cứu trong phần **Chuyên sâu của cung Mệnh**, mặc định thu gọn, chia nhóm, có liên kết nguồn; không thêm tab hay nhân bản bộ kiểm tra.
+- **Không** biến phân loại `derivable` thành `structural-match`, không tự xác nhận danh mục 49/49 đã hiện thực, không ghép vận hạn vào nguyên cục. Số đã ánh xạ được tính từ dữ liệu `auditClassicalPatternCandidates(chart).records`, nên vẫn chính xác trên bản tích hợp 20 cách cục.
+- `tests/v111651-tuvi-classical-catalog.test.cjs` kiểm tra đủ 49 ID, phân bố nhóm, dẫn nguồn cố định, phạm vi vận hạn, bất biến dữ liệu và tính nhất quán với bộ đối chiếu thực. Cần Source Integrity, TypeScript, build và Full Stack nghiệm thu trước khi gộp PR.

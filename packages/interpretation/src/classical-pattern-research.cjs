@@ -1,6 +1,6 @@
 'use strict';
 /**
- * THIÊN ĐỒ — đối chiếu 18 điều kiện hình học và Tứ Hóa nguyên cục Tử Vi, KHÔNG phải bộ phán định 49 cách cục.
+ * THIÊN ĐỒ — đối chiếu 20 điều kiện hình học và Tứ Hóa nguyên cục Tử Vi, KHÔNG phải bộ phán định 49 cách cục.
  * Nguồn phương pháp tham khảo: Renhuai123/ziwei-doushu, MIT; thuật toán/diễn giải độc lập.
  * Trả về chứng cứ, điều kiện chưa xét, sai lệch dữ liệu. Không sửa lá số và không dự báo.
  */
@@ -10,7 +10,7 @@ const LAYERS=Object.freeze(['stars','auxiliaryStars','yearStars','additionalStar
 const SUPPORT=Object.freeze(['Tả Phụ','Hữu Bật','Văn Xương','Văn Khúc','Thiên Khôi','Thiên Việt','Lộc Tồn','Thiên Mã']);
 const GROUPS=Object.freeze([
  Object.freeze({name:'Định phú',totalInReference:6,implementedHere:4,scope:'Bản mệnh'}),
- Object.freeze({name:'Định quý',totalInReference:27,implementedHere:14,scope:'Bản mệnh'}),
+ Object.freeze({name:'Định quý',totalInReference:27,implementedHere:16,scope:'Bản mệnh'}),
  Object.freeze({name:'Định bần',totalInReference:8,implementedHere:0,scope:'Bản mệnh'}),
  Object.freeze({name:'Định tạp',totalInReference:8,implementedHere:0,scope:'Đại hạn / lưu niên; không thể ghép như cách cục bản mệnh'})
 ]);
@@ -98,6 +98,8 @@ function auditClassicalPatternCandidates(chart){
  const ki=getPosition(chart,'Thiên Cơ','stars');
  const zi=getPosition(chart,'Tử Vi','stars');
  const fu=getPosition(chart,'Thiên Phủ','stars');
+ const sat=getPosition(chart,'Thất Sát','stars');
+ const tuong=getPosition(chart,'Thiên Tướng','stars');
  const ta=getPosition(chart,'Tả Phụ','auxiliaryStars');
  const huu=getPosition(chart,'Hữu Bật','auxiliaryStars');
  const khoi=getPosition(chart,'Thiên Khôi','auxiliaryStars');
@@ -193,6 +195,18 @@ function auditClassicalPatternCandidates(chart){
     check('Mệnh tại Dần hoặc Thân',[2,8].includes(meng.branchIndex),'Mệnh chi số '+meng.branchIndex),
     place(zi,'Tử Vi tại cung Mệnh',x=>x.palace==='Mệnh'),
     place(fu,'Thiên Phủ cùng tọa Mệnh',x=>x.palace==='Mệnh')],notes.specific),
+  result('dinh-quy-11','Thất Sát triều đẩu','Định quý','patterns-dinggui.ts',
+   'Thất Sát nguyên cục thủ cung Mệnh tại Tý, Dần, Ngọ hoặc Thân; không thay thế bằng hội chiếu hay lớp sao vận hạn.',[
+    check('Mệnh tọa Tý, Dần, Ngọ hoặc Thân',[0,2,6,8].includes(meng.branchIndex),'Chi số Mệnh: '+meng.branchIndex),
+    place(sat,'Thất Sát nguyên cục thủ Mệnh',x=>x.branchIndex===meng.branchIndex&&x.palace==='Mệnh')],notes.specific),
+  result('dinh-quy-19','Phủ Tướng triều viên','Định quý','patterns-dinggui.ts',
+   'Mệnh ở Dần hoặc Thân, Thiên Phủ và Thiên Tướng phân tọa Tài Bạch và Quan Lộc, theo cả hai chiều. Chỉ hội Tam phương hoặc cùng ở một cung không đủ.',[
+    check('Mệnh tại Dần hoặc Thân',[2,8].includes(meng.branchIndex),'Chi số Mệnh: '+meng.branchIndex),
+    check('Thiên Phủ / Thiên Tướng phân tọa Tài Bạch và Quan Lộc',
+      observed(fu)&&observed(tuong)?
+      ((fu.palace==='Tài Bạch'&&tuong.palace==='Quan Lộc')||
+       (fu.palace==='Quan Lộc'&&tuong.palace==='Tài Bạch')):null,
+      observed(fu)&&observed(tuong)?'Thiên Phủ: '+fu.palace+' (chi số '+fu.branchIndex+'); Thiên Tướng: '+tuong.palace+' (chi số '+tuong.branchIndex+')':'Thiếu hoặc trùng lớp chính tinh Thiên Phủ / Thiên Tướng')],notes.specific),
   result('dinh-quy-25','Minh Lộc ám Lộc','Định quý','patterns-dinggui.ts',
    'Lộc Tồn thủ Mệnh và Hóa Lộc nguyên cục chiếu từ đối cung; không đồng nhất Lộc Tồn với Hóa Lộc.',[
     place(loc,'Lộc Tồn tọa Mệnh',x=>x.palace==='Mệnh'),
@@ -207,9 +221,9 @@ function auditClassicalPatternCandidates(chart){
  ];
  const matched=records.filter(x=>x.status==='structural-match').length;
  const reviewed=records.filter(x=>x.status==='needs-review').length;
- return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r3',scope:'natal-only',
+ return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r4',scope:'natal-only',
   groups:GROUPS,referenceTotal:49,assessed:records.length,matched,needsReview:reviewed,
   records:Object.freeze(records),expertReviewed:false,
-  notice:'18/49 chỉ mục được ánh xạ điều kiện ban đầu; 31 mục còn lại chưa được xác minh. Đây là đối chiếu nghiên cứu, không phải nhận định đầy đủ 49 cách cục.'});
+  notice:'20/49 chỉ mục được ánh xạ điều kiện ban đầu; 29 mục còn lại chưa được xác minh. Đây là đối chiếu nghiên cứu, không phải nhận định đầy đủ 49 cách cục.'});
 }
 module.exports=Object.freeze({SOURCE,SOURCE_COMMIT,GROUPS,auditClassicalPatternCandidates});
