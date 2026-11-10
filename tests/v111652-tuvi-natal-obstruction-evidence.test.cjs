@@ -83,6 +83,9 @@ test('r9 requires consistent year-stem, lunar year, hour and gender metadata',()
 });
 test('r9 keeps classical Không Vong unresolved, even when natal Tuần/Triệt pass',()=>{
  const c=chart(10);
+ c.houses[9].stars.push('Thái Dương');
+ c.houses[11].stars.push('Thái Âm');
+ c.houses[10].auxiliaryStars.push('Tả Phụ');
  const result=research(c);
  const candidate=result.records.find(x=>x.id==='dinh-quy-01');
  assert.equal(result.assessed,27);
