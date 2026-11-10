@@ -28,3 +28,49 @@ test('r12 branch comparison identifies exactly five disagreements and preserves 
  assert.ok(Object.isFrozen(d.rows));
  assert.ok(Object.isFrozen(d.differences[0]));
 });
+
+test('r12 real natal chart exposes branch-specific contrast without changing classical verdicts or inputs',()=>{
+ const chart=Engine.calculate({date:'2004-08-15',hour:8,minute:30,calendar:'solar',gender:'Nam'});
+ const before=JSON.stringify(chart);
+ const data=research(chart);
+ const school=data.brightnessComparison;
+ const bell=chart.advancedStars.find(s=>s.name==='Linh Tinh');
+ assert.equal(data.assessed,28);
+ assert.match(data.edition,/r12$/);
+ assert.equal(school.available,true);
+ assert.equal(school.chartLinhComparison.branchIndex,bell.branch);
+ assert.equal(school.chartLinhComparison,linhReconciliation.rows[bell.branch]);
+ assert.equal(school.mayConfirmClassicalPattern,false);
+ assert.equal(data.records.find(x=>x.id==='dinh-quy-17').status!=='structural-match',true);
+ assert.equal(JSON.stringify(chart),before);
+});
+test('r12 invalid or duplicated natal Linh evidence fails closed without losing source metadata',()=>{
+ const natal=Engine.calculate({date:'2004-08-15',hour:8,minute:30,calendar:'solar',gender:'Nam'});
+ const a=compareQSBrightness(natal,{verified:false,reason:'mismatched source'},null,null);
+ assert.equal(a.available,false);
+ assert.equal(a.chartLinhComparison,null);
+ assert.equal(a.linhReconciliation.differenceCount,5);
+ const bell=natal.advancedStars.find(x=>x.name==='Linh Tinh');
+ const b=compareQSBrightness({...natal,advancedStars:natal.advancedStars.concat({...bell})},{verified:true,branchIndex:2},null,null);
+ assert.equal(b.available,false);
+ assert.equal(b.mayConfirmClassicalPattern,false);
+});
+test('r12 layout presents a concise five-cung table and a folded complete twelve-cung table',()=>{
+ const fs=require('node:fs'),path=require('node:path');
+ const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
+ const ui=read('apps/web/src/features/chart/components/classical-pattern-research.tsx');
+ assert.match(ui,/linhReconciliation\.differences\.map/);
+ assert.match(ui,/linhReconciliation\.rows\.map/);
+ assert.match(ui,/chartLinhComparison/);
+ assert.match(ui,/scope="col"/);
+ assert.match(ui,/scope="row"/);
+ assert.match(ui,/Xem đủ 12 cung/);
+ const css=read('apps/web/src/features/chart/components/conditional-pattern-evidence.module.css');
+ assert.match(css,/\.schoolTableWrap/);
+ assert.match(css,/overflow-x:auto/);
+ const rules=read('packages/interpretation/src/classical-pattern-research.cjs');
+ const start=rules.indexOf("result('dinh-quy-17'");
+ const end=rules.indexOf("result('dinh-quy-18'",start);
+ assert.ok(start!==-1&&end>start);
+ assert.doesNotMatch(rules.slice(start,end),/linhReconciliation|brightnessComparison/);
+});
