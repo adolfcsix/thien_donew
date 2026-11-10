@@ -32,7 +32,7 @@ for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
    return route.fulfill({json:{entries:[]}});
   });
   await page.goto(origin+'/study');
-  await page.getByRole('status').filter({hasText:'Phản hồi máy chủ không hợp lệ'}).waitFor();
+  await page.getByRole('alert').filter({hasText:'Phản hồi máy chủ không hợp lệ'}).waitFor();
   assert.deepEqual(errors,[]);console.log(`PASS malformed list ${viewport.width}: feedback without rendering crash`);
   mode='lost-refresh';await page.reload();
   const title=page.getByLabel('Tiêu đề (tối đa 100 ký tự)',{exact:true});await title.fill('Safe note');
