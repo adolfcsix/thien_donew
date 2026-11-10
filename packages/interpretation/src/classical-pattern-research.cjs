@@ -1,7 +1,8 @@
 'use strict';
 const MainStarStrength=require('@thiendo/astrology-engine/src/star-strength.js');
+const NatalTuHoa=require('@thiendo/astrology-engine/src/tuhoa.js');
 /**
- * THIÊN ĐỒ — đối chiếu 26 điều kiện vị trí, độ sáng và Tứ Hóa nguyên cục Tử Vi, KHÔNG phải bộ phán định 49 cách cục.
+ * THIÊN ĐỒ — đối chiếu 27 điều kiện vị trí, độ sáng và Tứ Hóa nguyên cục Tử Vi, KHÔNG phải bộ phán định 49 cách cục.
  * Nguồn phương pháp tham khảo: Renhuai123/ziwei-doushu, MIT; thuật toán/diễn giải độc lập.
  * Trả về chứng cứ, điều kiện chưa xét, sai lệch dữ liệu. Không sửa lá số và không dự báo.
  */
@@ -11,7 +12,7 @@ const LAYERS=Object.freeze(['stars','auxiliaryStars','yearStars','additionalStar
 const SUPPORT=Object.freeze(['Tả Phụ','Hữu Bật','Văn Xương','Văn Khúc','Thiên Khôi','Thiên Việt','Lộc Tồn','Thiên Mã']);
 const GROUPS=Object.freeze([
  Object.freeze({name:'Định phú',totalInReference:6,implementedHere:4,scope:'Bản mệnh'}),
- Object.freeze({name:'Định quý',totalInReference:27,implementedHere:19,scope:'Bản mệnh'}),
+ Object.freeze({name:'Định quý',totalInReference:27,implementedHere:20,scope:'Bản mệnh'}),
  Object.freeze({name:'Định bần',totalInReference:8,implementedHere:3,scope:'Bản mệnh / Mệnh–Thân; không phải dự đoán'}),
  Object.freeze({name:'Định tạp',totalInReference:8,implementedHere:0,scope:'Đại hạn / lưu niên; không thể ghép như cách cục bản mệnh'})
 ]);
@@ -126,6 +127,29 @@ function readNatalFourHua(chart){
  return {known:true,reason:'Bốn Hóa nguyên cục có vị trí và sao nhận Hóa nhất quán.',byName};
 }
 
+/**
+ * Read a *pinned* annual natal Tứ Hóa row; a shape-valid four-Hua object is
+ * not enough evidence of a source-correct year-stem allocation.
+ */
+function readVerifiedYearHua(chart,hua){
+ const unknown=reason=>({known:false,reason});
+ if(!hua.known)return unknown(hua.reason);
+ if(chart.tuHoaRuleSet!==NatalTuHoa.RULESET)
+  return unknown('Thiếu hoặc sai phiên bản bảng Tứ Hóa năm sinh.');
+ const stems=['Giáp','Ất','Bính','Đinh','Mậu','Kỷ','Canh','Tân','Nhâm','Quý'];
+ const stem=typeof chart.yearCanChi==='string'?stems.findIndex(x=>chart.yearCanChi===x||chart.yearCanChi.startsWith(x+' ')):-1;
+ if(stem<0)return unknown('Thiếu hoặc sai can năm trên lá số nguyên cục.');
+ const labels=['Hóa Lộc','Hóa Quyền','Hóa Khoa','Hóa Kỵ'];
+ for(let i=0;i<4;i++){
+  const item=hua.byName.get(labels[i]);
+  if(!item||item.star!==NatalTuHoa.ROWS[stem][i])
+   return unknown('Sao nhận Tứ Hóa không đúng bảng nguyên cục theo can năm đã chọn.');
+ }
+ const loc=hua.byName.get('Hóa Lộc'),quyen=hua.byName.get('Hóa Quyền');
+ if(loc.star===quyen.star)return unknown('Hóa Lộc và Hóa Quyền không được dùng chung một sao nhận Hóa.');
+ return {known:true,loc,quyen,reason:'Đã xác minh đủ Tứ Hóa theo can năm và bảng '+NatalTuHoa.RULESET};
+}
+
 /** Đánh giá độc lập, giữ nguyên địa bàn, không trộn lớp lưu hạn với sao bản mệnh. */
 function auditClassicalPatternCandidates(chart){
  const {byBranch,byPalace}=validate(chart);
@@ -152,6 +176,11 @@ function auditClassicalPatternCandidates(chart){
  const khoi=getPosition(chart,'Thiên Khôi','auxiliaryStars');
  const viet=getPosition(chart,'Thiên Việt','auxiliaryStars');
  const hua=readNatalFourHua(chart);
+ const verifiedYearHua=readVerifiedYearHua(chart,hua);
+ const locHuaStar=verifiedYearHua.known?getPosition(chart,verifiedYearHua.loc.star,'stars'):null;
+ const quyenHuaStar=verifiedYearHua.known?getPosition(chart,verifiedYearHua.quyen.star,'stars'):null;
+ const locHuaStrength=locHuaStar?readVerifiedMainStrength(chart,locHuaStar):null;
+ const quyenHuaStrength=quyenHuaStar?readVerifiedMainStrength(chart,quyenHuaStar):null;
  const good=[...SUPPORT].filter(name=>LAYERS.some(layer=>{const h=byPalace.get('Mệnh');return Array.isArray(h[layer])&&h[layer].includes(name);}));
  const meng=byPalace.get('Mệnh');
  const observed=x=>x.status==='observed';
@@ -268,6 +297,23 @@ function auditClassicalPatternCandidates(chart){
       ((fu.palace==='Tài Bạch'&&tuong.palace==='Quan Lộc')||
        (fu.palace==='Quan Lộc'&&tuong.palace==='Tài Bạch')):null,
       observed(fu)&&observed(tuong)?'Thiên Phủ: '+fu.palace+' (chi số '+fu.branchIndex+'); Thiên Tướng: '+tuong.palace+' (chi số '+tuong.branchIndex+')':'Thiếu hoặc trùng lớp chính tinh Thiên Phủ / Thiên Tướng')],notes.specific),
+  result('dinh-quy-22','Quyền Lộc sinh phùng','Định quý','patterns-dinggui.ts',
+   'Cả Hóa Lộc và Hóa Quyền thuộc Tứ Hóa năm sinh cùng đóng Mệnh, đồng thời hai chính tinh nhận Hóa được bảng độ sáng Thiên Đồ xác nhận ở Miếu hoặc Vượng. Cách đọc này giữ nguyên nghĩa hẹp của chú giải và không trộn vận hạn.',[
+    check('Bốn Tứ Hóa và sao nhận Hóa đúng bảng can năm của Thiên Đồ',verifiedYearHua.known?true:null,verifiedYearHua.reason),
+    check('Hóa Lộc và Hóa Quyền nguyên cục đều tọa Mệnh',
+      verifiedYearHua.known?verifiedYearHua.loc.branchIndex===meng.branchIndex&&verifiedYearHua.quyen.branchIndex===meng.branchIndex:null,
+      verifiedYearHua.known?'Hóa Lộc: '+verifiedYearHua.loc.star+' / '+verifiedYearHua.loc.branchIndex+
+       '; Hóa Quyền: '+verifiedYearHua.quyen.star+' / '+verifiedYearHua.quyen.branchIndex:verifiedYearHua.reason),
+    check('Hai sao nhận Hóa là chính tinh đúng vị trí, có hồ sơ độ sáng xác minh',
+      verifiedYearHua.known?
+       (locHuaStrength&&quyenHuaStrength&&locHuaStrength.known&&quyenHuaStrength.known?true:null):null,
+      verifiedYearHua.known?'Lộc: '+(locHuaStrength?.reason||'chưa thấy chính tinh')+
+       '; Quyền: '+(quyenHuaStrength?.reason||'chưa thấy chính tinh'):verifiedYearHua.reason),
+    check('Hai sao nhận Hóa cùng đạt Miếu hoặc Vượng',
+      locHuaStrength?.known&&quyenHuaStrength?.known?
+       (['M','V'].includes(locHuaStrength.status)&&['M','V'].includes(quyenHuaStrength.status)):null,
+      'Chỉ chấp nhận M/V theo bảng đang áp dụng; không tự coi Đắc/Bình tương đương Miếu/Vượng.')],
+   'Nguồn tham khảo dùng phép đọc “không Hãm”; bản nghiên cứu Thiên Đồ chọn nghĩa hẹp Miếu/Vượng theo câu chú giải, có thể cho kết quả khác. Sao nhận Hóa ngoài 14 chính tinh phải thẩm định riêng.'),
   result('dinh-quy-25','Minh Lộc ám Lộc','Định quý','patterns-dinggui.ts',
    'Lộc Tồn thủ Mệnh và Hóa Lộc nguyên cục chiếu từ đối cung; không đồng nhất Lộc Tồn với Hóa Lộc.',[
     place(loc,'Lộc Tồn tọa Mệnh',x=>x.palace==='Mệnh'),
@@ -341,9 +387,9 @@ function auditClassicalPatternCandidates(chart){
  ];
  const matched=records.filter(x=>x.status==='structural-match').length;
  const reviewed=records.filter(x=>x.status==='needs-review').length;
- return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r7',scope:'natal-only',
+ return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r8',scope:'natal-only',
   groups:GROUPS,referenceTotal:49,assessed:records.length,matched,needsReview:reviewed,
   records:Object.freeze(records),expertReviewed:false,
-  notice:'26/49 chỉ mục được ánh xạ điều kiện nghiên cứu; 23 mục còn lại chưa được xác minh. Đây là đối chiếu nghiên cứu, không phải nhận định đầy đủ 49 cách cục.'});
+  notice:'27/49 chỉ mục được ánh xạ điều kiện nghiên cứu; 22 mục còn lại chưa được xác minh. Đây là đối chiếu nghiên cứu, không phải nhận định đầy đủ 49 cách cục.'});
 }
 module.exports=Object.freeze({SOURCE,SOURCE_COMMIT,GROUPS,auditClassicalPatternCandidates});
