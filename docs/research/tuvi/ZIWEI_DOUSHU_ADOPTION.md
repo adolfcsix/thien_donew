@@ -102,3 +102,14 @@ Workflow Full Stack của commit giai đoạn trước từng thất bại tại
 - Từ phiên bản r3, `classical-pattern-research.cjs` chỉ thêm lớp nghiên cứu; **không thay `tuvi.js` hoặc `tuhoa.js`**, chế độ Cơ bản, quyền Pro và kết quả lá số hiện hành.
 - Bộ test `tests/v111650-tuvi-classical-research.test.cjs` có 23 trường hợp; xác nhận điều kiện đạt, các phản chứng không đồng cung/đối cung, sai lớp sao, bốn Hóa bị thiếu/trùng/lệch, dấu vết nguồn, tính bất biến của lá số. Cần chờ CI xác nhận trước khi gộp vào `main`.
 - Nguyên tắc nghiệp vụ: “khớp cấu trúc” chỉ là chứng cứ tổ hợp sao trong một trường phái, **không phải** phán quyết giàu sang, năng lực, sức khỏe hay tương lai của người dùng.
+
+
+## Bổ sung r4 — đối chiếu 20/49 cách cục (10/11/2026)
+
+- Hai quy tắc vừa ánh xạ từ nhóm **Định quý** của nguồn nghiên cứu gắn cố định commit `7922285d947b36610e7e31c232d8f1e2a0d0871d`:
+  - **Thất Sát triều đẩu** (mục 11): Thất Sát lớp chính tinh tại Mệnh, Mệnh ở Tý/Dần/Ngọ/Thân. Không tính Thất Sát chỉ hội chiếu, ở cung khác, thiếu vị trí hay nằm trong lớp sao khác.
+  - **Phủ Tướng triều viên** (mục 19): Mệnh ở Dần hoặc Thân, Thiên Phủ và Thiên Tướng nguyên cục phân tọa **Tài Bạch/Quan Lộc**, cả hai chiều. Không lấy điều kiện tổng quát hai sao cùng hội Tứ chính, không nhận đồng tọa một cung.
+- Phạm vi nghiên cứu được ánh xạ **20/49** (Định quý 16/27, Định phú 4/6, Định bần 0/8, Định tạp 0/8). Còn 29 mục cần nghiên cứu riêng; `structural-match` chỉ xác nhận quan hệ sao theo điều kiện đã mô tả, không kết luận số mệnh.
+- Không sửa logic an sao tại `tuvi.js`, phép an Tứ Hóa, quyền tài khoản hoặc giao diện Cơ bản.
+- Thêm 4 kiểm thử độc lập cho chiều an sao, sai địa chi Mệnh, sao trùng/sai lớp hoặc thiếu, phân biệt Tam phương và đúng Tài Bạch/Quan Lộc; tổng 27 trường hợp tại `tests/v111650-tuvi-classical-research.test.cjs`.
+- Hai chỉ mục mới không đòi suy diễn độ sáng Miếu/Vượng/Hãm từ dữ liệu chưa xác minh. Các mục 8/12/15/17/22/23/26 và nhóm Định bần/Định tạp sẽ chỉ được đưa vào sau khi chuẩn hóa điều kiện nguồn, lớp sao, độ sáng và/hoặc vận hạn với bằng chứng đầy đủ.
