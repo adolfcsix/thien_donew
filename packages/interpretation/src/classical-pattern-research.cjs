@@ -1,6 +1,6 @@
 'use strict';
 /**
- * THIÊN ĐỒ — đối chiếu 20 điều kiện hình học và Tứ Hóa nguyên cục Tử Vi, KHÔNG phải bộ phán định 49 cách cục.
+ * THIÊN ĐỒ — đối chiếu 22 điều kiện hình học và Tứ Hóa nguyên cục Tử Vi, KHÔNG phải bộ phán định 49 cách cục.
  * Nguồn phương pháp tham khảo: Renhuai123/ziwei-doushu, MIT; thuật toán/diễn giải độc lập.
  * Trả về chứng cứ, điều kiện chưa xét, sai lệch dữ liệu. Không sửa lá số và không dự báo.
  */
@@ -109,7 +109,7 @@ function auditClassicalPatternCandidates(chart){
  const meng=byPalace.get('Mệnh');
  const observed=x=>x.status==='observed';
  // A duplicate or wrong-layer Loc Ton cannot be affirmative evidence.
- const locDataValid=observed(loc)||(loc.status==='unverified'&&loc.locations.length===0);
+ const locDataValid=observed(loc); // Missing Loc Ton means the natal chart evidence is incomplete.
  const nearHorse=[meng.branchIndex,mod(meng.branchIndex+1)];
  const locNear=observed(loc)&&nearHorse.includes(loc.branchIndex);
  const natalHuaLocNear=hua.known&&nearHorse.includes(hua.byName.get('Hóa Lộc').branchIndex);
