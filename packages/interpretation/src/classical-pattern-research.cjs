@@ -3,6 +3,7 @@ const MainStarStrength=require('@thiendo/astrology-engine/src/star-strength.js')
 const NatalTuHoa=require('@thiendo/astrology-engine/src/tuhoa.js');
 const {auditNatalObstructionEvidence}=require('./natal-obstruction-evidence.cjs');
 const {auditNatalFirePosition}=require('./natal-fire-evidence.cjs');
+const {compareQSBrightness}=require('./classical-brightness-comparison.cjs');
 /**
  * THIÊN ĐỒ — đối chiếu 28 chỉ mục Tử Vi, gồm một mục Tham Hỏa chưa đủ chứng cứ độ sáng; kiểm toán Tuần/Triệt độc lập, KHÔNG phải bộ phán định 49 cách cục.
  * Nguồn phương pháp tham khảo: Renhuai123/ziwei-doushu, MIT; thuật toán/diễn giải độc lập.
@@ -176,6 +177,8 @@ function auditClassicalPatternCandidates(chart){
  const thamStrength=readVerifiedMainStrength(chart,tham);
  const fire=getPosition(chart,'Hỏa Tinh','advancedStars');
  const fireAudit=auditNatalFirePosition(chart);
+ // Standalone comparative profile. Never wire its values into criteria/verdicts.
+ const brightnessComparison=compareQSBrightness(chart,fireAudit,tham,thamStrength);
  const tuong=getPosition(chart,'Thiên Tướng','stars');
  const ta=getPosition(chart,'Tả Phụ','auxiliaryStars');
  const huu=getPosition(chart,'Hữu Bật','auxiliaryStars');
@@ -408,9 +411,9 @@ function auditClassicalPatternCandidates(chart){
  ];
  const matched=records.filter(x=>x.status==='structural-match').length;
  const reviewed=records.filter(x=>x.status==='needs-review').length;
- return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r10',scope:'natal-only',
+ return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r11',scope:'natal-only',
   groups:GROUPS,referenceTotal:49,assessed:records.length,matched,needsReview:reviewed,
-  records:Object.freeze(records),obstructionAudit,fireAudit,expertReviewed:false,
+  records:Object.freeze(records),obstructionAudit,fireAudit,brightnessComparison,expertReviewed:false,
   notice:'28/49 chỉ mục có điều kiện khảo sát, trong đó Tham Hỏa còn thiếu chứng cứ độ sáng Hỏa Tinh; 21 mục chưa được ánh xạ. Đây không phải 28 cách cục được xác nhận.'});
 }
 module.exports=Object.freeze({SOURCE,SOURCE_COMMIT,GROUPS,auditClassicalPatternCandidates});

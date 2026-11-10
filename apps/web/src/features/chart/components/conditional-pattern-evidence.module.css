@@ -10,6 +10,13 @@
 .obstruction{margin:13px 0;padding:11px 13px;border:1px solid var(--line);border-radius:8px;background:var(--panel);overflow-wrap:anywhere}
 .obstruction p{margin:0 0 6px;line-height:1.55;font-size:13px}
 .obstruction small{display:block;line-height:1.55;color:var(--text-secondary,var(--text))}
+.comparison{margin-top:10px;padding-top:8px;border-top:1px solid var(--line);font-size:12px;line-height:1.55}
+.comparison>summary{cursor:pointer;font-size:12px;font-weight:650;padding:6px 0}
+.comparison>summary:focus-visible,.comparison a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.comparison p{margin:7px 0;line-height:1.6}
+.comparison .checks{margin:8px 0}
+.comparison a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+
 .checks{display:flex;flex-wrap:wrap;gap:7px 10px;padding:0;list-style:none}
 .checks li{font-size:12px!important;border:1px solid var(--line);border-radius:4px;padding:5px 9px;background:var(--panel);line-height:1.5!important}
 .checks li[data-met=true]{border-color:var(--gold);color:var(--text)}

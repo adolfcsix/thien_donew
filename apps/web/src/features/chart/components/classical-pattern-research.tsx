@@ -68,6 +68,17 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
         ? 'Đã xác minh vị trí tại chi số '+data.fireAudit.branchIndex
         : 'Chưa đủ chứng cứ vị trí'}</p>
       <small>{data.fireAudit.reason} Độ sáng Hỏa Tinh chưa được xác minh; mục Tham Hỏa tương phùng không thể kết luận chỉ từ vị trí.</small>
+      <details className={styles.comparison}>
+        <summary>Đối chiếu độ sáng giữa các trường phái (chỉ tham khảo)</summary>
+        <p>{data.brightnessComparison.reason}</p>
+        {data.brightnessComparison.available&&<ul className={styles.checks}>
+          {([['Tham Lang',data.brightnessComparison.tham],['Hỏa Tinh',data.brightnessComparison.fire],['Linh Tinh',data.brightnessComparison.bell]] as const).map(([name,entry])=>
+            <li key={name}><strong>{name}:</strong> {entry?entry.branchName+' · '+entry.label:'Chưa xác minh vị trí'} <small>(Bảng QS; không thay cho hồ sơ Thiên Đồ)</small></li>
+          )}
+        </ul>}
+        <p><strong>Khác biệt nguồn chưa giải quyết:</strong> {data.brightnessComparison.discrepancy.detail}</p>
+        <small><a href={data.brightnessComparison.sourceUrl} target="_blank" rel="noopener noreferrer">Bảng QS nguồn</a> · <a href={data.brightnessComparison.discrepancy.alternateUrl} target="_blank" rel="noopener noreferrer">Cấu hình độ sáng đối chiếu</a>. Không dùng bảng này để tự xác nhận Miếu/Vượng, cấp quyền Pro hoặc phán đoán vận mệnh.</small>
+      </details>
     </section>
     {visible.length===0&&<p>Chưa có mẫu nào khớp hoặc cần xem lại. Chọn “Tất cả” để thấy từng điều kiện chưa đạt.</p>}
     {visible.map(record=><details key={record.id} id={'tuvi-classical-'+record.id} className={'palace-reading-symbol '+styles.record}>
