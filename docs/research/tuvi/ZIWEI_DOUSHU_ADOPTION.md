@@ -102,3 +102,13 @@ Workflow Full Stack của commit giai đoạn trước từng thất bại tại
 - Từ phiên bản r3, `classical-pattern-research.cjs` chỉ thêm lớp nghiên cứu; **không thay `tuvi.js` hoặc `tuhoa.js`**, chế độ Cơ bản, quyền Pro và kết quả lá số hiện hành.
 - Bộ test `tests/v111650-tuvi-classical-research.test.cjs` có 23 trường hợp; xác nhận điều kiện đạt, các phản chứng không đồng cung/đối cung, sai lớp sao, bốn Hóa bị thiếu/trùng/lệch, dấu vết nguồn, tính bất biến của lá số. Cần chờ CI xác nhận trước khi gộp vào `main`.
 - Nguyên tắc nghiệp vụ: “khớp cấu trúc” chỉ là chứng cứ tổ hợp sao trong một trường phái, **không phải** phán quyết giàu sang, năng lực, sức khỏe hay tương lai của người dùng.
+
+
+## Danh mục đủ 49 cách cục — tách tra cứu học thuật và bộ đối chiếu
+
+- `packages/interpretation/src/classical-pattern-catalog.cjs` ghi danh mục nguồn theo 4 nhóm và giữ mỗi mục một ID bền vững, trạng thái **do nguồn phân loại** (`derivable`, `disputed`, `unreachable`) cùng URL truy nguyên ghim commit. Không nhập nguyên lời giảng tham khảo.
+- `summarizeClassicalCatalog(assessedIds)` chỉ đánh dấu mục đã có điều kiện trong engine Thiên Đồ, không suy đoán quy tắc cho mục chưa ánh xạ; không cho phép đánh dấu trùng ID, ID không có thật, mục bất đồng hoặc mục nguồn coi là bất khả thi.
+- 49 mục của nguồn tại commit cố định hiện phân bố **34 có thể kiểm tra / 9 tranh luận / 6 chưa suy ra được**, theo chính nguồn và phạm vi bảng an sao của họ. Các nhóm lần lượt: Định phú 6, Định quý 27, Định bần 8, Định tạp 8.
+- Giao diện `classical-pattern-research.tsx` đặt mục tra cứu trong phần **Chuyên sâu của cung Mệnh**, mặc định thu gọn, chia nhóm, có liên kết nguồn; không thêm tab hay nhân bản bộ kiểm tra.
+- **Không** biến phân loại `derivable` thành `structural-match`, không tự xác nhận danh mục 49/49 đã hiện thực, không ghép vận hạn vào nguyên cục. Số đã ánh xạ được tính từ dữ liệu `auditClassicalPatternCandidates(chart).records`, nên vẫn chính xác khi gộp bản 20 cách cục PR #8 sau này.
+- `tests/v111651-tuvi-classical-catalog.test.cjs` kiểm tra đủ 49 ID, phân bố nhóm, dẫn nguồn cố định, phạm vi vận hạn, bất biến dữ liệu và tính nhất quán với bộ đối chiếu thực. Cần Source Integrity, TypeScript, build và Full Stack nghiệm thu trước khi gộp PR.
