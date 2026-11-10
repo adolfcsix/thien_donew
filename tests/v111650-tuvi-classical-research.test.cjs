@@ -556,3 +556,14 @@ test('r10 holds pending when Tham Lang provenance is wrong despite valid Hỏa',
  forgedStrength.houses[1].mainStarStrengths[0]={...forgedStrength.houses[1].mainStarStrengths[0],status:'H',label:'Hãm'};
  assert.equal(item(study(forgedStrength),'dinh-quy-17').status,'needs-review');
 });
+
+test('r10 actual Thiên Đồ engine chart preserves placements while verifying natal Fire source',()=>{
+ const engine=require('../packages/astrology-engine/src/tuvi.js');
+ const natal=engine.calculate({date:'2004-08-15',hour:8,minute:30,calendar:'solar',gender:'Nam'});
+ const original=JSON.stringify(natal);
+ const result=study(natal);
+ assert.equal(result.fireAudit.verified,true,'Engine-created chart must carry validated natal Fire evidence');
+ assert.equal(result.fireAudit.fireStrengthVerified,false);
+ assert.equal(item(result,'dinh-quy-17').status!=='structural-match',true);
+ assert.equal(JSON.stringify(natal),original,'Research must never mutate engine output');
+});
