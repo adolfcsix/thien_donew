@@ -70,4 +70,39 @@ function summarizeClassicalCatalog(assessedIds=[]){
  return Object.freeze({referenceTotal:ALL.length,assessed:assessed.size,distribution,groups:Object.freeze(groups),
   notice:'Phân loại khả thi/tranh luận/không khả thi do dự án nguồn đề xuất theo hệ quy tắc của họ; Thiên Đồ chưa thẩm định độc lập. Chỉ các mục đã ánh xạ mới được kiểm tra điều kiện trên lá số.'});
 }
-module.exports=Object.freeze({SOURCE,SOURCE_COMMIT,GROUPS,ALL,summarizeClassicalCatalog});
+
+/** Accent-insensitive Vietnamese search; preserves ideographs and source IDs. */
+function normalizeResearchSearch(value){
+ return value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[đĐ]/g,'d').toLocaleLowerCase('vi').trim().replace(/\s+/g,' ');
+}
+const FILTER_STATUSES=Object.freeze(['all','assessed','pending','disputed','unreachable']);
+/**
+ * Filtering never changes evaluated evidence. Titles localized by the evaluator
+ * are optional presentation metadata, never additional evaluated rules.
+ */
+function filterClassicalCatalog(report,options={}){
+ if(!report||!Array.isArray(report.groups))throw new TypeError('Expected a classical catalog report');
+ if(!options||typeof options!=='object'||Array.isArray(options))throw new TypeError('Expected catalog filter options');
+ const {query='',status='all',localizedTitles={}}=options;
+ if(typeof query!=='string')throw new TypeError('Catalog query must be a string');
+ if(!FILTER_STATUSES.includes(status))throw new RangeError('Unknown catalog filter status: '+status);
+ if(!localizedTitles||typeof localizedTitles!=='object'||Array.isArray(localizedTitles))throw new TypeError('Expected localized catalog titles map');
+ const needle=normalizeResearchSearch(query);
+ const groups=report.groups.map(group=>{
+  const entries=group.entries.filter(entry=>{
+   const correctStatus=status==='all'||
+    (status==='assessed'&&entry.assessed)||
+    (status==='pending'&&!entry.assessed&&entry.sourceStatus==='derivable')||
+    (status==='disputed'&&entry.sourceStatus==='disputed')||
+    (status==='unreachable'&&entry.sourceStatus==='unreachable');
+   if(!correctStatus)return false;
+   if(!needle)return true;
+   const translated=Object.prototype.hasOwnProperty.call(localizedTitles,entry.id)&&typeof localizedTitles[entry.id]==='string'?localizedTitles[entry.id]:'';
+   return normalizeResearchSearch([entry.id,entry.title,translated,group.name].join(' ')).includes(needle);
+  });
+  return Object.freeze({...group,entries:Object.freeze(entries)});
+ }).filter(group=>group.entries.length>0);
+ return Object.freeze({matches:groups.reduce((total,group)=>total+group.entries.length,0),groups:Object.freeze(groups)});
+}
+
+module.exports=Object.freeze({SOURCE,SOURCE_COMMIT,GROUPS,ALL,summarizeClassicalCatalog,filterClassicalCatalog});
