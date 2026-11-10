@@ -43,7 +43,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
     </div>
     <p>Tham khảo phương pháp kiểm tra điều kiện từ bộ định phú và định quý. Bản này chỉ so sánh sao bản mệnh, không tự xác nhận thành cách hay đưa ra dự báo.</p>
     {visible.length===0&&<p>Chưa có mẫu nào khớp hoặc cần xem lại. Chọn “Tất cả” để thấy từng điều kiện chưa đạt.</p>}
-    {visible.map(record=><details key={record.id} className={'palace-reading-symbol '+styles.record}>
+    {visible.map(record=><details key={record.id} id={'tuvi-classical-'+record.id} className={'palace-reading-symbol '+styles.record}>
       <summary><strong>{record.title}</strong><span>{record.group} · {stateText[record.status]}</span></summary>
       <p>{record.interpretation}</p>
       <ul className={styles.checks}>{record.checks.map((condition,i)=><li key={record.id+'-'+i} data-met={condition.state==='met'}>
@@ -80,6 +80,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
           <ol>{group.entries.map(entry=><li key={entry.id}>
             <span className={styles.catalogName}><strong>{entry.assessed?localizedTitles[entry.id]||entry.title:entry.title}</strong> {entry.assessed&&localizedTitles[entry.id]!==entry.title&&<small lang="zh">({entry.title})</small>} <small>({entry.id})</small></span>
             <span className={styles.catalogState}>{entry.assessed?'Thiên Đồ đã ánh xạ điều kiện':methodText[entry.sourceStatus]}</span>
+            {entry.assessed&&<a href={'#tuvi-classical-'+entry.id} aria-label={'Chuyển tới điều kiện đối chiếu của '+(localizedTitles[entry.id]||entry.title)}>Điều kiện</a>}
             <a href={entry.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={'Đọc quy tắc nguồn '+entry.title}>Nguồn</a>
           </li>)}</ol>
         </section>)}
