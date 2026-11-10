@@ -52,7 +52,7 @@ test('r16 rejects wrong age bounds, mismatched projections and reversed sequence
   x=>{x.houses[1].daiHan=null;}
  ]){
   const broken=clone(c);mutate(broken);
-  assert.equal(audit(broken).verifiedGeometry,false,JSON.stringify(mutate).slice(0,100));
+  assert.equal(audit(broken).verifiedGeometry,false,String(mutate).slice(0,100));
  }
  assert.equal(audit(c).verifiedGeometry,true);
 });
