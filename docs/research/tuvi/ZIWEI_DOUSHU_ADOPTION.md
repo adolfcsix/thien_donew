@@ -303,3 +303,14 @@ Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructi
 - Dữ liệu tìm kiếm chỉ tác động lớp danh mục. Không thêm cách cục mới, không thay trạng thái `assessed`, `sourceStatus`, kết quả `structural-match`, bộ an sao, Tứ Hóa hoặc quyền truy cập. Không gán từ khóa điều kiện cho các mục chưa ánh xạ/đang tranh luận/không thể suy ra.
 - Test r14 đối chiếu tìm kiếm theo tên sao có dấu và không dấu, chặn nội dung giả gán cho mục chưa ánh xạ, kiểm tra input không hợp lệ, dữ liệu lá số bất biến và đảm bảo tìm kiếm không thay đổi danh mục nguồn.
 - Chỉ merge khi Source Integrity, Full Stack và Production Acceptance đều PASS trên chính commit HEAD hiện hành, sau đó tiếp tục kiểm tra trên `main`.
+
+
+## R15 — Minh bạch điều kiện còn thiếu trước khi mở rộng cách cục (11/11/2026)
+
+- Bộ **28/49 mục có điều kiện nghiên cứu** vẫn giữ nguyên; 21 mục chưa ánh xạ gồm **6 nguồn coi là có thể kiểm tra, 9 còn tranh luận, 6 chưa thể suy ra**. Sáu mục có thể kiểm tra nhưng chưa ánh xạ gồm **2 nguyên cục (Định bần 01/02)** và **4 vận hạn (Định tạp 01/02/03/08)**.
+- `classical-research-readiness.cjs` tạo báo cáo chỉ đọc, tính từ danh mục thực tế thay vì cố định tỷ lệ hoàn thành. Từng mục trong sáu trường hợp có *điều kiện tiên quyết nghiên cứu* được mô tả ngắn và bám quy tắc nguồn đã ghim, không tạo kết quả cát/hung.
+- Hai mục Định bần cần thống nhất cách hiểu **Không Vong** từ sáu sao nguồn và đối chiếu đúng với dấu Tuần/Triệt đang có trong Thiên Đồ: **không được coi là đồng nghĩa**. Với Định bần 02 còn cần bảo đảm Lộc Tồn/Hóa Lộc, Địa Không và Địa Kiếp cùng đúng lớp và cung.
+- Bốn mục Định tạp yêu cầu tách khỏi kiểm tra nguyên cục: xác minh bảng đại hạn, vị trí cung theo địa chi, tiêu chí cường/nhược và sao hội/Không Vong có phiên bản. Chưa lập quy tắc đại hạn từ bảng bản mệnh chỉ để tăng số mục hoàn tất.
+- Giao diện dùng chính **danh mục 49 cách cục trong panel Chuyên sâu**; hiển thị số lượng động và thông tin điều kiện còn thiếu chỉ ở sáu mục có thể tiếp tục, không thêm tab hoặc menu mới. Các mục tranh luận/chưa thể suy ra giữ nguyên nhãn và liên kết nguồn.
+- Test r15 xác nhận đúng 21 mục chưa ánh xạ, 6 chướng ngại có căn cứ, trạng thái bất biến, fail-closed khi thiếu quy trình đối chiếu và bất biến lá số thực. Không thay engine, Tứ Hóa, DB, quyền Pro, AI hoặc thanh toán.
+- Chỉ gộp khi Source Integrity, Full Stack và Production Acceptance (5/5) **đồng thời PASS trên đúng HEAD**, sau đó kiểm tra lại `main`.
