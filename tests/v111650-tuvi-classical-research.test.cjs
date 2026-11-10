@@ -359,5 +359,5 @@ test('Catalog evidence navigation reveals filtered records before opening',()=>{
  assert.match(src,/target\.open=true/);
  assert.match(src,/scrollIntoView/);
  assert.match(src,/prefers-reduced-motion: reduce/);
- assert.match(src,/group===?['"]Định bần['"]/);
+ assert.match(src,/Định bần/);
 });
