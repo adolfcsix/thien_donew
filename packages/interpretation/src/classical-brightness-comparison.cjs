@@ -10,7 +10,7 @@ const REF_COMMIT='7922285d947b36610e7e31c232d8f1e2a0d0871d';
 const ROOT='https://github.com/Renhuai123/ziwei-doushu/blob/'+REF_COMMIT+'/lib/ziwei/';
 const SOURCE_URL=ROOT+'school-tables.generated.ts';
 const CROSSCHECK_URL=ROOT+'algorithm.ts';
-const PROFILE='ziwei-doushu-SB_QS-comparison-2026-11-10-v1';
+const PROFILE='ziwei-doushu-SB_QS-comparison-2026-11-10-v2';
 const BRANCHES=Object.freeze(['Tý','Sửu','Dần','Mão','Thìn','Tỵ','Ngọ','Mùi','Thân','Dậu','Tuất','Hợi']);
 const LABELS=Object.freeze({1:'Miếu',2:'Vượng',3:'Đắc',4:'Lợi',5:'Bình',6:'Bất',7:'Hãm'});
 // SB_QS is 1-based with column 0 reserved. We store ONLY columns 1-12,
@@ -24,7 +24,7 @@ const SOURCE_IDS=Object.freeze({'Tham Lang':9,'Hỏa Tinh':23,'Linh Tinh':24});
 const discrepancy=Object.freeze({
  code:'qs-huo-ling-identical-algorithm-ling-override',
  unresolved:true,
- detail:'Bảng SB_QS tại commit nguồn có Hỏa/Linh trùng 12 ô; algorithm.ts lại ghi bảng độ sáng Linh Tinh hiệu chỉnh riêng. Chưa quy đổi hai cách biểu diễn thành một hồ sơ thống nhất.',
+ detail:'Bảng SB_QS tại commit nguồn có Hỏa/Linh trùng 12 ô. Bảng mặc định trong algorithm.ts của cùng nguồn có giá trị Linh Tinh khác tại một số cung; đã chuẩn hóa thứ tự chi để đối chiếu nhưng chưa thẩm định trường phái nào phù hợp.',
  alternateUrl:CROSSCHECK_URL
 });
 /**
