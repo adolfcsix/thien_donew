@@ -43,7 +43,7 @@ test('r27: reject missing, duplicate and untrusted source/iztro observations',()
 });
 
 test('r27: runnable source probe uses both pinned generateChart and direct raw iztro bySolar',()=>{
- const source=fs.readFileSync(path.join(__dirname,'../infrastructure/scripts/tuvi-r27-source-iztro-probe.ts'),'utf8');
+ const source=fs.readFileSync(path.join(__dirname,'../infrastructure/scripts/tuvi-r27-source-iztro-probe.ts.template'),'utf8');
  const runner=fs.readFileSync(path.join(__dirname,'../infrastructure/scripts/tuvi-r27-evaluate-parity.cjs'),'utf8');
  assert.match(source,/from '\.\/lib\/ziwei\/algorithm'/);
  assert.match(source,/from 'iztro'/);
