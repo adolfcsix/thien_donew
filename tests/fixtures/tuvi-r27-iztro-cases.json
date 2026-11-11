@@ -491,7 +491,7 @@
       "kind": "calendar-boundary"
     },
     {
-      "id": "lunar-new-year-boundary-before",
+      "id": "lunar-new-year-boundary-before-2000",
       "date": "2000-02-04",
       "hour": 22,
       "minute": 0,
