@@ -57,10 +57,15 @@ module.exports=async function verifyLateZiCompare({context,origin,record,pageErr
    await page.getByRole('region',{name:'Tính sang ngày sau'}).getByText('10/02/2024',{exact:true}).first().waitFor({state:'visible'});
    assert.equal(await page.locator('#thiendo-late-zi-compare [data-research-only=true]').count(),1);
    if(out){
-    fs.mkdirSync(out,{recursive:true});
+    // GitHub uploads the repository reports directory; runner temp paths may
+    // be inaccessible from the isolated Playwright container during upload.
+    const evidenceDir=path.resolve('docs/reports/isolated-sql/r38-visual-evidence');
+    fs.mkdirSync(evidenceDir,{recursive:true});
+    const screenshot=path.join(evidenceDir,'r38-zi-compare-'+width+'px.png');
     await page.locator('#thiendo-late-zi-compare').screenshot({
-     path:path.join(out,'r38-zi-compare-'+width+'px.png'),animations:'disabled'
+     path:screenshot,animations:'disabled'
     });
+    assert.ok(fs.statSync(screenshot).size>0,'R38 screenshot must have image bytes');
    }
    assert.equal(await page.locator('#thiendo-late-zi-compare button').filter({hasText:'Lưu lá số'}).count(),0);
    const details=page.getByRole('region',{name:'Chi tiết địa chi đang chọn'});
