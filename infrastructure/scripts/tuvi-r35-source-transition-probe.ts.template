@@ -1,0 +1,67 @@
+/**
+ * R35 pinned-source probe: 72 synthetic cases, 4 transition anchors,
+ * 3 adjacent civil dates, 3 clock hours (00, 01, 23), two genders.
+ * This must run within Renhuai123/ziwei-doushu at the exact pinned SHA.
+ * The source API takes an HOUR BRANCH, not a fully qualified timestamp:
+ * 23:00 and 00:00 may map to the same branch without proving a day rollover.
+ */
+import {readFileSync,writeFileSync} from 'node:fs';
+import {generateChart} from './lib/ziwei/algorithm';
+const SOURCE_COMMIT='7922285d947b36610e7e31c232d8f1e2a0d0871d';
+const REQUIRED_IZTRO='2.6.1';
+const lock=JSON.parse(readFileSync('package-lock.json','utf8'));
+const installed=JSON.parse(readFileSync('node_modules/iztro/package.json','utf8'));
+if(lock.packages?.['node_modules/iztro']?.version!==REQUIRED_IZTRO||
+   installed.version!==REQUIRED_IZTRO)throw Error('R35 pinned iztro version mismatch');
+const fixture=JSON.parse(readFileSync('../tests/fixtures/tuvi-r35-vietnam-lunar-boundaries.json','utf8'));
+if(fixture.schema!=='thiendo-r35-vietnam-lunar-boundaries-v1'||
+   fixture.anchors?.length!==4)throw Error('R35 fixture missing');
+const addDay=(date:string,days:number)=>{
+  const d=new Date(date+'T12:00:00Z');
+  d.setUTCDate(d.getUTCDate()+days);
+  return d.toISOString().slice(0,10);
+};
+const records:any[]=[];
+for(const anchor of fixture.anchors)
+for(const offsetDays of fixture.offsetsDays){
+  const solarDate=addDay(anchor.date,offsetDays);
+  const [year,month,day]=solarDate.split('-').map(Number);
+  for(const gender of fixture.genders)for(const clockHour of fixture.clockHours){
+    const hourBranch=Math.floor(((clockHour+1)%24)/2);
+    const chart=generateChart({
+      year,month,day,hour:hourBranch,gender:gender==='Nam'?'male':'female'
+    });
+    if(chart.palaces.length!==12||chart.daXians.length!==12||
+       !Number.isInteger(chart.lunarInfo.lunarDay))
+       throw Error('Malformed reference chart: '+solarDate);
+    records.push({
+      id:[anchor.id,offsetDays,gender,clockHour].join(':'),
+      anchorId:anchor.id,offsetDays,solarDate,gender,clockHour,hourBranch,
+      source:{
+        lunarYear:chart.lunarInfo.lunarYear,
+        lunarMonth:chart.lunarInfo.lunarMonth,
+        lunarDay:chart.lunarInfo.lunarDay,
+        isLeapMonth:chart.lunarInfo.isLeapMonth,
+        leapMonthPolicy:chart.birthInfo.leapMonthPolicy,
+        yearStem:chart.lunarInfo.yearStem,
+        wuxingJu:chart.wuxingJu,
+        ziweiPos:chart.ziweiPos,
+        mingGongBranch:chart.mingGongBranch
+      }
+    });
+  }
+}
+if(records.length!==72||new Set(records.map(r=>r.id)).size!==72)
+  throw Error('R35 requires 72 unique source observations');
+writeFileSync('../.r35-source-lunar-observations.json',JSON.stringify({
+  schema:'thiendo-r35-pinned-source-lunar-transition-v1',
+  provenance:{
+    repository:'Renhuai123/ziwei-doushu',
+    commit:SOURCE_COMMIT,
+    iztroVersion:installed.version,
+    generator:'generateChart',
+    sourceExecuted:true,syntheticOnly:true
+  },
+  records
+},null,2)+'\n');
+console.log('R35: generated '+records.length+' controlled charts from source API');
