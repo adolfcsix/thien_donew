@@ -135,8 +135,16 @@ test('r34: source-generated observations are mandatory in isolated pinned-source
  assert.equal(result.checked,48,JSON.stringify(result.errors));
  assert.equal(result.failures,0,JSON.stringify(result.errors));
  assert.equal(result.records.length,48);
- assert.equal(result.byEvent['1989-08'].records,12);
- assert.equal(result.byEvent['1989-08'].byClass['local-one-day-ahead']>=4,true,
-  '1989-08-15 from R33 must remain a genuine source/local calendar discrepancy');
+ assert.equal(result.counts.byClass['local-one-day-ahead'],48,
+  'All 4 NASA new-moon civil-day offsets must remain reproducible by exact source');
+ assert.equal(result.counts.compatibleWithBoundary,48);
+ assert.equal(result.counts.matchingCuc,48);
+ assert.equal(result.counts.matchingMenh,48);
+ assert.equal(result.counts.matchingZiWei,6,
+  'A one-day lunar difference does not imply every Tử Vi anchor must differ');
+ for(const key of ['1984-05','1986-12','1989-08','1996-07']){
+  assert.equal(result.byEvent[key].records,12);
+  assert.equal(result.byEvent[key].byClass['local-one-day-ahead'],12);
+ }
  assert.equal(result.verifiedSchoolEquivalence,false);
 });
