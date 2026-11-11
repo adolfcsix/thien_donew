@@ -63,7 +63,7 @@ test('r24: research remains scoped and does not promote natal or period conclusi
   const matched=audit(chart),natal=auditClassicalPatternCandidates(chart),period=auditClassicalDingZaSourceBridge(chart);
   assert.equal(matched.status,'matched');
   assert.equal(natal.assessed,28);
-  assert.equal(period.mappedIds.length,2);
+  assert.equal(period.mappedIds.length,3);
   assert.equal(period.sourceCriterionVerified,false);
   assert.ok(natal.pendingEvidence.every(x=>x.sourceCriterionVerified===false));
   assert.equal(JSON.stringify(chart),before);
