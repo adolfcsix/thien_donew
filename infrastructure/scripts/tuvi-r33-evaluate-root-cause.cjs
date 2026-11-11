@@ -21,7 +21,43 @@ const HOURS=Object.freeze([0,8,22]);
 const GENDERS=Object.freeze(['Nam','Nữ']);
 const LIMITATION='Chỉ chẩn đoán nguồn sinh sai khác lịch/Cục/vị trí sao trên 30 ca giả lập. Không suy ra trường phái đúng hơn, không tự hiệu chỉnh an sao hoặc mở kết luận cách cục.';
 const isBranch=x=>Number.isInteger(x)&&x>=0&&x<12;
-const mismatch=(a,b)=>a!==b;
+/**
+ * Independent astronomical phase datum: NASA GSFC, Phases of the Moon 1901–2000,
+ * new moon 1989-08-01 at 16:06 UT.
+ * The month-start civil day differs between UTC+7 and UTC+8 (23:06 vs 00:06).
+ * This explains a compatible one-day lunar-month offset; it does NOT establish
+ * school semantics, rule suitability, or override an existing chart.
+ */
+const BOUNDARY=Object.freeze({
+ newMoonUtc:'1989-08-01T16:06:00Z',
+ reference:'https://eclipse.gsfc.nasa.gov/phase/phases1901.html',
+ vietnamOffsetHours:7,chinaOffsetHours:8,
+ expectedVietnamMonthStart:'1989-08-01',
+ expectedChinaMonthStart:'1989-08-02'
+});
+function civilDateAtOffset(iso,offsetHours){
+ const utc=Date.parse(iso);
+ if(!Number.isFinite(utc)||!Number.isInteger(offsetHours))throw Error('Invalid UTC boundary');
+ return new Date(utc+offsetHours*3600000).toISOString().slice(0,10);
+}
+function evaluateCalendarBoundary(date,source,local){
+ const vietnam=civilDateAtOffset(BOUNDARY.newMoonUtc,7);
+ const china=civilDateAtOffset(BOUNDARY.newMoonUtc,8);
+ if(vietnam!==BOUNDARY.expectedVietnamMonthStart||china!==BOUNDARY.expectedChinaMonthStart)
+  throw Error('Invalid independent 1989 astronomical date boundary');
+ const inWindow=['1989-08-14','1989-08-15','1989-08-16'].includes(date);
+ const compatible=inWindow&&source.lunarYear===local.lunarYear&&
+  source.lunarMonth===local.lunarMonth&&
+  source.isLeapMonth===local.isLeapMonth&&
+  local.lunarDay===source.lunarDay+1;
+ return Object.freeze({
+  status:!inWindow?'control-date':compatible?'compatible-with-civil-timezone-boundary':'not-established',
+  sourceLunarDay:source.lunarDay,localLunarDay:local.lunarDay,
+  vietnamNewMoonCivilDate:vietnam,chinaNewMoonCivilDate:china,
+  reference:BOUNDARY.reference,
+  provenSchoolEquivalence:false
+ });
+}
 const unknown=()=>{throw Error('Incomplete or corrupted source observations');};
 const missingRequired=(x,lo,hi)=>!Number.isInteger(x)||x<lo||x>hi;
 function validateSource(input){
@@ -99,6 +135,7 @@ function compareCase(rec){
   thatSat:s.thatSatBranch===l.thatSatBranch,
   huaLoc:s.huaLocBranch===l.huaLocBranch
  });
+ const calendarBoundary=evaluateCalendarBoundary(rec.solarDate,s,l);
  const firstDifference=!checks.lunarYear||!checks.lunarMonth||!checks.lunarDay||!checks.leapMonth?
   'calendar-difference':!checks.yearStem?'year-stem-difference':
   !checks.wuxingJu?'cuc-difference':
@@ -108,7 +145,7 @@ function compareCase(rec){
   !checks.huaLoc?'four-hua-difference':'matched';
  return Object.freeze({
   id:rec.id,solarDate:rec.solarDate,gender:rec.gender,clockHour:rec.clockHour,
-  source:Object.freeze({...s}),local:Object.freeze(l),checks,firstDifference,
+  source:Object.freeze({...s}),local:Object.freeze(l),checks,firstDifference,calendarBoundary,
   sourcePattern01:s.dingPin01,sourcePattern02:s.dingPin02,
   sourcePeriod03Count:s.dingZa03Count,
   localSourceCriterionVerified:false,
@@ -142,7 +179,10 @@ function analyzeRootCause(input){
   schema:REPORT,sourceCommit:SOURCE_COMMIT,sourceIztroVersion:VERSION,
   genuineSourceRequired:true,syntheticOnly:true,
   compared:records.length,expected:30,failures:failures.length,
-  differences,byDate,records,errors:failures,
+  differences,byDate,
+  calendarBoundaryCount:records.filter(x=>x.calendarBoundary.status==='compatible-with-civil-timezone-boundary').length,
+  calendarBoundaryReference:BOUNDARY.reference,
+  records,errors:failures,
   semanticEquivalenceVerified:false,localPatternVerdictsVerified:false,
   engineChanged:false,limitation:LIMITATION
  });
@@ -158,4 +198,4 @@ if(require.main===module){
  if(report.compared!==30||report.failures)process.exitCode=1;
 }
 module.exports=Object.freeze({SCHEMA,REPORT,VERSION,DATES,HOURS,GENDERS,LIMITATION,
- validateSource,compareCase,analyzeRootCause});
+ validateSource,compareCase,analyzeRootCause,BOUNDARY,civilDateAtOffset,evaluateCalendarBoundary});
