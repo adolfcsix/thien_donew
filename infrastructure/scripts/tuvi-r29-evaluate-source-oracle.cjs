@@ -27,7 +27,7 @@ function palaceIndex(record){
   if(!palace||!isIntegerBranch(palace.branch)||map.has(palace.branch)||
    !Array.isArray(palace.stars)||palace.stars.some(s=>!s||
     typeof s.name!=='string'||s.name.length===0||
-    !(s.siHua===null||s.siHua===undefined||
+    !(s.siHua===null||s.siHua===undefined||s.siHua===''||
      ['禄','权','科','忌'].includes(s.siHua))))
    throw new Error('Missing or duplicate source branch/star data');
   map.set(palace.branch,palace.stars);
