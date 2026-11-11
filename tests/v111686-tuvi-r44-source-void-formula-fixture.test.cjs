@@ -45,6 +45,22 @@ test('Source formula 禄衰马困: both 禄存/天马 at Void, 七杀 in period 
  assert.equal(run(make({1:['禄存','旬空'],7:['天马'],3:['七杀']})).items[2].formulaMatched,false);
  assert.equal(run(make({1:['禄存','旬空'],7:['天马','副截']})).items[2].formulaMatched,false);
 });
+test('Palace array order is irrelevant; all results address branch rather than array offset',()=>{
+ const base=make({0:['廉贞','旬空'],1:['禄存','副旬'],3:['七杀'],
+  7:['天马','副截']});
+ const expected=run(base);
+ const rearranged=JSON.parse(JSON.stringify(base));
+ rearranged.palaces.push(...rearranged.palaces.splice(0,2));
+ assert.deepEqual(run(rearranged),expected);
+ const reverse=JSON.parse(JSON.stringify(base));
+ reverse.palaces.reverse();
+ assert.deepEqual(run(reverse),expected);
+});
+test('A relevant source star cannot occupy two branches of a synthetic chart',()=>{
+ for(const name of ['廉贞','禄存','天马','七杀','地空','地劫','旬空','副截']){
+  assert.throws(()=>run(make({0:[name],1:[name]})),RangeError,name);
+ }
+});
 test('Malformed source fixtures fail closed',()=>{
  assert.throws(()=>run({}),TypeError);
  const d=make();d.palaces[1].branch=0;assert.throws(()=>run(d),RangeError);

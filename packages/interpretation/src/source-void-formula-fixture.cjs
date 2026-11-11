@@ -4,12 +4,14 @@ const {SOURCE_COMMIT}=require('./classical-pattern-catalog.cjs');
 const VOID=Object.freeze(['旬空','副旬','截路','截空','空亡','副截']);
 const IDS=Object.freeze(['dinh-ban-01','dinh-ban-02','dinh-tap-03']);
 const URL='https://github.com/Renhuai123/ziwei-doushu/blob/'+SOURCE_COMMIT+'/lib/ziwei/';
+const UNIQUE_SOURCE_STARS=new Set(['廉贞','禄存','天马','七杀','地空','地劫',...VOID]);
 function evaluatePinnedSourceVoidFixture(input){
  if(!input||input.kind!=='source-synthetic-fixture'||!Array.isArray(input.palaces)||
     input.palaces.length!==12||!Number.isInteger(input.mingGongBranch)||
     input.mingGongBranch<0||input.mingGongBranch>11||
     !Array.isArray(input.periodBranches)||input.periodBranches.length!==12)
   throw new TypeError('Only complete, synthetic source-shaped fixtures are supported');
+ const seenUniqueStars=new Set();
  const byBranch=new Map();
  for(const palace of input.palaces){
   if(!palace||!Number.isInteger(palace.branch)||palace.branch<0||
@@ -19,6 +21,10 @@ function evaluatePinnedSourceVoidFixture(input){
    if(!star||typeof star.name!=='string'||!star.name.trim()||
       (star.siHua!==undefined&&!['禄','权','科','忌'].includes(star.siHua)))
     throw new TypeError('Invalid source star or transformation');
+   if(UNIQUE_SOURCE_STARS.has(star.name)){
+    if(seenUniqueStars.has(star.name))throw new RangeError('Duplicate source star: '+star.name);
+    seenUniqueStars.add(star.name);
+   }
   }
   byBranch.set(palace.branch,palace.stars);
  }
