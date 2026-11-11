@@ -362,3 +362,12 @@ Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructi
 - Sửa hai nhãn Định bần 01/02 và hai nhãn Định tạp 03 từ câu gây hiểu nhầm *"phải có đủ sáu sao"* thành kiểm tra sao Không Vong theo **quy tắc nguồn đúng phiên bản**. Cùng một giải thích nguồn được dùng lại giữa hai bộ nghiên cứu, tránh mâu thuẫn khái niệm, không thêm tab hoặc thao tác mới.
 - Không thay đặt sao, không thay trạng thái `unknown`, không tăng **28/49** chỉ mục ánh xạ, không suy luận vận mệnh. Test r20 bắt buộc 4 tên chuẩn hóa từ 6 nhãn, Tuần/Triệt không được tự đồng nhất, không làm đổi biểu đồ Nam/Nữ, các cách cục Định bần/Định tạp vẫn chưa đạt xác nhận nguồn.
 - Cổng nghiệm thu: Source Integrity, Full Stack và Production Acceptance (5/5) PASS trên đúng HEAD trước merge; sau merge xác nhận trên `main`.
+
+
+## R21 — Bảng mã Không Vong theo 10 thiên can, chưa đưa vào an sao (11/11/2026)
+
+- Đối chiếu bảng `SCHOOL_JIEKONG_VARIANTS.v1/v2/v3` và `SCHOOL_XUNKONG` của `Renhuai123/ziwei-doushu/lib/ziwei/school-data.ts` tại commit `7922285d947b36610e7e31c232d8f1e2a0d0871d`. Ghi đủ 10 thiên can theo thứ tự Giáp–Quý và 3 mã trường phái `single/double/zhanyan`.
+- Xuất `SOURCE_VOID_STEM_ROWS` dạng dữ liệu bất biến và `lookupVoidStemCodes(stem,variant)` chỉ trả mã số 1-based của **nguồn**, không có tham số lá số, không gọi thuật toán an sao và không chuyển mã sang `branchIndex`. Bất kỳ biến thể hoặc thiên can không hợp lệ đều trả `null` (fail-closed).
+- Bảng `SCHOOL_XUNKONG` trong nguồn có 12 giá trị sau số sentinel dù chú thích `theo thiên can 1–10`; chỉ đối chiếu 10 thiên can đúng phạm vi chú thích, hai vị trí còn lại **không tự diễn giải**. Cần phân biệt nguồn bảng dữ liệu và cách thuật toán `iztro` thực tế đặt sao trước khi so sánh với Thiên Đồ.
+- Thêm **một bảng mã đóng mặc định** trong phần danh mục nghiên cứu 49 cách cục, dùng CSS bảng sẵn có; không thêm route/tab, không hiển thị vị trí sao của người dùng, có caption và link dẫn đến bảng nguồn.
+- Test r21 kiểm tra nguyên bảng 10 can × 3 biến thể, 12 mã Xun kèm sentinel, trường hợp tham số sai, tính bất biến, bảo vệ `sourcePlacementVerified=false`, `sourceCriterionVerified=false` và 28/49. Không sửa engine, tài khoản, thanh toán hay AI.
