@@ -9,6 +9,7 @@ import {summarizeClassicalCatalog,filterClassicalCatalog} from '@thiendo/interpr
 import {summarizeClassicalResearchReadiness} from '@thiendo/interpretation/src/classical-research-readiness.cjs';
 import {auditClassicalPeriodGeometry} from '@thiendo/interpretation/src/classical-period-geometry.cjs';
 import {auditClassicalDingZaPeriods} from '@thiendo/interpretation/src/classical-dingza-period-research.cjs';
+import {auditClassicalDingZaSourceBridge} from '@thiendo/interpretation/src/classical-dingza-source-bridge.cjs';
 import {SOURCE_VOID_STEM_ROWS,SOURCE_STEM_MATRIX_NOTE,SOURCE_SCHOOL_DATA_URL} from '@thiendo/interpretation/src/classical-source-void-vocabulary.cjs';
 import type {ClassicalCatalogFilterStatus} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import styles from './conditional-pattern-evidence.module.css';
@@ -27,8 +28,12 @@ const methodText={derivable:'Nguồn: có thể kiểm tra',disputed:'Nguồn: c
  */
 export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   const data=useMemo(()=>auditClassicalPatternCandidates(chart),[chart]);
-  // Distinguish an implemented position check from the source's methodological category.
-  const catalog=useMemo(()=>summarizeClassicalCatalog(data.records.map(record=>record.id)),[data]);
+  const bridge=useMemo(()=>auditClassicalDingZaSourceBridge(chart),[chart]);
+  const bridgeById=useMemo(()=>new Map<string,(typeof bridge.items)[number]>(bridge.items.map(x=>[x.id,x] as const)),[bridge]);
+  // Natal position checks and newly mapped decade checks stay independent.
+  const catalog=useMemo(()=>summarizeClassicalCatalog([
+    ...data.records.map(record=>record.id),...bridge.mappedIds
+  ]),[data,bridge]);
   const readiness=useMemo(()=>summarizeClassicalResearchReadiness(catalog),[catalog]);
   const pendingById=useMemo(()=>new Map<string,(typeof data.pendingEvidence)[number]>(data.pendingEvidence.map(entry=>[entry.id,entry] as const)),[data]);
   const periodGeometry=useMemo(()=>auditClassicalPeriodGeometry(chart),[chart]);
@@ -38,7 +43,9 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   const [catalogQuery,setCatalogQuery]=useState('');
   const [catalogStatus,setCatalogStatus]=useState<ClassicalCatalogFilterStatus>('all');
   const [jumpToId,setJumpToId]=useState<string|null>(null);
-  const localizedTitles=useMemo(()=>Object.fromEntries(data.records.map(r=>[r.id,r.title])),[data]);
+  const localizedTitles=useMemo(()=>Object.fromEntries([
+    ...data.records.map(r=>[r.id,r.title]),...dingZa.items.filter(x=>bridge.mappedIds.includes(x.id as 'dinh-tap-01'|'dinh-tap-08')).map(x=>[x.id,x.title])
+  ]),[data,dingZa,bridge]);
   // Index criteria labels, not live placement details or birth information.
   const evidenceTerms=useMemo(()=>Object.fromEntries(data.records.map(record=>[
     record.id,[record.interpretation,...record.checks.map(condition=>condition.label)].join(' ')
@@ -62,7 +69,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
     <div className={styles.head}>
       <div>
         <h4>Đối chiếu cách cục cổ điển</h4>
-        <p className="palace-reading-scope">Đã ánh xạ {data.assessed}/{data.referenceTotal} chỉ mục tham khảo · {data.matched} khớp cấu trúc · {data.needsReview} cần thẩm định.</p>
+        <p className="palace-reading-scope">Đã ánh xạ điều kiện {catalog.assessed}/{data.referenceTotal} mục (28 nguyên cục + 2 đại hạn nghiên cứu) · {data.matched} khớp cấu trúc nguyên cục · {data.needsReview} cần thẩm định.</p>
       </div>
       <div className={styles.filters} role="group" aria-label="Lọc theo kết quả điều kiện nghiên cứu">
         <button type="button" aria-pressed={filter==='relevant'} onClick={()=>setFilter('relevant')}>Liên quan · {evidence.counts.relevant}</button>
@@ -193,19 +200,19 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
           </div>}
           <ol>{group.entries.map(entry=><li key={entry.id}>
             <span className={styles.catalogName}><strong>{entry.assessed?localizedTitles[entry.id]||entry.title:entry.title}</strong> {entry.assessed&&localizedTitles[entry.id]!==entry.title&&<small lang="zh">({entry.title})</small>} <small>({entry.id})</small></span>
-            <span className={styles.catalogState}>{entry.assessed?'Thiên Đồ đã ánh xạ điều kiện':methodText[entry.sourceStatus]}</span>
-            {entry.assessed&&<button type="button" onClick={()=>{setFilter('all');setJumpToId(entry.id);}} aria-label={'Mở điều kiện đối chiếu của '+(localizedTitles[entry.id]||entry.title)}>Điều kiện</button>}
+            <span className={styles.catalogState}>{entry.assessed?(entry.scope==='period-research'?'Đã ánh xạ điều kiện hạn · chưa kết luận':'Thiên Đồ đã ánh xạ điều kiện'):methodText[entry.sourceStatus]}</span>
+            {entry.assessed&&entry.scope==='natal-research'&&<button type="button" onClick={()=>{setFilter('all');setJumpToId(entry.id);}} aria-label={'Mở điều kiện đối chiếu của '+(localizedTitles[entry.id]||entry.title)}>Điều kiện</button>}
             <a href={entry.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={'Đọc quy tắc nguồn '+entry.title}>Nguồn</a>
             {!entry.assessed&&entry.sourceStatus==='derivable'&&<small className={styles.catalogBlocker}>Cần kiểm chứng: {readiness.byId[entry.id].blocker}</small>}
-            {!entry.assessed&&dingZaById.has(entry.id)&&<details className={styles.periodEvidence}>
-              <summary>Đối chiếu đại hạn từng kỳ · chưa ánh xạ</summary>
+            {dingZaById.has(entry.id)&&<details className={styles.periodEvidence}>
+              <summary>{entry.assessed?'Đã ánh xạ điều kiện đại hạn · chưa kết luận':'Đối chiếu đại hạn từng kỳ · chưa ánh xạ'}</summary>
               <p>Đã kiểm tra {dingZa.verifiedGeometry?dingZa.checkedPeriods:0}/12 khoảng đại hạn theo cấu trúc Thiên Đồ. Không dùng làm kết luận Định tạp.</p>
               {!dingZa.verifiedGeometry&&<small>{dingZa.reason}</small>}
               {dingZa.verifiedGeometry&&<ol className={styles.periodRanges}>
                 {dingZaById.get(entry.id)?.periods.map(period=><li key={entry.id+'-'+period.index}>
                   <details>
                     <summary>{period.fromAge}–{period.toAge} tuổi mụ · {period.branchName} ({period.palace})</summary>
-                    <ul className={styles.checks}>{period.checks.map((condition,i)=><li key={entry.id+'-'+period.index+'-'+i} data-met={condition.state==='met'}>
+                    <ul className={styles.checks}>{[...period.checks,...(bridgeById.get(entry.id)?.periods.find(p=>p.index===period.index)?.checks||[])].map((condition,i)=><li key={entry.id+'-'+period.index+'-'+i} data-met={condition.state==='met'}>
                       <strong>{checkText[condition.state]}:</strong> {condition.label}. <span>{condition.detail}</span>
                     </li>)}</ul>
                   </details>
@@ -225,6 +232,6 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
         </section>)}
       </div>
     </details>
-    <small>{data.notice} Bộ này chưa được chuyên gia độc lập thẩm định. Các mục Định bần chỉ mô tả tổ hợp sao theo tài liệu, không đưa ra kết luận tài chính hay vận mệnh. Định tạp thuộc nghiên cứu vận hạn và chưa gộp vào bản mệnh.</small>
+    <small>{data.notice} Hai chỉ mục đại hạn mới chỉ có bộ điều kiện tham khảo QS trên tọa độ Thiên Đồ, chưa được chuyên gia xác nhận. Bộ này chưa được chuyên gia độc lập thẩm định. Các mục Định bần chỉ mô tả tổ hợp sao theo tài liệu, không đưa ra kết luận tài chính hay vận mệnh. Định tạp thuộc nghiên cứu vận hạn và chưa gộp vào bản mệnh.</small>
   </article>;
 }
