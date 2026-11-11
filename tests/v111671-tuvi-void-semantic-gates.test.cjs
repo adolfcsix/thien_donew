@@ -53,7 +53,7 @@ test('r28: malformed and tampered charts cannot yield verified equivalence or se
  const mutators=[
   c=>{c.advancedStarRuleSet='corrupted';},
   c=>{c.obstructionMarkers[0].branches=[0,0];},
-  c=>{c.houses[0].obstructionMarkers=[];},
+  c=>{c.houses[0].obstructionMarkers.push('SAI-DỮ-LIỆU');},
   c=>{c.lunar.year=2010;},
   c=>{c.yearCanChi=42;},
   c=>{c.houses.pop();}
