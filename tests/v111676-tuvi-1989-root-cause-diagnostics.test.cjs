@@ -5,7 +5,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const Engine=require('../packages/astrology-engine/src/tuvi.js');
 const {SCHEMA,REPORT,DATES,HOURS,GENDERS,LIMITATION,
-  validateSource,analyzeRootCause}=require('../infrastructure/scripts/tuvi-r33-evaluate-root-cause.cjs');
+  validateSource,analyzeRootCause,BOUNDARY,civilDateAtOffset,evaluateCalendarBoundary}=require('../infrastructure/scripts/tuvi-r33-evaluate-root-cause.cjs');
 const clone=x=>JSON.parse(JSON.stringify(x));
 const BRANCHES=['Tý','Sửu','Dần','Mão','Thìn','Tỵ','Ngọ','Mùi','Thân','Dậu','Tuất','Hợi'];
 const STEMS=['Giáp','Ất','Bính','Đinh','Mậu','Kỷ','Canh','Tân','Nhâm','Quý'];
@@ -82,6 +82,20 @@ test('r33: classify first actual difference instead of guessing or silently fixi
   assert.equal(JSON.stringify(src),before);
  }
 });
+test('r33: NASA August 1 1989 new moon straddles Vietnam UTC+7 and China UTC+8 midnight',()=>{
+ assert.equal(BOUNDARY.newMoonUtc,'1989-08-01T16:06:00Z');
+ assert.equal(civilDateAtOffset(BOUNDARY.newMoonUtc,7),'1989-08-01');
+ assert.equal(civilDateAtOffset(BOUNDARY.newMoonUtc,8),'1989-08-02');
+ assert.match(BOUNDARY.reference,/eclipse\.gsfc\.nasa\.gov/);
+ const local={lunarYear:1989,lunarMonth:7,lunarDay:15,isLeapMonth:false};
+ const source={lunarYear:1989,lunarMonth:7,lunarDay:14,isLeapMonth:false};
+ const a=evaluateCalendarBoundary('1989-08-15',source,local);
+ assert.equal(a.status,'compatible-with-civil-timezone-boundary');
+ assert.equal(a.provenSchoolEquivalence,false);
+ assert.equal(evaluateCalendarBoundary('1989-08-15',{...source,lunarDay:15},local).status,'not-established');
+ assert.equal(evaluateCalendarBoundary('1988-08-15',source,local).status,'control-date');
+});
+
 test('r33: reject provenance, swapped hours, missing controls, invalid branches and duplicated chart IDs',()=>{
  const base=fixture();
  const mutations=[
@@ -118,6 +132,10 @@ test('r33: genuine source execution may only be claimed in isolated pinned-sourc
  assert.equal(out.compared,30,JSON.stringify(out.errors));
  assert.equal(out.failures,0,JSON.stringify(out.errors));
  assert.equal(out.records.filter(x=>x.solarDate==='1989-08-15').length,6);
+ assert.equal(out.calendarBoundaryCount,18,'All 1989 controls must be explained by one-day timezone-compatible lunar-day offset');
+ assert.equal(out.differences.lunarDay,18);
+ assert.equal(out.differences.wuxingJu,0);
+ assert.equal(out.differences.ziweiPos,18);
  assert.equal(out.semanticEquivalenceVerified,false);
  assert.equal(out.localPatternVerdictsVerified,false);
 });
