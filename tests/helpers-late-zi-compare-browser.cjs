@@ -1,10 +1,12 @@
 'use strict';
 const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
 /**
  * Runs in the real isolated browser -> Next -> Nest -> PGlite acceptance
  * context. Never persists a hypothetical birthday or natal chart.
  */
-module.exports=async function verifyLateZiCompare({context,origin,record,pageErrors}){
+module.exports=async function verifyLateZiCompare({context,origin,record,pageErrors,out}){
  for(const width of [390,1440]){
   const page=await context.newPage();
   page.on('pageerror',e=>pageErrors.push(e.message));
@@ -50,6 +52,12 @@ module.exports=async function verifyLateZiCompare({context,origin,record,pageErr
    await page.getByText('09/02/2024',{exact:true}).first().waitFor();
    await page.getByText('10/02/2024',{exact:true}).first().waitFor();
    assert.equal(await page.locator('#thiendo-late-zi-compare [data-research-only=true]').count(),1);
+   if(out){
+    fs.mkdirSync(out,{recursive:true});
+    await page.locator('#thiendo-late-zi-compare').screenshot({
+     path:path.join(out,'r38-zi-compare-'+width+'px.png'),animations:'disabled'
+    });
+   }
    assert.equal(await page.locator('#thiendo-late-zi-compare button').filter({hasText:'Lưu lá số'}).count(),0);
    const details=page.getByRole('region',{name:'Chi tiết địa chi đang chọn'});
    await details.waitFor();
