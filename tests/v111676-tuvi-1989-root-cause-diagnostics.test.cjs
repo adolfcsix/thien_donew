@@ -1,0 +1,122 @@
+'use strict';
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const Engine=require('../packages/astrology-engine/src/tuvi.js');
+const {SCHEMA,REPORT,DATES,HOURS,GENDERS,LIMITATION,
+  validateSource,analyzeRootCause}=require('../infrastructure/scripts/tuvi-r33-evaluate-root-cause.cjs');
+const clone=x=>JSON.parse(JSON.stringify(x));
+const BRANCHES=['Tý','Sửu','Dần','Mão','Thìn','Tỵ','Ngọ','Mùi','Thân','Dậu','Tuất','Hợi'];
+const STEMS=['Giáp','Ất','Bính','Đinh','Mậu','Kỷ','Canh','Tân','Nhâm','Quý'];
+const fixture=()=>{
+ const records=[];
+ for(const date of DATES)for(const gender of GENDERS)for(const clockHour of HOURS){
+  const c=Engine.calculate({date,hour:clockHour,minute:0,calendar:'solar',gender});
+  const pos=name=>c.houses.find(h=>h.stars.includes(name)).branchIndex;
+  records.push({
+   id:date+'-'+gender+'-'+clockHour,solarDate:date,gender,clockHour,
+   hourBranch:Math.floor(((clockHour+1)%24)/2),
+   source:{
+    lunarYear:c.lunar.year,lunarMonth:c.lunar.month,lunarDay:c.lunar.day,
+    isLeapMonth:c.lunar.leap===true,yearStem:STEMS.indexOf(c.yearCanChi.split(' ')[0]),
+    yearBranch:BRANCHES.indexOf(c.yearCanChi.split(' ')[1]),
+    leapMonthPolicy:'split',wuxingJu:c.cuc.number,ziweiPos:BRANCHES.indexOf(c.ziWei),
+    mingGongBranch:BRANCHES.indexOf(c.menh),
+    liemTrinhBranch:pos('Liêm Trinh'),thatSatBranch:pos('Thất Sát'),
+    huaLocBranch:c.transformations.find(x=>x.name==='Hóa Lộc').branch,
+    dingPin01:false,dingPin02:false,dingZa03Count:0
+   }
+  });
+ }
+ return {
+  schema:SCHEMA,
+  provenance:{
+   repository:'Renhuai123/ziwei-doushu',
+   commit:'7922285d947b36610e7e31c232d8f1e2a0d0871d',
+   iztroVersion:'2.6.1',
+   functions:['generateChart','detectDingPin','detectDingZa'],
+   syntheticOnly:true,sourceExecuted:true
+  },
+  records
+ };
+};
+test('r33: 30 deterministic samples across 1988-1990, adjacent 1989 dates, 3 clock hours and 2 genders',()=>{
+ const x=fixture();
+ assert.equal(DATES.length,5);
+ assert.equal(x.records.length,30);
+ assert.doesNotThrow(()=>validateSource(x));
+ assert.equal(x.records[0].solarDate,'1988-08-15');
+ assert.equal(x.records.at(-1).solarDate,'1990-08-15');
+ const out=analyzeRootCause(x);
+ assert.equal(out.compared,30);
+ assert.equal(out.failures,0);
+ assert.equal(out.schema,REPORT);
+ assert.equal(out.records.filter(x=>x.firstDifference==='matched').length,30);
+ assert.deepEqual(Object.values(out.differences),Array(11).fill(0));
+ assert.equal(out.semanticEquivalenceVerified,false);
+ assert.equal(out.localPatternVerdictsVerified,false);
+ assert.equal(out.engineChanged,false);
+ assert.match(LIMITATION,/Không suy ra trường phái đúng hơn/);
+});
+
+test('r33: classify first actual difference instead of guessing or silently fixing either engine',()=>{
+ const base=fixture();
+ const scenarios=[
+  ['lunarDay',x=>{x.lunarDay=x.lunarDay===30?29:x.lunarDay+1},'calendar-difference'],
+  ['wuxingJu',x=>{x.wuxingJu=x.wuxingJu===6?5:6},'cuc-difference'],
+  ['ziweiPos',x=>{x.ziweiPos=(x.ziweiPos+1)%12},'ziwei-anchor-difference'],
+  ['liemTrinhBranch',x=>{x.liemTrinhBranch=(x.liemTrinhBranch+1)%12},'major-star-difference'],
+  ['huaLocBranch',x=>{x.huaLocBranch=(x.huaLocBranch+1)%12},'four-hua-difference']
+ ];
+ for(const [key,mutate,reason] of scenarios){
+  const src=clone(base);
+  mutate(src.records.find(x=>x.solarDate==='1989-08-15').source);
+  const before=JSON.stringify(src);
+  const result=analyzeRootCause(src);
+  assert.equal(result.failures,0,key);
+  assert.equal(result.records.find(x=>x.id==='1989-08-15-Nam-0').firstDifference,reason);
+  assert.equal(result.differences[key],1);
+  assert.equal(result.records.filter(x=>x.firstDifference!=='matched').length,1);
+  assert.equal(JSON.stringify(src),before);
+ }
+});
+test('r33: reject provenance, swapped hours, missing controls, invalid branches and duplicated chart IDs',()=>{
+ const base=fixture();
+ const mutations=[
+  x=>{x.provenance.commit='latest';},
+  x=>{x.provenance.iztroVersion='3.0';},
+  x=>{x.provenance.sourceExecuted=false;},
+  x=>{x.provenance.functions=['generateChart'];},
+  x=>{x.records.pop();},
+  x=>{x.records[0].id=x.records[1].id;},
+  x=>{x.records[0].hourBranch=8;},
+  x=>{x.records[0].source.ziweiPos=12;},
+  x=>{x.records[0].source.lunarMonth=0;},
+  x=>{x.records[0].source.wuxingJu=7;},
+  x=>{x.records[0].source.dingPin02='true';}
+ ];
+ for(const mutate of mutations){
+  const c=clone(base);
+  mutate(c);
+  assert.throws(()=>validateSource(c));
+ }
+});
+test('r33: genuine source execution may only be claimed in isolated pinned-source workflow',()=>{
+ const template=fs.readFileSync(path.join(__dirname,'../infrastructure/scripts/tuvi-r33-source-root-cause-probe.ts.template'),'utf8');
+ assert.match(template,/generateChart\(/);
+ assert.match(template,/detectDingPin\(/);
+ assert.match(template,/detectDingZa\(/);
+ assert.match(template,/lunarInfo\.lunarDay/);
+ assert.match(template,/chart\.wuxingJu/);
+ assert.match(template,/chart\.ziweiPos/);
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const p=path.resolve(__dirname,'../.r33-source-1989-root-cause-observations.json');
+ assert.ok(fs.existsSync(p),'Missing genuinely executed reference observation');
+ const out=analyzeRootCause(JSON.parse(fs.readFileSync(p,'utf8')));
+ assert.equal(out.compared,30,JSON.stringify(out.errors));
+ assert.equal(out.failures,0,JSON.stringify(out.errors));
+ assert.equal(out.records.filter(x=>x.solarDate==='1989-08-15').length,6);
+ assert.equal(out.semanticEquivalenceVerified,false);
+ assert.equal(out.localPatternVerdictsVerified,false);
+});
