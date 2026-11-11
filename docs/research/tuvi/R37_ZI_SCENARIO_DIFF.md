@@ -25,6 +25,10 @@ Không truyền vào múi giờ, kinh độ hoặc giờ mặt trời thực. Đ
 - Báo cáo luôn để `selectedPolicy='current-day'`, `productionPolicyUnchanged=true`, `sourceSchoolEquivalenceVerified=false` và `astroTimezoneVerified=false`.
 - Không có thao tác cập nhật database, sao, cách cục, UI, quyền Pro, AI hoặc luật thanh toán.
 
+## Báo cáo 16 trường hợp mẫu
+
+`infrastructure/scripts/tuvi-r37-report-scenarios.cjs` tạo `.r37-zi-scenario-report.json` từ bốn ngày ranh giới (`2020-05-22`, `2023-03-21`, `2024-02-09`, `2025-01-28`), hai giới tính và hai thời điểm `23:00` / `23:59`. Mỗi dòng ghi ngày sử dụng ở hai kịch bản, các trường thay đổi, toàn bộ tọa chi 14 chính tinh, và kết quả so từng trường. Báo cáo thống kê số ca đổi ngày âm, Mệnh, Cục, Tử Vi và số ca đổi ít nhất một chính tinh. Không cố định con số đầu ra khi chưa chạy engine thật; CI chạy script và lưu JSON trong GitHub Actions artifact 14 ngày.
+
 ## Kiểm chứng hồi quy
 
 `tests/v111680-tuvi-r37-zi-scenario.test.cjs` xác nhận đầu vào sai bị từ chối, ngày Tết/tháng nhuận, 23:00/23:59, ngày qua năm, các trường thay đổi, cả 14 chính tinh, vùng không đủ điều kiện, giới hạn năm 2100, kết quả bất biến khi gọi lặp. Các mẫu là ngày giả lập, không dùng dữ liệu sinh cá nhân.
