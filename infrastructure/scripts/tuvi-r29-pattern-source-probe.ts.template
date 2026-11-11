@@ -1,0 +1,65 @@
+/**
+ * R29 — Execute, not simulate, three outstanding pattern definitions
+ * inside the exact reference checkout and iztro@2.6.1.
+ * This is an external TypeScript TEMPLATE, never a Thiên Đồ source module.
+ * Only uses the same synthetic cases already approved in R27.
+ */
+import {readFileSync,writeFileSync} from 'node:fs';
+import {generateChart} from './lib/ziwei/algorithm';
+import {detectDingPin} from './lib/ziwei/patterns-dingpin';
+import {detectDingZa} from './lib/ziwei/patterns-dingza';
+
+const COMMIT='7922285d947b36610e7e31c232d8f1e2a0d0871d';
+const VERSION='2.6.1';
+const lock=JSON.parse(readFileSync('package-lock.json','utf8'));
+const runtime=JSON.parse(readFileSync('node_modules/iztro/package.json','utf8'));
+if(lock.packages?.['node_modules/iztro']?.version!==VERSION||runtime.version!==VERSION)
+ throw new Error('R29 requires reference lockfile iztro@'+VERSION);
+const matrix=JSON.parse(readFileSync('../tests/fixtures/tuvi-r27-iztro-cases.json','utf8'));
+if(matrix.schema!=='thiendo-r27-public-synthetic-case-matrix-v1'||
+ !Array.isArray(matrix.cases)||matrix.cases.length!==65||
+ new Set(matrix.cases.map((x:any)=>x.id)).size!==65)
+ throw new Error('R29 requires original 65 distinct synthetic cases');
+
+const records=matrix.cases.map((sample:any)=>{
+ const [year,month,day]=sample.date.split('-').map(Number);
+ const hourBranch=Math.floor(((sample.hour+1)%24)/2);
+ if(!['Nam','Nữ'].includes(sample.gender)||sample.hour===23||
+    sample.minute!==0||hourBranch<0||hourBranch>11)throw new Error('Bad case '+sample.id);
+ const gender=sample.gender==='Nam'?'male':'female';
+ const c=generateChart({year,month,day,hour:hourBranch,gender});
+ if(!Array.isArray(c.palaces)||c.palaces.length!==12||!Array.isArray(c.daXians))
+  throw new Error('Reference chart incomplete: '+sample.id);
+ // Retain only sourced, auditable fields (not persons, account data or text).
+ const palaces=c.palaces.map(p=>({
+  branch:p.branch,stars:p.stars.map(s=>({name:s.name,siHua:s.siHua??null}))
+ }));
+ const daXians=c.daXians.map(dx=>({
+  startAge:dx.startAge,endAge:dx.endAge,palaceBranch:dx.palaceBranch
+ }));
+ const natal=detectDingPin(c);
+ const period=detectDingZa(c);
+ return {
+  id:sample.id,solarDate:sample.date,hour:sample.hour,
+  gender:sample.gender,kind:sample.kind,
+  mingGongBranch:c.mingGongBranch,
+  palaces,daXians,
+  detector:{
+   dingPin01:natal.some(hit=>hit.no===1),
+   dingPin02:natal.some(hit=>hit.no===2),
+   dingZa03:period.filter(hit=>hit.no===3).map(hit=>({
+    startAge:hit.startAge,endAge:hit.endAge,palaceBranch:hit.palaceBranch
+   }))
+  }
+ };
+});
+writeFileSync('../.r29-source-pattern-oracle-observations.json',
+ JSON.stringify({
+  schema:'thiendo-r29-pinned-source-pattern-observation-v1',
+  provenance:{repository:'Renhuai123/ziwei-doushu',commit:COMMIT,
+   installedIztroVersion:runtime.version,
+   functions:['generateChart','detectDingPin','detectDingZa'],
+   syntheticOnly:true},
+  records
+ },null,2)+'\n','utf8');
+console.log('R29 ran '+records.length+' synthetic charts through both actual source detectors');
