@@ -46,7 +46,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   const [catalogStatus,setCatalogStatus]=useState<ClassicalCatalogFilterStatus>('all');
   const [jumpToId,setJumpToId]=useState<string|null>(null);
   const localizedTitles=useMemo(()=>Object.fromEntries([
-    ...data.records.map(r=>[r.id,r.title]),...dingZa.items.filter(x=>bridge.mappedIds.includes(x.id as 'dinh-tap-01'|'dinh-tap-08')).map(x=>[x.id,x.title])
+    ...data.records.map(r=>[r.id,r.title]),...dingZa.items.filter(x=>bridge.mappedIds.includes(x.id as 'dinh-tap-01'|'dinh-tap-02'|'dinh-tap-08')).map(x=>[x.id,x.title])
   ]),[data,dingZa,bridge]);
   // Index criteria labels, not live placement details or birth information.
   const evidenceTerms=useMemo(()=>Object.fromEntries(data.records.map(record=>[

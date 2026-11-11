@@ -1,6 +1,6 @@
 'use strict';
 /**
- * R22: two additional decade-pattern condition maps, never a natal verdict.
+ * R25: three decade-pattern condition maps (R22 + Ding Za 02), never a natal verdict.
  * Source pinned: Renhuai123/ziwei-doushu@7922285d...
  * school-tables.generated.ts SB_QS[1..14], source column 1..12 = Tý..Hợi.
  * Numbers: 1=Miếu,2=Vượng,3=Đắc,4=Lợi,5=Bình,6=Bất,7=Hãm.
@@ -16,7 +16,7 @@ const {auditClassicalDingZaPeriods}=require('./classical-dingza-period-research.
 const {auditNatalFirePosition}=require('./natal-fire-evidence.cjs');
 const SOURCE_COMMIT='7922285d947b36610e7e31c232d8f1e2a0d0871d';
 const SOURCE_URL='https://github.com/Renhuai123/ziwei-doushu/blob/'+SOURCE_COMMIT+'/lib/ziwei/school-tables.generated.ts';
-const MAPPED_IDS=Object.freeze(['dinh-tap-01','dinh-tap-08']);
+const MAPPED_IDS=Object.freeze(['dinh-tap-01','dinh-tap-02','dinh-tap-08']);
 const NAMES=Object.freeze(["Tử Vi","Thiên Cơ","Thái Dương","Vũ Khúc","Thiên Đồng","Liêm Trinh","Thiên Phủ","Thái Âm","Tham Lang","Cự Môn","Thiên Tướng","Thiên Lương","Thất Sát","Phá Quân"]);
 const RAW=Object.freeze([[5,1,2,2,3,2,1,1,2,2,3,2],[1,7,3,2,4,5,1,7,3,2,4,5],[7,6,2,1,2,2,2,3,3,5,6,7],[2,1,3,4,1,5,2,1,3,4,1,5],[2,6,4,5,5,1,7,6,2,5,5,1],[5,4,1,5,4,7,5,4,1,5,4,7],[1,1,1,3,1,3,2,1,3,2,1,3],[1,1,2,7,7,7,6,6,4,2,2,1],[2,1,5,4,1,7,2,1,5,4,1,7],[2,6,1,1,7,2,2,6,1,1,7,2],[1,1,1,7,3,3,1,3,1,7,3,3],[1,2,1,1,1,3,1,2,7,3,1,7],[2,1,1,2,1,5,2,1,1,2,1,5],[1,2,3,7,2,5,1,2,3,7,2,5]].map(x=>Object.freeze(x)));
 const SOURCE_MATRIX=Object.freeze(Object.fromEntries(NAMES.map((name,i)=>[name,RAW[i]])));
@@ -106,20 +106,28 @@ function auditClassicalDingZaSourceBridge(chart){
   sourcePlacementVerified:false,unit:'đại hạn',sourceUrl:SOURCE_URL,
   periods:Object.freeze(item.periods.map(p=>{
    const sf=four(p.branchIndex),strong=byBranch.get(p.branchIndex).strong;
-   let good=null,detail='Chưa kiểm tra đủ lớp sao phụ, sao năm, Tứ Hóa và sáu sát theo nguyên cục.';
+   let good=null,satOnLimit=null,atLimitCount=null,detail='Chưa kiểm tra đủ lớp sao phụ, sao năm, Tứ Hóa và sáu sát theo nguyên cục.';
    if(fullyAudited){
     const support=JI.filter(name=>sf.includes(aux[name])).length+
       Number(sf.includes(yr['Thiên Mã']))+
       chart.transformations.slice(0,3).filter(t=>
         NAMES.includes(t.star)&&sf.includes(t.branch)).length;
-    const evil=SHA.filter(name=>
-      sf.includes(Object.hasOwn(aux,name)?aux[name]:
-       chart.advancedStars.find(x=>x.name===name)?.branch)).length;
+    const evilPositions=SHA.map(name=>Object.hasOwn(aux,name)?aux[name]:
+       chart.advancedStars.find(x=>x.name===name)?.branch);
+    const evil=evilPositions.filter(branch=>sf.includes(branch)).length;
+    atLimitCount=evilPositions.filter(branch=>branch===p.branchIndex).length;
+    satOnLimit=atLimitCount>=1;
     good=strong&&support>=2&&evil<=1;
     detail='SB_QS hạn mạnh='+strong+', cát hội='+support+' (≥2), sát hội='+evil+' (≤1); vẫn chưa xác nhận vị trí sao nguồn.';
    }
    const checks=item.id==='dinh-tap-01'?[
     c('Mệnh và Thân yếu theo SB_QS tại vị trí sao Thiên Đồ',weakBoth,NOTE)
+   ]:item.id==='dinh-tap-02'?[
+    c('Ít nhất một trong sáu sát tinh nguyên cục tọa đúng cung đại hạn',
+      satOnLimit,fullyAudited?'Sát tinh tọa hạn='+atLimitCount+'; lớp sao đã đối chiếu phiên bản.':
+      'Chưa đối chiếu đủ sáu sát tinh và các lớp sao nguyên cục.'),
+    c('Cung đại hạn mạnh theo bảng SB_QS của nguồn',strong,NOTE),
+    c('Tam phương tứ chính hạn có cát ≥2 và sát ≤1 khi cung hạn mạnh',good,detail)
    ]:[
     c('Mệnh yếu theo SB_QS tại vị trí sao Thiên Đồ',weakMing,NOTE),
     c('Hạn mạnh theo SB_QS tại vị trí sao Thiên Đồ',strong,NOTE),
