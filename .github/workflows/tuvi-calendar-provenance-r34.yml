@@ -1,0 +1,74 @@
+name: THIEN DO - R34 multi-lunation calendar provenance
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tuvi-calendar-provenance-r34.yml'
+      - 'infrastructure/scripts/tuvi-r34-*'
+      - 'tests/v111677-tuvi-r34-calendar-provenance.test.cjs'
+      - 'tests/fixtures/tuvi-r34-nasa-boundaries.json'
+      - 'packages/astrology-engine/src/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tuvi-calendar-provenance-r34.yml'
+      - 'infrastructure/scripts/tuvi-r34-*'
+      - 'tests/v111677-tuvi-r34-calendar-provenance.test.cjs'
+      - 'tests/fixtures/tuvi-r34-nasa-boundaries.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  actual-source-and-astronomical-boundaries:
+    name: Four NASA UT boundaries and 48 genuine source/local charts
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout Thiên Đồ
+        uses: actions/checkout@v4
+      - name: Checkout exact source SHA
+        uses: actions/checkout@v4
+        with:
+          repository: Renhuai123/ziwei-doushu
+          ref: 7922285d947b36610e7e31c232d8f1e2a0d0871d
+          path: reference-ziwei
+          persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Thiên Đồ pinned lockfile
+        run: npm ci --no-audit --no-fund
+      - name: Install reference pinned lockfile
+        working-directory: reference-ziwei
+        run: npm ci --no-audit --no-fund
+      - name: Run actual reference engine for 48 controlled synthetic charts
+        run: |
+          cp infrastructure/scripts/tuvi-r34-source-calendar-probe.ts.template reference-ziwei/.thiendo-r34-calendar-probe.ts
+          cd reference-ziwei
+          ./node_modules/.bin/tsx .thiendo-r34-calendar-probe.ts
+      - name: Compare source and Vietnam calendar without changing either engine
+        env:
+          THIENDO_R34_REQUIRE_GENUINE: '1'
+        run: |
+          node --test tests/v111677-tuvi-r34-calendar-provenance.test.cjs
+          node infrastructure/scripts/tuvi-r34-evaluate-calendar-provenance.cjs .r34-source-calendar-boundaries.json
+      - name: Record evidence limitations
+        if: always()
+        run: |
+          echo '## R34 NASA UT midnight boundaries vs pinned source and Vietnam lunar calendar' >> "$GITHUB_STEP_SUMMARY"
+          echo '4 NASA GSFC new moons UT 16:00-17:00; Vietnam +7 and Chinese reference +8 straddle midnight.' >> "$GITHUB_STEP_SUMMARY"
+          echo '48 source charts generated in source SHA 7922285d947b36610e7e31c232d8f1e2a0d0871d with iztro@2.6.1.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'All different dates, years, months and positions are retained as observations. No engine is silently patched.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'UT times are rounded to minutes; the report distinguishes prediction from engine observation.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Source timezone convention and school semantic equivalence are NOT independently certified; 31/49 unchanged.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Archive authentic source and provenance report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: thien-do-r34-four-new-moon-boundaries
+          path: |
+            .r34-source-calendar-boundaries.json
+            .r34-calendar-provenance-report.json
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
