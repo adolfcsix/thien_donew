@@ -115,9 +115,9 @@ export function LateZiComparePanel({result}:{result:AstrologyResult}){
     ?<p className={styles.empty} role="status">Không có địa chi nào khác nội dung trong hai kịch bản này.</p>
     :<div className={styles.twoGrids}>
       <SideGrid title="Giữ ngày sinh đã nhập" date={report.currentDate} side="before"
-       branches={visible} selected={active?.branchIndex??null} starFocus={starFocus} onSelect={selectBranch}/>
+       branches={visible} selected={starFocus?null:(active?.branchIndex??null)} starFocus={starFocus} onSelect={selectBranch}/>
       <SideGrid title="Tính sang ngày sau" date={report.alternativeDate} side="after"
-       branches={visible} selected={active?.branchIndex??null} starFocus={starFocus} onSelect={selectBranch}/>
+       branches={visible} selected={starFocus?null:(active?.branchIndex??null)} starFocus={starFocus} onSelect={selectBranch}/>
      </div>}
    {active&&<section className={styles.focus} aria-live="polite" aria-label="Chi tiết địa chi đang chọn">
     <div className={styles.focusLabel}><span>ĐỊA CHI ĐANG XEM</span><h4>{active.branch}</h4>
