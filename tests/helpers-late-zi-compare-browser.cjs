@@ -16,7 +16,7 @@ module.exports=async function verifyLateZiCompare({context,origin,record,pageErr
    await page.goto(origin+'/chart',{waitUntil:'networkidle'});
    let drawer=page.locator('.chart-input-drawer');
    await drawer.waitFor();
-   if(!(await drawer.evaluate(el=>el.open)))await drawer.locator('summary').click();
+   if(!(await drawer.evaluate(el=>el.open)))await drawer.locator(':scope > summary').click();
    await drawer.getByLabel('Tên lá số',{exact:true}).fill('Kiểm thử giờ Tý');
    await drawer.getByLabel('Ngày sinh',{exact:true}).fill('2024-02-09');
    const hours=drawer.getByRole('combobox',{name:'Giờ sinh',exact:true});
@@ -81,7 +81,7 @@ module.exports=async function verifyLateZiCompare({context,origin,record,pageErr
    await page.getByRole('button',{name:'Ẩn so sánh giờ Tý',exact:true}).click();
    assert.equal(await page.getByRole('heading',{name:'Hai cách chọn ngày, hai địa bàn'}).count(),0);
    drawer=page.locator('.chart-input-drawer');
-   if(!(await drawer.evaluate(el=>el.open)))await drawer.locator('summary').click();
+   if(!(await drawer.evaluate(el=>el.open)))await drawer.locator(':scope > summary').click();
    assert.equal(await drawer.getByLabel('Ngày sinh',{exact:true}).inputValue(),'2024-02-09');
    assert.equal(await drawer.getByRole('combobox',{name:'Giờ sinh',exact:true}).inputValue(),'23');
    await drawer.getByRole('combobox',{name:'Giờ sinh',exact:true}).selectOption('22');
