@@ -1,0 +1,73 @@
+name: THIEN DO - R29 source-pattern execution oracle
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tuvi-source-pattern-oracle.yml'
+      - 'infrastructure/scripts/tuvi-r29-*'
+      - 'tests/v111672-tuvi-source-pattern-oracle.test.cjs'
+      - 'tests/fixtures/tuvi-r27-iztro-cases.json'
+      - 'packages/interpretation/src/classical-void-semantic-gates.cjs'
+      - 'packages/astrology-engine/src/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tuvi-source-pattern-oracle.yml'
+      - 'infrastructure/scripts/tuvi-r29-*'
+      - 'tests/v111672-tuvi-source-pattern-oracle.test.cjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  actual-reference-patterns:
+    name: Pinned source detectors and independent 12-palace predicates
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout Thiên Đồ
+        uses: actions/checkout@v4
+      - name: Checkout exact reference SHA
+        uses: actions/checkout@v4
+        with:
+          repository: Renhuai123/ziwei-doushu
+          ref: 7922285d947b36610e7e31c232d8f1e2a0d0871d
+          path: reference-ziwei
+          persist-credentials: false
+      - name: Set Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Thiên Đồ lockfile
+        run: npm ci --no-audit --no-fund
+      - name: Install reference lockfile
+        working-directory: reference-ziwei
+        run: npm ci --no-audit --no-fund
+      - name: Run original pinned source rules over original 65-case matrix
+        run: |
+          cp infrastructure/scripts/tuvi-r29-pattern-source-probe.ts.template reference-ziwei/.thiendo-r29-source-oracle.ts
+          cd reference-ziwei
+          ./node_modules/.bin/tsx .thiendo-r29-source-oracle.ts
+      - name: Assert source detector consistency without declaring a local pattern verdict
+        env:
+          THIENDO_R29_REQUIRE_GENUINE: '1'
+        run: |
+          node --test tests/v111672-tuvi-source-pattern-oracle.test.cjs
+          node infrastructure/scripts/tuvi-r29-evaluate-source-oracle.cjs .r29-source-pattern-oracle-observations.json
+      - name: Explain evidence scope
+        if: always()
+        run: |
+          echo '## R29 pinned source rule execution' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Exact reference commit 7922285d947b36610e7e31c232d8f1e2a0d0871d, iztro@2.6.1 via lockfile.' >> "$GITHUB_STEP_SUMMARY"
+          echo '65 synthetic charts: compare detectDingPin numbers 1/2 and detectDingZa number 3 to separately re-evaluated 12-palace source predicates.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'A PASS asserts only the source code and independent source predicates agree on the 65 inputs.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No equivalence to Thiên Đồ Tuần/Triệt, no expert validation, no promotion of the classical 31/49 research catalog.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Archive source-only evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: thien-do-r29-source-pattern-oracle-evidence
+          path: |
+            .r29-source-pattern-oracle-observations.json
+            .r29-source-pattern-oracle-report.json
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
