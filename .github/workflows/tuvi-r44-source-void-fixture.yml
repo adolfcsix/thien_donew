@@ -1,0 +1,28 @@
+name: THIEN DO - R44 source Void formula contract
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tuvi-r44-source-void-fixture.yml'
+      - 'packages/interpretation/src/source-void-formula-fixture.cjs'
+      - 'packages/interpretation/src/source-void-formula-fixture.d.cts'
+      - 'tests/v111686-tuvi-r44-source-void-formula-fixture.test.cjs'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tuvi-r44-source-void-fixture.yml'
+      - 'packages/interpretation/src/source-void-formula-fixture.cjs'
+      - 'packages/interpretation/src/source-void-formula-fixture.d.cts'
+      - 'tests/v111686-tuvi-r44-source-void-formula-fixture.test.cjs'
+permissions:
+  contents: read
+jobs:
+  formula-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/v111686-tuvi-r44-source-void-formula-fixture.test.cjs
+      - run: node --check packages/interpretation/src/source-void-formula-fixture.cjs
