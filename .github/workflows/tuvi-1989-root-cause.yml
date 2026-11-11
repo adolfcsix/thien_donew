@@ -1,0 +1,71 @@
+name: THIEN DO - R33 1989 calendar and Zi Wei root-cause
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tuvi-1989-root-cause.yml'
+      - 'infrastructure/scripts/tuvi-r33-*'
+      - 'tests/v111676-tuvi-1989-root-cause-diagnostics.test.cjs'
+      - 'packages/astrology-engine/src/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tuvi-1989-root-cause.yml'
+      - 'infrastructure/scripts/tuvi-r33-*'
+      - 'tests/v111676-tuvi-1989-root-cause-diagnostics.test.cjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pinned-1989-source-diagnostics:
+    name: Reproduce exact 1989 lunar/Cuc/Star roots from 30 source charts
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout Thiên Đồ
+        uses: actions/checkout@v4
+      - name: Checkout immutable reference SHA
+        uses: actions/checkout@v4
+        with:
+          repository: Renhuai123/ziwei-doushu
+          ref: 7922285d947b36610e7e31c232d8f1e2a0d0871d
+          path: reference-ziwei
+          persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Thiên Đồ dependencies from lockfile
+        run: npm ci --no-audit --no-fund
+      - name: Install source dependencies from lockfile
+        working-directory: reference-ziwei
+        run: npm ci --no-audit --no-fund
+      - name: Execute exact source chart and detectors for 30 calendar-control cases
+        run: |
+          cp infrastructure/scripts/tuvi-r33-source-root-cause-probe.ts.template reference-ziwei/.thiendo-r33-root-cause.ts
+          cd reference-ziwei
+          ./node_modules/.bin/tsx .thiendo-r33-root-cause.ts
+      - name: Verify original source metadata, local chart and divergence classification
+        env:
+          THIENDO_R33_REQUIRE_GENUINE: '1'
+        run: |
+          node --test tests/v111676-tuvi-1989-root-cause-diagnostics.test.cjs
+          node infrastructure/scripts/tuvi-r33-evaluate-root-cause.cjs .r33-source-1989-root-cause-observations.json
+      - name: Note source-only evidence boundary
+        if: always()
+        run: |
+          echo '## R33 1989 calendar and chart root-cause' >> "$GITHUB_STEP_SUMMARY"
+          echo '30 synthetic source charts: years 1988,1989,1990 and dates August 14-16 1989, 3 hours and 2 genders.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Exact source: Renhuai123/ziwei-doushu@7922285d947b36610e7e31c232d8f1e2a0d0871d, iztro@2.6.1.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'A difference between engines is recorded as diagnostic data, NOT treated as a failure or silently changed.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No astrology engine changes, no semantic parity, no promotion from 31/49 mapped classical conditions.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Retain detailed source and comparison JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: thien-do-r33-1989-calendar-root-cause
+          path: |
+            .r33-source-1989-root-cause-observations.json
+            .r33-1989-root-cause-report.json
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14

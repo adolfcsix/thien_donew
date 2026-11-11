@@ -1,0 +1,62 @@
+/**
+ * R33 source-only diagnostics for 1989-08-15 and genuine nearby-year/date controls.
+ * Executed inside exact Renhuai123/ziwei-doushu checkout with iztro@2.6.1.
+ * Never used to derive a Thiên Đồ user-facing pattern verdict.
+ */
+import {readFileSync,writeFileSync} from 'node:fs';
+import {generateChart} from './lib/ziwei/algorithm';
+import {detectDingPin} from './lib/ziwei/patterns-dingpin';
+import {detectDingZa} from './lib/ziwei/patterns-dingza';
+const COMMIT='7922285d947b36610e7e31c232d8f1e2a0d0871d';
+const VERSION='2.6.1';
+const installed=JSON.parse(readFileSync('node_modules/iztro/package.json','utf8'));
+const lock=JSON.parse(readFileSync('package-lock.json','utf8'));
+if(installed.version!==VERSION||lock.packages?.['node_modules/iztro']?.version!==VERSION)
+ throw Error('R33 requires source installed and lockfile iztro@2.6.1');
+const days=['1988-08-15','1989-08-14','1989-08-15','1989-08-16','1990-08-15'];
+const hours=[0,8,22] as const;
+const genders=['Nam','Nữ'] as const;
+const records=[];
+for(const date of days)for(const gender of genders)for(const clockHour of hours){
+ const [year,month,day]=date.split('-').map(Number);
+ const hourBranch=Math.floor(((clockHour+1)%24)/2);
+ const chart=generateChart({year,month,day,hour:hourBranch,gender:gender==='Nam'?'male':'female'});
+ const named=(name:string)=>{
+  const found=chart.palaces.filter(p=>p.stars.some(s=>s.name===name));
+  if(found.length!==1)throw Error(name+' must appear exactly once in '+date);
+  return found[0].branch;
+ };
+ const hua=chart.palaces.flatMap(p=>p.stars.some(s=>s.siHua==='禄')?[p.branch]:[]);
+ if(hua.length!==1)throw Error('Source must have exactly one Hóa Lộc marker');
+ if(chart.palaces.length!==12||chart.daXians.length!==12)throw Error('Incomplete chart');
+ const dingpin=detectDingPin(chart);
+ const dingza=detectDingZa(chart);
+ records.push({
+  id:date+'-'+gender+'-'+clockHour,solarDate:date,gender,clockHour,hourBranch,
+  source:{
+   lunarYear:chart.lunarInfo.lunarYear,
+   lunarMonth:chart.lunarInfo.lunarMonth,
+   lunarDay:chart.lunarInfo.lunarDay,
+   isLeapMonth:chart.lunarInfo.isLeapMonth,
+   yearStem:chart.lunarInfo.yearStem,yearBranch:chart.lunarInfo.yearBranch,
+   leapMonthPolicy:chart.birthInfo.leapMonthPolicy??null,
+   wuxingJu:chart.wuxingJu,ziweiPos:chart.ziweiPos,
+   mingGongBranch:chart.mingGongBranch,
+   liemTrinhBranch:named('廉贞'),
+   thatSatBranch:named('七杀'),
+   huaLocBranch:hua[0],
+   dingPin01:dingpin.some(hit=>hit.no===1),
+   dingPin02:dingpin.some(hit=>hit.no===2),
+   dingZa03Count:dingza.filter(hit=>hit.no===3).length
+  }
+ });
+}
+if(records.length!==30)throw Error('Expected 30 source-generated synthetic charts');
+writeFileSync('../.r33-source-1989-root-cause-observations.json',JSON.stringify({
+ schema:'thiendo-r33-source-1989-root-cause-v1',
+ provenance:{repository:'Renhuai123/ziwei-doushu',commit:COMMIT,
+  iztroVersion:installed.version,functions:['generateChart','detectDingPin','detectDingZa'],
+  syntheticOnly:true,sourceExecuted:true},
+ records
+},null,2)+'\n');
+console.log('R33 source diagnostics: '+records.length+' genuine generated charts across dates '+days.join(', '));
