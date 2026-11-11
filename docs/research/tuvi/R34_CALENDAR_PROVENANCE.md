@@ -44,3 +44,19 @@ Bài kiểm thử `tests/v111677-tuvi-r34-calendar-provenance.test.cjs` bao gồ
 - **31/49 bộ điều kiện ánh xạ kỹ thuật không đổi**, không gán nhãn cách cục dựa trên số liệu khảo sát 48 mẫu.
 - Chỉ merge sau Source Integrity, Full Stack, Production Acceptance 5/5 và workflow nghiên cứu r34 cùng PASS đúng HEAD SHA; nếu không, PR giữ mở.
 - Sau khi có báo cáo 48 trường hợp thật, tách nhóm sự kiện có/không chênh lệch, tập trung tháng nhuận, giờ Tý và biên năm âm. Chỉ đề nghị sửa engine nếu có bằng chứng lỗi chuẩn hóa ở **cùng quy ước lịch**; khác biệt do múi giờ phải được lưu dưới dạng nguồn gốc lịch.
+
+## Kết quả kiểm chứng nguồn thật trên tập R34
+
+Workflow đầu tiên chạy trên đúng kho và SHA nguồn ghim đã **PASS 5/5 bài kiểm thử chuyên biệt, 48/48 lá số nguồn/Thiên Đồ, 0 lỗi**. Hai file JSON truy vết được lưu trong artifact `thien-do-r34-four-new-moon-boundaries`.
+
+| Mốc Sóc NASA | Tổng số chart | Thiên Đồ hơn nguồn 1 ngày âm | Cục trùng | Mệnh trùng |
+| --- | ---: | ---: | ---: | ---: |
+| 1984-05-30 | 12 | 12 | 12 | 12 |
+| 1986-12-01 | 12 | 12 | 12 | 12 |
+| 1989-08-01 | 12 | 12 | 12 | 12 |
+| 1996-07-15 | 12 | 12 | 12 | 12 |
+| **Tổng** | **48** | **48** | **48** | **48** |
+
+Trong 48 ca, **vị trí Tử Vi trùng chỉ 6**, còn 42 khác tọa chi. Chênh một ngày âm không đồng nghĩa tất cả vị trí Tử Vi đều phải khác nhau; đây là lý do kiểm tra từng lớp ngày âm → Cục → Tử Vi trước khi quy lỗi công thức. Hai engine sử dụng các quy ước lịch khác nhau nên sai khác ở đây **không phải bằng chứng lỗi của Thiên Đồ**. Phải giữ nguyên nhãn `sourceCalendarTimezoneExplicitlyVerified=false` vì code nguồn không cung cấp một tuyên bố múi giờ tự thân đã được kiểm định độc lập, dù dữ liệu thực nghiệm tương thích với UTC+8.
+
+Không mở cách cục mới hay nâng mốc **31/49** từ thống kê 48 ca. Chưa xác minh tháng nhuận, biên âm lịch năm mới hoặc các vùng lịch ngoài UTC+7 và UTC+8; các hạng mục này cần bộ thử và nguồn lịch riêng.
