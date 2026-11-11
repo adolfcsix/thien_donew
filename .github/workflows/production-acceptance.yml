@@ -12,6 +12,9 @@ concurrency:
 jobs:
   artifact-and-operations:
     runs-on: ubuntu-latest
+    # Pinned Playwright image supplies WebKit/Chromium OS dependencies without flaky apt mirrors.
+    container:
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
@@ -40,7 +43,7 @@ jobs:
       - name: Admin, private files and eighteen ranks in a real browser (PGlite)
         run: |
           npm install --prefix "$RUNNER_TEMP/thiendo-browser" --no-audit --no-fund --save-exact playwright@1.62.1
-          node "$RUNNER_TEMP/thiendo-browser/node_modules/playwright/cli.js" install --with-deps chromium
+          node "$RUNNER_TEMP/thiendo-browser/node_modules/playwright/cli.js" install chromium
           THIENDO_PLAYWRIGHT_MODULE="$RUNNER_TEMP/thiendo-browser/node_modules/playwright" THIENDO_SQL_TEST_MODULE="$RUNNER_TEMP/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js" THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-v111645-browser" node tests/v111645-admin-storage-ranks.browser.cjs 2>&1 | tee "$RUNNER_TEMP/thiendo-v111645-browser.log"
       - uses: actions/upload-artifact@v4
         if: always()
@@ -65,7 +68,7 @@ jobs:
           THIENDO_READER_REPORT_DIR="$RUNNER_TEMP/thiendo-reader-browser" npm run test:reader:browser
       - name: WebKit touch, viewport and HTTP-LAN capability regression
         run: |
-          node "$RUNNER_TEMP/thiendo-browser/node_modules/playwright/cli.js" install --with-deps webkit
+          node "$RUNNER_TEMP/thiendo-browser/node_modules/playwright/cli.js" install webkit
           THIENDO_BROWSER_ENGINE=webkit THIENDO_BROWSER_SCOPE=admin-config THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-admin-devices-webkit" THIENDO_PLAYWRIGHT_MODULE="$RUNNER_TEMP/thiendo-browser/node_modules/playwright" THIENDO_SQL_TEST_MODULE="$RUNNER_TEMP/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js" node tests/account.browser.cjs
           THIENDO_BROWSER_ENGINE=webkit THIENDO_BROWSER_SCOPE=touch-compat THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-touch-webkit" THIENDO_PLAYWRIGHT_MODULE="$RUNNER_TEMP/thiendo-browser/node_modules/playwright" THIENDO_SQL_TEST_MODULE="$RUNNER_TEMP/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js" node tests/account.browser.cjs
       - uses: actions/upload-artifact@v4
@@ -165,7 +168,7 @@ jobs:
       - name: Install isolated Chromium browser test tools
         run: |
           npm install --prefix "$RUNNER_TEMP/thiendo-browser-tools" --no-audit --no-fund --save-exact playwright@1.62.1
-          node "$RUNNER_TEMP/thiendo-browser-tools/node_modules/playwright/cli.js" install --with-deps chromium
+          node "$RUNNER_TEMP/thiendo-browser-tools/node_modules/playwright/cli.js" install chromium
           echo "THIENDO_PLAYWRIGHT_MODULE=$RUNNER_TEMP/thiendo-browser-tools/node_modules/playwright/index.mjs" >> "$GITHUB_ENV"
       - name: First-party HTTP E2E plus responsive browser acceptance
         env:
