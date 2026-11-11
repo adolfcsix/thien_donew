@@ -29,7 +29,7 @@ test('r38: UI comparison always retains exact existing civil date and next date'
    research.comparison.changedFields.includes('menh'));
   assert.equal(report.fields.find(row=>row.key==='cuc').changed,
    research.comparison.changedFields.includes('cuc'));
-  assert.equal(report.movedCount,report.branches.reduce((_,__,index)=>_,0)+report.movedCount);
+  assert.equal(report.movedCount,report.branches.flatMap(b=>b.movedBefore).length);
   for(const row of report.fields)assert.equal(row.changed,row.before!==row.after);
   assert.equal(report.currentSelected,true);
   assert.equal(report.hypotheticalOnly,true);
