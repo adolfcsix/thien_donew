@@ -82,6 +82,52 @@ test('r18 unsafe strength or aux evidence is unknown, cannot authorize a classic
  assert.equal(x.find(c=>c.label.startsWith('Cung Mệnh yếu')).state,'unknown');
  assert.equal(x.find(c=>c.label.startsWith('Cung đại hạn mạnh')).state,'unknown');
 });
+test('r19 preserves a verified Loc Ton result even when Hoa Loc origin is unavailable',()=>{
+ const c=chart('Nam');
+ const loc=c.auxiliaries.find(x=>x.name==='Lộc Tồn');
+ assert.ok(loc);
+ const unverified=clone(c);
+ unverified.tuHoaRuleSet='unknown-year-hua-rule';
+ const a=audit(unverified).items.find(x=>x.id==='dinh-tap-01');
+ const source=audit(c).items.find(x=>x.id==='dinh-tap-01');
+ assert.equal(a.sourceCriterionVerified,false);
+ assert.equal(a.periods.length,12);
+ let locMet=0, unknown=0;
+ for(const period of a.periods){
+  const b=period.branchIndex, four=[b,(b+4)%12,(b+8)%12,(b+6)%12];
+  const check=period.checks.find(x=>x.label.includes('Lộc Tồn hoặc Hóa Lộc'));
+  assert.ok(check);
+  if(four.includes(loc.branch)){
+   assert.equal(check.state,'met');
+   assert.match(check.detail,/Lộc Tồn đã được xác minh/);
+   locMet++;
+  }else{
+   assert.equal(check.state,'unknown');
+   assert.match(check.detail,/Hóa Lộc chưa đủ chứng cứ/);
+   unknown++;
+  }
+ }
+ assert.equal(locMet,4);
+ assert.equal(unknown,8);
+ // Failing the year-hua gate never authorizes any classical period verdict.
+ assert.ok(a.periods.every(p=>p.checks.some(c=>c.state==='unknown')));
+ assert.equal(source.sourceCriterionVerified,false);
+});
+
+test('r19 source alternatives are not converted into an unjustified negative',()=>{
+ const clean=chart('Nữ'),broken=clone(clean);
+ broken.tuHoaRuleSet='not-verified';
+ const loc=clean.auxiliaries.find(s=>s.name==='Lộc Tồn').branch;
+ const rs=audit(broken).items.find(x=>x.id==='dinh-tap-01');
+ assert.ok(rs.periods.some(p=>p.checks[1].state==='met'));
+ assert.ok(rs.periods.some(p=>p.checks[1].state==='unknown'));
+ assert.ok(rs.periods.every(p=>p.checks[1].state!=='not-met'));
+ for(const p of rs.periods){
+  const b=p.branchIndex;
+  const court=[b,(b+4)%12,(b+8)%12,(b+6)%12];
+  assert.equal(p.checks[1].state,court.includes(loc)?'met':'unknown');
+ }
+});
 test('r18 period entries are opened within existing 49-catalog, not added to natal results',()=>{
  const ui=fs.readFileSync(path.join(__dirname,'../apps/web/src/features/chart/components/classical-pattern-research.tsx'),'utf8');
  assert.match(ui,/auditClassicalDingZaPeriods\(chart\)/);
