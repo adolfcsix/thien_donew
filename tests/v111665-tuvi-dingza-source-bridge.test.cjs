@@ -31,17 +31,21 @@ test('r22 source 14x12 QS matrix and labels preserve the full pinned source tabl
  assert.equal(lookupSourceMainStrength('Tử Vi',12),null);
 });
 test('r22 maps two period research condition sets and keeps all source verdicts false',()=>{
- assert.deepEqual(MAPPED_IDS,['dinh-tap-01','dinh-tap-08']);
+ assert.deepEqual(MAPPED_IDS,['dinh-tap-01','dinh-tap-02','dinh-tap-08']);
  for(const gender of ['Nam','Nữ']){
   const c=chart(gender),snapshot=JSON.stringify(c),mapped=audit(c);
   assert.equal(mapped.sourceProfileReady,true,mapped.reason);
   assert.equal(mapped.schoolPlacementVerified,false);
   assert.equal(mapped.sourceCriterionVerified,false);
   assert.deepEqual(mapped.mappedIds,MAPPED_IDS);
-  assert.equal(mapped.items.length,2);
+  assert.equal(mapped.items.length,3);
   assert.ok(mapped.items.every(x=>x.status==='mapped-condition-research'&&
    x.sourceCriterionVerified===false&&x.unit==='đại hạn'&&x.periods.length===12));
   assert.ok(mapped.items.find(x=>x.id==='dinh-tap-01').periods.every(x=>x.checks.length===1));
+  const second=mapped.items.find(x=>x.id==='dinh-tap-02');
+  assert.ok(second.periods.every(x=>x.checks.length===3));
+  assert.ok(second.periods.some(x=>x.checks[0].state!=='unknown'));
+  assert.ok(second.periods.some(x=>x.checks[2].state!=='unknown'));
   const last=mapped.items.find(x=>x.id==='dinh-tap-08');
   assert.ok(last.periods.every(x=>x.checks.length===3));
   assert.ok(last.periods.some(x=>x.checks.at(-1).state!=='unknown'));
@@ -49,10 +53,10 @@ test('r22 maps two period research condition sets and keeps all source verdicts 
   const natal=auditClassicalPatternCandidates(c);
   assert.equal(natal.assessed,28);
   const combined=summarizeClassicalCatalog([...natal.records.map(x=>x.id),...mapped.mappedIds]);
-  assert.equal(combined.assessed,30);
-  assert.equal(combined.groups[3].assessed,2);
+  assert.equal(combined.assessed,31);
+  assert.equal(combined.groups[3].assessed,3);
   assert.deepEqual(summarizeClassicalResearchReadiness(combined).counts,
-   {total:19,pending:4,disputed:9,unreachable:6,natalPending:2,periodPending:2});
+   {total:18,pending:3,disputed:9,unreachable:6,natalPending:2,periodPending:1});
  }
 });
 test('r22 mutated source layers fail closed, never synthesize positive fortune verdicts',()=>{
