@@ -409,11 +409,47 @@ function auditClassicalPatternCandidates(chart){
       '; Địa Kiếp: '+(observed(kiep)?'chi số '+kiep.branchIndex:kiep.status))],
    'Chỉ ghi nhận tổ hợp sao theo một cách đọc nghiêm ngặt của thư tịch. Không dự báo nghèo khó, công danh hay sự kiện đời sống.')
  ];
+ // R17: source-pinned *partial* evidence only. Neither entry enters "records"
+ // because the source requires six named Không Vong stars, not only Tuần/Triệt.
+ const pendingEvidence=Object.freeze([
+  Object.freeze({
+   id:'dinh-ban-01',title:'Sinh bất phùng thời',scope:'natal-research',
+   status:'partial-evidence',sourceCriterionVerified:false,
+   sourceUrl:SOURCE+'/blob/'+SOURCE_COMMIT+'/lib/ziwei/patterns-dingpin.ts',
+   checks:Object.freeze([
+    Object.freeze(place(liem,'Liêm Trinh nguyên cục đóng Mệnh',x=>x.branchIndex===meng.branchIndex)),
+    Object.freeze(check('Tuần/Triệt nguyên cục được đối chiếu, chỉ là chứng cứ phụ',
+      obstructionAudit.verified?true:null,obstructionAudit.reason)),
+    Object.freeze(check('Không Vong theo đủ sáu sao của bảng nguồn được thẩm định',
+      null,notes.void))
+   ])
+  }),
+  Object.freeze({
+   id:'dinh-ban-02',title:'Lộc phùng lưỡng sát',scope:'natal-research',
+   status:'partial-evidence',sourceCriterionVerified:false,
+   sourceUrl:SOURCE+'/blob/'+SOURCE_COMMIT+'/lib/ziwei/patterns-dingpin.ts',
+   checks:Object.freeze([
+    Object.freeze(check('Lộc Tồn hoặc Hóa Lộc nguyên cục tọa Mệnh',
+      observed(loc)&&verifiedYearHua.known?
+       (loc.branchIndex===meng.branchIndex||verifiedYearHua.loc.branchIndex===meng.branchIndex):null,
+      'Lộc Tồn: '+(observed(loc)?'chi '+loc.branchIndex:loc.status)+
+      '; Hóa Lộc: '+(verifiedYearHua.known?'chi '+verifiedYearHua.loc.branchIndex:verifiedYearHua.reason))),
+    Object.freeze(check('Địa Không và Địa Kiếp nguyên cục cùng đóng Mệnh',
+      fireAudit.verified&&observed(khong)&&observed(kiep)?
+       (khong.branchIndex===meng.branchIndex&&kiep.branchIndex===meng.branchIndex):null,
+      fireAudit.verified?
+       'Địa Không chi '+khong.branchIndex+'; Địa Kiếp chi '+kiep.branchIndex:
+       'Bộ an Không/Kiếp chưa được kiểm tra toàn vẹn: '+fireAudit.reason)),
+    Object.freeze(check('Không Vong theo đủ sáu sao của bảng nguồn được thẩm định',
+      null,notes.void))
+   ])
+  })
+ ]);
  const matched=records.filter(x=>x.status==='structural-match').length;
  const reviewed=records.filter(x=>x.status==='needs-review').length;
  return Object.freeze({edition:'thiendo-classical-research-2026-11-10-r12',scope:'natal-only',
   groups:GROUPS,referenceTotal:49,assessed:records.length,matched,needsReview:reviewed,
-  records:Object.freeze(records),obstructionAudit,fireAudit,brightnessComparison,expertReviewed:false,
+  records:Object.freeze(records),pendingEvidence,obstructionAudit,fireAudit,brightnessComparison,expertReviewed:false,
   notice:'28/49 chỉ mục có điều kiện khảo sát, trong đó Tham Hỏa còn thiếu chứng cứ độ sáng Hỏa Tinh; 21 mục chưa được ánh xạ. Đây không phải 28 cách cục được xác nhận.'});
 }
 module.exports=Object.freeze({SOURCE,SOURCE_COMMIT,GROUPS,auditClassicalPatternCandidates});

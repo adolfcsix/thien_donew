@@ -324,3 +324,13 @@ Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructi
 - Hiển thị một ghi chú gọn ngay nhóm **Định tạp** của danh mục 49 mục trong panel Chuyên sâu sẵn có; không thêm tab, không thay trang Cơ bản, không thêm điều kiện vào 28/49 mục đã đối chiếu.
 - Test `tests/v111660-tuvi-period-geometry.test.cjs`: chart engine thật (Nam/Nữ), tamper từng trường quan trọng, không đổi lá số, kiểu đầu ra bất biến, UI không lặp và không tuyên bố đã thẩm định vận hạn.
 - Không chỉnh `tuvi.js`, `cycles.js`, Tứ Hóa, DB, Pro, tài khoản, AI hoặc thanh toán. Chỉ merge sau khi ba workflow Source Integrity, Full Stack, Production Acceptance (5/5) PASS trên đúng HEAD SHA.
+
+
+## R17 — Hai mục Định bần: chứng cứ từng phần theo source đã ghim (11/11/2026)
+
+- Đã đối chiếu chính xác `patterns-dingpin.ts` tại commit `7922285d947b36610e7e31c232d8f1e2a0d0871d`: mục 01 yêu cầu Liêm Trinh thủ Mệnh và *Không Vong*; mục 02 yêu cầu Lộc Tồn **hoặc** Hóa Lộc thủ Mệnh, đồng cung Địa Không **và** Địa Kiếp và *Không Vong*. Không được nới điều kiện 'và' thành 'hoặc'.
+- Nguồn quy ước sáu loại sao Không Vong là `旬空 / 副旬 / 截路 / 截空 / 空亡 / 副截`, khác với cặp dấu án ngữ `Tuần / Triệt` đang được Thiên Đồ xác minh. Vì thế cả hai mục **chưa được ánh xạ đầy đủ**, không thay đổi `records` hoặc tỷ lệ **28/49**.
+- Chứng cứ từng phần được kiểm tra ở lớp sao đúng nguồn: Liêm Trinh (`stars`), Lộc Tồn (`auxiliaryStars`), Hóa Lộc nguyên cục có phiên bản, và Địa Không + Địa Kiếp đã được kiểm toán an sao theo Can Chi/giờ sinh. Dữ kiện thiếu/mâu thuẫn trả `unknown`, không tự xác nhận kết quả.
+- Trong danh mục 49 cách cục hiện có, hai mục hiển thị **'Đã đối chiếu một phần · chưa ánh xạ'**, có thể mở danh sách điều kiện mà không tạo thêm menu hay tab. Mục vẫn thuộc sáu nguồn có thể nghiên cứu, chưa được chuyển sang `assessed`.
+- Test hồi quy yêu cầu 2 mục nghiên cứu từng phần, không tăng số mục đánh giá, không có `structural-match`, không thay đổi chart, không chấp nhận sai lớp sao/phiên bản an sao, không dùng Hóa Lộc lưu hạn hoặc dấu Tuần/Triệt để giả lập sáu Không Vong.
+- Không sửa engine, Tứ Hóa, DB, quyền Pro, AI hoặc thanh toán. Tiếp tục nghiên cứu quy tắc an đủ sáu sao, rồi mới quyết định có thể tăng từ 28/49 lên 30/49 hay không. Nhóm Định tạp giữ riêng theo đơn vị **vận hạn**, không đưa thành kết luận bản mệnh.

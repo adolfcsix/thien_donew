@@ -23,6 +23,16 @@ export interface ClassicalPatternCandidate {
   expertReviewed:false;
   caution:string;
 }
+/** Evidence for source candidates, excluded from assessed records until full Không Vong agreement. */
+export interface ClassicalPendingEvidence {
+ readonly id:'dinh-ban-01'|'dinh-ban-02';
+ readonly title:string;
+ readonly scope:'natal-research';
+ readonly status:'partial-evidence';
+ readonly sourceCriterionVerified:false;
+ readonly sourceUrl:string;
+ readonly checks:readonly ClassicalCriterion[];
+}
 export interface ClassicalResearchGroup {
   name:string;
   totalInReference:number;
@@ -38,6 +48,7 @@ export interface ClassicalPatternResearch {
   matched:number;
   needsReview:number;
   records:readonly ClassicalPatternCandidate[];
+  pendingEvidence:readonly ClassicalPendingEvidence[];
   obstructionAudit:NatalObstructionEvidence;
   fireAudit:NatalFireEvidence;
   brightnessComparison:BrightnessComparison;

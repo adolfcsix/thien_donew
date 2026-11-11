@@ -28,6 +28,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   // Distinguish an implemented position check from the source's methodological category.
   const catalog=useMemo(()=>summarizeClassicalCatalog(data.records.map(record=>record.id)),[data]);
   const readiness=useMemo(()=>summarizeClassicalResearchReadiness(catalog),[catalog]);
+  const pendingById=useMemo(()=>new Map<string,(typeof data.pendingEvidence)[number]>(data.pendingEvidence.map(entry=>[entry.id,entry] as const)),[data]);
   const periodGeometry=useMemo(()=>auditClassicalPeriodGeometry(chart),[chart]);
   const [filter,setFilter]=useState<ClassicalEvidenceFilter>('relevant');
   const [catalogQuery,setCatalogQuery]=useState('');
@@ -177,6 +178,14 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
             {entry.assessed&&<button type="button" onClick={()=>{setFilter('all');setJumpToId(entry.id);}} aria-label={'Mở điều kiện đối chiếu của '+(localizedTitles[entry.id]||entry.title)}>Điều kiện</button>}
             <a href={entry.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={'Đọc quy tắc nguồn '+entry.title}>Nguồn</a>
             {!entry.assessed&&entry.sourceStatus==='derivable'&&<small className={styles.catalogBlocker}>Cần kiểm chứng: {readiness.byId[entry.id].blocker}</small>}
+            {!entry.assessed&&pendingById.has(entry.id)&&<details className={styles.pendingEvidence}>
+              <summary>Đã đối chiếu một phần · chưa ánh xạ</summary>
+              <ul className={styles.checks}>{pendingById.get(entry.id)?.checks.map((condition,i)=>
+                <li key={entry.id+'-pending-'+i} data-met={condition.state==='met'}>
+                  <strong>{checkText[condition.state]}:</strong> {condition.label}. <span>{condition.detail}</span>
+                </li>)}</ul>
+              <small>Không được coi Tuần/Triệt là toàn bộ sáu sao Không Vong của nguồn. Chưa xác nhận cách cục hoặc kết luận vận mệnh.</small>
+            </details>}
           </li>)}</ol>
         </section>)}
       </div>
