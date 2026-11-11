@@ -44,7 +44,7 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: Observe raw iztro and source-patched star placement
         run: |
-          cp infrastructure/scripts/tuvi-r27-source-iztro-probe.ts reference-ziwei/.thiendo-r27-probe.ts
+          cp infrastructure/scripts/tuvi-r27-source-iztro-probe.ts.template reference-ziwei/.thiendo-r27-probe.ts
           cd reference-ziwei
           ./node_modules/.bin/tsx .thiendo-r27-probe.ts
       - name: Assert observed external runtime and cross-school evidence boundaries
