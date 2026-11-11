@@ -83,6 +83,23 @@ module.exports=async function verifyLateZiCompare({context,origin,record,pageErr
     return r.width<=window.innerWidth+1&&r.right<=window.innerWidth+1&&el.scrollWidth<=r.width+2;
    });
    assert.equal(viewportSafe,true,'late-Zi panel must not overflow '+width);
+   const hint=page.locator('#late-zi-table-hint');
+   assert.equal(await hint.isVisible(),width===390,'mobile table must advertise horizontal scrolling');
+   const table=page.getByRole('region',{name:'Bảng so sánh chỉ số tổng quan'});
+   assert.equal(await table.getAttribute('aria-describedby'),'late-zi-table-hint');
+   // A new birth-minute calculation still uses hour Tý, but the research
+   // panel must be closed rather than inheriting the prior chart's state.
+   drawer=page.locator('.chart-input-drawer');
+   if(!(await drawer.evaluate(el=>el.open)))await drawer.locator(':scope > summary').click();
+   await drawer.getByRole('combobox',{name:'Phút sinh',exact:true}).selectOption('59');
+   await drawer.getByRole('button',{name:/Tính lá số/}).click();
+   const freshButton=page.getByRole('button',{name:'So sánh quy ước giờ Tý',exact:true});
+   await freshButton.waitFor({state:'visible'});
+   assert.equal(await freshButton.getAttribute('aria-expanded'),'false',
+    'new chart must not inherit earlier late-Zi view visibility');
+   assert.equal(await page.getByRole('heading',{name:'Hai cách chọn ngày, hai địa bàn'}).count(),0);
+   await freshButton.click();
+   await page.getByRole('heading',{name:'Hai cách chọn ngày, hai địa bàn'}).waitFor();
    await page.getByRole('button',{name:'Ẩn so sánh giờ Tý',exact:true}).click();
    assert.equal(await page.getByRole('heading',{name:'Hai cách chọn ngày, hai địa bàn'}).count(),0);
    drawer=page.locator('.chart-input-drawer');
