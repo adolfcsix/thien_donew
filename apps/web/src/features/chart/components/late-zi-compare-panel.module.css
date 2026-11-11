@@ -81,7 +81,7 @@
 .starAudit>summary:focus-visible{outline:2px solid var(--zi-accent);outline-offset:-3px}
 .starAudit>p{font-size:12px;line-height:1.7;color:var(--muted);padding:0 15px;margin:0 0 12px}
 .starAuditList{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:0 12px 14px;margin:0;list-style:none}
-.starAuditList>li{min-width:0;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:6px;align-items:center;border:1px solid var(--zi-soft);background:var(--panel);border-radius:10px;padding:10px 11px}
+.starAuditList>li{min-width:0;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) auto minmax(0,1fr);gap:6px;align-items:center;border:1px solid var(--zi-soft);background:var(--panel);border-radius:10px;padding:10px 11px}
 .starAuditList>li>strong{font-size:12px;line-height:1.4;overflow-wrap:anywhere}
 .starAuditList>li>span:not(.starArrow){display:grid;gap:4px;text-align:center}
 .starAuditList>li small{font-size:10px;color:var(--muted);line-height:1.35}
