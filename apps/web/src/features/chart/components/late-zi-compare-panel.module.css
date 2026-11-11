@@ -31,6 +31,25 @@
 .sideHead h4{font-size:18px;font-family:var(--font-display),serif;line-height:1.35;font-weight:550;margin:0}
 .sideDate{font-size:13px;font-variant-numeric:tabular-nums;color:var(--muted)}
 .palaceGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:10px;min-width:0}
+.palaceGrid[data-ring="true"]{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(4,minmax(132px,auto))}
+.centerSeal{grid-area:2 / 2 / span 2 / span 2;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:10px;border:1px solid var(--zi-border);border-radius:13px;background:radial-gradient(circle at center,var(--glow),transparent 78%),var(--panel);padding:20px 12px;min-width:0}
+.centerSeal span,.centerSeal i{font-size:11px;color:var(--muted);letter-spacing:.1em;font-style:normal;line-height:1.5}
+.centerSeal strong{font-family:var(--font-display),serif;font-size:clamp(17px,2vw,24px);font-weight:500;line-height:1.3}
+.centerSeal small{font-variant-numeric:tabular-nums;font-size:12px;color:var(--gold)}
+/* Tử Vi compass arrangement: Tỵ–Ngọ–Mùi–Thân across the north side,
+   Thìn/Mão on the west, Dậu/Tuất on the east, Dần–Sửu–Tý–Hợi on south. */
+.palaceGrid[data-ring="true"] > .palace[data-branch="0"]{grid-area:4 / 3}
+.palaceGrid[data-ring="true"] > .palace[data-branch="1"]{grid-area:4 / 2}
+.palaceGrid[data-ring="true"] > .palace[data-branch="2"]{grid-area:4 / 1}
+.palaceGrid[data-ring="true"] > .palace[data-branch="3"]{grid-area:3 / 1}
+.palaceGrid[data-ring="true"] > .palace[data-branch="4"]{grid-area:2 / 1}
+.palaceGrid[data-ring="true"] > .palace[data-branch="5"]{grid-area:1 / 1}
+.palaceGrid[data-ring="true"] > .palace[data-branch="6"]{grid-area:1 / 2}
+.palaceGrid[data-ring="true"] > .palace[data-branch="7"]{grid-area:1 / 3}
+.palaceGrid[data-ring="true"] > .palace[data-branch="8"]{grid-area:1 / 4}
+.palaceGrid[data-ring="true"] > .palace[data-branch="9"]{grid-area:2 / 4}
+.palaceGrid[data-ring="true"] > .palace[data-branch="10"]{grid-area:3 / 4}
+.palaceGrid[data-ring="true"] > .palace[data-branch="11"]{grid-area:4 / 4}
 .palace{appearance:none;text-align:left;display:flex;flex-direction:column;gap:6px;min-width:0;min-height:132px;border:1px solid var(--zi-soft);border-radius:11px;background:var(--panel);color:var(--text);padding:10px;line-height:1.4;transition:background-color .2s ease,border-color .2s ease,transform .2s ease}
 .palace:hover{border-color:var(--zi-border);transform:translateY(-1px)}
 .palace:focus-visible,.filter:focus-within{outline:2px solid var(--gold);outline-offset:2px}
@@ -71,7 +90,9 @@
  .stats{gap:7px}
  .stats div{padding:10px}
  .stats span{font-size:11px}
- .palaceGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .palaceGrid,.palaceGrid[data-ring="true"]{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto}
+ .palaceGrid[data-ring="true"] > .palace{grid-area:auto}
+ .centerSeal{display:none}
  .palace{min-height:118px;padding:9px}
  .focus{grid-template-columns:minmax(0,1fr);gap:12px}
  .focus>div+div{border-top:1px solid var(--zi-soft);padding-top:12px}
