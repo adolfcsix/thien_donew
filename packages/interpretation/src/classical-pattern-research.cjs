@@ -1,6 +1,7 @@
 'use strict';
 const MainStarStrength=require('@thiendo/astrology-engine/src/star-strength.js');
 const NatalTuHoa=require('@thiendo/astrology-engine/src/tuhoa.js');
+const NatalAux=require('@thiendo/astrology-engine/src/auxiliary.js');
 const {auditNatalObstructionEvidence}=require('./natal-obstruction-evidence.cjs');
 const {auditNatalFirePosition}=require('./natal-fire-evidence.cjs');
 const {compareQSBrightness}=require('./classical-brightness-comparison.cjs');
@@ -155,6 +156,43 @@ function readVerifiedYearHua(chart,hua){
  return {known:true,loc,quyen,reason:'Đã xác minh đủ Tứ Hóa theo can năm và bảng '+NatalTuHoa.RULESET};
 }
 
+/**
+ * Lộc Tồn branch is considered KNOWN only when the whole versioned natal
+ * auxiliary layer is reproducible from the current chart's year/month/hour,
+ * including every per-house auxiliary star and the one unique source position.
+ * A merely observed star or a mismatched ruleSet is not verified evidence.
+ */
+function readVerifiedNatalLocTon(chart,loc){
+ const unknown=reason=>({known:false,reason});
+ if(loc.status!=='observed')return unknown('Lộc Tồn không có vị trí sao phụ duy nhất.');
+ const stems=['Giáp','Ất','Bính','Đinh','Mậu','Kỷ','Canh','Tân','Nhâm','Quý'];
+ const branches=['Tý','Sửu','Dần','Mão','Thìn','Tỵ','Ngọ','Mùi','Thân','Dậu','Tuất','Hợi'];
+ const tokens=typeof chart.yearCanChi==='string'?chart.yearCanChi.split(' '):[];
+ const stem=stems.indexOf(tokens[0]),hour=branches.indexOf(chart.hourBranch);
+ if(stem<0||hour<0||!Number.isInteger(chart.lunar?.month)||
+    chart.lunar.month<1||chart.lunar.month>12||
+    chart.auxiliaryRuleSet!==NatalAux.RULESET||
+    !Array.isArray(chart.auxiliaries))
+  return unknown('Không đủ nguồn Can năm, tháng âm, giờ hoặc phiên bản an sao phụ.');
+ try{
+  const expected=NatalAux.calculate({yearStem:stem,lunarMonth:chart.lunar.month,hourBranch:hour});
+  if(chart.auxiliaries.length!==expected.length||
+     !expected.every((want,i)=>{
+      const item=chart.auxiliaries[i];
+      return item&&item.name===want.name&&item.branch===want.branch&&item.basis===want.basis;
+     })||chart.houses.some(h=>{
+      const want=expected.filter(x=>x.branch===h.branchIndex).map(x=>x.name);
+      return !Array.isArray(h.auxiliaryStars)||h.auxiliaryStars.length!==want.length||
+       want.some((name,i)=>h.auxiliaryStars[i]!==name);
+     }))
+   return unknown('Lớp sao phụ trên 12 cung không khớp bộ an gốc.');
+  const want=expected.filter(x=>x.name==='Lộc Tồn');
+  if(want.length!==1||want[0].branch!==loc.branchIndex)
+   return unknown('Vị trí Lộc Tồn không khớp nguồn theo Can năm.');
+  return {known:true,branchIndex:want[0].branch,reason:'Lộc Tồn nguyên cục đã đối chiếu '+NatalAux.RULESET};
+ }catch{return unknown('Không tính lại được lớp sao phụ từ dữ liệu sinh.');}
+}
+
 /** Đánh giá độc lập, giữ nguyên địa bàn, không trộn lớp lưu hạn với sao bản mệnh. */
 function auditClassicalPatternCandidates(chart){
  const {byBranch,byPalace}=validate(chart);
@@ -213,7 +251,9 @@ function auditClassicalPatternCandidates(chart){
  // Source Ding Pin 02 is natal Lộc Tồn OR natal Hóa Lộc at Mệnh.
  // A verified true branch is sufficient even when the other is unknown;
  // a false requires BOTH branches verified false.
- const natalLocAtMenh=observed(loc)?loc.branchIndex===meng.branchIndex:null;
+ const verifiedNatalLoc=readVerifiedNatalLocTon(chart,loc);
+ const natalLocAtMenh=verifiedNatalLoc.known?
+  verifiedNatalLoc.branchIndex===meng.branchIndex:null;
  const natalHuaLocAtMenh=verifiedYearHua.known?
   verifiedYearHua.loc.branchIndex===meng.branchIndex:null;
  const dingPin02LocEvidence=orKnown(natalLocAtMenh,natalHuaLocAtMenh);
