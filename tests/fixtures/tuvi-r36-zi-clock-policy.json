@@ -1,0 +1,58 @@
+{
+  "schema": "thiendo-r36-pinned-source-zi-clock-fixture-v1",
+  "source": {
+    "repository": "Renhuai123/ziwei-doushu",
+    "commit": "7922285d947b36610e7e31c232d8f1e2a0d0871d",
+    "helper": "lib/ziwei/true-solar-time.ts",
+    "description": "Source implementation tests, not astronomical validation of NOAA approximation"
+  },
+  "anchors": [
+    {
+      "id": "leap-2020-eve",
+      "date": "2020-05-22"
+    },
+    {
+      "id": "leap-2023-eve",
+      "date": "2023-03-21"
+    },
+    {
+      "id": "newyear-2024-eve",
+      "date": "2024-02-09"
+    },
+    {
+      "id": "newyear-2025-eve",
+      "date": "2025-01-28"
+    }
+  ],
+  "clockTimes": [
+    "00:00",
+    "00:59",
+    "01:00",
+    "22:59",
+    "23:00",
+    "23:59"
+  ],
+  "solarModes": [
+    {
+      "id": "uncorrected",
+      "longitude": null,
+      "utcOffsetMinutes": 480
+    },
+    {
+      "id": "west-105",
+      "longitude": 105,
+      "utcOffsetMinutes": 480
+    },
+    {
+      "id": "east-135",
+      "longitude": 135,
+      "utcOffsetMinutes": 480
+    }
+  ],
+  "policies": [
+    "next-day",
+    "current-day",
+    "all-current",
+    "day-cur-time-next"
+  ]
+}
