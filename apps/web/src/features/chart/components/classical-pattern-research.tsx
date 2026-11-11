@@ -34,7 +34,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   const bridge=useMemo(()=>auditClassicalDingZaSourceBridge(chart),[chart]);
   const voidGeometry=useMemo(()=>auditClassicalVoidPairGeometry(chart),[chart]);
   const voidGates=useMemo(()=>auditClassicalVoidSemanticGates(chart),[chart]);
-  const voidGateById=useMemo(()=>new Map(voidGates.items.map(item=>[item.id,item] as const)),[voidGates]);
+  const voidGateById=useMemo(()=>new Map<string,(typeof voidGates.items)[number]>(voidGates.items.map(item=>[item.id,item] as const)),[voidGates]);
   const bridgeById=useMemo(()=>new Map<string,(typeof bridge.items)[number]>(bridge.items.map(x=>[x.id,x] as const)),[bridge]);
   // Natal position checks and newly mapped decade checks stay independent.
   const catalog=useMemo(()=>summarizeClassicalCatalog([
