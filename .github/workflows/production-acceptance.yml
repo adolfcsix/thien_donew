@@ -93,7 +93,7 @@ jobs:
             ${{ runner.temp }}/thiendo-touch-webkit
             ${{ runner.temp }}/thiendo-ai-browser
             ${{ runner.temp }}/thiendo-reader-browser
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 7
       - name: R43 retry deep-session artifact on upload failure
         id: r43_deep_artifact_retry
@@ -117,7 +117,7 @@ jobs:
             ${{ runner.temp }}/thiendo-touch-webkit
             ${{ runner.temp }}/thiendo-ai-browser
             ${{ runner.temp }}/thiendo-reader-browser
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 7
       - name: R43 require deep-session artifact upload success
         if: always()
@@ -221,7 +221,7 @@ jobs:
         with:
           name: browser-acceptance-evidence
           path: docs/reports/browser-v*/
-          if-no-files-found: ignore
+          if-no-files-found: error
           retention-days: 7
       - name: R43 retry HTTP browser artifact on upload failure
         id: r43_http_artifact_retry
@@ -232,7 +232,7 @@ jobs:
           name: browser-acceptance-evidence
           overwrite: true
           path: docs/reports/browser-v*/
-          if-no-files-found: ignore
+          if-no-files-found: error
           retention-days: 7
       - name: R43 require HTTP browser artifact upload success
         if: always()
