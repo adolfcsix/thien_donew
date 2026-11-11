@@ -1,0 +1,47 @@
+name: THIEN DO - R40 star transition scenario evidence
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tuvi-r40-star-transitions.yml'
+      - 'apps/web/src/features/chart/components/late-zi-compare-panel.tsx'
+      - 'apps/web/src/features/chart/components/late-zi-compare-panel.module.css'
+      - 'tests/helpers-late-zi-compare-browser.cjs'
+      - 'tests/v111683-tuvi-r40-star-transition-legend.test.cjs'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tuvi-r40-star-transitions.yml'
+      - 'apps/web/src/features/chart/components/late-zi-compare-panel.tsx'
+      - 'apps/web/src/features/chart/components/late-zi-compare-panel.module.css'
+      - 'tests/helpers-late-zi-compare-browser.cjs'
+      - 'tests/v111683-tuvi-r40-star-transition-legend.test.cjs'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  source-scoped-stellar-transitions:
+    name: Fourteen-star transitions, mobile accessibility and read-only evidence
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --no-audit --no-fund
+      - name: Verify source and JS
+        run: |
+          npm run check:lockfile
+          npm run check:source
+          node --check tests/v111683-tuvi-r40-star-transition-legend.test.cjs
+          node --check tests/helpers-late-zi-compare-browser.cjs
+      - name: Cross-check R37 R38 R39 R40 simulated paired charts
+        run: node --test tests/v111680-tuvi-r37-zi-scenario.test.cjs tests/v111681-tuvi-r38-compare-ui-model.test.cjs tests/v111682-tuvi-r39-study-ux.test.cjs tests/v111683-tuvi-r40-star-transition-legend.test.cjs
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Release scope statement
+        if: always()
+        run: |
+          echo '## R40 — 14-main-star movement trace (research only)' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Collapsible star-by-star from/to branch rows are derived from the same read-only R38 comparison model.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Mobile and desktop screenshots are captured in the Production browser suite when the disclosure opens.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No persistence, historical time-zone parity, astrology school validation or catalog mapping change (31/49).' >> "$GITHUB_STEP_SUMMARY"
