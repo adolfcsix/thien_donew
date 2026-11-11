@@ -51,7 +51,7 @@ test('r29: malformed/duplicated palace and star inputs fail closed',()=>{
   x=>x.palaces[0].branch=1,
   x=>x.palaces[0].stars.push({name:'旬空',siHua:null}),
   x=>x.palaces[1].stars=[],
-  x=>x.daXians[0].startAge=3,
+  x=>x.daXians[0].startAge=x.daXians[1].startAge,
   x=>x.daXians[0].palaceBranch=12,
   x=>x.mingGongBranch=-1,
   x=>x.palaces[2].stars[0].siHua='bad'
