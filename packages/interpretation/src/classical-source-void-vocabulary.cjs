@@ -79,7 +79,7 @@ const SOURCE_VOID_STEM_ROWS=Object.freeze(SOURCE_STEMS.map((stem,i)=>{
  });
 }));
 const SOURCE_STEM_MATRIX_NOTE=
- 'Bảng mã 1–12 chép từ school-data.ts tại commit tham khảo đã ghim. Ba biến thể single/double/zhanyan và bảng Xun được ghi theo chỉ số thiên can 1–10, không phải chỉ số địa chi của Thiên Đồ. Bảng Xun còn hai giá trị ngoài mười thiên can được tài liệu ghi rõ; không suy diễn cách dùng. Chưa đối chiếu iztro/thuật toán an sao của nguồn, phép đổi chi và lá số của Thiên Đồ. Không dùng bảng mã để phán định Không Vong hoặc nâng 28/49.';
+ 'Bảng mã 1–12 chép từ school-data.ts tại commit tham khảo đã ghim. Ba biến thể single/double/zhanyan và bảng Xun được ghi theo chỉ số thiên can 1–10, không phải chỉ số địa chi của Thiên Đồ. Bảng Xun còn hai giá trị ngoài mười thiên can được tài liệu ghi rõ; không suy diễn cách dùng. Riêng biến thể double: đối chiếu mã 1–12 với cặp chi được thuật toán nguồn mô tả; đây chỉ là kiểm tra hai phát biểu của cùng nguồn, không xác nhận iztro, đồng nhất trường phái hay an sao Thiên Đồ. Không dùng bảng mã để phán định Không Vong hoặc nâng tổng 30/49 điều kiện đã triển khai (28 nguyên cục + 2 đại hạn).';
 function lookupVoidStemCodes(stem,variant){
  if(typeof stem!=='string'||!SOURCE_VARIANTS.includes(variant))return null;
  const row=SOURCE_VOID_STEM_ROWS.find(r=>r.stem===stem);
@@ -94,9 +94,50 @@ function lookupVoidStemCodes(stem,variant){
  });
 }
 
+
+/**
+ * R23: source-only concordance check for the DEFAULT *double* Jiekong pair.
+ *
+ * The pinned algorithm.ts documents the five stem-pair placements:
+ * Jia/Ji = Shen/You, Yi/Geng = Wu/Wei, Bing/Xin = Chen/Si,
+ * Ding/Ren = Yin/Mao, Wu/Gui = Zi/Chou.
+ * The first and second names are swapped for a yin year stem.
+ * These independently stated rules are compared against school-data.ts v2.
+ *
+ * This checks source-table consistency only. In particular it neither reads
+ * a Thiên Đồ natal chart nor proves iztro placement, school parity, Xunkong,
+ * or the correctness of a classical pattern.
+ */
+const SOURCE_BRANCH_NAMES=Object.freeze([
+ 'Tý','Sửu','Dần','Mão','Thìn','Tỵ','Ngọ','Mùi','Thân','Dậu','Tuất','Hợi'
+]);
+const SOURCE_DOUBLE_JIEKONG_BASE_CODES=Object.freeze([
+ Object.freeze([9,10]),Object.freeze([7,8]),Object.freeze([5,6]),
+ Object.freeze([3,4]),Object.freeze([1,2])
+]);
+function auditSourceDoubleJiekongCodeConcordance(stem){
+ if(typeof stem!=='string')return null;
+ const row=SOURCE_VOID_STEM_ROWS.find(item=>item.stem===stem);
+ if(!row)return null;
+ const pair=SOURCE_DOUBLE_JIEKONG_BASE_CODES[(row.ordinal-1)%5];
+ const expected=row.ordinal%2===0?[pair[1],pair[0]]:[pair[0],pair[1]];
+ const same=expected.length===row.double.length&&expected.every((v,i)=>v===row.double[i]);
+ return Object.freeze({
+  stem,variant:'double',
+  sourceCodes:row.double,
+  formulaCodes:Object.freeze(expected),
+  formulaBranches:Object.freeze(expected.map(v=>SOURCE_BRANCH_NAMES[v-1])),
+  sourceFormulaConcordant:same,
+  sourceAlgorithmUrl:SOURCE_URL,
+  sourceDataUrl:SOURCE_SCHOOL_DATA_URL,
+  sourcePlacementVerified:false,sourceSchoolParityVerified:false,
+  sourceCriterionVerified:false,sourceCodeMappingVerified:false
+ });
+}
+
 module.exports=Object.freeze({
  SOURCE_COMMIT,SOURCE_URL,SOURCE_NAMES,NORMALIZED_NAMES,SOURCE_ALIASES,
  SOURCE_VARIANTS,SOURCE_VOID_NOTICE,CATALOG_AUDIT,reconcileClassicalVoidVocabulary,
  SOURCE_SCHOOL_DATA_URL,SOURCE_STEMS,SOURCE_VOID_STEM_ROWS,SOURCE_STEM_MATRIX_NOTE,
- SOURCE_XUN_CODES,lookupVoidStemCodes
+ SOURCE_XUN_CODES,lookupVoidStemCodes,auditSourceDoubleJiekongCodeConcordance
 });
