@@ -17,7 +17,7 @@
 - `apps/web/src/features/chart/components/late-zi-compare-panel.module.css`: ngà/xanh ngọc/vàng nhạt theo biến theme; hai bảng trên màn hình rộng, mỗi bảng 12 địa chi bố trí đúng vòng **4×4 (Tỵ–Ngọ–Mùi–Thân ở hàng trên, Dần–Sửu–Tý–Hợi ở hàng dưới)** bao quanh trung tâm, không ép 12 thẻ vào lưới 3 cột thiếu ngữ cảnh. Tablet xếp từng bảng dọc; màn hình 390px chuyển thành hai cột thẻ để không giảm cỡ chữ và ẩn tâm vòng; text/viền đánh dấu khác biệt, giảm chuyển động.
 - `apps/web/src/features/chart/components/chart-result.tsx`: lazy import, chỉ hiện nút cho `result.hour===23`.
 - `tests/v111681-tuvi-r38-compare-ui-model.test.cjs`: kiểm 16 cặp lá số như R37, toàn bộ sao, ngày nhuận/Tết, trường thay đổi, đóng dấu chỉ nghiên cứu, bất biến đầu vào, từ chối dữ liệu lạ.
-- `tests/helpers-late-zi-compare-browser.cjs`: kiểm hành trình thực 390px/1440px trong quy trình `account.browser.cjs`, so ngày B, bộ lọc, nhóm cung, aria-pressed đồng bộ, không tràn chiều rộng, không sửa ngày sinh, không hiện nút với giờ 22.
+- `tests/helpers-late-zi-compare-browser.cjs`: **bắt buộc chạy trong nhánh mặc định của `account.browser.cjs` tại Production Acceptance**, không chỉ ở scope `western`; kiểm hành trình thực 390px/1440px, so ngày B, thứ tự vòng 4×4, bộ lọc, aria-pressed đồng bộ, không tràn chiều rộng, không sửa ngày sinh, không hiện nút với giờ 22; lưu hai ảnh PNG giả lập `r38-zi-compare-390px.png` và `r38-zi-compare-1440px.png` vào artifact `deep-session-ai-regression-evidence` cho thẩm định trực quan.
 - Workflow `tuvi-late-zi-ui-r38.yml`: chạy kiểm tra model/typecheck riêng. Toàn bộ CI chung vẫn phải PASS **Source Integrity, Full Stack, Production Acceptance 5/5** trước khi gộp.
 
 ## An toàn học thuật và nghiệp vụ
