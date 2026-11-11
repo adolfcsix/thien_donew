@@ -1,0 +1,44 @@
+name: THIEN DO - R37 late Zi paired natal scenario audit
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tuvi-zi-scenario-r37.yml'
+      - 'packages/astrology-engine/src/tuvi-zi-scenario-audit.cjs'
+      - 'tests/v111680-tuvi-r37-zi-scenario.test.cjs'
+      - 'packages/astrology-engine/src/tuvi.js'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tuvi-zi-scenario-r37.yml'
+      - 'packages/astrology-engine/src/tuvi-zi-scenario-audit.cjs'
+      - 'tests/v111680-tuvi-r37-zi-scenario.test.cjs'
+      - 'packages/astrology-engine/src/tuvi.js'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  paired-chart-regression:
+    name: Read-only late-Zi current-day and next-day paired charts
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --no-audit --no-fund
+      - name: Reject source syntax and import regressions
+        run: |
+          npm run check:lockfile
+          npm run check:source
+          node --check packages/astrology-engine/src/tuvi-zi-scenario-audit.cjs
+          node --check tests/v111680-tuvi-r37-zi-scenario.test.cjs
+      - name: Run paired-chart, invalid input, leap, rollover, no-mutation checks
+        run: node --test tests/v111680-tuvi-r37-zi-scenario.test.cjs
+      - name: Preserve research-only scope
+        if: always()
+        run: |
+          echo '## R37: no changes to natal calculation policy' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The engine keeps the civil birth day, as before. R37 only compares current and next day at 23:00–23:59.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Comparison includes local lunar date, Menh/Than/Cuc and all 14 core stars. Nothing is persisted.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No source-engine school equivalence, historical timezone or true-solar-time validation is claimed.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Technical catalog mapping remains 31/49.' >> "$GITHUB_STEP_SUMMARY"
