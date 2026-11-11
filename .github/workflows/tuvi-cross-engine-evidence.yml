@@ -1,0 +1,80 @@
+name: THIEN DO - R32 cross-engine evidence matrix
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tuvi-cross-engine-evidence.yml'
+      - 'infrastructure/scripts/tuvi-r32-*'
+      - 'infrastructure/scripts/tuvi-r29-*'
+      - 'infrastructure/scripts/tuvi-r30-*'
+      - 'tests/v111675-tuvi-r32-cross-engine-matrix.test.cjs'
+      - 'tests/fixtures/tuvi-r27-iztro-cases.json'
+      - 'packages/interpretation/src/classical-void-semantic-gates.cjs'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tuvi-cross-engine-evidence.yml'
+      - 'infrastructure/scripts/tuvi-r32-*'
+      - 'tests/v111675-tuvi-r32-cross-engine-matrix.test.cjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pinned-source-vs-thiendo:
+    name: Compare 67 genuine source snapshots with local research-only proxies
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout Thiên Đồ
+        uses: actions/checkout@v4
+      - name: Checkout exact reference implementation
+        uses: actions/checkout@v4
+        with:
+          repository: Renhuai123/ziwei-doushu
+          ref: 7922285d947b36610e7e31c232d8f1e2a0d0871d
+          path: reference-ziwei
+          persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Thiên Đồ pinned dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install reference pinned dependencies
+        working-directory: reference-ziwei
+        run: npm ci --no-audit --no-fund
+      - name: Generate 65 real reference detector observations
+        run: |
+          cp infrastructure/scripts/tuvi-r29-pattern-source-probe.ts.template reference-ziwei/.thiendo-r29-source-oracle.ts
+          cd reference-ziwei
+          ./node_modules/.bin/tsx .thiendo-r29-source-oracle.ts
+      - name: Generate rare positive and hour-shift negative from exact reference
+        run: |
+          cp infrastructure/scripts/tuvi-r30-source-rare-positive-probe.ts.template reference-ziwei/.thiendo-r30-positive-probe.ts
+          cd reference-ziwei
+          ./node_modules/.bin/tsx .thiendo-r30-positive-probe.ts
+      - name: Validate original source evidence and 67 local proxy comparisons
+        env:
+          THIENDO_R32_REQUIRE_GENUINE: '1'
+        run: |
+          node --test tests/v111675-tuvi-r32-cross-engine-matrix.test.cjs
+          node infrastructure/scripts/tuvi-r32-cross-engine-evidence-matrix.cjs .r29-source-pattern-oracle-observations.json .r30-source-rare-positive-observations.json
+      - name: Explain what the comparison can and cannot claim
+        if: always()
+        run: |
+          echo '## R32 cross-engine research evidence' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Source: exact Renhuai123/ziwei-doushu SHA 7922285d947b36610e7e31c232d8f1e2a0d0871d with iztro@2.6.1.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'R29 65 synthetic charts and R30 one positive + one negative; source detectors actually execute in this job.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Report separates position mismatches, unknowns and proxy-rule disagreements, without any fail-on-difference.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'All 3 source semantic equivalence flags stay false; no local classical pattern verdict or increase of 31/49.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Archive genuine source and diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: thien-do-r32-cross-engine-evidence
+          path: |
+            .r29-source-pattern-oracle-observations.json
+            .r30-source-rare-positive-observations.json
+            .r32-cross-engine-evidence-matrix-report.json
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
