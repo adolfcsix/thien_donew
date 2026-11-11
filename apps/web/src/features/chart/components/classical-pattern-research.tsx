@@ -8,6 +8,7 @@ import type {ClassicalEvidenceFilter} from '@thiendo/interpretation/src/classica
 import {summarizeClassicalCatalog,filterClassicalCatalog} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import {summarizeClassicalResearchReadiness} from '@thiendo/interpretation/src/classical-research-readiness.cjs';
 import {auditClassicalPeriodGeometry} from '@thiendo/interpretation/src/classical-period-geometry.cjs';
+import {auditClassicalDingZaPeriods} from '@thiendo/interpretation/src/classical-dingza-period-research.cjs';
 import type {ClassicalCatalogFilterStatus} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import styles from './conditional-pattern-evidence.module.css';
 
@@ -30,6 +31,8 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   const readiness=useMemo(()=>summarizeClassicalResearchReadiness(catalog),[catalog]);
   const pendingById=useMemo(()=>new Map<string,(typeof data.pendingEvidence)[number]>(data.pendingEvidence.map(entry=>[entry.id,entry] as const)),[data]);
   const periodGeometry=useMemo(()=>auditClassicalPeriodGeometry(chart),[chart]);
+  const dingZa=useMemo(()=>auditClassicalDingZaPeriods(chart),[chart]);
+  const dingZaById=useMemo(()=>new Map<string,(typeof dingZa.items)[number]>(dingZa.items.map(item=>[item.id,item] as const)),[dingZa]);
   const [filter,setFilter]=useState<ClassicalEvidenceFilter>('relevant');
   const [catalogQuery,setCatalogQuery]=useState('');
   const [catalogStatus,setCatalogStatus]=useState<ClassicalCatalogFilterStatus>('all');
@@ -178,6 +181,22 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
             {entry.assessed&&<button type="button" onClick={()=>{setFilter('all');setJumpToId(entry.id);}} aria-label={'Mở điều kiện đối chiếu của '+(localizedTitles[entry.id]||entry.title)}>Điều kiện</button>}
             <a href={entry.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={'Đọc quy tắc nguồn '+entry.title}>Nguồn</a>
             {!entry.assessed&&entry.sourceStatus==='derivable'&&<small className={styles.catalogBlocker}>Cần kiểm chứng: {readiness.byId[entry.id].blocker}</small>}
+            {!entry.assessed&&dingZaById.has(entry.id)&&<details className={styles.periodEvidence}>
+              <summary>Đối chiếu đại hạn từng kỳ · chưa ánh xạ</summary>
+              <p>Đã kiểm tra {dingZa.verifiedGeometry?dingZa.checkedPeriods:0}/12 khoảng đại hạn theo cấu trúc Thiên Đồ. Không dùng làm kết luận Định tạp.</p>
+              {!dingZa.verifiedGeometry&&<small>{dingZa.reason}</small>}
+              {dingZa.verifiedGeometry&&<ol className={styles.periodRanges}>
+                {dingZaById.get(entry.id)?.periods.map(period=><li key={entry.id+'-'+period.index}>
+                  <details>
+                    <summary>{period.fromAge}–{period.toAge} tuổi mụ · {period.branchName} ({period.palace})</summary>
+                    <ul className={styles.checks}>{period.checks.map((condition,i)=><li key={entry.id+'-'+period.index+'-'+i} data-met={condition.state==='met'}>
+                      <strong>{checkText[condition.state]}:</strong> {condition.label}. <span>{condition.detail}</span>
+                    </li>)}</ul>
+                  </details>
+                </li>)}
+              </ol>}
+              <small>Chỉ đối chiếu dữ kiện tại từng đại hạn. Độ sáng và cát/sát giữa các trường phái chưa được xác nhận tương đương; không có quy tắc Không Vong sáu sao đầy đủ.</small>
+            </details>}
             {!entry.assessed&&pendingById.has(entry.id)&&<details className={styles.pendingEvidence}>
               <summary>Đã đối chiếu một phần · chưa ánh xạ</summary>
               <ul className={styles.checks}>{pendingById.get(entry.id)?.checks.map((condition,i)=>
