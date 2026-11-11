@@ -1,0 +1,49 @@
+name: THIEN DO - R41 interactive Zi star tracking
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tuvi-r41-star-navigation.yml'
+      - 'apps/web/src/features/chart/lib/late-zi-star-navigation.cjs'
+      - 'apps/web/src/features/chart/components/late-zi-compare-panel.tsx'
+      - 'apps/web/src/features/chart/components/late-zi-compare-panel.module.css'
+      - 'tests/v111684-tuvi-r41-star-navigation.test.cjs'
+      - 'tests/helpers-late-zi-compare-browser.cjs'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tuvi-r41-star-navigation.yml'
+      - 'apps/web/src/features/chart/lib/late-zi-star-navigation.cjs'
+      - 'apps/web/src/features/chart/components/late-zi-compare-panel.tsx'
+      - 'apps/web/src/features/chart/components/late-zi-compare-panel.module.css'
+      - 'tests/v111684-tuvi-r41-star-navigation.test.cjs'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  source-and-stars:
+    name: Both-chart star endpoints and no-mutation acceptance
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --no-audit --no-fund
+      - name: Check source syntax and package integrity
+        run: |
+          npm run check:lockfile
+          npm run check:source
+          node --check apps/web/src/features/chart/lib/late-zi-star-navigation.cjs
+          node --check tests/v111684-tuvi-r41-star-navigation.test.cjs
+          node --check tests/helpers-late-zi-compare-browser.cjs
+      - name: Run R37-R41 Zi research regressions
+        run: node --test tests/v111680-tuvi-r37-zi-scenario.test.cjs tests/v111681-tuvi-r38-compare-ui-model.test.cjs tests/v111682-tuvi-r39-study-ux.test.cjs tests/v111683-tuvi-r40-star-transition-legend.test.cjs tests/v111684-tuvi-r41-star-navigation.test.cjs
+      - name: Typecheck React integration
+        run: npm run typecheck
+      - name: Limit release scope
+        if: always()
+        run: |
+          echo '## R41 — optional interactive source/destination star tracing' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Select a major star to mark exact A and B palace coordinates; selecting a palace clears the star focus.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'R41 has no write path, stored birth data changes, source-school parity claim or altered 31/49 mapping.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Production Acceptance browser evidence must confirm 390px and 1440px highlights and no overflow.' >> "$GITHUB_STEP_SUMMARY"
