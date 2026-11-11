@@ -49,7 +49,54 @@ function reconcileClassicalVoidVocabulary(sourceLabels){
  return Object.freeze(report);
 }
 const CATALOG_AUDIT=reconcileClassicalVoidVocabulary(SOURCE_NAMES);
+
+/*
+ * R21 source-code matrix. These are the exact 1-based numeric values in
+ * school-data.ts (SCHOOL_JIEKONG_VARIANTS.v1/v2/v3 and SCHOOL_XUNKONG).
+ * The SOURCE_XUN_CODES array includes two trailing source cells beyond
+ * the documented 1..10 year-stem domain: intentionally not interpreted.
+ * Numeric codes MUST NOT be mapped to Thiên Đồ branchIndex or chart stars.
+ */
+const SOURCE_SCHOOL_DATA_URL='https://github.com/Renhuai123/ziwei-doushu/blob/'+SOURCE_COMMIT+'/lib/ziwei/school-data.ts';
+const SOURCE_STEMS=Object.freeze(['Giáp','Ất','Bính','Đinh','Mậu','Kỷ','Canh','Tân','Nhâm','Quý']);
+const SOURCE_JK_SINGLE=Object.freeze([0,9,7,5,3,1,10,8,6,4,2]);
+const SOURCE_JK_DOUBLE=Object.freeze([
+ Object.freeze([0,0]),Object.freeze([9,10]),Object.freeze([8,7]),
+ Object.freeze([5,6]),Object.freeze([4,3]),Object.freeze([1,2]),
+ Object.freeze([10,9]),Object.freeze([7,8]),Object.freeze([6,5]),
+ Object.freeze([3,4]),Object.freeze([2,1])
+]);
+const SOURCE_JK_ZHANYAN=Object.freeze([0,9,7,5,3,11,10,8,6,4,12]);
+const SOURCE_XUN_CODES=Object.freeze([0,3,1,11,9,7,5,3,1,11,9,7,5]);
+const SOURCE_VOID_STEM_ROWS=Object.freeze(SOURCE_STEMS.map((stem,i)=>{
+ const n=i+1;
+ return Object.freeze({
+  stem,ordinal:n,xunSourceCode:SOURCE_XUN_CODES[n],
+  single:Object.freeze([SOURCE_JK_SINGLE[n]]),
+  double:Object.freeze([...SOURCE_JK_DOUBLE[n]]),
+  zhanyan:Object.freeze([SOURCE_JK_ZHANYAN[n]]),
+  sourceCodeMappingVerified:false,sourceSchoolParityVerified:false
+ });
+}));
+const SOURCE_STEM_MATRIX_NOTE=
+ 'Bảng mã 1–12 chép từ school-data.ts tại commit tham khảo đã ghim. Ba biến thể single/double/zhanyan và bảng Xun được ghi theo chỉ số thiên can 1–10, không phải chỉ số địa chi của Thiên Đồ. Bảng Xun còn hai giá trị ngoài mười thiên can được tài liệu ghi rõ; không suy diễn cách dùng. Chưa đối chiếu iztro/thuật toán an sao của nguồn, phép đổi chi và lá số của Thiên Đồ. Không dùng bảng mã để phán định Không Vong hoặc nâng 28/49.';
+function lookupVoidStemCodes(stem,variant){
+ if(typeof stem!=='string'||!SOURCE_VARIANTS.includes(variant))return null;
+ const row=SOURCE_VOID_STEM_ROWS.find(r=>r.stem===stem);
+ if(!row)return null;
+ return Object.freeze({
+  stem:row.stem,variant,ordinal:row.ordinal,
+  xunSourceCode:row.xunSourceCode,
+  sourceCodes:row[variant],
+  sourceUrl:SOURCE_SCHOOL_DATA_URL,
+  sourcePlacementVerified:false,sourceSchoolParityVerified:false,
+  sourceCriterionVerified:false,sourceCodeMappingVerified:false
+ });
+}
+
 module.exports=Object.freeze({
  SOURCE_COMMIT,SOURCE_URL,SOURCE_NAMES,NORMALIZED_NAMES,SOURCE_ALIASES,
- SOURCE_VARIANTS,SOURCE_VOID_NOTICE,CATALOG_AUDIT,reconcileClassicalVoidVocabulary
+ SOURCE_VARIANTS,SOURCE_VOID_NOTICE,CATALOG_AUDIT,reconcileClassicalVoidVocabulary,
+ SOURCE_SCHOOL_DATA_URL,SOURCE_STEMS,SOURCE_VOID_STEM_ROWS,SOURCE_STEM_MATRIX_NOTE,
+ SOURCE_XUN_CODES,lookupVoidStemCodes
 });

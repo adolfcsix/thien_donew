@@ -9,6 +9,7 @@ import {summarizeClassicalCatalog,filterClassicalCatalog} from '@thiendo/interpr
 import {summarizeClassicalResearchReadiness} from '@thiendo/interpretation/src/classical-research-readiness.cjs';
 import {auditClassicalPeriodGeometry} from '@thiendo/interpretation/src/classical-period-geometry.cjs';
 import {auditClassicalDingZaPeriods} from '@thiendo/interpretation/src/classical-dingza-period-research.cjs';
+import {SOURCE_VOID_STEM_ROWS,SOURCE_STEM_MATRIX_NOTE,SOURCE_SCHOOL_DATA_URL} from '@thiendo/interpretation/src/classical-source-void-vocabulary.cjs';
 import type {ClassicalCatalogFilterStatus} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import styles from './conditional-pattern-evidence.module.css';
 
@@ -150,6 +151,21 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
       <p>{catalog.notice} Trạng thái “có thể kiểm tra” do nguồn phân loại không có nghĩa Thiên Đồ đã triển khai hoặc xác nhận thành cách.</p>
       <p>{catalog.distribution.derivable} mục nguồn đánh giá có thể kiểm tra · {catalog.distribution.disputed} còn tranh luận · {catalog.distribution.unreachable} chưa thể suy ra từ quy tắc nguồn.</p>
       <p className={styles.readinessSummary}>Còn <strong>{readiness.counts.total}</strong> mục chưa ánh xạ: <strong>{readiness.counts.pending}</strong> có thể nghiên cứu tiếp ({readiness.counts.natalPending} nguyên cục, {readiness.counts.periodPending} vận hạn), <strong>{readiness.counts.disputed}</strong> còn tranh luận và <strong>{readiness.counts.unreachable}</strong> chưa có phương pháp suy ra từ nguồn. Kết quả chưa được thẩm định độc lập.</p>
+      <details className={styles.schoolFull}>
+        <summary>Bảng mã Không Vong theo 10 thiên can · nghiên cứu nguồn</summary>
+        <p>Bảng sao chép mã nguồn theo ba biến thể trường phái. Các con số là mã vị trí 1–12 của nguồn, <strong>chưa được đối chiếu thành địa chi trong engine Thiên Đồ</strong>.</p>
+        <div className={styles.schoolTableWrap}>
+          <table className={styles.schoolTable}>
+            <caption>Bảng tham khảo thiên can; không phải kết quả an sao của lá số</caption>
+            <thead><tr><th scope="col">Can</th><th scope="col">Xun</th><th scope="col">Đơn</th><th scope="col">Đôi</th><th scope="col">Chiêm nghiệm</th></tr></thead>
+            <tbody>{SOURCE_VOID_STEM_ROWS.map(row=><tr key={row.stem}>
+              <th scope="row">{row.stem}</th><td>{row.xunSourceCode}</td>
+              <td>{row.single.join('–')}</td><td>{row.double.join('–')}</td><td>{row.zhanyan.join('–')}</td>
+            </tr>)}</tbody>
+          </table>
+        </div>
+        <small>{SOURCE_STEM_MATRIX_NOTE} <a href={SOURCE_SCHOOL_DATA_URL} target="_blank" rel="noopener noreferrer">Xem bảng nguồn</a>.</small>
+      </details>
       <div className={styles.catalogControls} role="search" aria-label="Tìm kiếm cách cục trong danh mục">
         <label>Tìm theo tên gốc, tên Việt, tên sao, điều kiện hoặc mã cách cục
           <input type="search" maxLength={100} value={catalogQuery} onChange={event=>setCatalogQuery(event.target.value)} placeholder="Ví dụ: Thất Sát, Hỏa Tinh, Không Vong"/>
