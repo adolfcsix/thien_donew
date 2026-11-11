@@ -21,12 +21,30 @@ Các URL nằm trong fixture và là **nguồn ngày đối chiếu**, không ph
 
 * 4 mốc × ba ngày (-1, 0, +1) × hai giới tính giả lập (Nam/Nữ) × giờ 00:00 / 01:00 / 23:00 = **72 lá số tổng hợp**, không dùng ngày sinh cá nhân.
 * Checkout đúng `Renhuai123/ziwei-doushu@7922285d947b36610e7e31c232d8f1e2a0d0871d`, cài đúng `iztro@2.6.1` theo lockfile. Chạy trực tiếp `generateChart` trong thư mục checkout riêng.
-* Lưu cả hai giá trị nguồn/Thiên Đồ: năm/tháng/ngày âm, cờ tháng nhuận, Ngũ hành Cục, tọa chi Tử Vi, tọa chi Mệnh; phân loại `same-lunar-date`, `different-lunar-day`, `different-month-or-leap`, `different-lunar-year`.
+* Lưu cả hai giá trị nguồn/Thiên Đồ: năm/tháng/ngày âm, cờ tháng nhuận, Ngũ hành Cục, tọa chi Tử Vi, tọa chi Mệnh; phân loại `same-lunar-date`, `different-lunar-day`, `different-lunar-month`, `different-leap-flag-only`, `different-lunar-year`.
 * Bảng `byAnchor` và `byHour` cho phép phân tích khác biệt theo mốc và đồng hồ; không dùng quy tắc làm tròn hoặc ép hai chart giống nhau.
 
 ### Giới hạn đặc biệt của giờ Tý
 
 Nguồn ghim `generateChart` nhận **địa chi giờ**, không nhận timestamp kèm phút và múi giờ. Trên dữ liệu thí nghiệm, **23:00 và 00:00 đều truyền chi Tý (0)**; 01:00 truyền chi Sửu (1). Vì vậy việc hai chart có / không lệch không tự chứng minh quy tắc *Tý đầu / Tý cuối*, đổi ngày vào 23:00, hoặc cách quy đổi ngày theo múi giờ. Giữ `sourceLateZiRolloverVerified=false`, `sourceCalendarTimezoneExplicitlyVerified=false`.
+
+## Kết quả thực chạy nguồn R35 và nguyên nhân sai khác cờ nhuận
+
+Workflow nguồn ghim đã hoàn thành **6/6 nhóm test PASS; 72/72 chart hợp lệ, 0 lỗi cấu trúc**. Báo cáo đầu tiên có 48 chart trùng lịch âm hoàn toàn và 24 chart khác nhóm `different-month-or-leap`; sau khi kiểm tra dữ liệu từng trường, cả 24 trường hợp đều **trùng năm, tháng và ngày âm**, chỉ khác `isLeapMonth`:
+
+| Nhóm | Tổng | Trùng đầy đủ | Khác duy nhất cờ nhuận | Cục / Tử Vi / Mệnh trùng |
+| --- | ---: | ---: | ---: | ---: |
+| Bắt đầu tháng tư nhuận 2020 | 18 | 6 | 12 | 18 / 18 / 18 |
+| Bắt đầu tháng hai nhuận 2023 | 18 | 6 | 12 | 18 / 18 / 18 |
+| Tết 2024 | 18 | 18 | 0 | 18 / 18 / 18 |
+| Tết 2025 | 18 | 18 | 0 | 18 / 18 / 18 |
+| **Tổng** | **72** | **48** | **24** | **72 / 72 / 72** |
+
+**Nguyên nhân mã nguồn:** trong checkout nguồn `lib/ziwei/school-config.ts`, `DEFAULT_LEAP_MONTH='split'`, tức chính sách quy nạp tháng nhuận theo nửa tháng. Hàm `resolveEffectiveLunarDate` thuộc `lib/ziwei/algorithm.ts` giữ `isLeapMonth=false` khi chính sách là `split`, dù `rawLunarMonth<0`. Thiên Đồ ghi cờ nhuận của lịch dân sự Việt Nam; đây là **hai đại lượng không đồng nghĩa** (cờ nhuận lịch gốc và cờ tháng hiệu lực cho phép an sao). Do đó 24 sai khác không được kết luận là lỗi nhận diện tháng nhuận hay lỗi an sao.
+
+R35 cập nhật phân loại riêng `different-leap-flag-only` và xuất `sourceLeapMonthPolicy:'split'` từ output `generateChart`. Nguồn 72-chart sau cập nhật phải chạy lại để xác thực trường này, không sử dụng báo cáo cũ làm bằng chứng cho mã mới.
+
+Nguồn kỹ thuật ghim: `Renhuai123/ziwei-doushu@7922285d947b36610e7e31c232d8f1e2a0d0871d`, các tệp `lib/ziwei/school-config.ts` và `lib/ziwei/algorithm.ts`.
 
 ## Cổng kiểm chứng
 
