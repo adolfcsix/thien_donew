@@ -68,3 +68,31 @@ test('Malformed source fixtures fail closed',()=>{
  const h=make({0:[{name:'廉贞',siHua:'bogus'}]});assert.throws(()=>run(h),TypeError);
  const n=make();n.kind='thiendo-chart';assert.throws(()=>run(n),TypeError);
 });
+
+
+test('R44 source Void truth table spans all 12 Mệnh branches and all six source labels',()=>{
+ for(let branch=0;branch<12;branch++)for(const name of VOID){
+  const menhWithLiem=make({[branch]:['廉贞',name]},branch);
+  assert.equal(run(menhWithLiem).items[0].formulaMatched,true,branch+':'+name);
+  const luWithTwoKills=make({[branch]:['禄存','地空','地劫',name]},branch);
+  assert.equal(run(luWithTwoKills).items[1].formulaMatched,true,branch+':'+name);
+  const transformed=make({[branch]:[{name:'文昌',siHua:'禄'},'地空','地劫',name]},branch);
+  assert.equal(run(transformed).items[1].formulaMatched,true,branch+':'+name);
+  assert.equal(run(make({[branch]:['禄存','地空','地劫','Tuần','Triệt']},branch)).items[1].formulaMatched,false);
+ }
+});
+test('R44 decade predicate checks 12 branches and every exact source Void label',()=>{
+ for(let i=0;i<VOID.length;i++)for(let branch=0;branch<12;branch++){
+  const loc=branch,horse=(branch+1)%12,seven=(branch+2)%12;
+  const a=make();
+  a.palaces[loc].stars.push({name:'禄存'},{name:VOID[i]});
+  a.palaces[horse].stars.push({name:'天马'},{name:VOID[(i+1)%VOID.length]});
+  a.palaces[seven].stars.push({name:'七杀'});
+  const before=JSON.stringify(a),periods=run(a).items[2].periods;
+  assert.equal(periods.filter(x=>x.formulaMatched).length,4,branch+':'+VOID[i]);
+  assert.equal(JSON.stringify(a),before);
+  const b=JSON.parse(JSON.stringify(a));
+  b.palaces[horse].stars=b.palaces[horse].stars.filter(x=>x.name!==VOID[(i+1)%VOID.length]);
+  assert.equal(run(b).items[2].formulaMatched,false,'both source Void placements are required');
+ }
+});
