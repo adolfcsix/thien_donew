@@ -46,7 +46,8 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  if(process.env.THIENDO_BROWSER_SCOPE==='lifetime-pro'){await require('./helpers-lifetime-pro-browser.cjs')({owner,member,password,pg,origin,record,pageErrors,out});assert.deepEqual(pageErrors,[]);return;}
  if(process.env.THIENDO_BROWSER_SCOPE==='study-tabs'){await require('./helpers-study-tabs-browser.cjs')({context:member.context,origin,record,pageErrors,out});assert.deepEqual(pageErrors,[]);return;}
  if(process.env.THIENDO_BROWSER_SCOPE==='observatory'){await require('./helpers-observatory-browser.cjs')({context:member.context,origin,record,pageErrors,out});assert.deepEqual(pageErrors,[]);return;}
- if(process.env.THIENDO_BROWSER_SCOPE==='western'){await require('./helpers-western-workbench-browser.cjs')({context:member.context,origin,record,pageErrors});assert.deepEqual(pageErrors,[]);return;}
+ if(process.env.THIENDO_BROWSER_SCOPE==='western'){await require('./helpers-late-zi-compare-browser.cjs')({context:member.context,origin,record,pageErrors});
+ await require('./helpers-western-workbench-browser.cjs')({context:member.context,origin,record,pageErrors});assert.deepEqual(pageErrors,[]);return;}
 
 
 
