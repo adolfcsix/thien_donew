@@ -5,6 +5,7 @@ on:
       - '.github/workflows/tuvi-zi-scenario-r37.yml'
       - 'packages/astrology-engine/src/tuvi-zi-scenario-audit.cjs'
       - 'tests/v111680-tuvi-r37-zi-scenario.test.cjs'
+      - 'infrastructure/scripts/tuvi-r37-report-scenarios.cjs'
       - 'packages/astrology-engine/src/tuvi.js'
   push:
     branches: [main]
@@ -12,6 +13,7 @@ on:
       - '.github/workflows/tuvi-zi-scenario-r37.yml'
       - 'packages/astrology-engine/src/tuvi-zi-scenario-audit.cjs'
       - 'tests/v111680-tuvi-r37-zi-scenario.test.cjs'
+      - 'infrastructure/scripts/tuvi-r37-report-scenarios.cjs'
       - 'packages/astrology-engine/src/tuvi.js'
   workflow_dispatch:
 permissions: {contents: read}
@@ -34,6 +36,16 @@ jobs:
           node --check tests/v111680-tuvi-r37-zi-scenario.test.cjs
       - name: Run paired-chart, invalid input, leap, rollover, no-mutation checks
         run: node --test tests/v111680-tuvi-r37-zi-scenario.test.cjs
+      - name: Generate sixteen controlled late-Zi paired chart records
+        run: node infrastructure/scripts/tuvi-r37-report-scenarios.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: thien-do-r37-late-zi-paired-chart-evidence
+          path: .r37-zi-scenario-report.json
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
       - name: Preserve research-only scope
         if: always()
         run: |
