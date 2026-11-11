@@ -250,7 +250,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
                 <li key={entry.id+'-pending-'+i} data-met={condition.state==='met'}>
                   <strong>{checkText[condition.state]}:</strong> {condition.label}. <span>{condition.detail}</span>
                 </li>)}</ul>
-              <small>Trong nguồn, hai tên cũ 截路/空亡 được chuẩn hóa thành 截空/副截; R27 đã đối chiếu hình học trên 65 lá số giả lập (iztro@2.6.1), nhưng chưa thẩm định sự tương đương ý nghĩa sao và biến thể phái. Chỉ số proxy Tuần/Triệt không thay cho Không Vong nguồn. Chưa kết luận cách cục.</small>
+              <small>Trong nguồn, hai tên cũ 截路/空亡 được chuẩn hóa thành 截空/副截; R27 đã đối chiếu hình học trên 65 lá số giả lập (iztro@2.6.1), nhưng chưa thẩm định sự tương đương ý nghĩa sao và biến thể phái. Chỉ số proxy Tuần/Triệt không thay cho Không Vong nguồn. Tuần/Triệt không được coi là tương đương. Chưa kết luận cách cục.</small>
             </details>}
           </li>)}</ol>
         </section>)}
