@@ -4,6 +4,7 @@ import {useMemo,useState} from 'react';
 import type {AstrologyResult} from '@thiendo/shared-types';
 import {calculateLocal} from '@/lib/engine';
 import {compareChartScenarios,nextCivilDate} from '../lib/late-zi-compare-model.cjs';
+import {locateMovedStar} from '../lib/late-zi-star-navigation.cjs';
 import styles from './late-zi-compare-panel.module.css';
 
 type ScenarioSide={palace:string;isThan:boolean;mainStars:string[]};
@@ -14,6 +15,7 @@ type BranchDiff={
 };
 type FieldDiff={key:string;label:string;before:string;after:string;changed:boolean};
 type MovedStar={name:string;from:string;to:string};
+type StarFocus={name:string;from:string;to:string;fromIndex:number;toIndex:number;beforePalace:string;afterPalace:string};
 type CompareReport={
   currentDate:string;alternativeDate:string;clock:string;
   branches:BranchDiff[];fields:FieldDiff[];
@@ -25,9 +27,9 @@ const humanDate=(date:string)=>{
   const [year,month,day]=date.split('-');
   return [day,month,year].join('/');
 };
-function SideGrid({title,date,side,branches,selected,onSelect}:{
+function SideGrid({title,date,side,branches,selected,starFocus,onSelect}:{
  title:string;date:string;side:'before'|'after';branches:BranchDiff[];
- selected:number|null;onSelect:(branch:number)=>void;
+ selected:number|null;starFocus:StarFocus|null;onSelect:(branch:number)=>void;
 }) {
  return <section className={styles.side} aria-label={title}>
   <div className={styles.sideHead}>
@@ -43,12 +45,15 @@ function SideGrid({title,date,side,branches,selected,onSelect}:{
    </div>}
    {branches.map(item=>{
     const cell=item[side],moved=side==='before'?item.movedBefore:item.movedAfter;
+    const starEndpoint=starFocus&&item.branchIndex===(side==='before'?starFocus.fromIndex:starFocus.toIndex)
+      ?(side==='before'?'source':'destination'):undefined;
     return <button type="button" className={styles.palace}
-      key={item.branchIndex} data-branch={item.branchIndex} data-changed={item.changed} aria-pressed={selected===item.branchIndex}
-      aria-label={item.branch+': '+cell.palace+(item.changed?', có khác biệt':'')+'. '+(cell.mainStars.length?cell.mainStars.join(', '):'Vô chính diệu')}
+      key={item.branchIndex} data-branch={item.branchIndex} data-changed={item.changed} data-star-endpoint={starEndpoint} aria-pressed={selected===item.branchIndex}
+      aria-label={item.branch+': '+cell.palace+(item.changed?', có khác biệt':'')+'. '+(cell.mainStars.length?cell.mainStars.join(', '):'Vô chính diệu')+(starEndpoint?', '+(side==='before'?'vị trí gốc của ':'vị trí giả định của ')+starFocus?.name:'')}
       onClick={()=>onSelect(item.branchIndex)}>
       <span className={styles.palaceTop}><b>{item.branch}</b><small>{item.changed?'Có thay đổi':'Giữ nguyên'}</small></span>
       <strong>{cell.palace}{cell.isThan?' · Thân':''}</strong>
+      {starEndpoint&&<span className={styles.starEndpoint}>{side==='before'?'Vị trí A của ':'Vị trí B của '}{starFocus?.name}</span>}
       <span className={styles.stars}>{cell.mainStars.length
         ?cell.mainStars.map(name=><span key={name} data-moved={moved.includes(name)}>{name}</span>)
         :<span>Vô chính diệu</span>}</span>
@@ -60,6 +65,7 @@ function SideGrid({title,date,side,branches,selected,onSelect}:{
 export function LateZiComparePanel({result}:{result:AstrologyResult}){
  const [onlyChanged,setOnlyChanged]=useState(false);
  const [selectedBranch,setSelectedBranch]=useState<number|null>(null);
+ const [selectedStar,setSelectedStar]=useState<string|null>(null);
  const outcome=useMemo(()=>{
   try{
    if(result.hour!==23)return {report:null,error:'Chỉ có thể so sánh quy ước đổi ngày khi giờ nhập là 23:00–23:59.'};
@@ -80,6 +86,8 @@ export function LateZiComparePanel({result}:{result:AstrologyResult}){
  },[result]);
  const report=outcome.report;
  const visible=report?(onlyChanged?report.branches.filter(x=>x.changed):report.branches):[];
+ const starFocus=report&&selectedStar?(locateMovedStar(report,selectedStar) as StarFocus|null):null;
+ const selectBranch=(branch:number)=>{setSelectedStar(null);setSelectedBranch(branch);};
  const active=report?.branches.find(x=>x.branchIndex===selectedBranch)
   ??report?.branches.find(x=>x.changed)??report?.branches[0];
  return <section className={styles.root} aria-labelledby="late-zi-panel-title" data-research-only="true">
@@ -107,9 +115,9 @@ export function LateZiComparePanel({result}:{result:AstrologyResult}){
     ?<p className={styles.empty} role="status">Không có địa chi nào khác nội dung trong hai kịch bản này.</p>
     :<div className={styles.twoGrids}>
       <SideGrid title="Giữ ngày sinh đã nhập" date={report.currentDate} side="before"
-       branches={visible} selected={active?.branchIndex??null} onSelect={setSelectedBranch}/>
+       branches={visible} selected={active?.branchIndex??null} starFocus={starFocus} onSelect={selectBranch}/>
       <SideGrid title="Tính sang ngày sau" date={report.alternativeDate} side="after"
-       branches={visible} selected={active?.branchIndex??null} onSelect={setSelectedBranch}/>
+       branches={visible} selected={active?.branchIndex??null} starFocus={starFocus} onSelect={selectBranch}/>
      </div>}
    {active&&<section className={styles.focus} aria-live="polite" aria-label="Chi tiết địa chi đang chọn">
     <div className={styles.focusLabel}><span>ĐỊA CHI ĐANG XEM</span><h4>{active.branch}</h4>
@@ -125,13 +133,16 @@ export function LateZiComparePanel({result}:{result:AstrologyResult}){
     {report.movedStars.length
       ?<ul className={styles.starAuditList}>{report.movedStars.map(star=>
         <li key={star.name}>
-         <strong>{star.name}</strong>
+         <strong><button type="button" className={styles.starPick} aria-pressed={starFocus?.name===star.name}
+          aria-label={'Định vị '+star.name+' từ '+star.from+' sang '+star.to}
+          onClick={()=>{setSelectedBranch(null);setSelectedStar(current=>current===star.name?null:star.name);}}>{star.name}</button></strong>
          <span><small>Giữ ngày</small><b>{star.from}</b></span>
          <span aria-hidden="true" className={styles.starArrow}>→</span>
          <span><small>Sang ngày sau</small><b>{star.to}</b></span>
         </li>)}</ul>
       :<p role="status" className={styles.starNoMovement}>Không chính tinh nào đổi địa chi ở hai phương án; các chỉ số khác như ngày âm vẫn có thể thay đổi.</p>}
    </details>
+   {starFocus&&<p role="status" className={styles.starTraceStatus}>Đang định vị <strong>{starFocus.name}</strong>: phương án A ở <strong>{starFocus.from} ({starFocus.beforePalace})</strong>; phương án B ở <strong>{starFocus.to} ({starFocus.afterPalace})</strong>. Hai cung được đánh dấu trực tiếp trên địa bàn tương ứng.</p>}
    <p className={styles.scrollHint} id="late-zi-table-hint">Bảng có bốn cột. Trên điện thoại, vuốt bảng sang trái để xem cột “Sang ngày sau” và “Kết quả”. Có thể dùng bàn phím để cuộn khi vùng bảng được chọn.</p>
    <div className={styles.tableScroll} tabIndex={0} role="region" aria-label="Bảng so sánh chỉ số tổng quan" aria-describedby="late-zi-table-hint">
     <table className={styles.table}><caption>Đối chiếu sáu chỉ số của hai phương án</caption>
