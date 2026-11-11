@@ -91,7 +91,7 @@
  .stats div{padding:10px}
  .stats span{font-size:11px}
  .palaceGrid,.palaceGrid[data-ring="true"]{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto}
- .palaceGrid[data-ring="true"] > .palace{grid-area:auto}
+ .palaceGrid[data-ring="true"] > .palace[data-branch]{grid-area:auto}
  .centerSeal{display:none}
  .palace{min-height:118px;padding:9px}
  .focus{grid-template-columns:minmax(0,1fr);gap:12px}
