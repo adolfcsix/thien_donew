@@ -371,3 +371,12 @@ Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructi
 - Bảng `SCHOOL_XUNKONG` trong nguồn có 12 giá trị sau số sentinel dù chú thích `theo thiên can 1–10`; chỉ đối chiếu 10 thiên can đúng phạm vi chú thích, hai vị trí còn lại **không tự diễn giải**. Cần phân biệt nguồn bảng dữ liệu và cách thuật toán `iztro` thực tế đặt sao trước khi so sánh với Thiên Đồ.
 - Thêm **một bảng mã đóng mặc định** trong phần danh mục nghiên cứu 49 cách cục, dùng CSS bảng sẵn có; không thêm route/tab, không hiển thị vị trí sao của người dùng, có caption và link dẫn đến bảng nguồn.
 - Test r21 kiểm tra nguyên bảng 10 can × 3 biến thể, 12 mã Xun kèm sentinel, trường hợp tham số sai, tính bất biến, bảo vệ `sourcePlacementVerified=false`, `sourceCriterionVerified=false` và 28/49. Không sửa engine, tài khoản, thanh toán hay AI.
+
+
+## R22 — Hai điều kiện đại hạn được ánh xạ trên nền độ sáng QS (11/11/2026)
+
+- Đối chiếu `Renhuai123/ziwei-doushu@7922285d947b36610e7e31c232d8f1e2a0d0871d`, `patterns-dingza.ts` và 14 hàng `SB_QS` trong `school-tables.generated.ts`. Mọi mã nguồn đều giữ 1-based Tý..Hợi; **không tự chứng minh tọa độ an sao giữa hai engine là tương đương**.
+- Bổ sung lớp độc lập `classical-dingza-source-bridge.cjs` áp nguồn độ sáng SB_QS trên **tọa độ Thiên Đồ đã kiểm toán**; đối chiếu 14 chính tinh, 12 cung và độ sáng theo đúng phiên bản. Sao phụ, sao năm, Không/Kiếp/Hỏa/Linh và Tứ Hóa phải qua kiểm toán nguồn trước khi được tính cát/sát.
+- Ánh xạ **điều kiện** cho `dinh-tap-01` (Phong vân tế hội) và `dinh-tap-08` (Khô mộc phùng xuân): Mệnh/Thân yếu theo bảng nguồn, hạn mạnh, cát ≥2, sát ≤1 khi đủ chứng cứ. Hai mục vẫn ở `status=partial-evidence` trong bộ nghiên cứu hiện hữu, cờ `sourceCriterionVerified=false`, `schoolPlacementVerified=false`. **Không phát hành phán đoán vận hạn**.
+- Danh mục nay ghi **30/49 mục có điều kiện được triển khai (28 nguyên cục + 2 đại hạn)**, không có nghĩa 30 cách cục đã được chuyên gia xác nhận. Vẫn còn 19 mục chưa ánh xạ, gồm 4 có thể nghiên cứu, 9 tranh luận, 6 nguồn chưa thể suy ra.
+- Giữ nguyên 28 kết quả nguyên cục và màn hình lọc; khi vào nhóm Định tạp, hai mục có thêm điều kiện QS trong 12 khoảng tuổi mụ. Không thêm route, tab, menu, không đụng engine, DB, AI, Pro hoặc thanh toán. Tiếp theo cần thẩm định quy tắc an sao nguồn, khác biệt độ sáng và đại hạn/lưu niên.
