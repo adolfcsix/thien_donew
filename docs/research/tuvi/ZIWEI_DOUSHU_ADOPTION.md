@@ -334,3 +334,14 @@ Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructi
 - Trong danh mục 49 cách cục hiện có, hai mục hiển thị **'Đã đối chiếu một phần · chưa ánh xạ'**, có thể mở danh sách điều kiện mà không tạo thêm menu hay tab. Mục vẫn thuộc sáu nguồn có thể nghiên cứu, chưa được chuyển sang `assessed`.
 - Test hồi quy yêu cầu 2 mục nghiên cứu từng phần, không tăng số mục đánh giá, không có `structural-match`, không thay đổi chart, không chấp nhận sai lớp sao/phiên bản an sao, không dùng Hóa Lộc lưu hạn hoặc dấu Tuần/Triệt để giả lập sáu Không Vong.
 - Không sửa engine, Tứ Hóa, DB, quyền Pro, AI hoặc thanh toán. Tiếp tục nghiên cứu quy tắc an đủ sáu sao, rồi mới quyết định có thể tăng từ 28/49 lên 30/49 hay không. Nhóm Định tạp giữ riêng theo đơn vị **vận hạn**, không đưa thành kết luận bản mệnh.
+
+
+## R18 — Kiểm tra chứng cứ Định tạp theo 12 đại hạn, chưa phán đoán (11/11/2026)
+
+- Bám nguyên tắc mô-đun `patterns-dingza.ts` của `Renhuai123/ziwei-doushu` tại commit `7922285d947b36610e7e31c232d8f1e2a0d0871d`: 4 mục `dinh-tap-01`, `02`, `03`, `08` mang đơn vị **đại hạn**, không phải kết quả nhị phân trên lá số bản mệnh.
+- Mỗi mục kiểm tra 12 khoảng tuổi mụ từ `cycles.daiHan` sau khi vượt `auditClassicalPeriodGeometry`, đọc theo **địa chi**. Không duyệt chart nếu có sai tuổi, sai cung, hướng, hoặc nguồn an hạn.
+- Đối chiếu các tín hiệu có thể chứng minh nội bộ: mạnh/yếu cung theo **bảng độ sáng 14 chính tinh phiên bản Thiên Đồ** (không gán tương đương tuyệt đối với nguồn), Thất Sát chính tinh theo Tứ chính, Lộc Tồn, Thiên Mã, một phần Sát tinh cùng cung, Hóa Lộc nguyên cục có nguồn. Các lớp sao kiểm toán lại theo engine để dữ kiện thiếu/trùng/sai `ruleSet` trở thành *unknown*.
+- Điều kiện còn thiếu: sáu sao Không Vong độc lập; tiêu chuẩn thống nhất các trường phái cho cát/sát, Miếu/Vượng, và nguyên chú `hai hạn`. Bốn mục luôn `sourceCriterionVerified=false`, không cộng vào **28/49** và không mở khóa một kết luận vận hạn.
+- UI: trong danh mục 49 mục của panel Chuyên sâu, mở gọn từng mục Định tạp để xem chứng cứ trong **12 đại hạn**. Không thêm tab mới, giữ responsive và `prefers-reduced-motion`.
+- Tests r18: Nam/Nữ, 12 kỳ, trạng thái bất biến, sai bảng độ sáng, sai an sao và thiếu chart sẽ không được xem là chứng cứ khẳng định. Không đổi engine, SQL, Pro, AI, thanh toán hoặc thuật toán sao.
+- Chỉ merge sau khi Source Integrity, Full Stack, Production Acceptance **5/5** đều PASS trên cùng HEAD; chạy kiểm tra sau merge trên `main`.

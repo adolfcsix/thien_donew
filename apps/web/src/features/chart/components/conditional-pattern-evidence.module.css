@@ -85,3 +85,14 @@
 .pendingEvidence .checks{margin:7px 0;padding-left:18px}
 .pendingEvidence .checks li{font-size:11px;line-height:1.6;overflow-wrap:anywhere;margin:5px 0}
 .pendingEvidence small{display:block;font-size:11px;line-height:1.6;color:var(--text-secondary,var(--text))}
+
+/* R18: four source-pinned Ding Za candidates, 12 read-only periods, collapsed by default. */
+.periodEvidence{margin:8px 0 9px;min-width:0;font-size:12px}
+.periodEvidence>summary{font-weight:600;cursor:pointer;line-height:1.6}
+.periodEvidence>p{margin:6px 0!important;font-size:11px;line-height:1.6}
+.periodEvidence>small{display:block;font-size:11px;line-height:1.6;color:var(--text-secondary,var(--text))}
+.periodRanges{list-style:decimal;padding-left:21px;margin:8px 0;display:grid;gap:5px;min-width:0}
+.periodRanges>li{min-width:0;overflow-wrap:anywhere}
+.periodRanges details summary{cursor:pointer;font-weight:500;font-size:11px;line-height:1.65}
+.periodRanges .checks{padding-left:17px;margin:5px 0 10px}
+.periodRanges .checks li{font-size:11px;line-height:1.55;margin:3px 0;overflow-wrap:anywhere}
