@@ -47,8 +47,17 @@ function sourceCoordinates(record){
  }
  const get=n=>unique(byName.get(n)||[]);
  const markers=VOID.map(get);
+ // Distinguish the four actual *named stars* from the occupied branch SET.
+ // Two name pairs may occupy the same two branches, e.g. near lunar-new-year
+ // boundaries. Comparing a four-element multiset against Thiên Đồ's union
+ // is an incorrect "mismatch"; preserve the source names for provenance.
+ const voidNamedBranches=Object.freeze(Object.fromEntries(
+  VOID.map((name,i)=>[name,markers[i]])
+ ));
+ const voidBranches=markers.every(validBranch)?
+  Object.freeze(sorted(new Set(markers))):null;
  return Object.freeze({
-  get, huaLoc:unique(hua), voidBranches:markers.every(validBranch)?Object.freeze(sorted(markers)):null
+  get,huaLoc:unique(hua),voidNamedBranches,voidBranches
  });
 }
 function localCoordinates(chart){
@@ -90,6 +99,7 @@ function compareRecord(record,origin){
  const localVoid=voidGate.verifiedLocalObstructions&&
   voidGate.trietSourcePairGeometryStatus==='matched'?voidGate.proxyBranches:null;
  const voidCoordinates=Object.freeze({
+  sourceNamedBranches:source.voidNamedBranches,
   sourceBranches:source.voidBranches,localProxyBranches:localVoid,
   status:source.voidBranches===null||localVoid===null?'unknown':
    same(source.voidBranches,localVoid)?'matched':'different',
@@ -136,6 +146,8 @@ function compareRecord(record,origin){
  return Object.freeze({
   id:record.id,origin,
   kind:origin==='r30'?record.role:record.kind,
+  solarDate:record.solarDate,
+  clockHour,gender:record.gender,
   sourceMing:record.mingGongBranch,localMing,
   mingAligned,
   placement,hua,voidCoordinates,evidence,
@@ -195,6 +207,16 @@ function auditCrossEngineMatrix(reference,rare,matrix){
    mingAligned:records.filter(x=>x.mingAligned).length,
    mingDifferent:records.filter(x=>!x.mingAligned).length,
    placements,
+   affectedSolarYears:Object.freeze(Object.fromEntries(
+    [...new Set(records.filter(x=>
+      Object.values(x.placement).some(v=>v.status==='different')||
+      x.hua.status==='different'||x.voidCoordinates.status==='different')
+     .map(x=>x.solarDate.slice(0,4)))].sort().map(y=>[y,
+      records.filter(x=>x.solarDate.startsWith(y)&&(
+       Object.values(x.placement).some(v=>v.status==='different')||
+       x.hua.status==='different'||x.voidCoordinates.status==='different')).length
+     ])
+   )),
    proxyComparisons:Object.freeze(categories)
   }),
   localPatternVerdictsVerified:false,
