@@ -23,7 +23,7 @@ function localMirrorForContractsOnly(){
       source:{
         lunarYear:chart.lunar.year,lunarMonth:chart.lunar.month,
         lunarDay:chart.lunar.day,isLeapMonth:chart.lunar.leap===true,
-        yearStem:STEMS.indexOf(chart.yearCanChi.split(' ')[0]),
+        leapMonthPolicy:'split',yearStem:STEMS.indexOf(chart.yearCanChi.split(' ')[0]),
         wuxingJu:chart.cuc.number,ziweiPos:BRANCHES.indexOf(chart.ziWei),
         mingGongBranch:BRANCHES.indexOf(chart.menh)
       }
@@ -75,6 +75,7 @@ test('r35: 72 controlled synthetic contracts, strict SHA and data integrity',()=
     x=>{x.records[0].offsetDays=-2;},
     x=>{x.records[0].hourBranch=11;},
     x=>{x.records[0].source.wuxingJu=8;},
+    x=>{x.records[0].source.leapMonthPolicy='origin-month';},
     x=>{x.records[0].source.lunarMonth=0;},
     x=>{x.provenance.commit='HEAD';},
     x=>{x.provenance.sourceExecuted=false;},
@@ -111,6 +112,7 @@ test('r35: research never promotes mappings, semantic parity or late-Tý date ro
   assert.equal(report.localPatternVerdictsVerified,false);
   assert.equal(report.sourceSchoolParityVerified,false);
   assert.equal(report.sourceLateZiRolloverVerified,false);
+  assert.equal(report.sourceLeapMonthPolicy,'split');
   assert.equal(report.sourceCalendarTimezoneExplicitlyVerified,false);
   assert.match(report.records.find(r=>r.clockHour===23).hourConventionWarning,/not independently verified/);
 });
@@ -123,6 +125,11 @@ test('r35: pinned source execution required by CI; never substitute local unit m
   assert.equal(result.checked,72,JSON.stringify(result.errors));
   assert.equal(result.failures,0,JSON.stringify(result.errors));
   assert.equal(result.summary.total,72);
+  assert.equal(result.summary.classes['different-leap-flag-only'],24);
+  assert.equal(result.summary.classes['different-lunar-month'],0);
+  assert.equal(result.summary.matchingCuc,72);
+  assert.equal(result.summary.matchingZiWei,72);
+  assert.equal(result.summary.matchingMenh,72);
   for(const key of fixture.anchors.map(a=>a.id))assert.equal(result.byAnchor[key].total,18);
   assert.equal(result.sourceLateZiRolloverVerified,false);
 });
