@@ -217,10 +217,10 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  }
  await authPage.goto(origin+'/admin',{waitUntil:'networkidle'});await authPage.getByRole('button',{name:'Đăng nhập quản trị',exact:true}).click();
  await authPage.route('**/api/billing/access',route=>route.fulfill({status:503,contentType:'application/json',body:JSON.stringify({message:'Controlled role outage'})}));
- const retryDialog=authPage.getByRole('dialog');await retryDialog.getByLabel('Username hoặc email',{exact:true}).fill('qa_member');await retryDialog.getByLabel('Mật khẩu',{exact:true}).fill(password);await retryDialog.getByRole('button',{name:'Đăng nhập',exact:true}).click();
+ const retryDialog=authPage.getByRole('dialog');await retryDialog.getByLabel('Username hoặc email',{exact:true}).fill('qa_member');await retryDialog.getByLabel('Mật khẩu',{exact:true}).fill(password);const chartRouteReady=authPage.waitForURL('**/chart',{waitUntil:'domcontentloaded',timeout:30000});await retryDialog.getByRole('button',{name:'Đăng nhập',exact:true}).click();
  // A67 already made a confirmed login independent of a transient access outage.
  // Keep the actual security invariant: unknown admin rights never become admission.
- await authPage.waitForURL('**/chart');assert.equal(await authPage.getByRole('navigation',{name:'Điều hướng quản trị'}).count(),0);
+ await chartRouteReady.catch(async error=>{const response=await anonymous.request.get(origin+'/api/auth/me').then(r=>r.status()).catch(()=>0);throw new Error('Member login redirect failed; current URL='+authPage.url()+'; sessionHTTP='+response,{cause:error});});assert.equal(await authPage.getByRole('navigation',{name:'Điều hướng quản trị'}).count(),0);
  assert.equal((await(await anonymous.request.get(origin+'/api/auth/me')).json()).user.id,member.user.id);
  assert.equal((await anonymous.request.get(origin+'/api/admin/overview')).status(),403);
  await authPage.unroute('**/api/billing/access');
