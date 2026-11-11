@@ -38,7 +38,10 @@ export function ChartResult({result, label, saving, message, onSave, onExport, o
   const [imageMessage, setImageMessage] = useState('');
   const [showWholeChart, setShowWholeChart] = useState(false);
   const [showMatrix, setShowMatrix] = useState(false);
-  const [showZiComparison, setShowZiComparison] = useState(false);
+  // Bind the optional research view to the exact chart object. A new
+  // calculation must never inherit the previous subject's study state.
+  const [ziOpenedFor, setZiOpenedFor] = useState<AstrologyResult | null>(null);
+  const showZiComparison = Boolean(result && ziOpenedFor === result);
   const [printBusy, setPrintBusy] = useState(false);
   const matrixAnnual = useMemo(()=>result && (showWholeChart || showMatrix)?Engine.annualOverview(result,annualYear):undefined,[result,annualYear,showWholeChart,showMatrix]);
 
@@ -100,7 +103,7 @@ export function ChartResult({result, label, saving, message, onSave, onExport, o
         <div><span className="eyebrow">BƯỚC 02 / ĐỊA BÀN</span><h2 className="serif">Lá số của {label}</h2></div>
         <div className="result-actions">
           <button type="button" className="btn secondary small" aria-pressed={showWholeChart} aria-expanded={showWholeChart} aria-controls="thiendo-whole-chart" onClick={()=>setShowWholeChart(value=>!value)}>{showWholeChart?'Ẩn bài đọc 12 cung':'Đọc toàn lá số · 12 cung'}</button>
-          {result.hour===23&&<button type="button" className="btn secondary small" aria-expanded={showZiComparison} aria-controls="thiendo-late-zi-compare" onClick={()=>setShowZiComparison(value=>!value)}>{showZiComparison?'Ẩn so sánh giờ Tý':'So sánh quy ước giờ Tý'}</button>}
+          {result.hour===23&&<button type="button" className="btn secondary small" aria-expanded={showZiComparison} aria-controls="thiendo-late-zi-compare" onClick={()=>setZiOpenedFor(current=>current===result?null:result)}>{showZiComparison?'Ẩn so sánh giờ Tý':'So sánh quy ước giờ Tý'}</button>}
           <button type="button" className="btn secondary small" onClick={onExport}>↓ JSON</button>
           <button type="button" className="btn secondary small" disabled={imageBusy} onClick={()=>void exportPng()} title="Ảnh toàn khung: toàn bộ sao đã tính và lớp lưu niên">{imageBusy?'Đang tạo ảnh…':'↓ PNG'}</button>
           <button type="button" className="btn secondary small" onClick={printChart} disabled={printBusy} aria-busy={printBusy} title="Mệnh bàn và phụ lục sao đầy đủ; chọn Lưu dưới dạng PDF trong hộp thoại in">{printBusy ? 'Đang chuẩn bị bản in…' : '▤ In / PDF'}</button>
