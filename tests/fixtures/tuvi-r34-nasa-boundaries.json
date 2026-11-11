@@ -1,0 +1,45 @@
+{
+  "schema": "thiendo-r34-nasa-ut-new-moon-boundaries-v1",
+  "source": {
+    "provider": "NASA GSFC",
+    "title": "Phases of the Moon: 1901 to 2000",
+    "url": "https://eclipse.gsfc.nasa.gov/phase/phases1901.html",
+    "timescale": "UT rounded to nearest minute",
+    "utcProjectionNote": "UT minute timestamps are used as UTC-like projections for civil-date grouping; all cases are >=6 minutes from the local midnight transition"
+  },
+  "civilOffsets": {
+    "vietnamHours": 7,
+    "chineseReferenceHours": 8
+  },
+  "offsetsDays": [
+    2,
+    14,
+    22
+  ],
+  "genders": [
+    "Nam",
+    "Nữ"
+  ],
+  "clockHours": [
+    0,
+    12
+  ],
+  "cases": [
+    {
+      "id": "1984-05",
+      "utcNewMoon": "1984-05-30T16:48:00Z"
+    },
+    {
+      "id": "1986-12",
+      "utcNewMoon": "1986-12-01T16:43:00Z"
+    },
+    {
+      "id": "1989-08",
+      "utcNewMoon": "1989-08-01T16:06:00Z"
+    },
+    {
+      "id": "1996-07",
+      "utcNewMoon": "1996-07-15T16:15:00Z"
+    }
+  ]
+}
