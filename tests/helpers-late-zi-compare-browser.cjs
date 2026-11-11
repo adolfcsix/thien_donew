@@ -19,8 +19,8 @@ module.exports=async function verifyLateZiCompare({context,origin,record,pageErr
    if(!(await drawer.evaluate(el=>el.open)))await drawer.locator('summary').click();
    await drawer.getByLabel('Tên lá số',{exact:true}).fill('Kiểm thử giờ Tý');
    await drawer.getByLabel('Ngày sinh',{exact:true}).fill('2024-02-09');
-   const hours=drawer.locator('.input-pair label.field').filter({hasText:'Giờ sinh'}).locator('select');
-   const minutes=drawer.locator('.input-pair label.field').filter({hasText:'Phút sinh'}).locator('select');
+   const hours=drawer.getByRole('combobox',{name:'Giờ sinh',exact:true});
+   const minutes=drawer.getByRole('combobox',{name:'Phút sinh',exact:true});
    assert.equal(await hours.count(),1,'birth hour select must appear exactly once');
    assert.equal(await minutes.count(),1,'birth minute select must appear exactly once');
    await hours.selectOption('23');
@@ -83,8 +83,8 @@ module.exports=async function verifyLateZiCompare({context,origin,record,pageErr
    drawer=page.locator('.chart-input-drawer');
    if(!(await drawer.evaluate(el=>el.open)))await drawer.locator('summary').click();
    assert.equal(await drawer.getByLabel('Ngày sinh',{exact:true}).inputValue(),'2024-02-09');
-   assert.equal(await drawer.locator('.input-pair label.field').filter({hasText:'Giờ sinh'}).locator('select').inputValue(),'23');
-   await drawer.locator('.input-pair label.field').filter({hasText:'Giờ sinh'}).locator('select').selectOption('22');
+   assert.equal(await drawer.getByRole('combobox',{name:'Giờ sinh',exact:true}).inputValue(),'23');
+   await drawer.getByRole('combobox',{name:'Giờ sinh',exact:true}).selectOption('22');
    await drawer.getByRole('button',{name:/Tính lá số/}).click();
    await page.locator('#tuvi-chart-result .result-actions').waitFor();
    assert.equal(await page.getByRole('button',{name:'So sánh quy ước giờ Tý'}).count(),0);
