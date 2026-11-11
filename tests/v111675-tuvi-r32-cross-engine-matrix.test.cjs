@@ -49,7 +49,18 @@ test('r32: source coordinates require unique star positions and complete four vo
  assert.equal(res.get('廉贞'),5);
  assert.equal(res.huaLoc,5);
  assert.equal(res.get('禄存'),4);
+ assert.deepEqual(res.voidNamedBranches,{'旬空':0,'副旬':1,'截空':2,'副截':3});
  assert.equal(JSON.stringify(record),orig);
+ // Two pairs of independently named source stars may share two palaces.
+ // A branch SET must not falsely differ because four source labels overlap.
+ const overlapping=clone(record);
+ overlapping.palaces[1].stars=[];
+ overlapping.palaces[0].stars.push({name:'副旬',siHua:null});
+ overlapping.palaces[3].stars=[];
+ overlapping.palaces[2].stars.push({name:'副截',siHua:null});
+ const union=sourceCoordinates(overlapping);
+ assert.deepEqual(union.voidBranches,[0,2]);
+ assert.deepEqual(union.voidNamedBranches,{'旬空':0,'副旬':0,'截空':2,'副截':2});
  const dup=clone(record);
  dup.palaces[6].stars.push({name:'截空',siHua:null});
  assert.equal(sourceCoordinates(dup).voidBranches,null);
@@ -113,6 +124,12 @@ test('r32: genuine source R29 and R30 execution is mandatory only in the pinned 
  assert.equal(report.sampleOrigins.r29,65);
  assert.equal(report.sampleOrigins.r30,2);
  assert.equal(report.records.length,67);
+ const countedYearDiff=Object.values(report.counts.affectedSolarYears)
+  .reduce((n,x)=>n+x,0);
+ assert.ok(countedYearDiff<=67);
+ assert.equal(report.counts.placements['void-pair'].unknown,0);
+ assert.ok(report.records.every(x=>x.voidCoordinates.sourceNamedBranches&&
+  Object.keys(x.voidCoordinates.sourceNamedBranches).length===4));
  assert.ok(report.records.every(x=>x.localPatternVerdictVerified===false&&
   x.sourceCriterionVerifiedForLocalChart===false));
 });
