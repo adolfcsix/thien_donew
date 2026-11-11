@@ -80,7 +80,7 @@ test('r24: one read-only chart explanation lives inside the existing void source
  assert.match(ui,/auditClassicalVoidPairGeometry\(chart\)/);
  assert.match(ui,/Đối chiếu hình học trên lá số đang xem/);
  assert.match(ui,/voidGeometry\.limitation/);
- assert.match(ui,/voidGeometry\.status==='unknown'/);
+ assert.match(ui,/voidGeometry\.status!=='unknown'/);
  assert.match(ui,/Bảng mã Không Vong theo 10 thiên can · nghiên cứu nguồn/);
  assert.match(ui,/sourceDoubleBranches\.join/);
 });
