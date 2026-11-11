@@ -42,6 +42,7 @@ for(const offsetDays of fixture.offsetsDays){
         lunarMonth:chart.lunarInfo.lunarMonth,
         lunarDay:chart.lunarInfo.lunarDay,
         isLeapMonth:chart.lunarInfo.isLeapMonth,
+        leapMonthPolicy:chart.birthInfo.leapMonthPolicy,
         yearStem:chart.lunarInfo.yearStem,
         wuxingJu:chart.wuxingJu,
         ziweiPos:chart.ziweiPos,
