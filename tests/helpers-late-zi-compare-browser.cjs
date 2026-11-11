@@ -68,6 +68,24 @@ module.exports=async function verifyLateZiCompare({context,origin,record,pageErr
     assert.ok(fs.statSync(screenshot).size>0,'R38 screenshot must have image bytes');
    }
    assert.equal(await page.locator('#thiendo-late-zi-compare button').filter({hasText:'Lưu lá số'}).count(),0);
+   const starAudit=page.getByTestId('r40-star-transitions');
+   assert.equal(await starAudit.count(),1);
+   assert.equal(await starAudit.getAttribute('open'),null,'star trail begins collapsed');
+   await starAudit.locator(':scope > summary').click();
+   assert.equal(await starAudit.locator('li').count(),14,'all fourteen major stars move for this controlled example');
+   for(const row of await starAudit.locator('li').all()){
+    assert.equal(await row.locator('strong').count(),1,'each star is named exactly once');
+    assert.equal(await row.locator('b').count(),2,'each movement has an A and B destination');
+   }
+   if(out){
+    const evidenceDir=path.resolve('docs/reports/isolated-sql/r40-visual-evidence');
+    fs.mkdirSync(evidenceDir,{recursive:true});
+    const screenshot=path.join(evidenceDir,'r40-star-transitions-'+width+'px.png');
+    await starAudit.screenshot({path:screenshot,animations:'disabled'});
+    assert.ok(fs.statSync(screenshot).size>0,'R40 star trail image must exist');
+   }
+   await starAudit.locator(':scope > summary').click();
+
    const details=page.getByRole('region',{name:'Chi tiết địa chi đang chọn'});
    await details.waitFor();
    const first=a.getByRole('button').nth(2);
