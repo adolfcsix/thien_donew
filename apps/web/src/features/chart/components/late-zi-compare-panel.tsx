@@ -13,10 +13,11 @@ type BranchDiff={
   movedBefore:string[];movedAfter:string[];
 };
 type FieldDiff={key:string;label:string;before:string;after:string;changed:boolean};
+type MovedStar={name:string;from:string;to:string};
 type CompareReport={
   currentDate:string;alternativeDate:string;clock:string;
   branches:BranchDiff[];fields:FieldDiff[];
-  movedCount:number;affectedBranches:number;
+  movedStars:MovedStar[];movedCount:number;affectedBranches:number;
   currentSelected:true;hypotheticalOnly:true;writeOperations:false;
   timezoneVerified:false;schoolEquivalenceVerified:false;
 };
@@ -118,6 +119,19 @@ export function LateZiComparePanel({result}:{result:AstrologyResult}){
     <div><small>Sang ngày sau</small><b>{active.after.palace}{active.after.isThan?' · Thân':''}</b>
      <p>{active.after.mainStars.join(' · ')||'Vô chính diệu'}</p></div>
    </section>}
+   <details className={styles.starAudit} data-testid="r40-star-transitions">
+    <summary>Hành trình chính tinh · {report.movedCount}/14 sao đổi địa chi</summary>
+    <p>Chỉ liệt kê 14 chính tinh. Mỗi dòng ghi địa chi của phương án A và địa chi giả định của phương án B; đây không phải bằng chứng chọn ngày nào đúng.</p>
+    {report.movedStars.length
+      ?<ul className={styles.starAuditList}>{report.movedStars.map(star=>
+        <li key={star.name}>
+         <strong>{star.name}</strong>
+         <span><small>Giữ ngày</small><b>{star.from}</b></span>
+         <span aria-hidden="true" className={styles.starArrow}>→</span>
+         <span><small>Sang ngày sau</small><b>{star.to}</b></span>
+        </li>)}</ul>
+      :<p role="status" className={styles.starNoMovement}>Không chính tinh nào đổi địa chi ở hai phương án; các chỉ số khác như ngày âm vẫn có thể thay đổi.</p>}
+   </details>
    <p className={styles.scrollHint} id="late-zi-table-hint">Bảng có bốn cột. Trên điện thoại, vuốt bảng sang trái để xem cột “Sang ngày sau” và “Kết quả”. Có thể dùng bàn phím để cuộn khi vùng bảng được chọn.</p>
    <div className={styles.tableScroll} tabIndex={0} role="region" aria-label="Bảng so sánh chỉ số tổng quan" aria-describedby="late-zi-table-hint">
     <table className={styles.table}><caption>Đối chiếu sáu chỉ số của hai phương án</caption>
