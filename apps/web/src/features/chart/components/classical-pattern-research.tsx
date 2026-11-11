@@ -10,6 +10,7 @@ import {summarizeClassicalResearchReadiness} from '@thiendo/interpretation/src/c
 import {auditClassicalPeriodGeometry} from '@thiendo/interpretation/src/classical-period-geometry.cjs';
 import {auditClassicalDingZaPeriods} from '@thiendo/interpretation/src/classical-dingza-period-research.cjs';
 import {auditClassicalDingZaSourceBridge} from '@thiendo/interpretation/src/classical-dingza-source-bridge.cjs';
+import {auditClassicalVoidPairGeometry} from '@thiendo/interpretation/src/classical-source-void-geometry.cjs';
 import {SOURCE_VOID_STEM_ROWS,SOURCE_STEM_MATRIX_NOTE,SOURCE_SCHOOL_DATA_URL,auditSourceDoubleJiekongCodeConcordance} from '@thiendo/interpretation/src/classical-source-void-vocabulary.cjs';
 import type {ClassicalCatalogFilterStatus} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import styles from './conditional-pattern-evidence.module.css';
@@ -29,6 +30,7 @@ const methodText={derivable:'Nguồn: có thể kiểm tra',disputed:'Nguồn: c
 export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   const data=useMemo(()=>auditClassicalPatternCandidates(chart),[chart]);
   const bridge=useMemo(()=>auditClassicalDingZaSourceBridge(chart),[chart]);
+  const voidGeometry=useMemo(()=>auditClassicalVoidPairGeometry(chart),[chart]);
   const bridgeById=useMemo(()=>new Map<string,(typeof bridge.items)[number]>(bridge.items.map(x=>[x.id,x] as const)),[bridge]);
   // Natal position checks and newly mapped decade checks stay independent.
   const catalog=useMemo(()=>summarizeClassicalCatalog([
@@ -171,6 +173,16 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
             </tr>)}</tbody>
           </table>
         </div>
+        <p role="note"><strong>Đối chiếu hình học trên lá số đang xem:</strong>{' '}
+          {voidGeometry.status==='matched'
+            ? 'Hai cặp chi trùng nhau về hình học.'
+            : voidGeometry.status==='mismatched'
+              ? 'Hai cặp chi khác nhau.'
+              : 'Chưa thể đối chiếu do dữ liệu không đủ hoặc không nhất quán.'}
+          {' '}{voidGeometry.reason}
+        </p>
+        {voidGeometry.status!=='unknown'&&<small>Thiên Đồ Triệt: {voidGeometry.chartTrietBranches.join(' / ')} · Nguồn 截空/副截: {voidGeometry.sourceDoubleBranches.join(' / ')}.</small>}
+        <small>{voidGeometry.limitation}</small>
         <small>{SOURCE_STEM_MATRIX_NOTE} <a href={SOURCE_SCHOOL_DATA_URL} target="_blank" rel="noopener noreferrer">Xem bảng nguồn</a>.</small>
       </details>
       <div className={styles.catalogControls} role="search" aria-label="Tìm kiếm cách cục trong danh mục">
