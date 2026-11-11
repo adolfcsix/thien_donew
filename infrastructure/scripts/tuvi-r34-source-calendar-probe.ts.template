@@ -1,0 +1,70 @@
+/**
+ * R34 — source-only calendar provenance probe.
+ * Copy into the exact Renhuai123/ziwei-doushu source checkout.
+ * All calendar dates are SYNTHETIC; no private chart or birth data.
+ */
+import {readFileSync,writeFileSync} from 'node:fs';
+import {generateChart} from './lib/ziwei/algorithm';
+
+const SHA='7922285d947b36610e7e31c232d8f1e2a0d0871d';
+const IZTRO_VERSION='2.6.1';
+const LOCK=JSON.parse(readFileSync('package-lock.json','utf8'));
+const INSTALLED=JSON.parse(readFileSync('node_modules/iztro/package.json','utf8'));
+if(LOCK.packages?.['node_modules/iztro']?.version!==IZTRO_VERSION||
+ INSTALLED.version!==IZTRO_VERSION)
+ throw Error('R34 source iztro version mismatch');
+const input=JSON.parse(readFileSync('../tests/fixtures/tuvi-r34-nasa-boundaries.json','utf8'));
+if(input.schema!=='thiendo-r34-nasa-ut-new-moon-boundaries-v1'||
+ !Array.isArray(input.cases)||input.cases.length!==4)
+ throw Error('R34 NASA boundary fixture missing or malformed');
+const isoDay=(date:string,offset:number)=>{
+ const d=new Date(date.slice(0,10)+'T12:00:00Z');
+ d.setUTCDate(d.getUTCDate()+offset);
+ return d.toISOString().slice(0,10);
+};
+const civilDate=(iso:string,offset:number)=>
+ new Date(Date.parse(iso)+offset*3600000).toISOString().slice(0,10);
+const records:any[]=[];
+for(const event of input.cases){
+ if(civilDate(event.utcNewMoon,7)===civilDate(event.utcNewMoon,8))
+  throw Error('NASA event must straddle Asia UTC+7/+8 midnight: '+event.id);
+ for(const offsetDays of input.offsetsDays){
+  const solarDate=isoDay(event.utcNewMoon,offsetDays);
+  const [year,month,day]=solarDate.split('-').map(Number);
+  for(const gender of input.genders)for(const clockHour of input.clockHours){
+   const hourBranch=Math.floor(((clockHour+1)%24)/2);
+   const chart=generateChart({year,month,day,hour:hourBranch,
+    gender:gender==='Nam'?'male':'female'});
+   if(chart.palaces.length!==12||chart.daXians.length!==12||
+      !Number.isInteger(chart.lunarInfo.lunarDay))
+    throw Error('Malformed source chart: '+solarDate);
+   const record={
+    id:[event.id,offsetDays,gender,clockHour].join('-'),
+    eventId:event.id,offsetDays,solarDate,gender,clockHour,hourBranch,
+    source:{
+     lunarYear:chart.lunarInfo.lunarYear,
+     lunarMonth:chart.lunarInfo.lunarMonth,
+     lunarDay:chart.lunarInfo.lunarDay,
+     isLeapMonth:chart.lunarInfo.isLeapMonth,
+     yearStem:chart.lunarInfo.yearStem,
+     yearBranch:chart.lunarInfo.yearBranch,
+     wuxingJu:chart.wuxingJu,
+     ziweiPos:chart.ziweiPos,
+     mingGongBranch:chart.mingGongBranch
+    }
+   };
+   records.push(record);
+  }
+ }
+}
+if(records.length!==48||new Set(records.map(x=>x.id)).size!==48)
+ throw Error('Expected 48 independent synthetic reference observations');
+writeFileSync('../.r34-source-calendar-boundaries.json',JSON.stringify({
+ schema:'thiendo-r34-pinned-source-calendar-boundaries-v1',
+ provenance:{repository:'Renhuai123/ziwei-doushu',commit:SHA,
+  iztroVersion:INSTALLED.version,
+  generator:'generateChart',sourceExecuted:true,syntheticOnly:true,
+  nasaSource:input.source.url},
+ records
+},null,2)+'\n');
+console.log('R34 executed '+records.length+' synthetic source charts at 4 independently recorded NASA new moons');
