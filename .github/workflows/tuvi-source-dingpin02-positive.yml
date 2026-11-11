@@ -1,0 +1,73 @@
+name: THIEN DO - R30 rare Ding Pin 02 source positive
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tuvi-source-dingpin02-positive.yml'
+      - 'infrastructure/scripts/tuvi-r30-*'
+      - 'infrastructure/scripts/tuvi-r29-evaluate-source-oracle.cjs'
+      - 'tests/v111673-tuvi-dingpin02-rare-positive.test.cjs'
+      - 'packages/interpretation/src/classical-void-semantic-gates.cjs'
+      - 'packages/astrology-engine/src/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tuvi-source-dingpin02-positive.yml'
+      - 'infrastructure/scripts/tuvi-r30-*'
+      - 'tests/v111673-tuvi-dingpin02-rare-positive.test.cjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  positive-negative-source-observation:
+    name: Exact source real rare-positive and adjacent-hour negative
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout Thiên Đồ
+        uses: actions/checkout@v4
+      - name: Checkout the source commit, never a floating release
+        uses: actions/checkout@v4
+        with:
+          repository: Renhuai123/ziwei-doushu
+          ref: 7922285d947b36610e7e31c232d8f1e2a0d0871d
+          path: reference-ziwei
+          persist-credentials: false
+      - name: Install Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Thiên Đồ committed lockfile
+        run: npm ci --no-audit --no-fund
+      - name: Install reference committed lockfile
+        working-directory: reference-ziwei
+        run: npm ci --no-audit --no-fund
+      - name: Discover true Ding Pin 02 from original source with bounded deterministic scanning
+        run: |
+          cp infrastructure/scripts/tuvi-r30-source-rare-positive-probe.ts.template reference-ziwei/.thiendo-r30-positive-probe.ts
+          cd reference-ziwei
+          ./node_modules/.bin/tsx .thiendo-r30-positive-probe.ts
+      - name: Verify genuine source and independent rule with mandatory runtime artifact
+        env:
+          THIENDO_R30_REQUIRE_GENUINE: '1'
+        run: |
+          node --test tests/v111673-tuvi-dingpin02-rare-positive.test.cjs
+          node infrastructure/scripts/tuvi-r30-audit-rare-positive.cjs .r30-source-rare-positive-observations.json
+      - name: State evidence scope
+        if: always()
+        run: |
+          echo '## R30 rare pattern test with actual pinned source' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Generator and detector: Renhuai123/ziwei-doushu@7922285d947b36610e7e31c232d8f1e2a0d0871d, iztro@2.6.1.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Search has a deterministic maximum of 5000 synthetic charts; a missing positive FAILS the job.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'A true source pattern is paired with a negative case using the adjacent non-Tý/Ngọ hour.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'This does not demonstrate that Thiên Đồ Tuần/Triệt share source semantics; 31/49 mapped criteria remain unchanged.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Store actual source chart evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: thien-do-r30-pinned-rare-positive-negative-evidence
+          path: |
+            .r30-source-rare-positive-observations.json
+            .r30-rare-positive-audit-report.json
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14

@@ -1,0 +1,87 @@
+/**
+ * R30 — Discover a GENUINE positive and matched negative for the rare
+ * "禄逢两杀" (Ding Pin 02) directly with the pinned reference implementation.
+ * Copy into the reference checkout; never compile as a Thiên Đồ module.
+ * Synthetic dates only; deterministic enumeration. No personal birth data.
+ */
+import {readFileSync,writeFileSync} from 'node:fs';
+import {generateChart} from './lib/ziwei/algorithm';
+import {detectDingPin} from './lib/ziwei/patterns-dingpin';
+import {detectDingZa} from './lib/ziwei/patterns-dingza';
+
+const SOURCE_COMMIT='7922285d947b36610e7e31c232d8f1e2a0d0871d';
+const PINNED_IZTRO='2.6.1';
+const MAX_SEARCH=5000;
+const lock=JSON.parse(readFileSync('package-lock.json','utf8'));
+const installed=JSON.parse(readFileSync('node_modules/iztro/package.json','utf8'));
+if(lock.packages?.['node_modules/iztro']?.version!==PINNED_IZTRO||installed.version!==PINNED_IZTRO)
+ throw new Error('R30 requires reference iztro@2.6.1, not latest');
+
+function snapshot(chart:any,exampleId:string,role:'positive'|'negative',
+ date:string,gender:'Nam'|'Nữ',clockHour:number){
+ const natal=detectDingPin(chart);
+ const period=detectDingZa(chart);
+ return {
+  id:exampleId,role,solarDate:date,gender,clockHour,
+  sourceHourBranch:Math.floor(((clockHour+1)%24)/2),
+  sourceYearStemIndex:chart.lunarInfo.yearStem,
+  mingGongBranch:chart.mingGongBranch,
+  palaces:chart.palaces.map((p:any)=>({
+   branch:p.branch,stars:p.stars.map((s:any)=>({name:s.name,siHua:s.siHua??null}))
+  })),
+  daXians:chart.daXians.map((x:any)=>({
+   startAge:x.startAge,endAge:x.endAge,palaceBranch:x.palaceBranch
+  })),
+  detector:{
+   dingPin01:natal.some((hit:any)=>hit.no===1),
+   dingPin02:natal.some((hit:any)=>hit.no===2),
+   dingZa03:period.filter((hit:any)=>hit.no===3).map((hit:any)=>({
+    startAge:hit.startAge,endAge:hit.endAge,palaceBranch:hit.palaceBranch
+   }))
+  }
+ };
+}
+let scanned=0,positive:any=null,negative:any=null;
+outer:for(let year=1984;year<=1999;year++){
+ for(let month=1;month<=12;month++){
+  for(let day=1;day<=28;day++){
+   const date=[year,String(month).padStart(2,'0'),String(day).padStart(2,'0')].join('-');
+   for(const gender of ['male','female'] as const){
+    for(const hourBranch of [0,6]){
+     if(scanned>=MAX_SEARCH)break outer;
+     scanned++;
+     const src=generateChart({year,month,day,hour:hourBranch,gender});
+     const result=detectDingPin(src);
+     if(!result.some(hit=>hit.no===2))continue;
+     const label=gender==='male'?'Nam':'Nữ';
+     positive=snapshot(src,'source-positive-1','positive',date,label,hourBranch*2);
+     const negHour=hourBranch===0?1:7;
+     const control=generateChart({year,month,day,hour:negHour,gender});
+     negative=snapshot(control,'hour-shift-negative-1','negative',date,label,negHour*2);
+     if(negative.detector.dingPin02)
+      throw new Error('Adjacent non-Tý/Ngọ hour unexpectedly satisfies strict two-killers rule');
+     break outer;
+    }
+   }
+  }
+ }
+}
+if(!positive||!negative)
+ throw new Error('NO_SOURCE_POSITIVE_WITHIN_SEARCH_LIMIT: scanned '+scanned+' real pinned source charts; no fabricated positive');
+const result={
+ schema:'thiendo-r30-source-rare-positive-observation-v1',
+ provenance:{
+  repository:'Renhuai123/ziwei-doushu',sourceCommit:SOURCE_COMMIT,
+  iztroVersion:installed.version,
+  detector:'detectDingPin',sourceGenerator:'generateChart',
+  syntheticOnly:true,deterministicSearch:true
+ },
+ search:{scanned,maxSearch:MAX_SEARCH,years:[1984,1999],months:[1,12],
+  days:[1,28],genders:['male','female'],sourceHourBranches:[0,6],
+  controlHourShifted:true,positiveFound:true},
+ records:[positive,negative]
+};
+writeFileSync('../.r30-source-rare-positive-observations.json',JSON.stringify(result,null,2)+'\n');
+console.log('R30 genuine source rare positive + negative control: '+scanned+
+ ' candidate charts scanned; positive '+positive.solarDate+
+ ' '+positive.gender+' '+positive.clockHour+':00, control '+negative.clockHour+':00');
