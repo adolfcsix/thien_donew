@@ -32,7 +32,7 @@ test('r31: exhaustive three-valued OR and AND truth tables never confuse missing
 });
 
 test('r31: actual natal Lộc or Hóa Lộc at Mệnh is sufficient; tampered Tứ Hóa never becomes false evidence',()=>{
- let locTrue=0,bothFalse=0,oneUnknown=0,checked=0;
+ let locTrue=0,huaTrue=0,bothFalse=0,oneUnknown=0,checked=0;
  for(let year=1984;year<=1993;year++)for(const gender of ['Nam','Nữ'])
   for(const hour of [0,8,16]){
    const chart=Engine.calculate({date:year+'-08-15',hour,minute:0,
@@ -63,10 +63,27 @@ test('r31: actual natal Lộc or Hóa Lộc at Mệnh is sufficient; tampered T�
    }
    if(want==='not-met')bothFalse++;
    assert.equal(JSON.stringify(corrupted),corruptBefore);
+   const corruptedAux=clone(chart);
+   corruptedAux.auxiliaryRuleSet='tampered-version';
+   const auxBefore=JSON.stringify(corruptedAux);
+   const auxCheck=condition(corruptedAux);
+   if(hua===menh){
+    huaTrue++;
+    assert.equal(auxCheck.state,'met','Verified natal Hóa Lộc alone is sufficient');
+   }else{
+    assert.equal(auxCheck.state,'unknown','No verified Lộc Tồn + false Hóa Lộc is unknown');
+   }
+   assert.equal(JSON.stringify(corruptedAux),auxBefore);
+   const corruptedBoth=clone(chart);
+   corruptedBoth.auxiliaryRuleSet='tampered-version';
+   corruptedBoth.tuHoaRuleSet='tampered-version';
+   assert.equal(condition(corruptedBoth).state,'unknown',
+    'No versioned auxiliary or four-Hua layer can prove a natal Lộc criterion');
    checked++;
   }
  assert.equal(checked,60);
  assert.ok(locTrue>0,'synthetic matrix must exercise true OR unknown');
+ assert.ok(huaTrue>0,'synthetic matrix must exercise unknown OR true');
  assert.ok(oneUnknown>0,'synthetic matrix must exercise false OR unknown');
  assert.ok(bothFalse>0,'synthetic matrix must exercise false OR false');
 });
@@ -90,6 +107,8 @@ test('r31: production implementation uses the same fail-closed helper and retain
  const code=fs.readFileSync(path.join(__dirname,'../packages/interpretation/src/classical-pattern-research.cjs'),'utf8');
  assert.match(code,/const \{orKnown\}=require\('\.\/classical-evidence-logic\.cjs'\)/);
  assert.match(code,/dingPin02LocEvidence=orKnown\(natalLocAtMenh,natalHuaLocAtMenh\)/);
+ assert.match(code,/readVerifiedNatalLocTon\(chart,loc\)/);
+ assert.match(code,/chart\.auxiliaryRuleSet!==NatalAux\.RULESET/);
  assert.match(code,/check\('Lộc Tồn hoặc Hóa Lộc nguyên cục tọa Mệnh'/);
  assert.match(code,/Không Vong theo quy tắc an sao và tên sao nguồn được thẩm định/);
  assert.doesNotMatch(code,/sourceCriterionVerified:true/);
