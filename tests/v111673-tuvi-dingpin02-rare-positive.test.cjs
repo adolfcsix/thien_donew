@@ -92,8 +92,8 @@ test('r30: independent source oracle verifies negative controls without promotin
  assert.match(source,/semanticEquivalenceVerified:false/);
  assert.match(source,/localPatternVerdictVerified:false/);
  assert.match(source,/sourceCriterionVerifiedForLocalChart:false/);
- const catalog=fs.readFileSync(path.join(__dirname,'../packages/interpretation/src/classical-pattern-catalog.cjs'),'utf8');
- assert.match(catalog,/49/);
+ const {summarizeClassicalCatalog}=require('../packages/interpretation/src/classical-pattern-catalog.cjs');
+ assert.equal(summarizeClassicalCatalog([]).referenceTotal,49);
 });
 test('r30: source actual positive+negative must be generated in isolated pinned runtime CI',()=>{
  if(process.env.THIENDO_R30_REQUIRE_GENUINE!=='1'){
