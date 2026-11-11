@@ -90,6 +90,23 @@ module.exports=async function verifyLateZiCompare({context,origin,record,pageErr
     await starAudit.screenshot({path:screenshot,animations:'disabled'});
     assert.ok(fs.statSync(screenshot).size>0,'R40 star trail image must exist');
    }
+   // R41: select a star and verify exactly one source/destination marker.
+   const chosen=starAudit.locator('li').first().locator('button');
+   await chosen.click();
+   assert.equal(await chosen.getAttribute('aria-pressed'),'true');
+   assert.equal(await a.locator('[data-star-endpoint="source"]').count(),1);
+   assert.equal(await b.locator('[data-star-endpoint="destination"]').count(),1);
+   await page.getByRole('status').filter({hasText:'Đang định vị'}).waitFor({state:'visible'});
+   if(out){
+    const evidenceDir=path.resolve('docs/reports/isolated-sql/r41-visual-evidence');
+    fs.mkdirSync(evidenceDir,{recursive:true});
+    const screenshot=path.join(evidenceDir,'r41-zi-focus-'+width+'px.png');
+    await page.locator('#thiendo-late-zi-compare').screenshot({path:screenshot,animations:'disabled'});
+    assert.ok(fs.statSync(screenshot).size>0,'R41 highlighted endpoint image must exist');
+   }
+   await chosen.click();
+   assert.equal(await a.locator('[data-star-endpoint]').count(),0);
+   assert.equal(await b.locator('[data-star-endpoint]').count(),0);
    await starAudit.locator(':scope > summary').click();
 
    const details=page.getByRole('region',{name:'Chi tiết địa chi đang chọn'});
