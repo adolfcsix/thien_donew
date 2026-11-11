@@ -79,7 +79,7 @@ const SOURCE_VOID_STEM_ROWS=Object.freeze(SOURCE_STEMS.map((stem,i)=>{
  });
 }));
 const SOURCE_STEM_MATRIX_NOTE=
- 'Bảng mã 1–12 chép từ school-data.ts tại commit tham khảo đã ghim. Ba biến thể single/double/zhanyan và bảng Xun được ghi theo chỉ số thiên can 1–10, không phải chỉ số địa chi của Thiên Đồ. Bảng Xun còn hai giá trị ngoài mười thiên can được tài liệu ghi rõ; không suy diễn cách dùng. Chưa đối chiếu iztro/thuật toán an sao của nguồn, phép đổi chi và lá số của Thiên Đồ. Không dùng bảng mã để phán định Không Vong hoặc nâng 28/49.';
+ 'Bảng mã 1–12 chép từ school-data.ts tại commit tham khảo đã ghim. Ba biến thể single/double/zhanyan và bảng Xun được ghi theo chỉ số thiên can 1–10, không phải chỉ số địa chi của Thiên Đồ. Bảng Xun còn hai giá trị ngoài mười thiên can được tài liệu ghi rõ; không suy diễn cách dùng. Riêng biến thể double: đối chiếu mã 1–12 với cặp chi được thuật toán nguồn mô tả; đây chỉ là kiểm tra hai phát biểu của cùng nguồn, không xác nhận iztro, đồng nhất trường phái hay an sao Thiên Đồ. Không dùng bảng mã để phán định Không Vong hoặc nâng 28/49.';
 function lookupVoidStemCodes(stem,variant){
  if(typeof stem!=='string'||!SOURCE_VARIANTS.includes(variant))return null;
  const row=SOURCE_VOID_STEM_ROWS.find(r=>r.stem===stem);
