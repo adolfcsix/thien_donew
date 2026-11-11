@@ -96,6 +96,8 @@ module.exports=async function verifyLateZiCompare({context,origin,record,pageErr
    assert.equal(await chosen.getAttribute('aria-pressed'),'true');
    assert.equal(await a.locator('[data-star-endpoint="source"]').count(),1);
    assert.equal(await b.locator('[data-star-endpoint="destination"]').count(),1);
+   assert.equal(await a.locator('button[aria-pressed="true"]').count(),0,'source selection yields to selected star');
+   assert.equal(await b.locator('button[aria-pressed="true"]').count(),0,'hypothetical selection yields to selected star');
    await page.getByRole('status').filter({hasText:'Đang định vị'}).waitFor({state:'visible'});
    if(out){
     const evidenceDir=path.resolve('docs/reports/isolated-sql/r41-visual-evidence');
