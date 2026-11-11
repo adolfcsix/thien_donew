@@ -73,3 +73,14 @@ test('r24: research remains scoped and does not promote natal or period conclusi
  assert.doesNotMatch(source,/sourceCriterionVerified:true/);
  assert.doesNotMatch(source,/nameEquivalenceVerified:true/);
 });
+
+test('r24: one read-only chart explanation lives inside the existing void source details',()=>{
+ const ui=fs.readFileSync(path.join(__dirname,
+ '../apps/web/src/features/chart/components/classical-pattern-research.tsx'),'utf8');
+ assert.match(ui,/auditClassicalVoidPairGeometry\(chart\)/);
+ assert.match(ui,/Đối chiếu hình học trên lá số đang xem/);
+ assert.match(ui,/voidGeometry\.limitation/);
+ assert.match(ui,/voidGeometry\.status==='unknown'/);
+ assert.match(ui,/Bảng mã Không Vong theo 10 thiên can · nghiên cứu nguồn/);
+ assert.match(ui,/sourceDoubleBranches\.join/);
+});
