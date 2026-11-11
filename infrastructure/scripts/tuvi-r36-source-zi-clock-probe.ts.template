@@ -1,0 +1,65 @@
+/**
+ * R36: execute the *actual pinned source* true-solar-time and late-Zi helpers.
+ * Controlled, synthetic times only. This does not independently validate
+ * NOAA accuracy, historical time zones or Vietnamese birth-time conventions.
+ */
+import {readFileSync,writeFileSync} from 'node:fs';
+import {
+  calculateTrueSolarTime,
+  resolveZiweiDayOffset,
+  shiftGregorianDate
+} from './lib/ziwei/true-solar-time';
+const fixture=JSON.parse(readFileSync('../tests/fixtures/tuvi-r36-zi-clock-policy.json','utf8'));
+if(fixture.schema!=='thiendo-r36-pinned-source-zi-clock-fixture-v1'||
+   fixture.anchors?.length!==4||fixture.clockTimes?.length!==6||
+   fixture.solarModes?.length!==3||fixture.policies?.length!==4)
+  throw Error('R36 fixture missing');
+const records:any[]=[];
+for(const anchor of fixture.anchors){
+  const [year,month,day]=anchor.date.split('-').map(Number);
+  for(const hhmm of fixture.clockTimes){
+    const [clockHour,clockMinute]=hhmm.split(':').map(Number);
+    for(const mode of fixture.solarModes){
+      const solar=calculateTrueSolarTime({
+        year,month,day,clockHour,clockMinute,
+        ...(mode.longitude===null?{}:{longitude:mode.longitude}),
+        utcOffsetMinutes:mode.utcOffsetMinutes
+      });
+      if(!solar.dateValid)throw Error('Invalid source calendar date');
+      for(const policy of fixture.policies){
+        const finalDayOffset=resolveZiweiDayOffset(solar,policy);
+        const newDate=shiftGregorianDate({year,month,day},finalDayOffset);
+        records.push({
+          id:[anchor.id,hhmm,mode.id,policy].join(':'),
+          anchorId:anchor.id,inputDate:anchor.date,hhmm,clockHour,clockMinute,
+          solarMode:mode.id,longitude:mode.longitude,utcOffsetMinutes:mode.utcOffsetMinutes,
+          policy,
+          source:{
+            dateValid:solar.dateValid,corrected:solar.corrected,
+            longitudeCorrectionMinutes:solar.longitudeCorrectionMinutes,
+            equationOfTimeMinutes:solar.equationOfTimeMinutes,
+            totalCorrectionMinutes:solar.totalCorrectionMinutes,
+            rawMinutes:solar.rawMinutes,normalizedMinutes:solar.normalizedMinutes,
+            dayOffset:solar.dayOffset,hour:solar.hour,minute:solar.minute,
+            second:solar.second,branch:solar.branch,
+            finalDayOffset,effectiveDate:
+              [newDate.year,String(newDate.month).padStart(2,'0'),String(newDate.day).padStart(2,'0')].join('-')
+          }
+        });
+      }
+    }
+  }
+}
+if(records.length!==288||new Set(records.map(x=>x.id)).size!==288)
+  throw Error('R36 requires 288 unique pinned-source observations');
+writeFileSync('../.r36-source-zi-clock-observations.json',JSON.stringify({
+  schema:'thiendo-r36-pinned-zi-clock-observations-v1',
+  provenance:{
+    repository:'Renhuai123/ziwei-doushu',
+    commit:'7922285d947b36610e7e31c232d8f1e2a0d0871d',
+    generator:'calculateTrueSolarTime + resolveZiweiDayOffset + shiftGregorianDate',
+    sourceExecuted:true,syntheticOnly:true
+  },
+  records
+},null,2)+'\n');
+console.log('R36 pinned source generated '+records.length+' controlled clock-policy observations');

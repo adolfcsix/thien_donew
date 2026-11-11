@@ -1,0 +1,70 @@
+name: THIEN DO - R36 late Zi and true-solar-day source verification
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tuvi-late-zi-policy-r36.yml'
+      - 'infrastructure/scripts/tuvi-r36-*'
+      - 'tests/v111679-tuvi-r36-zi-clock-policy.test.cjs'
+      - 'tests/fixtures/tuvi-r36-zi-clock-policy.json'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tuvi-late-zi-policy-r36.yml'
+      - 'infrastructure/scripts/tuvi-r36-*'
+      - 'tests/v111679-tuvi-r36-zi-clock-policy.test.cjs'
+      - 'tests/fixtures/tuvi-r36-zi-clock-policy.json'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  pinned-source-late-zi-clock:
+    name: 288 genuine pinned source late-Zi and solar-clock observations
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout exact reference SHA
+        uses: actions/checkout@v4
+        with:
+          repository: Renhuai123/ziwei-doushu
+          ref: 7922285d947b36610e7e31c232d8f1e2a0d0871d
+          path: reference-ziwei
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Thiên Đồ dependencies from pinned lockfile
+        run: npm ci --no-audit --no-fund
+      - name: Install exact source dependencies
+        working-directory: reference-ziwei
+        run: npm ci --no-audit --no-fund
+      - name: Execute real source clock and Zi rollover helpers for 288 controlled inputs
+        run: |
+          cp infrastructure/scripts/tuvi-r36-source-zi-clock-probe.ts.template reference-ziwei/.thiendo-r36-zi-clock.ts
+          cd reference-ziwei
+          ./node_modules/.bin/tsx .thiendo-r36-zi-clock.ts
+      - name: Validate original source results and independent invariants
+        env:
+          THIENDO_R36_REQUIRE_GENUINE: '1'
+        run: |
+          node --test tests/v111679-tuvi-r36-zi-clock-policy.test.cjs
+          node infrastructure/scripts/tuvi-r36-evaluate-zi-clock.cjs .r36-source-zi-clock-observations.json
+      - name: Explicit research limitations
+        if: always()
+        run: |
+          echo '## R36 source policy only (NOT Vietnamese-school equivalence)' >> "$GITHUB_STEP_SUMMARY"
+          echo '288 source observations: 4 synthetic anchor days × 6 clock times × 3 longitude modes × 4 late-Zi policies.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Every row stores source corrected solar clock, source day offset, policy-adjusted day offset and Gregorian result.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The independent evaluator checks arithmetic, rounding, branch selection, date shifts and policy decision.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'NO certification of NOAA accuracy, historical timezones, authentic birth times or Tử Vi school parity.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Never auto-adjust natal charts or increase catalog coverage beyond 31/49.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Preserve real source evidence and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: thien-do-r36-zi-clock-policy-source-evidence
+          path: |
+            .r36-source-zi-clock-observations.json
+            .r36-zi-clock-policy-report.json
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
