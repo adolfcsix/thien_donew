@@ -1,0 +1,71 @@
+name: THIEN DO - R35 lunar transition and Tý-hour source evidence
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tuvi-lunar-transitions-r35.yml'
+      - 'infrastructure/scripts/tuvi-r35-*'
+      - 'tests/v111678-tuvi-r35-lunar-transition.test.cjs'
+      - 'tests/fixtures/tuvi-r35-vietnam-lunar-boundaries.json'
+      - 'packages/astrology-engine/src/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tuvi-lunar-transitions-r35.yml'
+      - 'infrastructure/scripts/tuvi-r35-*'
+      - 'tests/v111678-tuvi-r35-lunar-transition.test.cjs'
+      - 'tests/fixtures/tuvi-r35-vietnam-lunar-boundaries.json'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  reference-calendar-transitions:
+    name: 72 genuine source/local charts at leap, New Year and Tý boundaries
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout Thiên Đồ
+        uses: actions/checkout@v4
+      - name: Checkout exact source SHA
+        uses: actions/checkout@v4
+        with:
+          repository: Renhuai123/ziwei-doushu
+          ref: 7922285d947b36610e7e31c232d8f1e2a0d0871d
+          path: reference-ziwei
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Thiên Đồ exact dependency graph
+        run: npm ci --no-audit --no-fund
+      - name: Install reference exact dependency graph
+        working-directory: reference-ziwei
+        run: npm ci --no-audit --no-fund
+      - name: Execute pinned source for 72 synthetic transitions
+        run: |
+          cp infrastructure/scripts/tuvi-r35-source-transition-probe.ts.template reference-ziwei/.thiendo-r35-transitions.ts
+          cd reference-ziwei
+          ./node_modules/.bin/tsx .thiendo-r35-transitions.ts
+      - name: Compare 72 paired charts against current Thiên Đồ engine
+        env:
+          THIENDO_R35_REQUIRE_GENUINE: '1'
+        run: |
+          node --test tests/v111678-tuvi-r35-lunar-transition.test.cjs
+          node infrastructure/scripts/tuvi-r35-evaluate-transitions.cjs .r35-source-lunar-observations.json
+      - name: Annotate constraints
+        if: always()
+        run: |
+          echo '## R35 research-only calendar boundaries' >> "$GITHUB_STEP_SUMMARY"
+          echo '72 synthetic inputs: leap month starts 2020/2023 and Lunar New Years 2024/2025 × adjacent 3 dates × 2 genders × 00/01/23.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Source accepts only hour branch; cannot infer 23:00 solar-day rollover from this API.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Source calendar timezone and school/semantic equivalence are NOT independently certified.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Differences are retained, not forced to match. The mapping gate stays 31/49.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Archive actual pinned-source output and diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: thien-do-r35-lunar-leap-newyear-zi-evidence
+          path: |
+            .r35-source-lunar-observations.json
+            .r35-transition-evidence-report.json
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
