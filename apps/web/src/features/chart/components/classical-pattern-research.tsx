@@ -28,7 +28,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   // Distinguish an implemented position check from the source's methodological category.
   const catalog=useMemo(()=>summarizeClassicalCatalog(data.records.map(record=>record.id)),[data]);
   const readiness=useMemo(()=>summarizeClassicalResearchReadiness(catalog),[catalog]);
-  const pendingById=useMemo(()=>new Map(data.pendingEvidence.map(entry=>[entry.id,entry])),[data]);
+  const pendingById=useMemo(()=>new Map<string,(typeof data.pendingEvidence)[number]>(data.pendingEvidence.map(entry=>[entry.id,entry] as const)),[data]);
   const periodGeometry=useMemo(()=>auditClassicalPeriodGeometry(chart),[chart]);
   const [filter,setFilter]=useState<ClassicalEvidenceFilter>('relevant');
   const [catalogQuery,setCatalogQuery]=useState('');
