@@ -53,8 +53,8 @@ module.exports=async function verifyLateZiCompare({context,origin,record,pageErr
    if(width===1440)assert.deepEqual(
     [gridLayout.tySiteRow,gridLayout.tySiteCol,gridLayout.tySiteTop,gridLayout.tySiteLeft],
     ['4','3','1','1'],'correct ring coordinates for Tý and Tỵ');
-   await page.getByText('09/02/2024',{exact:true}).first().waitFor();
-   await page.getByText('10/02/2024',{exact:true}).first().waitFor();
+   await page.getByRole('region',{name:'Giữ ngày sinh đã nhập'}).getByText('09/02/2024',{exact:true}).waitFor({state:'visible'});
+   await page.getByRole('region',{name:'Tính sang ngày sau'}).getByText('10/02/2024',{exact:true}).waitFor({state:'visible'});
    assert.equal(await page.locator('#thiendo-late-zi-compare [data-research-only=true]').count(),1);
    if(out){
     fs.mkdirSync(out,{recursive:true});
