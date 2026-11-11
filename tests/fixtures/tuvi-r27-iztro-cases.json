@@ -1,0 +1,526 @@
+{
+  "schema": "thiendo-r27-public-synthetic-case-matrix-v1",
+  "description": "Synthetic deterministic solar-date chart cases only; no actual person's birth data. Clock times are local wall time and avoid 23:xx day rollover.",
+  "cases": [
+    {
+      "id": "stem-1984-nam-h0",
+      "date": "1984-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1984-nam-h8",
+      "date": "1984-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1984-nam-h22",
+      "date": "1984-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1984-nu-h0",
+      "date": "1984-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1984-nu-h8",
+      "date": "1984-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1984-nu-h22",
+      "date": "1984-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1985-nam-h0",
+      "date": "1985-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1985-nam-h8",
+      "date": "1985-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1985-nam-h22",
+      "date": "1985-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1985-nu-h0",
+      "date": "1985-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1985-nu-h8",
+      "date": "1985-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1985-nu-h22",
+      "date": "1985-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1986-nam-h0",
+      "date": "1986-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1986-nam-h8",
+      "date": "1986-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1986-nam-h22",
+      "date": "1986-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1986-nu-h0",
+      "date": "1986-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1986-nu-h8",
+      "date": "1986-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1986-nu-h22",
+      "date": "1986-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1987-nam-h0",
+      "date": "1987-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1987-nam-h8",
+      "date": "1987-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1987-nam-h22",
+      "date": "1987-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1987-nu-h0",
+      "date": "1987-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1987-nu-h8",
+      "date": "1987-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1987-nu-h22",
+      "date": "1987-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1988-nam-h0",
+      "date": "1988-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1988-nam-h8",
+      "date": "1988-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1988-nam-h22",
+      "date": "1988-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1988-nu-h0",
+      "date": "1988-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1988-nu-h8",
+      "date": "1988-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1988-nu-h22",
+      "date": "1988-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1989-nam-h0",
+      "date": "1989-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1989-nam-h8",
+      "date": "1989-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1989-nam-h22",
+      "date": "1989-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1989-nu-h0",
+      "date": "1989-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1989-nu-h8",
+      "date": "1989-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1989-nu-h22",
+      "date": "1989-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1990-nam-h0",
+      "date": "1990-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1990-nam-h8",
+      "date": "1990-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1990-nam-h22",
+      "date": "1990-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1990-nu-h0",
+      "date": "1990-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1990-nu-h8",
+      "date": "1990-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1990-nu-h22",
+      "date": "1990-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1991-nam-h0",
+      "date": "1991-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1991-nam-h8",
+      "date": "1991-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1991-nam-h22",
+      "date": "1991-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1991-nu-h0",
+      "date": "1991-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1991-nu-h8",
+      "date": "1991-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1991-nu-h22",
+      "date": "1991-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1992-nam-h0",
+      "date": "1992-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1992-nam-h8",
+      "date": "1992-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1992-nam-h22",
+      "date": "1992-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1992-nu-h0",
+      "date": "1992-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1992-nu-h8",
+      "date": "1992-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1992-nu-h22",
+      "date": "1992-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1993-nam-h0",
+      "date": "1993-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1993-nam-h8",
+      "date": "1993-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1993-nam-h22",
+      "date": "1993-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1993-nu-h0",
+      "date": "1993-08-15",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1993-nu-h8",
+      "date": "1993-08-15",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "stem-1993-nu-h22",
+      "date": "1993-08-15",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "ten-stem-hour-gender-matrix"
+    },
+    {
+      "id": "lunar-new-year-boundary-before",
+      "date": "1999-02-11",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "calendar-boundary"
+    },
+    {
+      "id": "lunar-new-year-boundary-before-2000",
+      "date": "2000-02-04",
+      "hour": 22,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "calendar-boundary"
+    },
+    {
+      "id": "lunar-new-year-boundary-after",
+      "date": "2000-02-06",
+      "hour": 0,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "calendar-boundary"
+    },
+    {
+      "id": "leap-month-neighbor",
+      "date": "2020-05-10",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nam",
+      "kind": "calendar-boundary"
+    },
+    {
+      "id": "leap-month-observation",
+      "date": "2020-05-30",
+      "hour": 8,
+      "minute": 0,
+      "gender": "Nữ",
+      "kind": "calendar-boundary"
+    }
+  ]
+}

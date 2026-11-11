@@ -1,0 +1,75 @@
+name: THIEN DO - R27 pinned iztro runtime parity
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tuvi-source-iztro-parity.yml'
+      - 'infrastructure/scripts/tuvi-r27-*'
+      - 'tests/fixtures/tuvi-r27-iztro-cases.json'
+      - 'tests/v111670-tuvi-source-iztro-parity.test.cjs'
+      - 'packages/astrology-engine/src/**'
+      - 'packages/interpretation/src/classical-source-*'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tuvi-source-iztro-parity.yml'
+      - 'infrastructure/scripts/tuvi-r27-*'
+      - 'tests/fixtures/tuvi-r27-iztro-cases.json'
+      - 'tests/v111670-tuvi-source-iztro-parity.test.cjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pinned-source-iztro-observation:
+    name: Source generateChart + raw iztro@2.6.1, 65 synthetic charts
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout Thiên Đồ
+        uses: actions/checkout@v4
+      - name: Checkout the exact publicly pinned external source commit
+        uses: actions/checkout@v4
+        with:
+          repository: Renhuai123/ziwei-doushu
+          ref: 7922285d947b36610e7e31c232d8f1e2a0d0871d
+          path: reference-ziwei
+          persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Thiên Đồ from committed lockfile
+        run: npm ci --no-audit --no-fund
+      - name: Install pinned reference from its committed lockfile
+        working-directory: reference-ziwei
+        run: npm ci --no-audit --no-fund
+      - name: Observe raw iztro and source-patched star placement
+        run: |
+          cp infrastructure/scripts/tuvi-r27-source-iztro-probe.ts.template reference-ziwei/.thiendo-r27-probe.ts
+          cd reference-ziwei
+          ./node_modules/.bin/tsx .thiendo-r27-probe.ts
+      - name: Assert observed external runtime and cross-school evidence boundaries
+        env:
+          THIENDO_R27_REQUIRE_GENUINE: '1'
+        run: |
+          node --test tests/v111670-tuvi-source-iztro-parity.test.cjs
+          node infrastructure/scripts/tuvi-r27-evaluate-parity.cjs .r27-source-iztro-observations.json
+      - name: Explain the scope of actual evidence
+        if: always()
+        run: |
+          echo '## R27 Pinned external runtime gate' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Source: Renhuai123/ziwei-doushu @ 7922285d947b36610e7e31c232d8f1e2a0d0871d' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Exact installed source lockfile: iztro@2.6.1, verified by runtime probe.' >> "$GITHUB_STEP_SUMMARY"
+          echo '65 SYNTHETIC cases: 10 year-stems × 2 genders × 3 clock hours plus 5 calendar boundaries.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'PASS means source patches reproduce pinned raw iztro and table/formula requirements on these cases only.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Triệt/Tuần two-branch geometry in Thiên Đồ is observational; NO star-name, school, classical-pattern or fortune-equivalence claim.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Archive source observations and parity evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: thien-do-r27-iztro-pinned-synthetic-evidence
+          path: |
+            .r27-source-iztro-observations.json
+            .r27-iztro-parity-report.json
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
