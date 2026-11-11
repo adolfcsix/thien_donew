@@ -85,3 +85,13 @@
 .pendingEvidence .checks{margin:7px 0;padding-left:18px}
 .pendingEvidence .checks li{font-size:11px;line-height:1.6;overflow-wrap:anywhere;margin:5px 0}
 .pendingEvidence small{display:block;font-size:11px;line-height:1.6;color:var(--text-secondary,var(--text))}
+
+/* r18 — independent compact decade evidence within the existing classical catalog */
+.periodPreflight{margin:10px 0 14px;padding:10px 0;border-top:1px solid var(--line-strong);min-width:0;font-size:12px}
+.periodPreflight summary{cursor:pointer;font-weight:600;line-height:1.6}
+.periodPreflight p{font-size:12px;line-height:1.65;margin:7px 0!important}
+.periodPreflight small{display:block;font-size:11px;line-height:1.6;color:var(--text-secondary,var(--text))}
+.periodPreflightTableWrap{overflow-x:auto;max-width:100%;margin:10px 0}
+.periodPreflightTable{border-collapse:collapse;width:100%;font-size:11px;min-width:480px}
+.periodPreflightTable td,.periodPreflightTable th{padding:7px 8px;text-align:left;border-bottom:1px solid var(--line-strong);vertical-align:top;line-height:1.5}
+.periodPreflightTable thead th{font-weight:650}

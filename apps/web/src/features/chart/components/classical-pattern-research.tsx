@@ -8,6 +8,7 @@ import type {ClassicalEvidenceFilter} from '@thiendo/interpretation/src/classica
 import {summarizeClassicalCatalog,filterClassicalCatalog} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import {summarizeClassicalResearchReadiness} from '@thiendo/interpretation/src/classical-research-readiness.cjs';
 import {auditClassicalPeriodGeometry} from '@thiendo/interpretation/src/classical-period-geometry.cjs';
+import {auditClassicalPeriodPreflight} from '@thiendo/interpretation/src/classical-period-preflight.cjs';
 import type {ClassicalCatalogFilterStatus} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import styles from './conditional-pattern-evidence.module.css';
 
@@ -30,6 +31,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   const readiness=useMemo(()=>summarizeClassicalResearchReadiness(catalog),[catalog]);
   const pendingById=useMemo(()=>new Map<string,(typeof data.pendingEvidence)[number]>(data.pendingEvidence.map(entry=>[entry.id,entry] as const)),[data]);
   const periodGeometry=useMemo(()=>auditClassicalPeriodGeometry(chart),[chart]);
+  const periodPreflight=useMemo(()=>auditClassicalPeriodPreflight(chart),[chart]);
   const [filter,setFilter]=useState<ClassicalEvidenceFilter>('relevant');
   const [catalogQuery,setCatalogQuery]=useState('');
   const [catalogStatus,setCatalogStatus]=useState<ClassicalCatalogFilterStatus>('all');
@@ -172,6 +174,24 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
               : 'Cần kiểm tra lại dữ liệu an đại hạn của lá số.'}</p>
             <small>{periodGeometry.reason} Kết quả này chỉ kiểm tra tính nhất quán dữ liệu nội bộ, không xác nhận các cách cục Định tạp hoặc dự báo vận hạn.</small>
           </div>}
+          {group.key==='dinh-tap'&&<details className={styles.periodPreflight}>
+            <summary>Đối chiếu dữ liệu 12 đại hạn · không phán định cách cục</summary>
+            <p>{periodPreflight.reason}</p>
+            <p>Đã đối chiếu dữ liệu của <strong>{periodPreflight.periods.length}/12</strong> giai đoạn. Các chỉ dấu dưới đây theo engine Thiên Đồ, không thay thế định nghĩa cường/nhược, cát/hung hoặc Không Vong của nguồn.</p>
+            {periodPreflight.periods.length>0&&<div className={styles.periodPreflightTableWrap}>
+              <table className={styles.periodPreflightTable}>
+                <thead><tr><th scope="col">Tuổi mụ</th><th scope="col">Cung hạn</th><th scope="col">Lộc–Mã hội</th><th scope="col">Thất Sát hội</th><th scope="col">Sát tinh tại hạn</th></tr></thead>
+                <tbody>{periodPreflight.periods.map(period=><tr key={period.index}>
+                  <td>{period.fromAge}–{period.toAge}</td>
+                  <th scope="row">{period.branchName} · {period.palace}</th>
+                  <td>{period.locTonAndHorseInCourt?'Có':'Không'}</td>
+                  <td>{period.sevenKillingInCourt?'Có':'Không'}</td>
+                  <td>{period.sharpStarsAtPeriod.length?period.sharpStarsAtPeriod.join(', '):'Không có trong bộ 6 sao'}</td>
+                </tr>)}</tbody>
+              </table>
+            </div>}
+            <small>Chỉ báo quan sát nội bộ, không đồng nghĩa cách cục Định tạp đã hình thành. Bốn mục Định tạp 01/02/03/08 vẫn chưa ánh xạ; chưa có quy tắc nguồn đủ thẩm định để kết luận.</small>
+          </details>}
           <ol>{group.entries.map(entry=><li key={entry.id}>
             <span className={styles.catalogName}><strong>{entry.assessed?localizedTitles[entry.id]||entry.title:entry.title}</strong> {entry.assessed&&localizedTitles[entry.id]!==entry.title&&<small lang="zh">({entry.title})</small>} <small>({entry.id})</small></span>
             <span className={styles.catalogState}>{entry.assessed?'Thiên Đồ đã ánh xạ điều kiện':methodText[entry.sourceStatus]}</span>

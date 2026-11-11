@@ -334,3 +334,13 @@ Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructi
 - Trong danh mục 49 cách cục hiện có, hai mục hiển thị **'Đã đối chiếu một phần · chưa ánh xạ'**, có thể mở danh sách điều kiện mà không tạo thêm menu hay tab. Mục vẫn thuộc sáu nguồn có thể nghiên cứu, chưa được chuyển sang `assessed`.
 - Test hồi quy yêu cầu 2 mục nghiên cứu từng phần, không tăng số mục đánh giá, không có `structural-match`, không thay đổi chart, không chấp nhận sai lớp sao/phiên bản an sao, không dùng Hóa Lộc lưu hạn hoặc dấu Tuần/Triệt để giả lập sáu Không Vong.
 - Không sửa engine, Tứ Hóa, DB, quyền Pro, AI hoặc thanh toán. Tiếp tục nghiên cứu quy tắc an đủ sáu sao, rồi mới quyết định có thể tăng từ 28/49 lên 30/49 hay không. Nhóm Định tạp giữ riêng theo đơn vị **vận hạn**, không đưa thành kết luận bản mệnh.
+
+
+## R18 — Tiền kiểm 12 đại hạn cho bốn mục Định tạp (11/11/2026)
+
+- Bám trực tiếp `lib/ziwei/patterns-dingza.ts` của Renhuai123/ziwei-doushu tại commit `7922285d947b36610e7e31c232d8f1e2a0d0871d`. Bốn mục nguồn xếp `derivable` nhưng chưa ánh xạ là **Định tạp 01, 02, 03, 08**, tất cả thuộc đơn vị *đại hạn*, không phải bản mệnh.
+- Thêm module chỉ đọc `classical-period-preflight.cjs`: chỉ trả dữ kiện khi `classical-period-geometry` kiểm tra 12/12, và lớp sao phụ 9 sao, sao năm 5 sao, Không/Kiếp/Hỏa/Linh, bảng độ sáng 14 chính tinh đều so khớp **phiên bản engine gốc** cùng dữ kiện gắn cung. Thông tin bị thiếu/sửa sai sẽ trả về 0 đại hạn quan sát, không tạo kết luận thuận lợi.
+- Cho từng khoảng tuổi mụ theo đúng thứ tự đại hạn: ghi cung, địa chi, vị trí Lộc Tồn và Thiên Mã trong tam phương tứ chính, Thất Sát hội và danh sách sáu sát tinh tại cung hạn. Đây chỉ là các điểm quan sát từ engine; phép đánh giá *Mệnh/Thân yếu, hạn tốt, Miếu/Vượng, số cát/sát, Không Vong* theo nguồn vẫn chưa đối chiếu xong.
+- Giao diện thêm một bảng gọn **đóng mặc định** trong nhóm Định tạp của danh mục 49 mục hiện có. Không mở tab/route mới, không đụng panel Cơ bản, tính năng AI, Pro, dữ liệu người dùng hoặc thanh toán.
+- Bốn mục tiếp tục ở trạng thái chưa ánh xạ, không thay đổi **28/49** và không đưa ra `structural-match` cho vận hạn. Test trên Nam/Nữ và lá số bị chỉnh sửa có chủ đích; luôn `sourceCriteriaVerified=false`.
+- Chỉ merge r18 khi Source Integrity, Full Stack và Production Acceptance 5/5 PASS đúng commit; kiểm tra lại `main` sau merge.
