@@ -5,6 +5,7 @@ const {auditNatalObstructionEvidence}=require('./natal-obstruction-evidence.cjs'
 const {auditNatalFirePosition}=require('./natal-fire-evidence.cjs');
 const {compareQSBrightness}=require('./classical-brightness-comparison.cjs');
 const {SOURCE_VOID_NOTICE}=require('./classical-source-void-vocabulary.cjs');
+const {orKnown}=require('./classical-evidence-logic.cjs');
 /**
  * THIÊN ĐỒ — đối chiếu 28 chỉ mục Tử Vi, gồm một mục Tham Hỏa chưa đủ chứng cứ độ sáng; kiểm toán Tuần/Triệt độc lập, KHÔNG phải bộ phán định 49 cách cục.
  * Nguồn phương pháp tham khảo: Renhuai123/ziwei-doushu, MIT; thuật toán/diễn giải độc lập.
@@ -209,6 +210,13 @@ function auditClassicalPatternCandidates(chart){
  });
  const natalBeneficHua=hua.known&&['Hóa Lộc','Hóa Quyền','Hóa Khoa'].some(name=>hua.byName.get(name).branchIndex===meng.branchIndex);
  const hasBeneficInMenh=verifiedHelpers.length>0||natalBeneficHua?true:(hua.known?false:null);
+ // Source Ding Pin 02 is natal Lộc Tồn OR natal Hóa Lộc at Mệnh.
+ // A verified true branch is sufficient even when the other is unknown;
+ // a false requires BOTH branches verified false.
+ const natalLocAtMenh=observed(loc)?loc.branchIndex===meng.branchIndex:null;
+ const natalHuaLocAtMenh=verifiedYearHua.known?
+  verifiedYearHua.loc.branchIndex===meng.branchIndex:null;
+ const dingPin02LocEvidence=orKnown(natalLocAtMenh,natalHuaLocAtMenh);
  const place=(x,desc,pred)=>check(desc,observed(x)?pred(x):null,observed(x)?x.name+': '+x.palace+', chi số '+x.branchIndex:x.name+': thiếu hoặc mâu thuẫn vị trí ('+x.status+')');
  const notes={
   specific:'Cần xác định đúng vị trí sao và quy ước trường phái trước khi đọc ý nghĩa.',
@@ -431,8 +439,7 @@ function auditClassicalPatternCandidates(chart){
    sourceUrl:SOURCE+'/blob/'+SOURCE_COMMIT+'/lib/ziwei/patterns-dingpin.ts',
    checks:Object.freeze([
     Object.freeze(check('Lộc Tồn hoặc Hóa Lộc nguyên cục tọa Mệnh',
-      observed(loc)&&verifiedYearHua.known?
-       (loc.branchIndex===meng.branchIndex||verifiedYearHua.loc.branchIndex===meng.branchIndex):null,
+      dingPin02LocEvidence,
       'Lộc Tồn: '+(observed(loc)?'chi '+loc.branchIndex:loc.status)+
       '; Hóa Lộc: '+(verifiedYearHua.known?'chi '+verifiedYearHua.loc.branchIndex:verifiedYearHua.reason))),
     Object.freeze(check('Địa Không và Địa Kiếp nguyên cục cùng đóng Mệnh',
