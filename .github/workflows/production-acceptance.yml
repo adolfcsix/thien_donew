@@ -12,6 +12,9 @@ concurrency:
 jobs:
   artifact-and-operations:
     runs-on: ubuntu-latest
+    # Pinned Playwright image supplies WebKit/Chromium OS dependencies without flaky apt mirrors.
+    container:
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
