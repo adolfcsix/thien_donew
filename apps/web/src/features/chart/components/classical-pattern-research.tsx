@@ -11,6 +11,7 @@ import {auditClassicalPeriodGeometry} from '@thiendo/interpretation/src/classica
 import {auditClassicalDingZaPeriods} from '@thiendo/interpretation/src/classical-dingza-period-research.cjs';
 import {auditClassicalDingZaSourceBridge} from '@thiendo/interpretation/src/classical-dingza-source-bridge.cjs';
 import {auditClassicalVoidPairGeometry} from '@thiendo/interpretation/src/classical-source-void-geometry.cjs';
+import {SOURCE_FUXUN_PAIRS,CAUTION as FUXUN_CAUTION} from '@thiendo/interpretation/src/classical-source-fuxun-formula.cjs';
 import {SOURCE_VOID_STEM_ROWS,SOURCE_STEM_MATRIX_NOTE,SOURCE_SCHOOL_DATA_URL,auditSourceDoubleJiekongCodeConcordance} from '@thiendo/interpretation/src/classical-source-void-vocabulary.cjs';
 import type {ClassicalCatalogFilterStatus} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import styles from './conditional-pattern-evidence.module.css';
@@ -173,6 +174,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
             </tr>)}</tbody>
           </table>
         </div>
+        <p role="note"><strong>Quy tắc ghép 旬空 / 副旬 theo nguồn:</strong> {SOURCE_FUXUN_PAIRS.map(pair=>pair.branches.join('–')).join(' · ')}. {FUXUN_CAUTION}</p>
         <p role="note"><strong>Đối chiếu hình học trên lá số đang xem:</strong>{' '}
           {voidGeometry.status==='matched'
             ? 'Hai cặp chi trùng nhau về hình học.'
