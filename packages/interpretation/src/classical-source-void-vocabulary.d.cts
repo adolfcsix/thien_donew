@@ -54,3 +54,22 @@ export declare const SOURCE_VOID_STEM_ROWS:readonly ClassicalVoidSourceStemRow[]
 export declare const SOURCE_STEM_MATRIX_NOTE:string;
 export declare const SOURCE_XUN_CODES:readonly number[];
 export declare function lookupVoidStemCodes(stem:string,variant:ClassicalVoidSchoolVariant):ClassicalVoidStemCodeLookup|null;
+
+/** R23: source-table parity only; NOT natal placement verification. */
+export interface ClassicalJiekongSourceConcordance {
+ readonly stem:string;
+ readonly variant:'double';
+ readonly sourceCodes:readonly number[];
+ readonly formulaCodes:readonly number[];
+ readonly formulaBranches:readonly string[];
+ readonly sourceFormulaConcordant:boolean;
+ readonly sourceAlgorithmUrl:string;
+ readonly sourceDataUrl:string;
+ readonly sourcePlacementVerified:false;
+ readonly sourceSchoolParityVerified:false;
+ readonly sourceCriterionVerified:false;
+ readonly sourceCodeMappingVerified:false;
+}
+export declare function auditSourceDoubleJiekongCodeConcordance(
+ stem:string
+):ClassicalJiekongSourceConcordance|null;
