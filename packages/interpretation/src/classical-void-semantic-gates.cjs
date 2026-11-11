@@ -49,8 +49,9 @@ function auditClassicalVoidSemanticGates(chart){
  const inProxy=b=>Number.isInteger(b)&&b>=0&&b<12?branches.includes(b):null;
  const menh=ready?chart.houses.find(h=>h.palace==='Mệnh'):null;
  const menhIndex=menh?.branchIndex;
- const stem=STEMS.indexOf(chart?.yearCanChi?.split(' ')[0]);
- const yearBranch=BRANCHES.indexOf(chart?.yearCanChi?.split(' ')[1]);
+ const yearCanChi=typeof chart?.yearCanChi==='string'?chart.yearCanChi.split(' '):[];
+ const stem=STEMS.indexOf(yearCanChi[0]);
+ const yearBranch=BRANCHES.indexOf(yearCanChi[1]);
  const hour=BRANCHES.indexOf(chart?.hourBranch);
  let aux=null,yr=null;
  if(ready&&stem>=0&&yearBranch>=0&&hour>=0&&Number.isInteger(chart?.lunar?.month)){
