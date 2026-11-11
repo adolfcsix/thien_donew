@@ -345,3 +345,11 @@ Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructi
 - UI: trong danh mục 49 mục của panel Chuyên sâu, mở gọn từng mục Định tạp để xem chứng cứ trong **12 đại hạn**. Không thêm tab mới, giữ responsive và `prefers-reduced-motion`.
 - Tests r18: Nam/Nữ, 12 kỳ, trạng thái bất biến, sai bảng độ sáng, sai an sao và thiếu chart sẽ không được xem là chứng cứ khẳng định. Không đổi engine, SQL, Pro, AI, thanh toán hoặc thuật toán sao.
 - Chỉ merge sau khi Source Integrity, Full Stack, Production Acceptance **5/5** đều PASS trên cùng HEAD; chạy kiểm tra sau merge trên `main`.
+
+
+## R19 — Logic ba trạng thái cho Lộc Tồn hoặc Hóa Lộc (11/11/2026)
+
+- Tinh chỉnh bước đối chiếu **Định tạp 01** theo đúng quan hệ **OR** trong nguồn: nếu Lộc Tồn nguyên cục đã được kiểm chứng là hội tam phương tứ chính của đại hạn, nhánh điều kiện Lộc Tồn được ghi nhận là `met` kể cả khi vị trí Hóa Lộc chưa xác minh. Khi Lộc Tồn không hội hạn và Hóa Lộc chưa kiểm chứng, kết quả là `unknown`, **không** phải `not-met`. Chỉ trả `not-met` nếu cả hai nguồn đã kiểm chứng độc lập và đều không hội hạn.
+- Đây là **chứng cứ một điều kiện riêng lẻ**, không chứng minh toàn bộ Định tạp 01 (vẫn còn yếu Mệnh/Thân và cách hiểu hai hạn). `sourceCriterionVerified` giữ `false` và **28/49** vẫn là số mục ánh xạ chính thức.
+- Thêm test r19 cho cả Nam/Nữ, bao gồm cố ý vô hiệu phiên bản Tứ Hóa, đối chiếu đúng 4 cung trong tam phương tứ chính theo địa chi và xác minh không xuất hiện âm tính giả.
+- Không thay đổi engine an sao, Tứ Hóa, DB, quyền Pro hoặc cách cục đã ánh xạ. CI đầy đủ phải PASS trên đúng commit mới trước merge.

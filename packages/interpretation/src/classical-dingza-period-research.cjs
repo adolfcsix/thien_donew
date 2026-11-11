@@ -115,8 +115,11 @@ function auditClassicalDingZaPeriods(chart){
  const bounds=chart.cycles.daiHan.map(d=>{
   const h=byBranch.get(d.branch),four=court(d.branch);
   const here=(branch)=>four.includes(branch);
-  const nearLoc=aux.verified&&hua.verified?
-    here(loc)||here(hua.locBranch):null;
+  // Three-valued OR: a verified Lộc Tồn hit is sufficient even if Hóa Lộc
+  // cannot be audited. If Lộc Tồn is absent and Hóa Lộc is unverified,
+  // return unknown rather than a false negative.
+  const nearLoc=aux.verified&&here(loc)?true:
+    aux.verified&&hua.verified?here(hua.locBranch):null;
   const nearHorse=year.verified?here(horse):null;
   const natalWeak=main.verified&&menh&&thanOK?
     (main.house(menh.branchIndex).weak&&main.house(than.branchIndex).weak):null;
@@ -130,7 +133,11 @@ function auditClassicalDingZaPeriods(chart){
   const periods=[
    [criterion('Mệnh và Thân đều yếu theo bảng Thiên Đồ',natalWeak,main.reason),
     criterion('Trong Tam phương Tứ chính hạn có Lộc Tồn hoặc Hóa Lộc',nearLoc,
-      aux.verified&&hua.verified?'Lộc Tồn tại chi '+loc+'; Hóa Lộc tại chi '+hua.locBranch:hua.reason),
+      aux.verified&&here(loc)?
+        'Lộc Tồn đã được xác minh hội hạn tại chi '+loc+'; bằng chứng Hóa Lộc độc lập không cần thiết để xác nhận nhánh này.':
+      aux.verified&&hua.verified?
+        'Lộc Tồn tại chi '+loc+'; Hóa Lộc tại chi '+hua.locBranch:
+        'Lộc Tồn chưa hội hạn theo bảng đã kiểm; vị trí Hóa Lộc chưa đủ chứng cứ: '+hua.reason),
     criterion('Thiên Mã nguyên cục hội Tam phương Tứ chính hạn',nearHorse,year.reason),
     criterion('Cách hiểu “hai hạn” của nguồn đã đối chiếu',null,'Nguồn quy về đại hạn nhưng cách phân tầng đại hạn/lưu niên vẫn cần xác nhận')],
    [criterion('Cung hạn có sát tinh thuộc bộ sáu sát',satPresent,
