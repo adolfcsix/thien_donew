@@ -77,6 +77,12 @@ module.exports=async function verifyLateZiCompare({context,origin,record,pageErr
     assert.equal(await row.locator('strong').count(),1,'each star is named exactly once');
     assert.equal(await row.locator('b').count(),2,'each movement has an A and B destination');
    }
+   const starAuditFits=await starAudit.evaluate(el=>{
+    const r=el.getBoundingClientRect();
+    return r.left>=-1&&r.right<=window.innerWidth+1&&el.scrollWidth<=r.width+2;
+   });
+   assert.equal(starAuditFits,true,'R40 movement trail must not overflow '+width+'px');
+
    if(out){
     const evidenceDir=path.resolve('docs/reports/isolated-sql/r40-visual-evidence');
     fs.mkdirSync(evidenceDir,{recursive:true});
