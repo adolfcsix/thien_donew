@@ -78,16 +78,17 @@ function validateSource(input,f) {
       s.lunarMonth===0||!between(s.lunarDay,1,30)||
       typeof s.isLeapMonth!=='boolean'||!between(s.yearStem,0,9)||
       ![2,3,4,5,6].includes(s.wuxingJu)||
-      !between(s.ziweiPos,0,11)||!between(s.mingGongBranch,0,11))
+      !between(s.ziweiPos,0,11)||!between(s.mingGongBranch,0,11)||
+      s.leapMonthPolicy!=='split')
       throw Error('Malformed source chart: '+id);
   }
   return true;
 }
 function calendarClass(s,l) {
   if(s.lunarYear!==l.lunarYear)return 'different-lunar-year';
-  if(s.lunarMonth!==l.lunarMonth||s.isLeapMonth!==l.isLeapMonth)
-    return 'different-month-or-leap';
+  if(s.lunarMonth!==l.lunarMonth)return 'different-lunar-month';
   if(s.lunarDay!==l.lunarDay)return 'different-lunar-day';
+  if(s.isLeapMonth!==l.isLeapMonth)return 'different-leap-flag-only';
   return 'same-lunar-date';
 }
 function compare(record,anchor) {
@@ -117,6 +118,7 @@ function compare(record,anchor) {
     offsetDays:record.offsetDays,gender:record.gender,clockHour:record.clockHour,
     sourceHourBranch:record.hourBranch,
     source:s,local,calendarClass:calendarClass(s,local),
+    sourceLeapMonthInterpretation:'pinned source default split policy, not raw civil-calendar leap flag',
     cucAligned:s.wuxingJu===local.wuxingJu,
     ziweiAligned:s.ziweiPos===local.ziweiPos,
     mingAligned:s.mingGongBranch===local.mingGongBranch,
@@ -140,7 +142,7 @@ function analyze(input,f) {
     try {records.push(compare(rec,lookup.get(rec.anchorId)));}
     catch(e){errors.push({id:rec.id,message:String(e?.message||e)});}
   }
-  const categories=['same-lunar-date','different-lunar-day','different-month-or-leap','different-lunar-year'];
+  const categories=['same-lunar-date','different-lunar-day','different-lunar-month','different-leap-flag-only','different-lunar-year'];
   const count=arr=>({
     total:arr.length,
     classes:Object.fromEntries(categories.map(k=>[k,arr.filter(x=>x.calendarClass===k).length])),
@@ -156,9 +158,10 @@ function analyze(input,f) {
     byHour:Object.fromEntries(f.clockHours.map(h=>[h,count(records.filter(r=>r.clockHour===h))])),
     records,errors,syntheticOnly:true,sourceRuntimeRequired:true,
     sourceLateZiRolloverVerified:false,sourceCalendarTimezoneExplicitlyVerified:false,
+    sourceLeapMonthPolicy:'split',
     semanticEquivalenceVerified:false,sourceSchoolParityVerified:false,
     localPatternVerdictsVerified:false,catalogMappedConditionsUnchanged:31,
-    limitation:'72 synthetic observations are not independent proof of school equivalence. Late Tý day rollover is not encoded by the pinned source generateChart hour-branch API; retain ambiguity and do not modify the Tử Vi engine.'
+    limitation:'72 synthetic observations are not independent proof of school equivalence. The pinned source uses split leap-month POLICY, which can clear isLeapMonth while preserving raw calendar day. Late Tý rollover is not encoded by the source hour-branch API; preserve ambiguity and do not change the Tử Vi engine.'
   };
 }
 if(require.main===module){
