@@ -231,6 +231,7 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  await fresh.close(); const shortcutPage=await member.context.newPage();await shortcutPage.goto(origin+'/',{waitUntil:'networkidle'});await shortcutPage.keyboard.press('Control+k');await shortcutPage.getByRole('dialog',{name:'Tìm nhanh trang và công cụ',exact:true}).waitFor();await shortcutPage.keyboard.press('Escape');await shortcutPage.waitForFunction(()=>document.body.style.overflow!=='hidden');assert.equal(await shortcutPage.locator('.command-backdrop').count(),0);
  await shortcutPage.goto(origin+'/admin',{waitUntil:'networkidle'});await shortcutPage.getByRole('alert').filter({hasText:'không có quyền quản trị'}).waitFor();await shortcutPage.keyboard.press('Control+k');await shortcutPage.keyboard.press('Escape');assert.equal(await shortcutPage.locator('.command-backdrop').count(),0);assert.notEqual(await shortcutPage.evaluate(()=>document.body.style.overflow),'hidden');
  record({case:'public Ctrl+K remains functional; non-admin admin gate cannot open invisible user search or lock scrolling',verdict:'PASS'}); await shortcutPage.close();
+await require('./helpers-mobile-dock-clearance-browser.cjs')({context:member.context,origin,record,pageErrors,out});
 await require('./helpers-late-zi-compare-browser.cjs')({context:member.context,origin,record,pageErrors,out});
 await require('./helpers-western-workbench-browser.cjs')({context:member.context,origin,record,pageErrors});
 assert.deepEqual(pageErrors,[]);

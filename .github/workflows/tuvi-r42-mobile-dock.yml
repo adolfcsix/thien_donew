@@ -1,0 +1,40 @@
+name: THIEN DO - R42 mobile dock visibility acceptance
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tuvi-r42-mobile-dock.yml'
+      - 'tests/helpers-mobile-dock-clearance-browser.cjs'
+      - 'tests/account.browser.cjs'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tuvi-r42-mobile-dock.yml'
+      - 'tests/helpers-mobile-dock-clearance-browser.cjs'
+      - 'tests/account.browser.cjs'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  source-and-dock-test-contract:
+    name: Mobile footer contact and fixed dock non-occlusion contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --no-audit --no-fund
+      - name: Check integrity, syntax and type
+        run: |
+          npm run check:lockfile
+          npm run check:source
+          node --check tests/helpers-mobile-dock-clearance-browser.cjs
+          node --check tests/account.browser.cjs
+          npm run typecheck
+      - name: Release gate note
+        if: always()
+        run: |
+          echo '## R42 — Test before changing shared mobile navigation' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The production account browser now proves the last legal-footer link is clickable above the fixed bottom dock at 320, 390 and 680px, with a desktop 1440px non-visible control.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The test inspects live rectangles and hit testing, not only long screenshot composites.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No CSS alteration is included in this investigative patch. If the browser test fails, fix only the confirmed route/viewport issue.' >> "$GITHUB_STEP_SUMMARY"
