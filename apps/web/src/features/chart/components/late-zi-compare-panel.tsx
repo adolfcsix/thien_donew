@@ -33,11 +33,17 @@ function SideGrid({title,date,side,branches,selected,onSelect}:{
    <span className={styles.sideOverline}>{side==='before'?'PHƯƠNG ÁN A · ĐANG DÙNG':'PHƯƠNG ÁN B · GIẢ ĐỊNH'}</span>
    <h4>{title}</h4><span className={styles.sideDate}>{humanDate(date)}</span>
   </div>
-  <div className={styles.palaceGrid} role="group" aria-label={'Các địa chi của '+title}>
+  <div className={styles.palaceGrid} data-ring={branches.length===12} role="group" aria-label={'Các địa chi của '+title}>
+   {branches.length===12&&<div className={styles.centerSeal} aria-hidden="true">
+    <span>THIÊN ĐỒ · TỬ VI</span>
+    <strong>{side==='before'?'Ngày đã nhập':'Ngày giả định'}</strong>
+    <small>{humanDate(date)}</small>
+    <i>12 CUNG · ĐỊA BÀN</i>
+   </div>}
    {branches.map(item=>{
     const cell=item[side],moved=side==='before'?item.movedBefore:item.movedAfter;
     return <button type="button" className={styles.palace}
-      key={item.branchIndex} data-changed={item.changed} aria-pressed={selected===item.branchIndex}
+      key={item.branchIndex} data-branch={item.branchIndex} data-changed={item.changed} aria-pressed={selected===item.branchIndex}
       aria-label={item.branch+': '+cell.palace+(item.changed?', có khác biệt':'')+'. '+(cell.mainStars.length?cell.mainStars.join(', '):'Vô chính diệu')}
       onClick={()=>onSelect(item.branchIndex)}>
       <span className={styles.palaceTop}><b>{item.branch}</b><small>{item.changed?'Có thay đổi':'Giữ nguyên'}</small></span>
