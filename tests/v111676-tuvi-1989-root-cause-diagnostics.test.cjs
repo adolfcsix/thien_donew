@@ -76,7 +76,8 @@ test('r33: classify first actual difference instead of guessing or silently fixi
   const result=analyzeRootCause(src);
   assert.equal(result.failures,0,key);
   assert.equal(result.records.find(x=>x.id==='1989-08-15-Nam-0').firstDifference,reason);
-  assert.equal(result.differences[key],1);
+  const countKey={liemTrinhBranch:'liemTrinh',huaLocBranch:'huaLoc'}[key]||key;
+  assert.equal(result.differences[countKey],1);
   assert.equal(result.records.filter(x=>x.firstDifference!=='matched').length,1);
   assert.equal(JSON.stringify(src),before);
  }
