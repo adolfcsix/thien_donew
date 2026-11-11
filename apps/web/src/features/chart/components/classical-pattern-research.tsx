@@ -203,7 +203,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
                 <li key={entry.id+'-pending-'+i} data-met={condition.state==='met'}>
                   <strong>{checkText[condition.state]}:</strong> {condition.label}. <span>{condition.detail}</span>
                 </li>)}</ul>
-              <small>Không được coi Tuần/Triệt là toàn bộ sáu sao Không Vong của nguồn. Chưa xác nhận cách cục hoặc kết luận vận mệnh.</small>
+              <small>Trong nguồn, hai tên cũ 截路/空亡 được chuẩn hóa thành 截空/副截; chưa kiểm tra đầy đủ cách an sao và biến thể phái. Tuần/Triệt không được coi là tương đương. Chưa kết luận cách cục.</small>
             </details>}
           </li>)}</ol>
         </section>)}

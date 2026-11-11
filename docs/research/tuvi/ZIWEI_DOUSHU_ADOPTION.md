@@ -353,3 +353,12 @@ Danh mục gốc có các điều kiện **Không Vong**. Dữ liệu `obstructi
 - Đây là **chứng cứ một điều kiện riêng lẻ**, không chứng minh toàn bộ Định tạp 01 (vẫn còn yếu Mệnh/Thân và cách hiểu hai hạn). `sourceCriterionVerified` giữ `false` và **28/49** vẫn là số mục ánh xạ chính thức.
 - Thêm test r19 cho cả Nam/Nữ, bao gồm cố ý vô hiệu phiên bản Tứ Hóa, đối chiếu đúng 4 cung trong tam phương tứ chính theo địa chi và xác minh không xuất hiện âm tính giả.
 - Không thay đổi engine an sao, Tứ Hóa, DB, quyền Pro hoặc cách cục đã ánh xạ. CI đầy đủ phải PASS trên đúng commit mới trước merge.
+
+
+## R20 — Chuẩn hóa tên Không Vong của nguồn trước khi an sao (11/11/2026)
+
+- Mã nguồn tham khảo được ghim ở `Renhuai123/ziwei-doushu@7922285d947b36610e7e31c232d8f1e2a0d0871d` (`lib/ziwei/algorithm.ts`, `school-config.ts`): bộ danh mục cách cục ghi sáu **nhãn** `旬空 / 副旬 / 截路 / 截空 / 空亡 / 副截` nhưng phép chuẩn hóa chuyển `截路 → 截空`, `空亡 → 副截`, còn `副旬` được đặt dựa trên `旬空`. **Sáu nhãn không có nghĩa sáu vị trí sao độc lập cùng tồn tại**; tùy phái `截空` còn có `single/double/zhanyan`.
+- Bổ sung module chỉ đọc `classical-source-void-vocabulary.cjs` cùng khai báo TypeScript để chuẩn hóa **tên nhãn** một cách có thể kiểm thử; giữ nguyên phiên bản nguồn, tên cũ, tên mới và trạng thái **chưa xác minh vị trí sao/biến thể trường phái**. Tuyệt đối không dùng đối chiếu ngôn từ để tự coi vị trí Tuần/Triệt là sao Không Vong của nguồn.
+- Sửa hai nhãn Định bần 01/02 và hai nhãn Định tạp 03 từ câu gây hiểu nhầm *"phải có đủ sáu sao"* thành kiểm tra sao Không Vong theo **quy tắc nguồn đúng phiên bản**. Cùng một giải thích nguồn được dùng lại giữa hai bộ nghiên cứu, tránh mâu thuẫn khái niệm, không thêm tab hoặc thao tác mới.
+- Không thay đặt sao, không thay trạng thái `unknown`, không tăng **28/49** chỉ mục ánh xạ, không suy luận vận mệnh. Test r20 bắt buộc 4 tên chuẩn hóa từ 6 nhãn, Tuần/Triệt không được tự đồng nhất, không làm đổi biểu đồ Nam/Nữ, các cách cục Định bần/Định tạp vẫn chưa đạt xác nhận nguồn.
+- Cổng nghiệm thu: Source Integrity, Full Stack và Production Acceptance (5/5) PASS trên đúng HEAD trước merge; sau merge xác nhận trên `main`.

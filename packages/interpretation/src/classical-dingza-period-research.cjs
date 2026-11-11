@@ -6,6 +6,7 @@
  */
 const {auditClassicalPeriodGeometry}=require('./classical-period-geometry.cjs');
 const {auditNatalFirePosition}=require('./natal-fire-evidence.cjs');
+const {SOURCE_VOID_NOTICE}=require('./classical-source-void-vocabulary.cjs');
 const Strength=require('@thiendo/astrology-engine/src/star-strength.js');
 const Aux=require('@thiendo/astrology-engine/src/auxiliary.js');
 const Year=require('@thiendo/astrology-engine/src/year-stars.js');
@@ -146,10 +147,10 @@ function auditClassicalDingZaPeriods(chart){
     criterion('Tiêu chuẩn cát tinh ≥2 và sát tinh ≤1 theo nguồn',null,
       'Chưa thẩm định cùng bộ tiêu chuẩn cát/sát, độ sáng giữa hai trường phái')],
    [criterion('Thất Sát chính tinh hội Tam phương Tứ chính hạn',satCourt,main.reason),
-    criterion('Lộc Tồn tọa đủ sáu loại Không Vong nguồn',null,
-      'Thiên Đồ hiện chỉ kiểm chứng Tuần/Triệt; không dùng làm sáu sao nguồn'),
-    criterion('Thiên Mã tọa đủ sáu loại Không Vong nguồn',null,
-      'Không đủ quy tắc an độc lập cho sáu sao Không Vong')],
+    criterion('Lộc Tồn tọa cung có sao Không Vong theo nguồn',null,
+      SOURCE_VOID_NOTICE),
+    criterion('Thiên Mã tọa cung có sao Không Vong theo nguồn',null,
+      SOURCE_VOID_NOTICE)],
    [criterion('Cung Mệnh yếu theo bảng Thiên Đồ',menhWeak,main.reason),
     criterion('Cung đại hạn mạnh theo bảng Thiên Đồ',strong,main.reason),
     criterion('Tam phương hạn đủ điều kiện hội cát và hạn tốt',null,

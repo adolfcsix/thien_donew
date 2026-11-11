@@ -42,8 +42,8 @@ test('r18 every period keeps source-dependent disputed gates unresolved, no fals
   assert.equal(rule.sourceCriterionVerified,false);
  }
  for(const p of v.items[2].periods){
-  assert.equal(p.checks.find(x=>x.label.includes('Lộc Tồn tọa đủ sáu')).state,'unknown');
-  assert.equal(p.checks.find(x=>x.label.includes('Thiên Mã tọa đủ sáu')).state,'unknown');
+  assert.equal(p.checks.find(x=>x.label.includes('Lộc Tồn tọa cung có sao Không Vong theo nguồn')).state,'unknown');
+  assert.equal(p.checks.find(x=>x.label.includes('Thiên Mã tọa cung có sao Không Vong theo nguồn')).state,'unknown');
  }
 });
 test('r18 malformed geometry is fail-closed, not a phantom period',()=>{

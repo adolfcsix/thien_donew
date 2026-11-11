@@ -78,7 +78,8 @@ test('r17 uses the existing catalog control and never promotes pending checks to
  const evaluator=fs.readFileSync(path.join(__dirname,'../packages/interpretation/src/classical-pattern-research.cjs'),'utf8');
  assert.match(ui,/pendingById=useMemo/);
  assert.match(ui,/Đã đối chiếu một phần · chưa ánh xạ/);
- assert.match(ui,/Không được coi Tuần\/Triệt là toàn bộ sáu sao Không Vong/);
+ assert.match(ui,/Trong nguồn, hai tên cũ 截路\/空亡 được chuẩn hóa thành 截空\/副截/);
+ assert.match(ui,/Tuần\/Triệt không được coi là tương đương/);
  assert.match(evaluator,/const pendingEvidence=Object.freeze/);
  assert.doesNotMatch(evaluator,/records\.push\(.*dinh-ban-0[12]/);
 });
