@@ -4,6 +4,7 @@ const NatalTuHoa=require('@thiendo/astrology-engine/src/tuhoa.js');
 const {auditNatalObstructionEvidence}=require('./natal-obstruction-evidence.cjs');
 const {auditNatalFirePosition}=require('./natal-fire-evidence.cjs');
 const {compareQSBrightness}=require('./classical-brightness-comparison.cjs');
+const {SOURCE_VOID_NOTICE}=require('./classical-source-void-vocabulary.cjs');
 /**
  * THIÊN ĐỒ — đối chiếu 28 chỉ mục Tử Vi, gồm một mục Tham Hỏa chưa đủ chứng cứ độ sáng; kiểm toán Tuần/Triệt độc lập, KHÔNG phải bộ phán định 49 cách cục.
  * Nguồn phương pháp tham khảo: Renhuai123/ziwei-doushu, MIT; thuật toán/diễn giải độc lập.
@@ -211,7 +212,7 @@ function auditClassicalPatternCandidates(chart){
  const place=(x,desc,pred)=>check(desc,observed(x)?pred(x):null,observed(x)?x.name+': '+x.palace+', chi số '+x.branchIndex:x.name+': thiếu hoặc mâu thuẫn vị trí ('+x.status+')');
  const notes={
   specific:'Cần xác định đúng vị trí sao và quy ước trường phái trước khi đọc ý nghĩa.',
-  void:'Chưa có ánh xạ được thẩm định giữa các sao Không Vong nguyên bản và dữ liệu Tuần/Triệt của Thiên Đồ; không thay thế chúng một cách cơ học.'
+  void:SOURCE_VOID_NOTICE
  };
  const records=[
   result('dinh-quy-02','Nhật xuất Phù Tang','Định quý','patterns-dinggui.ts',
@@ -420,7 +421,7 @@ function auditClassicalPatternCandidates(chart){
     Object.freeze(place(liem,'Liêm Trinh nguyên cục đóng Mệnh',x=>x.branchIndex===meng.branchIndex)),
     Object.freeze(check('Tuần/Triệt nguyên cục được đối chiếu, chỉ là chứng cứ phụ',
       obstructionAudit.verified?true:null,obstructionAudit.reason)),
-    Object.freeze(check('Không Vong theo đủ sáu sao của bảng nguồn được thẩm định',
+    Object.freeze(check('Không Vong theo quy tắc an sao và tên sao nguồn được thẩm định',
       null,notes.void))
    ])
   }),
@@ -440,7 +441,7 @@ function auditClassicalPatternCandidates(chart){
       fireAudit.verified?
        'Địa Không chi '+khong.branchIndex+'; Địa Kiếp chi '+kiep.branchIndex:
        'Bộ an Không/Kiếp chưa được kiểm tra toàn vẹn: '+fireAudit.reason)),
-    Object.freeze(check('Không Vong theo đủ sáu sao của bảng nguồn được thẩm định',
+    Object.freeze(check('Không Vong theo quy tắc an sao và tên sao nguồn được thẩm định',
       null,notes.void))
    ])
   })
