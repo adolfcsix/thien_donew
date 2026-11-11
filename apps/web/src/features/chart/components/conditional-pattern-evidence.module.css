@@ -78,3 +78,10 @@
 .periodGeometry{margin:8px 0 12px;padding:9px 11px;border-left:2px solid var(--line-strong);background:transparent;min-width:0}
 .periodGeometry p{margin:0 0 4px!important;font-size:12px;line-height:1.6}
 .periodGeometry small{display:block;font-size:11px;line-height:1.6;color:var(--text-secondary,var(--text));overflow-wrap:anywhere}
+
+/* R17 source-pinned partial Ding Pin evidence stays within the existing catalog. */
+.pendingEvidence{margin:7px 0 9px;min-width:0;font-size:12px}
+.pendingEvidence summary{cursor:pointer;font-weight:600;line-height:1.6;overflow-wrap:anywhere}
+.pendingEvidence .checks{margin:7px 0;padding-left:18px}
+.pendingEvidence .checks li{font-size:11px;line-height:1.6;overflow-wrap:anywhere;margin:5px 0}
+.pendingEvidence small{display:block;font-size:11px;line-height:1.6;color:var(--text-secondary,var(--text))}
