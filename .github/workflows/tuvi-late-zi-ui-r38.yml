@@ -1,0 +1,52 @@
+name: THIEN DO - R38 read-only late-Zi comparison interface
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tuvi-late-zi-ui-r38.yml'
+      - 'apps/web/src/features/chart/components/late-zi-compare-*'
+      - 'apps/web/src/features/chart/lib/late-zi-compare-model.cjs'
+      - 'apps/web/src/features/chart/components/chart-result.tsx'
+      - 'tests/v111681-tuvi-r38-compare-ui-model.test.cjs'
+      - 'tests/helpers-late-zi-compare-browser.cjs'
+      - 'tests/account.browser.cjs'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tuvi-late-zi-ui-r38.yml'
+      - 'apps/web/src/features/chart/components/late-zi-compare-*'
+      - 'apps/web/src/features/chart/lib/late-zi-compare-model.cjs'
+      - 'apps/web/src/features/chart/components/chart-result.tsx'
+      - 'tests/v111681-tuvi-r38-compare-ui-model.test.cjs'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  late-zi-visual-contract:
+    name: Paired palace charts and read-only visual contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --no-audit --no-fund
+      - name: Check source and syntax
+        run: |
+          npm run check:lockfile
+          npm run check:source
+          node --check apps/web/src/features/chart/lib/late-zi-compare-model.cjs
+          node --check tests/helpers-late-zi-compare-browser.cjs
+          node --check tests/v111681-tuvi-r38-compare-ui-model.test.cjs
+      - name: R37 and R38 paired-natal contracts
+        run: |
+          node --test tests/v111680-tuvi-r37-zi-scenario.test.cjs tests/v111681-tuvi-r38-compare-ui-model.test.cjs
+      - name: Typecheck React comparison layer
+        run: npm run typecheck
+      - name: Document scope
+        if: always()
+        run: |
+          echo '## R38: comparison UI, no mutation' >> "$GITHUB_STEP_SUMMARY"
+          echo 'R38 provides a lazy view for 23:00–23:59 showing two calendar-day choices in 12 palace grids.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Acceptance browser test is integrated into the Production acceptance account/AI workflow at mobile 390px and desktop 1440px.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No change to the saved chart, export, date of birth, server API or Tử Vi default day convention.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Not certified: timezone history, true solar clock and equivalence to source schools. Mapping stays 31/49.' >> "$GITHUB_STEP_SUMMARY"

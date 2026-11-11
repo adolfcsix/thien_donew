@@ -72,13 +72,13 @@ export function ChartForm({ input, onChange, onSubmit }: Props) {
         <div className="input-pair">
           <label className="field">
             Giờ sinh
-            <select value={input.hour} onChange={e => onChange('hour', Number(e.target.value))}>
+            <select id="tuvi-birth-hour" aria-label="Giờ sinh" value={input.hour} onChange={e => onChange('hour', Number(e.target.value))}>
               {Array.from({ length: 24 }, (_, i) => <option key={i} value={i}>{String(i).padStart(2, '0')} giờ</option>)}
             </select>
           </label>
           <label className="field">
             Phút sinh
-            <select value={input.minute} onChange={e => onChange('minute', Number(e.target.value))}>
+            <select id="tuvi-birth-minute" aria-label="Phút sinh" value={input.minute} onChange={e => onChange('minute', Number(e.target.value))}>
               {Array.from({ length: 60 }, (_, i) => <option key={i} value={i}>{String(i).padStart(2, '0')} phút</option>)}
             </select>
           </label>

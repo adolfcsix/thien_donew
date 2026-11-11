@@ -1,0 +1,107 @@
+.root{
+ --zi-border:var(--line-strong,rgba(195,169,112,.35));
+ --zi-soft:var(--line,rgba(195,169,112,.16));
+ --zi-accent:var(--gold);
+ color:var(--text);
+ background:linear-gradient(150deg,rgba(197,161,106,.055),transparent 42%),var(--panel);
+ border:1px solid var(--zi-border);
+ border-radius:20px;
+ padding:clamp(16px,2.8vw,30px);
+ min-width:0;
+ margin:24px 0;
+}
+/* Avoid gold-on-ivory low contrast in the shared light theme. */
+:global(.site.light) .root{--zi-accent:#80571d}
+.heading{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.eyebrow,.sideOverline{display:block;font-size:11px;font-weight:750;letter-spacing:.13em;color:var(--zi-accent);text-transform:uppercase}
+.heading h3{font-family:var(--font-display),serif;font-size:clamp(22px,2.5vw,30px);font-weight:500;line-height:1.3;margin:5px 0 0}
+.researchTag{display:inline-flex;align-items:center;padding:6px 12px;border:1px solid var(--zi-border);border-radius:999px;font-size:12px;color:var(--muted);white-space:normal}
+.intro{max-width:80ch;color:var(--muted);line-height:1.7;margin:16px 0 20px}
+.intro strong{color:var(--text)}
+.error{padding:16px;border:1px solid var(--zi-border);border-radius:12px;color:var(--text)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0 22px}
+.stats div{display:flex;flex-direction:column;gap:3px;border:1px solid var(--zi-soft);background:var(--panel-alt);padding:clamp(12px,2vw,19px);border-radius:14px;min-width:0}
+.stats strong{font-size:clamp(23px,3vw,32px);line-height:1.3;letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-weight:650}
+.stats small{font-size:.52em;color:var(--muted);font-weight:400}
+.stats span{font-size:12px;color:var(--muted);line-height:1.5}
+.toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin:0 0 16px}
+.toolbar p{color:var(--muted);font-size:13px;margin:0;max-width:52ch}
+.filter{display:inline-flex;gap:9px;align-items:center;border:1px solid var(--zi-border);border-radius:999px;padding:9px 13px;cursor:pointer;font-size:12px;font-weight:600;line-height:1.4;min-height:42px}
+.filter input{width:17px;height:17px;margin:0;accent-color:var(--zi-accent);flex:none}
+.twoGrids{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start;min-width:0}
+.side{border:1px solid var(--zi-soft);background:var(--panel-alt);border-radius:16px;min-width:0;overflow:hidden}
+.sideHead{padding:18px 18px 16px;border-bottom:1px solid var(--zi-soft);display:grid;gap:5px}
+.sideHead h4{font-size:18px;font-family:var(--font-display),serif;line-height:1.35;font-weight:550;margin:0}
+.sideDate{font-size:13px;font-variant-numeric:tabular-nums;color:var(--muted)}
+.palaceGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:10px;min-width:0}
+.palaceGrid[data-ring="true"]{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(4,minmax(132px,auto))}
+.centerSeal{grid-area:2 / 2 / span 2 / span 2;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:10px;border:1px solid var(--zi-border);border-radius:13px;background:radial-gradient(circle at center,var(--glow),transparent 78%),var(--panel);padding:20px 12px;min-width:0}
+.centerSeal span,.centerSeal i{font-size:11px;color:var(--muted);letter-spacing:.1em;font-style:normal;line-height:1.5}
+.centerSeal strong{font-family:var(--font-display),serif;font-size:clamp(17px,2vw,24px);font-weight:500;line-height:1.3}
+.centerSeal small{font-variant-numeric:tabular-nums;font-size:12px;color:var(--zi-accent)}
+/* Tử Vi compass arrangement: Tỵ–Ngọ–Mùi–Thân across the north side,
+   Thìn/Mão on the west, Dậu/Tuất on the east, Dần–Sửu–Tý–Hợi on south. */
+.palaceGrid[data-ring="true"] > .palace[data-branch="0"]{grid-area:4 / 3}
+.palaceGrid[data-ring="true"] > .palace[data-branch="1"]{grid-area:4 / 2}
+.palaceGrid[data-ring="true"] > .palace[data-branch="2"]{grid-area:4 / 1}
+.palaceGrid[data-ring="true"] > .palace[data-branch="3"]{grid-area:3 / 1}
+.palaceGrid[data-ring="true"] > .palace[data-branch="4"]{grid-area:2 / 1}
+.palaceGrid[data-ring="true"] > .palace[data-branch="5"]{grid-area:1 / 1}
+.palaceGrid[data-ring="true"] > .palace[data-branch="6"]{grid-area:1 / 2}
+.palaceGrid[data-ring="true"] > .palace[data-branch="7"]{grid-area:1 / 3}
+.palaceGrid[data-ring="true"] > .palace[data-branch="8"]{grid-area:1 / 4}
+.palaceGrid[data-ring="true"] > .palace[data-branch="9"]{grid-area:2 / 4}
+.palaceGrid[data-ring="true"] > .palace[data-branch="10"]{grid-area:3 / 4}
+.palaceGrid[data-ring="true"] > .palace[data-branch="11"]{grid-area:4 / 4}
+.palace{appearance:none;text-align:left;display:flex;flex-direction:column;gap:6px;min-width:0;min-height:132px;border:1px solid var(--zi-soft);border-radius:11px;background:var(--panel);color:var(--text);padding:10px;line-height:1.4;transition:background-color .2s ease,border-color .2s ease,transform .2s ease}
+.palace:hover{border-color:var(--zi-border);transform:translateY(-1px)}
+.palace:focus-visible,.filter:focus-within{outline:2px solid var(--zi-accent);outline-offset:2px}
+.palace[data-changed="true"]{border-color:var(--zi-border)}
+.palace[aria-pressed="true"]{background:var(--glow);border-color:var(--zi-accent);box-shadow:inset 0 0 0 1px var(--zi-accent)}
+.palaceTop{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:3px}
+.palaceTop b{font-family:var(--font-display),serif;font-size:18px}
+.palaceTop small{font-size:10px;line-height:1.35;color:var(--muted)}
+.palace[data-changed="true"] .palaceTop small{color:var(--zi-accent)}
+.palace>strong{font-size:12px;font-weight:700;overflow-wrap:anywhere}
+.stars{display:flex;flex-wrap:wrap;align-content:flex-start;gap:4px;margin-top:2px}
+.stars>span{font-size:11px;color:var(--muted);overflow-wrap:anywhere}
+.stars>span[data-moved="true"]{color:var(--zi-accent);font-weight:700;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}
+.empty{border:1px dashed var(--zi-border);border-radius:12px;padding:16px;color:var(--muted)}
+.focus{margin:17px 0;display:grid;grid-template-columns:minmax(140px,.65fr) repeat(2,minmax(0,1fr));gap:14px;padding:16px;background:var(--panel-alt);border:1px solid var(--zi-soft);border-radius:14px}
+.focus>div{min-width:0}
+.focusLabel span{display:block;color:var(--muted);font-size:11px;margin:0 0 4px}
+.focusLabel h4{font-size:24px;font-family:var(--font-display),serif;margin:0 0 5px}
+.focus small{display:block;color:var(--muted);font-size:12px;margin-bottom:7px}
+.focus b{font-weight:650;font-size:14px}
+.focus p{font-size:13px;color:var(--muted);margin:7px 0 0;overflow-wrap:anywhere}
+.tableScroll{overflow-x:auto;max-width:100%;border-radius:13px;border:1px solid var(--zi-soft)}
+.tableScroll:focus-visible{outline:2px solid var(--zi-accent);outline-offset:3px}
+.table{width:100%;min-width:500px;border-collapse:collapse;font-size:13px}
+.table caption{text-align:left;padding:12px 14px;font-size:12px;color:var(--muted);caption-side:top}
+.table th,.table td{padding:12px 14px;border-top:1px solid var(--zi-soft);text-align:left;vertical-align:middle;overflow-wrap:anywhere}
+.table thead th{font-size:12px;color:var(--muted);font-weight:650}
+.table tbody th{font-weight:650}
+.table tbody tr[data-changed="true"] td:last-child{font-weight:750;color:var(--zi-accent)}
+.notice{font-size:12px;line-height:1.75;color:var(--muted);margin:18px 0 0}
+.notice strong{color:var(--text)}
+@media(max-width:1060px){
+ .twoGrids{grid-template-columns:minmax(0,1fr)}
+ .palaceGrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(max-width:620px){
+ .root{border-radius:14px;padding:14px;margin:16px 0}
+ .stats{gap:7px}
+ .stats div{padding:10px}
+ .stats span{font-size:11px}
+ .palaceGrid,.palaceGrid[data-ring="true"]{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto}
+ .palaceGrid[data-ring="true"] > .palace[data-branch]{grid-area:auto}
+ .centerSeal{display:none}
+ .palace{min-height:118px;padding:9px}
+ .focus{grid-template-columns:minmax(0,1fr);gap:12px}
+ .focus>div+div{border-top:1px solid var(--zi-soft);padding-top:12px}
+ .heading h3{font-size:22px}
+}
+@media(prefers-reduced-motion:reduce){
+ .palace{transition:none}
+ .palace:hover{transform:none}
+}

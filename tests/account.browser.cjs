@@ -46,7 +46,8 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  if(process.env.THIENDO_BROWSER_SCOPE==='lifetime-pro'){await require('./helpers-lifetime-pro-browser.cjs')({owner,member,password,pg,origin,record,pageErrors,out});assert.deepEqual(pageErrors,[]);return;}
  if(process.env.THIENDO_BROWSER_SCOPE==='study-tabs'){await require('./helpers-study-tabs-browser.cjs')({context:member.context,origin,record,pageErrors,out});assert.deepEqual(pageErrors,[]);return;}
  if(process.env.THIENDO_BROWSER_SCOPE==='observatory'){await require('./helpers-observatory-browser.cjs')({context:member.context,origin,record,pageErrors,out});assert.deepEqual(pageErrors,[]);return;}
- if(process.env.THIENDO_BROWSER_SCOPE==='western'){await require('./helpers-western-workbench-browser.cjs')({context:member.context,origin,record,pageErrors});assert.deepEqual(pageErrors,[]);return;}
+ if(process.env.THIENDO_BROWSER_SCOPE==='western'){await require('./helpers-late-zi-compare-browser.cjs')({context:member.context,origin,record,pageErrors,out});
+ await require('./helpers-western-workbench-browser.cjs')({context:member.context,origin,record,pageErrors});assert.deepEqual(pageErrors,[]);return;}
 
 
 
@@ -230,6 +231,7 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  await fresh.close(); const shortcutPage=await member.context.newPage();await shortcutPage.goto(origin+'/',{waitUntil:'networkidle'});await shortcutPage.keyboard.press('Control+k');await shortcutPage.getByRole('dialog',{name:'Tìm nhanh trang và công cụ',exact:true}).waitFor();await shortcutPage.keyboard.press('Escape');await shortcutPage.waitForFunction(()=>document.body.style.overflow!=='hidden');assert.equal(await shortcutPage.locator('.command-backdrop').count(),0);
  await shortcutPage.goto(origin+'/admin',{waitUntil:'networkidle'});await shortcutPage.getByRole('alert').filter({hasText:'không có quyền quản trị'}).waitFor();await shortcutPage.keyboard.press('Control+k');await shortcutPage.keyboard.press('Escape');assert.equal(await shortcutPage.locator('.command-backdrop').count(),0);assert.notEqual(await shortcutPage.evaluate(()=>document.body.style.overflow),'hidden');
  record({case:'public Ctrl+K remains functional; non-admin admin gate cannot open invisible user search or lock scrolling',verdict:'PASS'}); await shortcutPage.close();
+await require('./helpers-late-zi-compare-browser.cjs')({context:member.context,origin,record,pageErrors,out});
 await require('./helpers-western-workbench-browser.cjs')({context:member.context,origin,record,pageErrors});
 assert.deepEqual(pageErrors,[]);
  }catch(error){console.error('BROWSER FAILED',error);for(const context of browser?.contexts()||[])for(const p of context.pages())await p.screenshot({path:path.join(out,'failure-'+Date.now()+'.png')}).catch(()=>{});throw error;}finally{fs.writeFileSync(path.join(out,'results.json'),JSON.stringify({browserEngine:engine,physicalDevice:false,sqlEngine:'PGlite WASM, not native PostgreSQL',provider:'No live email/Gemini/payOS calls',results,pageErrors},null,2));await browser?.close();if(web){web.closeAllConnections();await new Promise(r=>web.close(r));}await app?.close();await api?.close();await pg.close();fs.rmSync(privateWork,{recursive:true,force:true,maxRetries:6,retryDelay:100});fs.rmSync(webWork,{recursive:true,force:true,maxRetries:6,retryDelay:100});}
