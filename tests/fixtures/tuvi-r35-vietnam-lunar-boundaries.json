@@ -1,0 +1,58 @@
+{
+  "schema": "thiendo-r35-vietnam-lunar-boundaries-v1",
+  "provenance": {
+    "scope": "Vietnam civil-calendar date anchors; distinct from pinned-source calendar convention",
+    "leap2020": "https://lichngaytot.com/xem-ngay-tot-xau-23-05-2020",
+    "leap2023": "https://lichngaytot.com/xem-ngay-tot-xau-22-03-2023",
+    "newyear2024": "https://en.baochinhphu.vn/pm-decides-seven-days-off-for-2024-lunar-new-year-holiday-111231104085606548.htm",
+    "newyear2025": "https://www.census.gov/newsroom/stories/lunar-new-year.html"
+  },
+  "offsetsDays": [
+    -1,
+    0,
+    1
+  ],
+  "genders": [
+    "Nam",
+    "Nữ"
+  ],
+  "clockHours": [
+    0,
+    1,
+    23
+  ],
+  "anchors": [
+    {
+      "id": "leap-2020-04",
+      "type": "leap-start",
+      "date": "2020-05-23",
+      "lunarYear": 2020,
+      "lunarMonth": 4,
+      "isLeapMonth": true
+    },
+    {
+      "id": "leap-2023-02",
+      "type": "leap-start",
+      "date": "2023-03-22",
+      "lunarYear": 2023,
+      "lunarMonth": 2,
+      "isLeapMonth": true
+    },
+    {
+      "id": "newyear-2024",
+      "type": "lunar-new-year",
+      "date": "2024-02-10",
+      "lunarYear": 2024,
+      "lunarMonth": 1,
+      "isLeapMonth": false
+    },
+    {
+      "id": "newyear-2025",
+      "type": "lunar-new-year",
+      "date": "2025-01-29",
+      "lunarYear": 2025,
+      "lunarMonth": 1,
+      "isLeapMonth": false
+    }
+  ]
+}
