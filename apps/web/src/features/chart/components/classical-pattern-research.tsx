@@ -11,6 +11,7 @@ import {auditClassicalPeriodGeometry} from '@thiendo/interpretation/src/classica
 import {auditClassicalDingZaPeriods} from '@thiendo/interpretation/src/classical-dingza-period-research.cjs';
 import {auditClassicalDingZaSourceBridge} from '@thiendo/interpretation/src/classical-dingza-source-bridge.cjs';
 import {auditClassicalVoidPairGeometry} from '@thiendo/interpretation/src/classical-source-void-geometry.cjs';
+import {auditClassicalVoidSemanticGates} from '@thiendo/interpretation/src/classical-void-semantic-gates.cjs';
 import {SOURCE_FUXUN_PAIRS,CAUTION as FUXUN_CAUTION} from '@thiendo/interpretation/src/classical-source-fuxun-formula.cjs';
 import {SOURCE_VOID_STEM_ROWS,SOURCE_STEM_MATRIX_NOTE,SOURCE_SCHOOL_DATA_URL,auditSourceDoubleJiekongCodeConcordance} from '@thiendo/interpretation/src/classical-source-void-vocabulary.cjs';
 import type {ClassicalCatalogFilterStatus} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
@@ -32,6 +33,8 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   const data=useMemo(()=>auditClassicalPatternCandidates(chart),[chart]);
   const bridge=useMemo(()=>auditClassicalDingZaSourceBridge(chart),[chart]);
   const voidGeometry=useMemo(()=>auditClassicalVoidPairGeometry(chart),[chart]);
+  const voidGates=useMemo(()=>auditClassicalVoidSemanticGates(chart),[chart]);
+  const voidGateById=useMemo(()=>new Map<string,(typeof voidGates.items)[number]>(voidGates.items.map(item=>[item.id,item] as const)),[voidGates]);
   const bridgeById=useMemo(()=>new Map<string,(typeof bridge.items)[number]>(bridge.items.map(x=>[x.id,x] as const)),[bridge]);
   // Natal position checks and newly mapped decade checks stay independent.
   const catalog=useMemo(()=>summarizeClassicalCatalog([
@@ -72,7 +75,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
     <div className={styles.head}>
       <div>
         <h4>Đối chiếu cách cục cổ điển</h4>
-        <p className="palace-reading-scope">Đã ánh xạ điều kiện {catalog.assessed}/{data.referenceTotal} mục (28 nguyên cục + 2 đại hạn nghiên cứu) · {data.matched} khớp cấu trúc nguyên cục · {data.needsReview} cần thẩm định.</p>
+        <p className="palace-reading-scope">Đã ánh xạ điều kiện {catalog.assessed}/{data.referenceTotal} mục ({data.records.length} nguyên cục + {bridge.mappedIds.length} đại hạn nghiên cứu) · {data.matched} khớp cấu trúc nguyên cục · {data.needsReview} cần thẩm định.</p>
       </div>
       <div className={styles.filters} role="group" aria-label="Lọc theo kết quả điều kiện nghiên cứu">
         <button type="button" aria-pressed={filter==='relevant'} onClick={()=>setFilter('relevant')}>Liên quan · {evidence.counts.relevant}</button>
@@ -222,6 +225,13 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
               <summary>{entry.assessed?'Đã ánh xạ điều kiện đại hạn · chưa kết luận':'Đối chiếu đại hạn từng kỳ · chưa ánh xạ'}</summary>
               <p>Đã kiểm tra {dingZa.verifiedGeometry?dingZa.checkedPeriods:0}/12 khoảng đại hạn theo cấu trúc Thiên Đồ. Không dùng làm kết luận Định tạp.</p>
               {!dingZa.verifiedGeometry&&<small>{dingZa.reason}</small>}
+              {!entry.assessed&&voidGateById.has(entry.id)&&<>
+                <p>Đối chiếu riêng Lộc Tồn, Thiên Mã với dấu Tuần/Triệt tại nguyên cục (chỉ là proxy hình học, không phải điều kiện nguồn được xác nhận):</p>
+                <ul className={styles.checks}>{voidGateById.get(entry.id)?.checks.map((condition,i)=><li key={entry.id+'-void-'+i} data-met={condition.state==='met'}>
+                  <strong>{checkText[condition.state]}:</strong> {condition.label}. <span>{condition.detail}</span>
+                </li>)}</ul>
+                <small>{voidGates.limitation}</small>
+              </>}
               {dingZa.verifiedGeometry&&<ol className={styles.periodRanges}>
                 {dingZaById.get(entry.id)?.periods.map(period=><li key={entry.id+'-'+period.index}>
                   <details>
@@ -236,16 +246,16 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
             </details>}
             {!entry.assessed&&pendingById.has(entry.id)&&<details className={styles.pendingEvidence}>
               <summary>Đã đối chiếu một phần · chưa ánh xạ</summary>
-              <ul className={styles.checks}>{pendingById.get(entry.id)?.checks.map((condition,i)=>
+              <ul className={styles.checks}>{[...(pendingById.get(entry.id)?.checks||[]),...(voidGateById.get(entry.id)?.checks||[])].map((condition,i)=>
                 <li key={entry.id+'-pending-'+i} data-met={condition.state==='met'}>
                   <strong>{checkText[condition.state]}:</strong> {condition.label}. <span>{condition.detail}</span>
                 </li>)}</ul>
-              <small>Trong nguồn, hai tên cũ 截路/空亡 được chuẩn hóa thành 截空/副截; chưa kiểm tra đầy đủ cách an sao và biến thể phái. Tuần/Triệt không được coi là tương đương. Chưa kết luận cách cục.</small>
+              <small>Trong nguồn, hai tên cũ 截路/空亡 được chuẩn hóa thành 截空/副截; R27 đã đối chiếu hình học trên 65 lá số giả lập (iztro@2.6.1), nhưng chưa thẩm định sự tương đương ý nghĩa sao và biến thể phái. Chỉ số proxy Tuần/Triệt không thay cho Không Vong nguồn. Tuần/Triệt không được coi là tương đương. Chưa kết luận cách cục.</small>
             </details>}
           </li>)}</ol>
         </section>)}
       </div>
     </details>
-    <small>{data.notice} Hai chỉ mục đại hạn mới chỉ có bộ điều kiện tham khảo QS trên tọa độ Thiên Đồ, chưa được chuyên gia xác nhận. Bộ này chưa được chuyên gia độc lập thẩm định. Các mục Định bần chỉ mô tả tổ hợp sao theo tài liệu, không đưa ra kết luận tài chính hay vận mệnh. Định tạp thuộc nghiên cứu vận hạn và chưa gộp vào bản mệnh.</small>
+    <small>{data.notice} Ba mục đại hạn đã ánh xạ chỉ có bộ điều kiện tham khảo QS trên tọa độ Thiên Đồ, chưa được chuyên gia xác nhận. Bộ này chưa được chuyên gia độc lập thẩm định. Các mục Định bần chỉ mô tả tổ hợp sao theo tài liệu, không đưa ra kết luận tài chính hay vận mệnh. Định tạp thuộc nghiên cứu vận hạn và chưa gộp vào bản mệnh.</small>
   </article>;
 }
