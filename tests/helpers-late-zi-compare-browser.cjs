@@ -29,8 +29,26 @@ module.exports=async function verifyLateZiCompare({context,origin,record,pageErr
    const b=page.getByRole('group',{name:'Các địa chi của Tính sang ngày sau',exact:true});
    assert.equal(await a.getByRole('button').count(),12);
    assert.equal(await b.getByRole('button').count(),12);
-   await page.getByText('09/02/2024',{exact:true}).waitFor();
-   await page.getByText('10/02/2024',{exact:true}).waitFor();
+   const gridLayout=await a.evaluate(el=>{
+    const center=el.querySelector('[aria-hidden="true"]');
+    const branch5=el.querySelector('[data-branch="5"]');
+    const branch0=el.querySelector('[data-branch="0"]');
+    return {
+     columns:getComputedStyle(el).gridTemplateColumns.split(/\s+/).filter(Boolean).length,
+     centerVisible:center!==null&&getComputedStyle(center).display!=='none',
+     tySiteRow:branch0?getComputedStyle(branch0).gridRowStart:null,
+     tySiteCol:branch0?getComputedStyle(branch0).gridColumnStart:null,
+     tySiteTop:branch5?getComputedStyle(branch5).gridRowStart:null,
+     tySiteLeft:branch5?getComputedStyle(branch5).gridColumnStart:null
+    };
+   });
+   assert.equal(gridLayout.columns,width===390?2:4,'readable mobile columns / desktop palace ring');
+   assert.equal(gridLayout.centerVisible,width===1440,'center of ring hidden on compact phones');
+   if(width===1440)assert.deepEqual(
+    [gridLayout.tySiteRow,gridLayout.tySiteCol,gridLayout.tySiteTop,gridLayout.tySiteLeft],
+    ['4','3','1','1'],'correct ring coordinates for Tý and Tỵ');
+   await page.getByText('09/02/2024',{exact:true}).first().waitFor();
+   await page.getByText('10/02/2024',{exact:true}).first().waitFor();
    assert.equal(await page.locator('#thiendo-late-zi-compare [data-research-only=true]').count(),1);
    assert.equal(await page.locator('#thiendo-late-zi-compare button').filter({hasText:'Lưu lá số'}).count(),0);
    const details=page.getByRole('region',{name:'Chi tiết địa chi đang chọn'});
