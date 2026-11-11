@@ -95,6 +95,7 @@ export function LateZiComparePanel({result}:{result:AstrologyResult}){
     <div><strong>{report.affectedBranches}<small>/12</small></strong><span>Địa chi có nội dung đổi</span></div>
     <div><strong>{report.fields.filter(x=>x.changed).length}<small>/6</small></strong><span>Chỉ số tổng quan khác</span></div>
    </div>
+   <p className={styles.legend}>Chính tinh có <strong>gạch chân chấm</strong> là sao đã chuyển địa chi giữa hai phương án; nhãn “Có thay đổi” còn tính cả cung và vị trí Thân.</p>
    <div className={styles.toolbar}>
     <p>Chọn một địa chi ở một trong hai bảng để đọc đồng thời hai kết quả.</p>
     <label className={styles.filter}><input type="checkbox" checked={onlyChanged}
@@ -117,7 +118,8 @@ export function LateZiComparePanel({result}:{result:AstrologyResult}){
     <div><small>Sang ngày sau</small><b>{active.after.palace}{active.after.isThan?' · Thân':''}</b>
      <p>{active.after.mainStars.join(' · ')||'Vô chính diệu'}</p></div>
    </section>}
-   <div className={styles.tableScroll} tabIndex={0} role="region" aria-label="Bảng so sánh chỉ số tổng quan">
+   <p className={styles.scrollHint} id="late-zi-table-hint">Bảng có bốn cột. Trên điện thoại, vuốt bảng sang trái để xem cột “Sang ngày sau” và “Kết quả”. Có thể dùng bàn phím để cuộn khi vùng bảng được chọn.</p>
+   <div className={styles.tableScroll} tabIndex={0} role="region" aria-label="Bảng so sánh chỉ số tổng quan" aria-describedby="late-zi-table-hint">
     <table className={styles.table}><caption>Đối chiếu sáu chỉ số của hai phương án</caption>
      <thead><tr><th scope="col">Chỉ số</th><th scope="col">Giữ ngày</th><th scope="col">Sang ngày sau</th><th scope="col">Kết quả</th></tr></thead>
      <tbody>{report.fields.map(field=><tr key={field.key} data-changed={field.changed}>
