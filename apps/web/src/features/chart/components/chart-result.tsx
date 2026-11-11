@@ -16,6 +16,9 @@ const WholeChartWalkthroughPanel = dynamic(() => import('./whole-chart-walkthrou
 const StarSystemMatrix = dynamic(() => import('./star-system-matrix').then(module => module.StarSystemMatrix), {
   loading: () => <p role="status">Đang mở ma trận sao…</p>,
 });
+const LateZiComparePanel = dynamic(() => import('./late-zi-compare-panel').then(module => module.LateZiComparePanel), {
+  loading: () => <p role="status">Đang chuẩn bị hai kịch bản giờ Tý…</p>,
+});
 
 type Props = {
   result: AstrologyResult | null;
@@ -35,6 +38,7 @@ export function ChartResult({result, label, saving, message, onSave, onExport, o
   const [imageMessage, setImageMessage] = useState('');
   const [showWholeChart, setShowWholeChart] = useState(false);
   const [showMatrix, setShowMatrix] = useState(false);
+  const [showZiComparison, setShowZiComparison] = useState(false);
   const [printBusy, setPrintBusy] = useState(false);
   const matrixAnnual = useMemo(()=>result && (showWholeChart || showMatrix)?Engine.annualOverview(result,annualYear):undefined,[result,annualYear,showWholeChart,showMatrix]);
 
@@ -96,6 +100,7 @@ export function ChartResult({result, label, saving, message, onSave, onExport, o
         <div><span className="eyebrow">BƯỚC 02 / ĐỊA BÀN</span><h2 className="serif">Lá số của {label}</h2></div>
         <div className="result-actions">
           <button type="button" className="btn secondary small" aria-pressed={showWholeChart} aria-expanded={showWholeChart} aria-controls="thiendo-whole-chart" onClick={()=>setShowWholeChart(value=>!value)}>{showWholeChart?'Ẩn bài đọc 12 cung':'Đọc toàn lá số · 12 cung'}</button>
+          {result.hour===23&&<button type="button" className="btn secondary small" aria-expanded={showZiComparison} aria-controls="thiendo-late-zi-compare" onClick={()=>setShowZiComparison(value=>!value)}>{showZiComparison?'Ẩn so sánh giờ Tý':'So sánh quy ước giờ Tý'}</button>}
           <button type="button" className="btn secondary small" onClick={onExport}>↓ JSON</button>
           <button type="button" className="btn secondary small" disabled={imageBusy} onClick={()=>void exportPng()} title="Ảnh toàn khung: toàn bộ sao đã tính và lớp lưu niên">{imageBusy?'Đang tạo ảnh…':'↓ PNG'}</button>
           <button type="button" className="btn secondary small" onClick={printChart} disabled={printBusy} aria-busy={printBusy} title="Mệnh bàn và phụ lục sao đầy đủ; chọn Lưu dưới dạng PDF trong hộp thoại in">{printBusy ? 'Đang chuẩn bị bản in…' : '▤ In / PDF'}</button>
@@ -103,6 +108,7 @@ export function ChartResult({result, label, saving, message, onSave, onExport, o
         </div>
       </div>
       <details className="chart-method-details"><summary>Kiểm kê sao của lá số: {result.houses.reduce((n,h)=>n+h.stars.length,0)} chính tinh · {result.houses.reduce((n,h)=>n+natalNames(h).length-h.stars.length,0)} phụ tinh / vòng sao</summary><p>Danh mục đang dùng gồm 104 tên sao gốc và vòng sao. Đây là phạm vi của quy tắc hiện tại, không phải danh mục thống nhất của mọi trường phái. Bảng nghiên cứu đối chiếu còn 11 tên chưa an tự động và 4 dị danh cần xác minh; xem <Link href="/research/star-audit">hồ sơ thẩm định sao và dị danh</Link>. Tứ Hóa và Tuần/Triệt tách riêng; sao lưu phụ thuộc năm xem. Mở “Chi tiết cung” để xem mọi lớp sao. PNG/SVG là toàn khung đầy đủ; In/PDF kèm phụ lục đối chiếu.</p><p>Thái Phụ/Phong Cáo hiện dùng cách đếm gồm cung Văn Khúc; có nguồn khởi theo giờ lệch một cung. Tuần/Triệt là cặp án ngữ trong quy tắc này. <Link href="/research/star-audit">So phương pháp trước khi đối chiếu lá số ↗</Link></p></details>
+      {result.hour===23&&<div id="thiendo-late-zi-compare">{showZiComparison&&<LateZiComparePanel result={result}/>}</div>}
       <ChartBoard result={result} label={label} annualYear={annualYear} onAnnualYearChange={setAnnualYear} />
       <details className="chart-method-details" onToggle={event=>setShowMatrix(event.currentTarget.open)}><summary>Ma trận chính / phụ / lưu tinh theo lá số</summary>{showMatrix&&<StarSystemMatrix chart={result} annual={matrixAnnual}/>}</details>
       <div id="thiendo-whole-chart">{showWholeChart&&<WholeChartWalkthroughPanel chart={result} annualYear={matrixAnnual?.year}/>}</div>
