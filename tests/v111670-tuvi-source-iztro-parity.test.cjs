@@ -171,3 +171,64 @@ test('r50: unsupported Jiekong option injection remains inert across ten genuine
  console.log('R50: 10/10 source stems and 30/30 injected options unchanged; '+
   'genuine runtime negative test, NOT alternate-school execution');
 });
+
+
+test('r51: evidence matrix is complete, immutable, and never declares semantic parity',()=>{
+ const {makeVoidEvidenceMatrix,geometry,IDS}=
+  require('../infrastructure/scripts/tuvi-r27-r51-void-evidence-matrix.cjs');
+ assert.deepEqual(IDS,['dinh-ban-01','dinh-ban-02','dinh-tap-03']);
+ assert.equal(geometry(true),'matched');
+ assert.equal(geometry(false),'different');
+ assert.equal(geometry(null),'unknown');
+ for(const unexpected of [undefined,'matched',0,1,{},[],NaN])
+  assert.throws(()=>geometry(unexpected),TypeError);
+ assert.throws(()=>makeVoidEvidenceMatrix(null));
+ if(process.env.THIENDO_R27_REQUIRE_GENUINE!=='1')return;
+ assert.ok(fs.existsSync(observationPath),'Genuine pinned R27 observations missing');
+ const observed=JSON.parse(fs.readFileSync(observationPath,'utf8'));
+ const evaluated=evaluate(observed,fixture),before=JSON.stringify(evaluated);
+ const matrix=makeVoidEvidenceMatrix(evaluated);
+ assert.equal(matrix.sampleCount,65);
+ assert.equal(matrix.rows.length,65);
+ assert.equal(matrix.catalogTotal,49);
+ assert.equal(matrix.mappedResearchCount,31);
+ assert.equal(matrix.unmappedCount,18);
+ assert.equal(matrix.blockedCriterionCount,3);
+ assert.equal(matrix.sourceSchoolParityVerified,false);
+ assert.equal(matrix.nameEquivalenceVerified,false);
+ assert.equal(matrix.semanticEquivalenceVerified,false);
+ assert.equal(matrix.sourceCriterionVerified,false);
+ assert.equal(matrix.mayIncreaseMapping,false);
+ assert.equal(matrix.mayDeclareClassicalPattern,false);
+ assert.equal(Object.isFrozen(matrix),true);
+ assert.equal(Object.isFrozen(matrix.rows),true);
+ assert.equal(new Set(matrix.rows.map(r=>r.id)).size,65);
+ assert.deepEqual(matrix.rows.map(r=>r.id).sort(),fixture.cases.map(c=>c.id).sort());
+ const counts=matrix.counts;
+ assert.equal(counts.yearStemAligned+counts.yearStemDifferent,65);
+ for(const type of [counts.trietGeometry,counts.tuanGeometry])
+  assert.equal(Object.values(type).reduce((a,b)=>a+b,0),65);
+ assert.ok(matrix.rows.every(r=>
+  Object.isFrozen(r)&&Object.isFrozen(r.sourceNamedBranches)&&
+  Object.keys(r.sourceNamedBranches).length===4&&
+  r.sourceSchoolParityVerified===false&&
+  r.semanticEquivalenceVerified===false&&
+  r.nameEquivalenceVerified===false&&
+  r.sourceCriterionVerified===false&&
+  r.mayDeclareClassicalPattern===false));
+ assert.equal(JSON.stringify(evaluated),before,'R51 changed R27 report');
+ const malformed=JSON.parse(before);
+ malformed.results[0].localTrietSameTwoBranches='matched';
+ assert.throws(()=>makeVoidEvidenceMatrix(malformed),TypeError);
+ const duplicate=JSON.parse(before);
+ duplicate.results[1].id=duplicate.results[0].id;
+ assert.throws(()=>makeVoidEvidenceMatrix(duplicate));
+ const escalated=JSON.parse(before);
+ escalated.sourceSchoolParityVerified=true;
+ assert.throws(()=>makeVoidEvidenceMatrix(escalated));
+ const incomplete=JSON.parse(before);
+ incomplete.results.pop();
+ assert.throws(()=>makeVoidEvidenceMatrix(incomplete));
+ console.log('R51: 65/65 genuine source-local geometry observations; 3 blocked '+
+  'criteria; no semantic or school equivalence');
+});
