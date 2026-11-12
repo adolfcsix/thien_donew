@@ -15,7 +15,7 @@ jobs:
     # Pinned Playwright image supplies WebKit/Chromium OS dependencies without flaky apt mirrors.
     container:
       image: mcr.microsoft.com/playwright:v1.62.1-noble
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -71,8 +71,12 @@ jobs:
           node "$RUNNER_TEMP/thiendo-browser/node_modules/playwright/cli.js" install webkit
           THIENDO_BROWSER_ENGINE=webkit THIENDO_BROWSER_SCOPE=admin-config THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-admin-devices-webkit" THIENDO_PLAYWRIGHT_MODULE="$RUNNER_TEMP/thiendo-browser/node_modules/playwright" THIENDO_SQL_TEST_MODULE="$RUNNER_TEMP/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js" node tests/account.browser.cjs
           THIENDO_BROWSER_ENGINE=webkit THIENDO_BROWSER_SCOPE=touch-compat THIENDO_BROWSER_REPORT_DIR="$RUNNER_TEMP/thiendo-touch-webkit" THIENDO_PLAYWRIGHT_MODULE="$RUNNER_TEMP/thiendo-browser/node_modules/playwright" THIENDO_SQL_TEST_MODULE="$RUNNER_TEMP/thiendo-sql/node_modules/@electric-sql/pglite/dist/index.js" node tests/account.browser.cjs
-      - uses: actions/upload-artifact@v4
+      # Preserve evidence while tolerating one transient artifact service error.
+      # Retry is bounded and a final guard fails CI if neither upload succeeds.
+      - id: r43_deep_artifact_primary
+        uses: actions/upload-artifact@v4
         if: always()
+        continue-on-error: true
         with:
           name: deep-session-ai-regression-evidence
           path: |
@@ -89,8 +93,42 @@ jobs:
             ${{ runner.temp }}/thiendo-touch-webkit
             ${{ runner.temp }}/thiendo-ai-browser
             ${{ runner.temp }}/thiendo-reader-browser
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 7
+      - name: R43 retry deep-session artifact on upload failure
+        id: r43_deep_artifact_retry
+        if: ${{ always() && steps.r43_deep_artifact_primary.outcome == 'failure' }}
+        uses: actions/upload-artifact@v4
+        continue-on-error: true
+        with:
+          name: deep-session-ai-regression-evidence
+          overwrite: true
+          path: |
+            docs/reports/isolated-sql/
+            verification/deep-audit/http-results.json
+            verification/deep-audit/http-web.log
+            ${{ runner.temp }}/thiendo-account-browser
+            ${{ runner.temp }}/thiendo-observatory-browser
+            ${{ runner.temp }}/thiendo-study-tabs-browser
+            ${{ runner.temp }}/thiendo-lifetime-pro-browser
+            ${{ runner.temp }}/thiendo-touch-chromium
+            ${{ runner.temp }}/thiendo-admin-devices-chromium
+            ${{ runner.temp }}/thiendo-admin-devices-webkit
+            ${{ runner.temp }}/thiendo-touch-webkit
+            ${{ runner.temp }}/thiendo-ai-browser
+            ${{ runner.temp }}/thiendo-reader-browser
+          if-no-files-found: error
+          retention-days: 7
+      - name: R43 require deep-session artifact upload success
+        if: always()
+        env:
+          PRIMARY: ${{ steps.r43_deep_artifact_primary.outcome }}
+          RETRY: ${{ steps.r43_deep_artifact_retry.outcome }}
+        run: |
+          if [ "$PRIMARY" != success ] && [ "$RETRY" != success ]; then
+            echo 'R43 deep-session evidence unavailable after both attempts.' >&2
+            exit 1
+          fi
       - name: Reject insecure production operation scripts
         run: for script in infrastructure/production/*.sh; do bash -n "$script" || exit; done
   immutable-web-image-layout:
@@ -174,13 +212,38 @@ jobs:
         env:
           THIENDO_BROWSER_ACCEPTANCE: '1'
         run: bash infrastructure/scripts/run-ci-http.sh
-      - uses: actions/upload-artifact@v4
+      # Failed upload should not hide already-passing HTTP E2E results.
+      # The independent assertion still fails the job if the retry also fails.
+      - id: r43_http_artifact_primary
+        uses: actions/upload-artifact@v4
         if: always()
+        continue-on-error: true
         with:
           name: browser-acceptance-evidence
           path: docs/reports/browser-v*/
-          if-no-files-found: ignore
+          if-no-files-found: error
           retention-days: 7
+      - name: R43 retry HTTP browser artifact on upload failure
+        id: r43_http_artifact_retry
+        if: ${{ always() && steps.r43_http_artifact_primary.outcome == 'failure' }}
+        uses: actions/upload-artifact@v4
+        continue-on-error: true
+        with:
+          name: browser-acceptance-evidence
+          overwrite: true
+          path: docs/reports/browser-v*/
+          if-no-files-found: error
+          retention-days: 7
+      - name: R43 require HTTP browser artifact upload success
+        if: always()
+        env:
+          PRIMARY: ${{ steps.r43_http_artifact_primary.outcome }}
+          RETRY: ${{ steps.r43_http_artifact_retry.outcome }}
+        run: |
+          if [ "$PRIMARY" != success ] && [ "$RETRY" != success ]; then
+            echo 'R43 HTTP browser evidence unavailable after both attempts.' >&2
+            exit 1
+          fi
       - name: Native PostgreSQL logical backup and isolated restore drill
         env:
           PG_CONTAINER: '${{ job.services.postgres.id }}'

@@ -96,3 +96,16 @@
 .periodRanges details summary{cursor:pointer;font-weight:500;font-size:11px;line-height:1.65}
 .periodRanges .checks{padding-left:17px;margin:5px 0 10px}
 .periodRanges .checks li{font-size:11px;line-height:1.55;margin:3px 0;overflow-wrap:anywhere}
+
+/* R43: three source-semantic blockers inside existing collapsed 49-pattern catalog. */
+.voidGapAudit{margin:14px 0;padding:12px;border:1px solid var(--line-strong,var(--line));border-radius:10px;background:var(--panel);min-width:0}
+.voidGapAudit>summary{font-size:13px;font-weight:700;line-height:1.6;cursor:pointer;min-height:44px;padding:7px 0}
+.voidGapAudit>summary:focus-visible,.voidGapAudit a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.voidGapAudit>p,.voidGapAudit>small{display:block;font-size:12px;line-height:1.75;color:var(--text-secondary,var(--text));margin:10px 0}
+.voidGapCards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0;padding:0;list-style:none}
+.voidGapCards>li{display:flex;min-width:0;flex-direction:column;gap:8px;padding:12px;border:1px solid var(--line);border-radius:9px;overflow-wrap:anywhere}
+.voidGapCards>li>strong{font-size:13px;line-height:1.5}
+.voidGapCards>li>span{font-size:12px;font-weight:650;color:var(--text)}
+.voidGapCards>li p,.voidGapCards>li small{font-size:12px;line-height:1.7;margin:0;color:var(--text-secondary,var(--text))}
+.voidGapCards>li a{font-size:12px;text-decoration:underline;text-underline-offset:3px;align-self:flex-start;min-height:36px;display:inline-flex;align-items:center}
+@media(max-width:910px){.voidGapCards{grid-template-columns:minmax(0,1fr)}}

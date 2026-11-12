@@ -7,6 +7,7 @@ import {summarizeClassicalEvidence,filterClassicalEvidence} from '@thiendo/inter
 import type {ClassicalEvidenceFilter} from '@thiendo/interpretation/src/classical-evidence-workbench.cjs';
 import {summarizeClassicalCatalog,filterClassicalCatalog} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import {summarizeClassicalResearchReadiness} from '@thiendo/interpretation/src/classical-research-readiness.cjs';
+import {buildClassicalVoidGapLedger} from '@thiendo/interpretation/src/classical-void-gap-ledger.cjs';
 import {auditClassicalPeriodGeometry} from '@thiendo/interpretation/src/classical-period-geometry.cjs';
 import {auditClassicalDingZaPeriods} from '@thiendo/interpretation/src/classical-dingza-period-research.cjs';
 import {auditClassicalDingZaSourceBridge} from '@thiendo/interpretation/src/classical-dingza-source-bridge.cjs';
@@ -45,6 +46,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
   const periodGeometry=useMemo(()=>auditClassicalPeriodGeometry(chart),[chart]);
   const dingZa=useMemo(()=>auditClassicalDingZaPeriods(chart),[chart]);
   const dingZaById=useMemo(()=>new Map<string,(typeof dingZa.items)[number]>(dingZa.items.map(item=>[item.id,item] as const)),[dingZa]);
+  const voidGapLedger=useMemo(()=>buildClassicalVoidGapLedger({catalog,readiness,natal:data,period:dingZa,voidGates}),[catalog,readiness,data,dingZa,voidGates]);
   const [filter,setFilter]=useState<ClassicalEvidenceFilter>('relevant');
   const [catalogQuery,setCatalogQuery]=useState('');
   const [catalogStatus,setCatalogStatus]=useState<ClassicalCatalogFilterStatus>('all');
@@ -164,6 +166,21 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
       <p>{catalog.notice} Trạng thái “có thể kiểm tra” do nguồn phân loại không có nghĩa Thiên Đồ đã triển khai hoặc xác nhận thành cách.</p>
       <p>{catalog.distribution.derivable} mục nguồn đánh giá có thể kiểm tra · {catalog.distribution.disputed} còn tranh luận · {catalog.distribution.unreachable} chưa thể suy ra từ quy tắc nguồn.</p>
       <p className={styles.readinessSummary}>Còn <strong>{readiness.counts.total}</strong> mục chưa ánh xạ: <strong>{readiness.counts.pending}</strong> có thể nghiên cứu tiếp ({readiness.counts.natalPending} nguyên cục, {readiness.counts.periodPending} vận hạn), <strong>{readiness.counts.disputed}</strong> còn tranh luận và <strong>{readiness.counts.unreachable}</strong> chưa có phương pháp suy ra từ nguồn. Kết quả chưa được thẩm định độc lập.</p>
+      <details className={styles.voidGapAudit} aria-label="Kiểm toán điều kiện Không Vong chưa ánh xạ">
+        <summary>Ba điều kiện Không Vong còn thiếu chứng cứ nguồn · {voidGapLedger.summary.semanticVerified}/{voidGapLedger.summary.pending} đã xác minh ngữ nghĩa</summary>
+        <p>{voidGapLedger.notice} Số điều kiện đang ánh xạ giữ nguyên <strong>{voidGapLedger.summary.mappedConditionResearch}/{voidGapLedger.summary.referenceTotal}</strong>.</p>
+        <ul className={styles.voidGapCards}>{voidGapLedger.items.map(entry=><li key={entry.id}>
+          <strong>{entry.id} · {entry.title}</strong>
+          <span>Chưa xác minh tiêu chí Không Vong theo trường phái nguồn</span>
+          <p><strong>Cần hoàn thiện:</strong> {entry.blocker}</p>
+          <small>Kiểm tra nội bộ: {entry.localChecks.met} đã quan sát · {entry.localChecks.notMet} chưa đáp ứng · {entry.localChecks.unknown} thiếu chứng cứ.
+            {' '}Proxy Tuần/Triệt: {entry.proxyChecks.met} đã quan sát · {entry.proxyChecks.notMet} chưa đáp ứng · {entry.proxyChecks.unknown} chưa xác định.
+            {entry.scope==='period-research'&&<> Đã khảo sát {entry.checkedPeriods}/12 kỳ đại hạn, chưa được phép kết luận.</>}
+          </small>
+          <a href={entry.sourceUrl} target="_blank" rel="noopener noreferrer">Quy tắc tham khảo</a>
+        </li>)}</ul>
+        <small>R43 không đưa ba mục này vào danh sách đã ánh xạ; các trạng thái quan sát nội bộ không đồng nghĩa với chứng nhận học thuật hoặc luận đoán đời người.</small>
+      </details>
       <details className={styles.schoolFull}>
         <summary>Bảng mã Không Vong theo 10 thiên can · nghiên cứu nguồn</summary>
         <p>Bảng sao chép mã nguồn theo ba biến thể trường phái. Các con số là mã vị trí 1–12 của nguồn. Cặp chi ở cột cuối chỉ được đối chiếu với <strong>công thức Đôi (double) ghi trong nguồn</strong>, chưa xác minh vị trí sao trên lá số Thiên Đồ hoặc phép an của iztro.</p>
