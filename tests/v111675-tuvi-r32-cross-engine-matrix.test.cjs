@@ -128,8 +128,36 @@ test('r32: genuine source R29 and R30 execution is mandatory only in the pinned 
   .reduce((n,x)=>n+x,0);
  assert.ok(countedYearDiff<=67);
  assert.equal(report.counts.placements['void-pair'].unknown,0);
+ assert.deepEqual(Object.keys(report.counts.sourceVoidNames),
+  ['旬空','副旬','截路','截空','空亡','副截']);
+ for(const x of Object.values(report.counts.sourceVoidNames))
+  assert.equal(x.unique+x.absent+x.duplicate,67);
+ for(const x of Object.values(report.counts.sourceVoidAliasPairs))
+  assert.equal(Object.values(x).reduce((s,n)=>s+n,0),67);
+ assert.ok(report.records.every(r=>Object.keys(r.voidCoordinates.sourceAllNamedEntries).length===6));
  assert.ok(report.records.every(x=>x.voidCoordinates.sourceNamedBranches&&
   Object.keys(x.voidCoordinates.sourceNamedBranches).length===4));
  assert.ok(report.records.every(x=>x.localPatternVerdictVerified===false&&
   x.sourceCriterionVerifiedForLocalChart===false));
+});
+
+test('r47: six source Void names distinguish absent legacy alias and duplicate name',()=>{
+ const palaces=Array.from({length:12},(_,branch)=>({branch,stars:[]}));
+ for(const [branch,name] of [[0,'旬空'],[1,'副旬'],[2,'截空'],[3,'副截']])
+  palaces[branch].stars.push({name,siHua:null});
+ const before=JSON.stringify(palaces),a=sourceCoordinates({palaces});
+ assert.deepEqual(Object.keys(a.allNames),['旬空','副旬','截路','截空','空亡','副截']);
+ assert.equal(a.allNames['截路'].presence,'absent');
+ assert.equal(a.aliasPairs['截路/截空'].status,'normalized-only');
+ assert.deepEqual(a.voidBranches,[0,1,2,3]);
+ assert.equal(JSON.stringify(palaces),before);
+ const old=clone(palaces);old[2].stars[0].name='截路';
+ assert.equal(sourceCoordinates({palaces:old}).aliasPairs['截路/截空'].status,'legacy-only');
+ assert.equal(sourceCoordinates({palaces:old}).voidBranches,null);
+ const both=clone(palaces);both[8].stars.push({name:'截路',siHua:null});
+ assert.equal(sourceCoordinates({palaces:both}).aliasPairs['截路/截空'].status,'both-labels');
+ const dup=clone(palaces);dup[9].stars.push({name:'截空',siHua:null});
+ const duplicate=sourceCoordinates({palaces:dup});
+ assert.equal(duplicate.allNames['截空'].presence,'duplicate');
+ assert.equal(duplicate.aliasPairs['截路/截空'].status,'ambiguous');
 });

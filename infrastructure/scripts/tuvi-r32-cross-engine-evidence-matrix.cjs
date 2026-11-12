@@ -16,7 +16,7 @@ const {auditClassicalPatternCandidates}=require('../../packages/interpretation/s
 const {auditClassicalVoidSemanticGates}=require('../../packages/interpretation/src/classical-void-semantic-gates.cjs');
 const {auditClassicalDingZaPeriods}=require('../../packages/interpretation/src/classical-dingza-period-research.cjs');
 const {andKnown}=require('../../packages/interpretation/src/classical-evidence-logic.cjs');
-const {SOURCE_COMMIT}=require('../../packages/interpretation/src/classical-source-void-vocabulary.cjs');
+const {SOURCE_COMMIT,SOURCE_NAMES,SOURCE_ALIASES}=require('../../packages/interpretation/src/classical-source-void-vocabulary.cjs');
 
 const VERSION='2.6.1',SAMPLES=67;
 const VOID=Object.freeze(['旬空','副旬','截空','副截']);
@@ -47,6 +47,19 @@ function sourceCoordinates(record){
  }
  const get=n=>unique(byName.get(n)||[]);
  const markers=VOID.map(get);
+ // R47 source vocabulary: two legacy names are NOT extra independent stars.
+ const allNames=Object.freeze(Object.fromEntries(SOURCE_NAMES.map(name=>{
+  const at=byName.get(name)||[];
+  return [name,Object.freeze({branch:unique(at),occurrences:at.length,
+   presence:at.length===0?'absent':at.length===1?'unique':'duplicate'})];
+ })));
+ const aliasPairs=Object.freeze(Object.fromEntries(SOURCE_ALIASES.map(({legacy,normalized})=>{
+  const a=allNames[legacy].presence,b=allNames[normalized].presence;
+  return [legacy+'/'+normalized,Object.freeze({legacy,normalized,
+   status:a==='duplicate'||b==='duplicate'?'ambiguous':
+    a==='unique'&&b==='unique'?'both-labels':
+    a==='unique'?'legacy-only':b==='unique'?'normalized-only':'neither'})];
+ })));
  // Distinguish the four actual *named stars* from the occupied branch SET.
  // Two name pairs may occupy the same two branches, e.g. near lunar-new-year
  // boundaries. Comparing a four-element multiset against Thiên Đồ's union
@@ -57,7 +70,7 @@ function sourceCoordinates(record){
  const voidBranches=markers.every(validBranch)?
   Object.freeze(sorted(new Set(markers))):null;
  return Object.freeze({
-  get,huaLoc:unique(hua),voidNamedBranches,voidBranches
+  get,huaLoc:unique(hua),voidNamedBranches,voidBranches,allNames,aliasPairs
  });
 }
 function localCoordinates(chart){
@@ -100,6 +113,8 @@ function compareRecord(record,origin){
   voidGate.trietSourcePairGeometryStatus==='matched'?voidGate.proxyBranches:null;
  const voidCoordinates=Object.freeze({
   sourceNamedBranches:source.voidNamedBranches,
+  sourceAllNamedEntries:source.allNames,
+  sourceAliasPairStates:source.aliasPairs,
   sourceBranches:source.voidBranches,localProxyBranches:localVoid,
   status:source.voidBranches===null||localVoid===null?'unknown':
    same(source.voidBranches,localVoid)?'matched':'different',
@@ -197,7 +212,20 @@ function auditCrossEngineMatrix(reference,rare,matrix){
    [r.evidence[id].category]);
   categories[id]=Object.freeze(Object.fromEntries([...new Set(rows)].sort().map(c=>[c,rows.filter(x=>x===c).length])));
  }
- const out=Object.freeze({
+ // Read-only inventory. A missing legacy name is normal when renamed by source.
+  const sourceVoidNames=Object.freeze(Object.fromEntries(SOURCE_NAMES.map(name=>[
+   name,Object.freeze(Object.fromEntries(['unique','absent','duplicate'].map(state=>[
+    state,records.filter(x=>x.voidCoordinates.sourceAllNamedEntries[name].presence===state).length
+   ])))
+  ])));
+  const aliasStates=['legacy-only','normalized-only','both-labels','neither','ambiguous'];
+  const sourceVoidAliasPairs=Object.freeze(Object.fromEntries(SOURCE_ALIASES.map(({legacy,normalized})=>{
+   const key=legacy+'/'+normalized;
+   return [key,Object.freeze(Object.fromEntries(aliasStates.map(state=>[
+    state,records.filter(x=>x.voidCoordinates.sourceAliasPairStates[key].status===state).length
+   ])))];
+  })));
+  const out=Object.freeze({
   schema:'thiendo-r32-cross-engine-evidence-report-v1',
   sourceCommit:SOURCE_COMMIT,sourceIztroVersion:VERSION,
   referenceRuntimeVerified:true,syntheticOnly:true,
@@ -206,6 +234,7 @@ function auditCrossEngineMatrix(reference,rare,matrix){
   counts:Object.freeze({
    mingAligned:records.filter(x=>x.mingAligned).length,
    mingDifferent:records.filter(x=>!x.mingAligned).length,
+    sourceVoidNames,sourceVoidAliasPairs,
    placements,
    affectedSolarYears:Object.freeze(Object.fromEntries(
     [...new Set(records.filter(x=>
