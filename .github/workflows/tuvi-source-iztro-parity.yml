@@ -53,6 +53,7 @@ jobs:
         run: |
           node --test tests/v111670-tuvi-source-iztro-parity.test.cjs
           node infrastructure/scripts/tuvi-r27-evaluate-parity.cjs .r27-source-iztro-observations.json
+          node infrastructure/scripts/tuvi-r27-r51-void-evidence-matrix.cjs .r27-iztro-parity-report.json
       - name: Explain the scope of actual evidence
         if: always()
         run: |
@@ -62,6 +63,7 @@ jobs:
           echo '65 SYNTHETIC cases: 10 year-stems × 2 genders × 3 clock hours plus 5 calendar boundaries.' >> "$GITHUB_STEP_SUMMARY"
           echo 'PASS means source patches reproduce pinned raw iztro and table/formula requirements on these cases only.' >> "$GITHUB_STEP_SUMMARY"
           echo 'Triệt/Tuần two-branch geometry in Thiên Đồ is observational; NO star-name, school, classical-pattern or fortune-equivalence claim.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'R51: 65 genuine source-local rows, 3 classical void blockers and 31/49 mapping unchanged; no automatic semantic parity.' >> "$GITHUB_STEP_SUMMARY"
       - name: Archive source observations and parity evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -70,6 +72,7 @@ jobs:
           path: |
             .r27-source-iztro-observations.json
             .r27-iztro-parity-report.json
+            .r51-source-local-void-evidence-matrix.json
           include-hidden-files: true
           if-no-files-found: warn
           retention-days: 14
