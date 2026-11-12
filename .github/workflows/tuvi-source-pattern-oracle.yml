@@ -5,6 +5,8 @@ on:
       - '.github/workflows/tuvi-source-pattern-oracle.yml'
       - 'infrastructure/scripts/tuvi-r29-*'
       - 'tests/v111672-tuvi-source-pattern-oracle.test.cjs'
+      - 'tests/v111687-tuvi-r45-source-observation-bridge.test.cjs'
+      - 'infrastructure/scripts/tuvi-r45-*'
       - 'tests/fixtures/tuvi-r27-iztro-cases.json'
       - 'packages/interpretation/src/classical-void-semantic-gates.cjs'
       - 'packages/astrology-engine/src/**'
@@ -52,6 +54,12 @@ jobs:
         run: |
           node --test tests/v111672-tuvi-source-pattern-oracle.test.cjs
           node infrastructure/scripts/tuvi-r29-evaluate-source-oracle.cjs .r29-source-pattern-oracle-observations.json
+      - name: Compare R44 formula fixture with actual 65 source detector results
+        env:
+          THIENDO_R45_REQUIRE_GENUINE: '1'
+        run: |
+          node --test tests/v111687-tuvi-r45-source-observation-bridge.test.cjs
+          node infrastructure/scripts/tuvi-r45-source-observation-bridge.cjs .r29-source-pattern-oracle-observations.json
       - name: Explain evidence scope
         if: always()
         run: |
@@ -60,6 +68,11 @@ jobs:
           echo '65 synthetic charts: compare detectDingPin numbers 1/2 and detectDingZa number 3 to separately re-evaluated 12-palace source predicates.' >> "$GITHUB_STEP_SUMMARY"
           echo 'A PASS asserts only the source code and independent source predicates agree on the 65 inputs.' >> "$GITHUB_STEP_SUMMARY"
           echo 'No equivalence to Thiên Đồ Tuần/Triệt, no expert validation, no promotion of the classical 31/49 research catalog.' >> "$GITHUB_STEP_SUMMARY"
+      - name: R45 evidence scope
+        if: always()
+        run: |
+          echo 'R45 compares the R44 synthetic source predicate against 65 genuinely executed pinned source detectors, not Thiên Đồ star-placement parity.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The historical 31/49 mapping remains unchanged.' >> "$GITHUB_STEP_SUMMARY"
       - name: Archive source-only evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -68,6 +81,7 @@ jobs:
           path: |
             .r29-source-pattern-oracle-observations.json
             .r29-source-pattern-oracle-report.json
+            .r45-source-fixture-bridge-report.json
           include-hidden-files: true
           if-no-files-found: warn
           retention-days: 14
