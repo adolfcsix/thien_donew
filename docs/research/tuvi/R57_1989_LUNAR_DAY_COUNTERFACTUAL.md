@@ -16,6 +16,22 @@ R33 đã kiểm tra 30 ca thật với ngày `1988-08-15`, `1989-08-14/15/16`, `
 4. Đối chiếu Mệnh, Cục, vị trí Tử Vi, Liêm Trinh với nguồn thật; xác nhận công thức Liêm Trinh nội bộ: nhánh `(vị trí Tử Vi − 8) mod 12`. Đánh dấu ca không thể tính hoặc ca có ngữ cảnh khác, không ép trùng kết quả.
 5. Riêng ca 15/08/1989 nam 00:00, phân loại rõ phép thay ngày âm có tái tạo **cả Tử Vi và Liêm Trinh** hay không; không được suy luận nguyên nhân học thuật chỉ từ việc tọa độ trùng.
 
+## Kết quả quan sát trên nguồn ghim thực (CI)
+
+Bằng chứng: GitHub Actions `43259723950`, artifact `thien-do-r33-1989-calendar-root-cause`. Kết quả R57 tại HEAD ban đầu: 30/30 phép so sánh chạy xong, 8/8 bài kiểm thử đạt. Có 18/30 trường hợp **khác ngày âm** (6 ca cho mỗi ngày 14, 15, 16/08/1989); **cả 18 ca** tái tạo đúng cả Tử Vi và Liêm Trinh nguồn khi tính thử Thiên Đồ bằng ngày âm nguồn. Mười hai ca còn lại là đối chứng 1988/1990, ngày âm ban đầu đã khớp, không đủ điều kiện phân loại là phép sửa ngày âm gây thay đổi.
+
+Ca mục tiêu `1989-08-15-Nam-0` (ngày dương 15/08/1989, nam, 00:00):
+
+| Hạng mục | Engine nguồn ghim | Thiên Đồ từ ngày dương gốc | Thiên Đồ giả định dùng ngày âm nguồn |
+| --- | ---: | ---: | ---: |
+| Ngày âm | 14/07/1989 | 15/07/1989 | 14/07/1989 |
+| Mệnh (nhánh 0–11) | 8 | 8 | 8 |
+| Cục | 4 | 4 | 4 |
+| Tử Vi (nhánh 0–11) | 7 | 4 | 7 |
+| Liêm Trinh (nhánh 0–11) | 11 | 8 | 11 |
+
+**Kết luận kỹ thuật có giới hạn:** với dữ liệu ca này, chênh một ngày âm là yếu tố đầu vào *đủ để tái tạo* hai tọa độ sao nguồn trong engine Thiên Đồ giữ nguyên công thức. Mẫu 30 ca và bảng sóc NASA hỗ trợ sự liên hệ với cách xác định ngày bắt đầu tháng âm, nhưng **chưa kiểm chứng chính sách múi giờ thật sự của thư viện nguồn** và **chưa có thẩm định trường phái nào cho phép đổi lịch mặc định**. Ngày âm giả định chuyển ngược sang ngày dương có thể không còn là đúng thời điểm sinh ban đầu.
+
 ## Điều kiện kết luận
 
 - Khi một phép đối chứng tái tạo tọa độ sao nguồn trong model Thiên Đồ chưa thay đổi: **chỉ xác nhận tính nhạy của đầu vào ngày âm**. Chưa chứng minh cách đổi ngày của nguồn hay trường phái đúng hơn.
