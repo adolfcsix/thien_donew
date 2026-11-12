@@ -10,6 +10,7 @@ const Engine=require('../../packages/astrology-engine/src/tuvi.js');
 const {auditClassicalVoidSemanticGates}=
  require('../../packages/interpretation/src/classical-void-semantic-gates.cjs');
 const {SOURCE_COMMIT}=require('../../packages/interpretation/src/classical-source-void-vocabulary.cjs');
+const {evaluatePinnedSourceVoidFixture}=require('../../packages/interpretation/src/source-void-formula-fixture.cjs');
 const SCHEMA='thiendo-r29-pinned-source-pattern-observation-v1';
 const MATRIX='thiendo-r27-public-synthetic-case-matrix-v1';
 const VERSION='2.6.1';
@@ -100,6 +101,50 @@ function samePeriods(a,b){
  const norm=x=>x.map(p=>[p.startAge,p.endAge,p.palaceBranch]).sort((u,v)=>u[0]-v[0]);
  return JSON.stringify(norm(a))===JSON.stringify(norm(b));
 }
+/**
+ * R45: Reconcile the existing R29 *real executed source* observation with
+ * the R44 source-shaped synthetic formula evaluator. Never a local verdict.
+ * R29's detector/oracle provenance validation is still mandatory upstream.
+ */
+function reconcilePinnedR44Fixture(record,independent){
+ const baseline=independent||independentlyEvaluate(record);
+ const untouched=JSON.stringify(record);
+ const synthetic={
+  kind:'source-synthetic-fixture',mingGongBranch:record.mingGongBranch,
+  palaces:record.palaces.map(p=>({branch:p.branch,stars:p.stars.map(s=>
+   s.siHua===null||s.siHua===undefined||s.siHua===''?
+    {name:s.name}:{name:s.name,siHua:s.siHua})})),
+  periodBranches:record.daXians.map(x=>x.palaceBranch)
+ };
+ const fixture=evaluatePinnedSourceVoidFixture(synthetic);
+ if(fixture.schema!=='thiendo-r44-source-void-fixture-v1'||
+    fixture.sourceCommit!==SOURCE_COMMIT||
+    fixture.mappedConditionResearch!==31||fixture.referenceTotal!==49||
+    fixture.sourceEnginePlacementVerified!==false||
+    fixture.parityWithThienDoVerified!==false||
+    fixture.mayDeclarePattern!==false||fixture.mayIncreaseMapping!==false||
+    fixture.items.length!==3||
+    fixture.items.some(i=>i.sourceEnginePlacementVerified!==false||
+     i.parityWithThienDoVerified!==false||i.mayDeclarePattern!==false))
+  throw new Error('R44 fixture provenance or no-verdict gate changed');
+ const [dingPin01,dingPin02,dingZa03]=fixture.items;
+ if(dingPin01.id!=='dinh-ban-01'||dingPin02.id!=='dinh-ban-02'||
+    dingZa03.id!=='dinh-tap-03'||!Array.isArray(dingZa03.periods)||
+    dingZa03.periods.length!==12)
+  throw new Error('R44 source formula catalog changed');
+ const byBranch=new Map(record.daXians.map(dx=>[dx.palaceBranch,dx]));
+ const found=dingZa03.periods.filter(p=>p.formulaMatched).map(p=>byBranch.get(p.branch));
+ if(dingPin01.formulaMatched!==baseline.dingPin01||
+    dingPin02.formulaMatched!==baseline.dingPin02||
+    dingZa03.formulaMatched!==(found.length>0)||
+    found.some(p=>!p)||!samePeriods(found,baseline.dingZa03))
+  throw new Error('R44 source fixture differs from independently evaluated R29 source observation');
+ if(JSON.stringify(record)!==untouched)throw new Error('R44 bridge mutated a source observation');
+ return Object.freeze({
+  sourceOnly:true,sourceCommit:SOURCE_COMMIT,matchedPeriods:found.length,
+  localPatternVerdictsVerified:false,semanticEquivalenceVerified:false
+ });
+}
 function evaluateSourcePatternOracle(o,matrix){
  validateObservation(o,matrix);
  const observations=[],mismatches=[],differences=[];
@@ -110,6 +155,7 @@ function evaluateSourcePatternOracle(o,matrix){
       independent.dingPin02!==item.detector.dingPin02||
       !samePeriods(independent.dingZa03,item.detector.dingZa03))
     throw new Error('Pinned source detector disagrees with independent 12-palace predicate');
+   const r44=reconcilePinnedR44Fixture(item,independent);
    const chart=Engine.calculate({date:item.solarDate,hour:item.hour,minute:0,
     gender:item.gender,calendar:'solar'});
    const prior=JSON.stringify(chart),proxy=auditClassicalVoidSemanticGates(chart);
@@ -127,6 +173,7 @@ function evaluateSourcePatternOracle(o,matrix){
     dingPin02:independent.dingPin02,dingZa03Periods:independent.dingZa03.length,
     sourceVoidRelated01:sourceVoid,localMenhVoidProxy:localProxy,
     localSourceSemanticEquivalent:false,
+    r44SourceFixtureCrosschecked:r44.sourceOnly,
     sourceCriterionVerifiedForLocalChart:false
    });
   }catch(e){
@@ -143,6 +190,7 @@ function evaluateSourcePatternOracle(o,matrix){
    dingPin02:observations.filter(x=>x.dingPin02).length,
    dingZa03Periods:observations.reduce((n,x)=>n+x.dingZa03Periods,0)
   }),
+  r44SourceFixtureCrosschecks:observations.length,
   semanticEquivalenceVerified:false,localPatternVerdictsVerified:false,
   limitation:LIMITATION,observations,mismatches,differences
  });
@@ -158,4 +206,4 @@ if(require.main===module){
   ' checked, '+report.failures+' discrepancies; semantic equivalence remains UNVERIFIED');
  if(report.failures)process.exitCode=1;
 }
-module.exports=Object.freeze({independentlyEvaluate,validateObservation,evaluateSourcePatternOracle,SCHEMA,LIMITATION});
+module.exports=Object.freeze({independentlyEvaluate,reconcilePinnedR44Fixture,validateObservation,evaluateSourcePatternOracle,SCHEMA,LIMITATION});
