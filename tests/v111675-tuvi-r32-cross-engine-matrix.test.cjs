@@ -323,3 +323,65 @@ test('r53: 67 genuine source charts expose source named-star atoms without promo
  console.log('R53: 67/67 source case atoms, 804/804 period contexts, '+
   '3 blocked criteria; no semantic equivalence');
 });
+
+
+test('r54: source/local differences are triaged but never claimed as verified causes',()=>{
+ const {buildR54,classifyObservation,CANDIDATE_CODES,IDS}=
+  require('../infrastructure/scripts/tuvi-r32-r54-diagnostic-disagreement-triage.cjs');
+ assert.deepEqual(IDS,['dinh-ban-01','dinh-ban-02','dinh-tap-03']);
+ assert.ok(CANDIDATE_CODES.includes('source-vs-local-proxy-disagrees'));
+ assert.throws(()=>buildR54(null,null,null));
+ const sample={
+  mingAligned:false,voidCoordinates:{status:'matched'},
+  placement:{'liem-trinh':{status:'different'}}
+ };
+ const observation=classifyObservation(sample,'dinh-ban-01',true,'not-met',
+  'source-only');
+ assert.deepEqual(observation.observableDifferenceCodes,
+  ['ming-branch-different','named-star-branch-different',
+   'source-vs-local-proxy-disagrees']);
+ assert.equal(observation.rootCauseVerified,false);
+ assert.equal(observation.semanticEquivalenceVerified,false);
+ assert.throws(()=>classifyObservation(sample,'bad',true,'met','source-only'));
+ assert.throws(()=>classifyObservation(sample,'dinh-ban-01',true,'met','verified'));
+ if(process.env.THIENDO_R32_REQUIRE_GENUINE!=='1')return;
+ assert.ok(fs.existsSync(r29File)&&fs.existsSync(r30File),
+  'R54 must run against genuine R29 and R30 observations');
+ const source=JSON.parse(fs.readFileSync(r29File,'utf8'));
+ const rare=JSON.parse(fs.readFileSync(r30File,'utf8'));
+ const fixture=JSON.parse(fs.readFileSync(matrixFile,'utf8'));
+ const before=JSON.stringify([source,rare]);
+ const report=buildR54(source,rare,fixture);
+ assert.equal(report.sourceCharts,67);
+ assert.equal(report.periodContexts,804);
+ assert.equal(report.criteria.length,3);
+ assert.deepEqual(report.criteria.map(x=>x.compared),[67,67,804]);
+ assert.equal(report.cases.length,67);
+ assert.equal(new Set(report.cases.map(x=>x.id)).size,67);
+ assert.equal(report.rootCauseVerified,false);
+ assert.equal(report.sourceCriterionVerifiedForLocalChart,false);
+ assert.equal(report.semanticEquivalenceVerified,false);
+ assert.equal(report.sourceSchoolParityVerified,false);
+ assert.equal(report.expertReviewed,false);
+ assert.equal(report.mayIncreaseMapping,false);
+ assert.equal(report.mayDeclarePattern,false);
+ assert.equal(report.mappedResearch,31);
+ assert.equal(report.referenceTotal,49);
+ assert.ok(Object.isFrozen(report)&&Object.isFrozen(report.cases)&&
+  report.criteria.every(x=>x.exactCauseOfDisagreementVerified===false&&
+   x.readyForMapping===false&&Object.isFrozen(x.observedDifferenceCodeCounts)));
+ assert.ok(report.cases.every(x=>x.periods.length===12&&
+  x.rootCauseVerified===false&&x.mayDeclarePattern===false));
+ for(const criterion of report.criteria)
+  assert.equal(Object.values(criterion.comparisonCategories)
+   .reduce((a,b)=>a+b,0),criterion.compared);
+ assert.equal(JSON.stringify([source,rare]),before);
+ const duplicate=JSON.parse(JSON.stringify(source));
+ duplicate.records[1].id=duplicate.records[0].id;
+ assert.throws(()=>buildR54(duplicate,rare,fixture));
+ const missing=JSON.parse(JSON.stringify(rare));
+ missing.records.pop();
+ assert.throws(()=>buildR54(source,missing,fixture));
+ console.log('R54: 67/67 named source/local case triages, 804/804 period contexts; '+
+  'unverified root cause stays false');
+});
