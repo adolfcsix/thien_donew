@@ -4,7 +4,6 @@ on:
     paths:
       - '.github/workflows/tuvi-1989-root-cause.yml'
       - 'infrastructure/scripts/tuvi-r33-*'
-      - 'infrastructure/scripts/tuvi-r33-r57-*'
       - 'tests/v111676-tuvi-1989-root-cause-diagnostics.test.cjs'
       - 'packages/astrology-engine/src/**'
   push:
@@ -12,7 +11,6 @@ on:
     paths:
       - '.github/workflows/tuvi-1989-root-cause.yml'
       - 'infrastructure/scripts/tuvi-r33-*'
-      - 'infrastructure/scripts/tuvi-r33-r57-*'
       - 'tests/v111676-tuvi-1989-root-cause-diagnostics.test.cjs'
   workflow_dispatch:
 permissions:
