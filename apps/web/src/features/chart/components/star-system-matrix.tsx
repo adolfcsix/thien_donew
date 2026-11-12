@@ -1,6 +1,6 @@
 'use client';
 import {downloadBlobFile} from '@/lib/download-blob';
-import {useMemo,useState} from 'react';
+import {useEffect,useMemo,useState} from 'react';
 import Link from 'next/link';
 import type {AstrologyResult,AnnualOverview} from '@thiendo/shared-types';
 import {catalogRows,buildChartMatrix,counts,filterRows,getResolutions,type MatrixBucket} from '@thiendo/knowledge/src/star-system-matrix.cjs';
@@ -11,6 +11,8 @@ const layerNames:Record<string,string>={natal:'Năm sinh / bản mệnh',cycle:'
 const decisionNames:Record<string,string>={'terminology-mapped':'Đã làm rõ thuật ngữ','method-dependent':'Khác cách an theo nguồn','paired-marker-compared':'Đã so cặp cung','representation-conflict':'Khác biểu diễn','source-scoped-rule':'Đã làm rõ quy tắc/lớp','conflicting-source-tables':'Hai bảng còn mâu thuẫn','insufficient-source':'Chưa đủ nguồn','source-table-captured':'Đã ghi bảng ứng viên'};
 export function StarSystemMatrix({chart,annual}:{chart?:AstrologyResult;annual?:AnnualOverview}){
  const [query,setQuery]=useState(''),[category,setCategory]=useState<MatrixBucket>('all'),[resolutionType,setResolutionType]=useState<'all'|'missing'|'alias'>('all');
+ const [hydrated,setHydrated]=useState(false);
+ useEffect(()=>{setHydrated(true);},[]);
  const data=useMemo(()=>{try{return {rows:chart?buildChartMatrix(chart,annual??null).rows:catalogRows(),error:''};}catch(error){return {rows:[],error:(error as Error).message};}},[chart,annual]);
  const total=counts(),rows=filterRows(data.rows,query,category),resolutions=getResolutions('',resolutionType);
  function exportMatrix(){if(data.error)return;
@@ -18,7 +20,7 @@ export function StarSystemMatrix({chart,annual}:{chart?:AstrologyResult;annual?:
   const payload={...matrix,exportedAt:new Date().toISOString(),resolutions:getResolutions(),scope:chart?'computed-chart-inventory':'identity-catalog',notice:'104 sao gốc/vòng sao; các lớp khác giữ riêng. Hồ sơ tên chưa đủ duyệt không được tự an hoặc tự gộp.'};
   downloadBlobFile(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),'thien-do-star-layer-matrix.json');
  }
- return <section className={styles.root} aria-label="Ma trận hệ thống sao Tử Vi">
+ return <section className={styles.root} aria-label="Ma trận hệ thống sao Tử Vi" data-hydrated={hydrated?'true':'false'}>
   <header><span className={styles.eyebrow}>THIÊN ĐỒ / KIỂM KÊ CÁC LỚP SAO</span><h2>Ma trận chính · phụ · lưu tinh</h2><p>{total.main} chính tinh + {total.support} phụ tinh lẻ + {total.cycles} tên trong ba vòng = <b>{total.natalAndCycle} tên gốc/vòng sao</b>. {total.annual} lưu tinh năm xem được đếm riêng. Án ngữ, Tứ Hóa và điểm Lưu Thái Tuế là các lớp khác.</p>
   <p>{chart?`Vị trí lấy trực tiếp từ lá số đang xem${annual?`; lưu niên ${annual.year} · ${annual.canChi}`:''}.`:'Danh mục hệ thống; lập lá số để xem vị trí tính toán theo từng cung.'} Danh mục này chưa xác nhận đầy đủ mọi trường phái.</p></header>
   {data.error?<p role="alert">Chưa thể kiểm kê: {data.error}. Không hiển thị ma trận thiếu dữ liệu.</p>:<>

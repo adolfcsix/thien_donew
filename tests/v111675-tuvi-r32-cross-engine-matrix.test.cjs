@@ -220,3 +220,57 @@ test('r48: missing SOURCE year-stem is unknown; no fallback to local calendar',(
  altered[3].stars=[];
  assert.equal(auditSourceDefaultVoidPlacement({palaces:altered}).fuxunPair.status,'unknown');
 });
+
+
+test('r52: criterion-specific disagreement ledger is fail-closed and never asserts school equivalence',()=>{
+ const {summarizeR52CriterionGaps,DEFINITIONS,tally}=
+  require('../infrastructure/scripts/tuvi-r32-r52-criterion-disagreement.cjs');
+ assert.deepEqual(DEFINITIONS.map(x=>x.id),['dinh-ban-01','dinh-ban-02','dinh-tap-03']);
+ assert.deepEqual(tally(['source-only','local-unknown']).sourceOnly,undefined);
+ assert.equal(tally(['source-only','local-unknown'])['source-only'],1);
+ assert.throws(()=>tally(['verified']),TypeError);
+ assert.throws(()=>summarizeR52CriterionGaps(null));
+ if(process.env.THIENDO_R32_REQUIRE_GENUINE!=='1')return;
+ assert.ok(fs.existsSync(r29File)&&fs.existsSync(r30File),'Source genuine R29/R30 reports required');
+ const source=JSON.parse(fs.readFileSync(r29File,'utf8'));
+ const rare=JSON.parse(fs.readFileSync(r30File,'utf8'));
+ const fixture=JSON.parse(fs.readFileSync(matrixFile,'utf8'));
+ const r32=auditCrossEngineMatrix(source,rare,fixture);
+ const prior=JSON.stringify(r32),report=summarizeR52CriterionGaps(r32);
+ assert.equal(report.sourceChartCount,67);
+ assert.equal(report.sourceMajorPeriodComparisons,804);
+ assert.equal(report.criteria.length,3);
+ assert.deepEqual(report.criteria.map(x=>x.compared),[67,67,804]);
+ assert.equal(report.rarePositiveNegativeControlsVerified,true);
+ assert.equal(report.genuineReferenceRuntime,true);
+ assert.equal(report.sourceCriterionVerified,false);
+ assert.equal(report.semanticEquivalenceVerified,false);
+ assert.equal(report.sourceSchoolParityVerified,false);
+ assert.equal(report.mayIncreaseMapping,false);
+ assert.equal(report.mappedConditionResearch,31);
+ assert.equal(report.unmapped,18);
+ assert.ok(Object.isFrozen(report)&&Object.isFrozen(report.criteria)&&
+  report.criteria.every(x=>Object.isFrozen(x)&&
+   x.readyForMapping===false&&x.expertReviewed===false&&
+   x.sourceCriterionVerifiedForLocalChart===false));
+ for(const criterion of report.criteria)
+  assert.equal(Object.values(criterion.categoryCounts).reduce((a,b)=>a+b,0),criterion.compared);
+ assert.equal(JSON.stringify(r32),prior,'R52 must not mutate R32 evidence');
+ const modified=JSON.parse(prior);
+ modified.records[0].evidence['dinh-ban-01'].category='both-met-proxy-only';
+ // If the true R32 category happens to be this value, force an incompatible one.
+ if(modified.records[0].evidence['dinh-ban-01'].category===
+    r32.records[0].evidence['dinh-ban-01'].category)
+  modified.records[0].evidence['dinh-ban-01'].category='local-unknown';
+ assert.throws(()=>summarizeR52CriterionGaps(modified));
+ const missing=JSON.parse(prior);missing.records.pop();
+ assert.throws(()=>summarizeR52CriterionGaps(missing));
+ const promoted=JSON.parse(prior);promoted.semanticEquivalenceVerified=true;
+ assert.throws(()=>summarizeR52CriterionGaps(promoted));
+ const duplicate=JSON.parse(prior);duplicate.records[1].id=duplicate.records[0].id;
+ assert.throws(()=>summarizeR52CriterionGaps(duplicate));
+ const unsafePeriod=JSON.parse(prior);
+ unsafePeriod.records[0].evidence['dinh-tap-03'].periodComparisons.pop();
+ assert.throws(()=>summarizeR52CriterionGaps(unsafePeriod));
+ console.log('R52: 67 genuine source charts, 804 major-period proxy comparisons, 3 gated rules');
+});
