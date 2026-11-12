@@ -5,7 +5,8 @@ const fs=require('node:fs');
 const path=require('node:path');
 const {SCHEMA,IZTRO,MAX_SEARCH,LIMITATION,validate,auditRealPositive}=
  require('../infrastructure/scripts/tuvi-r30-audit-rare-positive.cjs');
-const {independentlyEvaluate}=require('../infrastructure/scripts/tuvi-r29-evaluate-source-oracle.cjs');
+const {independentlyEvaluate,reconcilePinnedR44Fixture}=
+ require('../infrastructure/scripts/tuvi-r29-evaluate-source-oracle.cjs');
 const observed=path.join(__dirname,'../.r30-source-rare-positive-observations.json');
 const clone=x=>JSON.parse(JSON.stringify(x));
 function staged(){
@@ -110,4 +111,46 @@ test('r30: source actual positive+negative must be generated in isolated pinned 
  assert.equal(result.semanticEquivalenceVerified,false);
  assert.equal(result.localPatternVerdictVerified,false);
  assert.equal(result.actualPinnedSourceExecuted,true);
+ assert.equal(result.r44SourceFixtureCrosschecks,2);
+ assert.ok(result.sourceChecks.every(x=>x.r44SourceFixtureCrosschecked===true));
+ assert.ok(result.sourceChecks.every(x=>Number.isInteger(x.r44SourcePeriodsMatched)));
+});
+
+test('r46: R30 positive and adjacent-hour negative reconcile to R44 source-only formula',()=>{
+ const o=sourceShape(),before=JSON.stringify(o);
+ const [positive,negative]=o.records;
+ const sourcePositive=independentlyEvaluate(positive);
+ const sourceNegative=independentlyEvaluate(negative);
+ assert.equal(sourcePositive.dingPin02,true);
+ assert.equal(sourceNegative.dingPin02,false);
+ for(const rec of o.records){
+  const raw=independentlyEvaluate(rec);
+  const bridge=reconcilePinnedR44Fixture(rec,raw);
+  assert.equal(bridge.sourceOnly,true);
+  assert.equal(bridge.localPatternVerdictsVerified,false);
+  assert.equal(bridge.semanticEquivalenceVerified,false);
+  assert.equal(bridge.matchedPeriods,raw.dingZa03.length);
+ }
+ assert.equal(JSON.stringify(o),before);
+});
+test('r46: poisoned source alias, period geometry and baseline verdict fail closed',()=>{
+ const good=sourceShape(),base=good.records[0];
+ const brokenAlias=clone(base);
+ brokenAlias.palaces[0].stars.push({name:'空亡',siHua:null});
+ brokenAlias.palaces[7].stars.push({name:'空亡',siHua:null});
+ assert.doesNotThrow(()=>independentlyEvaluate(brokenAlias));
+ assert.throws(()=>reconcilePinnedR44Fixture(brokenAlias),/Duplicate source star/);
+ const badPeriod=clone(base);
+ badPeriod.daXians[10].palaceBranch=badPeriod.daXians[0].palaceBranch;
+ assert.throws(()=>reconcilePinnedR44Fixture(badPeriod));
+ const truePredicate=independentlyEvaluate(base);
+ const falseBaseline={...truePredicate,dingPin02:false};
+ assert.throws(()=>reconcilePinnedR44Fixture(base,falseBaseline),/differs/);
+});
+test('r46: the genuine R30 audit requires both R44 crosschecks and retains no-verdict flags',()=>{
+ const code=fs.readFileSync(path.join(__dirname,
+  '../infrastructure/scripts/tuvi-r30-audit-rare-positive.cjs'),'utf8');
+ assert.match(code,/reconcilePinnedR44Fixture\(rec,independent\)/);
+ assert.match(code,/r44SourceFixtureCrosschecks:/);
+ assert.match(code,/semanticEquivalenceVerified:false,localPatternVerdictVerified:false/);
 });

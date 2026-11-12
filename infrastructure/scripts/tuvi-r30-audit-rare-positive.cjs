@@ -7,7 +7,7 @@
 const fs=require('node:fs');
 const path=require('node:path');
 const Engine=require('../../packages/astrology-engine/src/tuvi.js');
-const {independentlyEvaluate}=require('./tuvi-r29-evaluate-source-oracle.cjs');
+const {independentlyEvaluate,reconcilePinnedR44Fixture}=require('./tuvi-r29-evaluate-source-oracle.cjs');
 const {SOURCE_COMMIT}=require('../../packages/interpretation/src/classical-source-void-vocabulary.cjs');
 const {auditClassicalVoidSemanticGates}=require('../../packages/interpretation/src/classical-void-semantic-gates.cjs');
 
@@ -69,6 +69,11 @@ function auditRealPositive(observation){
       independent.dingPin02!==rec.detector.dingPin02||
       !same(independent.dingZa03,rec.detector.dingZa03))
     throw Error('Actual source detector and independent source predicate disagree');
+   // Source-only bridge must agree with the executed detector and independent oracle.
+   const r44=reconcilePinnedR44Fixture(rec,independent);
+   if(r44.sourceOnly!==true||r44.semanticEquivalenceVerified!==false||
+      r44.localPatternVerdictsVerified!==false)
+    throw Error('R46 source-only R44 bridge promoted an unverified verdict');
    const stars=rec.palaces.find(p=>p.branch===rec.mingGongBranch)?.stars;
    if(!Array.isArray(stars))throw Error('Missing source Ming palace');
    const has=name=>stars.some(star=>star.name===name);
@@ -92,6 +97,8 @@ function auditRealPositive(observation){
     id:rec.id,role:rec.role,solarDate:rec.solarDate,gender:rec.gender,
     clockHour:rec.clockHour,sourceHourBranch:rec.sourceHourBranch,
     sourceDingPin02:independent.dingPin02,voidAtMing,luAtMing,killersBothAtMing,
+    r44SourceFixtureCrosschecked:r44.sourceOnly,
+    r44SourcePeriodsMatched:r44.matchedPeriods,
     localMingVoidProxy:local.items[1].checks[0].state,
     localSemanticEquivalenceVerified:false,sourceCriterionVerifiedForLocalChart:false
    });
@@ -105,6 +112,7 @@ function auditRealPositive(observation){
   positiveCount:sourceChecks.filter(x=>x.sourceDingPin02).length,
   negativeCount:sourceChecks.filter(x=>!x.sourceDingPin02).length,
   checked:sourceChecks.length,failures:issues.length,
+  r44SourceFixtureCrosschecks:sourceChecks.filter(x=>x.r44SourceFixtureCrosschecked===true).length,
   semanticEquivalenceVerified:false,localPatternVerdictVerified:false,
   limitation:LIMITATION,sourceChecks,issues
  });
