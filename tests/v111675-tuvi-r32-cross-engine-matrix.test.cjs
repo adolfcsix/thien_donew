@@ -274,3 +274,52 @@ test('r52: criterion-specific disagreement ledger is fail-closed and never asser
  assert.throws(()=>summarizeR52CriterionGaps(unsafePeriod));
  console.log('R52: 67 genuine source charts, 804 major-period proxy comparisons, 3 gated rules');
 });
+
+
+test('r53: 67 genuine source charts expose source named-star atoms without promoting pattern verdicts',()=>{
+ const {buildR53,namedVoidAt,sourceAtoms,VOID}=
+  require('../infrastructure/scripts/tuvi-r32-r53-source-void-atoms.cjs');
+ assert.deepEqual(VOID,['旬空','副旬','截路','截空','空亡','副截']);
+ const palaces=Array.from({length:12},(_,branch)=>({branch,stars:[]}));
+ palaces[0].stars.push({name:'截空'});
+ assert.deepEqual(namedVoidAt({palaces},0),['截空']);
+ assert.deepEqual(namedVoidAt({palaces},1),[]);
+ assert.throws(()=>namedVoidAt({palaces},12),TypeError);
+ assert.throws(()=>sourceAtoms({palaces}),/Invalid|source|chart/);
+ assert.throws(()=>buildR53(null,null,null));
+ if(process.env.THIENDO_R32_REQUIRE_GENUINE!=='1')return;
+ assert.ok(fs.existsSync(r29File)&&fs.existsSync(r30File),'R53 needs genuine source');
+ const source=JSON.parse(fs.readFileSync(r29File,'utf8'));
+ const rare=JSON.parse(fs.readFileSync(r30File,'utf8'));
+ const fixture=JSON.parse(fs.readFileSync(matrixFile,'utf8'));
+ const before=JSON.stringify([source,rare]);
+ const report=buildR53(source,rare,fixture);
+ assert.equal(report.schema,'thiendo-r53-pinned-source-void-atom-breakdown-v1');
+ assert.equal(report.sourceCases,67);
+ assert.equal(report.sourceMajorPeriods,804);
+ assert.equal(report.cases.length,67);
+ assert.deepEqual(report.blockedCriteria,['dinh-ban-01','dinh-ban-02','dinh-tap-03']);
+ assert.equal(report.referenceTotal,49);
+ assert.equal(report.mappedResearch,31);
+ assert.equal(report.mayDeclarePattern,false);
+ assert.equal(report.mayIncreaseMapping,false);
+ assert.equal(report.sourceSchoolParityVerified,false);
+ assert.equal(report.semanticEquivalenceVerified,false);
+ assert.equal(report.sourceCriterionVerifiedForLocalChart,false);
+ assert.ok(Object.isFrozen(report)&&Object.isFrozen(report.counts)&&Object.isFrozen(report.cases));
+ assert.equal(new Set(report.cases.map(x=>x.id)).size,67);
+ assert.ok(report.cases.every(c=>c.sourceAtoms.majorPeriods.length===12&&
+  Object.isFrozen(c.sourceAtoms)&&Object.isFrozen(c.sourceAtoms.majorPeriods)&&
+  c.sourceSchoolParityVerified===false&&c.semanticEquivalenceVerified===false&&
+  c.mayDeclarePattern===false));
+ assert.ok(report.counts.sourceBan02Positive>=1);
+ assert.equal(JSON.stringify([source,rare]),before);
+ const forged=JSON.parse(JSON.stringify(source));
+ forged.records[0].palaces[0].branch=forged.records[0].palaces[1].branch;
+ assert.throws(()=>buildR53(forged,rare,fixture));
+ const dropped=JSON.parse(JSON.stringify(rare));
+ dropped.records.pop();
+ assert.throws(()=>buildR53(source,dropped,fixture));
+ console.log('R53: 67/67 source case atoms, 804/804 period contexts, '+
+  '3 blocked criteria; no semantic equivalence');
+});
