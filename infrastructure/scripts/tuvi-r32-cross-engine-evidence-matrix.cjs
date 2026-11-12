@@ -16,7 +16,7 @@ const {auditClassicalPatternCandidates}=require('../../packages/interpretation/s
 const {auditClassicalVoidSemanticGates}=require('../../packages/interpretation/src/classical-void-semantic-gates.cjs');
 const {auditClassicalDingZaPeriods}=require('../../packages/interpretation/src/classical-dingza-period-research.cjs');
 const {andKnown}=require('../../packages/interpretation/src/classical-evidence-logic.cjs');
-const {SOURCE_COMMIT,SOURCE_NAMES,SOURCE_ALIASES}=require('../../packages/interpretation/src/classical-source-void-vocabulary.cjs');
+const {SOURCE_COMMIT,SOURCE_NAMES,SOURCE_ALIASES,SOURCE_STEMS,auditSourceDoubleJiekongCodeConcordance}=require('../../packages/interpretation/src/classical-source-void-vocabulary.cjs');
 
 const VERSION='2.6.1',SAMPLES=67;
 const VOID=Object.freeze(['旬空','副旬','截空','副截']);
@@ -73,6 +73,41 @@ function sourceCoordinates(record){
   get,huaLoc:unique(hua),voidNamedBranches,voidBranches,allNames,aliasPairs
  });
 }
+/** R48: actual pinned-source evidence only; unknown SOURCE stem stays unknown. */
+function auditSourceDefaultVoidPlacement(record,coordinates=sourceCoordinates(record)){
+ const index=record?.sourceYearStemIndex;
+ if(index!==undefined&&(!Number.isInteger(index)||index<0||index>9))
+  throw new RangeError('Invalid SOURCE year-stem index; no local calendar inference');
+ const named=coordinates.allNames;
+ const xun=named['旬空'].branch,fu=named['副旬'].branch;
+ const expectedFu=validBranch(xun)?(xun%2===0?(xun+1)%12:(xun+11)%12):null;
+ const fuStatus=!validBranch(expectedFu)||!validBranch(fu)?'unknown':
+  expectedFu===fu?'matched':'different';
+ let double=null;
+ if(index!==undefined){
+  const model=auditSourceDoubleJiekongCodeConcordance(SOURCE_STEMS[index]);
+  if(!model||model.sourceFormulaConcordant!==true||model.formulaCodes.length!==2)
+   throw Error('Pinned SOURCE Jiekong formula not concordant');
+  const expected=model.formulaCodes.map(code=>code-1);
+  if(!expected.every(validBranch))throw Error('Invalid SOURCE default branch codes');
+  const actual=[named['截空'].branch,named['副截'].branch];
+  double=Object.freeze({
+   sourceStem:SOURCE_STEMS[index],yearStemIndex:index,variant:'double',
+   expected:Object.freeze(expected),actual:Object.freeze(actual),
+   status:actual.every(validBranch)?
+    actual.every((branch,i)=>branch===expected[i])?'matched':'different':'unknown'
+  });
+ }
+ return Object.freeze({
+  sourceYearStemRecorded:index!==undefined,
+  jiekongDefaultDouble:double,
+  fuxunPair:Object.freeze({xunBranch:xun,actualFuBranch:fu,
+   expectedFuBranch:expectedFu,status:fuStatus}),
+  sourceSchoolParityVerified:false,
+  sourcePlacementVerifiedForLocalChart:false,
+  mayDeclarePattern:false
+ });
+}
 function localCoordinates(chart){
  const find=(name,layer)=>unique(chart.houses.flatMap(h=>
   Array.isArray(h[layer])&&h[layer].includes(name)?[h.branchIndex]:[]));
@@ -99,6 +134,7 @@ function compareRecord(record,origin){
  const voidGate=auditClassicalVoidSemanticGates(local);
  const period=auditClassicalDingZaPeriods(local);
  const source=sourceCoordinates(record),td=localCoordinates(local);
+ const sourceDefaultPlacement=auditSourceDefaultVoidPlacement(record,source);
  const localMing=local.houses.find(x=>x.palace==='Mệnh')?.branchIndex;
  const mingAligned=localMing===record.mingGongBranch;
  const placement=Object.freeze(Object.fromEntries(PAIRS.map(([id,sourceName,localName,layer])=>{
@@ -165,7 +201,7 @@ function compareRecord(record,origin){
   clockHour,gender:record.gender,
   sourceMing:record.mingGongBranch,localMing,
   mingAligned,
-  placement,hua,voidCoordinates,evidence,
+  placement,hua,voidCoordinates,sourceDefaultPlacement,evidence,
   sourceCriterionVerifiedForLocalChart:false,
   localPatternVerdictVerified:false,semanticEquivalenceVerified:false
  });
@@ -225,6 +261,16 @@ function auditCrossEngineMatrix(reference,rare,matrix){
     state,records.filter(x=>x.voidCoordinates.sourceAliasPairStates[key].status===state).length
    ])))];
   })));
+  const sourceDefaultPlacement=Object.freeze({
+   knownStem:records.filter(r=>r.sourceDefaultPlacement.sourceYearStemRecorded).length,
+   missingStem:records.filter(r=>!r.sourceDefaultPlacement.sourceYearStemRecorded).length,
+   jiekongDefaultDouble:Object.freeze(Object.fromEntries(['matched','different','unknown'].map(s=>[
+    s,records.filter(r=>r.sourceDefaultPlacement.jiekongDefaultDouble?.status===s).length
+   ]))),
+   fuxunPair:Object.freeze(Object.fromEntries(['matched','different','unknown'].map(s=>[
+    s,records.filter(r=>r.sourceDefaultPlacement.fuxunPair.status===s).length
+   ])))
+  });
   const out=Object.freeze({
   schema:'thiendo-r32-cross-engine-evidence-report-v1',
   sourceCommit:SOURCE_COMMIT,sourceIztroVersion:VERSION,
@@ -235,6 +281,7 @@ function auditCrossEngineMatrix(reference,rare,matrix){
    mingAligned:records.filter(x=>x.mingAligned).length,
    mingDifferent:records.filter(x=>!x.mingAligned).length,
     sourceVoidNames,sourceVoidAliasPairs,
+    sourceDefaultPlacement,
    placements,
    affectedSolarYears:Object.freeze(Object.fromEntries(
     [...new Set(records.filter(x=>
@@ -269,4 +316,4 @@ if(require.main===module){
 }
 module.exports=Object.freeze({SCHEMA:'thiendo-r32-cross-engine-evidence-report-v1',
  VERSION,SAMPLES,PAIRS,LIMITATION,classify,sourceCoordinates,compareRecord,
- auditCrossEngineMatrix});
+ auditSourceDefaultVoidPlacement,auditCrossEngineMatrix});

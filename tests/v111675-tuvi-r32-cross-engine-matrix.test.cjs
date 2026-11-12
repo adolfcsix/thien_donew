@@ -6,7 +6,7 @@ const path=require('node:path');
 const Engine=require('../packages/astrology-engine/src/tuvi.js');
 const {
   SCHEMA,VERSION,SAMPLES,PAIRS,LIMITATION,classify,
-  sourceCoordinates,compareRecord,auditCrossEngineMatrix
+  sourceCoordinates,auditSourceDefaultVoidPlacement,compareRecord,auditCrossEngineMatrix
 }=require('../infrastructure/scripts/tuvi-r32-cross-engine-evidence-matrix.cjs');
 const {summarizeClassicalCatalog}=require('../packages/interpretation/src/classical-pattern-catalog.cjs');
 const {auditClassicalPatternCandidates}=require('../packages/interpretation/src/classical-pattern-research.cjs');
@@ -128,6 +128,17 @@ test('r32: genuine source R29 and R30 execution is mandatory only in the pinned 
   .reduce((n,x)=>n+x,0);
  assert.ok(countedYearDiff<=67);
  assert.equal(report.counts.placements['void-pair'].unknown,0);
+ const placement=report.counts.sourceDefaultPlacement;
+ assert.equal(placement.knownStem,2);
+ assert.equal(placement.missingStem,65);
+ assert.equal(Object.values(placement.jiekongDefaultDouble).reduce((a,b)=>a+b,0),2);
+ assert.equal(Object.values(placement.fuxunPair).reduce((a,b)=>a+b,0),67);
+ assert.ok(report.records.every(x=>
+  x.sourceDefaultPlacement.sourceSchoolParityVerified===false&&
+  x.sourceDefaultPlacement.sourcePlacementVerifiedForLocalChart===false&&
+  x.sourceDefaultPlacement.mayDeclarePattern===false));
+ assert.ok(report.records.filter(x=>x.origin==='r29')
+  .every(x=>x.sourceDefaultPlacement.jiekongDefaultDouble===null));
  assert.deepEqual(Object.keys(report.counts.sourceVoidNames),
   ['旬空','副旬','截路','截空','空亡','副截']);
  for(const x of Object.values(report.counts.sourceVoidNames))
@@ -160,4 +171,52 @@ test('r47: six source Void names distinguish absent legacy alias and duplicate n
  const duplicate=sourceCoordinates({palaces:dup});
  assert.equal(duplicate.allNames['截空'].presence,'duplicate');
  assert.equal(duplicate.aliasPairs['截路/截空'].status,'ambiguous');
+});
+
+test('r48: all ten pinned SOURCE stems give correct default double positions without school parity claim',()=>{
+ const {SOURCE_STEMS,auditSourceDoubleJiekongCodeConcordance}=
+  require('../packages/interpretation/src/classical-source-void-vocabulary.cjs');
+ for(let i=0;i<10;i++){
+  const formula=auditSourceDoubleJiekongCodeConcordance(SOURCE_STEMS[i]);
+  assert.equal(formula.sourceFormulaConcordant,true);
+  const palaces=Array.from({length:12},(_,branch)=>({branch,stars:[]}));
+  for(const [name,b] of [['旬空',0],['副旬',1],
+   ['截空',formula.formulaCodes[0]-1],['副截',formula.formulaCodes[1]-1]])
+   palaces[b].stars.push({name,siHua:null});
+  const before=JSON.stringify(palaces);
+  const actual=auditSourceDefaultVoidPlacement({sourceYearStemIndex:i,palaces});
+  assert.equal(actual.jiekongDefaultDouble.status,'matched',SOURCE_STEMS[i]);
+  assert.equal(actual.fuxunPair.status,'matched');
+  assert.equal(actual.mayDeclarePattern,false);
+  assert.equal(actual.sourceSchoolParityVerified,false);
+  assert.equal(JSON.stringify(palaces),before);
+  const wrong=clone(palaces);
+  const jie=wrong.find(p=>p.stars.some(s=>s.name==='截空'));
+  const vice=wrong.find(p=>p.stars.some(s=>s.name==='副截'));
+  if(jie!==vice){
+   const a=jie.stars.find(s=>s.name==='截空'),b=vice.stars.find(s=>s.name==='副截');
+   jie.stars=jie.stars.filter(s=>s!==a);
+   vice.stars=vice.stars.filter(s=>s!==b);
+   jie.stars.push(b);vice.stars.push(a);
+   assert.equal(auditSourceDefaultVoidPlacement({sourceYearStemIndex:i,palaces:wrong})
+    .jiekongDefaultDouble.status,'different');
+  }
+ }
+});
+test('r48: missing SOURCE year-stem is unknown; no fallback to local calendar',()=>{
+ const palaces=Array.from({length:12},(_,branch)=>({branch,stars:[]}));
+ palaces[0].stars.push({name:'旬空',siHua:null});
+ palaces[1].stars.push({name:'副旬',siHua:null});
+ const unknown=auditSourceDefaultVoidPlacement({palaces});
+ assert.equal(unknown.jiekongDefaultDouble,null);
+ assert.equal(unknown.sourceYearStemRecorded,false);
+ assert.equal(unknown.fuxunPair.status,'matched');
+ for(const index of [-1,10,2.5,'甲'])
+  assert.throws(()=>auditSourceDefaultVoidPlacement({palaces,sourceYearStemIndex:index}),RangeError);
+ const altered=clone(palaces);
+ altered[1].stars=[];
+ altered[3].stars.push({name:'副旬',siHua:null});
+ assert.equal(auditSourceDefaultVoidPlacement({palaces:altered}).fuxunPair.status,'different');
+ altered[3].stars=[];
+ assert.equal(auditSourceDefaultVoidPlacement({palaces:altered}).fuxunPair.status,'unknown');
 });
