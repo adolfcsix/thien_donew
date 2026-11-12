@@ -17,7 +17,29 @@ test('calendar evidence writers succeed twice without any preexisting report dir
 test('CI runs new SQL, DOM, HTTP and both account/AI browser harnesses',()=>{
  const ci=fs.readFileSync(path.join(root,'.github/workflows/production-acceptance.yml'),'utf8');
  for(const command of ['npm run test:account:sql','npm run test:sql:isolated','npm run test:session:dom','npm run test:stack:isolated','node tests/account.browser.cjs','node tests/v1116413-ai-insights.browser.cjs'])assert.ok(ci.includes(command),command);
- assert.ok(ci.indexOf('npm run build')<ci.indexOf('npm run test:stack:isolated'));assert.doesNotMatch(ci,/continue-on-error:\s*true|--single-process|--disable-web-security/);
+ assert.ok(ci.indexOf('npm run build')<ci.indexOf('npm run test:stack:isolated'));assert.doesNotMatch(ci,/--single-process|--disable-web-security/);
+ // continue-on-error is permitted ONLY for retriable artifact uploads.
+ // Required guards after the retries must still fail if neither attempt succeeds.
+ const permitted=new Set([
+  'r43_deep_artifact_primary','r43_deep_artifact_retry',
+  'r43_http_artifact_primary','r43_http_artifact_retry'
+ ]);
+ const actual=new Set();
+ for(const step of ci.split(/(?=^      - )/m)){
+  if(!/^\s*continue-on-error:\s*true\s*$/m.test(step))continue;
+  const id=step.match(/^\s*(?:- )?id:\s*([a-z0-9_-]+)\s*$/m)?.[1];
+  assert.ok(permitted.has(id),'Unexpected continue-on-error outside guarded artifact upload: '+id);
+  assert.match(step,/^\s*uses:\s*actions\/upload-artifact@v4\s*$/m);
+  assert.match(step,/^\s*if-no-files-found:\s*error\s*$/m);
+  assert.ok(!actual.has(id),'Duplicate upload step: '+id);
+  actual.add(id);
+ }
+ if(actual.size){
+  assert.deepEqual([...actual].sort(),[...permitted].sort());
+  assert.match(ci,/name: R43 require deep-session artifact upload success/);
+  assert.match(ci,/name: R43 require HTTP browser artifact upload success/);
+  assert.match(ci,/if \[ "\$PRIMARY" != success \] && \[ "\$RETRY" != success \]/);
+ }
  const sql=fs.readFileSync(path.join(root,'infrastructure/scripts/test-isolated-sql.mjs'),'utf8');assert.match(sql,/'expert-library-session-sql'/);assert.match(sql,/'deep-ai-session-sql'/);
 });
 test('Bazi guest smoke and authenticated calculator have separate expectations',async()=>{
