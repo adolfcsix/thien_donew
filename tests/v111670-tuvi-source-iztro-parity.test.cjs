@@ -78,3 +78,60 @@ test('r27: genuinely executed source probes are mandatory in isolated external-r
  assert.ok(report.results.every(x=>x.sourceFuxunPostprocessingReproduced&&
   x.rawIztroToSourcePlacementReproduced&&x.namedSourceFormulaReproduced));
 });
+
+test('r49: source school variant declarations never imply actual alternate-source runtime',()=>{
+ const vocab=require('../packages/interpretation/src/classical-source-void-vocabulary.cjs');
+ assert.deepEqual(vocab.SOURCE_VARIANTS,['single','double','zhanyan']);
+ assert.equal(vocab.SOURCE_VOID_STEM_ROWS.length,10);
+ assert.ok(vocab.SOURCE_VOID_STEM_ROWS.every(r=>
+  r.single.length===1&&r.double.length===2&&r.zhanyan.length===1));
+ // The pinned workflow already checks out the exact reference source. Do not
+ // substitute hand-copied snapshots when the real checkout is unavailable.
+ if(process.env.THIENDO_R27_REQUIRE_GENUINE!=='1')return;
+ const root=path.join(__dirname,'../reference-ziwei/lib/ziwei');
+ const algorithm=fs.readFileSync(path.join(root,'algorithm.ts'),'utf8');
+ const config=fs.readFileSync(path.join(root,'school-config.ts'),'utf8');
+ const data=fs.readFileSync(path.join(root,'school-data.ts'),'utf8');
+ assert.match(config,/export type JiekongSchool\s*=\s*'single'\s*\|\s*'double'\s*\|\s*'zhanyan'/);
+ assert.match(config,/jiekongSchool:\s*'double'/);
+ assert.match(config,/jiekongSchool:\s*\[/);
+ for(const mode of vocab.SOURCE_VARIANTS)
+  assert.ok(config.includes("value: '"+mode+"'"),'Missing variant option '+mode);
+ assert.match(algorithm,/export function generateChart\(\s*birthInfo:\s*BirthInfo,\s*opts\?:\s*\{\s*leapMonth\?:\s*LunarMonthPolicy\s*\},\s*\):\s*ZiweiChart\s*\{/);
+ assert.doesNotMatch(algorithm,/\bjiekongSchool\b/);
+ assert.match(algorithm,/applySchoolJiekong\(palaces,\s*lunarInfo\.yearStem\)/);
+ // These source tables are 1-based with a sentinel row. The Xun table has
+ // extra trailing rows that must NOT be mapped to local branch indices.
+ const extractArray=(text,anchor)=>{
+  const at=text.indexOf(anchor);
+  assert.ok(at>=0&&text.indexOf(anchor,at+anchor.length)<0,'Missing/ambiguous anchor '+anchor);
+  const start=text.indexOf('[',at+anchor.length);
+  assert.ok(start>=0,'Source array missing '+anchor);
+  let level=0,end=-1;
+  for(let i=start;i<text.length;i++){
+   if(text[i]==='[')level++;
+   else if(text[i]===']'&&--level===0){end=i+1;break;}
+  }
+  assert.ok(end>start,'Unclosed source table '+anchor);
+  return JSON.parse(text.slice(start,end));
+ };
+ const section=data.match(/export const SCHOOL_JIEKONG_VARIANTS\s*=\s*\{([\s\S]*?)\}\s*as const;/);
+ assert.ok(section,'Pinned school variant tables missing');
+ const variants={
+  single:extractArray(section[1],'v1:'),
+  double:extractArray(section[1],'v2:'),
+  zhanyan:extractArray(section[1],'v3:')
+ };
+ const xun=extractArray(data,'SCHOOL_XUNKONG: number[] =');
+ assert.equal(xun.length,13);
+ assert.deepEqual(xun.slice(1,11),vocab.SOURCE_VOID_STEM_ROWS.map(r=>r.xunSourceCode));
+ for(const mode of vocab.SOURCE_VARIANTS){
+  const raw=variants[mode];
+  assert.equal(raw.length,11,mode+' rows');
+  assert.deepEqual(raw.slice(1).map(x=>Array.isArray(x)?x:[x]),
+   vocab.SOURCE_VOID_STEM_ROWS.map(row=>row[mode]),mode+' ten SOURCE stems');
+ }
+ assert.equal(vocab.SOURCE_COMMIT,SOURCE_COMMIT);
+ console.log('R49: 30/30 SOURCE school variant table rows match, Xun 10/10; '+
+  'source generateChart default path only, non-default runtime UNVERIFIED');
+});
