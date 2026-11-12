@@ -51,6 +51,9 @@ const canonicalCoordinates=(r,id)=>{
     (coord.sourceBranch===null||isBranch(coord.sourceBranch))&&
     (coord.localBranch===null||isBranch(coord.localBranch)),
    'missing named source/local coordinates: '+name);
+  const actual=coord.sourceBranch===null||coord.localBranch===null?'unknown':
+   coord.sourceBranch===coord.localBranch?'matched':'different';
+  checked(coord.status===actual,'forged source/local branch status: '+name);
   statuses[name]=coord.status;
   positions[name]={sourceBranch:coord.sourceBranch,localBranch:coord.localBranch,
    comparison:coord.status};
