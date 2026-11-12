@@ -6,6 +6,7 @@ on:
       - 'infrastructure/scripts/tuvi-r32-*'
       - 'infrastructure/scripts/tuvi-r32-r52-*'
       - 'infrastructure/scripts/tuvi-r32-r53-*'
+      - 'infrastructure/scripts/tuvi-r32-r54-*'
       - 'infrastructure/scripts/tuvi-r29-*'
       - 'infrastructure/scripts/tuvi-r30-*'
       - 'tests/v111675-tuvi-r32-cross-engine-matrix.test.cjs'
@@ -18,6 +19,7 @@ on:
       - 'infrastructure/scripts/tuvi-r32-*'
       - 'infrastructure/scripts/tuvi-r32-r52-*'
       - 'infrastructure/scripts/tuvi-r32-r53-*'
+      - 'infrastructure/scripts/tuvi-r32-r54-*'
       - 'tests/v111675-tuvi-r32-cross-engine-matrix.test.cjs'
   workflow_dispatch:
 permissions:
@@ -64,6 +66,7 @@ jobs:
           node infrastructure/scripts/tuvi-r32-cross-engine-evidence-matrix.cjs .r29-source-pattern-oracle-observations.json .r30-source-rare-positive-observations.json
           node infrastructure/scripts/tuvi-r32-r52-criterion-disagreement.cjs .r32-cross-engine-evidence-matrix-report.json
           node infrastructure/scripts/tuvi-r32-r53-source-void-atoms.cjs .r29-source-pattern-oracle-observations.json .r30-source-rare-positive-observations.json
+          node infrastructure/scripts/tuvi-r32-r54-diagnostic-disagreement-triage.cjs .r29-source-pattern-oracle-observations.json .r30-source-rare-positive-observations.json
       - name: Explain what the comparison can and cannot claim
         if: always()
         run: |
@@ -74,6 +77,7 @@ jobs:
           echo 'All 3 source semantic equivalence flags stay false; no local classical pattern verdict or increase of 31/49.' >> "$GITHUB_STEP_SUMMARY"
           echo 'R52: 67 source-case comparisons, 804 major-period proxy comparisons, three rules blocked; geometry or proxy agreement is not school parity.' >> "$GITHUB_STEP_SUMMARY"
           echo 'R53: break down named Void source stars and three detector predicates, without automatic local pattern promotion.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'R54: classify observed branch/proxy mismatches without claiming a proven root cause or semantic equivalence.' >> "$GITHUB_STEP_SUMMARY"
       - name: Archive genuine source and diagnostic evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -85,6 +89,7 @@ jobs:
             .r32-cross-engine-evidence-matrix-report.json
             .r52-source-criterion-disagreement.json
             .r53-source-void-atom-breakdown.json
+            .r54-source-local-difference-triage.json
           include-hidden-files: true
           if-no-files-found: warn
           retention-days: 14
