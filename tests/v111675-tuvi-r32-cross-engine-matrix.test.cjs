@@ -439,3 +439,83 @@ test('r55: deterministic pinned-source counterexamples preserve every R54 denomi
  assert.throws(()=>makeR55ReviewQueue(altered));
  console.log('R55: 67 source cases/804 periods; all evidence groups sampled with both R30 controls; no source-school claim');
 });
+
+
+test('r56: each selected counterexample traces exact source atoms and local coordinates without semantic promotion',()=>{
+ const {buildR56PredicateTraces,sourceRule,markdown}=
+  require('../infrastructure/scripts/tuvi-r32-r56-pinned-predicate-traces.cjs');
+ assert.throws(()=>buildR56PredicateTraces(null,null,null,null));
+ assert.deepEqual(sourceRule({sourceAtoms:{
+  liemTrinhAtMing:false,mingVoidNamedStars:['副截']}},'dinh-ban-01',null),
+  {checks:{liemTrinhAtMing:false,namedSourceVoidAtMing:true},hit:false});
+ assert.deepEqual(sourceRule({sourceAtoms:{
+  locOrHuaLocAtMing:true,diaKhongAtMing:true,diaKiepAtMing:false,
+  mingVoidNamedStars:['旬空']}},'dinh-ban-02',null),
+  {checks:{locOrHuaLocAtMing:true,namedSourceVoidAtMing:true,
+   diaKhongAtMing:true,diaKiepAtMing:false},hit:false});
+ assert.throws(()=>sourceRule({sourceAtoms:{majorPeriods:[]}},'dinh-tap-03',12));
+ if(process.env.THIENDO_R32_REQUIRE_GENUINE!=='1')return;
+ const {buildR53}=require('../infrastructure/scripts/tuvi-r32-r53-source-void-atoms.cjs');
+ const {buildR54}=require('../infrastructure/scripts/tuvi-r32-r54-diagnostic-disagreement-triage.cjs');
+ const {makeR55ReviewQueue}=require('../infrastructure/scripts/tuvi-r32-r55-counterexample-review-queue.cjs');
+ assert.ok(fs.existsSync(r29File)&&fs.existsSync(r30File),'R56 requires real pinned source traces');
+ const r29=JSON.parse(fs.readFileSync(r29File,'utf8'));
+ const r30=JSON.parse(fs.readFileSync(r30File,'utf8'));
+ const fixture=JSON.parse(fs.readFileSync(matrixFile,'utf8'));
+ const a=auditCrossEngineMatrix(r29,r30,fixture),b=buildR53(r29,r30,fixture);
+ const c=buildR54(r29,r30,fixture),d=makeR55ReviewQueue(c);
+ const before=JSON.stringify([a,b,c,d]),result=buildR56PredicateTraces(a,b,c,d);
+ assert.equal(result.sourceCaseCount,67);
+ assert.equal(result.totalR55Comparisons,938);
+ assert.equal(result.selectedTraceCount,d.selectedComparisonCount);
+ assert.equal(result.selectedCaseCount,d.selectedCaseCount);
+ assert.equal(result.controls.length,2);
+ assert.deepEqual(result.perCriterion,{'dinh-ban-01':3,'dinh-ban-02':3,'dinh-tap-03':4});
+ assert.equal(result.selectedTraceCount,10);
+ assert.equal(result.selectedCaseCount,4);
+ assert.equal(result.rootCauseVerified,false);
+ assert.equal(result.semanticEquivalenceVerified,false);
+ assert.equal(result.sourceSchoolParityVerified,false);
+ assert.equal(result.localCriterionVerified,false);
+ assert.equal(result.mayDeclarePattern,false);
+ assert.equal(result.mayIncreaseMapping,false);
+ assert.equal(result.mappedResearch,31);
+ assert.equal(result.referenceTotal,49);
+ assert.ok(Object.isFrozen(result)&&Object.isFrozen(result.traces));
+ assert.ok(result.traces.every(x=>x.rootCauseVerified===false&&
+  x.localCriterionVerified===false&&x.sourceSchoolParityVerified===false&&
+  x.semanticEquivalenceVerified===false&&x.readyForMapping===false&&
+  Object.isFrozen(x.sourceRuleChecks)&&Object.isFrozen(x.observedNamedStarBranches)));
+ const conflict=result.traces.filter(x=>
+  x.comparisonCategory==='local-proxy-only'||
+  x.comparisonCategory==='source-only');
+ assert.equal(conflict.length,1,'R56 pinned source changed its selected proxy disagreements');
+ assert.equal(conflict[0].caseId,'stem-1989-nam-h0');
+ assert.equal(conflict[0].criterionId,'dinh-ban-01');
+ assert.equal(conflict[0].sourceDetectorHit,false);
+ assert.equal(conflict[0].localProxyDiagnostic,'met');
+ assert.equal(conflict[0].birthContext.sourceMing,8);
+ assert.equal(conflict[0].birthContext.localMing,8);
+ assert.deepEqual(conflict[0].observedNamedStarBranches['liem-trinh'],
+  {sourceBranch:11,localBranch:8,comparison:'different'});
+ assert.equal(conflict[0].voidUnionGeometryStatus,'matched');
+ assert.equal(conflict[0].sourceRuleChecks.liemTrinhAtMing,false);
+ assert.equal(conflict[0].sourceRuleChecks.namedSourceVoidAtMing,true);
+ assert.ok(markdown(result).includes('stem-1989-nam-h0'));
+ assert.deepEqual(result,buildR56PredicateTraces(a,b,c,d),'R56 trace not deterministic');
+ assert.equal(JSON.stringify([a,b,c,d]),before,'R56 changed its genuine inputs');
+ const tamperedR32=JSON.parse(JSON.stringify(a));
+ const entry=tamperedR32.records.find(x=>x.id==='stem-1989-nam-h0');
+ entry.placement['liem-trinh'].sourceBranch=8;
+ assert.throws(()=>buildR56PredicateTraces(tamperedR32,b,c,d));
+ const tamperedR53=JSON.parse(JSON.stringify(b));
+ tamperedR53.cases.find(x=>x.id==='stem-1989-nam-h0').sourceAtoms.liemTrinhAtMing=true;
+ assert.throws(()=>buildR56PredicateTraces(a,tamperedR53,c,d));
+ const forgedQueue=JSON.parse(JSON.stringify(d));forgedQueue.selected[0].sourceHit=!forgedQueue.selected[0].sourceHit;
+ assert.throws(()=>buildR56PredicateTraces(a,b,c,forgedQueue));
+ const duplicate=JSON.parse(JSON.stringify(d));duplicate.selected.push(duplicate.selected[0]);
+ duplicate.selectedComparisonCount++;
+ assert.throws(()=>buildR56PredicateTraces(a,b,c,duplicate));
+ console.log('R56: ten evidence-linked source predicate traces across four cases; '+
+  'Liêm Trinh 1989 discrepancy remains review-only');
+});
