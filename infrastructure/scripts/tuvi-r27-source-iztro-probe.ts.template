@@ -76,6 +76,43 @@ const records=cases.cases.map((sample:any)=>{
   sourceStars,rawIztroStars
  };
 });
+/**
+ * R50 negative runtime probe: the pinned generateChart signature exposes only
+ * leapMonth, NOT jiekongSchool. Deliberately inject unsupported extra options
+ * at the JavaScript runtime boundary to detect any new engine wiring.
+ *
+ * This DOES NOT simulate selecting a school in the source UI and DOES NOT
+ * validate alternate-school charts. Preserve the original R27 observations.
+ */
+const unsupportedOptionSamples=cases.cases.filter((sample:any)=>
+ sample.kind==='ten-stem-hour-gender-matrix'&&sample.gender==='Nam'&&sample.hour===0);
+if(unsupportedOptionSamples.length!==10)
+ throw new Error('R50 requires exactly ten synthetic year-stem samples');
+const unsupportedJiekongOptionProbes=unsupportedOptionSamples.map((sample:any)=>{
+ const record=records.find((entry:any)=>entry.id===sample.id);
+ if(!record)throw new Error('R50 source case missing from genuine R27 records');
+ const [year,month,day]=sample.date.split('-').map(Number);
+ const hour=Math.floor(((sample.hour+1)%24)/2);
+ const birth={year,month,day,hour,gender:'male' as const};
+ const injectedStars:Record<string,Record<string,number[]>>={};
+ for(const mode of ['single','double','zhanyan'] as const){
+  // A deliberately UNSUPPORTED TypeScript option, not a real config selection.
+  const alternate=generateChart(birth,
+   {jiekongSchool:mode} as unknown as Parameters<typeof generateChart>[1]);
+  injectedStars[mode]=fromSource(alternate.palaces);
+  if(JSON.stringify(injectedStars[mode])!==JSON.stringify(record.sourceStars))
+   throw new Error('R50 source option-injection behavior changed: '+sample.id+' '+mode);
+ }
+ return {
+  id:sample.id,sourceYearStemIndex:record.lunarYearStemIndex,
+  unsupportedOptionInjectionOnly:true,alternateModeRuntimeVerified:false,
+  baselineStars:record.sourceStars,injectedStars
+ };
+});
+if([...new Set(unsupportedJiekongOptionProbes.map(p=>p.sourceYearStemIndex))]
+ .sort((a,b)=>a-b).join(',')!=='0,1,2,3,4,5,6,7,8,9')
+ throw new Error('R50 did not cover all ten genuine source lunar year stems');
+
 const result={
  schema:'thiendo-r27-source-iztro-observation-v1',
  provenance:{
@@ -84,7 +121,8 @@ const result={
   sourceFunction:'generateChart + postprocessed applySchoolJiekong/applySchoolFuxun',
   rawEngineFunction:'astro.bySolar',syntheticCasesOnly:true
  },
- records
+ records,
+ unsupportedJiekongOptionProbes
 };
 writeFileSync('../.r27-source-iztro-observations.json',JSON.stringify(result,null,2)+'\n','utf8');
 console.log('R27: observed '+records.length+' synthetic charts from pinned source and iztro@'+runtime.version);

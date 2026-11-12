@@ -135,3 +135,39 @@ test('r49: source school variant declarations never imply actual alternate-sourc
  console.log('R49: 30/30 SOURCE school variant table rows match, Xun 10/10; '+
   'source generateChart default path only, non-default runtime UNVERIFIED');
 });
+
+
+test('r50: unsupported Jiekong option injection remains inert across ten genuine source stems',()=>{
+ const selected=fixture.cases.filter(x=>
+  x.kind==='ten-stem-hour-gender-matrix'&&x.gender==='Nam'&&x.hour===0);
+ assert.equal(selected.length,10);
+ if(process.env.THIENDO_R27_REQUIRE_GENUINE!=='1'){
+  assert.ok(!('unsupportedJiekongOptionProbes' in fixture));
+  return;
+ }
+ assert.ok(fs.existsSync(observationPath),'R50 genuine source observation missing');
+ const source=JSON.parse(fs.readFileSync(observationPath,'utf8'));
+ validateObservationShape(source,fixture);
+ const probes=source.unsupportedJiekongOptionProbes;
+ assert.ok(Array.isArray(probes),'R50 cannot accept a static substituted fixture');
+ assert.equal(probes.length,10);
+ assert.deepEqual(probes.map(x=>x.id).sort(),selected.map(x=>x.id).sort());
+ assert.deepEqual([...new Set(probes.map(x=>x.sourceYearStemIndex))].sort((a,b)=>a-b),
+  [0,1,2,3,4,5,6,7,8,9]);
+ const observed=new Map(source.records.map(x=>[x.id,x]));
+ const names=['旬空','副旬','截空','副截'];
+ for(const sample of probes){
+  assert.equal(sample.unsupportedOptionInjectionOnly,true);
+  assert.equal(sample.alternateModeRuntimeVerified,false);
+  assert.deepEqual(sample.baselineStars,observed.get(sample.id)?.sourceStars);
+  assert.deepEqual(Object.keys(sample.injectedStars).sort(),
+   ['double','single','zhanyan']);
+  for(const mode of ['single','double','zhanyan']){
+   assert.deepEqual(sample.injectedStars[mode],sample.baselineStars,
+    'Injected unsupported option changed source placements: '+sample.id+' / '+mode);
+   for(const name of names)requireSingle(sample.injectedStars[mode],name);
+  }
+ }
+ console.log('R50: 10/10 source stems and 30/30 injected options unchanged; '+
+  'genuine runtime negative test, NOT alternate-school execution');
+});
