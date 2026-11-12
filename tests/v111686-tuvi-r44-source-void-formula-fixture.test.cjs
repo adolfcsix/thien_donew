@@ -96,3 +96,35 @@ test('R44 decade predicate checks 12 branches and every exact source Void label'
   assert.equal(run(b).items[2].formulaMatched,false,'both source Void placements are required');
  }
 });
+
+test('R44 Hóa Lộc evidence must be a matching siHua at Mệnh, never 权/科/忌 or a different branch',()=>{
+ for(let branch=0;branch<12;branch++){
+  const required=['地空','地劫','截空'];
+  for(const transform of ['权','科','忌']){
+   const fixture=make({[branch]:[...required,{name:'文昌',siHua:transform}]},branch);
+   assert.equal(run(fixture).items[1].formulaMatched,false,branch+':'+transform);
+  }
+  const outside=(branch+1)%12;
+  const notAtMenh=make({[branch]:required,[outside]:[{name:'文昌',siHua:'禄'}]},branch);
+  assert.equal(run(notAtMenh).items[1].formulaMatched,false,branch+':remote-lu');
+  const trueAtMenh=make({[branch]:[...required,{name:'文昌',siHua:'禄'}]},branch);
+  assert.equal(run(trueAtMenh).items[1].formulaMatched,true,branch+':local-lu');
+ }
+});
+test('R44 decade source predicates remain branch-stable when all periods are reordered',()=>{
+ const fixture=make({1:['禄存','旬空'],3:['七杀'],7:['天马','副截']});
+ const base=run(fixture).items[2].periods;
+ const shuffled=JSON.parse(JSON.stringify(fixture));
+ shuffled.periodBranches=[7,3,11,0,2,4,6,8,10,1,5,9];
+ const before=JSON.stringify(shuffled);
+ const rows=run(shuffled).items[2].periods;
+ assert.deepEqual(rows.map(row=>row.branch),shuffled.periodBranches);
+ assert.deepEqual(
+  rows.filter(row=>row.formulaMatched).map(row=>row.branch).sort((a,b)=>a-b),
+  base.filter(row=>row.formulaMatched).map(row=>row.branch).sort((a,b)=>a-b)
+ );
+ assert.equal(JSON.stringify(shuffled),before);
+ const bad=JSON.parse(JSON.stringify(shuffled));
+ bad.periodBranches[11]=bad.periodBranches[0];
+ assert.throws(()=>run(bad),RangeError);
+});
