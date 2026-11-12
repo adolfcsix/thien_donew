@@ -385,3 +385,57 @@ test('r54: source/local differences are triaged but never claimed as verified ca
  console.log('R54: 67/67 named source/local case triages, 804/804 period contexts; '+
   'unverified root cause stays false');
 });
+
+
+test('r55: deterministic pinned-source counterexamples preserve every R54 denominator and blocked verdict',()=>{
+ const {makeR55ReviewQueue,classifyPriority}=
+  require('../infrastructure/scripts/tuvi-r32-r55-counterexample-review-queue.cjs');
+ assert.throws(()=>makeR55ReviewQueue(null));
+ assert.equal(classifyPriority({comparisonCategory:'source-only',
+  sourceRuleHit:true,localProxy:'not-met',observableDifferenceCodes:[],
+  rootCauseVerified:false,semanticEquivalenceVerified:false,
+  nameEquivalenceVerified:false,sourceCriterionVerifiedForLocalChart:false}),
+  'conflicting-proxy');
+ assert.throws(()=>classifyPriority({comparisonCategory:'verified'}));
+ if(process.env.THIENDO_R32_REQUIRE_GENUINE!=='1')return;
+ const {buildR54}=
+  require('../infrastructure/scripts/tuvi-r32-r54-diagnostic-disagreement-triage.cjs');
+ assert.ok(fs.existsSync(r29File)&&fs.existsSync(r30File));
+ const source=JSON.parse(fs.readFileSync(r29File,'utf8'));
+ const rare=JSON.parse(fs.readFileSync(r30File,'utf8'));
+ const fixture=JSON.parse(fs.readFileSync(matrixFile,'utf8'));
+ const matrix=buildR54(source,rare,fixture),before=JSON.stringify(matrix);
+ const report=makeR55ReviewQueue(matrix);
+ assert.equal(report.schema,'thiendo-r55-pinned-counterexample-review-queue-v1');
+ assert.equal(report.sourceCases,67);
+ assert.equal(report.totalComparisons,938);
+ assert.equal(report.majorPeriods,804);
+ assert.equal(report.sourceRareControlCaseCount,2);
+ assert.ok(report.selectedComparisonCount>0&&report.selectedComparisonCount<=938);
+ assert.equal(report.selected.length,report.selectedComparisonCount);
+ assert.equal(report.selectedCaseCount,new Set(report.selected.map(e=>e.id)).size);
+ assert.equal(report.mappedResearch,31);
+ assert.equal(report.referenceTotal,49);
+ assert.equal(report.mayIncreaseMapping,false);
+ assert.equal(report.mayDeclarePattern,false);
+ assert.equal(report.rootCauseVerified,false);
+ assert.equal(report.semanticEquivalenceVerified,false);
+ assert.equal(report.sourceSchoolParityVerified,false);
+ assert.ok(Object.isFrozen(report)&&Object.isFrozen(report.selected));
+ const key=x=>x.criterionId+'|'+x.id+'|'+String(x.periodBranch);
+ assert.equal(new Set(report.selected.map(key)).size,report.selected.length);
+ assert.ok(report.selected.every(x=>x.readyForMapping===false&&
+  x.rootCauseVerified===false&&x.semanticEquivalenceVerified===false&&
+  Object.isFrozen(x.selectionReasons)&&x.selectionReasons.length>0));
+ assert.deepEqual(report,makeR55ReviewQueue(matrix),'Review selection must be deterministic');
+ assert.equal(JSON.stringify(matrix),before,'Review selector mutated source matrix');
+ const malformed=JSON.parse(before);malformed.cases[1].id=malformed.cases[0].id;
+ assert.throws(()=>makeR55ReviewQueue(malformed));
+ const missing=JSON.parse(before);missing.cases[0].periods.pop();
+ assert.throws(()=>makeR55ReviewQueue(missing));
+ const escalated=JSON.parse(before);escalated.rootCauseVerified=true;
+ assert.throws(()=>makeR55ReviewQueue(escalated));
+ const altered=JSON.parse(before);altered.criteria[0].comparisonCategories['source-only']++;
+ assert.throws(()=>makeR55ReviewQueue(altered));
+ console.log('R55: 67 source cases/804 periods; all evidence groups sampled with both R30 controls; no source-school claim');
+});
