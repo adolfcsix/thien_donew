@@ -215,6 +215,23 @@ test('r57: genuine R33 source dates must be executed under pinned source CI',()=
  assert.equal(out.targetCase.dayOnlyDifferent,true);
  assert.equal(out.targetCase.rootCauseVerified,false);
  assert.equal(out.targetCase.comparison.sourceLiêmTrinhObeysLocalAnchorOffset,true);
+ assert.equal(out.classCounts['source-lunar-input-reproduces-source-anchor-and-liem-in-local-model'],18);
+ assert.equal(out.classCounts['context-or-calendar-not-isolated'],12);
+ assert.deepEqual([out.targetCase.source.lunarYear,out.targetCase.source.lunarMonth,
+  out.targetCase.source.lunarDay],[1989,7,14]);
+ assert.deepEqual([out.targetCase.originalLocal.lunarYear,out.targetCase.originalLocal.lunarMonth,
+  out.targetCase.originalLocal.lunarDay],[1989,7,15]);
+ assert.equal(out.targetCase.source.wuxingJu,4);
+ assert.equal(out.targetCase.originalLocal.wuxingJu,4);
+ assert.equal(out.targetCase.source.mingGongBranch,8);
+ assert.equal(out.targetCase.originalLocal.mingGongBranch,8);
+ assert.deepEqual([out.targetCase.source.ziweiPos,out.targetCase.source.liemTrinhBranch],[7,11]);
+ assert.deepEqual([out.targetCase.originalLocal.ziweiPos,
+  out.targetCase.originalLocal.liemTrinhBranch],[4,8]);
+ assert.deepEqual([out.targetCase.localCounterfactual?.ziweiPos,
+  out.targetCase.localCounterfactual?.liemTrinhBranch],[7,11]);
+ assert.equal(out.targetCase.comparison.counterfactualPreservesSourceCuc,true);
+ assert.equal(out.targetCase.comparison.counterfactualPreservesSourceMing,true);
  assert.equal(out.mayChangeChartRules,false);
  assert.equal(out.mayIncreaseMapping,false);
  console.log('R57: 30 genuine source inputs; 18 lunar-day divergences; target='+out.targetCase.resultClass+
