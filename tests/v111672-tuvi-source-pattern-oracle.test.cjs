@@ -3,7 +3,7 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
-const {independentlyEvaluate,validateObservation,evaluateSourcePatternOracle,SCHEMA,LIMITATION}=
+const {independentlyEvaluate,reconcilePinnedR44Fixture,validateObservation,evaluateSourcePatternOracle,SCHEMA,LIMITATION}=
  require('../infrastructure/scripts/tuvi-r29-evaluate-source-oracle.cjs');
 const matrix=JSON.parse(fs.readFileSync(path.join(__dirname,'fixtures/tuvi-r27-iztro-cases.json'),'utf8'));
 const observedPath=path.resolve(__dirname,'../.r29-source-pattern-oracle-observations.json');
@@ -111,4 +111,31 @@ test('r29: only the isolated pinned-source CI may claim actual detector executio
  assert.equal(report.actualSourceDetectorsExecuted,true);
  assert.equal(report.semanticEquivalenceVerified,false);
  assert.equal(report.localPatternVerdictsVerified,false);
+});
+
+test('r45: R44 fixture reconciles with R29 source observations but cannot declare Thiên Đồ chart parity',()=>{
+ const original=staged(),before=JSON.stringify(original);
+ const observed=independentlyEvaluate(original);
+ const bridge=reconcilePinnedR44Fixture(original,observed);
+ assert.equal(bridge.sourceOnly,true);
+ assert.equal(bridge.matchedPeriods,observed.dingZa03.length);
+ assert.equal(bridge.semanticEquivalenceVerified,false);
+ assert.equal(bridge.localPatternVerdictsVerified,false);
+ assert.equal(JSON.stringify(original),before);
+ const rearranged=clone(original);
+ rearranged.palaces.reverse();
+ rearranged.daXians.reverse();
+ assert.deepEqual(reconcilePinnedR44Fixture(rearranged),bridge);
+});
+test('r45: duplicate inactive source Void alias and malformed siHua fail closed in bridge',()=>{
+ const duplicate=staged();
+ duplicate.palaces[0].stars.push({name:'空亡',siHua:null});
+ duplicate.palaces[1].stars.push({name:'空亡',siHua:null});
+ // R29 has no uniqueness rule for this historical alias. R44 must reject it.
+ assert.doesNotThrow(()=>independentlyEvaluate(duplicate));
+ assert.throws(()=>reconcilePinnedR44Fixture(duplicate),/Duplicate source star/);
+ const bad=staged();bad.palaces[0].stars[0].siHua='INVALID';
+ assert.throws(()=>reconcilePinnedR44Fixture(bad));
+ const empty=staged();empty.daXians[0].palaceBranch=empty.daXians[1].palaceBranch;
+ assert.throws(()=>reconcilePinnedR44Fixture(empty));
 });
