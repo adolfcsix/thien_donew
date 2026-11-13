@@ -415,6 +415,12 @@ test('r61: six separate source void names and 960 genuine pinned predicate contr
    Number.isInteger(o.atMing)&&o.atMing>=0&&o.atMing<=o.chartPresence));
  for(const count of Object.values(report.sourceHitCounts))
   assert.ok(Number.isInteger(count)&&count>=0&&count<=960*12);
+ assert.deepEqual(report.sourceHitCounts,{
+  'dinh-ban-01':24,'dinh-ban-02':4,'dinh-tap-03-periods':768
+ },'R61 must retain counts from genuine immutable source detectors');
+ assert.ok(['ban01','ban02','tap03'].every(k=>
+   typeof report.firstObservedPositive[k]==='string'&&
+   report.firstObservedPositive[k].length>0),'R61 requires real positive witnesses for each source rule');
  assert.equal(report.known1989Case.id,'1989-08-15-male-0');
  assert.equal(report.known1989Case.mingBranch,8);
  assert.equal(report.known1989Case.liemAtMing,false);
