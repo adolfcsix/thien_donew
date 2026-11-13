@@ -9,6 +9,8 @@ on:
       - 'infrastructure/scripts/tuvi-r32-r54-*'
       - 'infrastructure/scripts/tuvi-r32-r55-*'
       - 'infrastructure/scripts/tuvi-r32-r56-*'
+      - 'infrastructure/scripts/tuvi-r32-r61-*'
+      - 'tests/v111679-tuvi-r61-void-family-ablation.test.cjs'
       - 'infrastructure/scripts/tuvi-r29-*'
       - 'infrastructure/scripts/tuvi-r30-*'
       - 'tests/v111675-tuvi-r32-cross-engine-matrix.test.cjs'
@@ -24,6 +26,8 @@ on:
       - 'infrastructure/scripts/tuvi-r32-r54-*'
       - 'infrastructure/scripts/tuvi-r32-r55-*'
       - 'infrastructure/scripts/tuvi-r32-r56-*'
+      - 'infrastructure/scripts/tuvi-r32-r61-*'
+      - 'tests/v111679-tuvi-r61-void-family-ablation.test.cjs'
       - 'tests/v111675-tuvi-r32-cross-engine-matrix.test.cjs'
   workflow_dispatch:
 permissions:
@@ -73,6 +77,8 @@ jobs:
           node infrastructure/scripts/tuvi-r32-r54-diagnostic-disagreement-triage.cjs .r29-source-pattern-oracle-observations.json .r30-source-rare-positive-observations.json
           node infrastructure/scripts/tuvi-r32-r55-counterexample-review-queue.cjs .r54-source-local-difference-triage.json
           node infrastructure/scripts/tuvi-r32-r56-pinned-predicate-traces.cjs .r32-cross-engine-evidence-matrix-report.json .r53-source-void-atom-breakdown.json .r54-source-local-difference-triage.json .r55-pinned-counterexample-review-queue.json
+          node --test tests/v111679-tuvi-r61-void-family-ablation.test.cjs
+          node infrastructure/scripts/tuvi-r32-r61-source-void-family-ablation.cjs .r29-source-pattern-oracle-observations.json .r30-source-rare-positive-observations.json
       - name: Explain what the comparison can and cannot claim
         if: always()
         run: |
@@ -86,6 +92,7 @@ jobs:
           echo 'R54: classify observed branch/proxy mismatches without claiming a proven root cause or semantic equivalence.' >> "$GITHUB_STEP_SUMMARY"
           echo 'R55: deterministic evidence-based review queue over 938 comparisons including both rare source controls; no automatic source-school or semantic parity.' >> "$GITHUB_STEP_SUMMARY"
           echo 'R56: independently crosscheck exact predicate atoms and named source/local star coordinates of selected R55 cases. No engine modification or academic promotion.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'R61: source-only leave-one-family-out analysis of Xunkong vs Jiekong in 67 verified source charts and 804 major periods. No source-school parity; 31/49 remains.' >> "$GITHUB_STEP_SUMMARY"
       - name: Archive genuine source and diagnostic evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -101,6 +108,7 @@ jobs:
             .r55-pinned-counterexample-review-queue.json
             .r56-pinned-source-predicate-traces.json
             .r56-pinned-source-predicate-traces.md
+            .r61-source-void-family-ablation.json
           include-hidden-files: true
           if-no-files-found: warn
           retention-days: 14
