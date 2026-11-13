@@ -15,6 +15,7 @@ const DATES=Object.freeze(['1988-08-15','1989-08-14','1989-08-15','1989-08-16','
 const CONTROL_DATES=Object.freeze(['1989-08-01','1989-08-02']);
 const FIELDS=Object.freeze(['lunarJavascriptRaw','sourceEffective','sourceGetLunarInfo','iztroBySolar','sourceGenerateChart']);
 const BRANCH=x=>Number.isInteger(x)&&x>=0&&x<12;
+const CHINESE_BRANCHES='子丑寅卯辰巳午未申酉戌亥';
 function ids(){
  const out=[];
  for(const date of DATES)for(const gender of ['Nam','Nữ'])for(const hour of [0,8,22])
@@ -52,14 +53,18 @@ function validateProbe(observation,requestedTZ){
   for(const k of FIELDS)if(!row[k]||typeof row[k]!=='object')
    throw Error('R58 missing source calendar path '+k);
   const a=row.lunarJavascriptRaw,e=row.sourceEffective,g=row.sourceGetLunarInfo,c=row.sourceGenerateChart;
+  const iz=row.iztroBySolar.rawLunarDate;
   if(!Number.isInteger(a.year)||a.year<1800||a.year>2200||
      !Number.isInteger(a.month)||Math.abs(a.month)<1||Math.abs(a.month)>12||
      !Number.isInteger(a.day)||a.day<1||a.day>30||
      e.year!==g.year||e.month!==g.month||e.day!==g.day||e.leap!==g.leap||
      e.rawMonth!==a.month||e.rawDay!==a.day||
+     !iz||iz.lunarYear!==g.year||iz.lunarMonth!==g.month||
+     iz.lunarDay!==g.day||iz.isLeap!==g.leap||
      !Number.isInteger(g.yearStem)||g.yearStem<0||g.yearStem>9||
      ![2,3,4,5,6].includes(c.wuxingJu)||
-     !BRANCH(c.ziweiPos)||!BRANCH(c.liemTrinhBranch)||!BRANCH(c.mingGongBranch))
+     !BRANCH(c.ziweiPos)||!BRANCH(c.liemTrinhBranch)||!BRANCH(c.mingGongBranch)||
+     CHINESE_BRANCHES.indexOf(row.iztroBySolar.ziweiBranchName)!==c.ziweiPos)
    throw Error('R58 invalid or internally inconsistent source lunar and chart fields');
   map.set(row.id,row);
  }
@@ -147,6 +152,9 @@ function buildR58TimezoneMatrix(probes,r33){
   target1989:target,
   utcMoonBoundary:BOUNDARY,
   sourceBySolarAndLunarJavascriptBothExecuted:true,
+  observedLunarJavascriptAndIztroAgreementOn32Cases:true,
+  processTimezoneStableOn32Cases:Object.values(countByZone).every(ob=>
+   Object.values(ob).every(n=>n===0)),
   lunarJavascriptVsIztroSameLibraryVerified:false,
   sourceCalendarTimeZoneInferred:false,
   astronomicalBoundaryCompatible:true,
