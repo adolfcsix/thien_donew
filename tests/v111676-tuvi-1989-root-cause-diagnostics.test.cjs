@@ -237,3 +237,65 @@ test('r57: genuine R33 source dates must be executed under pinned source CI',()=
  console.log('R57: 30 genuine source inputs; 18 lunar-day divergences; target='+out.targetCase.resultClass+
   '; counterfactual sensitivity only, never algorithm-school equivalence');
 });
+
+
+test('r58: genuine source library timezone matrix is complete, provenance-locked and fail-closed',()=>{
+ const {TZ,ALL_IDS,validateProbe,buildR58TimezoneMatrix}=
+  require('../infrastructure/scripts/tuvi-r33-r58-evaluate-timezone-calendar.cjs');
+ assert.deepEqual(TZ,['UTC','Asia/Ho_Chi_Minh','Asia/Shanghai']);
+ assert.equal(ALL_IDS.length,32);
+ assert.equal(new Set(ALL_IDS).size,32);
+ assert.throws(()=>validateProbe(null,'UTC'));
+ assert.throws(()=>buildR58TimezoneMatrix(null,null));
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const makePath=zone=>path.resolve(__dirname,'../.r58-source-tz-'+
+  zone.replaceAll('/','_')+'.json');
+ const observations=TZ.map(zone=>{
+  const file=makePath(zone);
+  assert.ok(fs.existsSync(file),'R58 genuine source TZ observation missing: '+zone);
+  return JSON.parse(fs.readFileSync(file,'utf8'));
+ });
+ const sourcePath=path.resolve(__dirname,'../.r33-source-1989-root-cause-observations.json');
+ assert.ok(fs.existsSync(sourcePath),'R58 source R33 observations absent');
+ const source=JSON.parse(fs.readFileSync(sourcePath,'utf8'));
+ const original=JSON.stringify(observations);
+ const report=buildR58TimezoneMatrix(observations,source);
+ assert.equal(report.comparedCalendars,96);
+ assert.equal(report.uniqueBirthControls,32);
+ assert.equal(report.baseR33CaseCount,30);
+ assert.equal(report.rows.length,32);
+ assert.equal(report.target1989.lunarDayByZone.UTC,14);
+ assert.equal(report.target1989.sourceChartByZone.UTC.ziweiPos,7);
+ assert.equal(report.target1989.sourceChartByZone.UTC.liemTrinhBranch,11);
+ assert.equal(report.mappedResearchCount,31);
+ assert.equal(report.referenceTotal,49);
+ assert.equal(report.sourceBySolarAndLunarJavascriptBothExecuted,true);
+ assert.equal(report.rootCauseVerified,false);
+ assert.equal(report.sourceCalendarTimeZoneInferred,false);
+ assert.equal(report.mayChangeChartRules,false);
+ assert.equal(report.mayEnableCalendarSchoolMode,false);
+ assert.equal(report.semanticEquivalenceVerified,false);
+ assert.equal(report.sourceSchoolParityVerified,false);
+ assert.equal(report.mayIncreaseMapping,false);
+ assert.ok(Object.isFrozen(report)&&Object.isFrozen(report.rows));
+ for(const zone of TZ.slice(1)){
+  assert.ok(report.fieldDifferenceCounts[zone]);
+  for(const count of Object.values(report.fieldDifferenceCounts[zone]))
+   assert.ok(Number.isInteger(count)&&count>=0&&count<=32);
+ }
+ assert.equal(JSON.stringify(observations),original,'R58 mutated immutable source observations');
+ assert.deepEqual(report,buildR58TimezoneMatrix(observations,source));
+ const wrongCommit=clone(observations);
+ wrongCommit[0].provenance.commit='HEAD';
+ assert.throws(()=>buildR58TimezoneMatrix(wrongCommit,source));
+ const missing=clone(observations);
+ missing[1].results.pop();
+ assert.throws(()=>buildR58TimezoneMatrix(missing,source));
+ const forged=clone(observations);
+ forged[0].results[0].sourceGetLunarInfo.day++;
+ assert.throws(()=>buildR58TimezoneMatrix(forged,source));
+ const duplicated=clone(observations);
+ duplicated[2].results[1].id=duplicated[2].results[0].id;
+ assert.throws(()=>buildR58TimezoneMatrix(duplicated,source));
+ console.log('R58: 3 source runtime TZ settings x 32 cases; no school/timezone inference, 31/49 unchanged');
+});
