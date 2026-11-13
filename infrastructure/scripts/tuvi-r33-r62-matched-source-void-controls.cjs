@@ -171,9 +171,7 @@ function auditR62(observations,r33){
  for(const id of IDS){
   const c=counts[id];
   check(c.sourcePositive===expected[id]&&
-   witnesses[id].length===expected[id]&&
-   c.sourcePositive===id==='dinh-tap-03'?
-    c.sourcePositive===expected[id]:true,
+   witnesses[id].length===expected[id],
    'pinned source positive count or matched control missing: '+id);
  }
  check(prior.sourceHitCounts['dinh-ban-01']===counts['dinh-ban-01'].sourcePositive&&
