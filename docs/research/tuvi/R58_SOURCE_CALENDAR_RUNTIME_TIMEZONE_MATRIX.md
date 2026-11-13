@@ -29,6 +29,19 @@ Phép thử chỉ đếm thay đổi các trường khi chuyển **biến môi t
 
 NASA GSFC ghi thời điểm sóc 01/08/1989 lúc 16:06 UTC, ứng với ngày 01/08 tại UTC+7 và 02/08 tại UTC+8. Đây là ranh giới thiên văn tương thích với sai lệch lịch R33/R57, không phải bằng chứng mã nguồn sử dụng một trong hai múi giờ.
 
+## Kết quả đã chạy trên mã nguồn thực
+
+Workflow R33/R58, run [43340255093](https://github.com/adolfcsix/thien_donew/actions/runs/43340255093), **9/9 kiểm thử PASS**, xuất 3 JSON nguồn và 1 ma trận kiểm toán. Cả ba đường lịch `lunar-javascript`, `getLunarInfo` và `iztro.bySolar` đều đã được chạy bằng cùng checkout và phiên bản khóa. Trong **32/32 ca tại mỗi môi trường**, các ngày âm do `lunar-javascript` và `iztro.rawDates.lunarDate` trả về **trùng nhau**.
+
+| So sánh với tiến trình UTC | Ngày âm lunar-javascript | Ngày âm nguồn | Ngày âm iztro | Tử Vi/Mệnh/Cục và Liêm Trinh |
+| --- | ---: | ---: | ---: | ---: |
+| Asia/Ho_Chi_Minh | 0/32 khác | 0/32 khác | 0/32 khác | 0/32 khác |
+| Asia/Shanghai | 0/32 khác | 0/32 khác | 0/32 khác | 0/32 khác |
+
+Ở chính nguồn ghim, ngày dương 01/08/1989 được quy thành **30/06 âm**, còn ngày 02/08/1989 được quy thành **01/07 âm** trên cả hai thư viện; ngày 15/08/1989 thành **14/07 âm**, không phụ thuộc biến môi trường `TZ`. Đây là dữ liệu thực nghiệm cụ thể, không phải đoán.
+
+**Phân biệt kết luận:** hai thư viện cho kết quả giống nhau ở bộ mẫu này, và thay múi giờ tiến trình không thay đổi đầu ra; do đó giả thuyết sai lệch chỉ bởi `process.env.TZ` của máy chạy đã không đứng vững. Tuy nhiên, phép thử **chưa chứng minh** vì sao nội bộ hai thư viện chọn ranh giới ngày bắt đầu tháng 7 như vậy, quy tắc lịch thiên văn hay trường phái được dùng là gì, hoặc lịch nào nên áp dụng cho người dùng Việt Nam. Cần kiểm tra tiếp thuật toán nội bộ lịch Trung Quốc/Việt Nam, thông số vị trí địa lý và đối chiếu thêm nhiều mốc sóc độc lập. Không được tự động thêm tùy chọn lịch trường phái ở bước này.
+
 ## Các điều kiện cấm tự động
 
 - Không sửa `packages/astrology-engine/src/tuvi.js` hoặc `lunar.js` để khớp nguồn.
