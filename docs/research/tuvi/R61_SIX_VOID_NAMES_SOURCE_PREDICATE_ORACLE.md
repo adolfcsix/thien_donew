@@ -23,6 +23,20 @@ R60 đã xác nhận **31/49 chỉ mục có điều kiện nghiên cứu**; 18 
 - Kiểm toán JS `tuvi-r33-r61-audit-source-void-predicates.cjs` bắt buộc **đủ 960 ID**, sáu nhãn nguồn có tên cố định và chỉ số địa chi hợp lệ, không trùng vị trí, không đổi thứ tự kỳ hạn, không sai vị trí 1989 đã khóa tại R33. Phản chứng sửa ngày, sao, tọa độ hoặc thống kê nguồn phải FAIL.
 - Lưu artifact JSON nguồn thực và báo cáo thống kê cho cả ba cách cục, gồm số ca dương tính tìm thấy và tỷ lệ xuất hiện từng nhãn. **Không nâng cấp mẫu thành xác nhận học thuật.**
 
+## Kết quả thật từ GitHub Actions
+
+Workflow R33–R61 tại <https://github.com/adolfcsix/thien_donew/actions/runs/43419860275> đã xác nhận nguồn ghim chạy xong **960/960 lá số**, sáu nhãn Không Vong được ghi riêng theo chi và cả ba detector nguồn nhất quán với công thức Boolean độc lập. Kiểm thử chuyên biệt **11/11 PASS**.
+
+| Quy tắc nguồn | Số lượng đáp ứng trên lưới kiểm thử |
+| --- | ---: |
+| `dinh-ban-01` — 生不逢时 | 24/960 **lá số** |
+| `dinh-ban-02` — 禄逢两杀 | 4/960 **lá số** |
+| `dinh-tap-03` — 禄衰马困 | **768 lượt đại hạn**, không phải 768 lá số |
+
+Các điều kiện có **ít nhất một ca dương tính** ở cả ba mục. Sau lần chạy này đã khóa các số 24/4/768 bằng kiểm thử, nhưng không coi chúng là tỷ lệ dân số hay bằng chứng tất cả 49 cách cục đã có hàm đánh giá cùng trường phái. Mẫu được lấy cố định theo 10 năm × 4 tháng × 2 giới × 12 giờ; có thể thiếu biến thể theo ngày sinh và các trường hợp ngày âm cận ranh giới.
+
+**Giới hạn cần giải quyết trước khi nâng mốc:** engine nguồn trả nhãn và tọa độ sao theo thuật toán, quy tắc lịch và trường phái riêng; R61 chưa chứng minh liệu các nhãn tương ứng trong Thiên Đồ có được an ở cùng chi **trên cùng thông tin sinh đã chuẩn hóa**. Đặc biệt ở 15/08/1989, R57–R59 đã xác nhận lệch ngày âm một ngày và sao Liêm Trinh có thể lệch vị trí. Nên chỉ khẳng định **nghiệm chứng Boolean nội bộ nguồn**, chưa đủ cơ sở đổi 31/49 thành 32/49.
+
 ## Giới hạn & cổng nghiệm thu
 
 R61 mới kiểm chứng **tính nhất quán logic của detector nguồn theo các tọa độ nguồn**, không chứng minh phép an của Thiên Đồ tương đương thuật toán nguồn, đặc biệt còn khác ngày âm tháng 7/1989. Đối với `dinh-ban-01`, R57 trước đó cho thấy cùng ngày dương có thể khác tọa độ Liêm Trinh. Cả ba chỉ mục vẫn `pending`.
