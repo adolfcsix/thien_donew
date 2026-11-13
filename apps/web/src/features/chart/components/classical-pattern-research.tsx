@@ -79,7 +79,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
     <div className={styles.head}>
       <div>
         <h4>Đối chiếu cách cục cổ điển</h4>
-        <p className="palace-reading-scope">Đã ánh xạ điều kiện {milestone.conditionMapped}/{milestone.total} mục ({milestone.mappedByScope.natal} nguyên cục + {milestone.mappedByScope.period} đại hạn nghiên cứu) · {data.matched} khớp cấu trúc nguyên cục · {data.needsReview} cần thẩm định.</p>
+        <p className="palace-reading-scope">Đã ánh xạ điều kiện {catalog.assessed}/{data.referenceTotal} mục ({data.records.length} nguyên cục + {bridge.mappedIds.length} đại hạn nghiên cứu) · {data.matched} khớp cấu trúc nguyên cục · {data.needsReview} cần thẩm định.</p>
       </div>
       <div className={styles.filters} role="group" aria-label="Lọc theo kết quả điều kiện nghiên cứu">
         <button type="button" aria-pressed={filter==='relevant'} onClick={()=>setFilter('relevant')}>Liên quan · {evidence.counts.relevant}</button>
