@@ -16,7 +16,7 @@ const installed=JSON.parse(readFileSync('node_modules/iztro/package.json','utf8'
 if(installed.version!=='2.6.1'||lock.packages?.['node_modules/iztro']?.version!=='2.6.1')
  throw Error('R61 iztro dependency is not pinned');
 const names=['旬空','副旬','截路','截空','空亡','副截'] as const;
-const byNo=(list:readonly {no:number;name:string}[],number:number,name:string)=>{
+const byNo=<T extends {no:number;name:string}>(list:readonly T[],number:number,name:string):T=>{
  const hits=list.filter(x=>x.no===number&&x.name===name);
  if(hits.length!==1)throw Error('R61 source detector entry missing/duplicated: '+name);
  return hits[0];
