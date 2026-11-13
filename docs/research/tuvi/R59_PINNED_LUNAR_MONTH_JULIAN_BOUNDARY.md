@@ -19,6 +19,20 @@ R58 mới quan sát đầu ra; R59 truy sâu **cấu trúc tính tháng âm** qu
 
 Dòng nguồn dự kiến: `Solar` → `LunarYear/LunarMonth` → `ShouXingUtil` (tính sóc và tiết khí). Đường chi tiết ở phiên bản ghim chỉ được công nhận sau khi chính runtime và phương thức tương ứng đã chạy trong CI; tên hàm ở nhánh mới nhất không thay cho mã 1.7.7/1.8.6.
 
+## Bằng chứng chạy thật từ bản thư viện ghim
+
+Workflow nguồn [43389493145](https://github.com/adolfcsix/thien_donew/actions/runs/43389493145) đã PASS **10/10 bài kiểm thử R33–R59**, không còn lỗi sau khi điều chỉnh thứ tự tạo báo cáo. Artifacts gồm kết quả nguồn R59 và ma trận R58. Cả **lunar-javascript@1.7.7** và **lunar-typescript@1.8.6** có kết quả trùng hẳn tại các tháng được chọn:
+
+| Tháng âm | Ngày dương mùng 1 | Julian Day ghi trong thư viện | Số ngày tháng |
+|---|---|---:|---:|
+| 07/1988 | 12/08/1988 | 2447386 | 30 |
+| 06/1989 | 03/07/1989 | 2447711 | 30 |
+| **07/1989** | **02/08/1989** | **2447741** | **29** |
+| 08/1989 | 31/08/1989 | 2447770 | 30 |
+| 07/1990 | 20/08/1990 | 2448124 | 30 |
+
+Ở cả hai bundle ghim, `ShouXingUtil.ONE_THIRD` có giá trị 1/3 ngày = **8 giờ**, và mã của cả phương thức `shuoHigh`, `shuoLow` đều có tham chiếu tới hằng số này. Bộ kiểm thử lưu hash SHA-256 của các phương thức để đối chiếu tính toàn vẹn. Phát hiện này trực tiếp ràng buộc dấu vết mã nguồn với ngày đầu tháng 07/1989 mà hai thư viện đều tính ra, **không phải** bằng chứng độc lập rằng thời điểm sóc được tính chính xác hoặc toàn bộ chính sách chuyển đổi âm lịch nhất thiết dựa trên UTC+8.
+
 ## Phân biệt kết luận kỹ thuật và học thuật
 
 Nếu hai thư viện cùng ghi `1989-08-02` là ngày đầu tháng 07 âm và đều chứa hằng số tám giờ, R59 sẽ xác nhận **dữ liệu ranh giới và hằng số tính toán của hai dependency nguồn tại phiên bản khóa**. Điều đó có ý nghĩa làm cơ sở cho nghiên cứu tiếp: có một thành phần dịch tám giờ trong thuật toán thiên văn của thư viện nguồn.
