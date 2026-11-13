@@ -270,6 +270,18 @@ test('r58: genuine source library timezone matrix is complete, provenance-locked
  assert.equal(report.mappedResearchCount,31);
  assert.equal(report.referenceTotal,49);
  assert.equal(report.sourceBySolarAndLunarJavascriptBothExecuted,true);
+ assert.equal(report.observedLunarJavascriptAndIztroAgreementOn32Cases,true);
+ assert.equal(report.processTimezoneStableOn32Cases,true);
+ assert.deepEqual(report.fieldDifferenceCounts['Asia/Ho_Chi_Minh'],
+  {lunarJavascriptRaw:0,sourceEffective:0,sourceGetLunarInfo:0,
+   iztroBySolar:0,sourceGenerateChart:0});
+ assert.deepEqual(report.fieldDifferenceCounts['Asia/Shanghai'],
+  {lunarJavascriptRaw:0,sourceEffective:0,sourceGetLunarInfo:0,
+   iztroBySolar:0,sourceGenerateChart:0});
+ assert.equal(report.rows.find(x=>x.id==='1989-08-01-Nam-0')
+  .lunarJavascriptByZone.UTC.month,6);
+ assert.equal(report.rows.find(x=>x.id==='1989-08-02-Nam-0')
+  .lunarJavascriptByZone.UTC.month,7);
  assert.equal(report.rootCauseVerified,false);
  assert.equal(report.sourceCalendarTimeZoneInferred,false);
  assert.equal(report.mayChangeChartRules,false);
@@ -294,6 +306,12 @@ test('r58: genuine source library timezone matrix is complete, provenance-locked
  const forged=clone(observations);
  forged[0].results[0].sourceGetLunarInfo.day++;
  assert.throws(()=>buildR58TimezoneMatrix(forged,source));
+ const brokenIztro=clone(observations);
+ brokenIztro[0].results[0].iztroBySolar.rawLunarDate.lunarDay++;
+ assert.throws(()=>buildR58TimezoneMatrix(brokenIztro,source));
+ const brokenStar=clone(observations);
+ brokenStar[0].results[0].iztroBySolar.ziweiBranchName='非法';
+ assert.throws(()=>buildR58TimezoneMatrix(brokenStar,source));
  const duplicated=clone(observations);
  duplicated[2].results[1].id=duplicated[2].results[0].id;
  assert.throws(()=>buildR58TimezoneMatrix(duplicated,source));
