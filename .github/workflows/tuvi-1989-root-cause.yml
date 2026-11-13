@@ -51,14 +51,20 @@ jobs:
           TZ=UTC ./node_modules/.bin/tsx .thiendo-r58-calendar-probe.ts
           TZ=Asia/Ho_Chi_Minh ./node_modules/.bin/tsx .thiendo-r58-calendar-probe.ts
           TZ=Asia/Shanghai ./node_modules/.bin/tsx .thiendo-r58-calendar-probe.ts
+      - name: Execute pinned lunar library internal boundary probe
+        run: |
+          cp infrastructure/scripts/tuvi-r33-r59-pinned-lunar-boundary-probe.ts.template reference-ziwei/.thiendo-r59-lunar-internals.ts
+          cd reference-ziwei
+          TZ=UTC ./node_modules/.bin/tsx .thiendo-r59-lunar-internals.ts
       - name: Verify original source metadata, local chart and divergence classification
         env:
           THIENDO_R33_REQUIRE_GENUINE: '1'
         run: |
-          node --test tests/v111676-tuvi-1989-root-cause-diagnostics.test.cjs
           node infrastructure/scripts/tuvi-r33-evaluate-root-cause.cjs .r33-source-1989-root-cause-observations.json
           node infrastructure/scripts/tuvi-r33-r57-lunar-day-counterfactual.cjs .r33-source-1989-root-cause-observations.json
           node infrastructure/scripts/tuvi-r33-r58-evaluate-timezone-calendar.cjs .r58-source-tz-UTC.json .r58-source-tz-Asia_Ho_Chi_Minh.json .r58-source-tz-Asia_Shanghai.json
+          node infrastructure/scripts/tuvi-r33-r59-evaluate-lunar-boundary-internals.cjs .r59-source-lunar-boundary-internals.json
+          node --test tests/v111676-tuvi-1989-root-cause-diagnostics.test.cjs
       - name: Note source-only evidence boundary
         if: always()
         run: |
@@ -69,6 +75,7 @@ jobs:
           echo 'No astrology engine changes, no semantic parity, no promotion from 31/49 mapped classical conditions.' >> "$GITHUB_STEP_SUMMARY"
           echo 'R57: 30 real source cases with isolated local lunar-input counterfactual; a reproduced coordinate does NOT prove calendar-school equivalence or authorize changing user charts.' >> "$GITHUB_STEP_SUMMARY"
           echo 'R58: three source-library TZ runtime experiments; process TZ behavior is not proof of calendar-school policy or authorization to switch Thiên Đồ charts.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'R59: independently observe first Julian day of 1989 lunar month 7 and a library eight-hour calculation term; full astronomy and calendar-school policy NOT established.' >> "$GITHUB_STEP_SUMMARY"
       - name: Retain detailed source and comparison JSON
         if: always()
         uses: actions/upload-artifact@v4
@@ -82,6 +89,8 @@ jobs:
             .r58-source-tz-Asia_Ho_Chi_Minh.json
             .r58-source-tz-Asia_Shanghai.json
             .r58-pinned-timezone-calendar-matrix.json
+            .r59-source-lunar-boundary-internals.json
+            .r59-pinned-lunar-julian-boundary-audit.json
           include-hidden-files: true
           if-no-files-found: warn
           retention-days: 14

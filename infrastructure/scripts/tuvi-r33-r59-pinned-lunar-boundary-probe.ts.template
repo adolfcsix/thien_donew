@@ -1,0 +1,93 @@
+/**
+ * R59 — execute only inside immutable Renhuai123/ziwei-doushu checkout.
+ * Observe lunar month first Julian dates and the packaged new-moon
+ * time-offset term in the two independent pinned calendar dependencies.
+ * Observing an 8h term does NOT establish a complete calendrical policy.
+ */
+import {writeFileSync,readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {
+ Solar as JsSolar,LunarMonth as JsLunarMonth,ShouXingUtil as JsShouXing
+} from 'lunar-javascript';
+import {
+ Solar as TsSolar,LunarMonth as TsLunarMonth,ShouXingUtil as TsShouXing
+} from 'lunar-typescript';
+const COMMIT='7922285d947b36610e7e31c232d8f1e2a0d0871d';
+const lock=JSON.parse(readFileSync('package-lock.json','utf8'));
+const packages=[
+ ['lunar-javascript','1.7.7'],['lunar-typescript','1.8.6'],['iztro','2.6.1']
+] as const;
+for(const [name,version] of packages){
+ const own=JSON.parse(readFileSync('node_modules/'+name+'/package.json','utf8'));
+ if(own.version!==version||lock.packages?.['node_modules/'+name]?.version!==version)
+  throw Error('R59 pinned dependency mismatch: '+name);
+}
+const configs=[
+ {key:'lunar-javascript',Solar:JsSolar,LunarMonth:JsLunarMonth,ShouXing:JsShouXing},
+ {key:'lunar-typescript',Solar:TsSolar,LunarMonth:TsLunarMonth,ShouXing:TsShouXing}
+];
+const months=[
+ {year:1988,month:7},{year:1989,month:6},{year:1989,month:7},
+ {year:1989,month:8},{year:1990,month:7}
+];
+const bundleObservations=configs.map(c=>{
+ const term=Number(c.ShouXing.ONE_THIRD);
+ if(!Number.isFinite(term)||Math.abs(term-1/3)>1e-12)
+  throw Error('R59 new moon time-offset term has changed in '+c.key);
+ const shuoHighSource=String(c.ShouXing.shuoHigh);
+ const shuoLowSource=String(c.ShouXing.shuoLow);
+ const calcSource=String(c.ShouXing.calcShuo);
+ if(!shuoHighSource||!shuoLowSource||!calcSource)
+  throw Error('R59 new moon algorithm methods absent');
+ const fingerprint=(body:string)=>createHash('sha256').update(body).digest('hex');
+ const lunations=months.map(({year,month})=>{
+  const lunarMonth=c.LunarMonth.fromYm(year,month);
+  if(!lunarMonth)throw Error('R59 pinned lunar month missing');
+  const jd=Number(lunarMonth.getFirstJulianDay());
+  const civil=c.Solar.fromJulianDay(jd);
+  const firstDate=[
+   String(civil.getYear()).padStart(4,'0'),
+   String(civil.getMonth()).padStart(2,'0'),
+   String(civil.getDay()).padStart(2,'0')
+  ].join('-');
+  const solarFirstDay=c.Solar.fromYmd(civil.getYear(),civil.getMonth(),civil.getDay()).getLunar();
+  const firstIsDayOne=solarFirstDay.getYear()===year&&
+   solarFirstDay.getMonth()===month&&solarFirstDay.getDay()===1;
+  if(!firstIsDayOne||!Number.isFinite(jd))
+   throw Error('R59 first Julian day does not reproduce lunar day 1: '+c.key+' '+year+'-'+month);
+  return {year,month,firstJulianDay:jd,
+   solarFirstDay:firstDate,dayCount:Number(lunarMonth.getDayCount()),
+   firstIsDayOne};
+ });
+ const datedControls=['1989-08-01','1989-08-02','1989-08-15'].map(date=>{
+  const [y,m,d]=date.split('-').map(Number);
+  const lun=c.Solar.fromYmd(y,m,d).getLunar();
+  return {solarDate:date,lunarYear:Number(lun.getYear()),
+   lunarMonth:Number(lun.getMonth()),lunarDay:Number(lun.getDay())};
+ });
+ return {name:c.key,
+  declaredNewMoonOffsetDays:term,
+  declaredOffsetHours:term*24,
+  highMethodContainsOffsetSymbol:shuoHighSource.includes('ONE_THIRD'),
+  lowMethodContainsOffsetSymbol:shuoLowSource.includes('ONE_THIRD'),
+  highMethodFingerprintSha256:fingerprint(shuoHighSource),
+  lowMethodFingerprintSha256:fingerprint(shuoLowSource),
+  calcMethodFingerprintSha256:fingerprint(calcSource),
+  lunarMonths:lunations,
+  datedControls
+ };
+});
+if(bundleObservations.length!==2)throw Error('R59 two pinned libraries required');
+const output={
+ schema:'thiendo-r59-source-lunar-boundary-internal-probe-v1',
+ provenance:{repository:'Renhuai123/ziwei-doushu',commit:COMMIT,
+  lockedDependencies:Object.fromEntries(packages),
+  sourceExecuted:true,syntheticOnly:true},
+ nodeTimezone:Intl.DateTimeFormat().resolvedOptions().timeZone,
+ libraryCount:2,monthCountPerLibrary:months.length,
+ libraries:bundleObservations
+};
+writeFileSync('../.r59-source-lunar-boundary-internals.json',JSON.stringify(output,null,2)+'\n');
+console.log('R59: '+bundleObservations.map(x=>x.name+' first 1989/7='+
+ x.lunarMonths.find(y=>y.year===1989&&y.month===7)?.solarFirstDay+
+ ', offsetHours='+x.declaredOffsetHours).join(' | '));
