@@ -341,6 +341,16 @@ test('r59: pinned lunar astronomy internals reproduce R58 civil boundaries witho
  assert.equal(report.r58SourceCalendarCaseCount,32);
  assert.equal(report.firstDayOf1989SeventhLunarMonth,'1989-08-02');
  assert.equal(report.same1989SeventhMonthFirstDate,true);
+ assert.equal(report.same1989SeventhMonthJulianDay,true);
+ for(const library of report.libraries){
+  const lunar7=library.months.find(m=>m.year===1989&&m.month===7);
+  assert.equal(lunar7?.solarFirstDay,'1989-08-02');
+  assert.equal(lunar7?.firstJulianDay,2447741);
+  assert.equal(lunar7?.dayCount,29);
+  assert.equal(library.highMethodOffsetSymbolObserved,true);
+  assert.equal(library.lowMethodOffsetSymbolObserved,true);
+  assert.equal(library.newMoonOffsetHours,8);
+ }
  assert.equal(report.newMoonOffsetHoursInLibraryConstants,8);
  assert.equal(report.alternativeVietnamCalendarVerified,false);
  assert.equal(report.sourceNewMoonTimeConventionFullyVerified,false);
