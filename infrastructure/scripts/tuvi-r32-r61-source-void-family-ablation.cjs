@@ -8,7 +8,6 @@
  * R53's independent atom reconstruction is the provenance and logic gate.
  */
 const fs=require('node:fs');
-const assert=require('node:assert/strict');
 const {SOURCE_COMMIT,SOURCE_NAMES,NORMALIZED_NAMES,SOURCE_ALIASES,
  reconcileClassicalVoidVocabulary}=require('../../packages/interpretation/src/classical-source-void-vocabulary.cjs');
 const {buildR53}=require('./tuvi-r32-r53-source-void-atoms.cjs');
@@ -21,7 +20,6 @@ const FAMILY=Object.freeze({
 });
 const isBranch=x=>Number.isInteger(x)&&x>=0&&x<12;
 const checked=(ok,msg)=>{if(!ok)throw Error('R61: '+msg);};
-const clone=x=>JSON.parse(JSON.stringify(x));
 const sorted=s=>[...s].sort();
 function familyAt(names){
  checked(Array.isArray(names)&&names.every(x=>SOURCE_NAMES.includes(x)),'unrecognized source void label');
@@ -48,20 +46,29 @@ const active=(family,mode)=>mode==='both'?family.xun||family.jiekong:
  mode==='xun-only'?family.xun:
  mode==='jiekong-only'?family.jiekong:false;
 function fourModes(criterion,atoms,places){
+ checked(IDS.includes(criterion),'unknown criterion '+criterion);
+ checked(atoms&&places&&typeof atoms==='object'&&typeof places==='object',
+  'missing source predicate atoms or source void locations');
+ const natal=criterion==='dinh-ban-01'||criterion==='dinh-ban-02';
+ checked(natal?places.ming&&typeof places.ming.xun==='boolean'&&
+  typeof places.ming.jiekong==='boolean':
+  places.loc&&places.horse&&typeof places.loc.xun==='boolean'&&
+  typeof places.horse.xun==='boolean'&&
+  typeof places.loc.jiekong==='boolean'&&typeof places.horse.jiekong==='boolean',
+  'missing family inputs for criterion scope');
  const result={};
  for(const mode of MODES){
-  const atMing=active(places.ming,mode);
   if(criterion==='dinh-ban-01')
-   result[mode]=atoms.liemTrinhAtMing&&atMing;
+   result[mode]=atoms.liemTrinhAtMing&&active(places.ming,mode);
   else if(criterion==='dinh-ban-02')
-   result[mode]=atoms.locOrHuaLocAtMing&&atMing&&
+   result[mode]=atoms.locOrHuaLocAtMing&&active(places.ming,mode)&&
     atoms.diaKhongAtMing&&atoms.diaKiepAtMing;
-  else if(criterion==='dinh-tap-03'){
+  else {
    checked(isBranch(atoms.periodBranch)&&typeof atoms.sat7InPeriodSanFang==='boolean',
     'missing actual source period geometry');
    result[mode]=atoms.sat7InPeriodSanFang&&
     active(places.loc,mode)&&active(places.horse,mode);
-  }else throw Error('R61: unknown criterion '+criterion);
+  }
  }
  checked(result.neither===false&&
   (!result['xun-only']||result.both)&&
