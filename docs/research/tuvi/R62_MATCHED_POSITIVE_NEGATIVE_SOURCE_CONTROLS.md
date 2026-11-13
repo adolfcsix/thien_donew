@@ -23,6 +23,22 @@ Với từng **lượt đại hạn dương tính** của `dinh-tap-03`, chọn 
 
 Tất cả ca nguồn được kiểm toán qua `auditR61` và liên hệ với R33 (ca 15/08/1989) trước khi xét; dữ liệu không đầy đủ/trùng/chỉnh kết quả detector đều bị từ chối.
 
+## Kết quả thực nghiệm nguồn ghim đã kiểm chứng
+
+GitHub Actions [run 43463067124](https://github.com/adolfcsix/thien_donew/actions/runs/43463067124) đã chạy **11/11 kiểm thử** trên R33–R62, trong đó **3/3 kiểm thử R62 PASS**. Công cụ kiểm toán R62 xử lý đủ 960 lá số và **11.520 bối cảnh đại hạn**, chọn được **796 cặp dương/âm** (24 + 4 cặp nguyên cục và 768 cặp đại hạn). Không có ca dương tính nào cần bịa trường hợp âm tính đối chứng.
+
+| Mục chưa ánh xạ | Đơn vị mẫu | Nguồn dương tính | Chỉ Xunkong giữ dương tính | Chỉ Jiekong giữ dương tính | Cần cả hai họ |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| `dinh-ban-01` — Sinh bất phùng thời | 960 lá số | 24 | 16 | 8 | 0 |
+| `dinh-ban-02` — Lộc phùng lưỡng sát | 960 lá số | 4 | 2 | 2 | 0 |
+| `dinh-tap-03` — Lộc suy Mã khốn | 11.520 lượt hạn | 768 | 0 | 0 | 768 |
+
+Ở hai cách cục nguyên cục, từng ca nguồn dương tính trong mẫu này cần **một** họ; khi bỏ họ tương ứng, ca không còn kích hoạt. Ở Lộc suy Mã khốn, cả 768 hạn dương tính cần hai họ đồng thời giữa các vị trí Lộc Tồn và Thiên Mã: chỉ để lại một họ không đủ. Đây là **độ nhạy điều kiện theo mã nguồn ghim**, không có nghĩa lịch âm, phép an sao hay các trường phái đã được chứng minh tương đương.
+
+**Giới hạn cặp đối chứng:** cặp nguyên cục cùng ngày/giới nhưng khác giờ sinh có thể thay đổi đồng thời nhiều sao; cặp đại hạn cùng lá số nhưng khác hạn đổi bối cảnh thời vận. Không dùng chúng để tuyên bố nguyên nhân duy nhất. Các phân bố 24/4/768 cũng không phải tần suất dự báo hay xác suất trong dân số.
+
+Kết quả và từng cặp ID được lưu dưới artifact `.r62-source-matched-positive-negative-controls.json`; kiểm thử hồi quy khóa chính xác bảng trên. **Mốc nghiên cứu vẫn 31/49**.
+
 ## Quy định nâng mốc 31/49
 
 R62 không cấp quyền nâng số liệu chỉ vì tìm đủ ca dương và âm. Mốc **32/49** chỉ được xem xét sau khi có đủ:
@@ -40,4 +56,4 @@ Thêm một script JS read-only `tuvi-r33-r62-matched-source-void-controls.cjs`,
 
 Gate hợp nhất: R33 genuine/R62, Source Integrity, Full Stack, Production Acceptance 5/5 đều PASS cùng một HEAD SHA; sau squash kiểm tra lại CI `main`. **Không tăng mốc hoặc bật cách cục thiếu chứng cứ**.
 
-*Kết quả thống kê cụ thể và phân loại theo họ sao chỉ được xác nhận từ artifact CI thật; tài liệu không đặt trước số lượng cặp âm tính hay tác động Xunkong/Jiekong khi chưa có kết quả.*
+*Các kết quả này đã được đo trên bản nguồn ghim; việc mở rộng sang trường phái khác vẫn cần kiểm toán riêng.*
