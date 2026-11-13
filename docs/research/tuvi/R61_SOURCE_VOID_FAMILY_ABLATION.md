@@ -21,6 +21,20 @@ Mỗi điều kiện nguồn được tính lại bốn lần mà **không sửa
 
 Tổng hợp riêng cho mỗi mục: số mẫu xét, số trường hợp dương tính của nguồn, số dương tính nếu chỉ dùng một họ, số mẫu cần một họ nhất định, và số mẫu `onlyTogether` (hai họ khác nhau tại hai vị trí sao cần xét; không họ đơn lẻ nào tạo đủ điều kiện). Đây là bằng chứng **độ nhạy trong logic nguồn**, không phải thẩm định thuật ngữ.
 
+## Bằng chứng định lượng đã chạy thật
+
+GitHub Actions [run #43425766699](https://github.com/adolfcsix/thien_donew/actions/runs/43425766699) đã **PASS 3/3 kiểm thử riêng R61** và 13/13 bài R32 trước đó, trên đúng 67 nguồn giả lập có detector chạy thật và 804 đại hạn. Số liệu được xuất tại `.r61-source-void-family-ablation.json`, sau đó khóa vào kiểm thử hồi quy của R61.
+
+| Mục | Số ngữ cảnh | Nguồn dương tính | Chỉ Xunkong dương tính | Chỉ Jiekong dương tính | Cần kết hợp hai họ |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| `dinh-ban-01` — Sinh bất phùng thời | 67 | 3 | 1 | 2 | 0 |
+| `dinh-ban-02` — Lộc phùng lưỡng sát | 67 | 1 | 1 | 0 | 0 |
+| `dinh-tap-03` — Lộc suy Mã khốn | 804 | 48 | 0 | 0 | 48 |
+
+**Cách đọc số liệu:** “Chỉ Xunkong dương tính” có nghĩa giữ nguyên các điều kiện sao khác của nguồn nhưng chỉ cho phép xét nhóm sao 旬空/副旬; tương tự với Jiekong. “Cần kết hợp hai họ” nghĩa chỉ dùng từng họ riêng không đủ, còn dùng cả hai thì nguồn kích hoạt. Riêng 48 hạn dương tính ở `dinh-tap-03`, cả Lộc Tồn và Thiên Mã phải cùng có dấu Không Vong, nhưng mỗi sao dựa vào một họ khác nhau trong bộ mẫu này. Không được diễn dịch 48 hạn thành 48 người khác nhau; đơn vị quan sát của chúng là **đại hạn**.
+
+Các số liệu này là quan hệ logic trên bộ ca nguồn đã khóa; **không** xác định nguyên nhân thiên văn, sự tương đương với Tuần/Triệt, độ đúng của sách cổ, hoặc khả năng tiên đoán. Cần mở rộng mẫu nhiều năm/giờ và trường phái, nhất là ca hiếm `dinh-ban-02` mới có một ca dương tính, trước khi thẩm định nâng mốc.
+
 ## Điểm cần kiểm chứng trước khi tăng mốc
 
 1. Xác minh phép an, phương pháp chọn tên sao và xử lý **biến thể lịch/trường phái** của hai họ; không dùng trùng vị trí hình học làm kết luận đồng nghĩa.
