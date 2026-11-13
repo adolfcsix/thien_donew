@@ -14,7 +14,7 @@ test('R61 source labels normalize exactly two legacy aliases without inventing s
  assert.deepEqual(FAMILY.jiekong,['截空','副截']);
  assert.deepEqual(familyAt(['截路','旬空']).canonicalNames,['截空','旬空']);
  assert.deepEqual(familyAt(['空亡','副旬']).canonicalNames,['副截','副旬']);
- assert.deepEqual(familyAt(['截路']),familyAt(['截空'])===undefined?null:familyAt(['截路']));
+ assert.deepEqual(familyAt(['截路']).canonicalNames,familyAt(['截空']).canonicalNames);
  assert.equal(familyAt(['截路']).jiekong,true);
  assert.equal(familyAt(['截路']).xun,false);
  assert.equal(familyAt(['旬空']).xun,true);
@@ -107,7 +107,8 @@ test('R61 genuine 67 source charts, 804 periods, three source-only detector prob
  assert.throws(()=>buildR61(dupe,b,f));
  const badAlias=clone(a);
  const record=badAlias.records[0],jie=record.palaces.find(p=>p.stars.some(s=>s.name==='截空'));
- if(jie)jie.stars.push({name:'截路',siHua:null});
+ assert.ok(jie,'R61 requires pinned normalized 截空 in genuine default source chart');
+ jie.stars.push({name:'截路',siHua:null});
  assert.throws(()=>buildR61(badAlias,b,f));
  console.log('R61 pinned source 67 cases and 804 period comparisons; family removal never authorizes mapping 32/49');
 });
