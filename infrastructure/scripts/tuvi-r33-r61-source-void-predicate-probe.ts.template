@@ -1,0 +1,111 @@
+/**
+ * R61 genuine source detector oracle — operate ONLY in immutable, pinned
+ * Renhuai123/ziwei-doushu checkout. No copy of source algorithm, no chart edits.
+ * 10 year stems × 4 dates × 12 hour branches × 2 genders = 960 charts.
+ * For three unresolved patterns, observe six DISTINCT void labels by branch
+ * and independently reconstruct the Boolean predicates.
+ * A source match is never a Thiên Đồ formation verdict.
+ */
+import {readFileSync,writeFileSync} from 'node:fs';
+import {generateChart} from './lib/ziwei/algorithm';
+import {DING_PIN_GE,detectDingPin} from './lib/ziwei/patterns-dingpin';
+import {DING_ZA_GE,detectDingZa} from './lib/ziwei/patterns-dingza';
+const source='7922285d947b36610e7e31c232d8f1e2a0d0871d';
+const lock=JSON.parse(readFileSync('package-lock.json','utf8'));
+const installed=JSON.parse(readFileSync('node_modules/iztro/package.json','utf8'));
+if(installed.version!=='2.6.1'||lock.packages?.['node_modules/iztro']?.version!=='2.6.1')
+ throw Error('R61 iztro dependency is not pinned');
+const names=['旬空','副旬','截路','截空','空亡','副截'] as const;
+const byNo=<T extends {no:number;name:string}>(list:readonly T[],number:number,name:string):T=>{
+ const hits=list.filter(x=>x.no===number&&x.name===name);
+ if(hits.length!==1)throw Error('R61 source detector entry missing/duplicated: '+name);
+ return hits[0];
+};
+const ban1=byNo(DING_PIN_GE,1,'生不逢时');
+const ban2=byNo(DING_PIN_GE,2,'禄逢两杀');
+const tap3=byNo(DING_ZA_GE,3,'禄衰马困');
+if(!ban1.fn||!ban2.fn||!tap3.judge)throw Error('R61 source detector disabled');
+const years=Array.from({length:10},(_,i)=>1984+i);
+const months=[2,5,8,11];
+const sorted=(values:number[])=>values.sort((a,b)=>a-b);
+const records=[];
+for(const year of years)for(const month of months)
+ for(const gender of ['male','female'] as const)
+  for(let hour=0;hour<12;hour++){
+   const chart=generateChart({year,month,day:15,hour,gender});
+   if(chart.palaces.length!==12||chart.daXians.length!==12)
+    throw Error('R61 incomplete genuine source chart');
+   const byBranch=new Map(chart.palaces.map(p=>[p.branch,p]));
+   if(byBranch.size!==12||[...byBranch.keys()].some(x=>!Number.isInteger(x)||x<0||x>11))
+    throw Error('R61 source duplicate branch (palace indexes are NOT branch indices)');
+   const at=(branch:number)=>byBranch.get(branch)!;
+   const has=(branch:number,name:string)=>at(branch).stars.some(s=>s.name===name);
+   const isVoid=(branch:number)=>names.some(name=>has(branch,name));
+   const namedVoid=Object.fromEntries(names.map(name=>[
+    name,sorted(chart.palaces.filter(p=>p.stars.some(s=>s.name===name)).map(p=>p.branch))
+   ]));
+   const ming=chart.mingGongBranch;
+   const seven=chart.palaces.find(p=>has(p.branch,'七杀'))?.branch;
+   const luBranch=chart.palaces.find(p=>has(p.branch,'禄存'))?.branch;
+   const horseBranch=chart.palaces.find(p=>has(p.branch,'天马'))?.branch;
+   if(!Number.isInteger(ming)||ming<0||ming>11||
+      !Number.isInteger(seven)||!Number.isInteger(luBranch)||
+      !Number.isInteger(horseBranch))
+    throw Error('R61 source mandatory star placement missing');
+   const sourceMingVoid=names.filter(name=>has(ming,name));
+   const liem=has(ming,'廉贞');
+   const luMing=has(ming,'禄存')||at(ming).stars.some(s=>s.siHua==='禄');
+   const kongJieBoth=has(ming,'地空')&&has(ming,'地劫');
+   const independentBan1=sourceMingVoid.length>0&&liem;
+   const independentBan2=sourceMingVoid.length>0&&luMing&&kongJieBoth;
+   const sourceBan1=Boolean(ban1.fn(chart));
+   const sourceBan2=Boolean(ban2.fn(chart));
+   const detected=detectDingPin(chart);
+   if(sourceBan1!==independentBan1||sourceBan2!==independentBan2||
+      detected.some(x=>x.no===1)!==sourceBan1||
+      detected.some(x=>x.no===2)!==sourceBan2)
+    throw Error('R61 source Ding Pin predicate mismatch');
+   const sortedPeriods=[...chart.daXians].sort((a,b)=>a.startAge-b.startAge);
+   const independentTap3=sortedPeriods.filter(dx=>{
+    const b=dx.palaceBranch;
+    const four=[b,(b+4)%12,(b+8)%12,(b+6)%12];
+    return four.includes(seven!)&&isVoid(luBranch!)&&isVoid(horseBranch!);
+   }).map(dx=>dx.startAge);
+   const actualTap3=tap3.judge(chart,sortedPeriods).map(x=>x.dx?.startAge);
+   const observedTap3=detectDingZa(chart).filter(x=>x.no===3).map(x=>x.startAge);
+   if(JSON.stringify(independentTap3)!==JSON.stringify(actualTap3)||
+      JSON.stringify(actualTap3)!==JSON.stringify(observedTap3))
+    throw Error('R61 source Ding Za period predicate mismatch');
+   records.push({
+    id:[year,String(month).padStart(2,'0'),'15',gender,hour].join('-'),
+    solarDate:[year,String(month).padStart(2,'0'),'15'].join('-'),
+    year,month,day:15,gender,hour,
+    mingBranch:ming,sevenBranch:seven,luBranch,horseBranch,
+    periods:sortedPeriods.map(dx=>({startAge:dx.startAge,branch:dx.palaceBranch})),
+    sourceVoidByName:namedVoid,voidNamesAtMing:sourceMingVoid,
+    parts:{liemAtMing:liem,luOrHuaLuAtMing:luMing,
+     diKongAndDiJieAtMing:kongJieBoth,
+     luInSourceVoid:isVoid(luBranch!),horseInSourceVoid:isVoid(horseBranch!)},
+    sourcePredicates:{'dinh-ban-01':sourceBan1,'dinh-ban-02':sourceBan2,
+     'dinh-tap-03':actualTap3},
+    independentPredicates:{'dinh-ban-01':independentBan1,'dinh-ban-02':independentBan2,
+     'dinh-tap-03':independentTap3}
+   });
+  }
+if(records.length!==960||new Set(records.map(x=>x.id)).size!==960)
+ throw Error('R61 did not cover all 960 genuine source charts');
+const hitCounts={
+ 'dinh-ban-01':records.filter(x=>x.sourcePredicates['dinh-ban-01']).length,
+ 'dinh-ban-02':records.filter(x=>x.sourcePredicates['dinh-ban-02']).length,
+ 'dinh-tap-03-periods':records.reduce((n,x)=>n+x.sourcePredicates['dinh-tap-03'].length,0)
+};
+writeFileSync('../.r61-pinned-source-void-predicate-observations.json',
+ JSON.stringify({
+  schema:'thiendo-r61-pinned-source-void-predicates-v1',
+  provenance:{repository:'Renhuai123/ziwei-doushu',commit:source,
+   iztroVersion:installed.version,sourceExecuted:true,syntheticOnly:true,
+   usedDetectors:['DING_PIN_GE','DING_ZA_GE','detectDingPin','detectDingZa']},
+  sourceSixVoidNames:names,years,months,hours:12,genders:['male','female'],
+  caseCount:records.length,hitCounts,records
+ },null,2)+'\n');
+console.log('R61: 960 source charts, six separately named void stars, source predicate hits '+JSON.stringify(hitCounts));

@@ -382,3 +382,81 @@ test('r59: pinned lunar astronomy internals reproduce R58 civil boundaries witho
  assert.throws(()=>auditR59(source,changedBaseline));
  console.log('R59: 2 genuine pinned libraries x 5 month Julian beginnings; 1989/7 first day 1989-08-02; no automatic policy switch');
 });
+
+
+test('r61: six separate source void names and 960 genuine pinned predicate controls cannot promote 31/49',()=>{
+ const {SIX,YEARS,MONTHS,CASE_IDS,auditR61}=
+  require('../infrastructure/scripts/tuvi-r33-r61-audit-source-void-predicates.cjs');
+ assert.deepEqual(SIX,['旬空','副旬','截路','截空','空亡','副截']);
+ assert.equal(YEARS.length,10);
+ assert.deepEqual(MONTHS,[2,5,8,11]);
+ assert.equal(CASE_IDS.length,960);
+ assert.equal(new Set(CASE_IDS).size,960);
+ assert.throws(()=>auditR61(null,null));
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const r61Path=path.resolve(__dirname,'../.r61-pinned-source-void-predicate-observations.json');
+ const r33Path=path.resolve(__dirname,'../.r33-source-1989-root-cause-observations.json');
+ assert.ok(fs.existsSync(r61Path),'R61 requires genuine source detector charts');
+ assert.ok(fs.existsSync(r33Path),'R61 requires independently pinned R33 anchor');
+ const source=JSON.parse(fs.readFileSync(r61Path,'utf8'));
+ const base=JSON.parse(fs.readFileSync(r33Path,'utf8'));
+ const unmodified=JSON.stringify([source,base]);
+ const report=auditR61(source,base);
+ assert.equal(report.caseCount,960);
+ assert.equal(report.uniqueYears,10);
+ assert.equal(report.monthsPerYear,4);
+ assert.equal(report.completeBirthHourBranches,12);
+ assert.equal(report.genders,2);
+ assert.equal(report.independentSourcePredicateAgreement,true);
+ assert.deepEqual(report.sourceVoidLabels,SIX);
+ assert.deepEqual(Object.keys(report.perLabel),SIX);
+ assert.ok(Object.values(report.perLabel).every(o=>
+   Number.isInteger(o.chartPresence)&&o.chartPresence>=0&&o.chartPresence<=960&&
+   Number.isInteger(o.atMing)&&o.atMing>=0&&o.atMing<=o.chartPresence));
+ for(const count of Object.values(report.sourceHitCounts))
+  assert.ok(Number.isInteger(count)&&count>=0&&count<=960*12);
+ assert.deepEqual(report.sourceHitCounts,{
+  'dinh-ban-01':24,'dinh-ban-02':4,'dinh-tap-03-periods':768
+ },'R61 must retain counts from genuine immutable source detectors');
+ assert.ok(['ban01','ban02','tap03'].every(k=>
+   typeof report.firstObservedPositive[k]==='string'&&
+   report.firstObservedPositive[k].length>0),'R61 requires real positive witnesses for each source rule');
+ assert.equal(report.known1989Case.id,'1989-08-15-male-0');
+ assert.equal(report.known1989Case.mingBranch,8);
+ assert.equal(report.known1989Case.liemAtMing,false);
+ assert.equal(report.sourceSchoolSemanticEquivalenceVerified,false);
+ assert.equal(report.sourceCalendarPolicyVerified,false);
+ assert.equal(report.sourceToLocalPlacementParityVerified,false);
+ assert.equal(report.expertReviewed,false);
+ assert.equal(report.mayEnableUnmappedPatterns,false);
+ assert.equal(report.mayChangeChartRules,false);
+ assert.equal(report.researchMapped,31);
+ assert.equal(report.referenceTotal,49);
+ assert.equal(report.mayIncreaseMapping,false);
+ assert.ok(Object.isFrozen(report)&&Object.isFrozen(report.sourceHitCounts));
+ assert.deepEqual(report,auditR61(source,base));
+ assert.equal(JSON.stringify([source,base]),unmodified,'source evidence mutated');
+ const altered=clone(source);
+ altered.records[0].sourceVoidByName['旬空']=[12];
+ assert.throws(()=>auditR61(altered,base));
+ const duplicate=clone(source);
+ duplicate.records[1].id=duplicate.records[0].id;
+ assert.throws(()=>auditR61(duplicate,base));
+ const wrongCommit=clone(source);
+ wrongCommit.provenance.commit='main';
+ assert.throws(()=>auditR61(wrongCommit,base));
+ const forged=clone(source);
+ forged.hitCounts['dinh-ban-01']++;
+ assert.throws(()=>auditR61(forged,base));
+ const alteredPredicate=clone(source);
+ alteredPredicate.records[0].sourcePredicates['dinh-ban-01']=!
+   alteredPredicate.records[0].sourcePredicates['dinh-ban-01'];
+ assert.throws(()=>auditR61(alteredPredicate,base));
+ const forgedPeriod=clone(source);
+ forgedPeriod.records[0].periods[0].branch=12;
+ assert.throws(()=>auditR61(forgedPeriod,base));
+ const alteredR33=clone(base);
+ alteredR33.records.find(r=>r.id==='1989-08-15-Nam-0').source.mingGongBranch=2;
+ assert.throws(()=>auditR61(source,alteredR33));
+ console.log('R61: 960 real source charts, 6 named void labels, exact source predicate agreement; no school equivalence and 31/49 unchanged');
+});
