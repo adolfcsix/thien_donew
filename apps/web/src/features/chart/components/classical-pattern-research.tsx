@@ -7,6 +7,7 @@ import {summarizeClassicalEvidence,filterClassicalEvidence} from '@thiendo/inter
 import type {ClassicalEvidenceFilter} from '@thiendo/interpretation/src/classical-evidence-workbench.cjs';
 import {summarizeClassicalCatalog,filterClassicalCatalog} from '@thiendo/interpretation/src/classical-pattern-catalog.cjs';
 import {summarizeClassicalResearchReadiness} from '@thiendo/interpretation/src/classical-research-readiness.cjs';
+import {summarizeClassicalResearchMilestone} from '@thiendo/interpretation/src/classical-research-milestone.cjs';
 import {buildClassicalVoidGapLedger} from '@thiendo/interpretation/src/classical-void-gap-ledger.cjs';
 import {auditClassicalPeriodGeometry} from '@thiendo/interpretation/src/classical-period-geometry.cjs';
 import {auditClassicalDingZaPeriods} from '@thiendo/interpretation/src/classical-dingza-period-research.cjs';
@@ -42,6 +43,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
     ...data.records.map(record=>record.id),...bridge.mappedIds
   ]),[data,bridge]);
   const readiness=useMemo(()=>summarizeClassicalResearchReadiness(catalog),[catalog]);
+  const milestone=useMemo(()=>summarizeClassicalResearchMilestone({natal:data,bridge,catalog,readiness}),[data,bridge,catalog,readiness]);
   const pendingById=useMemo(()=>new Map<string,(typeof data.pendingEvidence)[number]>(data.pendingEvidence.map(entry=>[entry.id,entry] as const)),[data]);
   const periodGeometry=useMemo(()=>auditClassicalPeriodGeometry(chart),[chart]);
   const dingZa=useMemo(()=>auditClassicalDingZaPeriods(chart),[chart]);
@@ -165,7 +167,7 @@ export function ClassicalPatternResearch({chart}:{chart:AstrologyResult}){
       <summary>Danh mục nghiên cứu 49 cách cục · {catalog.assessed} mục có điều kiện đối chiếu</summary>
       <p>{catalog.notice} Trạng thái “có thể kiểm tra” do nguồn phân loại không có nghĩa Thiên Đồ đã triển khai hoặc xác nhận thành cách.</p>
       <p>{catalog.distribution.derivable} mục nguồn đánh giá có thể kiểm tra · {catalog.distribution.disputed} còn tranh luận · {catalog.distribution.unreachable} chưa thể suy ra từ quy tắc nguồn.</p>
-      <p className={styles.readinessSummary}>Còn <strong>{readiness.counts.total}</strong> mục chưa ánh xạ: <strong>{readiness.counts.pending}</strong> có thể nghiên cứu tiếp ({readiness.counts.natalPending} nguyên cục, {readiness.counts.periodPending} vận hạn), <strong>{readiness.counts.disputed}</strong> còn tranh luận và <strong>{readiness.counts.unreachable}</strong> chưa có phương pháp suy ra từ nguồn. Kết quả chưa được thẩm định độc lập.</p>
+      <p className={styles.readinessSummary}><strong>{milestone.conditionMapped}/{milestone.total}</strong> mục có điều kiện nghiên cứu ({milestone.mappedByScope.natal} nguyên cục + {milestone.mappedByScope.period} đại hạn), <strong>{milestone.expertConfirmed}</strong> mục được xác nhận học thuật. Còn <strong>{milestone.remaining.unmapped}</strong> mục: <strong>{milestone.remaining.pending}</strong> có thể nghiên cứu tiếp ({readiness.counts.natalPending} nguyên cục, {readiness.counts.periodPending} đại hạn), {milestone.remaining.disputed} còn tranh luận và {milestone.remaining.unreachable} chưa có quy tắc suy ra. Chỉ tăng mốc sau khi đối chiếu quy tắc và có phản chứng, không dùng kết quả proxy làm kết luận.</p>
       <details className={styles.voidGapAudit} aria-label="Kiểm toán điều kiện Không Vong chưa ánh xạ">
         <summary>Ba điều kiện Không Vong còn thiếu chứng cứ nguồn · {voidGapLedger.summary.semanticVerified}/{voidGapLedger.summary.pending} đã xác minh ngữ nghĩa</summary>
         <p>{voidGapLedger.notice} Số điều kiện đang ánh xạ giữ nguyên <strong>{voidGapLedger.summary.mappedConditionResearch}/{voidGapLedger.summary.referenceTotal}</strong>.</p>
