@@ -77,6 +77,14 @@ test('R62 genuine 960 charts yield 24/4 natal and 768 decade positive/negative m
  assert.equal(result.counts['dinh-ban-01'].sourcePositive,24);
  assert.equal(result.counts['dinh-ban-02'].sourcePositive,4);
  assert.equal(result.counts['dinh-tap-03'].sourcePositive,768);
+ assert.deepEqual(result.counts,{
+  'dinh-ban-01':{contexts:960,sourcePositive:24,xunOnlyPositive:16,
+   jiekongOnlyPositive:8,onlyTogether:0,familyOnlyXun:16,familyOnlyJiekong:8},
+  'dinh-ban-02':{contexts:960,sourcePositive:4,xunOnlyPositive:2,
+   jiekongOnlyPositive:2,onlyTogether:0,familyOnlyXun:2,familyOnlyJiekong:2},
+  'dinh-tap-03':{contexts:11520,sourcePositive:768,xunOnlyPositive:0,
+   jiekongOnlyPositive:0,onlyTogether:768,familyOnlyXun:0,familyOnlyJiekong:0}
+ },'R62 must not silently change source family sensitivities');
  assert.equal(result.witnesses['dinh-ban-01'].length,24);
  assert.equal(result.witnesses['dinh-ban-02'].length,4);
  assert.equal(result.witnesses['dinh-tap-03'].length,768);
