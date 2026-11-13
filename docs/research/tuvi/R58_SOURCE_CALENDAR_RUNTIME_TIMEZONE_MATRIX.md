@@ -1,0 +1,44 @@
+# R58 — Truy vết thư viện lịch và kiểm toán hành vi múi giờ trong nguồn Tử Vi
+
+**Ngày kiểm toán:** 13/11/2026 · **Nguồn cố định:** `Renhuai123/ziwei-doushu@7922285d947b36610e7e31c232d8f1e2a0d0871d`.
+
+## Cơ sở từ R57
+
+R57 đã đối chiếu 30 ca nguồn thực, ghi nhận 18 trường hợp quanh 14–16/08/1989 sai khác ngày âm. Với ca nam 15/08/1989 00:00, nguồn tính 14/07 âm còn Thiên Đồ tính 15/07; khi Thiên Đồ nhận ngày âm nguồn, vị trí Tử Vi và Liêm Trinh khớp nguồn mà không đổi công thức. Đây là **sự nhạy của đầu vào**, chưa khẳng định thư viện lịch nào đúng hơn.
+
+## Cấu trúc nguồn đã kiểm tra
+
+Tại commit ghim, `generateChart` gọi **hai đường thư viện lịch khác nhau**:
+
+1. `resolveEffectiveLunarDate` và `getLunarInfo` dùng `Solar.fromYmd(year, month, day).getLunar()` của **lunar-javascript**; `getLunarInfo` ghi dữ liệu âm lịch báo cáo.
+2. Trường hợp sinh thường, không phải chuyển quy tắc tháng nhuận, lá số chính sử dụng **`astro.bySolar` của iztro**, rồi lấy Tử Vi, Cục, 14 chính tinh và cung Mệnh từ `astrolabe`. Nguồn có thể chứa hai kết quả chuyển đổi lịch có cách triển khai khác nhau.
+3. Khi cần xử lý tùy chọn tháng nhuận, code có nhánh `astro.byLunar`. R58 giới hạn vào các ca thường và tháng 8/1989, không đánh đồng chính sách tháng nhuận với múi giờ.
+
+Phiên bản khóa trong `package-lock.json`: `lunar-javascript@1.7.7`, `iztro@2.6.1`, `lunar-typescript@1.8.6` (phụ thuộc thư viện riêng của nguồn). R58 từ chối các phiên bản không khớp.
+
+## Thiết kế phép thử R58
+
+Trên **một checkout nguồn thật** và cùng bộ thư viện đã ghim, chạy **ba tiến trình Node riêng** với các biến môi trường `TZ=UTC`, `TZ=Asia/Ho_Chi_Minh`, `TZ=Asia/Shanghai`. Mỗi tiến trình chạy:
+
+- 30 ca kiểm soát R33: 15/08/1988; 14–16/08/1989; 15/08/1990, mỗi ngày gồm hai giới tính và các giờ 00, 08, 22.
+- Hai ca ngày bắt đầu tháng âm có liên quan mốc sóc NASA 01–02/08/1989, nam giờ 00.
+- Với mỗi ca, thu **ngày âm gốc lunar-javascript**, **ngày âm hiệu dụng từ nguồn**, **getLunarInfo**, **dữ liệu ngày âm iztro có thể đọc được**, cùng **vị trí Tử Vi, Liêm Trinh, Mệnh và Cục của generateChart**.
+- Lưu 3 tệp JSON nguồn và báo cáo 32 hàng so sánh; kiểm chứng đường UTC với 30 quan sát engine nguồn R33 chạy riêng; chặn trùng, thiếu trường, thay phiên bản, đổi ngày/giờ/giới tính và nâng cờ học thuật.
+
+Phép thử chỉ đếm thay đổi các trường khi chuyển **biến môi trường runtime TZ**, không gán rằng thư viện mặc định là lịch Trung Quốc UTC+8 hay lịch Việt Nam UTC+7. Nếu kết quả ổn định qua cả ba môi trường, điều đó **không chứng minh** thư viện dùng UTC, UTC+8 hay UTC+7; chỉ chứng minh đầu ra không phụ thuộc biến môi trường TZ trong các ca đã chạy. Nếu có khác biệt, cần truy sâu vào nội bộ hàm và nguồn thiên văn trước khi đề xuất quy tắc mới.
+
+NASA GSFC ghi thời điểm sóc 01/08/1989 lúc 16:06 UTC, ứng với ngày 01/08 tại UTC+7 và 02/08 tại UTC+8. Đây là ranh giới thiên văn tương thích với sai lệch lịch R33/R57, không phải bằng chứng mã nguồn sử dụng một trong hai múi giờ.
+
+## Các điều kiện cấm tự động
+
+- Không sửa `packages/astrology-engine/src/tuvi.js` hoặc `lunar.js` để khớp nguồn.
+- Không thêm công tắc đổi chế độ lịch/giờ cho người dùng, không đổi mặc định.
+- Không đồng nhất các cách cục Không Vong nguồn với Tuần/Triệt nội bộ, không tự mở các cách cục còn thiếu bằng chứng.
+- Các cờ `sourceCalendarTimeZoneInferred`, `mayChangeChartRules`, `mayEnableCalendarSchoolMode`, `rootCauseVerified`, `semanticEquivalenceVerified`, `sourceSchoolParityVerified` đều giữ `false`.
+- **Mốc nghiên cứu 31/49** giữ nguyên.
+
+## Mã nguồn và nghiệm thu
+
+Chỉ thêm hai script R58 (TS probe và JS evaluator), mở rộng bài test R33 có sẵn, thêm bước thu artifact vào **workflow R33 đang có**, cùng tài liệu này. Không thêm workflow trùng, không đụng UI, AI, API, SQL, phân quyền hay dữ liệu tài khoản.
+
+Chỉ gộp R58 sau khi **R33 genuine + R58; Source Integrity; Full Stack; Production Acceptance 5/5** đều PASS ở đúng HEAD SHA. Sau squash, kiểm tra lại CI trên `main`.
