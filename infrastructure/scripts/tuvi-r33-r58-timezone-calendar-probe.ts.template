@@ -1,0 +1,98 @@
+/**
+ * R58 source-runtime experiment. Execute INSIDE the immutable pinned source
+ * checkout separately under UTC, Asia/Ho_Chi_Minh, Asia/Shanghai.
+ *
+ * Records the two distinct calendar paths (lunar-javascript vs iztro.bySolar)
+ * without assuming a library uses the process TZ or a fixed Chinese timezone.
+ */
+import {readFileSync,writeFileSync} from 'node:fs';
+import {Solar} from 'lunar-javascript';
+import {astro} from 'iztro';
+import {getLunarInfo,resolveEffectiveLunarDate,generateChart} from './lib/ziwei/algorithm';
+const COMMIT='7922285d947b36610e7e31c232d8f1e2a0d0871d';
+const ZONES=['UTC','Asia/Ho_Chi_Minh','Asia/Shanghai'] as const;
+const tz=process.env.TZ;
+if(!tz||!ZONES.includes(tz as typeof ZONES[number]))
+ throw Error('R58 TZ environment must be one of '+ZONES.join(','));
+const lock=JSON.parse(readFileSync('package-lock.json','utf8'));
+const direct=JSON.parse(readFileSync('node_modules/lunar-javascript/package.json','utf8'));
+const iztro=JSON.parse(readFileSync('node_modules/iztro/package.json','utf8'));
+const typescriptLunar=JSON.parse(readFileSync('node_modules/lunar-typescript/package.json','utf8'));
+if(direct.version!=='1.7.7'||iztro.version!=='2.6.1'||typescriptLunar.version!=='1.8.6'||
+ lock.packages?.['node_modules/lunar-javascript']?.version!==direct.version||
+ lock.packages?.['node_modules/iztro']?.version!==iztro.version||
+ lock.packages?.['node_modules/lunar-typescript']?.version!==typescriptLunar.version)
+ throw Error('R58 source calendar library lock mismatch');
+const controls=['1988-08-15','1989-08-14','1989-08-15','1989-08-16','1990-08-15'];
+const cases:{id:string,date:string,hour:number,gender:'Nam'|'Nữ',kind:string}[]=[];
+for(const date of controls)for(const gender of ['Nam','Nữ'] as const)
+ for(const hour of [0,8,22])cases.push({id:date+'-'+gender+'-'+hour,date,gender,hour,kind:'r33'});
+for(const date of ['1989-08-01','1989-08-02'])
+ cases.push({id:date+'-Nam-0',date,gender:'Nam',hour:0,kind:'new-moon-control'});
+function findNamed(chart:ReturnType<typeof generateChart>,name:string){
+ const hits=chart.palaces.filter(x=>x.stars.some(s=>s.name===name));
+ if(hits.length!==1||hits[0].stars.filter(s=>s.name===name).length!==1)
+  throw Error('R58 missing/duplicate named star '+name);
+ return hits[0].branch;
+}
+const results=cases.map(sample=>{
+ const [year,month,day]=sample.date.split('-').map(Number);
+ const lunar=Solar.fromYmd(year,month,day).getLunar();
+ const directLunar={
+  year:Number(lunar.getYear()),month:Number(lunar.getMonth()),day:Number(lunar.getDay())
+ };
+ const effective=resolveEffectiveLunarDate(year,month,day);
+ const hourBranch=Math.floor(((sample.hour+1)%24)/2);
+ const converted=getLunarInfo(year,month,day,hourBranch);
+ const chart=generateChart({year,month,day,hour:hourBranch,
+   gender:sample.gender==='Nam'?'male':'female'});
+ const raw=astro.bySolar(sample.date,hourBranch,sample.gender==='Nam'?'男':'女',true,'zh-CN');
+ const iztroRaw=raw.rawDates?.lunarDate;
+ if(!iztroRaw||typeof raw.lunarDate!=='string')
+  throw Error('R58 iztro.bySolar raw lunar date missing');
+ if(!Number.isInteger(converted.lunarDay)||!Number.isInteger(effective.lunarDay)||
+    converted.lunarDay!==effective.lunarDay||
+    chart.lunarInfo.lunarDay!==converted.lunarDay||
+    chart.lunarInfo.lunarMonth!==converted.lunarMonth||
+    chart.lunarInfo.lunarYear!==converted.lunarYear)
+  throw Error('R58 source own-calendar branches disagree');
+ const iztroZiwei=raw.palaces.find(p=>
+  p.majorStars?.some(s=>s.name==='紫微'));
+ const original={ziweiPos:chart.ziweiPos,
+  liemTrinhBranch:findNamed(chart,'廉贞'),
+  mingGongBranch:chart.mingGongBranch,wuxingJu:chart.wuxingJu};
+ if(!iztroZiwei||typeof iztroZiwei.earthlyBranch!=='string')
+  throw Error('R58 no iztro major ZiWei branch');
+ return {
+  id:sample.id,kind:sample.kind,solarDate:sample.date,
+  gender:sample.gender,clockHour:sample.hour,hourBranch,
+  lunarJavascriptRaw:directLunar,
+  sourceEffective:{
+   year:effective.lunarYear,month:effective.lunarMonth,
+   day:effective.lunarDay,leap:effective.isLeapMonth,
+   rawMonth:effective.rawLunarMonth,rawDay:effective.rawLunarDay
+  },
+  sourceGetLunarInfo:{
+   year:converted.lunarYear,month:converted.lunarMonth,
+   day:converted.lunarDay,leap:converted.isLeapMonth,
+   yearStem:converted.yearStem
+  },
+  iztroBySolar:{
+   lunarText:raw.lunarDate,rawLunarDate:JSON.parse(JSON.stringify(iztroRaw)),
+   ziweiBranchName:iztroZiwei.earthlyBranch
+  },
+  sourceGenerateChart:original
+ };
+});
+if(results.length!==32)throw Error('R58 missing controlled source cases');
+const output={schema:'thiendo-r58-pinned-source-timezone-observations-v1',
+ provenance:{repository:'Renhuai123/ziwei-doushu',commit:COMMIT,
+  iztroVersion:iztro.version,lunarJavascriptVersion:direct.version,
+  lunarTypescriptVersion:typescriptLunar.version,sourceExecuted:true,
+  syntheticOnly:true},
+ requestedTZ:tz,resolvedTZ:Intl.DateTimeFormat().resolvedOptions().timeZone,
+ caseCount:results.length,results
+};
+writeFileSync('../.r58-source-tz-'+tz.replaceAll('/','_')+'.json',JSON.stringify(output,null,2)+'\n');
+console.log('R58: 32 genuine source chart/calendar cases under '+tz+
+ '; target lunar day '+results.find(x=>x.id==='1989-08-15-Nam-0')?.sourceGetLunarInfo.day);
