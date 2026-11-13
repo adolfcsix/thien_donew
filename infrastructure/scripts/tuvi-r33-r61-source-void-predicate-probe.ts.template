@@ -81,6 +81,7 @@ for(const year of years)for(const month of months)
     solarDate:[year,String(month).padStart(2,'0'),'15'].join('-'),
     year,month,day:15,gender,hour,
     mingBranch:ming,sevenBranch:seven,luBranch,horseBranch,
+    periods:sortedPeriods.map(dx=>({startAge:dx.startAge,branch:dx.palaceBranch})),
     sourceVoidByName:namedVoid,voidNamesAtMing:sourceMingVoid,
     parts:{liemAtMing:liem,luOrHuaLuAtMing:luMing,
      diKongAndDiJieAtMing:kongJieBoth,
