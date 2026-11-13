@@ -8,6 +8,9 @@ on:
       - 'apps/web/src/features/chart/components/classical-pattern-research.tsx'
       - 'apps/web/src/features/chart/components/conditional-pattern-evidence.module.css'
       - 'tests/v111685-tuvi-r43-void-source-gap-ledger.test.cjs'
+      - 'packages/interpretation/src/classical-research-milestone.cjs'
+      - 'packages/interpretation/src/classical-research-milestone.d.cts'
+      - 'tests/v111678-tuvi-research-milestone.test.cjs'
   push:
     branches: [main]
     paths:
@@ -17,6 +20,9 @@ on:
       - 'apps/web/src/features/chart/components/classical-pattern-research.tsx'
       - 'apps/web/src/features/chart/components/conditional-pattern-evidence.module.css'
       - 'tests/v111685-tuvi-r43-void-source-gap-ledger.test.cjs'
+      - 'packages/interpretation/src/classical-research-milestone.cjs'
+      - 'packages/interpretation/src/classical-research-milestone.d.cts'
+      - 'tests/v111678-tuvi-research-milestone.test.cjs'
   workflow_dispatch:
 permissions: {contents: read}
 jobs:
@@ -36,9 +42,11 @@ jobs:
           npm run check:source
           node --check packages/interpretation/src/classical-void-gap-ledger.cjs
           node --check tests/v111685-tuvi-r43-void-source-gap-ledger.test.cjs
+          node --check packages/interpretation/src/classical-research-milestone.cjs
+          node --check tests/v111678-tuvi-research-milestone.test.cjs
       - name: Strict R25 R28 and R43 research regression
         run: |
-          node --test tests/v111668-tuvi-dingza-02-source-qs.test.cjs tests/v111671-tuvi-void-semantic-gates.test.cjs tests/v111685-tuvi-r43-void-source-gap-ledger.test.cjs
+          node --test tests/v111668-tuvi-dingza-02-source-qs.test.cjs tests/v111671-tuvi-void-semantic-gates.test.cjs tests/v111685-tuvi-r43-void-source-gap-ledger.test.cjs tests/v111678-tuvi-research-milestone.test.cjs
       - name: Typecheck
         run: npm run typecheck
       - name: Publish evidence scope
@@ -46,6 +54,7 @@ jobs:
         run: |
           echo '## R43 — explicit blocker ledger for three unmapped source Không Vong criteria' >> "$GITHUB_STEP_SUMMARY"
           echo 'Retains 31/49 mapped conditions and 18 outstanding: 3 source-semantic blockers, 9 disputed and 6 unsupported.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'R60: independently reconcile 28 natal + 3 period condition maps; block fabricated 32nd claim or expert certification.' >> "$GITHUB_STEP_SUMMARY"
           echo 'All three remain unverified even when local Tuần/Triệt proxy geometry and local star evidence agree.' >> "$GITHUB_STEP_SUMMARY"
           echo 'No chart writing, source-school equivalence claims, engine rule modifications or added production forecast.' >> "$GITHUB_STEP_SUMMARY"
           echo 'Required before merge: source integrity, R43 specific, full-stack, and Production Acceptance 5/5 on identical HEAD.' >> "$GITHUB_STEP_SUMMARY"
