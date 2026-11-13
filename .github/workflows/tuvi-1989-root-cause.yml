@@ -50,6 +50,7 @@ jobs:
         run: |
           node --test tests/v111676-tuvi-1989-root-cause-diagnostics.test.cjs
           node infrastructure/scripts/tuvi-r33-evaluate-root-cause.cjs .r33-source-1989-root-cause-observations.json
+          node infrastructure/scripts/tuvi-r33-r57-lunar-day-counterfactual.cjs .r33-source-1989-root-cause-observations.json
       - name: Note source-only evidence boundary
         if: always()
         run: |
@@ -58,6 +59,7 @@ jobs:
           echo 'Exact source: Renhuai123/ziwei-doushu@7922285d947b36610e7e31c232d8f1e2a0d0871d, iztro@2.6.1.' >> "$GITHUB_STEP_SUMMARY"
           echo 'A difference between engines is recorded as diagnostic data, NOT treated as a failure or silently changed.' >> "$GITHUB_STEP_SUMMARY"
           echo 'No astrology engine changes, no semantic parity, no promotion from 31/49 mapped classical conditions.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'R57: 30 real source cases with isolated local lunar-input counterfactual; a reproduced coordinate does NOT prove calendar-school equivalence or authorize changing user charts.' >> "$GITHUB_STEP_SUMMARY"
       - name: Retain detailed source and comparison JSON
         if: always()
         uses: actions/upload-artifact@v4
@@ -66,6 +68,7 @@ jobs:
           path: |
             .r33-source-1989-root-cause-observations.json
             .r33-1989-root-cause-report.json
+            .r57-source-lunar-day-counterfactual.json
           include-hidden-files: true
           if-no-files-found: warn
           retention-days: 14

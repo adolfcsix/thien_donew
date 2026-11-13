@@ -139,3 +139,101 @@ test('r33: genuine source execution may only be claimed in isolated pinned-sourc
  assert.equal(out.semanticEquivalenceVerified,false);
  assert.equal(out.localPatternVerdictsVerified,false);
 });
+
+
+test('r57: local unmodified chart recalculated from pinned input is an isolated lunar-day counterfactual',()=>{
+ const {SCHEMA:r57Schema,TARGET,localPoint,counterfactualForRecord,auditR57}=
+  require('../infrastructure/scripts/tuvi-r33-r57-lunar-day-counterfactual.cjs');
+ const source=fixture(),original=JSON.stringify(source);
+ const direct=analyzeRootCause(source),report=auditR57(source);
+ assert.equal(report.schema,r57Schema);
+ assert.equal(report.caseCount,30);
+ assert.equal(report.rows.length,30);
+ assert.equal(report.targetCase.id,TARGET);
+ assert.equal(report.mappedResearchCount,31);
+ assert.equal(report.referenceTotal,49);
+ assert.equal(report.rootCauseVerified,false);
+ assert.equal(report.semanticEquivalenceVerified,false);
+ assert.equal(report.sourceSchoolParityVerified,false);
+ assert.equal(report.sourceCalendarTimezoneVerified,false);
+ assert.equal(report.mayChangeChartRules,false);
+ assert.equal(report.mayIncreaseMapping,false);
+ assert.deepEqual(Object.values(report.dateStrata).map(x=>x.cases),[6,6,6,6,6]);
+ assert.equal(report.originalR33LunarDayDifferences,0);
+ assert.ok(report.rows.every(r=>r.originalLunarMatches&&r.dayOnlyDifferent===false&&
+  r.inputToCounterfactual.sameInstantAsOriginalBirth===false&&
+  r.comparison.directLiemTrinhDiffers===false&&
+  r.resultClass==='context-or-calendar-not-isolated'&&
+  r.rootCauseVerified===false&&r.mayChangeChartRules===false));
+ assert.deepEqual(report,auditR57(source),'Counterfactual must be deterministic');
+ assert.equal(JSON.stringify(source),original,'R57 must not edit source observations');
+ const target=source.records.find(r=>r.id===TARGET);
+ const prior=direct.records.find(r=>r.id===TARGET);
+ const p=localPoint(Engine.calculate({date:target.solarDate,hour:0,gender:'Nam',calendar:'solar'}));
+ assert.equal(p.liemTrinhBranch,(p.ziweiPos+4)%12);
+ assert.equal(counterfactualForRecord(target,prior).originalLocal.lunarDay,target.source.lunarDay);
+});
+
+test('r57: simulated one-day SOURCE lunar input cannot be mistaken for a genuine original birth chart',()=>{
+ const {TARGET,auditR57}=
+  require('../infrastructure/scripts/tuvi-r33-r57-lunar-day-counterfactual.cjs');
+ const src=fixture(),changed=src.records.find(r=>r.id===TARGET);
+ changed.source.lunarDay=changed.source.lunarDay===30?29:changed.source.lunarDay+1;
+ const before=JSON.stringify(src),out=auditR57(src),target=out.targetCase;
+ assert.equal(target.dayOnlyDifferent,true);
+ assert.equal(target.comparison.directLunarDayDiffers,true);
+ assert.equal(target.inputToCounterfactual.calendar,'lunar');
+ assert.equal(target.inputToCounterfactual.sameInstantAsOriginalBirth,false);
+ assert.equal(target.inputToCounterfactual.date,
+  [changed.source.lunarYear,String(changed.source.lunarMonth).padStart(2,'0'),
+   String(changed.source.lunarDay).padStart(2,'0')].join('-'));
+ assert.ok(['source-lunar-input-reproduces-source-anchor-and-liem-in-local-model',
+  'source-lunar-input-does-not-reproduce-both-branches',
+  'context-or-calendar-not-isolated','counterfactual-unavailable'].includes(target.resultClass));
+ assert.equal(target.rootCauseVerified,false);
+ assert.equal(out.mayIncreaseMapping,false);
+ assert.equal(JSON.stringify(src),before);
+ const invalid=clone(src);invalid.provenance.commit='unpinned';
+ assert.throws(()=>auditR57(invalid));
+ const incomplete=clone(src);incomplete.records.pop();
+ assert.throws(()=>auditR57(incomplete));
+});
+
+test('r57: genuine R33 source dates must be executed under pinned source CI',()=>{
+ const {auditR57,TARGET}=require('../infrastructure/scripts/tuvi-r33-r57-lunar-day-counterfactual.cjs');
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const pathToSource=path.resolve(__dirname,'../.r33-source-1989-root-cause-observations.json');
+ assert.ok(fs.existsSync(pathToSource),'R57 requires actual pinned-source R33 runtime output');
+ const source=JSON.parse(fs.readFileSync(pathToSource,'utf8'));
+ const out=auditR57(source);
+ assert.equal(out.caseCount,30);
+ assert.equal(out.originalR33LunarDayDifferences,18);
+ assert.equal(out.originalR33ZiweiDifferences,18);
+ assert.equal(out.originalR33CucDifferences,0);
+ assert.equal(out.targetCase.id,TARGET);
+ assert.equal(out.targetCase.astronomicalBoundaryClass,'compatible-with-civil-timezone-boundary');
+ assert.equal(out.targetCase.dayOnlyDifferent,true);
+ assert.equal(out.targetCase.rootCauseVerified,false);
+ assert.equal(out.targetCase.comparison.sourceLiêmTrinhObeysLocalAnchorOffset,true);
+ assert.equal(out.classCounts['source-lunar-input-reproduces-source-anchor-and-liem-in-local-model'],18);
+ assert.equal(out.classCounts['context-or-calendar-not-isolated'],12);
+ assert.deepEqual([out.targetCase.source.lunarYear,out.targetCase.source.lunarMonth,
+  out.targetCase.source.lunarDay],[1989,7,14]);
+ assert.deepEqual([out.targetCase.originalLocal.lunarYear,out.targetCase.originalLocal.lunarMonth,
+  out.targetCase.originalLocal.lunarDay],[1989,7,15]);
+ assert.equal(out.targetCase.source.wuxingJu,4);
+ assert.equal(out.targetCase.originalLocal.wuxingJu,4);
+ assert.equal(out.targetCase.source.mingGongBranch,8);
+ assert.equal(out.targetCase.originalLocal.mingGongBranch,8);
+ assert.deepEqual([out.targetCase.source.ziweiPos,out.targetCase.source.liemTrinhBranch],[7,11]);
+ assert.deepEqual([out.targetCase.originalLocal.ziweiPos,
+  out.targetCase.originalLocal.liemTrinhBranch],[4,8]);
+ assert.deepEqual([out.targetCase.localCounterfactual?.ziweiPos,
+  out.targetCase.localCounterfactual?.liemTrinhBranch],[7,11]);
+ assert.equal(out.targetCase.comparison.counterfactualPreservesSourceCuc,true);
+ assert.equal(out.targetCase.comparison.counterfactualPreservesSourceMing,true);
+ assert.equal(out.mayChangeChartRules,false);
+ assert.equal(out.mayIncreaseMapping,false);
+ console.log('R57: 30 genuine source inputs; 18 lunar-day divergences; target='+out.targetCase.resultClass+
+  '; counterfactual sensitivity only, never algorithm-school equivalence');
+});
