@@ -317,3 +317,58 @@ test('r58: genuine source library timezone matrix is complete, provenance-locked
  assert.throws(()=>buildR58TimezoneMatrix(duplicated,source));
  console.log('R58: 3 source runtime TZ settings x 32 cases; no school/timezone inference, 31/49 unchanged');
 });
+
+
+test('r59: pinned lunar astronomy internals reproduce R58 civil boundaries without source calendar promotion',()=>{
+ const {auditR59,MONTHS,LIBRARIES}=
+  require('../infrastructure/scripts/tuvi-r33-r59-evaluate-lunar-boundary-internals.cjs');
+ assert.deepEqual(LIBRARIES,['lunar-javascript','lunar-typescript']);
+ assert.equal(MONTHS.length,5);
+ assert.throws(()=>auditR59(null,null));
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const sourcePath=path.resolve(__dirname,'../.r59-source-lunar-boundary-internals.json');
+ const r58Path=path.resolve(__dirname,'../.r58-pinned-timezone-calendar-matrix.json');
+ assert.ok(fs.existsSync(sourcePath),'R59 requires both pinned calendar libraries executed');
+ assert.ok(fs.existsSync(r58Path),'R59 needs independent R58 source matrix');
+ const source=JSON.parse(fs.readFileSync(sourcePath,'utf8'));
+ const baseline=JSON.parse(fs.readFileSync(r58Path,'utf8'));
+ const prev=JSON.stringify([source,baseline]);
+ const report=auditR59(source,baseline);
+ assert.equal(report.schema,'thiendo-r59-pinned-lunar-month-julian-boundary-audit-v1');
+ assert.equal(report.sourceLibraries,2);
+ assert.equal(report.measuredLunarMonthBoundaries,10);
+ assert.equal(report.observedCivilDates,6);
+ assert.equal(report.r58SourceCalendarCaseCount,32);
+ assert.equal(report.firstDayOf1989SeventhLunarMonth,'1989-08-02');
+ assert.equal(report.same1989SeventhMonthFirstDate,true);
+ assert.equal(report.newMoonOffsetHoursInLibraryConstants,8);
+ assert.equal(report.alternativeVietnamCalendarVerified,false);
+ assert.equal(report.sourceNewMoonTimeConventionFullyVerified,false);
+ assert.equal(report.rootCauseVerified,false);
+ assert.equal(report.localChartCalendarErrorVerified,false);
+ assert.equal(report.mayEnableCalendarSchoolMode,false);
+ assert.equal(report.mayChangeChartRules,false);
+ assert.equal(report.mappedResearch,31);
+ assert.equal(report.referenceTotal,49);
+ assert.equal(report.mayIncreaseMapping,false);
+ assert.ok(Object.isFrozen(report)&&Object.isFrozen(report.libraries));
+ assert.equal(JSON.stringify([source,baseline]),prev,'R59 changed original source evidence');
+ assert.deepEqual(report,auditR59(source,baseline),'R59 output nondeterministic');
+ const forged=clone(source);
+ forged.libraries[0].lunarMonths.find(x=>x.year===1989&&x.month===7).solarFirstDay='1989-08-01';
+ assert.throws(()=>auditR59(forged,baseline));
+ const wrongOffset=clone(source);
+ wrongOffset.libraries[0].declaredOffsetHours=7;
+ assert.throws(()=>auditR59(wrongOffset,baseline));
+ const wrongDependency=clone(source);
+ wrongDependency.provenance.lockedDependencies['lunar-javascript']='0.0.0';
+ assert.throws(()=>auditR59(wrongDependency,baseline));
+ const incomplete=clone(source);
+ incomplete.libraries[1].datedControls.pop();
+ assert.throws(()=>auditR59(incomplete,baseline));
+ const changedBaseline=clone(baseline);
+ changedBaseline.rows.find(x=>x.id==='1989-08-02-Nam-0')
+  .lunarJavascriptByZone.UTC.day=2;
+ assert.throws(()=>auditR59(source,changedBaseline));
+ console.log('R59: 2 genuine pinned libraries x 5 month Julian beginnings; 1989/7 first day 1989-08-02; no automatic policy switch');
+});
