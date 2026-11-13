@@ -85,7 +85,17 @@ test('R61 genuine 67 source charts, 804 periods, three source-only detector prob
  assert.equal(report.criterionCounts['dinh-ban-01'].compared,67);
  assert.equal(report.criterionCounts['dinh-ban-02'].compared,67);
  assert.equal(report.criterionCounts['dinh-tap-03'].compared,804);
- assert.ok(report.criterionCounts['dinh-ban-02'].sourcePositive>=1);
+ assert.deepEqual(report.criterionCounts,{
+  'dinh-ban-01':{compared:67,sourcePositive:3,xunOnlyPositive:1,
+   jiekongOnlyPositive:2,dependsOnXun:1,dependsOnJiekong:2,
+   onlyTogether:0,familyOnlyXun:1,familyOnlyJiekong:2},
+  'dinh-ban-02':{compared:67,sourcePositive:1,xunOnlyPositive:1,
+   jiekongOnlyPositive:0,dependsOnXun:1,dependsOnJiekong:0,
+   onlyTogether:0,familyOnlyXun:1,familyOnlyJiekong:0},
+  'dinh-tap-03':{compared:804,sourcePositive:48,xunOnlyPositive:0,
+   jiekongOnlyPositive:0,dependsOnXun:48,dependsOnJiekong:48,
+   onlyTogether:48,familyOnlyXun:0,familyOnlyJiekong:0}
+ });
  assert.equal(report.semanticEquivalenceVerified,false);
  assert.equal(report.sourceSchoolParityVerified,false);
  assert.equal(report.mayIncreaseMapping,false);
