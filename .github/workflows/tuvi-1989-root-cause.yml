@@ -60,11 +60,11 @@ jobs:
         env:
           THIENDO_R33_REQUIRE_GENUINE: '1'
         run: |
-          node --test tests/v111676-tuvi-1989-root-cause-diagnostics.test.cjs
           node infrastructure/scripts/tuvi-r33-evaluate-root-cause.cjs .r33-source-1989-root-cause-observations.json
           node infrastructure/scripts/tuvi-r33-r57-lunar-day-counterfactual.cjs .r33-source-1989-root-cause-observations.json
           node infrastructure/scripts/tuvi-r33-r58-evaluate-timezone-calendar.cjs .r58-source-tz-UTC.json .r58-source-tz-Asia_Ho_Chi_Minh.json .r58-source-tz-Asia_Shanghai.json
           node infrastructure/scripts/tuvi-r33-r59-evaluate-lunar-boundary-internals.cjs .r59-source-lunar-boundary-internals.json
+          node --test tests/v111676-tuvi-1989-root-cause-diagnostics.test.cjs
       - name: Note source-only evidence boundary
         if: always()
         run: |
