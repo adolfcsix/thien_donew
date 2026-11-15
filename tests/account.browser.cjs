@@ -212,10 +212,11 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  // This exercises the actual React/browser race without sleeps or API bypasses.
  await recoveryPage.evaluate(()=>{
   const raf=window.requestAnimationFrame.bind(window),queued=[];
-  window.requestAnimationFrame=callback=>raf(time=>queued.push(()=>callback(time)));
+  window.requestAnimationFrame=callback=>raf(time=>queued.push(()=>callback.call(window,time)));
   window.__qaReleaseRecoveryFocus=async()=>{
    await new Promise(resolve=>raf(()=>raf(resolve)));
    window.requestAnimationFrame=raf;
+   if(!queued.length)throw Error('No deferred recovery animation frame captured');
    const active=document.activeElement;
    queued.splice(0).forEach(run=>run());
    if(document.activeElement!==active)throw Error('Deferred recovery autofocus redirected user input');
