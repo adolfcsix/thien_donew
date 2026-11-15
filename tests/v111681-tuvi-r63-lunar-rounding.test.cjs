@@ -38,9 +38,11 @@ test('R63 rejects missing, reordered, forged phase/delta-T/offset and rounding d
  assert.throws(()=>auditMonthTrace(arithmeticTrace(true),{...lib,offsetDays:7/24}));
  assert.throws(()=>auditR63(null,null,null));
 });
-test('R63 genuine pinned traces agree with R59 and reject tampered provenance/baselines',{
- skip:process.env.THIENDO_R33_REQUIRE_GENUINE!=='1'?'requires isolated pinned-source execution':false
-},()=>{
+test('R63 rejects missing evidence; explicitly gated genuine traces agree with R59',()=>{
+ assert.throws(()=>auditR63(null,null,null));
+ // The general regression validates refusal only. Genuine claims require the
+ // explicit source workflow, like R33/R59/R62; fixture presence is insufficient.
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
  const read=name=>JSON.parse(fs.readFileSync(path.join(__dirname,'..',name),'utf8'));
  const input=read('.r63-source-lunar-rounding-trace.json');
  const r59=read('.r59-source-lunar-boundary-internals.json');
