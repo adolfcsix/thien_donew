@@ -15,13 +15,26 @@ for(const [name,version] of Object.entries(lockedDependencies)){
 }
 const methods=['calcShuo','shuoHigh','msaLonT2','msaLonT','dtT'];
 const months=[[1988,7],[1989,6],[1989,7],[1989,8],[1990,7]];
+const args=process.argv.slice(2);
+if(args.length!==0&&(args.length!==2||args[0]!=='--r64-manifest'))throw Error('Unknown lunar trace arguments');
+const manifest=args.length?JSON.parse(readFileSync(args[1],'utf8')):null;
+if(manifest&&(manifest.schema!=='thiendo-r64-nasa-new-moons-1988-1990-v1'||manifest.cases?.length!==37))
+ throw Error('R64 requires the pinned 37-event NASA manifest');
 const libraries=[{name:'lunar-javascript',Solar:JSolar,Month:JMonth,util:JUtil},
  {name:'lunar-typescript',Solar:TSolar,Month:TMonth,util:TUtil}].map(c=>{
  const util=c.util as unknown as Record<string,any>;
  const originals=Object.fromEntries(methods.map(name=>[name,util[name]]));
  const fingerprints=Object.fromEntries(methods.map(name=>[name,
   createHash('sha256').update(String(originals[name])).digest('hex')]));
- const rows=months.map(([year,month])=>{
+ const targets=manifest?manifest.cases.map((event:{id:string,utMinute:string})=>{
+  // Probe two days inside the independently selected lunation. The observed
+  // source month start is retained, never replaced with the NASA civil day.
+  const date=new Date(Date.parse(event.utMinute)+(8+48)*3600000);
+  if(!Number.isFinite(date.getTime()))throw Error('R64 invalid reference time');
+  const lunar=c.Solar.fromYmd(date.getUTCFullYear(),date.getUTCMonth()+1,date.getUTCDate()).getLunar();
+  return {year:lunar.getYear(),month:lunar.getMonth(),id:event.id};
+ }):months.map(([year,month])=>({year,month}));
+ const rows=targets.map(({year,month,id}:{year:number,month:number,id?:string})=>{
   const first=c.Month.fromYm(year,month);
   if(!first)throw Error('R63 missing lunar month');
   const firstJulianDay=first.getFirstJulianDay();
@@ -39,14 +52,14 @@ const libraries=[{name:'lunar-javascript',Solar:JSolar,Month:JMonth,util:JUtil},
    rounded=util.calcShuo(firstJulianDay-c.Solar.J2000);
   }finally{for(const name of methods)util[name]=originals[name];}
   if(rounded+c.Solar.J2000!==firstJulianDay)throw Error('R63 direct method/month disagreement');
-  return {year,month,firstJulianDay,rounded,calls};
+  return {...(id?{id}:{}),year,month,firstJulianDay,rounded,calls};
  });
  if(methods.some(name=>util[name]!==originals[name]))throw Error('R63 wrapper not restored');
  return {name:c.name,j2000:c.Solar.J2000,offsetDays:Number(util.ONE_THIRD),fingerprints,rows};
 });
-writeFileSync('../.r63-source-lunar-rounding-trace.json',JSON.stringify({
- schema:'thiendo-r63-source-lunar-rounding-trace-v1',
+writeFileSync(manifest?'../.r64-source-lunar-rounding-trace.json':'../.r63-source-lunar-rounding-trace.json',JSON.stringify({
+ schema:manifest?'thiendo-r64-source-lunar-rounding-trace-v1':'thiendo-r63-source-lunar-rounding-trace-v1',
  provenance:{repository:'Renhuai123/ziwei-doushu',commit:COMMIT,
   lockedDependencies,sourceExecuted:true,syntheticOnly:true},libraries
 },null,2)+'\n');
-console.log('R63: original calcShuo/shuoHigh/phase/delta-T calls captured for 2 pinned libraries x 5 months');
+console.log((manifest?'R64':'R63')+': original calcShuo/shuoHigh/phase/delta-T calls captured for 2 pinned libraries x '+(manifest?37:5)+' lunations');
