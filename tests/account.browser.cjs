@@ -55,7 +55,16 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  async function pairedSubmit(page,button,endpoint){
   // A response can arrive before React commits its pending=false render.
   // Exercise duplicate submission only once the real control is actionable.
-  await button.click({trial:true});
+  try{await button.click({trial:true});}
+  catch(error){
+   // Record readiness, never passwords, OTPs, email addresses or input values.
+   const state=await button.evaluate(b=>({disabled:b.disabled,
+    fields:Array.from(b.form?.querySelectorAll('input')||[]).map(i=>({
+     type:i.type,autocomplete:i.autocomplete,length:i.value.length,disabled:i.disabled,focused:i===document.activeElement})),
+    clocks:Array.from(b.form?.querySelectorAll('[role="status"]')||[]).map(i=>i.textContent)
+   })).catch(()=>null);
+   console.error('SUBMIT_CONTROL_STATE',endpoint,JSON.stringify(state));throw error;
+  }
   let calls=0,release;const gate=new Promise(resolve=>release=resolve),handlers=[];
   const handler=route=>{const done=(async()=>{calls++;await gate;await route.continue()})();handlers.push(done);return done;};
   await page.route('**'+endpoint,handler);
@@ -193,7 +202,40 @@ const root=path.resolve(__dirname,'..'),out=process.env.THIENDO_BROWSER_REPORT_D
  record({case:'real mobile registration opens member workspace even when next requests admin; new account has no administrative API access',verdict:'PASS'});
 
 
- const recoveryContext=await browser.newContext();recoveryContext.on('page',p=>p.on('pageerror',e=>pageErrors.push(e.message)));const recoveryPage=await recoveryContext.newPage();recoveryPage.setDefaultTimeout(15000);await recoveryPage.goto(origin+'/login?mode=recover',{waitUntil:'networkidle'});const recovery=recoveryPage.getByRole('dialog');await recovery.getByLabel('Email đăng ký',{exact:true}).fill('new-member@example.invalid');await pairedSubmit(recoveryPage,recovery.getByRole('button',{name:'Tiếp tục',exact:true}),'/api/auth/password/forgot');await recovery.getByLabel('Mã xác minh 6 chữ số',{exact:true}).fill(delivered.get('new-member@example.invalid'));const changedPassword='A42Recovery!'+randomBytes(12).toString('hex');await recovery.getByLabel('Mật khẩu mới',{exact:true}).fill(changedPassword);await pairedSubmit(recoveryPage,recovery.getByRole('button',{name:'Đặt lại mật khẩu',exact:true}),'/api/auth/password/reset');await recovery.getByText('Đã đặt lại mật khẩu. Hãy đăng nhập bằng mật khẩu mới.',{exact:true}).waitFor();assert.equal((await recoveryContext.request.post(origin+'/api/auth/login',{data:{email:'qa_new_member',password:changedPassword}})).status(),200);await recoveryContext.close();
+ const recoveryContext=await browser.newContext();
+ recoveryContext.on('page',p=>p.on('pageerror',e=>pageErrors.push(e.message)));
+ const recoveryPage=await recoveryContext.newPage();recoveryPage.setDefaultTimeout(15000);
+ await recoveryPage.goto(origin+'/login?mode=recover',{waitUntil:'networkidle'});
+ const recovery=recoveryPage.getByRole('dialog');
+ await recovery.getByLabel('Email đăng ký',{exact:true}).fill('new-member@example.invalid');
+ // Hold queued frames in this isolated page until the user chooses a field.
+ // This exercises the actual React/browser race without sleeps or API bypasses.
+ await recoveryPage.evaluate(()=>{
+  const raf=window.requestAnimationFrame.bind(window),queued=[];
+  window.requestAnimationFrame=callback=>raf(time=>queued.push(()=>callback(time)));
+  window.__qaReleaseRecoveryFocus=async()=>{
+   await new Promise(resolve=>raf(()=>raf(resolve)));
+   window.requestAnimationFrame=raf;
+   const active=document.activeElement;
+   queued.splice(0).forEach(run=>run());
+   if(document.activeElement!==active)throw Error('Deferred recovery autofocus redirected user input');
+   delete window.__qaReleaseRecoveryFocus;
+  };
+ });
+ await pairedSubmit(recoveryPage,recovery.getByRole('button',{name:'Tiếp tục',exact:true}),'/api/auth/password/forgot');
+ const recoveryCode=recovery.getByLabel('Mã xác minh 6 chữ số',{exact:true});
+ const recoveryPassword=recovery.getByLabel('Mật khẩu mới',{exact:true});
+ await recoveryCode.fill(delivered.get('new-member@example.invalid'));
+ await recoveryPassword.focus();
+ await recoveryPage.evaluate(()=>window.__qaReleaseRecoveryFocus());
+ assert.equal(await recoveryCode.inputValue()===delivered.get('new-member@example.invalid'),true,'OTP changed during deferred focus');
+ record({case:'delayed recovery animation frames preserve the chosen password field and OTP',verdict:'PASS'});
+ const changedPassword='A42Recovery!'+randomBytes(12).toString('hex');
+ await recoveryPassword.fill(changedPassword);
+ await pairedSubmit(recoveryPage,recovery.getByRole('button',{name:'Đặt lại mật khẩu',exact:true}),'/api/auth/password/reset');
+ await recovery.getByText('Đã đặt lại mật khẩu. Hãy đăng nhập bằng mật khẩu mới.',{exact:true}).waitFor();
+ assert.equal((await recoveryContext.request.post(origin+'/api/auth/login',{data:{email:'qa_new_member',password:changedPassword}})).status(),200);
+ await recoveryContext.close();
  record({case:'paired recovery request/reset each sends once, consumes one OTP and new password authenticates',verdict:'PASS'});
  // Short screens and high zoom equivalents must expose the final form controls.
  const anonymous=await browser.newContext();const authPage=await anonymous.newPage();authPage.setDefaultTimeout(15000);

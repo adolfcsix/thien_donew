@@ -10,6 +10,8 @@ on:
       - 'tests/v111682-tuvi-r64-independent-new-moons.test.cjs'
       - 'tests/fixtures/tuvi-r64-nasa-new-moons-1988-1990.json'
       - 'packages/astrology-engine/src/**'
+      - 'apps/web/src/components/auth-provider.tsx'
+      - 'tests/auth-dialog-focus-dom.test.mjs'
   push:
     branches: [main]
     paths:
@@ -20,6 +22,8 @@ on:
       - 'tests/v111681-tuvi-r63-lunar-rounding.test.cjs'
       - 'tests/v111682-tuvi-r64-independent-new-moons.test.cjs'
       - 'tests/fixtures/tuvi-r64-nasa-new-moons-1988-1990.json'
+      - 'apps/web/src/components/auth-provider.tsx'
+      - 'tests/auth-dialog-focus-dom.test.mjs'
   workflow_dispatch:
 permissions:
   contents: read
