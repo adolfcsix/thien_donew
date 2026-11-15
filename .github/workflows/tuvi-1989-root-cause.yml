@@ -5,6 +5,7 @@ on:
       - '.github/workflows/tuvi-1989-root-cause.yml'
       - 'infrastructure/scripts/tuvi-r33-*'
       - 'tests/v111676-tuvi-1989-root-cause-diagnostics.test.cjs'
+      - 'tests/v111680-tuvi-r62-matched-source-void-controls.test.cjs'
       - 'packages/astrology-engine/src/**'
   push:
     branches: [main]
@@ -12,6 +13,7 @@ on:
       - '.github/workflows/tuvi-1989-root-cause.yml'
       - 'infrastructure/scripts/tuvi-r33-*'
       - 'tests/v111676-tuvi-1989-root-cause-diagnostics.test.cjs'
+      - 'tests/v111680-tuvi-r62-matched-source-void-controls.test.cjs'
   workflow_dispatch:
 permissions:
   contents: read
@@ -70,6 +72,8 @@ jobs:
           node infrastructure/scripts/tuvi-r33-r58-evaluate-timezone-calendar.cjs .r58-source-tz-UTC.json .r58-source-tz-Asia_Ho_Chi_Minh.json .r58-source-tz-Asia_Shanghai.json
           node infrastructure/scripts/tuvi-r33-r59-evaluate-lunar-boundary-internals.cjs .r59-source-lunar-boundary-internals.json
           node infrastructure/scripts/tuvi-r33-r61-audit-source-void-predicates.cjs .r61-pinned-source-void-predicate-observations.json
+          node --test tests/v111680-tuvi-r62-matched-source-void-controls.test.cjs
+          node infrastructure/scripts/tuvi-r33-r62-matched-source-void-controls.cjs .r61-pinned-source-void-predicate-observations.json
           node --test tests/v111676-tuvi-1989-root-cause-diagnostics.test.cjs
       - name: Note source-only evidence boundary
         if: always()
@@ -83,6 +87,7 @@ jobs:
           echo 'R58: three source-library TZ runtime experiments; process TZ behavior is not proof of calendar-school policy or authorization to switch Thiên Đồ charts.' >> "$GITHUB_STEP_SUMMARY"
           echo 'R59: independently observe first Julian day of 1989 lunar month 7 and a library eight-hour calculation term; full astronomy and calendar-school policy NOT established.' >> "$GITHUB_STEP_SUMMARY"
           echo 'R61: 960 pinned source-only synthetic birth charts; six named void predicates and Ding Pin/Ding Za detectors cross-checked, NOT Tuần/Triệt school equivalence. 31/49 unchanged.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'R62: same-date/gender but different birth-hour controls for natal positives, same-chart different-major-period controls; NOT single-star interventions or school parity.' >> "$GITHUB_STEP_SUMMARY"
       - name: Retain detailed source and comparison JSON
         if: always()
         uses: actions/upload-artifact@v4
@@ -100,6 +105,7 @@ jobs:
             .r59-pinned-lunar-julian-boundary-audit.json
             .r61-pinned-source-void-predicate-observations.json
             .r61-pinned-void-predicate-audit.json
+            .r62-source-matched-positive-negative-controls.json
           include-hidden-files: true
           if-no-files-found: warn
           retention-days: 14
