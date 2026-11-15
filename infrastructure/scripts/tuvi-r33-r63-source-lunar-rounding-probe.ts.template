@@ -1,0 +1,52 @@
+/** R63: observe original pinned method calls; wrappers restore in finally. */
+import {writeFileSync,readFileSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {Solar as JSolar,LunarMonth as JMonth,ShouXingUtil as JUtil} from 'lunar-javascript';
+import {Solar as TSolar,LunarMonth as TMonth,ShouXingUtil as TUtil} from 'lunar-typescript';
+const COMMIT='7922285d947b36610e7e31c232d8f1e2a0d0871d';
+if(execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()!==COMMIT)
+ throw Error('R63 source checkout is not pinned');
+const lockedDependencies={'lunar-javascript':'1.7.7','lunar-typescript':'1.8.6',iztro:'2.6.1'};
+const lock=JSON.parse(readFileSync('package-lock.json','utf8'));
+for(const [name,version] of Object.entries(lockedDependencies)){
+ if(JSON.parse(readFileSync('node_modules/'+name+'/package.json','utf8')).version!==version||
+    lock.packages?.['node_modules/'+name]?.version!==version)throw Error('R63 dependency mismatch '+name);
+}
+const methods=['calcShuo','shuoHigh','msaLonT2','msaLonT','dtT'];
+const months=[[1988,7],[1989,6],[1989,7],[1989,8],[1990,7]];
+const libraries=[{name:'lunar-javascript',Solar:JSolar,Month:JMonth,util:JUtil},
+ {name:'lunar-typescript',Solar:TSolar,Month:TMonth,util:TUtil}].map(c=>{
+ const util=c.util as unknown as Record<string,any>;
+ const originals=Object.fromEntries(methods.map(name=>[name,util[name]]));
+ const fingerprints=Object.fromEntries(methods.map(name=>[name,
+  createHash('sha256').update(String(originals[name])).digest('hex')]));
+ const rows=months.map(([year,month])=>{
+  const first=c.Month.fromYm(year,month);
+  if(!first)throw Error('R63 missing lunar month');
+  const firstJulianDay=first.getFirstJulianDay();
+  const calls:Array<{method:string,input:number,output:number,depth:number}>=[];
+  let depth=0,rounded:number;
+  try{
+   for(const name of methods)util[name]=function(input:number){
+    const level=depth++;
+    try{
+     const output=originals[name].call(this,input);
+     if(!Number.isFinite(input)||!Number.isFinite(output))throw Error('R63 nonfinite method value');
+     calls.push({method:name,input,output,depth:level});return output;
+    }finally{depth--;}
+   };
+   rounded=util.calcShuo(firstJulianDay-c.Solar.J2000);
+  }finally{for(const name of methods)util[name]=originals[name];}
+  if(rounded+c.Solar.J2000!==firstJulianDay)throw Error('R63 direct method/month disagreement');
+  return {year,month,firstJulianDay,rounded,calls};
+ });
+ if(methods.some(name=>util[name]!==originals[name]))throw Error('R63 wrapper not restored');
+ return {name:c.name,j2000:c.Solar.J2000,offsetDays:Number(util.ONE_THIRD),fingerprints,rows};
+});
+writeFileSync('../.r63-source-lunar-rounding-trace.json',JSON.stringify({
+ schema:'thiendo-r63-source-lunar-rounding-trace-v1',
+ provenance:{repository:'Renhuai123/ziwei-doushu',commit:COMMIT,
+  lockedDependencies,sourceExecuted:true,syntheticOnly:true},libraries
+},null,2)+'\n');
+console.log('R63: original calcShuo/shuoHigh/phase/delta-T calls captured for 2 pinned libraries x 5 months');
