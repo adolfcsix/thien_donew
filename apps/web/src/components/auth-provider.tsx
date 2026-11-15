@@ -248,6 +248,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   </AuthContext.Provider>;
 }
 
+// A queued frame may run after the user has already selected another control.
+// Supply initial focus only; never redirect subsequent typing or keyboard input.
+function focusDialogInput(dialog: HTMLElement | null, selector: string, fallback = false) {
+  if (!dialog?.isConnected) return;
+  const active = dialog.ownerDocument.activeElement;
+  if (active instanceof HTMLElement && active !== dialog && dialog.contains(active) && !active.matches(':disabled')) return;
+  const target = dialog.querySelector<HTMLElement>(selector)
+    || (fallback ? dialog.querySelector<HTMLElement>('button:not([disabled]),[tabindex="0"]') : null);
+  target?.focus();
+}
+
 function useDialogFocus(close: () => void, pending: boolean) {
   const dialog = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -256,8 +267,7 @@ function useDialogFocus(close: () => void, pending: boolean) {
     const lastOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     const frame = requestAnimationFrame(() => {
-      const focusable = dialog.current?.querySelector<HTMLElement>('input:not([disabled])') || dialog.current?.querySelector<HTMLElement>('button:not([disabled]),[tabindex="0"]');
-      focusable?.focus();
+      focusDialogInput(dialog.current, 'input:not([disabled])', true);
     });
     return () => {
       cancelAnimationFrame(frame);
@@ -327,8 +337,7 @@ function AuthDialog({ entryScreen, user, avatarRevision, close, refreshProfile, 
   const { dialog, handleKey } = useDialogFocus(close, pending || profileWorking);
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
-      const input = dialog.current?.querySelector<HTMLInputElement>('.account-screen input:not([disabled])');
-      input?.focus();
+      focusDialogInput(dialog.current, '.account-screen input:not([disabled])');
     });
     return () => cancelAnimationFrame(frame);
   }, [challenge, recoverStep, register, user?.id]);
