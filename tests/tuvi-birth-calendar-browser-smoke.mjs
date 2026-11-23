@@ -30,8 +30,10 @@ try {
     const solar = page.getByRole('button', {name: 'Dương lịch', exact: true});
     const submit = page.getByRole('button', {name: /Tính lá số/});
     const choices = page.getByRole('group', {name: 'Chọn tháng âm'});
-    const regular = choices.getByRole('radio', {name: /^Tháng thường/});
-    const leap = choices.getByRole('radio', {name: /^Tháng nhuận/});
+    const regularOption = choices.locator('label').filter({has: page.getByRole('radio', {name: /^Tháng thường/})});
+    const leapOption = choices.locator('label').filter({has: page.getByRole('radio', {name: /^Tháng nhuận/})});
+    const regular = regularOption.getByRole('radio');
+    const leap = leapOption.getByRole('radio');
 
     await page.getByLabel('Tên lá số', {exact: true}).fill('Ca kiểm thử tháng nhuận');
     await lunar.tap();
@@ -40,13 +42,13 @@ try {
     assert.equal(await date.inputValue(), '2020-04-01');
     await choices.getByText('23/04/2020 dương lịch', {exact: true}).waitFor();
     await choices.getByText('23/05/2020 dương lịch', {exact: true}).waitFor();
-    await choices.locator('label').filter({has: leap}).tap();
+    await leapOption.tap();
     assert.ok(await leap.isChecked());
 
     await date.fill('20200430');
     assert.ok(await leap.isDisabled());
     assert.ok(await submit.isDisabled());
-    await choices.locator('label').filter({has: regular}).tap();
+    await regularOption.tap();
     assert.ok(await regular.isChecked());
     assert.ok(await submit.isEnabled());
 
@@ -58,7 +60,7 @@ try {
     assert.ok(await choices.locator('label').evaluateAll(labels =>
       labels.every(label => label.getBoundingClientRect().height >= 44)));
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
-    await choices.locator('label').filter({has: leap}).tap();
+    await leapOption.tap();
     await solar.tap();
     assert.equal(await date.inputValue(), '2017-08-21');
     await lunar.tap();
@@ -70,7 +72,7 @@ try {
     await page.getByRole('button', {name: 'Dùng tháng thường', exact: true}).tap();
     assert.ok(await submit.isEnabled());
     await date.fill('20170630');
-    await choices.locator('label').filter({has: leap}).tap();
+    await leapOption.tap();
     await submit.tap();
     const ledger = page.locator('.chart-profile-ledger');
     await ledger.getByText(/30\/6\/2017 · Tháng nhuận/).waitFor();
