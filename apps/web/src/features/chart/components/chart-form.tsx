@@ -2,7 +2,7 @@
 
 import { useMemo, useState, type FormEvent } from 'react';
 import type { ChartInput } from '@thiendo/shared-types';
-import { convertBirthCalendar, birthCheck } from '../lib/birth-calendar';
+import { convertBirthCalendar, birthCheck, LEAP_PLACEMENT_NOTE, lunarMonthChoices, normalizeLunarBirthDate } from '../lib/birth-calendar';
 import { BirthTimeResearch } from './birth-time-research';
 
 type Props = {
@@ -12,8 +12,13 @@ type Props = {
 };
 
 export function ChartForm({ input, onChange, onSubmit }: Props) {
-  const [calendarError, setCalendarError] = useState('');
+  const [failedCalendarSwitch, setFailedCalendarSwitch] = useState<string | null>(null);
+  const calendarKey = `${input.calendar}/${input.date}/${input.leap}`;
   const check = useMemo(() => birthCheck(input), [input.date, input.calendar, input.leap, input.hour, input.minute, input.gender]);
+  const monthChoices = useMemo(
+    () => input.calendar === 'lunar' ? lunarMonthChoices(input.date) : null,
+    [input.calendar, input.date],
+  );
 
   function changeCalendar(next: ChartInput['calendar']) {
     if (next === input.calendar) return;
@@ -22,10 +27,15 @@ export function ChartForm({ input, onChange, onSubmit }: Props) {
       onChange('date', converted.date);
       onChange('calendar', converted.calendar);
       onChange('leap', converted.leap);
-      setCalendarError('');
+      setFailedCalendarSwitch(null);
     } catch {
-      setCalendarError('Ngày hiện tại không hợp lệ. Hãy sửa ngày sinh rồi chuyển loại lịch; hệ thống sẽ không tự thay đổi ý nghĩa ngày sinh.');
+      setFailedCalendarSwitch(calendarKey);
     }
+  }
+
+  function changeLeap(leap: boolean) {
+    setFailedCalendarSwitch(null);
+    onChange('leap', leap);
   }
 
   return (
@@ -51,7 +61,11 @@ export function ChartForm({ input, onChange, onSubmit }: Props) {
             value={input.date}
             min={input.calendar === 'solar' ? '1900-01-01' : undefined}
             max={input.calendar === 'solar' ? '2100-12-31' : undefined}
-            onChange={e => onChange('date', e.target.value)}
+            onChange={e => {
+              setFailedCalendarSwitch(null);
+              const date = e.target.value;
+              onChange('date', input.calendar === 'lunar' ? normalizeLunarBirthDate(date) : date);
+            }}
           />
         </label>
         <div className="field">
@@ -61,13 +75,31 @@ export function ChartForm({ input, onChange, onSubmit }: Props) {
             <button type="button" aria-pressed={input.calendar === 'lunar'} className={input.calendar === 'lunar' ? 'selected' : ''} onClick={() => changeCalendar('lunar')}>Âm lịch</button>
           </div>
         </div>
-        <p className="chart-birth-input-hint" id="chart-birth-input-hint">Ngày âm: YYYY-MM-DD. Chọn tháng nhuận nếu cần.</p>
-        {calendarError && <p className="chart-birth-error" role="alert">{calendarError}</p>}
-        {input.calendar === 'lunar' && (
-          <label className="checkline">
-            <input type="checkbox" checked={input.leap} onChange={e => onChange('leap', e.target.checked)} />
-            Tháng âm nhuận
-          </label>
+        <p className="chart-birth-input-hint" id="chart-birth-input-hint">
+          {input.calendar === 'lunar' ? 'Nhập 8 chữ số theo thứ tự năm, tháng, ngày. Ví dụ 20170630.' : 'Chuyển sang âm lịch để xem ngày âm tương ứng.'}
+        </p>
+        {failedCalendarSwitch === calendarKey && <p className="chart-birth-error chart-birth-input-hint" role="alert">Sửa ngày sinh hoặc chọn tháng hợp lệ rồi chuyển loại lịch.</p>}
+        {monthChoices?.hasLeapMonth ? (
+          <fieldset className="chart-lunar-month">
+            <legend>Chọn tháng âm</legend>
+            <div className="chart-lunar-month-options">
+              {[
+                { leap: false, label: 'Tháng thường', solar: monthChoices.regularSolar },
+                { leap: true, label: 'Tháng nhuận', solar: monthChoices.leapSolar },
+              ].map(option => (
+                <label key={option.label} className="chart-lunar-month-option">
+                  <input type="radio" name="tuvi-lunar-month" checked={input.leap === option.leap}
+                    disabled={!option.solar} onChange={() => changeLeap(option.leap)} />
+                  <span>{option.label}<small>{option.solar ? `${option.solar} dương lịch` : 'Ngày này không hợp lệ'}</small></span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        ) : input.leap && monthChoices?.regularSolar && (
+          <div className="chart-lunar-month">
+            <p>Ngày này chỉ có trong tháng thường ({monthChoices.regularSolar} dương lịch).</p>
+            <button type="button" className="btn" onClick={() => changeLeap(false)}>Dùng tháng thường</button>
+          </div>
         )}
         <div className="input-pair">
           <label className="field">
@@ -93,6 +125,7 @@ export function ChartForm({ input, onChange, onSubmit }: Props) {
         <div className="chart-birth-preview" role="status" aria-live="polite">
           <strong>Đối chiếu thông tin trước khi lập</strong>
           {check.error ? <p className="chart-birth-error">{check.error}</p> : <p>Dương lịch <b>{check.solar}</b> · Âm lịch <b>{check.lunar}</b> · Giờ <b>{check.hourBranch}</b></p>}
+          {check.leap && <small>{LEAP_PLACEMENT_NOTE}</small>}
         </div>
         <button className="btn gold full" type="submit" disabled={Boolean(check.error)}>✦ &nbsp;Tính lá số</button>
         <BirthTimeResearch input={input} />
