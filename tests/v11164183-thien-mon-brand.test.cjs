@@ -1,4 +1,4 @@
-// SEC-01: normalized lock snapshot reviewed for Next 16.4.2; retain the existing A43 normalization and all asset/schema assertions.
+// SEC-01: normalized lock snapshot reviewed for Next 16.4.5; retain the existing A43 normalization and all asset/schema assertions.
 const {baselineBytes}=require('./helpers/a43-protected-baseline.cjs');
 'use strict';
 const test = require('node:test');
@@ -51,7 +51,7 @@ test('navigation behavior and app source outside visual scope untouched',()=>{
 });
 test('approved concept boards and frozen backend schema and security-reviewed dependencies after exact A43 additions remain unchanged; additive community migration is append-only',()=>{
   for(const file of ['docs/design-references/brand-thien-mon/approved-light-board.png','docs/design-references/brand-thien-mon/approved-dark-board.png'])assert.ok(fs.statSync(path.join(root,file)).size>500_000,file);
-  assert.equal(sha('package-lock.json'),'553a9b4328e2f37e965573913996f7760e133e9ba0e0678dacd80a2c5c9705ff');
+  assert.equal(sha('package-lock.json'),'a928f8223c5bd492bf436d710b38f760d227b0cad7f66dbdb82738ce70d100e2');
   assert.equal(sha('apps/api/src/app.module.ts'),'7cd6730534b2f4839d2386f3b6e0f8f443def5d613e2e87068475e0ad95dc4f5');
   assert.equal(fs.readdirSync(path.join(root,'infrastructure/db')).filter(n=>n.endsWith('.sql')).length,37);
 });
