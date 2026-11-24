@@ -21,7 +21,8 @@ test('V11.102: mobile menu retains keyboard focus and closes reliably',()=>{
   assert.match(shell,/thiendo-sidebar nav a\[href\]/);
   assert.match(shell,/if \(!menu \|\| event\.key !== 'Tab'\)/);
   assert.match(shell,/getClientRects\(\)\.length > 0/);
-  assert.match(shell,/menuTrigger\.current\?\.focus\(\)/);
+  assert.match(shell,/menuOpener\.current = trigger/);
+  assert.match(shell,/\[previous\.trigger, menuTrigger\.current, railTrigger\.current\]/);
   assert.match(shell,/aria-controls="thiendo-sidebar"/);
 });
 

@@ -7,7 +7,7 @@ import {localTestOrigin} from './e2e-http.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..');
 const version=JSON.parse(readFileSync(resolve(root,'package.json'),'utf8')).version;
 const origin=localTestOrigin(process.env.NEXT_BASE_URL||'http://127.0.0.1:3000');
-const suites=['tool-login','tarot','natal','timezone','storage','system-depth','star-source','star-system','deep-reading','tarot-depth','tarot-spreads','complete-chart','tuvi-birth-calendar','western-depth','relationship','mai-hoa-depth','luc-hao-depth','qimen-depth','bazi-naoj'];
+const suites=['tool-login','tarot','natal','timezone','storage','system-depth','star-source','star-system','deep-reading','tarot-depth','tarot-spreads','complete-chart','tuvi-birth-calendar','workspace-navigation','western-depth','relationship','mai-hoa-depth','luc-hao-depth','qimen-depth','bazi-naoj'];
 const started=new Date().toISOString(),checks=[];
 const dir=resolve(process.env.THIENDO_BROWSER_REPORT_DIR||resolve(root,'docs/reports'),`browser-v${version.replaceAll('.','_')}`);
 mkdirSync(dir,{recursive:true});
