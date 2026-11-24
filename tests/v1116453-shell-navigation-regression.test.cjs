@@ -31,7 +31,7 @@ test('desktop rail owns sole menu collapse state and persists across routes',()=
 });
 test('mobile navigation and accessible drawer remain intact',()=>{
   assert.match(shell,/className="icon-button mobile-menu"/);
-  assert.match(shell,/setMenu\(!menu\)/);
+  assert.match(shell,/onClick=\{event => openMenu\(event\.currentTarget\)\}/);
   assert.match(shell,/aria-modal=\{narrow && menu \? true : undefined\}/);
   assert.match(shell,/className="drawer-close"/);
   assert.match(shell,/inert=\{searchOpen \|\| \(narrow && !menu\)\}/);
