@@ -112,7 +112,7 @@ test('V11 reference screenshot: birth 10/10/2026 12:30 maps to the same twelve c
 });
 test('V11 birth input: form keeps observable conversion, date format guard and inline validation',()=>{
   const ui=fs.readFileSync(path.join(root,'apps/web/src/features/chart/components/chart-form.tsx'),'utf8');
-  for(const label of ['convertBirthCalendar(input, next)','onChange(\'date\', converted.date)','aria-pressed={input.calendar','birthCheck(input)','chart-birth-preview','disabled={Boolean(check.error)}','Giờ sinh áp dụng theo múi giờ Việt Nam']) {
+  for(const label of ['convertBirthCalendar(input, next)','onChange(\'date\', converted.date)','aria-pressed={input.calendar','birthCheck(input)','chart-birth-preview','disabled={profileLoading || Boolean(check.error)}','Giờ sinh áp dụng theo múi giờ Việt Nam']) {
     assert.ok(ui.includes(label),label);
   }
 });

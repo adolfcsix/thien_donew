@@ -7,11 +7,12 @@ import { BirthTimeResearch } from './birth-time-research';
 
 type Props = {
   input: ChartInput;
+  profileLoading?: boolean;
   onChange: <K extends keyof ChartInput>(field: K, value: ChartInput[K]) => void;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
 };
 
-export function ChartForm({ input, onChange, onSubmit }: Props) {
+export function ChartForm({ input, profileLoading = false, onChange, onSubmit }: Props) {
   const [failedCalendarSwitch, setFailedCalendarSwitch] = useState<string | null>(null);
   const calendarKey = `${input.calendar}/${input.date}/${input.leap}`;
   const check = useMemo(() => birthCheck(input), [input.date, input.calendar, input.leap, input.hour, input.minute, input.gender]);
@@ -127,7 +128,8 @@ export function ChartForm({ input, onChange, onSubmit }: Props) {
           {check.error ? <p className="chart-birth-error">{check.error}</p> : <p>Dương lịch <b>{check.solar}</b> · Âm lịch <b>{check.lunar}</b> · Giờ <b>{check.hourBranch}</b></p>}
           {check.leap && <small>{LEAP_PLACEMENT_NOTE}</small>}
         </div>
-        <button className="btn gold full" type="submit" disabled={Boolean(check.error)}>✦ &nbsp;Tính lá số</button>
+        {profileLoading && <p className="chart-birth-input-hint" role="status">Đang tải hồ sơ sinh…</p>}
+        <button className="btn gold full" type="submit" disabled={profileLoading || Boolean(check.error)}>✦ &nbsp;Tính lá số</button>
         <BirthTimeResearch input={input} />
         <details className="chart-form-help">
           <summary>Hướng dẫn về lịch và giờ sinh</summary>

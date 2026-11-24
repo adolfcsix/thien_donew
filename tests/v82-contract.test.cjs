@@ -13,7 +13,7 @@ test('chart input / result / board are separate React components',()=>{
 test('chart save uses frozen calculation input instead of a potentially edited form',()=>{
  const page=src('apps/web/src/app/chart/page.tsx');
  assert.match(page,/setCalculated\(snapshot\)/);
- assert.match(page,/chartApi\.save\(calculated\)/);
+ assert.match(page,/chartApi\.save\(\s*sourceProfileId \? \{ \.\.\.calculated, birthProfileId: sourceProfileId \} : calculated,\s*controller\.signal,?\s*\)/);
 });
 test('collection cancels requests to old selected charts',()=>{
  const col=src('apps/web/src/app/collection/page.tsx');
