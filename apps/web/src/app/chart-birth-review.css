@@ -6,37 +6,3 @@
 .chart-birth-preview p {font-size:13px;line-height:1.8;color:var(--text);margin:0 0 4px;overflow-wrap:anywhere}
 .chart-birth-preview b {color:var(--gold);font-weight:650}
 .chart-birth-preview small {color:var(--muted);line-height:1.65;display:block;font-size:11px}
-.chart-lunar-month {
-  grid-column: 1 / -1;
-  min-inline-size: 0;
-  margin: 0;
-  padding: 8px 12px 12px;
-  border: 1px solid var(--line-strong);
-  border-radius: 6px;
-  color: var(--text);
-  font-size: 13px;
-}
-.chart-lunar-month legend { padding-inline: 5px; font-weight: 650; }
-.chart-lunar-month-options {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
-  gap: 8px;
-}
-.chart-lunar-month-option {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 6px 10px;
-  border: 1px solid var(--line-strong);
-  border-radius: 5px;
-  background: var(--body);
-  cursor: pointer;
-}
-.chart-lunar-month-option:has(input:checked) { border-color: var(--gold); }
-.chart-lunar-month-option:has(input:disabled) { color: var(--muted); cursor: default; }
-.chart-lunar-month-option:has(input:focus-visible) { outline: 2px solid var(--gold); outline-offset: 2px; }
-.chart-lunar-month-option input { flex: none; margin: 0; accent-color: var(--gold); }
-.chart-lunar-month-option small { display: block; color: var(--muted); font-size: 12px; line-height: 1.5; }
-.chart-lunar-month p { margin: 0 0 6px; }
-.chart-lunar-month .btn { min-height: 44px; }

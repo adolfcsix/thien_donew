@@ -5,7 +5,7 @@ on:
       - '.github/workflows/tuvi-lunar-transitions-r35.yml'
       - 'infrastructure/scripts/tuvi-r35-*'
       - 'tests/v111678-tuvi-r35-lunar-transition.test.cjs'
-      - 'tests/v111690-tuvi-r69-leap-policy-audit.test.cjs'
+      - 'tests/source-evidence/tuvi-r69-leap-policy.test.cjs'
       - 'infrastructure/scripts/tuvi-r33-evaluate-root-cause.cjs'
       - 'packages/interpretation/src/classical-source-void-vocabulary.cjs'
       - 'tests/fixtures/tuvi-r35-vietnam-lunar-boundaries.json'
@@ -16,7 +16,7 @@ on:
       - '.github/workflows/tuvi-lunar-transitions-r35.yml'
       - 'infrastructure/scripts/tuvi-r35-*'
       - 'tests/v111678-tuvi-r35-lunar-transition.test.cjs'
-      - 'tests/v111690-tuvi-r69-leap-policy-audit.test.cjs'
+      - 'tests/source-evidence/tuvi-r69-leap-policy.test.cjs'
       - 'infrastructure/scripts/tuvi-r33-evaluate-root-cause.cjs'
       - 'packages/interpretation/src/classical-source-void-vocabulary.cjs'
       - 'tests/fixtures/tuvi-r35-vietnam-lunar-boundaries.json'
@@ -67,7 +67,7 @@ jobs:
         env:
           THIENDO_R35_REQUIRE_GENUINE: '1'
         run: |
-          node --test tests/v111690-tuvi-r69-leap-policy-audit.test.cjs
+          node --test tests/source-evidence/tuvi-r69-leap-policy.test.cjs
           node infrastructure/scripts/tuvi-r35-r69-leap-policy-audit.cjs
       - name: Annotate constraints
         if: always()

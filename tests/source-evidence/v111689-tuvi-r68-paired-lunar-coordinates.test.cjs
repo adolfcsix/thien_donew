@@ -4,20 +4,18 @@ const { existsSync, readFileSync } = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
 const test = require('node:test');
-const { auditR68 } = require('../infrastructure/scripts/tuvi-r32-r68-paired-lunar-coordinates.cjs');
+const { auditR68 } = require('../../infrastructure/scripts/tuvi-r32-r68-paired-lunar-coordinates.cjs');
 
 const paths = ['.r67-lunar-day-star-replay.json', '.r68-pinned-lunar-source-observations.json']
-  .map(file => path.resolve(__dirname, '..', file));
+  .map(file => path.resolve(__dirname, '..', '..', file));
 const evidencePresent = paths.every(existsSync);
-const required = process.env.THIENDO_R32_REQUIRE_GENUINE === '1';
-const options = { skip: !required && !evidencePresent && 'Requires the pinned-source workflow inputs' };
 
 function readInputs() {
   assert.ok(evidencePresent, 'R68 requires both fresh reports in pinned-source CI');
   return paths.map(file => JSON.parse(readFileSync(file, 'utf8')));
 }
 
-test('R68 compares all 14 main stars and the Hóa Lộc carrier on both native lunar days', options, () => {
+test('R68 compares all 14 main stars and the Hóa Lộc carrier on both native lunar days', () => {
   const report = auditR68(...readInputs());
   const { rows } = report;
   assert.equal(report.solarCases, 30);
@@ -49,7 +47,7 @@ test('R68 compares all 14 main stars and the Hóa Lộc carrier on both native l
   assert.equal(report.referenceTotal, 49);
 });
 
-test('R68 rejects duplicated main stars, missing replays and shifted lunar inputs', options, () => {
+test('R68 rejects duplicated main stars, missing replays and shifted lunar inputs', () => {
   for (const [mutate, expected] of [
     [source => { source.records[0].direct.majorStars[0] = source.records[0].direct.majorStars[1]; }, /requires each of the 14/],
     [source => { source.records[0].replays.pop(); }, /missing, unexpected, or duplicated lunar replay/],
@@ -62,7 +60,7 @@ test('R68 rejects duplicated main stars, missing replays and shifted lunar input
   }
 });
 
-test('R68 reports valid new star disagreements without silently changing source data', options, () => {
+test('R68 reports valid new star disagreements without silently changing source data', () => {
   const [baseline, observations] = readInputs();
   const target = observations.records.find(row => row.caseId === '1989-08-15-Nam-0');
   const tampered = target.replays[1].majorStars.find(star => star.name === '天机');
