@@ -347,3 +347,104 @@ test('R76 source/local trace, positive controls and regular lunar replay',()=>{
  console.log('R76 discrepancy summary: '+JSON.stringify({...report,differences:undefined,traceCount:differences.length}));
  for(const record of differences)console.log('R76 trace: '+JSON.stringify(record));
 });
+
+/** R77: family-specific geometry, exact positive/negative witnesses, and
+ * source-reported effective month counterfactual for the 1993 leap window.
+ * Neither the counterfactual nor source family membership asserts semantics.
+ */
+test('R77 positive controls and distinct Void families; replay source effective month for 1993',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const source=read('.r61-pinned-source-void-predicate-observations.json');
+ const base=read('.r33-source-1989-root-cause-observations.json');
+ const prior=auditR62(source,base);
+ const witnesses=prior.witnesses['dinh-ban-02'];
+ assert.equal(witnesses.length,4);
+ const selected=new Map();
+ for(const w of witnesses){
+  selected.set(w.positiveId,true);
+  if(!selected.has(w.negativeId))selected.set(w.negativeId,false);
+ }
+ const sorted=a=>[...new Set(a)].sort((x,y)=>x-y);
+ const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+ const counters={tuanMatched:0,trietMatched:0,unionMatched:0,unknown:0,verified:0};
+ const controlRows=[],leapRows=[],familyMismatches=[];
+ let coverage=0;
+ function localFrom(row,date,calendar,leap=false){
+  return R73Engine.calculate({date,calendar,leap,hour:row.hour*2,minute:0,
+   gender:row.gender==='male'?'Nam':'Nữ'});
+ }
+ for(const row of source.records){
+  const c=localFrom(row,row.solarDate,'solar'), l=r73Local(c);
+  const xun=sorted(['旬空','副旬'].flatMap(n=>row.sourceVoidByName[n]));
+  const jie=sorted(['截路','截空','空亡','副截'].flatMap(n=>row.sourceVoidByName[n]));
+  const tuan=c.obstructionMarkers.find(x=>x.name==='Tuần');
+  const triet=c.obstructionMarkers.find(x=>x.name==='Triệt');
+  assert.equal(xun.length,2,row.id);assert.equal(jie.length,2,row.id);
+  const verified=l.proxy!==null&&tuan?.branches?.length===2&&triet?.branches?.length===2;
+  if(!verified)counters.unknown++;
+  else{
+   counters.verified++;
+   const t=same(xun,sorted(tuan.branches)),j=same(jie,sorted(triet.branches));
+   const u=same(sorted([...xun,...jie]),sorted([...l.proxy]));
+   counters.tuanMatched+=Number(t);counters.trietMatched+=Number(j);counters.unionMatched+=Number(u);
+   if(!t||!j||!u)familyMismatches.push({id:row.id,sourceXun:xun,sourceJie:jie,localTuan:tuan.branches,localTriet:triet.branches});
+  }
+  if(selected.has(row.id)){
+   const wanted=selected.get(row.id),d=row.diagnostic;
+   const at=l.proxy===null?null:l.proxy.has(l.ming);
+   const localHit=r73And(r73Or(r73At(l.lu,l.ming),r73At(l.hua,l.ming)),
+    r73And(r73At(l.kong,l.ming),r73At(l.jie,l.ming)),at);
+   assert.equal(row.sourcePredicates['dinh-ban-02'],wanted,row.id);
+   assert.equal(localHit,wanted,row.id);
+   const sourcePositions={ming:row.mingBranch,lu:row.luBranch,hua:d.hua[0],kong:d.kong[0],jie:d.jie[0]};
+   controlRows.push({id:row.id,positive:wanted,sourcePositions,
+    localPositions:Object.fromEntries(Object.keys(sourcePositions).map(k=>[k,l[k]])),
+    sourceRawLunar:d.rawLunar,localLunar:c.lunar,sourceVoidNamesAtMing:row.voidNamesAtMing,
+    tuanAtMing:verified?tuan.branches.includes(l.ming):null,
+    trietAtMing:verified?triet.branches.includes(l.ming):null,
+    modes:predicateModes(row,'dinh-ban-02',null),
+    allNamedCoordinatesMatch:Object.keys(sourcePositions).every(k=>sourcePositions[k]===l[k])});
+  }
+  if(row.solarDate==='1993-05-15'){
+   const d=row.diagnostic, e=d.reportedLunar;
+   assert.equal(d.rawLunar.leap,true,row.id);
+   assert.equal(e.leap,false,row.id);
+   assert.equal(e.month,d.rawLunar.month+1,row.id);
+   const date=[e.year,String(e.month).padStart(2,'0'),String(e.day).padStart(2,'0')].join('-');
+   let replay;
+   try{replay=localFrom(row,date,'lunar',false);}
+   catch(error){if(!(error instanceof RangeError))throw error;leapRows.push({id:row.id,status:'rejected'});coverage++;continue;}
+   const q=r73Local(replay);
+   assert.deepEqual([replay.lunar.year,replay.lunar.month,replay.lunar.day,replay.lunar.leap],
+    [e.year,e.month,e.day,false],row.id);
+   const expected={ming:row.mingBranch,seven:row.sevenBranch,lu:row.luBranch,horse:row.horseBranch,
+    liem:d.liem[0],kong:d.kong[0],jie:d.jie[0],hua:d.hua[0]};
+   const mismatches=local=>{
+    const loc=local.proxy===null||local.lu===null?null:local.proxy.has(local.lu);
+    const horse=local.proxy===null||local.horse===null?null:local.proxy.has(local.horse);
+    return row.periods.filter(p=>r73And(local.seven===null?null:
+     [p.branch,(p.branch+4)%12,(p.branch+8)%12,(p.branch+6)%12].includes(local.seven),loc,horse)
+      !==row.sourcePredicates['dinh-tap-03'].includes(p.startAge)).length;
+   };
+   leapRows.push({id:row.id,status:'computed',replaySolar:replay.solar,
+    sourceCuc:d.cuc,replayCuc:replay.cuc.number,originalPeriodDifferences:mismatches(l),
+    replayPeriodDifferences:mismatches(q),allNamedCoordinatesMatch:Object.keys(expected).every(k=>expected[k]===q[k])});
+   coverage++;
+  }
+ }
+ assert.equal(coverage,24);
+ assert.equal(controlRows.length,selected.size);
+ assert.equal(controlRows.filter(x=>x.positive).length,4);
+ assert.equal(controlRows.filter(x=>!x.positive).length,new Set(witnesses.map(w=>w.negativeId)).size);
+ assert.equal(counters.unknown+counters.verified,960);
+ const replaySummary={computed:leapRows.filter(x=>x.status==='computed').length,
+  rejected:leapRows.filter(x=>x.status==='rejected').length,
+  originalPeriodDifferences:leapRows.reduce((n,x)=>n+(x.originalPeriodDifferences??0),0),
+  remainingPeriodDifferences:leapRows.reduce((n,x)=>n+(x.replayPeriodDifferences??0),0),
+  coordinateMatches:leapRows.filter(x=>x.allNamedCoordinatesMatch).length};
+ console.log('R77 family geometry: '+JSON.stringify({charts:960,counters,familyMismatches}));
+ console.log('R77 Lộc phùng lưỡng sát controls: '+JSON.stringify(controlRows));
+ console.log('R77 leap counterfactual: '+JSON.stringify({summary:replaySummary,rows:leapRows,
+  sameCivilInstantVerified:false,schoolParityVerified:false,mayIncreaseMapping:false,researchMapped:31}));
+});
