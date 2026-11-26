@@ -933,3 +933,72 @@ test('R83 adapter reproduces real source Ban02 evidence across R61 R79 R81',()=>
  console.log('R83 adapter summary: '+JSON.stringify({summaries,profile:R83_PROFILE,overlappingGrids:true,
   semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,researchMapped:31}));
 });
+
+/** R84: use one validated profile for all three candidates, with explicit
+ * independent natal and period boundaries. */
+const {auditPinnedDefaultVoidConditions:r84Audit}=require('../infrastructure/scripts/tuvi-r33-r83-pinned-default-ban02.cjs');
+test('R84 natal and period scope stays separate under corrupted decade evidence',()=>{
+ const chart=R73Engine.calculate({date:'1986-10-14',calendar:'lunar',leap:false,hour:12,minute:0,gender:'Nam'});
+ const before=JSON.stringify(chart);
+ const base=r84Audit(chart,R83_PROFILE);
+ assert.equal(base.verifiedLocalInput,true);assert.equal(base.period.verifiedGeometry,true);
+ assert.equal(base.period.periods.length,12);
+ assert.equal(base.natal[1].formulaMatch,true);
+ assert.ok(Object.isFrozen(base)&&Object.isFrozen(base.natal)&&Object.isFrozen(base.period.periods));
+ assert.ok(base.period.periods.every(p=>p.toAge===p.fromAge+9&&p.four.includes(p.branch)));
+ for(const mutate of [
+  x=>{x.cycles.daiHan[0].fromAge++;},
+  x=>{x.cycles.daiHan.reverse();},
+  x=>{x.coverage.daiHan=11;},
+  x=>{x.yearStars.pop();},
+  x=>{x.yearStarRuleSet='bad';}
+ ]){
+  const bad=clone(chart);mutate(bad);
+  const result=r84Audit(bad,R83_PROFILE);
+  assert.equal(result.verifiedLocalInput,true);
+  assert.deepEqual(result.natal,base.natal);
+  assert.equal(result.period.verifiedGeometry,false);
+  assert.equal(result.period.formulaMatch,null);
+  assert.equal(result.period.periods.length,0);
+  assert.equal(result.mayIncreaseMapping,false);
+ }
+ const wrong=clone(chart);wrong.houses[0].stars.push('Thất Sát');
+ assert.equal(r84Audit(wrong,R83_PROFILE).verifiedLocalInput,false);
+ assert.equal(r84Audit(chart,'single').verifiedLocalInput,false);
+ assert.equal(JSON.stringify(chart),before);
+});
+test('R84 three executable source-profile conditions match R61 genuine detectors and age ranges',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const s=read('.r61-pinned-source-void-predicate-observations.json');
+ assert.equal(auditR62(s,read('.r33-source-1989-root-cause-observations.json')).charts,960);
+ const stats={charts:0,ban01Match:0,ban02Match:0,periods:0,periodMatch:0,
+  ban01Positive:0,ban02Positive:0,tap03Positive:0,periodIdentity:0};
+ for(const row of s.records){
+  const d=row.diagnostic.reportedLunar,date=[d.year,String(d.month).padStart(2,'0'),String(d.day).padStart(2,'0')].join('-');
+  const c=R73Engine.calculate({date,calendar:'lunar',leap:d.leap,hour:row.hour*2,minute:0,gender:row.gender==='male'?'Nam':'Nữ'});
+  const a=r84Audit(c,R83_PROFILE);
+  assert.equal(a.verifiedLocalInput,true,row.id);
+  assert.deepEqual(a.sourceNamedCoordinates,row.sourceVoidByName,row.id);
+  assert.equal(a.natal[0].formulaMatch,row.sourcePredicates['dinh-ban-01'],row.id);
+  assert.equal(a.natal[1].formulaMatch,row.sourcePredicates['dinh-ban-02'],row.id);
+  stats.charts++;stats.ban01Match++;stats.ban02Match++;
+  stats.ban01Positive+=Number(a.natal[0].formulaMatch);stats.ban02Positive+=Number(a.natal[1].formulaMatch);
+  assert.equal(a.period.verifiedGeometry,true,row.id);
+  assert.equal(a.period.periods.length,12,row.id);
+  assert.equal(a.period.locBranch,row.luBranch,row.id);
+  assert.equal(a.period.horseBranch,row.horseBranch,row.id);
+  assert.equal(a.period.sevenBranch,row.sevenBranch,row.id);
+  for(const p of a.period.periods){
+   const expected=row.periods.find(v=>v.startAge===p.fromAge);
+   assert.ok(expected,row.id);assert.equal(p.branch,expected.branch,row.id);
+   assert.equal(p.toAge,p.fromAge+9,row.id);stats.periodIdentity++;
+   assert.equal(p.formulaMatch,row.sourcePredicates['dinh-tap-03'].includes(p.fromAge),row.id);
+   stats.periods++;stats.periodMatch++;stats.tap03Positive+=Number(p.formulaMatch);
+  }
+  for(const flag of ['sourceCriterionVerified','semanticEquivalenceVerified','schoolParityVerified','expertReviewed','mayDeclarePattern','mayIncreaseMapping'])assert.equal(a[flag],false);
+ }
+ assert.equal(stats.charts,960);assert.equal(stats.periods,11520);
+ console.log('R84 three-condition summary: '+JSON.stringify({stats,profile:R83_PROFILE,
+  semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,researchMapped:31}));
+});
