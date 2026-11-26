@@ -136,6 +136,52 @@ for(let year=1984;year<2044;year++)for(const gender of ['male','female'] as cons
  }
 if(cycleRecords.length!==1440||new Set(cycleRecords.map(x=>x.id)).size!==1440)
  throw Error('R79 incomplete 60-year source coverage');
+// R80: search the Hóa Lộc-only arm with actual source charts, then test
+// necessity of each predicate operand on copies of genuine positive charts.
+// The modified charts are logic interventions, never birth-chart evidence.
+const r80={searched:0,sourcePositive:0,locOnly:0,huaOnly:0,bothLoc:0,positives:[] as Array<{
+ id:string; solarDate:string; gender:'male'|'female'; hour:number;
+ lunar:{year:number;month:number;day:number;leap:boolean}; ming:number;
+ loc:boolean;hua:boolean;labels:string[];modes:Record<string,boolean>;
+}>};
+for(let year=1984;year<2044;year++)for(let month=1;month<=12;month++)
+ for(const hour of [0,6]){
+  const gender='male' as const;
+  const chart=generateChart({year,month,day:15,hour,gender});
+  r80.searched++;
+  const palace=chart.palaces.find(p=>p.branch===chart.mingGongBranch)!;
+  const loc=palace.stars.some(s=>s.name==='禄存');
+  const hua=palace.stars.some(s=>s.siHua==='禄');
+  const labels=names.filter(n=>palace.stars.some(s=>s.name===n));
+  const kong=palace.stars.some(s=>s.name==='地空'),jie=palace.stars.some(s=>s.name==='地劫');
+  const hit=Boolean(ban2.fn(chart));
+  if(hit!==((loc||hua)&&kong&&jie&&labels.length>0))throw Error('R80 source oracle disagrees');
+  if(!hit)continue;
+  r80.sourcePositive++;if(loc&&hua)r80.bothLoc++;else if(loc)r80.locOnly++;else r80.huaOnly++;
+  const evaluate=(remove:readonly string[],dropHua=false)=>{
+   const copy=structuredClone(chart);
+   const m=copy.palaces.find(p=>p.branch===copy.mingGongBranch)!;
+   m.stars=m.stars.filter(s=>!remove.includes(s.name));
+   if(dropHua)for(const star of m.stars)if(star.siHua==='禄')delete star.siHua;
+   return Boolean(ban2.fn!(copy));
+  };
+  const modes={original:hit,withoutLoc:evaluate(['禄存']),withoutHua:evaluate([],true),
+   withoutBothLoc:evaluate(['禄存'],true),withoutKong:evaluate(['地空']),
+   withoutJie:evaluate(['地劫']),withoutVoid:evaluate(names),
+   xunOnly:evaluate(['截路','截空','空亡','副截']),
+   jiekongOnly:evaluate(['旬空','副旬'])};
+  if(modes.withoutBothLoc||modes.withoutKong||modes.withoutJie||modes.withoutVoid||
+    modes.withoutLoc!==hua||modes.withoutHua!==loc||
+    modes.xunOnly!==labels.some(n=>n==='旬空'||n==='副旬')||
+    modes.jiekongOnly!==labels.some(n=>n!=='旬空'&&n!=='副旬'))
+   throw Error('R80 source ablation mismatch');
+  if(!ban2.fn(chart))throw Error('R80 original chart mutated');
+  const solarDate=[year,String(month).padStart(2,'0'),'15'].join('-');
+  r80.positives.push({id:solarDate+'-'+gender+'-'+hour,solarDate,gender,hour,
+   lunar:{year:chart.lunarInfo.lunarYear,month:chart.lunarInfo.lunarMonth,day:chart.lunarInfo.lunarDay,leap:chart.lunarInfo.isLeapMonth},
+   ming:chart.mingGongBranch,loc,hua,labels,modes});
+ }
+if(r80.searched!==1440)throw Error('R80 incomplete targeted source search');
 writeFileSync('../.r61-pinned-source-void-predicate-observations.json',
  JSON.stringify({
   schema:'thiendo-r61-pinned-source-void-predicates-v1',
@@ -144,6 +190,7 @@ writeFileSync('../.r61-pinned-source-void-predicate-observations.json',
    usedDetectors:['DING_PIN_GE','DING_ZA_GE','detectDingPin','detectDingZa']},
   sourceSixVoidNames:names,years,months,hours:12,genders:['male','female'],
   caseCount:records.length,hitCounts,records,
-  r79Cycle:{schema:'thiendo-r79-sexagenary-void-controls-v1',records:cycleRecords}
+  r79Cycle:{schema:'thiendo-r79-sexagenary-void-controls-v1',records:cycleRecords},
+  r80Targeted:{schema:'thiendo-r80-ban02-targeted-ablation-v1',...r80}
  },null,2)+'\n');
 console.log('R61: 960 source charts, six separately named void stars, source predicate hits '+JSON.stringify(hitCounts));
