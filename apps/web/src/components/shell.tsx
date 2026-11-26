@@ -58,6 +58,13 @@ function Layout({ children }: { children: ReactNode }) {
   const searchInput = useRef<HTMLInputElement>(null);
   const searchTrigger = useRef<HTMLButtonElement>(null);
   const menuTrigger = useRef<HTMLButtonElement>(null);
+  const railTrigger = useRef<HTMLButtonElement>(null);
+  const menuOpener = useRef<HTMLButtonElement | null>(null);
+
+  function openMenu(trigger: HTMLButtonElement) {
+    menuOpener.current = trigger;
+    setMenu(true);
+  }
   const lastRoute = useRef(route);
   const lastOverlay = useRef<{kind: 'menu' | 'search'; route: string; trigger: HTMLElement | null} | null>(null);
   const { user, open, avatarRevision } = useAuth();
@@ -180,14 +187,22 @@ function Layout({ children }: { children: ReactNode }) {
     if (menu || searchOpen) {
       if (!previous || previous.kind !== (searchOpen ? 'search' : 'menu')) {
         const active = document.activeElement;
-        lastOverlay.current = {kind: searchOpen ? 'search' : 'menu', route, trigger: active instanceof HTMLElement && !active.closest('#thiendo-sidebar, .command-panel') ? active : null};
+        const trigger = searchOpen
+          ? (active instanceof HTMLElement && !active.closest('#thiendo-sidebar, .command-panel') ? active : null)
+          : menuOpener.current;
+        lastOverlay.current = {kind: searchOpen ? 'search' : 'menu', route, trigger};
       }
       return;
     }
     lastOverlay.current = null;
     if (!previous || previous.route !== route) return;
     // Wait until the background is no longer inert before returning focus.
-    const frame = requestAnimationFrame(() => (previous.trigger || (previous.kind === 'search' ? searchTrigger.current : menuTrigger.current))?.focus());
+    const frame = requestAnimationFrame(() => {
+      const candidates = previous.kind === 'menu'
+        ? [previous.trigger, menuTrigger.current, railTrigger.current]
+        : [previous.trigger, searchTrigger.current];
+      candidates.find(element => element?.isConnected && element.getClientRects().length > 0)?.focus();
+    });
     return () => cancelAnimationFrame(frame);
   }, [menu, searchOpen, route]);
 
@@ -218,7 +233,7 @@ function Layout({ children }: { children: ReactNode }) {
         setSearchOpen(true);
       } else if (event.key === 'Escape') {
         if (searchOpen) { setSearchOpen(false); searchTrigger.current?.focus(); }
-        else if (menu) { setMenu(false); menuTrigger.current?.focus(); }
+        else if (menu) setMenu(false);
       }
     };
     document.addEventListener('keydown', onKeyDown);
@@ -288,7 +303,7 @@ function Layout({ children }: { children: ReactNode }) {
       else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
     }}>
       <Link prefetch={false} href="/" className="brand" onClick={() => setMenu(false)}><span className="brand-seal" aria-hidden="true"><span className="thien-mon-approved-icon" /></span><span><strong>THIÊN ĐỒ</strong><small>THƯ PHÒNG HUYỀN HỌC</small></span></Link>
-      <button type="button" className="drawer-close" aria-label="Đóng điều hướng" onClick={() => { setMenu(false); menuTrigger.current?.focus(); }}>✕</button>
+      <button type="button" className="drawer-close" aria-label="Đóng điều hướng" onClick={() => setMenu(false)}>✕</button>
       <div className="nav-heading">{westernWorld ? westernWorld.label : 'THƯ PHÒNG CỦA BẠN'}</div>
       <nav className={navStyles.tree} aria-label="Điều hướng chính">
         <div className={navStyles.shortcuts}>
@@ -327,10 +342,10 @@ function Layout({ children }: { children: ReactNode }) {
       <AdminNavLink/>
       <nav className={navStyles.tree} aria-label="Hướng dẫn và hỗ trợ">{navigationGroups.filter(g=>g.id==='huong-dan-ho-tro').map(group=><section key={group.id} className={navStyles.group}><h2 className={navStyles.groupTitle}><button type="button" className={navStyles.groupToggle} onClick={()=>toggleNavigationGroup(group.id)} aria-expanded={expandedGroups.includes(group.id)} aria-controls={'nav-group-'+group.id}><span className={navStyles.groupSymbol} aria-hidden="true">文</span><span className={navStyles.groupLabel}>{group.label}</span><span className={navStyles.chevron}>⌄</span></button></h2><div id={'nav-group-'+group.id} className={navStyles.groupItems} hidden={!expandedGroups.includes(group.id)}>{group.items.map(item=><Link key={item.href} href={item.href} className={'nav-item '+navStyles.subItem} onClick={()=>setMenu(false)}><span aria-hidden="true">◇</span>{item.text}</Link>)}</div></section>)}</nav>
     </aside>
-    {menu && <button type="button" aria-label="Đóng menu" className="nav-shade" onClick={() => { setMenu(false); menuTrigger.current?.focus(); }} />}
+    {menu && <button type="button" aria-label="Đóng menu" className="nav-shade" onClick={() => setMenu(false)} />}
     <div className="app-area" inert={menu || searchOpen}>
       <header className="topbar">
-        <div className="topbar-name"><button type="button" className="icon-button desktop-rail-toggle" onClick={toggleCompact} aria-label={compact?'Mở rộng thanh điều hướng':'Thu gọn thanh điều hướng'} aria-expanded={!compact} aria-controls="thiendo-sidebar" title={compact?'Mở rộng menu':'Thu gọn menu'}><span aria-hidden="true" className="rail-chevron">{compact ? '›' : '‹'}</span></button><button ref={menuTrigger} type="button" className="icon-button mobile-menu" aria-label={menu ? 'Đóng menu' : 'Mở menu'} aria-expanded={menu} aria-controls="thiendo-sidebar" onClick={() => setMenu(!menu)}>☰</button><span className="crumb">{discipline?.family || 'THƯ PHÒNG'} <span>/</span> <b>{current}</b></span></div>
+        <div className="topbar-name"><button type="button" ref={railTrigger} className="icon-button desktop-rail-toggle" onClick={toggleCompact} aria-label={compact?'Mở rộng thanh điều hướng':'Thu gọn thanh điều hướng'} aria-expanded={!compact} aria-controls="thiendo-sidebar" title={compact?'Mở rộng menu':'Thu gọn menu'}><span aria-hidden="true" className="rail-chevron">{compact ? '›' : '‹'}</span></button><button ref={menuTrigger} type="button" className="icon-button mobile-menu" aria-label={menu ? 'Đóng menu' : 'Mở menu'} aria-expanded={menu} aria-controls="thiendo-sidebar" onClick={event => openMenu(event.currentTarget)}>☰</button><span className="crumb">{discipline?.family || 'THƯ PHÒNG'} <span>/</span> <b>{current}</b></span></div>
         <div className="toolbar">
           <button ref={searchTrigger} type="button" className="quick-search-trigger" aria-label="Tìm nhanh trang và công cụ" title="Tìm công cụ" onClick={() => { setMenu(false); setSearchOpen(true); }}><span aria-hidden="true">⌕</span><span className="quick-search-label">Tìm công cụ</span></button>
           <div className="mode-switch" role="group" aria-label="Chế độ hiển thị"><button type="button" aria-pressed={!expert} className={!expert ? 'chosen' : ''} onClick={() => setViewMode('basic')}>Cơ bản</button><button type="button" aria-pressed={expert} className={expert ? 'chosen' : ''} onClick={() => setViewMode('expert')}>Chuyên sâu</button></div>
@@ -342,7 +357,7 @@ function Layout({ children }: { children: ReactNode }) {
       <footer className="thiendo-legal-footer" aria-label="Chính sách và hỗ trợ"><div><strong>THIÊN ĐỒ</strong><span>Không phải phương tiện dự đoán chắc chắn. Chính sách hiện là dự thảo cho môi trường thử nghiệm.</span></div><nav aria-label="Liên kết pháp lý"><Link prefetch={false} href="/huong-dan">Hướng dẫn chuyên sâu</Link><Link prefetch={false} href="/phap-ly/dieu-khoan">Điều khoản</Link><Link prefetch={false} href="/phap-ly/quyen-rieng-tu">Quyền riêng tư</Link><Link prefetch={false} href="/phap-ly/du-lieu-ca-nhan">Dữ liệu cá nhân</Link><Link prefetch={false} href="/phap-ly/thanh-toan-hoan-tien">Thanh toán &amp; hoàn tiền</Link><Link prefetch={false} href="/phap-ly/cong-dong">Cộng đồng</Link><Link prefetch={false} href="/phap-ly/ban-quyen">Bản quyền</Link><Link prefetch={false} href="/phap-ly/bao-cao-vi-pham">Báo cáo vi phạm</Link><Link prefetch={false} href="/phap-ly/lien-he-ho-tro">Chính sách liên hệ</Link><Link prefetch={false} href="/ho-tro">Liên hệ &amp; hỗ trợ</Link></nav></footer>
       <span className="visually-hidden" role="status" aria-live="polite">Đang xem chế độ {expert ? 'Chuyên sâu' : 'Cơ bản'}</span>
     </div>
-    <nav className="bottom-nav" aria-label="Điều hướng điện thoại" inert={menu || searchOpen}>{mobileLinks.map(item => <Link prefetch={false} key={item.href} aria-current={route === item.href || (item.href !== '/' && route.startsWith(item.href + '/')) ? 'page' : undefined} href={item.href}><span aria-hidden="true"><NavigationSymbol symbol={item.symbol} href={item.href}/></span><small>{item.text}</small></Link>)}<button type="button" onClick={() => setMenu(true)} aria-controls="thiendo-sidebar" aria-expanded={menu}><span aria-hidden="true">☰</span><small>Menu</small></button></nav>
+    <nav className="bottom-nav" aria-label="Điều hướng điện thoại" inert={menu || searchOpen}>{mobileLinks.map(item => <Link prefetch={false} key={item.href} aria-current={route === item.href || (item.href !== '/' && route.startsWith(item.href + '/')) ? 'page' : undefined} href={item.href}><span aria-hidden="true"><NavigationSymbol symbol={item.symbol} href={item.href}/></span><small>{item.text}</small></Link>)}<button type="button" onClick={event => openMenu(event.currentTarget)} aria-controls="thiendo-sidebar" aria-expanded={menu}><span aria-hidden="true">☰</span><small>Menu</small></button></nav>
     {tooltip && compact && !narrow && <div role="tooltip" className="navigation-tooltip" style={{left:tooltip.left,top:tooltip.top}}>{tooltip.label}</div>}
     {searchOpen && <div className="command-backdrop" onMouseDown={event => { if (event.target === event.currentTarget) closeSearch(); }}>
       <section className="command-panel" role="dialog" aria-modal="true" aria-label="Tìm nhanh trang và công cụ" onKeyDown={event => {
