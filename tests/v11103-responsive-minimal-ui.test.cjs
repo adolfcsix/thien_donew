@@ -40,7 +40,7 @@ test('V11.103: chart main board shows actual data, no research slogan',()=>{
 });
 test('V11.103: form removes redundant footnotes while preserving date validation',()=>{
   assert.match(form,/birthCheck\(input\)/);
-  assert.match(form,/disabled=\{Boolean\(check.error\)\}/);
+  assert.match(form,/disabled=\{profileLoading \|\| Boolean\(check.error\)\}/);
   assert.doesNotMatch(form,/className="rule-note"/);
   assert.match(form,/chart-form-help/);
   assert.match(form,/Giờ sinh áp dụng theo múi giờ Việt Nam/);

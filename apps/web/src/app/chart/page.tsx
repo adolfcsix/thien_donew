@@ -2,7 +2,8 @@
 import {EasternScene} from '@/features/discipline-canvas/eastern-scene';
 import {TuViCanvas} from '@/features/discipline-canvas/discipline-canvas';
 
-import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { Suspense, useEffect, useRef, useState, type FormEvent } from 'react';
+import { useSearchParams } from 'next/navigation';
 import {usePendingOperation} from '@/lib/use-pending-operation';
 import { useAuth } from '@/components/auth-provider';
 import { ChartForm } from '@/features/chart/components/chart-form';
@@ -22,6 +23,17 @@ const initial: ChartInput = {
 };
 
 export default function ChartPage() {
+  return <Suspense fallback={<p role="status">Đang mở trang lập lá số…</p>}>
+    <ChartRoute />
+  </Suspense>;
+}
+
+function ChartRoute() {
+  const profileId = useSearchParams().get('profile');
+  return <ChartWorkspace key={profileId} profileId={profileId} />;
+}
+
+function ChartWorkspace({ profileId }: { profileId: string | null }) {
   const [input, setInput] = useState<ChartInput>(initial);
   const [calculated, setCalculated] = useState<ChartInput | null>(null);
   const [result, setResult] = useState<AstrologyResult | null>(null);
@@ -37,26 +49,39 @@ export default function ChartPage() {
   const ownerRef = useRef<string | null>(null);
   const formVersion = useRef(0);
   ownerRef.current = user?.id || null;
-  // Explicit profile reuse; never derive a missing birth hour or silently convert calendars.
-  useEffect(()=>{
-    const profileId=new URLSearchParams(window.location.search).get('profile');
-    if(!profileId)return;
-    setInput(initial);setSourceProfileId(null);setResult(null);setCalculated(null);
-    if(!user)return;
-    const controller=new AbortController();const revision=formVersion.current;
-    void birthProfileApi.get(profileId,controller.signal).then(({profile:p})=>{
-      if(controller.signal.aborted||revision!==formVersion.current)return;
-      if(p.hour===null||p.minute===null||!p.gender)throw Error('Tử Vi cần giờ, phút và quy ước Nam/Nữ. Hãy bổ sung vào hồ sơ sinh.');
-      if(p.timeZone!=='Asia/Ho_Chi_Minh')throw Error('Bộ lập Tử Vi hiện dùng giờ Việt Nam. Cần đối chiếu múi giờ trước khi nhập hồ sơ này.');
-      setInput({label:p.name,date:p.date,hour:p.hour,minute:p.minute,calendar:p.calendar,leap:p.leap,gender:p.gender});
-      setSourceProfileId(p.id);
-      setResult(null);setCalculated(null);setMessage('Đã nạp đầu vào hồ sơ sinh. Hãy kiểm tra và bấm Lập lá số; dữ liệu chưa được lưu thêm.');
-    }).catch(e=>{if(!controller.signal.aborted)setMessage((e as Error).message);});
-    return()=>controller.abort();
-  },[user?.id]);
+  const [profileLoading, setProfileLoading] = useState(Boolean(profileId));
+  const ownerId = user?.id;
+  useEffect(() => {
+    if (!profileId || !ownerId) return;
+    const controller = new AbortController();
+    const revision = formVersion.current;
+    const isCurrent = () => !controller.signal.aborted && revision === formVersion.current;
+
+    void birthProfileApi.get(profileId, controller.signal).then(({ profile }) => {
+      if (!isCurrent()) return;
+      if (profile.hour === null || profile.minute === null || !profile.gender) {
+        throw Error('Tử Vi cần giờ, phút và quy ước Nam/Nữ. Hãy bổ sung vào hồ sơ sinh.');
+      }
+      if (profile.timeZone !== 'Asia/Ho_Chi_Minh') {
+        throw Error('Bộ lập Tử Vi hiện dùng giờ Việt Nam. Cần đối chiếu múi giờ trước khi nhập hồ sơ này.');
+      }
+      setInput({
+        label: profile.name, date: profile.date, hour: profile.hour, minute: profile.minute,
+        calendar: profile.calendar, leap: profile.leap, gender: profile.gender,
+      });
+      setSourceProfileId(profile.id);
+      setMessage('Đã nạp đầu vào hồ sơ sinh. Hãy kiểm tra và bấm Lập lá số; dữ liệu chưa được lưu thêm.');
+    }).catch(error => {
+      if (isCurrent()) setMessage((error as Error).message);
+    }).finally(() => {
+      if (isCurrent()) setProfileLoading(false);
+    });
+    return () => controller.abort();
+  }, [ownerId, profileId]);
 
   function update<K extends keyof ChartInput>(field: K, value: ChartInput[K]) {
     formVersion.current += 1;
+    setProfileLoading(false);
     setInput(current => ({ ...current, [field]: value }));
     setSourceProfileId(null);
     setResult(null);
@@ -66,6 +91,7 @@ export default function ChartPage() {
 
   function create(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (profileLoading) return;
     setMessage('');
     try {
       const snapshot = { ...input };
@@ -87,8 +113,10 @@ export default function ChartPage() {
     const requestedOwner = user.id;
     const requestedVersion = formVersion.current;
     try {
-      if(sourceProfileId)await chartApi.save({...calculated,birthProfileId:sourceProfileId},controller.signal);
-      else await chartApi.save(calculated);
+      await chartApi.save(
+        sourceProfileId ? { ...calculated, birthProfileId: sourceProfileId } : calculated,
+        controller.signal,
+      );
       if (!controller.signal.aborted && ownerRef.current === requestedOwner && formVersion.current === requestedVersion)
         setMessage('Đã lưu lá số vào tài khoản. Mở mục Lá số của tôi để xem lại.');
     } catch (error) {
@@ -127,7 +155,7 @@ export default function ChartPage() {
         <p>Nhập ngày giờ sinh để lập địa bàn Tử Vi. Lá số chỉ được lưu khi bạn chọn lưu.</p>
       </div>
       <div id="tuvi-workspace" className="workspace chart-atlas-workspace">
-        <details className="chart-input-drawer" open={!result}><summary>{result ? "Thông tin sinh · chỉnh sửa và lập lại lá số" : "Thông tin lập lá số"}</summary><ChartForm input={input} onChange={update} onSubmit={create} /></details>
+        <details className="chart-input-drawer" open={!result}><summary>{result ? "Thông tin sinh · chỉnh sửa và lập lại lá số" : "Thông tin lập lá số"}</summary><ChartForm input={input} profileLoading={profileLoading} onChange={update} onSubmit={create} /></details>
         <ChartResult
           key={result ? [result.solar.year, result.solar.month, result.solar.day, result.hour, result.minute, result.gender, formVersion.current].join('-') : 'empty'}
           result={result}

@@ -1,0 +1,71 @@
+/** Runs inside the pinned reference checkout, on synthetic R67 cases only. */
+import { execFileSync } from 'node:child_process';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { astro } from 'iztro';
+import { generateChart } from './lib/ziwei/algorithm';
+import { BRANCHES, STEMS } from './lib/ziwei/constants';
+
+const commit = '7922285d947b36610e7e31c232d8f1e2a0d0871d';
+const iztroVersion = '2.6.1';
+const read = (path: string) => JSON.parse(readFileSync(path, 'utf8'));
+type LunarPoint = { lunarYear: number; lunarMonth: number; lunarDay: number };
+type ReplayCase = {
+  caseId: string; solarDate: string; clockHour: number; gender: 'Nam' | 'Nữ';
+  source: LunarPoint; local: LunarPoint;
+};
+const baseline = read('../.r67-lunar-day-star-replay.json') as {
+  schema: string; sourceCommit: string; iztroVersion: string; rows: ReplayCase[];
+};
+const installed = read('node_modules/iztro/package.json');
+const lock = read('package-lock.json');
+if (execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim() !== commit ||
+    installed.version !== iztroVersion || lock.packages?.['node_modules/iztro']?.version !== iztroVersion ||
+    baseline.schema !== 'thiendo-r67-pinned-lunar-day-star-replay-v1' ||
+    baseline.sourceCommit !== commit || baseline.iztroVersion !== iztroVersion ||
+    !Array.isArray(baseline.rows) || baseline.rows.length !== 30) {
+  throw Error('R68 requires the pinned source runtime and the 30 same-run R67 cases');
+}
+
+const elements = ['水二局', '木三局', '金四局', '土五局', '火六局'];
+type Entry = { name: string; branch: number; major: boolean; huaLoc: boolean };
+function positions(entries: Entry[]) {
+  const majorStars = entries.filter(star => star.major).map(({name, branch}) => ({name, branch}));
+  const huaLoc = entries.filter(star => star.huaLoc).map(({name, branch}) => ({name, branch}));
+  return { majorStars, huaLoc };
+}
+const records = baseline.rows.map(row => {
+  const { caseId, solarDate, clockHour, gender, source, local } = row;
+  const [year, month, day] = solarDate.split('-').map(Number);
+  const hour = Math.floor((clockHour + 1) / 2);
+  const chart = generateChart({ year, month, day, hour, gender: gender === 'Nam' ? 'male' : 'female' });
+  const direct = {
+    year: chart.lunarInfo.lunarYear, month: chart.lunarInfo.lunarMonth, day: chart.lunarInfo.lunarDay,
+    leap: chart.lunarInfo.isLeapMonth, yearStem: chart.lunarInfo.yearStem,
+    menh: chart.mingGongBranch, cuc: chart.wuxingJu,
+    ...positions(chart.palaces.flatMap(p => p.stars.map(s => ({
+      name: s.name, branch: p.branch, major: s.type === 'major', huaLoc: s.siHua === '禄',
+    })))),
+  };
+  const days = [...new Set<number>([source.lunarDay, local.lunarDay])].sort((a, b) => a - b);
+  const replays = days.map(lunarDay => {
+    const date = [source.lunarYear, source.lunarMonth, lunarDay].join('-');
+    const a = astro.byLunar(date, hour, gender === 'Nam' ? '男' : '女', false, true, 'zh-CN');
+    const lunar = a.rawDates.lunarDate;
+    return {
+      year: lunar.lunarYear, month: lunar.lunarMonth, day: lunar.lunarDay, leap: lunar.isLeap,
+      yearStem: STEMS.indexOf(a.rawDates.chineseDate.yearly[0]),
+      menh: BRANCHES.indexOf(a.earthlyBranchOfSoulPalace),
+      cuc: elements.indexOf(a.fiveElementsClass) + 2,
+      ...positions(a.palaces.flatMap(p => [...p.majorStars, ...p.minorStars, ...p.adjectiveStars].map(s => ({
+        name: s.name, branch: BRANCHES.indexOf(p.earthlyBranch),
+        major: p.majorStars.includes(s), huaLoc: s.mutagen === '禄',
+      })))),
+    };
+  });
+  return { caseId, direct, replays };
+});
+writeFileSync('../.r68-pinned-lunar-source-observations.json', JSON.stringify({
+  schema: 'thiendo-r68-pinned-lunar-source-observations-v1',
+  sourceCommit: commit, iztroVersion, syntheticOnly: true, records,
+}, null, 2) + '\n');
+console.log(`R68 source executed ${records.length} solar charts and ${records.reduce((n, row) => n + row.replays.length, 0)} explicit lunar charts`);

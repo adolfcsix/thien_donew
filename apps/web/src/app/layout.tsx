@@ -69,6 +69,7 @@ import './forum-chat-polish-a62.css';
 import './local-fonts.css';
 // Dedicated ornamental skin for the Tử Vi board; isolated from global chart data styles.
 import '../features/chart/styles/chart-jade-material.css';
+import './chart-lunar-month.css';
 // Keep staging/private previews out of search, but allow explicit public indexing
 // only when an operator opts in on a production build.
 const allowIndexing = process.env.NODE_ENV === 'production' && process.env.ENABLE_SEARCH_INDEXING === 'true';

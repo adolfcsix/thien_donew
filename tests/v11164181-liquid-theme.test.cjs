@@ -68,13 +68,13 @@ test('AI and study heroes use a light pseudo-layer and preserve their dark artwo
   }
 });
 test('photos, pre-A43 API registration after exact A43 additions, original artwork and security-reviewed lockfile and first 30 migrations match snapshots', () => {
-  // Lockfile snapshot refreshed for SEC-01 only; audited Next 16.4.0 -> 16.4.2.
+  // Lockfile snapshot refreshed for SEC-01 only; audited Next 16.4.2 -> 16.4.5.
   const expected = {
     'apps/web/public/theme/cuon-thu-ngoc.jpeg':'b7311174c96458a75e64d7bd1e975e4fe27ca3f8503cb82a8ecc1803d4f3c587',
     'apps/web/public/theme/thap-nhi-dia-chi.jpeg':'3c4fe94ff4035e80da79d13ddee7190f0b91c875555039663134851f3a0b4fc2',
     'apps/web/public/theme/van-may-thien-do.svg':'a7077071c6e48efa13c158c37f2e002c48cc2acafd53caee2a0c86cb0acdf366',
     'apps/api/src/app.module.ts':'7cd6730534b2f4839d2386f3b6e0f8f443def5d613e2e87068475e0ad95dc4f5',
-    'package-lock.json':'553a9b4328e2f37e965573913996f7760e133e9ba0e0678dacd80a2c5c9705ff'
+    'package-lock.json':'a928f8223c5bd492bf436d710b38f760d227b0cad7f66dbdb82738ce70d100e2'
   };
   for (const [f, hash] of Object.entries(expected)) assert.equal(sha(baselineBytes(root,f)),hash,f);
   const migrationDir=path.join(root,'infrastructure/db');

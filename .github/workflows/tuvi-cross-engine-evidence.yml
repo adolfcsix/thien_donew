@@ -12,6 +12,12 @@ on:
       - 'infrastructure/scripts/tuvi-r32-r61-*'
       - 'tests/v111679-tuvi-r61-void-family-ablation.test.cjs'
       - 'tests/v111687-tuvi-r66-coordinate-census.test.cjs'
+      - 'tests/source-evidence/v111688-tuvi-r67-lunar-day-star-replay.test.cjs'
+      - 'tests/source-evidence/v111689-tuvi-r68-paired-lunar-coordinates.test.cjs'
+      - 'infrastructure/scripts/tuvi-r33-source-root-cause-probe.ts.template'
+      - 'infrastructure/scripts/tuvi-r33-evaluate-root-cause.cjs'
+      - 'infrastructure/scripts/tuvi-r33-r57-lunar-day-counterfactual.cjs'
+      - 'packages/astrology-engine/src/**'
       - 'infrastructure/scripts/tuvi-r29-*'
       - 'infrastructure/scripts/tuvi-r30-*'
       - 'tests/v111675-tuvi-r32-cross-engine-matrix.test.cjs'
@@ -30,6 +36,12 @@ on:
       - 'infrastructure/scripts/tuvi-r32-r61-*'
       - 'tests/v111679-tuvi-r61-void-family-ablation.test.cjs'
       - 'tests/v111687-tuvi-r66-coordinate-census.test.cjs'
+      - 'tests/source-evidence/v111688-tuvi-r67-lunar-day-star-replay.test.cjs'
+      - 'tests/source-evidence/v111689-tuvi-r68-paired-lunar-coordinates.test.cjs'
+      - 'infrastructure/scripts/tuvi-r33-source-root-cause-probe.ts.template'
+      - 'infrastructure/scripts/tuvi-r33-evaluate-root-cause.cjs'
+      - 'infrastructure/scripts/tuvi-r33-r57-lunar-day-counterfactual.cjs'
+      - 'packages/astrology-engine/src/**'
       - 'tests/v111675-tuvi-r32-cross-engine-matrix.test.cjs'
   workflow_dispatch:
 permissions:
@@ -68,6 +80,11 @@ jobs:
           cp infrastructure/scripts/tuvi-r30-source-rare-positive-probe.ts.template reference-ziwei/.thiendo-r30-positive-probe.ts
           cd reference-ziwei
           ./node_modules/.bin/tsx .thiendo-r30-positive-probe.ts
+      - name: Generate 30 genuine R33 calendar-control observations for the replay
+        run: |
+          cp infrastructure/scripts/tuvi-r33-source-root-cause-probe.ts.template reference-ziwei/.thiendo-r33-root-cause.ts
+          cd reference-ziwei
+          ./node_modules/.bin/tsx .thiendo-r33-root-cause.ts
       - name: Validate original source evidence and 67 local proxy comparisons
         env:
           THIENDO_R32_REQUIRE_GENUINE: '1'
@@ -81,8 +98,21 @@ jobs:
           node infrastructure/scripts/tuvi-r32-r56-pinned-predicate-traces.cjs .r32-cross-engine-evidence-matrix-report.json .r53-source-void-atom-breakdown.json .r54-source-local-difference-triage.json .r55-pinned-counterexample-review-queue.json
           node --test tests/v111687-tuvi-r66-coordinate-census.test.cjs
           node infrastructure/scripts/tuvi-r32-r66-pinned-source-local-coordinate-census.cjs .r32-cross-engine-evidence-matrix-report.json
+          node --test tests/source-evidence/v111688-tuvi-r67-lunar-day-star-replay.test.cjs
+          node infrastructure/scripts/tuvi-r32-r67-lunar-day-star-replay.cjs .r32-cross-engine-evidence-matrix-report.json .r33-source-1989-root-cause-observations.json
           node --test tests/v111679-tuvi-r61-void-family-ablation.test.cjs
           node infrastructure/scripts/tuvi-r32-r61-source-void-family-ablation.cjs .r29-source-pattern-oracle-observations.json .r30-source-rare-positive-observations.json
+      - name: Replay both lunar inputs with the pinned source runtime
+        working-directory: reference-ziwei
+        run: |
+          cp ../infrastructure/scripts/tuvi-r32-r68-source-lunar-replay.ts.template .thiendo-r68-lunar-replay.ts
+          node --import tsx .thiendo-r68-lunar-replay.ts
+      - name: Compare the 14 main stars and Hóa Lộc on each paired lunar input
+        env:
+          THIENDO_R32_REQUIRE_GENUINE: '1'
+        run: |
+          node --test tests/source-evidence/v111689-tuvi-r68-paired-lunar-coordinates.test.cjs
+          node infrastructure/scripts/tuvi-r32-r68-paired-lunar-coordinates.cjs
       - name: Explain what the comparison can and cannot claim
         if: always()
         run: |
@@ -98,6 +128,8 @@ jobs:
           echo 'R56: independently crosscheck exact predicate atoms and named source/local star coordinates of selected R55 cases. No engine modification or academic promotion.' >> "$GITHUB_STEP_SUMMARY"
           echo 'R61: source-only leave-one-family-out analysis of Xunkong vs Jiekong in 67 verified source charts and 804 major periods. No source-school parity; 31/49 remains.' >> "$GITHUB_STEP_SUMMARY"
           echo 'R66: seven named star coordinates across 67 genuine pinned-source charts; geometric evidence only, no verified root cause or automatic 31/49 promotion.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'R67: join R66 and R33 by birth input and isolate the lunar day in local chart replays, retaining nearby-date and nearby-year controls.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'R68: both runtimes replay the same explicit lunar inputs and compare all 14 main stars and the Hóa Lộc carrier and branch in the 30-case R67 sample.' >> "$GITHUB_STEP_SUMMARY"
       - name: Archive genuine source and diagnostic evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -115,6 +147,10 @@ jobs:
             .r56-pinned-source-predicate-traces.md
             .r61-source-void-family-ablation.json
             .r66-pinned-source-local-coordinate-census.json
+            .r33-source-1989-root-cause-observations.json
+            .r67-lunar-day-star-replay.json
+            .r68-pinned-lunar-source-observations.json
+            .r68-paired-lunar-coordinate-report.json
           include-hidden-files: true
           if-no-files-found: warn
           retention-days: 14

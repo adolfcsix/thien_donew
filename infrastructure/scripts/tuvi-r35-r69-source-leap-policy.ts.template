@@ -1,0 +1,94 @@
+/** Run in the immutable source checkout on the synthetic R69 plan. */
+import { execFileSync } from 'node:child_process';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { astro } from 'iztro';
+import { Lunar, LunarMonth } from 'lunar-typescript';
+import { generateChart, getLunarInfo } from './lib/ziwei/algorithm';
+import { BRANCHES } from './lib/ziwei/constants';
+
+const commit = '7922285d947b36610e7e31c232d8f1e2a0d0871d';
+const version = '2.6.1';
+const policies = ['split', 'prev-month', 'next-month', 'origin-month'] as const;
+type Sample = { id: string; solarDate: string; hour: number; gender: 'Nam' | 'Nữ' };
+const read = (path: string) => JSON.parse(readFileSync(path, 'utf8'));
+const locks = read('package-lock.json').packages;
+const plan = read('../.r69-leap-policy-plan.json') as {
+  schema: string; sourceCommit: string; iztroVersion: string; policies: string[]; cases: Sample[];
+};
+if (execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim() !== commit ||
+    read('node_modules/iztro/package.json').version !== version ||
+    locks?.['node_modules/iztro']?.version !== version ||
+    locks?.['node_modules/lunar-lite']?.version !== '0.2.8' ||
+    read('node_modules/lunar-lite/package.json').version !== '0.2.8' ||
+    locks?.['node_modules/lunar-typescript']?.version !== '1.8.6' ||
+    read('node_modules/lunar-typescript/package.json').version !== '1.8.6' ||
+    plan.schema !== 'thiendo-r69-leap-policy-plan-v1' || plan.sourceCommit !== commit ||
+    plan.iztroVersion !== version || JSON.stringify(plan.policies) !== JSON.stringify(policies) ||
+    !Array.isArray(plan.cases) || plan.cases.length !== 150) {
+  throw Error('R69 requires the pinned source and the synthetic leap policy plan');
+}
+
+const lunarDate = ({ lunarYear, lunarMonth, lunarDay, isLeap }: ReturnType<typeof astro.bySolar>['rawDates']['lunarDate']) =>
+  ({ year: lunarYear, month: lunarMonth, day: lunarDay, leap: isLeap });
+const elements = ['水二局', '木三局', '金四局', '土五局', '火六局'];
+const records = plan.cases.map(sample => {
+  const { id, solarDate, hour, gender } = sample;
+  const [year, month, day] = solarDate.split('-').map(Number);
+  const timeIndex = Math.floor((hour + 1) / 2);
+  const sourceGender = gender === 'Nam' ? '男' : '女';
+  const direct = astro.bySolar(solarDate, timeIndex, sourceGender, true, 'zh-CN');
+  const raw = lunarDate(direct.rawDates.lunarDate);
+  const byPolicy = Object.fromEntries(policies.map(policy => {
+    const info = getLunarInfo(year, month, day, timeIndex, policy);
+    const reported = { year: info.lunarYear, month: info.lunarMonth, day: info.lunarDay, leap: info.isLeapMonth };
+    const birth = { year, month, day, hour: timeIndex, gender: gender === 'Nam' ? 'male' as const : 'female' as const };
+    let chart: ReturnType<typeof generateChart>;
+    try {
+      chart = generateChart(birth, { leapMonth: policy });
+    } catch (error) {
+      const regularDays = LunarMonth.fromYm(reported.year, reported.month)?.getDayCount();
+      const leapDays = LunarMonth.fromYm(reported.year, -reported.month)?.getDayCount();
+      if (!(error instanceof Error) || policy !== 'origin-month' || !reported.leap ||
+          regularDays !== 29 || leapDays !== 30 || reported.day !== 30 ||
+          error.message !== `only ${regularDays} days in lunar year ${reported.year} month ${reported.month}`) throw error;
+      const signedLeapSolar = Lunar.fromYmd(reported.year, -reported.month, reported.day).getSolar().toYmd();
+      if (signedLeapSolar !== solarDate) throw Error(`R69 signed leap control disagrees with ${id}`);
+      return [policy, {
+        status: 'source-rejected-lunar-date', reported, reason: error.message,
+        regularDays, leapDays, signedLeapSolar,
+      }];
+    }
+    // Re-execute the library route selected by generateChart and check the
+    // outputs instead of treating its formatted lunarInfo as the placement input.
+    const runtime = policy === 'split' || !raw.leap ? direct : astro.byLunar(
+      [reported.year, reported.month, reported.day].join('-'), timeIndex, sourceGender, reported.leap, false, 'zh-CN');
+    function starBranch(name: string) {
+      const hits = chart.palaces.flatMap(p => p.stars.filter(s => s.name === name).map(() => p.branch));
+      const runtimeHits = runtime.palaces.flatMap(p => [...p.majorStars, ...p.minorStars, ...p.adjectiveStars]
+        .filter(s => s.name === name).map(() => BRANCHES.indexOf(p.earthlyBranch)));
+      if (hits.length !== 1 || runtimeHits.length !== 1 || hits[0] !== runtimeHits[0]) {
+        throw Error(`R69 library route disagrees with generateChart: ${id}/${policy}/${name}`);
+      }
+      return hits[0];
+    }
+    const positions = {
+      menh: chart.mingGongBranch, cuc: chart.wuxingJu, ziWei: starBranch('紫微'),
+      taPhu: starBranch('左辅'), huuBat: starBranch('右弼'),
+    };
+    if (!('leapMonthPolicy' in chart.birthInfo) || chart.birthInfo.leapMonthPolicy !== policy ||
+        chart.ziweiPos !== positions.ziWei ||
+        chart.lunarInfo.lunarYear !== reported.year || chart.lunarInfo.lunarMonth !== reported.month ||
+        chart.lunarInfo.lunarDay !== reported.day || chart.lunarInfo.isLeapMonth !== reported.leap ||
+        positions.menh !== BRANCHES.indexOf(runtime.earthlyBranchOfSoulPalace) ||
+        positions.cuc !== elements.indexOf(runtime.fiveElementsClass) + 2) {
+      throw Error(`R69 library route disagrees with source context: ${id}/${policy}`);
+    }
+    return [policy, { status: 'computed', reported, runtimeLunar: lunarDate(runtime.rawDates.lunarDate), positions }];
+  }));
+  return { id, raw, policies: byPolicy };
+});
+writeFileSync('../.r69-pinned-leap-policy-observations.json', JSON.stringify({
+  schema: 'thiendo-r69-pinned-leap-policy-observations-v1', sourceCommit: commit,
+  iztroVersion: version, syntheticOnly: true, records,
+}, null, 2) + '\n');
+console.log(`R69 source evaluated ${records.length * policies.length} policy runs on ${records.length} synthetic inputs`);

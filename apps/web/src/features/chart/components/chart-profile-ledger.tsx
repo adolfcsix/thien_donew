@@ -1,4 +1,5 @@
 import type {AnnualOverview,AstrologyResult} from '@thiendo/shared-types';
+import { LEAP_PLACEMENT_NOTE } from '../lib/birth-calendar';
 /** Projection of existing engine output: no additional placement or prediction. */
 export function ChartProfileLedger({result,annual,label}:{result:AstrologyResult;annual:AnnualOverview;label:string}) {
   const transformations=result.houses.flatMap(h=>h.tuHoa.map(t=>({...t,palace:h.palace,branch:h.branch})));
@@ -12,6 +13,7 @@ export function ChartProfileLedger({result,annual,label}:{result:AstrologyResult
       <div><dt>Cung Mệnh · Thân cư</dt><dd>Mệnh tại {result.menh} · Thân tại {result.than} · {result.thanPalace}</dd></div>
       <div><dt>Đại hạn đang xem</dt><dd>{annual.activeDaiHan?`${annual.activeDaiHan.palace} · ${annual.activeDaiHan.fromAge}–${annual.activeDaiHan.toAge} tuổi`:'Chưa vào đại hạn trong bảng 12 kỳ'}</dd></div>
     </dl>
+    {result.lunar.leap && <p className="chart-profile-note">{LEAP_PLACEMENT_NOTE}</p>}
     <div className="chart-transformation-pair"><section aria-label="Tứ Hóa năm sinh trong hồ sơ"><h3>Tứ Hóa năm sinh</h3><ul>{transformations.map(t=><li key={`${t.name}-${t.star}-${t.branch}`}><strong>{t.name}</strong><span>{t.star} · {t.palace} ({t.branch})</span></li>)}</ul>{!transformations.length&&<p>Không có dữ liệu Tứ Hóa năm sinh trong kết quả này.</p>}</section><section aria-label="Lưu Tứ Hóa trong hồ sơ"><h3>Lưu Tứ Hóa · {annual.canChi}</h3><ul>{annual.luuTuHoa.items.map(t=><li key={`${t.name}-${t.star}`}><strong>{t.name}</strong><span>{t.star} · {t.palace}</span></li>)}</ul></section></div>
     <p className="chart-profile-note">{result.houses.length} cung · {mainCount} chính tinh được an trong kết quả. Miếu/Vượng dùng bảng tham khảo riêng. Các tên sao chưa đủ chứng cứ vẫn được theo dõi ở <a href="/research/star-audit">Thẩm định sao</a>; không bổ sung vị trí suy đoán.</p>
   </details>;
