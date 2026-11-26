@@ -762,3 +762,97 @@ test('R81 targeted full lunar-day search and Hua-only production evidence',()=>{
  for(const row of positive)console.log('R81 Hua-only positive: '+JSON.stringify(row));
  for(const row of differences)console.log('R81 difference: '+JSON.stringify(row));
 });
+
+/** R82: separate exact source names from unordered obstruction geometry.
+ * Verify a named-coordinate hypothesis across the complete sexagenary cycle.
+ * R79 is a calibration grid; R61/R81 are cross-checks with some overlap.
+ * This is not a new natal star layer and cannot grant mapping authority.
+ */
+test('R82 exact source names, cross-grid verification and two rejected lunar boundaries',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const source=read('.r61-pinned-source-void-predicate-observations.json');
+ assert.equal(auditR62(source,read('.r33-source-1989-root-cause-observations.json')).charts,960);
+ const {auditSourceDoubleJiekongCodeConcordance}=require('../packages/interpretation/src/classical-source-void-vocabulary.cjs');
+ const Lunar=require('../packages/astrology-engine/src/lunar.js');
+ const mod=(x,n)=>((x%n)+n)%n;
+ const labels=['旬空','副旬','截空','副截','截路','空亡'];
+ const canonical=labels.slice(0,4);
+ const sorted=a=>[...a].sort((x,y)=>x-y);
+ const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+ const table=new Map(),mismatches=[];
+ const stats={cycleRows:0,exactLabelRows:0,exactLabelCells:0,legacyAbsentRows:0,
+  crossGridRows:0,crossGridMatch:0,huaOnlyRows:0,huaOnlyExactLabels:0};
+ function expected(year){
+  const stem=mod(year-4,10),branch=mod(year-4,12),cycle=mod(year-4,60);
+  const first=mod(branch-stem-2,12),second=mod(first+1,12);
+  // Test the parity hypothesis for the primary Xun name against actual iztro
+  // output, separately from the source's documented adjacent-pair formula.
+  const primary=first%2===stem%2?first:second;
+  const mate=primary===first?second:first;
+  const rule=auditSourceDoubleJiekongCodeConcordance(R73Engine.STEMS[stem]);
+  assert.equal(rule.sourceFormulaConcordant,true);
+  const [j,f]=rule.formulaCodes.map(x=>x-1);
+  return {cycle,names:{'旬空':[primary],'副旬':[mate],'截空':[j],'副截':[f],'截路':[],'空亡':[]}};
+ }
+ for(const row of source.r79Cycle.records){
+  const want=expected(row.lunar.year);
+  const observed=Object.fromEntries(labels.map(n=>[n,row.voidByName[n]]));
+  assert.ok(canonical.every(n=>observed[n].length===1));
+  stats.cycleRows++;
+  const cells=labels.filter(n=>same(observed[n],want.names[n]));
+  stats.exactLabelCells+=cells.length;
+  stats.exactLabelRows+=Number(cells.length===labels.length);
+  stats.legacyAbsentRows+=Number(!observed['截路'].length&&!observed['空亡'].length);
+  if(cells.length!==labels.length)mismatches.push({id:row.id,observed,expected:want.names});
+  if(table.has(want.cycle))assert.deepEqual(table.get(want.cycle),observed,row.id);
+  else table.set(want.cycle,observed);
+ }
+ assert.equal(table.size,60);assert.equal(stats.cycleRows,1440);
+ for(const row of source.records){
+  const y=row.diagnostic.reportedLunar.year;
+  const observed=Object.fromEntries(labels.map(n=>[n,row.sourceVoidByName[n]]));
+  stats.crossGridRows++;
+  const agreed=labels.every(n=>same(observed[n],table.get(mod(y-4,60))[n]));
+  stats.crossGridMatch+=Number(agreed);
+  if(!agreed)mismatches.push({id:row.id,source:observed,cycle:table.get(mod(y-4,60))});
+ }
+ for(const row of source.r81HuaOnly.records.filter(x=>x.hit&&x.hua&&!x.loc)){
+  const names=table.get(mod(row.lunar.year-4,60));
+  const atMing=labels.filter(n=>names[n].includes(row.ming));
+  stats.huaOnlyRows++;
+  const agreed=same([...atMing].sort(),[...row.labels].sort());
+  stats.huaOnlyExactLabels+=Number(agreed);
+  if(!agreed)mismatches.push({id:row.id,source:row.labels,cycle:atMing});
+ }
+ assert.equal(stats.crossGridRows,960);assert.equal(stats.huaOnlyRows,67);
+ const boundaries=[];
+ for(const row of source.r81HuaOnly.records){
+  const d=row.lunar;
+  let local;
+  try{local=Lunar.lunarToSolar(d.year,d.month,d.day,d.leap);}
+  catch(error){
+   if(!(error instanceof RangeError))throw error;
+   assert.equal(d.day,30,row.id);assert.equal(d.leap,false,row.id);
+   assert.equal(row.hit,false,row.id);
+   const last=Lunar.lunarToSolar(d.year,d.month,29,false);
+   const next=Lunar.lunarToSolar(d.year,d.month+1,1,false);
+   const dayAfter=new Date(Date.UTC(last.year,last.month-1,last.day+1));
+   const adjacent={year:dayAfter.getUTCFullYear(),month:dayAfter.getUTCMonth()+1,day:dayAfter.getUTCDate()};
+   assert.deepEqual(next,adjacent,row.id);
+   const [sy,sm,sd]=row.solarDate.split('-').map(Number);
+   const sameCivil=Lunar.solarToLunar(sy,sm,sd);
+   boundaries.push({id:row.id,sourceSolar:row.solarDate,sourceLunar:d,sourceHit:row.hit,
+    localMonthDays:29,localLastSolar:last,localNextSolar:next,localAtSourceSolar:sameCivil,
+    rejection:error.message});
+  }
+ }
+ assert.equal(boundaries.length,2);
+ assert.deepEqual(boundaries.map(x=>x.id).sort(),['1986-10-30-0','2020-10-30-6']);
+ const report={schema:'thiendo-r82-exact-source-label-coordinates-v1',sourceCommit:source.provenance.commit,
+  stats,boundaries,mismatchCount:mismatches.length,
+  namedCoordinatesAreSourceOnly:true,alternateVariantsVerified:false,
+  semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,researchMapped:31};
+ console.log('R82 named coordinate summary: '+JSON.stringify(report));
+ for(const row of mismatches)console.log('R82 label difference: '+JSON.stringify(row));
+});
