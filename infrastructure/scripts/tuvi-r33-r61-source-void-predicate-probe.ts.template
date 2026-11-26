@@ -8,6 +8,7 @@
  */
 import {readFileSync,writeFileSync} from 'node:fs';
 import {astro} from 'iztro';
+import {Lunar,LunarMonth} from 'lunar-typescript';
 import {execFileSync} from 'node:child_process';
 import {generateChart} from './lib/ziwei/algorithm';
 import {DING_PIN_GE,detectDingPin} from './lib/ziwei/patterns-dingpin';
@@ -182,6 +183,53 @@ for(let year=1984;year<2044;year++)for(let month=1;month<=12;month++)
    ming:chart.mingGongBranch,loc,hua,labels,modes});
  }
 if(r80.searched!==1440)throw Error('R80 incomplete targeted source search');
+// R81: regular lunar month 10, every valid day, in year/hour pairs
+// whose actual R79 year/hour coordinates permit a Hua-only positive.
+// This is a bounded search, not an exhaustive claim over all school variants.
+const r81Candidates=cycleRecords.filter(row=>{
+ if(row.gender!=='male'||![0,6].includes(row.hour))return false;
+ const target=row.hour===0?11:5;
+ return row.placements.kong.includes(target)&&row.placements.jie.includes(target)&&
+  !row.placements.lu.includes(target)&&names.some(n=>row.voidByName[n].includes(target));
+});
+const r81Rows=[];
+const r81Groups=[];
+for(const candidate of r81Candidates){
+ const {year,hour}=candidate;
+ const days=LunarMonth.fromYm(year,10).getDayCount();
+ if(days!==29&&days!==30)throw Error('R81 invalid regular lunar month');
+ r81Groups.push({year,hour,days});
+ for(let day=1;day<=days;day++){
+  const solarDate=Lunar.fromYmd(year,10,day).getSolar().toYmd();
+  const [sy,sm,sd]=solarDate.split('-').map(Number);
+  const chart=generateChart({year:sy,month:sm,day:sd,hour,gender:'male'});
+  const palace=chart.palaces.find(p=>p.branch===chart.mingGongBranch)!;
+  const loc=palace.stars.some(s=>s.name==='禄存'),hua=palace.stars.some(s=>s.siHua==='禄');
+  const kong=palace.stars.some(s=>s.name==='地空'),jie=palace.stars.some(s=>s.name==='地劫');
+  const labels=names.filter(n=>palace.stars.some(s=>s.name===n));
+  const hit=Boolean(ban2.fn(chart));
+  if(hit!==((loc||hua)&&kong&&jie&&labels.length>0)||detectDingPin(chart).some(x=>x.no===2)!==hit)
+   throw Error('R81 detector mismatch');
+  const d=chart.lunarInfo;
+  const lunar={year:d.lunarYear,month:d.lunarMonth,day:d.lunarDay,leap:d.isLeapMonth};
+  const target=hour===0?11:5;
+  const aligned=lunar.year===year&&lunar.month===10&&lunar.day===day&&!lunar.leap&&chart.mingGongBranch===target;
+  let withoutHua:boolean|null=null,withoutLoc:boolean|null=null;
+  if(hit&&hua&&!loc){
+   const copy=structuredClone(chart);
+   const m=copy.palaces.find(p=>p.branch===copy.mingGongBranch)!;
+   m.stars=m.stars.filter(s=>s.name!=='禄存');
+   withoutLoc=Boolean(ban2.fn(copy));
+   for(const star of m.stars)if(star.siHua==='禄')delete star.siHua;
+   withoutHua=Boolean(ban2.fn(copy));
+   if(!withoutLoc||withoutHua||!ban2.fn(chart))throw Error('R81 Hua-only ablation mismatch');
+  }
+  r81Rows.push({id:[year,10,day,hour].join('-'),year,hour,day,solarDate,lunar,aligned,
+   ming:chart.mingGongBranch,loc,hua,kong,jie,labels,hit,withoutHua,withoutLoc});
+ }
+}
+if(r81Rows.length!==r81Groups.reduce((n,g)=>n+g.days,0)||new Set(r81Rows.map(r=>r.id)).size!==r81Rows.length)
+ throw Error('R81 missing day coverage');
 writeFileSync('../.r61-pinned-source-void-predicate-observations.json',
  JSON.stringify({
   schema:'thiendo-r61-pinned-source-void-predicates-v1',
@@ -191,6 +239,7 @@ writeFileSync('../.r61-pinned-source-void-predicate-observations.json',
   sourceSixVoidNames:names,years,months,hours:12,genders:['male','female'],
   caseCount:records.length,hitCounts,records,
   r79Cycle:{schema:'thiendo-r79-sexagenary-void-controls-v1',records:cycleRecords},
-  r80Targeted:{schema:'thiendo-r80-ban02-targeted-ablation-v1',...r80}
+  r80Targeted:{schema:'thiendo-r80-ban02-targeted-ablation-v1',...r80},
+  r81HuaOnly:{schema:'thiendo-r81-hua-only-lunar-day-search-v1',groups:r81Groups,records:r81Rows}
  },null,2)+'\n');
 console.log('R61: 960 source charts, six separately named void stars, source predicate hits '+JSON.stringify(hitCounts));
