@@ -244,3 +244,106 @@ test('R73 genuine R61 grid: compare named placements and bounded local proxy pre
   researchMapped:31,referenceTotal:49,mayIncreaseMapping:false
  }));
 });
+
+/** R76: identify every discrepancy from the genuine R61 source grid and
+ * isolate regular lunar-coordinate replay, without changing the local chart.
+ * Agreement is geometric only; a valid source lunar date need not describe
+ * the same civil instant in UTC+7. No claim about leap-policy equivalence.
+ */
+test('R76 source/local trace, positive controls and regular lunar replay',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const source=read('.r61-pinned-source-void-predicate-observations.json');
+ const base=read('.r33-source-1989-root-cause-observations.json');
+ const prior=auditR62(source,base);
+ assert.equal(prior.charts,960);
+ const original=JSON.stringify(source);
+ const matrix={};
+ const differences=[];
+ const dateKey=x=>[x.year,x.month,x.day,x.leap].join('/');
+ const validDate=x=>x&&Number.isInteger(x.year)&&x.year>=1900&&x.year<=2100&&
+  Number.isInteger(x.month)&&x.month>=1&&x.month<=12&&
+  Number.isInteger(x.day)&&x.day>=1&&x.day<=30&&typeof x.leap==='boolean';
+ function add(key,a,b){
+  const c=matrix[key]??(matrix[key]={bothTrue:0,bothFalse:0,sourceOnly:0,localOnly:0,unknown:0});
+  assert.equal(typeof a,'boolean');
+  c[b===null?'unknown':a?(b?'bothTrue':'sourceOnly'):(b?'localOnly':'bothFalse')]++;
+ }
+ function operands(local){
+  const inVoid=b=>local.proxy===null||b===null?null:local.proxy.has(b);
+  return {liem:r73At(local.liem,local.ming),
+   luOrHua:r73Or(r73At(local.lu,local.ming),r73At(local.hua,local.ming)),
+   kongJie:r73And(r73At(local.kong,local.ming),r73At(local.jie,local.ming)),
+   voidMing:inVoid(local.ming),locVoid:inVoid(local.lu),horseVoid:inVoid(local.horse)};
+ }
+ function compare(row,l){
+  const o=operands(l);
+  return {ban01:r73And(o.liem,o.voidMing),ban02:r73And(o.luOrHua,o.kongJie,o.voidMing),
+   periods:row.periods.map(p=>({startAge:p.startAge,branch:p.branch,
+    hit:r73And(l.seven===null?null:[p.branch,(p.branch+4)%12,(p.branch+8)%12,(p.branch+6)%12].includes(l.seven),o.locVoid,o.horseVoid)})),
+   operands:o};
+ }
+ let regularReplays=0,skippedLeap=0,replayRejected=0,calendarDifferent=0,reportedDifferent=0;
+ for(const row of source.records){
+  const d=row.diagnostic;
+  assert.ok(validDate(d?.rawLunar)&&validDate(d?.reportedLunar),row.id);
+  assert.ok([2,3,4,5,6].includes(d.cuc),row.id);
+  for(const name of ['liem','kong','jie','hua']){
+   assert.ok(Array.isArray(d[name])&&d[name].length===1&&d[name].every(r73Branch),row.id+'/'+name);
+  }
+  assert.equal(d.liem.includes(row.mingBranch),row.parts.liemAtMing);
+  assert.equal(d.kong.includes(row.mingBranch)&&d.jie.includes(row.mingBranch),row.parts.diKongAndDiJieAtMing);
+  assert.equal(row.luBranch===row.mingBranch||d.hua.includes(row.mingBranch),row.parts.luOrHuaLuAtMing);
+  const common={hour:row.hour*2,minute:0,gender:row.gender==='male'?'Nam':'Nữ'};
+  const chart=R73Engine.calculate({...common,date:row.solarDate,calendar:'solar'});
+  const local=r73Local(chart),result=compare(row,local);
+  const sameCalendar=dateKey(chart.lunar)===dateKey(d.rawLunar);
+  if(!sameCalendar)calendarDifferent++;
+  if(dateKey(d.rawLunar)!==dateKey(d.reportedLunar))reportedDifferent++;
+  const source1=row.sourcePredicates['dinh-ban-01'],source2=row.sourcePredicates['dinh-ban-02'];
+  add('ban01',source1,result.ban01);add('ban02',source2,result.ban02);
+  const changed=result.periods.filter(p=>p.hit!==row.sourcePredicates['dinh-tap-03'].includes(p.startAge));
+  for(const p of result.periods)add('tap03',row.sourcePredicates['dinh-tap-03'].includes(p.startAge),p.hit);
+  if(source1===result.ban01&&source2===result.ban02&&!changed.length)continue;
+  const sourcePositions={ming:row.mingBranch,seven:row.sevenBranch,lu:row.luBranch,horse:row.horseBranch,
+   liem:d.liem[0],kong:d.kong[0],jie:d.jie[0],hua:d.hua[0]};
+  const record={id:row.id,solarDate:row.solarDate,sourceRawLunar:d.rawLunar,sourceReportedLunar:d.reportedLunar,
+   localLunar:chart.lunar,sameCalendar,sourceCuc:d.cuc,localCuc:chart.cuc.number,
+   sourcePositions,localPositions:{...local,proxy:local.proxy?[...local.proxy]:null},
+   sourceVoidByName:row.sourceVoidByName,sourceParts:row.parts,
+   sourceBan01:source1,sourceBan02:source2,localBan01:result.ban01,localBan02:result.ban02,
+   localOperands:result.operands,changedPeriods:changed.map(p=>({...p,sourceHit:row.sourcePredicates['dinh-tap-03'].includes(p.startAge)})),
+   lunarReplay:null};
+  if(d.rawLunar.leap||d.reportedLunar.leap||dateKey(d.rawLunar)!==dateKey(d.reportedLunar)){
+   skippedLeap++;record.replayStatus='leap-or-reported-runtime-ambiguity';
+  }else{
+   const x=d.rawLunar,date=[x.year,String(x.month).padStart(2,'0'),String(x.day).padStart(2,'0')].join('-');
+   let replay;
+   try{replay=R73Engine.calculate({...common,date,calendar:'lunar',leap:false});}
+   catch(error){if(!(error instanceof RangeError))throw error;replayRejected++;record.replayStatus='local-lunar-input-rejected';}
+   if(replay){
+    assert.equal(dateKey(replay.lunar),dateKey(x),row.id);
+    const l=r73Local(replay),p=compare(row,l);
+    regularReplays++;
+    record.replayStatus='computed';
+    record.lunarReplay={solar:replay.solar,cuc:replay.cuc.number,positions:{...l,proxy:l.proxy?[...l.proxy]:null},
+     ban01:p.ban01,ban02:p.ban02,remainingPeriodDifferences:p.periods.filter(v=>v.hit!==row.sourcePredicates['dinh-tap-03'].includes(v.startAge)).length,
+     allNamedCoordinatesMatch:Object.keys(sourcePositions).every(key=>sourcePositions[key]===l[key])};
+   }
+  }
+  differences.push(record);
+ }
+ const total=c=>Object.values(c).reduce((a,b)=>a+b,0);
+ assert.equal(total(matrix.ban01),960);assert.equal(total(matrix.ban02),960);assert.equal(total(matrix.tap03),11520);
+ assert.equal(matrix.ban01.bothTrue+matrix.ban01.sourceOnly,24);
+ assert.equal(matrix.ban02.bothTrue+matrix.ban02.sourceOnly,4);
+ assert.equal(matrix.tap03.bothTrue+matrix.tap03.sourceOnly,768);
+ assert.equal(differences.length,regularReplays+skippedLeap+replayRejected);
+ assert.equal(JSON.stringify(source),original);
+ const report={schema:'thiendo-r76-source-discrepancy-trace-v1',sourceCommit:prior.sourceCommit,
+  matrix,calendarDifferent,reportedDifferent,regularReplays,skippedLeap,replayRejected,differences,
+  sameSchoolVerified:false,semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,
+  researchMapped:31,referenceTotal:49};
+ console.log('R76 discrepancy summary: '+JSON.stringify({...report,differences:undefined,traceCount:differences.length}));
+ for(const record of differences)console.log('R76 trace: '+JSON.stringify(record));
+});
