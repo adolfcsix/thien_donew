@@ -856,3 +856,80 @@ test('R82 exact source names, cross-grid verification and two rejected lunar bou
  console.log('R82 named coordinate summary: '+JSON.stringify(report));
  for(const row of mismatches)console.log('R82 label difference: '+JSON.stringify(row));
 });
+
+/** R83: use the actual research adapter, not a parallel proxy in the tests. */
+const {PROFILE:R83_PROFILE,auditPinnedDefaultBan02:r83Audit}=require('../infrastructure/scripts/tuvi-r33-r83-pinned-default-ban02.cjs');
+test('R83 source-profile adapter rejects corrupted snapshots and unsupported profiles',()=>{
+ const make=(date,hour)=>R73Engine.calculate({date,calendar:'lunar',leap:false,hour,minute:0,gender:'Nam'});
+ const loc=make('1986-10-14',12),hua=make('1984-10-08',0),negative=make('1986-10-14',10);
+ for(const [c,expected] of [[loc,true],[hua,true],[negative,false]]){
+  const before=JSON.stringify(c),a=r83Audit(c,R83_PROFILE);
+  assert.equal(a.verifiedLocalInput,true,a.reason);
+  assert.equal(a.formulaMatch,expected,a.reason);
+  assert.equal(a.sourceCriterionVerified,false);
+  assert.equal(a.semanticEquivalenceVerified,false);
+  assert.equal(a.mayIncreaseMapping,false);
+  assert.equal(a.researchMapped,31);
+  assert.ok(Object.isFrozen(a)&&Object.isFrozen(a.operands));
+  assert.equal(r83Audit(c,'single').formulaMatch,null);
+  assert.equal(r83Audit(c,'zhanyan').formulaMatch,null);
+  assert.equal(r83Audit(c).formulaMatch,null);
+  for(const change of [
+   x=>{x.yearCanChi='Giáp Tý';},x=>{x.lunar.day=30;},x=>{x.solar.day=1;},
+   x=>{x.houses[0].stars.push('Tử Vi');},x=>{x.houses[0].palace='Mệnh';},
+   x=>{x.tuHoaRuleSet='invalid';},x=>{x.obstructionMarkers=[];},
+   x=>{x.advancedStars.pop();},x=>{x.auxiliaries.pop();}
+  ]){
+   const bad=clone(c);change(bad);
+   // Skip a no-op mutation (e.g. a date already happens to be day 1).
+   if(JSON.stringify(bad)===before)continue;
+   const result=r83Audit(bad,R83_PROFILE);
+   assert.equal(result.verifiedLocalInput,false,result.reason);
+   assert.equal(result.formulaMatch,null,result.reason);
+  }
+  assert.equal(JSON.stringify(c),before);
+ }
+ assert.equal(r83Audit(null,R83_PROFILE).formulaMatch,null);
+});
+test('R83 adapter reproduces real source Ban02 evidence across R61 R79 R81',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const s=read('.r61-pinned-source-void-predicate-observations.json');
+ assert.equal(auditR62(s,read('.r33-source-1989-root-cause-observations.json')).charts,960);
+ const grids=[
+  ['R61',s.records.map(r=>({id:r.id,lunar:r.diagnostic.reportedLunar,hour:r.hour,gender:r.gender,
+    hit:r.sourcePredicates['dinh-ban-02'],names:r.sourceVoidByName}))],
+  ['R79',s.r79Cycle.records.map(r=>({id:r.id,lunar:r.lunar,hour:r.hour,gender:r.gender,hit:r.hit,names:r.voidByName}))],
+  ['R81',s.r81HuaOnly.records.map(r=>({id:r.id,lunar:r.lunar,hour:r.hour,gender:'male',hit:r.hit,atMenh:r.labels}))]
+ ];
+ const summaries=[];
+ for(const [grid,rows] of grids){
+  const counts={total:rows.length,accepted:0,rejected:0,matched:0,unknown:0,positive:0,positiveMatched:0,namesMatched:0};
+  for(const row of rows){
+   counts.positive+=Number(row.hit);
+   const d=row.lunar,date=[d.year,String(d.month).padStart(2,'0'),String(d.day).padStart(2,'0')].join('-');
+   let c;
+   try{c=R73Engine.calculate({date,calendar:'lunar',leap:d.leap,hour:row.hour*2,minute:0,gender:row.gender==='male'?'Nam':'Nữ'});}
+   catch(error){if(!(error instanceof RangeError))throw error;counts.rejected++;continue;}
+   counts.accepted++;
+   const a=r83Audit(c,R83_PROFILE);
+   assert.equal(a.verifiedLocalInput,true,row.id);
+   assert.equal(a.sourceCriterionVerified,false);
+   assert.equal(a.mayIncreaseMapping,false);
+   if(a.formulaMatch===null)counts.unknown++;
+   assert.equal(a.formulaMatch,row.hit,row.id);
+   counts.matched++;
+   if(row.hit)counts.positiveMatched++;
+   if(row.names)assert.deepEqual(a.sourceNamedCoordinates,row.names,row.id);
+   else assert.deepEqual([...a.namesAtMenh].sort(),[...row.atMenh].sort(),row.id);
+   counts.namesMatched++;
+  }
+  assert.equal(counts.accepted+counts.rejected,rows.length);
+  assert.equal(counts.unknown,0);
+  assert.equal(counts.positiveMatched,counts.positive);
+  assert.equal(counts.rejected,grid==='R81'?2:0);
+  summaries.push({grid,...counts});
+ }
+ console.log('R83 adapter summary: '+JSON.stringify({summaries,profile:R83_PROFILE,overlappingGrids:true,
+  semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,researchMapped:31}));
+});
