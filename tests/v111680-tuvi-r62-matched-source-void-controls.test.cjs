@@ -544,3 +544,82 @@ test('R78 effective lunar replay and full age-branch period identity',()=>{
  for(const row of yearBoundary)console.log('R78 year boundary: '+JSON.stringify(row));
  for(const row of unresolved)console.log('R78 unresolved: '+JSON.stringify(row));
 });
+
+/** R79: source-specific double-family geometry over the whole sexagenary
+ * cycle, independent of R61's ten-year sample. No runtime verdict promotion.
+ */
+test('R79 all 60 Can Chi years and strict Ban02 source controls',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const source=read('.r61-pinned-source-void-predicate-observations.json');
+ const base=read('.r33-source-1989-root-cause-observations.json');
+ assert.equal(auditR62(source,base).charts,960);
+ const grid=source.r79Cycle;
+ assert.equal(grid.schema,'thiendo-r79-sexagenary-void-controls-v1');
+ assert.equal(grid.records.length,1440);
+ const sorted=a=>[...new Set(a)].sort((x,y)=>x-y);
+ const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+ const mod=(x,n)=>((x%n)+n)%n;
+ const years=new Set(),ids=new Set(),dateGender=new Map();
+ const stats={computed:0,rejected:0,skippedLeap:0,sameCivilDate:0,sourcePositive:0,
+  namedCoordinatesMatch:0,tuanMatch:0,trietMatch:0,sourceLabelPairMatch:0,
+  bothTrue:0,bothFalse:0,sourceOnly:0,localOnly:0,unknown:0};
+ const positive=[],differences=[];
+ const {auditSourceDoubleJiekongCodeConcordance}=require('../packages/interpretation/src/classical-source-void-vocabulary.cjs');
+ const before=JSON.stringify(grid);
+ for(const row of grid.records){
+  assert.ok(!ids.has(row.id));ids.add(row.id);
+  assert.ok(row.year>=1984&&row.year<2044&&row.lunar.year===row.year,row.id);
+  assert.ok(['male','female'].includes(row.gender)&&Number.isInteger(row.hour)&&row.hour>=0&&row.hour<12,row.id);
+  years.add(mod(row.lunar.year-4,60));
+  const group=row.year+'/'+row.gender;
+  const hours=dateGender.get(group)??new Set();hours.add(row.hour);dateGender.set(group,hours);
+  stats.sourcePositive+=Number(row.hit);
+  for(const field of ['lu','kong','jie','hua'])
+   assert.ok(row.placements[field].length===1&&row.placements[field].every(r73Branch),row.id+'/'+field);
+  const n=row.voidByName;
+  for(const field of ['旬空','副旬','截空','副截'])assert.ok(n[field].length===1&&n[field].every(r73Branch),row.id+'/'+field);
+  assert.equal(n['截路'].length,0,row.id);assert.equal(n['空亡'].length,0,row.id);
+  const xun=sorted([...n['旬空'],...n['副旬']]),jie=sorted([...n['截空'],...n['副截']]);
+  assert.equal(xun.length,2,row.id);assert.equal(jie.length,2,row.id);
+  const stem=R73Engine.STEMS[mod(row.lunar.year-4,10)];
+  const ref=auditSourceDoubleJiekongCodeConcordance(stem);
+  assert.equal(ref.sourceFormulaConcordant,true);
+  const ordered=ref.formulaCodes.map(v=>v-1);
+  const xunMate=n['旬空'][0]%2===0?n['旬空'][0]+1:n['旬空'][0]-1;
+  stats.sourceLabelPairMatch+=Number(n['副旬'][0]===xunMate&&same([n['截空'][0],n['副截'][0]],ordered));
+  if(row.lunar.leap){stats.skippedLeap++;stats.unknown++;differences.push({id:row.id,reason:'reported leap'});continue;}
+  const date=[row.lunar.year,String(row.lunar.month).padStart(2,'0'),String(row.lunar.day).padStart(2,'0')].join('-');
+  let c;
+  try{c=R73Engine.calculate({date,calendar:'lunar',leap:false,hour:row.hour*2,minute:0,gender:row.gender==='male'?'Nam':'Nữ'});}
+  catch(error){if(!(error instanceof RangeError))throw error;stats.rejected++;stats.unknown++;differences.push({id:row.id,reason:'rejected local lunar input'});continue;}
+  stats.computed++;
+  assert.deepEqual(c.lunar,row.lunar,row.id);
+  stats.sameCivilDate+=Number(c.solar.year===row.year&&c.solar.month===11&&c.solar.day===15);
+  const l=r73Local(c);
+  const localTuan=sorted(c.obstructionMarkers.find(v=>v.name==='Tuần').branches);
+  const localTriet=sorted(c.obstructionMarkers.find(v=>v.name==='Triệt').branches);
+  const t=same(xun,localTuan),j=same(jie,localTriet);
+  stats.tuanMatch+=Number(t);stats.trietMatch+=Number(j);
+  const coords={ming:row.ming,lu:row.placements.lu[0],kong:row.placements.kong[0],jie:row.placements.jie[0],hua:row.placements.hua[0]};
+  const named=Object.keys(coords).every(k=>coords[k]===l[k]);
+  stats.namedCoordinatesMatch+=Number(named);
+  const v=l.proxy===null?null:l.proxy.has(l.ming);
+  const hit=r73And(r73Or(r73At(l.lu,l.ming),r73At(l.hua,l.ming)),r73And(r73At(l.kong,l.ming),r73At(l.jie,l.ming)),v);
+  stats[hit===null?'unknown':row.hit?(hit?'bothTrue':'sourceOnly'):(hit?'localOnly':'bothFalse')]++;
+  const detail={id:row.id,sourceHit:row.hit,localHit:hit,sourceCoordinates:coords,
+   localCoordinates:Object.fromEntries(Object.keys(coords).map(k=>[k,l[k]])),
+   sourceXun:xun,sourceJie:jie,localTuan,localTriet,sourceLabelsAtMing:Object.keys(n).filter(k=>n[k].includes(row.ming))};
+  if(row.hit)positive.push(detail);
+  if(!named||!t||!j||hit!==row.hit)differences.push(detail);
+ }
+ assert.equal(years.size,60);assert.equal(ids.size,1440);
+ assert.equal(dateGender.size,120);assert.ok([...dateGender.values()].every(x=>x.size===12));
+ assert.equal(stats.computed+stats.rejected+stats.skippedLeap,1440);
+ assert.equal(stats.bothTrue+stats.bothFalse+stats.sourceOnly+stats.localOnly+stats.unknown,1440);
+ assert.equal(JSON.stringify(grid),before);
+ console.log('R79 sexagenary summary: '+JSON.stringify({years:years.size,stats,positiveCount:positive.length,differenceCount:differences.length,
+  variant:'default-double',semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,researchMapped:31}));
+ for(const row of positive)console.log('R79 positive: '+JSON.stringify(row));
+ for(const row of differences)console.log('R79 difference: '+JSON.stringify(row));
+});
