@@ -75,4 +75,64 @@ function auditPinnedDefaultBan02(chart,profile){
   verifiedLocalInput:true,sourceNamedCoordinates:named,namesAtMenh,geometryMatchesLocalMarkers,
   operands,formulaMatch:geometryMatchesLocalMarkers?andKnown(...Object.values(operands)):null});
 }
-module.exports=Object.freeze({PROFILE,NAMES,reconstructPinnedNames,auditPinnedDefaultBan02});
+/** R84: shared validated source-profile coordinates; separate natal and decade
+ * condition outputs. No current-chart source authority or catalog promotion. */
+const {auditClassicalPeriodGeometry}=require('../../packages/interpretation/src/classical-period-geometry.cjs');
+function auditPinnedDefaultVoidConditions(chart,profile){
+ const base=auditPinnedDefaultBan02(chart,profile);
+ const empty=reason=>Object.freeze({
+  schema:'thiendo-r84-pinned-default-void-conditions-v1',profile:PROFILE,sourceCommit:SOURCE_COMMIT,
+  verifiedLocalInput:false,sourceNamedCoordinates:null,reason,
+  natal:Object.freeze([
+   Object.freeze({id:'dinh-ban-01',formulaMatch:null,operands:null}),
+   Object.freeze({id:'dinh-ban-02',formulaMatch:null,operands:null})]),
+  period:Object.freeze({id:'dinh-tap-03',verifiedGeometry:false,periods:Object.freeze([]),formulaMatch:null}),
+  sourceCriterionVerified:false,semanticEquivalenceVerified:false,schoolParityVerified:false,
+  expertReviewed:false,mayDeclarePattern:false,mayIncreaseMapping:false,researchMapped:31
+ });
+ if(!base.verifiedLocalInput||!base.geometryMatchesLocalMarkers)return empty(base.reason);
+ // R83 verifies the complete houses but not every top-level period/star layer.
+ // Reproduce and compare those layers before allowing any period result.
+ const d=chart.lunar;
+ let canonical;
+ try{
+  canonical=Engine.calculate({date:[d.year,String(d.month).padStart(2,'0'),String(d.day).padStart(2,'0')].join('-'),
+   calendar:'lunar',leap:d.leap,hour:chart.hour,minute:chart.minute,gender:chart.gender});
+ }catch{return empty('Cannot reproduce natal input.');}
+ const named=base.sourceNamedCoordinates;
+ const namesAt=b=>Object.freeze(NAMES.filter(n=>named[n].includes(b)));
+ const branchOf=(layer,name)=>{
+  const houses=canonical.houses.filter(h=>Array.isArray(h[layer])&&h[layer].includes(name));
+  return houses.length===1?houses[0].branchIndex:null;
+ };
+ const menh=canonical.houses.find(h=>h.palace==='Mệnh')?.branchIndex;
+ const liem=branchOf('stars','Liêm Trinh'),seven=branchOf('stars','Thất Sát');
+ const loc=branchOf('auxiliaryStars','Lộc Tồn'),horse=branchOf('yearStars','Thiên Mã');
+ const at=(a,b)=>Number.isInteger(a)&&Number.isInteger(b)?a===b:null;
+ const inVoid=b=>Number.isInteger(b)?namesAt(b).length>0:null;
+ const ban01Operands=Object.freeze({liemAtMenh:at(liem,menh),namedVoidAtMenh:inVoid(menh)});
+ const natal=Object.freeze([
+  Object.freeze({id:'dinh-ban-01',formulaMatch:andKnown(...Object.values(ban01Operands)),operands:ban01Operands}),
+  Object.freeze({id:'dinh-ban-02',formulaMatch:base.formulaMatch,operands:base.operands})
+ ]);
+ const periodKeys=['cycles','coverage','yearStars','yearStarRuleSet'];
+ const validPeriod=periodKeys.every(k=>isDeepStrictEqual(chart[k],canonical[k]))&&
+  auditClassicalPeriodGeometry(chart).verifiedGeometry;
+ const locNames=Number.isInteger(loc)?namesAt(loc):null,horseNames=Number.isInteger(horse)?namesAt(horse):null;
+ const periods=Object.freeze(validPeriod?canonical.cycles.daiHan.map(p=>{
+  const four=Object.freeze([p.branch,(p.branch+4)%12,(p.branch+8)%12,(p.branch+6)%12]);
+  const operands=Object.freeze({sevenInFourCourts:Number.isInteger(seven)?four.includes(seven):null,
+   locNamedVoid:inVoid(loc),horseNamedVoid:inVoid(horse)});
+  return Object.freeze({index:p.index,branch:p.branch,fromAge:p.fromAge,toAge:p.toAge,four,
+   operands,formulaMatch:andKnown(...Object.values(operands))});
+ }):[]);
+ const period=Object.freeze({id:'dinh-tap-03',verifiedGeometry:validPeriod,locBranch:loc,horseBranch:horse,
+  sevenBranch:seven,locNames,horseNames,periods,
+  formulaMatch:validPeriod?(periods.some(p=>p.formulaMatch===true)?true:
+   periods.every(p=>p.formulaMatch===false)?false:null):null});
+ return Object.freeze({
+  ...empty('Source-profile research on local lunar coordinates only; no semantic or school-equivalence claim.'),
+  verifiedLocalInput:true,sourceNamedCoordinates:named,natal,period
+ });
+}
+module.exports=Object.freeze({PROFILE,NAMES,reconstructPinnedNames,auditPinnedDefaultBan02,auditPinnedDefaultVoidConditions});
