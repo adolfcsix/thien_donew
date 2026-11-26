@@ -126,3 +126,879 @@ test('R62 genuine 960 charts yield 24/4 natal and 768 decade positive/negative m
  console.log('R62 genuine matched source controls: 24+4 natal, 768 decade; '+
   JSON.stringify(result.counts)+'; 31/49 unchanged');
 });
+
+/** R73: extend the existing genuine R61/R62 sample, not a second source probe.
+ * Same civil solar date, gender and hour branch; the source lunar day/policy
+ * is not captured by R61, so this does not establish same school or calendar.
+ */
+const R73Engine=require('../packages/astrology-engine/src/tuvi.js');
+const {auditClassicalVoidSemanticGates: r73VoidGate}=
+ require('../packages/interpretation/src/classical-void-semantic-gates.cjs');
+const r73Branch=x=>Number.isInteger(x)&&x>=0&&x<12;
+const r73Compare=(source,local)=>local===null?'unknown':source===local?'matched':'different';
+const r73And=(...values)=>values.includes(false)?false:values.includes(null)?null:true;
+const r73At=(star,branch)=>star===null?null:star===branch;
+const r73Or=(a,b)=>a===true||b===true?true:a===null||b===null?null:false;
+function r73Local(chart){
+ const find=(name,layer)=>{
+  const hits=chart.houses.filter(h=>h[layer]?.includes(name)).map(h=>h.branchIndex);
+  return hits.length===1&&r73Branch(hits[0])?hits[0]:null;
+ };
+ const ming=R73Engine.BRANCHES.indexOf(chart.menh);
+ assert.ok(r73Branch(ming));
+ const hua=chart.transformations.filter(t=>t.name==='Hóa Lộc');
+ const gate=r73VoidGate(chart);
+ assert.equal(gate.sourceCriterionVerified,false);
+ const proxy=gate.verifiedLocalObstructions&&gate.trietSourcePairGeometryStatus==='matched'
+   &&Array.isArray(gate.proxyBranches)&&gate.proxyBranches.every(r73Branch)
+   ?new Set(gate.proxyBranches):null;
+ return {ming,seven:find('Thất Sát','stars'),lu:find('Lộc Tồn','auxiliaryStars'),
+  horse:find('Thiên Mã','yearStars'),liem:find('Liêm Trinh','stars'),
+  kong:find('Địa Không','advancedStars'),jie:find('Địa Kiếp','advancedStars'),
+  hua:hua.length===1&&r73Branch(hua[0].branch)?hua[0].branch:null,proxy};
+}
+test('R73 three-valued geometry comparisons do not turn missing operands into matches',()=>{
+ assert.equal(r73Compare(3,null),'unknown');
+ assert.equal(r73Compare(false,null),'unknown');
+ assert.equal(r73Compare(false,false),'matched');
+ assert.equal(r73Compare(3,4),'different');
+ assert.equal(r73And(true,null),null);
+ assert.equal(r73And(false,null),false);
+ assert.equal(r73Or(false,null),null);
+ assert.equal(r73Or(true,null),true);
+ assert.equal(r73At(null,3),null);
+});
+test('R73 genuine R61 grid: compare named placements and bounded local proxy predicates',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const source=read('.r61-pinned-source-void-predicate-observations.json');
+ const base=read('.r33-source-1989-root-cause-observations.json');
+ const prior=auditR62(source,base);
+ assert.equal(prior.charts,960);
+ assert.equal(prior.matchedNegativeControlCount,796);
+ const before=JSON.stringify(source);
+ const counts={};
+ function add(key,a,b){
+  const status=r73Compare(a,b);
+  const cell=counts[key]??(counts[key]={matched:0,different:0,unknown:0});
+  cell[status]++;
+ }
+ const byMing={matched:0,different:0};
+ const seen=new Set();
+ for(const row of source.records){
+  assert.ok(!seen.has(row.id));seen.add(row.id);
+  const hour=row.hour*2;
+  assert.equal(R73Engine.hourBranch(hour),row.hour);
+  const chart=R73Engine.calculate({date:row.solarDate,hour,minute:0,
+   gender:row.gender==='male'?'Nam':'Nữ',calendar:'solar'});
+  const localBefore=JSON.stringify(chart);
+  const l=r73Local(chart), aligned=row.mingBranch===l.ming;
+  byMing[aligned?'matched':'different']++;
+  for(const [key,a,b] of [
+   ['menh',row.mingBranch,l.ming],['that-sat',row.sevenBranch,l.seven],
+   ['loc-ton',row.luBranch,l.lu],['thien-ma',row.horseBranch,l.horse]
+  ])add(key,a,b);
+  const voidAt=b=>l.proxy===null||b===null?null:l.proxy.has(b);
+  const liem=r73At(l.liem,l.ming);
+  const luOrHua=r73Or(r73At(l.lu,l.ming),r73At(l.hua,l.ming));
+  const kongJie=r73And(r73At(l.kong,l.ming),r73At(l.jie,l.ming));
+  const voidMing=voidAt(l.ming);
+  const locVoid=voidAt(l.lu),horseVoid=voidAt(l.horse);
+  add('liem-at-own-menh',row.parts.liemAtMing,liem);
+  add('loc-or-hua-at-own-menh',row.parts.luOrHuaLuAtMing,luOrHua);
+  add('kong-jie-at-own-menh',row.parts.diKongAndDiJieAtMing,kongJie);
+  add('void-at-own-menh-proxy',row.voidNamesAtMing.length>0,voidMing);
+  add('loc-void-proxy',row.parts.luInSourceVoid,locVoid);
+  add('horse-void-proxy',row.parts.horseInSourceVoid,horseVoid);
+  const stratum=aligned?'same-menh':'different-menh';
+  const p1=r73And(liem,voidMing),p2=r73And(luOrHua,kongJie,voidMing);
+  add('dinh-ban-01-proxy',row.sourcePredicates['dinh-ban-01'],p1);
+  add('dinh-ban-02-proxy',row.sourcePredicates['dinh-ban-02'],p2);
+  add('dinh-ban-01-proxy/'+stratum,row.sourcePredicates['dinh-ban-01'],p1);
+  add('dinh-ban-02-proxy/'+stratum,row.sourcePredicates['dinh-ban-02'],p2);
+  for(const p of row.periods){
+   // Compare geometry at the same BRANCH, not local major-period age identity.
+   const four=[p.branch,(p.branch+4)%12,(p.branch+8)%12,(p.branch+6)%12];
+   const hit=r73And(l.seven===null?null:four.includes(l.seven),locVoid,horseVoid);
+   add('dinh-tap-03-same-branch-proxy',
+    row.sourcePredicates['dinh-tap-03'].includes(p.startAge),hit);
+  }
+  assert.equal(JSON.stringify(chart),localBefore);
+ }
+ assert.equal(seen.size,960);
+ const total=key=>Object.values(counts[key]??{}).reduce((a,b)=>a+b,0);
+ for(const key of ['menh','that-sat','loc-ton','thien-ma','liem-at-own-menh',
+  'loc-or-hua-at-own-menh','kong-jie-at-own-menh','void-at-own-menh-proxy',
+  'loc-void-proxy','horse-void-proxy','dinh-ban-01-proxy','dinh-ban-02-proxy'])
+  assert.equal(total(key),960,key);
+ assert.equal(total('dinh-tap-03-same-branch-proxy'),11520);
+ for(const key of ['dinh-ban-01-proxy','dinh-ban-02-proxy']){
+  assert.equal(total(key+'/same-menh'),byMing.matched);
+  assert.equal(total(key+'/different-menh'),byMing.different);
+ }
+ assert.equal(JSON.stringify(source),before);
+ console.log('R73 genuine grid observations: '+JSON.stringify({
+  charts:seen.size,periodBranchContexts:11520,byMing,counts,
+  sameLunarPolicyVerified:false,matchedPeriodAgeVerified:false,
+  semanticEquivalenceVerified:false,mayChangeChartRules:false,
+  researchMapped:31,referenceTotal:49,mayIncreaseMapping:false
+ }));
+});
+
+/** R76: identify every discrepancy from the genuine R61 source grid and
+ * isolate regular lunar-coordinate replay, without changing the local chart.
+ * Agreement is geometric only; a valid source lunar date need not describe
+ * the same civil instant in UTC+7. No claim about leap-policy equivalence.
+ */
+test('R76 source/local trace, positive controls and regular lunar replay',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const source=read('.r61-pinned-source-void-predicate-observations.json');
+ const base=read('.r33-source-1989-root-cause-observations.json');
+ const prior=auditR62(source,base);
+ assert.equal(prior.charts,960);
+ const original=JSON.stringify(source);
+ const matrix={};
+ const differences=[];
+ const dateKey=x=>[x.year,x.month,x.day,x.leap].join('/');
+ const validDate=x=>x&&Number.isInteger(x.year)&&x.year>=1900&&x.year<=2100&&
+  Number.isInteger(x.month)&&x.month>=1&&x.month<=12&&
+  Number.isInteger(x.day)&&x.day>=1&&x.day<=30&&typeof x.leap==='boolean';
+ function add(key,a,b){
+  const c=matrix[key]??(matrix[key]={bothTrue:0,bothFalse:0,sourceOnly:0,localOnly:0,unknown:0});
+  assert.equal(typeof a,'boolean');
+  c[b===null?'unknown':a?(b?'bothTrue':'sourceOnly'):(b?'localOnly':'bothFalse')]++;
+ }
+ function operands(local){
+  const inVoid=b=>local.proxy===null||b===null?null:local.proxy.has(b);
+  return {liem:r73At(local.liem,local.ming),
+   luOrHua:r73Or(r73At(local.lu,local.ming),r73At(local.hua,local.ming)),
+   kongJie:r73And(r73At(local.kong,local.ming),r73At(local.jie,local.ming)),
+   voidMing:inVoid(local.ming),locVoid:inVoid(local.lu),horseVoid:inVoid(local.horse)};
+ }
+ function compare(row,l){
+  const o=operands(l);
+  return {ban01:r73And(o.liem,o.voidMing),ban02:r73And(o.luOrHua,o.kongJie,o.voidMing),
+   periods:row.periods.map(p=>({startAge:p.startAge,branch:p.branch,
+    hit:r73And(l.seven===null?null:[p.branch,(p.branch+4)%12,(p.branch+8)%12,(p.branch+6)%12].includes(l.seven),o.locVoid,o.horseVoid)})),
+   operands:o};
+ }
+ let regularReplays=0,skippedLeap=0,replayRejected=0,calendarDifferent=0,reportedDifferent=0;
+ for(const row of source.records){
+  const d=row.diagnostic;
+  assert.ok(validDate(d?.rawLunar)&&validDate(d?.reportedLunar),row.id);
+  assert.ok([2,3,4,5,6].includes(d.cuc),row.id);
+  for(const name of ['liem','kong','jie','hua']){
+   assert.ok(Array.isArray(d[name])&&d[name].length===1&&d[name].every(r73Branch),row.id+'/'+name);
+  }
+  assert.equal(d.liem.includes(row.mingBranch),row.parts.liemAtMing);
+  assert.equal(d.kong.includes(row.mingBranch)&&d.jie.includes(row.mingBranch),row.parts.diKongAndDiJieAtMing);
+  assert.equal(row.luBranch===row.mingBranch||d.hua.includes(row.mingBranch),row.parts.luOrHuaLuAtMing);
+  const common={hour:row.hour*2,minute:0,gender:row.gender==='male'?'Nam':'Nữ'};
+  const chart=R73Engine.calculate({...common,date:row.solarDate,calendar:'solar'});
+  const local=r73Local(chart),result=compare(row,local);
+  const sameCalendar=dateKey(chart.lunar)===dateKey(d.rawLunar);
+  if(!sameCalendar)calendarDifferent++;
+  if(dateKey(d.rawLunar)!==dateKey(d.reportedLunar))reportedDifferent++;
+  const source1=row.sourcePredicates['dinh-ban-01'],source2=row.sourcePredicates['dinh-ban-02'];
+  add('ban01',source1,result.ban01);add('ban02',source2,result.ban02);
+  const changed=result.periods.filter(p=>p.hit!==row.sourcePredicates['dinh-tap-03'].includes(p.startAge));
+  for(const p of result.periods)add('tap03',row.sourcePredicates['dinh-tap-03'].includes(p.startAge),p.hit);
+  if(source1===result.ban01&&source2===result.ban02&&!changed.length)continue;
+  const sourcePositions={ming:row.mingBranch,seven:row.sevenBranch,lu:row.luBranch,horse:row.horseBranch,
+   liem:d.liem[0],kong:d.kong[0],jie:d.jie[0],hua:d.hua[0]};
+  const record={id:row.id,solarDate:row.solarDate,sourceRawLunar:d.rawLunar,sourceReportedLunar:d.reportedLunar,
+   localLunar:chart.lunar,sameCalendar,sourceCuc:d.cuc,localCuc:chart.cuc.number,
+   sourcePositions,localPositions:{...local,proxy:local.proxy?[...local.proxy]:null},
+   sourceVoidByName:row.sourceVoidByName,sourceParts:row.parts,
+   sourceBan01:source1,sourceBan02:source2,localBan01:result.ban01,localBan02:result.ban02,
+   localOperands:result.operands,changedPeriods:changed.map(p=>({...p,sourceHit:row.sourcePredicates['dinh-tap-03'].includes(p.startAge)})),
+   lunarReplay:null};
+  if(d.rawLunar.leap||d.reportedLunar.leap||dateKey(d.rawLunar)!==dateKey(d.reportedLunar)){
+   skippedLeap++;record.replayStatus='leap-or-reported-runtime-ambiguity';
+  }else{
+   const x=d.rawLunar,date=[x.year,String(x.month).padStart(2,'0'),String(x.day).padStart(2,'0')].join('-');
+   let replay;
+   try{replay=R73Engine.calculate({...common,date,calendar:'lunar',leap:false});}
+   catch(error){if(!(error instanceof RangeError))throw error;replayRejected++;record.replayStatus='local-lunar-input-rejected';}
+   if(replay){
+    assert.equal(dateKey(replay.lunar),dateKey(x),row.id);
+    const l=r73Local(replay),p=compare(row,l);
+    regularReplays++;
+    record.replayStatus='computed';
+    record.lunarReplay={solar:replay.solar,cuc:replay.cuc.number,positions:{...l,proxy:l.proxy?[...l.proxy]:null},
+     ban01:p.ban01,ban02:p.ban02,remainingPeriodDifferences:p.periods.filter(v=>v.hit!==row.sourcePredicates['dinh-tap-03'].includes(v.startAge)).length,
+     allNamedCoordinatesMatch:Object.keys(sourcePositions).every(key=>sourcePositions[key]===l[key])};
+   }
+  }
+  differences.push(record);
+ }
+ const total=c=>Object.values(c).reduce((a,b)=>a+b,0);
+ assert.equal(total(matrix.ban01),960);assert.equal(total(matrix.ban02),960);assert.equal(total(matrix.tap03),11520);
+ assert.equal(matrix.ban01.bothTrue+matrix.ban01.sourceOnly,24);
+ assert.equal(matrix.ban02.bothTrue+matrix.ban02.sourceOnly,4);
+ assert.equal(matrix.tap03.bothTrue+matrix.tap03.sourceOnly,768);
+ assert.equal(differences.length,regularReplays+skippedLeap+replayRejected);
+ assert.equal(JSON.stringify(source),original);
+ const report={schema:'thiendo-r76-source-discrepancy-trace-v1',sourceCommit:prior.sourceCommit,
+  matrix,calendarDifferent,reportedDifferent,regularReplays,skippedLeap,replayRejected,differences,
+  sameSchoolVerified:false,semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,
+  researchMapped:31,referenceTotal:49};
+ console.log('R76 discrepancy summary: '+JSON.stringify({...report,differences:undefined,traceCount:differences.length}));
+ for(const record of differences)console.log('R76 trace: '+JSON.stringify(record));
+});
+
+/** R77: family-specific geometry, exact positive/negative witnesses, and
+ * source-reported effective month counterfactual for the 1993 leap window.
+ * Neither the counterfactual nor source family membership asserts semantics.
+ */
+test('R77 positive controls and distinct Void families; replay source effective month for 1993',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const source=read('.r61-pinned-source-void-predicate-observations.json');
+ const base=read('.r33-source-1989-root-cause-observations.json');
+ const prior=auditR62(source,base);
+ const witnesses=prior.witnesses['dinh-ban-02'];
+ assert.equal(witnesses.length,4);
+ const selected=new Map();
+ for(const w of witnesses){
+  selected.set(w.positiveId,true);
+  if(!selected.has(w.negativeId))selected.set(w.negativeId,false);
+ }
+ const sorted=a=>[...new Set(a)].sort((x,y)=>x-y);
+ const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+ const counters={tuanMatched:0,trietMatched:0,unionMatched:0,unknown:0,verified:0};
+ const controlRows=[],leapRows=[],familyMismatches=[];
+ let coverage=0;
+ function localFrom(row,date,calendar,leap=false){
+  return R73Engine.calculate({date,calendar,leap,hour:row.hour*2,minute:0,
+   gender:row.gender==='male'?'Nam':'Nữ'});
+ }
+ for(const row of source.records){
+  const c=localFrom(row,row.solarDate,'solar'), l=r73Local(c);
+  const xun=sorted(['旬空','副旬'].flatMap(n=>row.sourceVoidByName[n]));
+  const jie=sorted(['截路','截空','空亡','副截'].flatMap(n=>row.sourceVoidByName[n]));
+  const tuan=c.obstructionMarkers.find(x=>x.name==='Tuần');
+  const triet=c.obstructionMarkers.find(x=>x.name==='Triệt');
+  assert.equal(xun.length,2,row.id);assert.equal(jie.length,2,row.id);
+  const verified=l.proxy!==null&&tuan?.branches?.length===2&&triet?.branches?.length===2;
+  if(!verified)counters.unknown++;
+  else{
+   counters.verified++;
+   const t=same(xun,sorted(tuan.branches)),j=same(jie,sorted(triet.branches));
+   const u=same(sorted([...xun,...jie]),sorted([...l.proxy]));
+   counters.tuanMatched+=Number(t);counters.trietMatched+=Number(j);counters.unionMatched+=Number(u);
+   if(!t||!j||!u)familyMismatches.push({id:row.id,sourceXun:xun,sourceJie:jie,localTuan:tuan.branches,localTriet:triet.branches});
+  }
+  if(selected.has(row.id)){
+   const wanted=selected.get(row.id),d=row.diagnostic;
+   const at=l.proxy===null?null:l.proxy.has(l.ming);
+   const localHit=r73And(r73Or(r73At(l.lu,l.ming),r73At(l.hua,l.ming)),
+    r73And(r73At(l.kong,l.ming),r73At(l.jie,l.ming)),at);
+   assert.equal(row.sourcePredicates['dinh-ban-02'],wanted,row.id);
+   assert.equal(localHit,wanted,row.id);
+   const sourcePositions={ming:row.mingBranch,lu:row.luBranch,hua:d.hua[0],kong:d.kong[0],jie:d.jie[0]};
+   controlRows.push({id:row.id,positive:wanted,sourcePositions,
+    localPositions:Object.fromEntries(Object.keys(sourcePositions).map(k=>[k,l[k]])),
+    sourceRawLunar:d.rawLunar,localLunar:c.lunar,sourceVoidNamesAtMing:row.voidNamesAtMing,
+    tuanAtMing:verified?tuan.branches.includes(l.ming):null,
+    trietAtMing:verified?triet.branches.includes(l.ming):null,
+    modes:predicateModes(row,'dinh-ban-02',null),
+    allNamedCoordinatesMatch:Object.keys(sourcePositions).every(k=>sourcePositions[k]===l[k])});
+  }
+  if(row.solarDate==='1993-05-15'){
+   const d=row.diagnostic, e=d.reportedLunar;
+   assert.equal(d.rawLunar.leap,true,row.id);
+   assert.equal(e.leap,false,row.id);
+   assert.equal(e.month,d.rawLunar.month+1,row.id);
+   const date=[e.year,String(e.month).padStart(2,'0'),String(e.day).padStart(2,'0')].join('-');
+   let replay;
+   try{replay=localFrom(row,date,'lunar',false);}
+   catch(error){if(!(error instanceof RangeError))throw error;leapRows.push({id:row.id,status:'rejected'});coverage++;continue;}
+   const q=r73Local(replay);
+   assert.deepEqual([replay.lunar.year,replay.lunar.month,replay.lunar.day,replay.lunar.leap],
+    [e.year,e.month,e.day,false],row.id);
+   const expected={ming:row.mingBranch,seven:row.sevenBranch,lu:row.luBranch,horse:row.horseBranch,
+    liem:d.liem[0],kong:d.kong[0],jie:d.jie[0],hua:d.hua[0]};
+   const mismatches=local=>{
+    const loc=local.proxy===null||local.lu===null?null:local.proxy.has(local.lu);
+    const horse=local.proxy===null||local.horse===null?null:local.proxy.has(local.horse);
+    return row.periods.filter(p=>r73And(local.seven===null?null:
+     [p.branch,(p.branch+4)%12,(p.branch+8)%12,(p.branch+6)%12].includes(local.seven),loc,horse)
+      !==row.sourcePredicates['dinh-tap-03'].includes(p.startAge)).length;
+   };
+   leapRows.push({id:row.id,status:'computed',replaySolar:replay.solar,
+    sourceCuc:d.cuc,replayCuc:replay.cuc.number,originalPeriodDifferences:mismatches(l),
+    replayPeriodDifferences:mismatches(q),allNamedCoordinatesMatch:Object.keys(expected).every(k=>expected[k]===q[k])});
+   coverage++;
+  }
+ }
+ assert.equal(coverage,24);
+ assert.equal(controlRows.length,selected.size);
+ assert.equal(controlRows.filter(x=>x.positive).length,4);
+ assert.equal(controlRows.filter(x=>!x.positive).length,new Set(witnesses.map(w=>w.negativeId)).size);
+ assert.equal(counters.unknown+counters.verified,960);
+ const replaySummary={computed:leapRows.filter(x=>x.status==='computed').length,
+  rejected:leapRows.filter(x=>x.status==='rejected').length,
+  originalPeriodDifferences:leapRows.reduce((n,x)=>n+(x.originalPeriodDifferences??0),0),
+  remainingPeriodDifferences:leapRows.reduce((n,x)=>n+(x.replayPeriodDifferences??0),0),
+  coordinateMatches:leapRows.filter(x=>x.allNamedCoordinatesMatch).length};
+ console.log('R77 family geometry: '+JSON.stringify({charts:960,counters,familyMismatches}));
+ console.log('R77 Lộc phùng lưỡng sát controls: '+JSON.stringify(controlRows));
+ console.log('R77 leap counterfactual: '+JSON.stringify({summary:replaySummary,rows:leapRows,
+  sameCivilInstantVerified:false,schoolParityVerified:false,mayIncreaseMapping:false,researchMapped:31}));
+});
+
+/** R78: compare the full grid on source-reported effective lunar coordinates,
+ * distinguish year-boundary mismatches, and verify decade age + branch identity.
+ * This is a counterfactual diagnostic, never a change to the user's birth date.
+ */
+test('R78 effective lunar replay and full age-branch period identity',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const source=read('.r61-pinned-source-void-predicate-observations.json');
+ const base=read('.r33-source-1989-root-cause-observations.json');
+ assert.equal(auditR62(source,base).charts,960);
+ const {auditSourceDoubleJiekongCodeConcordance}=require('../packages/interpretation/src/classical-source-void-vocabulary.cjs');
+ const {auditClassicalPeriodGeometry}=require('../packages/interpretation/src/classical-period-geometry.cjs');
+ const key=x=>[x.year,x.month,x.day,x.leap].join('/');
+ const sorted=a=>[...new Set(a)].sort((a,b)=>a-b);
+ const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+ const mod=(x,n)=>((x%n)+n)%n;
+ const totals={charts:0,computed:0,rejected:0,skippedLeap:0,sameCivilDate:0,
+  allNamedCoordinatesMatch:0,cucMatch:0,tuanMatch:0,trietMatch:0,
+  ageBranchMatch:0,periodContexts:0,all12PeriodsMatch:0,
+  ban01Match:0,ban02Match:0,tap03AgeMatch:0};
+ const yearBoundary=[],unresolved=[];
+ for(const row of source.records){
+  totals.charts++;
+  const d=row.diagnostic,e=d.reportedLunar;
+  const common={gender:row.gender==='male'?'Nam':'Nữ',hour:row.hour*2,minute:0};
+  const original=R73Engine.calculate({...common,date:row.solarDate,calendar:'solar'});
+  const originalBefore=JSON.stringify(original);
+  const xun=sorted(['旬空','副旬'].flatMap(n=>row.sourceVoidByName[n]));
+  const jie=sorted(['截路','截空','空亡','副截'].flatMap(n=>row.sourceVoidByName[n]));
+  const pair=(c,name)=>sorted(c.obstructionMarkers.find(v=>v.name===name).branches);
+  const stem=R73Engine.STEMS[mod(e.year-4,10)];
+  const sourceRule=auditSourceDoubleJiekongCodeConcordance(stem);
+  assert.equal(sourceRule.sourceFormulaConcordant,true,row.id);
+  const expectedJie=sorted(sourceRule.formulaCodes.map(n=>n-1));
+  const trace={id:row.id,rawLunar:d.rawLunar,reportedLunar:e,localLunar:original.lunar,
+   sourceReportedStem:stem,localCanChi:original.yearCanChi,
+   sourceJie:jie,sourceReportedStemPair:expectedJie,localTriet:pair(original,'Triệt')};
+  if(!same(jie,trace.localTriet))yearBoundary.push(trace);
+  if(e.leap){totals.skippedLeap++;unresolved.push({...trace,reason:'reported-leap-policy-not-replayed'});continue;}
+  const date=[e.year,String(e.month).padStart(2,'0'),String(e.day).padStart(2,'0')].join('-');
+  let c;
+  try{c=R73Engine.calculate({...common,date,calendar:'lunar',leap:false});}
+  catch(error){if(!(error instanceof RangeError))throw error;totals.rejected++;unresolved.push({...trace,reason:'rejected-lunar-coordinate'});continue;}
+  totals.computed++;
+  assert.equal(key(c.lunar),key(e),row.id);
+  if(same(c.solar,original.solar))totals.sameCivilDate++;
+  const l=r73Local(c);
+  const coords={ming:row.mingBranch,seven:row.sevenBranch,lu:row.luBranch,
+   horse:row.horseBranch,liem:d.liem[0],kong:d.kong[0],jie:d.jie[0],hua:d.hua[0]};
+  const named=Object.keys(coords).filter(k=>coords[k]!==l[k]);
+  const t=same(xun,pair(c,'Tuần')),j=same(jie,pair(c,'Triệt'));
+  totals.tuanMatch+=Number(t);totals.trietMatch+=Number(j);
+  totals.allNamedCoordinatesMatch+=Number(!named.length);
+  totals.cucMatch+=Number(d.cuc===c.cuc.number);
+  const geometry=auditClassicalPeriodGeometry(c);
+  assert.equal(geometry.verifiedGeometry,true,row.id);
+  assert.equal(c.cycles.daiHan.length,12,row.id);
+  const inVoid=b=>l.proxy===null||b===null?null:l.proxy.has(b);
+  const ban1=r73And(r73At(l.liem,l.ming),inVoid(l.ming));
+  const ban2=r73And(r73Or(r73At(l.lu,l.ming),r73At(l.hua,l.ming)),
+   r73And(r73At(l.kong,l.ming),r73At(l.jie,l.ming)),inVoid(l.ming));
+  totals.ban01Match+=Number(ban1===row.sourcePredicates['dinh-ban-01']);
+  totals.ban02Match+=Number(ban2===row.sourcePredicates['dinh-ban-02']);
+  let periodDifferences=0,hitDifferences=0;
+  for(const period of row.periods){
+   totals.periodContexts++;
+   const actual=c.cycles.daiHan.find(v=>v.fromAge===period.startAge);
+   const identity=!!actual&&actual.branch===period.branch&&actual.toAge===period.startAge+9;
+   totals.ageBranchMatch+=Number(identity);
+   if(!identity)periodDifferences++;
+   const hit=identity?r73And(l.seven===null?null:
+    [actual.branch,(actual.branch+4)%12,(actual.branch+8)%12,(actual.branch+6)%12].includes(l.seven),
+    inVoid(l.lu),inVoid(l.horse)):null;
+   const sourceHit=row.sourcePredicates['dinh-tap-03'].includes(period.startAge);
+   if(hit===sourceHit)totals.tap03AgeMatch++;else hitDifferences++;
+  }
+  totals.all12PeriodsMatch+=Number(!periodDifferences);
+  if(named.length||!t||!j||d.cuc!==c.cuc.number||periodDifferences||hitDifferences||
+    ban1!==row.sourcePredicates['dinh-ban-01']||ban2!==row.sourcePredicates['dinh-ban-02'])
+   unresolved.push({...trace,replaySolar:c.solar,replayCanChi:c.yearCanChi,named,
+    sourceCuc:d.cuc,localCuc:c.cuc.number,replayTuan:pair(c,'Tuần'),replayTriet:pair(c,'Triệt'),
+    periodDifferences,hitDifferences,ban1,ban2});
+  assert.equal(JSON.stringify(original),originalBefore);
+ }
+ assert.equal(totals.charts,960);
+ assert.equal(totals.computed+totals.rejected+totals.skippedLeap,960);
+ assert.equal(totals.periodContexts,totals.computed*12);
+ assert.equal(yearBoundary.length,24);
+ assert.ok(yearBoundary.every(x=>x.id.startsWith('1985-02-15-')));
+ console.log('R78 effective lunar replay summary: '+JSON.stringify({totals,yearBoundaryCount:yearBoundary.length,
+  unresolvedCount:unresolved.length,semanticEquivalenceVerified:false,schoolParityVerified:false,
+  expertReviewed:false,mayIncreaseMapping:false,researchMapped:31}));
+ for(const row of yearBoundary)console.log('R78 year boundary: '+JSON.stringify(row));
+ for(const row of unresolved)console.log('R78 unresolved: '+JSON.stringify(row));
+});
+
+/** R79: source-specific double-family geometry over the whole sexagenary
+ * cycle, independent of R61's ten-year sample. No runtime verdict promotion.
+ */
+test('R79 all 60 Can Chi years and strict Ban02 source controls',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const source=read('.r61-pinned-source-void-predicate-observations.json');
+ const base=read('.r33-source-1989-root-cause-observations.json');
+ assert.equal(auditR62(source,base).charts,960);
+ const grid=source.r79Cycle;
+ assert.equal(grid.schema,'thiendo-r79-sexagenary-void-controls-v1');
+ assert.equal(grid.records.length,1440);
+ const sorted=a=>[...new Set(a)].sort((x,y)=>x-y);
+ const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+ const mod=(x,n)=>((x%n)+n)%n;
+ const years=new Set(),ids=new Set(),dateGender=new Map();
+ const stats={computed:0,rejected:0,skippedLeap:0,sameCivilDate:0,sourcePositive:0,
+  namedCoordinatesMatch:0,tuanMatch:0,trietMatch:0,sourceLabelPairMatch:0,
+  bothTrue:0,bothFalse:0,sourceOnly:0,localOnly:0,unknown:0};
+ const positive=[],differences=[];
+ const {auditSourceDoubleJiekongCodeConcordance}=require('../packages/interpretation/src/classical-source-void-vocabulary.cjs');
+ const before=JSON.stringify(grid);
+ for(const row of grid.records){
+  assert.ok(!ids.has(row.id));ids.add(row.id);
+  assert.ok(row.year>=1984&&row.year<2044&&row.lunar.year===row.year,row.id);
+  assert.ok(['male','female'].includes(row.gender)&&Number.isInteger(row.hour)&&row.hour>=0&&row.hour<12,row.id);
+  years.add(mod(row.lunar.year-4,60));
+  const group=row.year+'/'+row.gender;
+  const hours=dateGender.get(group)??new Set();hours.add(row.hour);dateGender.set(group,hours);
+  stats.sourcePositive+=Number(row.hit);
+  for(const field of ['lu','kong','jie','hua'])
+   assert.ok(row.placements[field].length===1&&row.placements[field].every(r73Branch),row.id+'/'+field);
+  const n=row.voidByName;
+  for(const field of ['旬空','副旬','截空','副截'])assert.ok(n[field].length===1&&n[field].every(r73Branch),row.id+'/'+field);
+  assert.equal(n['截路'].length,0,row.id);assert.equal(n['空亡'].length,0,row.id);
+  const xun=sorted([...n['旬空'],...n['副旬']]),jie=sorted([...n['截空'],...n['副截']]);
+  assert.equal(xun.length,2,row.id);assert.equal(jie.length,2,row.id);
+  const stem=R73Engine.STEMS[mod(row.lunar.year-4,10)];
+  const ref=auditSourceDoubleJiekongCodeConcordance(stem);
+  assert.equal(ref.sourceFormulaConcordant,true);
+  const ordered=ref.formulaCodes.map(v=>v-1);
+  const xunMate=n['旬空'][0]%2===0?n['旬空'][0]+1:n['旬空'][0]-1;
+  stats.sourceLabelPairMatch+=Number(n['副旬'][0]===xunMate&&same([n['截空'][0],n['副截'][0]],ordered));
+  if(row.lunar.leap){stats.skippedLeap++;stats.unknown++;differences.push({id:row.id,reason:'reported leap'});continue;}
+  const date=[row.lunar.year,String(row.lunar.month).padStart(2,'0'),String(row.lunar.day).padStart(2,'0')].join('-');
+  let c;
+  try{c=R73Engine.calculate({date,calendar:'lunar',leap:false,hour:row.hour*2,minute:0,gender:row.gender==='male'?'Nam':'Nữ'});}
+  catch(error){if(!(error instanceof RangeError))throw error;stats.rejected++;stats.unknown++;differences.push({id:row.id,reason:'rejected local lunar input'});continue;}
+  stats.computed++;
+  assert.deepEqual(c.lunar,row.lunar,row.id);
+  stats.sameCivilDate+=Number(c.solar.year===row.year&&c.solar.month===11&&c.solar.day===15);
+  const l=r73Local(c);
+  const localTuan=sorted(c.obstructionMarkers.find(v=>v.name==='Tuần').branches);
+  const localTriet=sorted(c.obstructionMarkers.find(v=>v.name==='Triệt').branches);
+  const t=same(xun,localTuan),j=same(jie,localTriet);
+  stats.tuanMatch+=Number(t);stats.trietMatch+=Number(j);
+  const coords={ming:row.ming,lu:row.placements.lu[0],kong:row.placements.kong[0],jie:row.placements.jie[0],hua:row.placements.hua[0]};
+  const named=Object.keys(coords).every(k=>coords[k]===l[k]);
+  stats.namedCoordinatesMatch+=Number(named);
+  const v=l.proxy===null?null:l.proxy.has(l.ming);
+  const hit=r73And(r73Or(r73At(l.lu,l.ming),r73At(l.hua,l.ming)),r73And(r73At(l.kong,l.ming),r73At(l.jie,l.ming)),v);
+  stats[hit===null?'unknown':row.hit?(hit?'bothTrue':'sourceOnly'):(hit?'localOnly':'bothFalse')]++;
+  const detail={id:row.id,sourceHit:row.hit,localHit:hit,sourceCoordinates:coords,
+   localCoordinates:Object.fromEntries(Object.keys(coords).map(k=>[k,l[k]])),
+   sourceXun:xun,sourceJie:jie,localTuan,localTriet,sourceLabelsAtMing:Object.keys(n).filter(k=>n[k].includes(row.ming))};
+  if(row.hit)positive.push(detail);
+  if(!named||!t||!j||hit!==row.hit)differences.push(detail);
+ }
+ assert.equal(years.size,60);assert.equal(ids.size,1440);
+ assert.equal(dateGender.size,120);assert.ok([...dateGender.values()].every(x=>x.size===12));
+ assert.equal(stats.computed+stats.rejected+stats.skippedLeap,1440);
+ assert.equal(stats.bothTrue+stats.bothFalse+stats.sourceOnly+stats.localOnly+stats.unknown,1440);
+ assert.equal(JSON.stringify(grid),before);
+ console.log('R79 sexagenary summary: '+JSON.stringify({years:years.size,stats,positiveCount:positive.length,differenceCount:differences.length,
+  variant:'default-double',semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,researchMapped:31}));
+ for(const row of positive)console.log('R79 positive: '+JSON.stringify(row));
+ for(const row of differences)console.log('R79 difference: '+JSON.stringify(row));
+});
+
+/** R80: production partial-evidence checks must remain fail-closed even
+ * after a positive source coordinate result. No runtime promotion.
+ */
+const {auditClassicalPatternCandidates:r80Audit}=require('../packages/interpretation/src/classical-pattern-research.cjs');
+function r80Checks(chart){
+ const report=r80Audit(chart), item=report.pendingEvidence.find(x=>x.id==='dinh-ban-02');
+ assert.ok(item);assert.equal(item.sourceCriterionVerified,false);
+ assert.equal(item.status,'partial-evidence');
+ assert.ok(!report.records.some(x=>x.id==='dinh-ban-02'));
+ assert.equal(item.checks[2].state,'unknown');
+ return item.checks.map(x=>x.state);
+}
+test('R80 genuine-shaped Ban02 partial evidence rejects corrupted natal operands',()=>{
+ const c=R73Engine.calculate({date:'1986-10-14',calendar:'lunar',leap:false,hour:12,minute:0,gender:'Nam'});
+ const before=JSON.stringify(c);
+ assert.deepEqual(r80Checks(c),['met','met','unknown']);
+ const mutate=fn=>{const x=clone(c);fn(x);return x;};
+ const missingLoc=mutate(x=>{x.auxiliaries=x.auxiliaries.filter(s=>s.name!=='Lộc Tồn');});
+ assert.equal(r80Checks(missingLoc)[0],'unknown');
+ const duplicateLoc=mutate(x=>{x.houses.find(h=>h.palace!=='Mệnh').auxiliaryStars.push('Lộc Tồn');});
+ assert.equal(r80Checks(duplicateLoc)[0],'unknown');
+ const huaMissing=mutate(x=>{x.transformations=[];});
+ assert.equal(r80Checks(huaMissing)[0],'met','verified Loc Ton suffices for OR');
+ for(const name of ['Địa Không','Địa Kiếp']){
+  const missing=mutate(x=>{x.advancedStars=x.advancedStars.filter(s=>s.name!==name);});
+  assert.equal(r80Checks(missing)[1],'unknown',name);
+  const wrongHouse=mutate(x=>{x.houses.find(h=>h.palace!=='Mệnh').advancedStars.push(name);});
+  assert.equal(r80Checks(wrongHouse)[1],'unknown',name);
+ }
+ const wrongRule=mutate(x=>{x.advancedStarRuleSet='unverified';});
+ assert.equal(r80Checks(wrongRule)[1],'unknown');
+ const wrongVoid=mutate(x=>{x.obstructionMarkers=[];});
+ assert.equal(r73VoidGate(wrongVoid).verifiedLocalObstructions,false);
+ assert.equal(r80Checks(wrongVoid)[2],'unknown');
+ assert.equal(JSON.stringify(c),before);
+});
+test('R80 targeted actual source search and single-operand detector interventions',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const source=read('.r61-pinned-source-void-predicate-observations.json');
+ const base=read('.r33-source-1989-root-cause-observations.json');
+ assert.equal(auditR62(source,base).charts,960);
+ const a=source.r80Targeted;
+ assert.equal(a.schema,'thiendo-r80-ban02-targeted-ablation-v1');
+ assert.equal(a.searched,1440);
+ assert.equal(a.positives.length,a.sourcePositive);
+ assert.equal(a.locOnly+a.huaOnly+a.bothLoc,a.sourcePositive);
+ assert.ok(a.sourcePositive>0);
+ assert.equal(new Set(a.positives.map(x=>x.id)).size,a.sourcePositive);
+ let replayed=0,rejected=0,skippedLeap=0,met=0,huaOnlyMet=0;
+ for(const row of a.positives){
+  const m=row.modes;
+  assert.equal(m.original,true);assert.equal(m.withoutLoc,row.hua);assert.equal(m.withoutHua,row.loc);
+  for(const field of ['withoutBothLoc','withoutKong','withoutJie','withoutVoid'])assert.equal(m[field],false,row.id+'/'+field);
+  assert.equal(m.xunOnly,row.labels.some(n=>n==='旬空'||n==='副旬'));
+  assert.equal(m.jiekongOnly,row.labels.some(n=>n!=='旬空'&&n!=='副旬'));
+  if(row.lunar.leap){skippedLeap++;continue;}
+  const d=row.lunar,date=[d.year,String(d.month).padStart(2,'0'),String(d.day).padStart(2,'0')].join('-');
+  let c;
+  try{c=R73Engine.calculate({date,calendar:'lunar',leap:false,hour:row.hour*2,minute:0,gender:'Nam'});}
+  catch(error){if(!(error instanceof RangeError))throw error;rejected++;continue;}
+  replayed++;
+  const states=r80Checks(c);
+  const l=r73Local(c);
+  const same=l.ming===row.ming&&r73At(l.lu,l.ming)===row.loc&&r73At(l.hua,l.ming)===row.hua;
+  if(same&&states[0]==='met'&&states[1]==='met'&&l.proxy?.has(l.ming)){met++;if(row.hua&&!row.loc)huaOnlyMet++;}
+ }
+ assert.equal(replayed+rejected+skippedLeap,a.sourcePositive);
+ console.log('R80 targeted summary: '+JSON.stringify({searched:a.searched,sourcePositive:a.sourcePositive,
+  locOnly:a.locOnly,huaOnly:a.huaOnly,bothLoc:a.bothLoc,replayed,rejected,skippedLeap,met,huaOnlyMet,
+  semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,researchMapped:31}));
+ for(const row of a.positives.filter(x=>x.hua&&!x.loc))console.log('R80 Hua-only positive: '+JSON.stringify(row));
+});
+
+/** R81: inspect all valid days of the regular tenth lunar month for year/hour
+ * candidates selected by source geometry, then test actual chart evidence. */
+test('R81 targeted full lunar-day search and Hua-only production evidence',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const source=read('.r61-pinned-source-void-predicate-observations.json');
+ assert.equal(auditR62(source,read('.r33-source-1989-root-cause-observations.json')).charts,960);
+ const a=source.r81HuaOnly;
+ assert.equal(a.schema,'thiendo-r81-hua-only-lunar-day-search-v1');
+ const candidates=source.r79Cycle.records.filter(row=>{
+  if(row.gender!=='male'||![0,6].includes(row.hour))return false;
+  const target=row.hour===0?11:5;
+  return row.placements.kong.includes(target)&&row.placements.jie.includes(target)&&
+   !row.placements.lu.includes(target)&&Object.values(row.voidByName).some(v=>v.includes(target));
+ });
+ assert.equal(a.groups.length,candidates.length);
+ assert.ok(a.groups.length>0);
+ assert.equal(new Set(a.groups.map(g=>g.year+'/'+g.hour)).size,a.groups.length);
+ assert.deepEqual(a.groups.map(g=>g.year+'/'+g.hour).sort(),candidates.map(g=>g.year+'/'+g.hour).sort());
+ assert.equal(a.records.length,a.groups.reduce((n,g)=>n+g.days,0));
+ assert.equal(new Set(a.records.map(x=>x.id)).size,a.records.length);
+ for(const g of a.groups){
+  assert.ok([29,30].includes(g.days));
+  assert.deepEqual(a.records.filter(x=>x.year===g.year&&x.hour===g.hour).map(x=>x.day).sort((x,y)=>x-y),
+   Array.from({length:g.days},(_,i)=>i+1));
+ }
+ const stats={aligned:0,coordinateMismatch:0,sourcePositive:0,huaOnly:0,replayed:0,rejected:0,
+  skippedLeap:0,proxyAgreement:0,positiveEvidenceMet:0,huaOnlyMet:0};
+ const differences=[],positive=[];
+ for(const row of a.records){
+  stats[row.aligned?'aligned':'coordinateMismatch']++;
+  assert.equal(row.hit,(row.loc||row.hua)&&row.kong&&row.jie&&row.labels.length>0);
+  if(row.hit)stats.sourcePositive++;
+  if(row.hit&&row.hua&&!row.loc){
+   stats.huaOnly++;assert.equal(row.withoutLoc,true);assert.equal(row.withoutHua,false);
+   positive.push(row);
+  }
+  if(row.lunar.leap){stats.skippedLeap++;continue;}
+  const d=row.lunar,date=[d.year,String(d.month).padStart(2,'0'),String(d.day).padStart(2,'0')].join('-');
+  let c;
+  try{c=R73Engine.calculate({date,calendar:'lunar',leap:false,hour:row.hour*2,minute:0,gender:'Nam'});}
+  catch(error){if(!(error instanceof RangeError))throw error;stats.rejected++;differences.push({id:row.id,reason:'local lunar rejected'});continue;}
+  stats.replayed++;
+  const l=r73Local(c),v=l.proxy===null?null:l.proxy.has(l.ming);
+  const localHit=r73And(r73Or(r73At(l.lu,l.ming),r73At(l.hua,l.ming)),
+   r73And(r73At(l.kong,l.ming),r73At(l.jie,l.ming)),v);
+  if(localHit===row.hit)stats.proxyAgreement++;else differences.push({id:row.id,source:row.hit,local:localHit});
+  if(row.hit){
+   const states=r80Checks(c);
+   if(states[0]==='met'&&states[1]==='met'&&localHit===true)stats.positiveEvidenceMet++;
+   if(row.hua&&!row.loc&&r73At(l.lu,l.ming)===false&&r73At(l.hua,l.ming)===true&&
+      states[0]==='met'&&states[1]==='met'&&localHit===true){
+    stats.huaOnlyMet++;
+    const corrupted=clone(c);corrupted.tuHoaRuleSet='invalid';
+    assert.equal(r80Checks(corrupted)[0],'unknown','Hua-only hit needs genuine natal transformations');
+   }
+  }
+ }
+ assert.equal(stats.replayed+stats.rejected+stats.skippedLeap,a.records.length);
+ console.log('R81 Hua-only summary: '+JSON.stringify({groups:a.groups.length,charts:a.records.length,stats,
+  differenceCount:differences.length,semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,researchMapped:31}));
+ for(const row of positive)console.log('R81 Hua-only positive: '+JSON.stringify(row));
+ for(const row of differences)console.log('R81 difference: '+JSON.stringify(row));
+});
+
+/** R82: separate exact source names from unordered obstruction geometry.
+ * Verify a named-coordinate hypothesis across the complete sexagenary cycle.
+ * R79 is a calibration grid; R61/R81 are cross-checks with some overlap.
+ * This is not a new natal star layer and cannot grant mapping authority.
+ */
+test('R82 exact source names, cross-grid verification and two rejected lunar boundaries',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const source=read('.r61-pinned-source-void-predicate-observations.json');
+ assert.equal(auditR62(source,read('.r33-source-1989-root-cause-observations.json')).charts,960);
+ const {auditSourceDoubleJiekongCodeConcordance}=require('../packages/interpretation/src/classical-source-void-vocabulary.cjs');
+ const Lunar=require('../packages/astrology-engine/src/lunar.js');
+ const mod=(x,n)=>((x%n)+n)%n;
+ const labels=['旬空','副旬','截空','副截','截路','空亡'];
+ const canonical=labels.slice(0,4);
+ const sorted=a=>[...a].sort((x,y)=>x-y);
+ const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+ const table=new Map(),mismatches=[];
+ const stats={cycleRows:0,exactLabelRows:0,exactLabelCells:0,legacyAbsentRows:0,
+  crossGridRows:0,crossGridMatch:0,huaOnlyRows:0,huaOnlyExactLabels:0};
+ function expected(year){
+  const stem=mod(year-4,10),branch=mod(year-4,12),cycle=mod(year-4,60);
+  const first=mod(branch-stem-2,12),second=mod(first+1,12);
+  // Test the parity hypothesis for the primary Xun name against actual iztro
+  // output, separately from the source's documented adjacent-pair formula.
+  const primary=first%2===stem%2?first:second;
+  const mate=primary===first?second:first;
+  const rule=auditSourceDoubleJiekongCodeConcordance(R73Engine.STEMS[stem]);
+  assert.equal(rule.sourceFormulaConcordant,true);
+  const [j,f]=rule.formulaCodes.map(x=>x-1);
+  return {cycle,names:{'旬空':[primary],'副旬':[mate],'截空':[j],'副截':[f],'截路':[],'空亡':[]}};
+ }
+ for(const row of source.r79Cycle.records){
+  const want=expected(row.lunar.year);
+  const observed=Object.fromEntries(labels.map(n=>[n,row.voidByName[n]]));
+  assert.ok(canonical.every(n=>observed[n].length===1));
+  stats.cycleRows++;
+  const cells=labels.filter(n=>same(observed[n],want.names[n]));
+  stats.exactLabelCells+=cells.length;
+  stats.exactLabelRows+=Number(cells.length===labels.length);
+  stats.legacyAbsentRows+=Number(!observed['截路'].length&&!observed['空亡'].length);
+  if(cells.length!==labels.length)mismatches.push({id:row.id,observed,expected:want.names});
+  if(table.has(want.cycle))assert.deepEqual(table.get(want.cycle),observed,row.id);
+  else table.set(want.cycle,observed);
+ }
+ assert.equal(table.size,60);assert.equal(stats.cycleRows,1440);
+ for(const row of source.records){
+  const y=row.diagnostic.reportedLunar.year;
+  const observed=Object.fromEntries(labels.map(n=>[n,row.sourceVoidByName[n]]));
+  stats.crossGridRows++;
+  const agreed=labels.every(n=>same(observed[n],table.get(mod(y-4,60))[n]));
+  stats.crossGridMatch+=Number(agreed);
+  if(!agreed)mismatches.push({id:row.id,source:observed,cycle:table.get(mod(y-4,60))});
+ }
+ for(const row of source.r81HuaOnly.records.filter(x=>x.hit&&x.hua&&!x.loc)){
+  const names=table.get(mod(row.lunar.year-4,60));
+  const atMing=labels.filter(n=>names[n].includes(row.ming));
+  stats.huaOnlyRows++;
+  const agreed=same([...atMing].sort(),[...row.labels].sort());
+  stats.huaOnlyExactLabels+=Number(agreed);
+  if(!agreed)mismatches.push({id:row.id,source:row.labels,cycle:atMing});
+ }
+ assert.equal(stats.crossGridRows,960);assert.equal(stats.huaOnlyRows,67);
+ const boundaries=[];
+ for(const row of source.r81HuaOnly.records){
+  const d=row.lunar;
+  let local;
+  try{local=Lunar.lunarToSolar(d.year,d.month,d.day,d.leap);}
+  catch(error){
+   if(!(error instanceof RangeError))throw error;
+   assert.equal(d.day,30,row.id);assert.equal(d.leap,false,row.id);
+   assert.equal(row.hit,false,row.id);
+   const last=Lunar.lunarToSolar(d.year,d.month,29,false);
+   const next=Lunar.lunarToSolar(d.year,d.month+1,1,false);
+   const dayAfter=new Date(Date.UTC(last.year,last.month-1,last.day+1));
+   const adjacent={year:dayAfter.getUTCFullYear(),month:dayAfter.getUTCMonth()+1,day:dayAfter.getUTCDate()};
+   assert.deepEqual(next,adjacent,row.id);
+   const [sy,sm,sd]=row.solarDate.split('-').map(Number);
+   const sameCivil=Lunar.solarToLunar(sy,sm,sd);
+   boundaries.push({id:row.id,sourceSolar:row.solarDate,sourceLunar:d,sourceHit:row.hit,
+    localMonthDays:29,localLastSolar:last,localNextSolar:next,localAtSourceSolar:sameCivil,
+    rejection:error.message});
+  }
+ }
+ assert.equal(boundaries.length,2);
+ assert.deepEqual(boundaries.map(x=>x.id).sort(),['1986-10-30-0','2020-10-30-6']);
+ const report={schema:'thiendo-r82-exact-source-label-coordinates-v1',sourceCommit:source.provenance.commit,
+  stats,boundaries,mismatchCount:mismatches.length,
+  namedCoordinatesAreSourceOnly:true,alternateVariantsVerified:false,
+  semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,researchMapped:31};
+ console.log('R82 named coordinate summary: '+JSON.stringify(report));
+ for(const row of mismatches)console.log('R82 label difference: '+JSON.stringify(row));
+});
+
+/** R83: use the actual research adapter, not a parallel proxy in the tests. */
+const {PROFILE:R83_PROFILE,auditPinnedDefaultBan02:r83Audit}=require('../infrastructure/scripts/tuvi-r33-r83-pinned-default-ban02.cjs');
+test('R83 source-profile adapter rejects corrupted snapshots and unsupported profiles',()=>{
+ const make=(date,hour)=>R73Engine.calculate({date,calendar:'lunar',leap:false,hour,minute:0,gender:'Nam'});
+ const loc=make('1986-10-14',12),hua=make('1984-10-08',0),negative=make('1986-10-14',10);
+ for(const [c,expected] of [[loc,true],[hua,true],[negative,false]]){
+  const before=JSON.stringify(c),a=r83Audit(c,R83_PROFILE);
+  assert.equal(a.verifiedLocalInput,true,a.reason);
+  assert.equal(a.formulaMatch,expected,a.reason);
+  assert.equal(a.sourceCriterionVerified,false);
+  assert.equal(a.semanticEquivalenceVerified,false);
+  assert.equal(a.mayIncreaseMapping,false);
+  assert.equal(a.researchMapped,31);
+  assert.ok(Object.isFrozen(a)&&Object.isFrozen(a.operands));
+  assert.equal(r83Audit(c,'single').formulaMatch,null);
+  assert.equal(r83Audit(c,'zhanyan').formulaMatch,null);
+  assert.equal(r83Audit(c).formulaMatch,null);
+  for(const change of [
+   x=>{x.yearCanChi='Giáp Tý';},x=>{x.lunar.day=30;},x=>{x.solar.day=1;},
+   x=>{x.houses[0].stars.push('Tử Vi');},x=>{x.houses[0].palace='Mệnh';},
+   x=>{x.tuHoaRuleSet='invalid';},x=>{x.obstructionMarkers=[];},
+   x=>{x.advancedStars.pop();},x=>{x.auxiliaries.pop();}
+  ]){
+   const bad=clone(c);change(bad);
+   // Skip a no-op mutation (e.g. a date already happens to be day 1).
+   if(JSON.stringify(bad)===before)continue;
+   const result=r83Audit(bad,R83_PROFILE);
+   assert.equal(result.verifiedLocalInput,false,result.reason);
+   assert.equal(result.formulaMatch,null,result.reason);
+  }
+  assert.equal(JSON.stringify(c),before);
+ }
+ assert.equal(r83Audit(null,R83_PROFILE).formulaMatch,null);
+});
+test('R83 adapter reproduces real source Ban02 evidence across R61 R79 R81',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const s=read('.r61-pinned-source-void-predicate-observations.json');
+ assert.equal(auditR62(s,read('.r33-source-1989-root-cause-observations.json')).charts,960);
+ const grids=[
+  ['R61',s.records.map(r=>({id:r.id,lunar:r.diagnostic.reportedLunar,hour:r.hour,gender:r.gender,
+    hit:r.sourcePredicates['dinh-ban-02'],names:r.sourceVoidByName}))],
+  ['R79',s.r79Cycle.records.map(r=>({id:r.id,lunar:r.lunar,hour:r.hour,gender:r.gender,hit:r.hit,names:r.voidByName}))],
+  ['R81',s.r81HuaOnly.records.map(r=>({id:r.id,lunar:r.lunar,hour:r.hour,gender:'male',hit:r.hit,atMenh:r.labels}))]
+ ];
+ const summaries=[];
+ for(const [grid,rows] of grids){
+  const counts={total:rows.length,accepted:0,rejected:0,matched:0,unknown:0,positive:0,positiveMatched:0,namesMatched:0};
+  for(const row of rows){
+   counts.positive+=Number(row.hit);
+   const d=row.lunar,date=[d.year,String(d.month).padStart(2,'0'),String(d.day).padStart(2,'0')].join('-');
+   let c;
+   try{c=R73Engine.calculate({date,calendar:'lunar',leap:d.leap,hour:row.hour*2,minute:0,gender:row.gender==='male'?'Nam':'Nữ'});}
+   catch(error){if(!(error instanceof RangeError))throw error;counts.rejected++;continue;}
+   counts.accepted++;
+   const a=r83Audit(c,R83_PROFILE);
+   assert.equal(a.verifiedLocalInput,true,row.id);
+   assert.equal(a.sourceCriterionVerified,false);
+   assert.equal(a.mayIncreaseMapping,false);
+   if(a.formulaMatch===null)counts.unknown++;
+   assert.equal(a.formulaMatch,row.hit,row.id);
+   counts.matched++;
+   if(row.hit)counts.positiveMatched++;
+   if(row.names)assert.deepEqual(a.sourceNamedCoordinates,row.names,row.id);
+   else assert.deepEqual([...a.namesAtMenh].sort(),[...row.atMenh].sort(),row.id);
+   counts.namesMatched++;
+  }
+  assert.equal(counts.accepted+counts.rejected,rows.length);
+  assert.equal(counts.unknown,0);
+  assert.equal(counts.positiveMatched,counts.positive);
+  assert.equal(counts.rejected,grid==='R81'?2:0);
+  summaries.push({grid,...counts});
+ }
+ console.log('R83 adapter summary: '+JSON.stringify({summaries,profile:R83_PROFILE,overlappingGrids:true,
+  semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,researchMapped:31}));
+});
+
+/** R84: use one validated profile for all three candidates, with explicit
+ * independent natal and period boundaries. */
+const {auditPinnedDefaultVoidConditions:r84Audit}=require('../infrastructure/scripts/tuvi-r33-r83-pinned-default-ban02.cjs');
+test('R84 natal and period scope stays separate under corrupted decade evidence',()=>{
+ const chart=R73Engine.calculate({date:'1986-10-14',calendar:'lunar',leap:false,hour:12,minute:0,gender:'Nam'});
+ const before=JSON.stringify(chart);
+ const base=r84Audit(chart,R83_PROFILE);
+ assert.equal(base.verifiedLocalInput,true);assert.equal(base.period.verifiedGeometry,true);
+ assert.equal(base.period.periods.length,12);
+ assert.equal(base.natal[1].formulaMatch,true);
+ assert.ok(Object.isFrozen(base)&&Object.isFrozen(base.natal)&&Object.isFrozen(base.period.periods));
+ assert.ok(base.period.periods.every(p=>p.toAge===p.fromAge+9&&p.four.includes(p.branch)));
+ for(const mutate of [
+  x=>{x.cycles.daiHan[0].fromAge++;},
+  x=>{x.cycles.daiHan.reverse();},
+  x=>{x.coverage.daiHan=11;},
+  x=>{x.yearStars.pop();},
+  x=>{x.yearStarRuleSet='bad';}
+ ]){
+  const bad=clone(chart);mutate(bad);
+  const result=r84Audit(bad,R83_PROFILE);
+  assert.equal(result.verifiedLocalInput,true);
+  assert.deepEqual(result.natal,base.natal);
+  assert.equal(result.period.verifiedGeometry,false);
+  assert.equal(result.period.formulaMatch,null);
+  assert.equal(result.period.periods.length,0);
+  assert.equal(result.mayIncreaseMapping,false);
+ }
+ const wrong=clone(chart);wrong.houses[0].stars.push('Thất Sát');
+ assert.equal(r84Audit(wrong,R83_PROFILE).verifiedLocalInput,false);
+ assert.equal(r84Audit(chart,'single').verifiedLocalInput,false);
+ assert.equal(JSON.stringify(chart),before);
+});
+test('R84 three executable source-profile conditions match R61 genuine detectors and age ranges',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const s=read('.r61-pinned-source-void-predicate-observations.json');
+ assert.equal(auditR62(s,read('.r33-source-1989-root-cause-observations.json')).charts,960);
+ const stats={charts:0,ban01Match:0,ban02Match:0,periods:0,periodMatch:0,
+  ban01Positive:0,ban02Positive:0,tap03Positive:0,periodIdentity:0};
+ for(const row of s.records){
+  const d=row.diagnostic.reportedLunar,date=[d.year,String(d.month).padStart(2,'0'),String(d.day).padStart(2,'0')].join('-');
+  const c=R73Engine.calculate({date,calendar:'lunar',leap:d.leap,hour:row.hour*2,minute:0,gender:row.gender==='male'?'Nam':'Nữ'});
+  const a=r84Audit(c,R83_PROFILE);
+  assert.equal(a.verifiedLocalInput,true,row.id);
+  assert.deepEqual(a.sourceNamedCoordinates,row.sourceVoidByName,row.id);
+  assert.equal(a.natal[0].formulaMatch,row.sourcePredicates['dinh-ban-01'],row.id);
+  assert.equal(a.natal[1].formulaMatch,row.sourcePredicates['dinh-ban-02'],row.id);
+  stats.charts++;stats.ban01Match++;stats.ban02Match++;
+  stats.ban01Positive+=Number(a.natal[0].formulaMatch);stats.ban02Positive+=Number(a.natal[1].formulaMatch);
+  assert.equal(a.period.verifiedGeometry,true,row.id);
+  assert.equal(a.period.periods.length,12,row.id);
+  assert.equal(a.period.locBranch,row.luBranch,row.id);
+  assert.equal(a.period.horseBranch,row.horseBranch,row.id);
+  assert.equal(a.period.sevenBranch,row.sevenBranch,row.id);
+  for(const p of a.period.periods){
+   const expected=row.periods.find(v=>v.startAge===p.fromAge);
+   assert.ok(expected,row.id);assert.equal(p.branch,expected.branch,row.id);
+   assert.equal(p.toAge,p.fromAge+9,row.id);stats.periodIdentity++;
+   assert.equal(p.formulaMatch,row.sourcePredicates['dinh-tap-03'].includes(p.fromAge),row.id);
+   stats.periods++;stats.periodMatch++;stats.tap03Positive+=Number(p.formulaMatch);
+  }
+  for(const flag of ['sourceCriterionVerified','semanticEquivalenceVerified','schoolParityVerified','expertReviewed','mayDeclarePattern','mayIncreaseMapping'])assert.equal(a[flag],false);
+ }
+ assert.equal(stats.charts,960);assert.equal(stats.periods,11520);
+ console.log('R84 three-condition summary: '+JSON.stringify({stats,profile:R83_PROFILE,
+  semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,researchMapped:31}));
+});

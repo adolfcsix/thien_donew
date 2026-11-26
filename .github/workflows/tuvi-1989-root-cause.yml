@@ -90,6 +90,7 @@ jobs:
           node infrastructure/scripts/tuvi-r33-r61-audit-source-void-predicates.cjs .r61-pinned-source-void-predicate-observations.json
           node --test tests/v111680-tuvi-r62-matched-source-void-controls.test.cjs
           node infrastructure/scripts/tuvi-r33-r62-matched-source-void-controls.cjs .r61-pinned-source-void-predicate-observations.json
+          node infrastructure/scripts/tuvi-r33-r85-reproducible-void-evidence.cjs
           node infrastructure/scripts/tuvi-r33-r63-audit-lunar-rounding.cjs .r63-source-lunar-rounding-trace.json
           node --test tests/v111681-tuvi-r63-lunar-rounding.test.cjs
           node infrastructure/scripts/tuvi-r33-r64-audit-independent-new-moons.cjs .r64-source-lunar-rounding-trace.json
@@ -128,6 +129,7 @@ jobs:
             .r61-pinned-source-void-predicate-observations.json
             .r61-pinned-void-predicate-audit.json
             .r62-source-matched-positive-negative-controls.json
+            .r85-pinned-default-void-evidence.json
             .r63-source-lunar-rounding-trace.json
             .r63-lunar-rounding-audit.json
             .r64-source-lunar-rounding-trace.json
