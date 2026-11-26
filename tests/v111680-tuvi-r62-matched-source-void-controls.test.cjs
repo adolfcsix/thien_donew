@@ -697,3 +697,68 @@ test('R80 targeted actual source search and single-operand detector intervention
   semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,researchMapped:31}));
  for(const row of a.positives.filter(x=>x.hua&&!x.loc))console.log('R80 Hua-only positive: '+JSON.stringify(row));
 });
+
+/** R81: inspect all valid days of the regular tenth lunar month for year/hour
+ * candidates selected by source geometry, then test actual chart evidence. */
+test('R81 targeted full lunar-day search and Hua-only production evidence',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const source=read('.r61-pinned-source-void-predicate-observations.json');
+ assert.equal(auditR62(source,read('.r33-source-1989-root-cause-observations.json')).charts,960);
+ const a=source.r81HuaOnly;
+ assert.equal(a.schema,'thiendo-r81-hua-only-lunar-day-search-v1');
+ const candidates=source.r79Cycle.records.filter(row=>{
+  if(row.gender!=='male'||![0,6].includes(row.hour))return false;
+  const target=row.hour===0?11:5;
+  return row.placements.kong.includes(target)&&row.placements.jie.includes(target)&&
+   !row.placements.lu.includes(target)&&Object.values(row.voidByName).some(v=>v.includes(target));
+ });
+ assert.equal(a.groups.length,candidates.length);
+ assert.ok(a.groups.length>0);
+ assert.equal(new Set(a.groups.map(g=>g.year+'/'+g.hour)).size,a.groups.length);
+ assert.deepEqual(a.groups.map(g=>g.year+'/'+g.hour).sort(),candidates.map(g=>g.year+'/'+g.hour).sort());
+ assert.equal(a.records.length,a.groups.reduce((n,g)=>n+g.days,0));
+ assert.equal(new Set(a.records.map(x=>x.id)).size,a.records.length);
+ for(const g of a.groups){
+  assert.ok([29,30].includes(g.days));
+  assert.deepEqual(a.records.filter(x=>x.year===g.year&&x.hour===g.hour).map(x=>x.day).sort((x,y)=>x-y),
+   Array.from({length:g.days},(_,i)=>i+1));
+ }
+ const stats={aligned:0,coordinateMismatch:0,sourcePositive:0,huaOnly:0,replayed:0,rejected:0,
+  skippedLeap:0,proxyAgreement:0,positiveEvidenceMet:0,huaOnlyMet:0};
+ const differences=[],positive=[];
+ for(const row of a.records){
+  stats[row.aligned?'aligned':'coordinateMismatch']++;
+  assert.equal(row.hit,(row.loc||row.hua)&&row.kong&&row.jie&&row.labels.length>0);
+  if(row.hit)stats.sourcePositive++;
+  if(row.hit&&row.hua&&!row.loc){
+   stats.huaOnly++;assert.equal(row.withoutLoc,true);assert.equal(row.withoutHua,false);
+   positive.push(row);
+  }
+  if(row.lunar.leap){stats.skippedLeap++;continue;}
+  const d=row.lunar,date=[d.year,String(d.month).padStart(2,'0'),String(d.day).padStart(2,'0')].join('-');
+  let c;
+  try{c=R73Engine.calculate({date,calendar:'lunar',leap:false,hour:row.hour*2,minute:0,gender:'Nam'});}
+  catch(error){if(!(error instanceof RangeError))throw error;stats.rejected++;differences.push({id:row.id,reason:'local lunar rejected'});continue;}
+  stats.replayed++;
+  const l=r73Local(c),v=l.proxy===null?null:l.proxy.has(l.ming);
+  const localHit=r73And(r73Or(r73At(l.lu,l.ming),r73At(l.hua,l.ming)),
+   r73And(r73At(l.kong,l.ming),r73At(l.jie,l.ming)),v);
+  if(localHit===row.hit)stats.proxyAgreement++;else differences.push({id:row.id,source:row.hit,local:localHit});
+  if(row.hit){
+   const states=r80Checks(c);
+   if(states[0]==='met'&&states[1]==='met'&&localHit===true)stats.positiveEvidenceMet++;
+   if(row.hua&&!row.loc&&r73At(l.lu,l.ming)===false&&r73At(l.hua,l.ming)===true&&
+      states[0]==='met'&&states[1]==='met'&&localHit===true){
+    stats.huaOnlyMet++;
+    const corrupted=clone(c);corrupted.tuHoaRuleSet='invalid';
+    assert.equal(r80Checks(corrupted)[0],'unknown','Hua-only hit needs genuine natal transformations');
+   }
+  }
+ }
+ assert.equal(stats.replayed+stats.rejected+stats.skippedLeap,a.records.length);
+ console.log('R81 Hua-only summary: '+JSON.stringify({groups:a.groups.length,charts:a.records.length,stats,
+  differenceCount:differences.length,semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,researchMapped:31}));
+ for(const row of positive)console.log('R81 Hua-only positive: '+JSON.stringify(row));
+ for(const row of differences)console.log('R81 difference: '+JSON.stringify(row));
+});
