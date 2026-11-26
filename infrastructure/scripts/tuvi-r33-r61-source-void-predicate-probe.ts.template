@@ -7,13 +7,15 @@
  * A source match is never a Thiên Đồ formation verdict.
  */
 import {readFileSync,writeFileSync} from 'node:fs';
+import {astro} from 'iztro';
+import {execFileSync} from 'node:child_process';
 import {generateChart} from './lib/ziwei/algorithm';
 import {DING_PIN_GE,detectDingPin} from './lib/ziwei/patterns-dingpin';
 import {DING_ZA_GE,detectDingZa} from './lib/ziwei/patterns-dingza';
 const source='7922285d947b36610e7e31c232d8f1e2a0d0871d';
 const lock=JSON.parse(readFileSync('package-lock.json','utf8'));
 const installed=JSON.parse(readFileSync('node_modules/iztro/package.json','utf8'));
-if(installed.version!=='2.6.1'||lock.packages?.['node_modules/iztro']?.version!=='2.6.1')
+if(execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()!==source || installed.version!=='2.6.1'||lock.packages?.['node_modules/iztro']?.version!=='2.6.1')
  throw Error('R61 iztro dependency is not pinned');
 const names=['旬空','副旬','截路','截空','空亡','副截'] as const;
 const byNo=<T extends {no:number;name:string}>(list:readonly T[],number:number,name:string):T=>{
@@ -76,10 +78,22 @@ for(const year of years)for(const month of months)
    if(JSON.stringify(independentTap3)!==JSON.stringify(actualTap3)||
       JSON.stringify(actualTap3)!==JSON.stringify(observedTap3))
     throw Error('R61 source Ding Za period predicate mismatch');
+   // R76: record raw library date separately from generateChart's reported date.
+   // R69 demonstrated these can differ on leap-month boundaries.
+   const raw=astro.bySolar([year,month,15].join('-'),hour,gender==='male'?'男':'女',true,'zh-CN').rawDates.lunarDate;
+   const point=(lunarYear:number,lunarMonth:number,lunarDay:number,leap:boolean)=>({year:lunarYear,month:lunarMonth,day:lunarDay,leap});
+   const named=(name:string)=>sorted(chart.palaces.flatMap(p=>p.stars.filter(s=>s.name===name).map(()=>p.branch)));
+   const hua=sorted(chart.palaces.flatMap(p=>p.stars.filter(s=>s.siHua==='禄').map(()=>p.branch)));
    records.push({
     id:[year,String(month).padStart(2,'0'),'15',gender,hour].join('-'),
     solarDate:[year,String(month).padStart(2,'0'),'15'].join('-'),
     year,month,day:15,gender,hour,
+    diagnostic:{
+     rawLunar:point(raw.lunarYear,raw.lunarMonth,raw.lunarDay,raw.isLeap),
+     reportedLunar:point(chart.lunarInfo.lunarYear,chart.lunarInfo.lunarMonth,chart.lunarInfo.lunarDay,chart.lunarInfo.isLeapMonth),
+     cuc:chart.wuxingJu,
+     liem:named('廉贞'),kong:named('地空'),jie:named('地劫'),hua
+    },
     mingBranch:ming,sevenBranch:seven,luBranch,horseBranch,
     periods:sortedPeriods.map(dx=>({startAge:dx.startAge,branch:dx.palaceBranch})),
     sourceVoidByName:namedVoid,voidNamesAtMing:sourceMingVoid,
