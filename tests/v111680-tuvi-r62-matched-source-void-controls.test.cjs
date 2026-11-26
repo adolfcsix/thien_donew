@@ -623,3 +623,77 @@ test('R79 all 60 Can Chi years and strict Ban02 source controls',()=>{
  for(const row of positive)console.log('R79 positive: '+JSON.stringify(row));
  for(const row of differences)console.log('R79 difference: '+JSON.stringify(row));
 });
+
+/** R80: production partial-evidence checks must remain fail-closed even
+ * after a positive source coordinate result. No runtime promotion.
+ */
+const {auditClassicalPatternCandidates:r80Audit}=require('../packages/interpretation/src/classical-pattern-research.cjs');
+function r80Checks(chart){
+ const report=r80Audit(chart), item=report.pendingEvidence.find(x=>x.id==='dinh-ban-02');
+ assert.ok(item);assert.equal(item.sourceCriterionVerified,false);
+ assert.equal(item.status,'partial-evidence');
+ assert.ok(!report.records.some(x=>x.id==='dinh-ban-02'));
+ assert.equal(item.checks[2].state,'unknown');
+ return item.checks.map(x=>x.state);
+}
+test('R80 genuine-shaped Ban02 partial evidence rejects corrupted natal operands',()=>{
+ const c=R73Engine.calculate({date:'1986-10-14',calendar:'lunar',leap:false,hour:12,minute:0,gender:'Nam'});
+ const before=JSON.stringify(c);
+ assert.deepEqual(r80Checks(c),['met','met','unknown']);
+ const mutate=fn=>{const x=clone(c);fn(x);return x;};
+ const missingLoc=mutate(x=>{x.auxiliaries=x.auxiliaries.filter(s=>s.name!=='Lộc Tồn');});
+ assert.equal(r80Checks(missingLoc)[0],'unknown');
+ const duplicateLoc=mutate(x=>{x.houses.find(h=>h.palace!=='Mệnh').auxiliaryStars.push('Lộc Tồn');});
+ assert.equal(r80Checks(duplicateLoc)[0],'unknown');
+ const huaMissing=mutate(x=>{x.transformations=[];});
+ assert.equal(r80Checks(huaMissing)[0],'met','verified Loc Ton suffices for OR');
+ for(const name of ['Địa Không','Địa Kiếp']){
+  const missing=mutate(x=>{x.advancedStars=x.advancedStars.filter(s=>s.name!==name);});
+  assert.equal(r80Checks(missing)[1],'unknown',name);
+  const wrongHouse=mutate(x=>{x.houses.find(h=>h.palace!=='Mệnh').advancedStars.push(name);});
+  assert.equal(r80Checks(wrongHouse)[1],'unknown',name);
+ }
+ const wrongRule=mutate(x=>{x.advancedStarRuleSet='unverified';});
+ assert.equal(r80Checks(wrongRule)[1],'unknown');
+ const wrongVoid=mutate(x=>{x.obstructionMarkers=[];});
+ assert.equal(r73VoidGate(wrongVoid).verifiedLocalObstructions,false);
+ assert.equal(r80Checks(wrongVoid)[2],'unknown');
+ assert.equal(JSON.stringify(c),before);
+});
+test('R80 targeted actual source search and single-operand detector interventions',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const source=read('.r61-pinned-source-void-predicate-observations.json');
+ const base=read('.r33-source-1989-root-cause-observations.json');
+ assert.equal(auditR62(source,base).charts,960);
+ const a=source.r80Targeted;
+ assert.equal(a.schema,'thiendo-r80-ban02-targeted-ablation-v1');
+ assert.equal(a.searched,1440);
+ assert.equal(a.positives.length,a.sourcePositive);
+ assert.equal(a.locOnly+a.huaOnly+a.bothLoc,a.sourcePositive);
+ assert.ok(a.sourcePositive>0);
+ assert.equal(new Set(a.positives.map(x=>x.id)).size,a.sourcePositive);
+ let replayed=0,rejected=0,skippedLeap=0,met=0,huaOnlyMet=0;
+ for(const row of a.positives){
+  const m=row.modes;
+  assert.equal(m.original,true);assert.equal(m.withoutLoc,row.hua);assert.equal(m.withoutHua,row.loc);
+  for(const field of ['withoutBothLoc','withoutKong','withoutJie','withoutVoid'])assert.equal(m[field],false,row.id+'/'+field);
+  assert.equal(m.xunOnly,row.labels.some(n=>n==='旬空'||n==='副旬'));
+  assert.equal(m.jiekongOnly,row.labels.some(n=>n!=='旬空'&&n!=='副旬'));
+  if(row.lunar.leap){skippedLeap++;continue;}
+  const d=row.lunar,date=[d.year,String(d.month).padStart(2,'0'),String(d.day).padStart(2,'0')].join('-');
+  let c;
+  try{c=R73Engine.calculate({date,calendar:'lunar',leap:false,hour:row.hour*2,minute:0,gender:'Nam'});}
+  catch(error){if(!(error instanceof RangeError))throw error;rejected++;continue;}
+  replayed++;
+  const states=r80Checks(c);
+  const l=r73Local(c);
+  const same=l.ming===row.ming&&r73At(l.lu,l.ming)===row.loc&&r73At(l.hua,l.ming)===row.hua;
+  if(same&&states[0]==='met'&&states[1]==='met'&&l.proxy?.has(l.ming)){met++;if(row.hua&&!row.loc)huaOnlyMet++;}
+ }
+ assert.equal(replayed+rejected+skippedLeap,a.sourcePositive);
+ console.log('R80 targeted summary: '+JSON.stringify({searched:a.searched,sourcePositive:a.sourcePositive,
+  locOnly:a.locOnly,huaOnly:a.huaOnly,bothLoc:a.bothLoc,replayed,rejected,skippedLeap,met,huaOnlyMet,
+  semanticEquivalenceVerified:false,expertReviewed:false,mayIncreaseMapping:false,researchMapped:31}));
+ for(const row of a.positives.filter(x=>x.hua&&!x.loc))console.log('R80 Hua-only positive: '+JSON.stringify(row));
+});
