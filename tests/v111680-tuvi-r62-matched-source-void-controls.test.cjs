@@ -448,3 +448,99 @@ test('R77 positive controls and distinct Void families; replay source effective 
  console.log('R77 leap counterfactual: '+JSON.stringify({summary:replaySummary,rows:leapRows,
   sameCivilInstantVerified:false,schoolParityVerified:false,mayIncreaseMapping:false,researchMapped:31}));
 });
+
+/** R78: compare the full grid on source-reported effective lunar coordinates,
+ * distinguish year-boundary mismatches, and verify decade age + branch identity.
+ * This is a counterfactual diagnostic, never a change to the user's birth date.
+ */
+test('R78 effective lunar replay and full age-branch period identity',()=>{
+ if(process.env.THIENDO_R33_REQUIRE_GENUINE!=='1')return;
+ const read=name=>JSON.parse(fs.readFileSync(path.resolve(__dirname,'..',name),'utf8'));
+ const source=read('.r61-pinned-source-void-predicate-observations.json');
+ const base=read('.r33-source-1989-root-cause-observations.json');
+ assert.equal(auditR62(source,base).charts,960);
+ const {auditSourceDoubleJiekongCodeConcordance}=require('../packages/interpretation/src/classical-source-void-vocabulary.cjs');
+ const {auditClassicalPeriodGeometry}=require('../packages/interpretation/src/classical-period-geometry.cjs');
+ const key=x=>[x.year,x.month,x.day,x.leap].join('/');
+ const sorted=a=>[...new Set(a)].sort((a,b)=>a-b);
+ const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+ const mod=(x,n)=>((x%n)+n)%n;
+ const totals={charts:0,computed:0,rejected:0,skippedLeap:0,sameCivilDate:0,
+  allNamedCoordinatesMatch:0,cucMatch:0,tuanMatch:0,trietMatch:0,
+  ageBranchMatch:0,periodContexts:0,all12PeriodsMatch:0,
+  ban01Match:0,ban02Match:0,tap03AgeMatch:0};
+ const yearBoundary=[],unresolved=[];
+ for(const row of source.records){
+  totals.charts++;
+  const d=row.diagnostic,e=d.reportedLunar;
+  const common={gender:row.gender==='male'?'Nam':'Nữ',hour:row.hour*2,minute:0};
+  const original=R73Engine.calculate({...common,date:row.solarDate,calendar:'solar'});
+  const originalBefore=JSON.stringify(original);
+  const xun=sorted(['旬空','副旬'].flatMap(n=>row.sourceVoidByName[n]));
+  const jie=sorted(['截路','截空','空亡','副截'].flatMap(n=>row.sourceVoidByName[n]));
+  const pair=(c,name)=>sorted(c.obstructionMarkers.find(v=>v.name===name).branches);
+  const stem=R73Engine.STEMS[mod(e.year-4,10)];
+  const sourceRule=auditSourceDoubleJiekongCodeConcordance(stem);
+  assert.equal(sourceRule.sourceFormulaConcordant,true,row.id);
+  const expectedJie=sorted(sourceRule.formulaCodes.map(n=>n-1));
+  const trace={id:row.id,rawLunar:d.rawLunar,reportedLunar:e,localLunar:original.lunar,
+   sourceReportedStem:stem,localCanChi:original.yearCanChi,
+   sourceJie:jie,sourceReportedStemPair:expectedJie,localTriet:pair(original,'Triệt')};
+  if(!same(jie,trace.localTriet))yearBoundary.push(trace);
+  if(e.leap){totals.skippedLeap++;unresolved.push({...trace,reason:'reported-leap-policy-not-replayed'});continue;}
+  const date=[e.year,String(e.month).padStart(2,'0'),String(e.day).padStart(2,'0')].join('-');
+  let c;
+  try{c=R73Engine.calculate({...common,date,calendar:'lunar',leap:false});}
+  catch(error){if(!(error instanceof RangeError))throw error;totals.rejected++;unresolved.push({...trace,reason:'rejected-lunar-coordinate'});continue;}
+  totals.computed++;
+  assert.equal(key(c.lunar),key(e),row.id);
+  if(same(c.solar,original.solar))totals.sameCivilDate++;
+  const l=r73Local(c);
+  const coords={ming:row.mingBranch,seven:row.sevenBranch,lu:row.luBranch,
+   horse:row.horseBranch,liem:d.liem[0],kong:d.kong[0],jie:d.jie[0],hua:d.hua[0]};
+  const named=Object.keys(coords).filter(k=>coords[k]!==l[k]);
+  const t=same(xun,pair(c,'Tuần')),j=same(jie,pair(c,'Triệt'));
+  totals.tuanMatch+=Number(t);totals.trietMatch+=Number(j);
+  totals.allNamedCoordinatesMatch+=Number(!named.length);
+  totals.cucMatch+=Number(d.cuc===c.cuc.number);
+  const geometry=auditClassicalPeriodGeometry(c);
+  assert.equal(geometry.verifiedGeometry,true,row.id);
+  assert.equal(c.cycles.daiHan.length,12,row.id);
+  const inVoid=b=>l.proxy===null||b===null?null:l.proxy.has(b);
+  const ban1=r73And(r73At(l.liem,l.ming),inVoid(l.ming));
+  const ban2=r73And(r73Or(r73At(l.lu,l.ming),r73At(l.hua,l.ming)),
+   r73And(r73At(l.kong,l.ming),r73At(l.jie,l.ming)),inVoid(l.ming));
+  totals.ban01Match+=Number(ban1===row.sourcePredicates['dinh-ban-01']);
+  totals.ban02Match+=Number(ban2===row.sourcePredicates['dinh-ban-02']);
+  let periodDifferences=0,hitDifferences=0;
+  for(const period of row.periods){
+   totals.periodContexts++;
+   const actual=c.cycles.daiHan.find(v=>v.fromAge===period.startAge);
+   const identity=!!actual&&actual.branch===period.branch&&actual.toAge===period.startAge+9;
+   totals.ageBranchMatch+=Number(identity);
+   if(!identity)periodDifferences++;
+   const hit=identity?r73And(l.seven===null?null:
+    [actual.branch,(actual.branch+4)%12,(actual.branch+8)%12,(actual.branch+6)%12].includes(l.seven),
+    inVoid(l.lu),inVoid(l.horse)):null;
+   const sourceHit=row.sourcePredicates['dinh-tap-03'].includes(period.startAge);
+   if(hit===sourceHit)totals.tap03AgeMatch++;else hitDifferences++;
+  }
+  totals.all12PeriodsMatch+=Number(!periodDifferences);
+  if(named.length||!t||!j||d.cuc!==c.cuc.number||periodDifferences||hitDifferences||
+    ban1!==row.sourcePredicates['dinh-ban-01']||ban2!==row.sourcePredicates['dinh-ban-02'])
+   unresolved.push({...trace,replaySolar:c.solar,replayCanChi:c.yearCanChi,named,
+    sourceCuc:d.cuc,localCuc:c.cuc.number,replayTuan:pair(c,'Tuần'),replayTriet:pair(c,'Triệt'),
+    periodDifferences,hitDifferences,ban1,ban2});
+  assert.equal(JSON.stringify(original),originalBefore);
+ }
+ assert.equal(totals.charts,960);
+ assert.equal(totals.computed+totals.rejected+totals.skippedLeap,960);
+ assert.equal(totals.periodContexts,totals.computed*12);
+ assert.equal(yearBoundary.length,24);
+ assert.ok(yearBoundary.every(x=>x.id.startsWith('1985-02-15-')));
+ console.log('R78 effective lunar replay summary: '+JSON.stringify({totals,yearBoundaryCount:yearBoundary.length,
+  unresolvedCount:unresolved.length,semanticEquivalenceVerified:false,schoolParityVerified:false,
+  expertReviewed:false,mayIncreaseMapping:false,researchMapped:31}));
+ for(const row of yearBoundary)console.log('R78 year boundary: '+JSON.stringify(row));
+ for(const row of unresolved)console.log('R78 unresolved: '+JSON.stringify(row));
+});
